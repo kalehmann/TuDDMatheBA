@@ -1,0 +1,28 @@
+kind: "pipeline"
+type: "docker"
+name: "publish"
+
+steps:
+    - name: "Deploy the website"
+      image: "registry.kalehmann.de/tuddmatheba:latest"
+      commands:
+          - 'lftp -e "
+               set ftp:ssl-force true;
+               set ssl:verify-certificate yes;
+               open -u $${USER},$${PASSWORD} $${SERVER};
+               mirror --reverse --delete $(pwd)/src public_html/kalehmann-de/tuddmatheba;
+               exit;"'
+      environment:
+          USER:
+              from_secret: 'ftp_user'
+          PASSWORD:
+              from_secret: 'ftp_password'
+          SERVER:
+              from_secret: 'ftp_server'
+      when:
+          branch:
+              - 'master'
+
+image_pull_secrets:
+        - "dockerconfigjson"
+...
