@@ -1,8 +1,124 @@
 <!DOCTYPE html>
 <head>
   <title>TuDDMatheBa</title>
+  <link rel="stylesheet" href="style.css" >
 </head>
 <body>
   <h1>TuDDMatheBa</h1>
+
+  <p><a href="https://github.com/kalehmann/TuDDMatheBa">Checkout the sources on GitHub!</a></p>
+  <p>Inspired by a <a href="https://secretgeek.github.io/html_wysiwyg/html.html">html quine</a></p>
+  
+  <details>
+    <summary>View the CSS</summary>
+    <style>
+      * {
+          display: block;
+          font-family: Monospace;
+          padding-left: 1em;
+          text-decoration: none;
+      }
+
+      *::before, *::after {
+          color: #FF8126;
+      }
+
+      a, code, em, strong {
+          display: inline;
+          padding: 0;
+      }
+      
+      blockquote, style {
+          white-space: pre-wrap;
+      }
+      
+      html {
+          background-color: #1c1c1c;
+          color: #cccccc;
+          font-size: 1.2em;
+          padding: 0;
+      }
+
+      style {
+          font-size: .8em;
+      }
+
+      summary {
+          padding: 0;
+      }
+      
+      a::after {
+          content: '</a>';
+      }
+      a[href]::before {
+          content: "<a href='" attr(href) "'>";
+      }
+      a::before {
+          content: '<a>';
+      }
+      
+      body::after {
+          content: '</body>';
+      }
+      body::before {
+          content: '<body>';
+      }
+
+      details::after {
+          content: '</details>'
+      }
+      details::before {
+          content: '<details>'
+      }
+      
+      h1::after {
+        content: '</h1>';
+      }
+      h1::before {
+          content: '<h1>';
+      }
+      
+      head::after {
+          content: '</head>';
+      }
+      head::before {
+          content: '<head>';
+      }
+      
+      html::after {
+          content: '</html>';
+      } 
+      html::before {
+          content: '<html>';
+      }
+      
+      p::after {
+          content: '</p>';
+      }
+      p::before {
+          content: '<p>';
+      }
+
+      style::after {
+          content: '<\/style>';
+      }
+      style::before {
+          content: '<style>';
+      }
+
+      summary::after {
+          content: '</summary>'
+      }
+      summary::before {
+          content: '<summary>'
+      }
+      
+      title::after {
+          content: '</title>';
+      }
+      title::before {
+        content: '<title>';
+      }
+  </style>
 </body>
 </html>
