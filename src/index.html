@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="style.css" >
 </head>
 <body>
-  <h1>TuDDMatheBa</h1>
+  <h1>TU Dresden Mathematik Bachelor</h1>
 
   <p><a href="https://github.com/kalehmann/TuDDMatheBa">Checkout the sources on GitHub!</a></p>
   <p>Inspired by a <a href="https://secretgeek.github.io/html_wysiwyg/html.html">html quine</a></p>
@@ -15,7 +15,6 @@
       * {
           display: block;
           font-family: Monospace;
-          padding-left: 1em;
           text-decoration: none;
       }
 
@@ -26,7 +25,14 @@
 
       a, code, em, strong {
           display: inline;
-          padding: 0;
+      }
+
+      body {
+          margin: 0;
+      }
+      
+      html > *, body > *, head > * {
+          padding-left: 1rem;
       }
       
       blockquote, style {
@@ -37,15 +43,10 @@
           background-color: #1c1c1c;
           color: #cccccc;
           font-size: 1.2em;
-          padding: 0;
       }
 
       style {
           font-size: .8em;
-      }
-
-      summary {
-          padding: 0;
       }
       
       a::after {
