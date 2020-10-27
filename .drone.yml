@@ -10,7 +10,7 @@ steps:
                set ftp:ssl-force true;
                set ssl:verify-certificate yes;
                open -u $${USER},$${PASSWORD} $${SERVER};
-               mirror --reverse --delete $(pwd)/src public_html/kalehmann-de/tuddmatheba;
+               mirror --reverse --delete $(pwd)/html public_html/kalehmann-de/tuddmatheba;
                exit;"'
       environment:
           USER:
