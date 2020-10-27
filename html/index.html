@@ -5,6 +5,8 @@
 <body>
   <h1>TU Dresden Mathematik Bachelor</h1>
 
+  <strong><a href="schedule/1-semester.pdf">My schedule</a></strong>
+
   <p><a href="https://github.com/kalehmann/TuDDMatheBa">Checkout the sources on GitHub!</a></p>
   <p>Inspired by a <a href="https://secretgeek.github.io/html_wysiwyg/html.html">html quine</a></p>
   
@@ -102,6 +104,13 @@
       }
       p::before {
           content: '<p>';
+      }
+
+      strong::after {
+	  content: '</strong>';
+      }
+      strong::before {
+	  content: '<strong>';
       }
 
       style::after {
