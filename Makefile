@@ -20,7 +20,8 @@ $(OUTPUT_DIRECTORY)/%.html: html/%.html
 	cp $< $@
 
 $(OUTPUT_DIRECTORY)/%.pdf: latex/%.ltx
-	$(PDFLATEX) $(PDFLATEX_OPTS) $<
+	$(PDFLATEX) $<
+	cp $$(basename $*.pdf) $(OUTPUT_DIRECTORY)/$*.pdf
 
 clean:
 	rm -rf $(OUTPUT_DIRECTORY)
