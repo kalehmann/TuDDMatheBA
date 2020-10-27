@@ -3,6 +3,14 @@ type: "docker"
 name: "publish"
 
 steps:
+    - name: "Build the website"
+      image: "registry.kalehmann.de/tuddmatheba:latest"
+      commands:
+          - 'make'
+      when:
+          branch:
+              - 'master'
+
     - name: "Deploy the website"
       image: "registry.kalehmann.de/tuddmatheba:latest"
       commands:
@@ -10,7 +18,7 @@ steps:
                set ftp:ssl-force true;
                set ssl:verify-certificate yes;
                open -u $${USER},$${PASSWORD} $${SERVER};
-               mirror --reverse --delete $(pwd)/html public_html/kalehmann-de/tuddmatheba;
+               mirror --reverse --delete $(pwd)/_site public_html/kalehmann-de/tuddmatheba;
                exit;"'
       environment:
           USER:
@@ -19,6 +27,8 @@ steps:
               from_secret: 'ftp_password'
           SERVER:
               from_secret: 'ftp_server'
+      depends_on:
+          - 'Build the website'
       when:
           branch:
               - 'master'
