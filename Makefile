@@ -7,12 +7,12 @@ HTML_FILES = \
 	$(OUTPUT_DIRECTORY)/index.html
 
 PDF_FILES = \
-	$(OUTPUT_DIRECTORY)/pdfs/schedule/1-semester.pdf
+	$(OUTPUT_DIRECTORY)/pdf/schedule/1-semester.pdf
 
 OUTPUT_FILES = \
 	$(OUTPUT_DIRECTORY) \
 	$(OUTPUT_DIRECTORY)/.htaccess \
-	$(OUTPUT_DIRECTORY)/pdfs/.htaccess \
+	$(OUTPUT_DIRECTORY)/pdf/.htaccess \
 	$(HTML_FILES) \
 	$(PDF_FILES)
 
@@ -21,20 +21,20 @@ all: $(OUTPUT_FILES)
 
 $(OUTPUT_DIRECTORY):
 	mkdir -p $(OUTPUT_DIRECTORY)
-	mkdir -p $(OUTPUT_DIRECTORY)/pdfs/schedule
+	mkdir -p $(OUTPUT_DIRECTORY)/pdf/schedule
 
 $(OUTPUT_DIRECTORY)/.htaccess: html/.htaccess
 	cp $< $@
 
-$(OUTPUT_DIRECTORY)/pdfs/.htaccess: html/pdfs/.htaccess
+$(OUTPUT_DIRECTORY)/pdf/.htaccess: html/pdf/.htaccess
 	echo $< $@
 
 $(OUTPUT_DIRECTORY)/%.html: html/%.html
 	cp $< $@
 
-$(OUTPUT_DIRECTORY)/pdfs/%.pdf: latex/%.ltx
+$(OUTPUT_DIRECTORY)/pdf/%.pdf: latex/%.ltx
 	$(PDFLATEX) $<
-	cp $$(basename $*.pdf) $(OUTPUT_DIRECTORY)/pdfs/$*.pdf
+	cp $$(basename $*.pdf) $(OUTPUT_DIRECTORY)/pdf/$*.pdf
 
 clean:
 	rm -rf $(OUTPUT_DIRECTORY)
