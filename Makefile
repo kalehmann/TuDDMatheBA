@@ -27,7 +27,7 @@ $(OUTPUT_DIRECTORY)/.htaccess: html/.htaccess
 	cp $< $@
 
 $(OUTPUT_DIRECTORY)/pdf/.htaccess: html/pdf/.htaccess
-	echo $< $@
+	cp $< $@
 
 $(OUTPUT_DIRECTORY)/%.html: html/%.html
 	cp $< $@
