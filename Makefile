@@ -32,7 +32,7 @@ $(OUTPUT_DIRECTORY)/pdf/.htaccess: html/pdf/.htaccess
 $(OUTPUT_DIRECTORY)/%.html: html/%.html
 	cp $< $@
 
-$(OUTPUT_DIRECTORY)/pdf/%.pdf: latex/%.ltx
+$(OUTPUT_DIRECTORY)/pdf/%.pdf: latex/%.tex
 	$(PDFLATEX) $<
 	cp $$(basename $*.pdf) $(OUTPUT_DIRECTORY)/pdf/$*.pdf
 
