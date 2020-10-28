@@ -7,6 +7,11 @@
 
   <strong><a href="pdf/schedule/1-semester.pdf">My schedule</a></strong>
 
+  <h2>Current courses</h2>
+  <ul>
+    <li><a href="pdf/pr10/pr10.pdf">Programmieren - Grundlegende Konzepte</a></li>
+  </ul>
+
   <p><a href="https://github.com/kalehmann/TuDDMatheBa">Checkout the sources on GitHub!</a></p>
   <p>Inspired by a <a href="https://secretgeek.github.io/html_wysiwyg/html.html">html quine</a></p>
   
@@ -36,7 +41,7 @@
           margin: 0;
       }
       
-      html > *, body > *, head > * {
+      html > *, body > *, head > *, ul > * {
           padding-left: 1rem;
       }
       
@@ -85,9 +90,16 @@
         content: '</h1>';
       }
       h1::before {
-          content: '<h1>';
+          content: '<h2>';
       }
-      
+
+      h2::after {
+        content: '</h2>';
+      }
+      h2::before {
+        content: '<h2>';
+      }
+
       head::after {
           content: '</head>';
       }
@@ -101,7 +113,14 @@
       html::before {
           content: '<html>';
       }
-      
+
+      li::after {
+	content: '</li>';
+      }
+      li::before {
+	content: '<li>';
+      }
+
       p::after {
           content: '</p>';
       }
@@ -135,6 +154,13 @@
       }
       title::before {
         content: '<title>';
+      }
+
+      ul::after {
+	content: '</ul>';
+      }
+      ul::before {
+	content: '<ul>';
       }
     </style>
   </details>
