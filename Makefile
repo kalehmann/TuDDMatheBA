@@ -9,12 +9,15 @@ HTML_FILES = \
 PDF_FILES = \
 	$(OUTPUT_DIRECTORY)/schedule/1-semester.pdf
 
-all: $(OUTPUT_DIRECTORY) $(HTML_FILES) $(PDF_FILES)
+all: $(OUTPUT_DIRECTORY) $(OUTPUT_DIRECTORY)/.htaccess $(HTML_FILES) $(PDF_FILES)
 
 
 $(OUTPUT_DIRECTORY):
 	mkdir -p $(OUTPUT_DIRECTORY)
 	mkdir -p $(OUTPUT_DIRECTORY)/schedule
+
+$(OUTPUT_DIRECTORY)/.htaccess: html/.htaccess
+	cp $< $@
 
 $(OUTPUT_DIRECTORY)/%.html: html/%.html
 	cp $< $@
