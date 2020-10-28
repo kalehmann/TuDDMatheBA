@@ -7,7 +7,7 @@ HTML_FILES = \
 	$(OUTPUT_DIRECTORY)/index.html
 
 PDF_FILES = \
-	$(OUTPUT_DIRECTORY)/schedule/1-semester.pdf
+	$(OUTPUT_DIRECTORY)/pdfs/schedule/1-semester.pdf
 
 all: $(OUTPUT_DIRECTORY) $(OUTPUT_DIRECTORY)/.htaccess $(HTML_FILES) $(PDF_FILES)
 
