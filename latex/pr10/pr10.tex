@@ -1,0 +1,109 @@
+\documentclass{article}
+
+\usepackage{genealogytree}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{struktex}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes}
+\tikzset{
+  box/.style={rectangle, draw},
+}
+
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{.9}
+
+\author{Karsten Lehmann}
+\date{WiSe 2020}
+\title{Mitschriften Programmieren - Grundlegende Konzepte (PR10)}
+
+\begin{document}
+
+\maketitle
+
+\vfill
+\begin{center}
+  Dozent: Prof. Dr. Wolfgang V. Walter \\
+  \href{mailto:wolfgang.walter@tu-dresden.de}{wolfgang.walter@tu-dresden.de}
+\end{center}
+
+\newpage
+
+\section{Einführung}
+
+\fcolorbox{black}{light-gray}{\begin{minipage}{\textwidth}
+    David Hilbert \gtrsymBorn~23. Januar 1862 \gtrsymDied~14. Februar 1943 \\
+
+    Bedeutender Deutscher Mathematiker mit vielen Beiträgen zu einzelnen Bereichen der Mathematik und
+    Vertreter des Formalismus der Mathematik.
+\end{minipage}}
+
+\noindent
+\textbf{Programmiersprache} ist eine Sprache, die lexikalisch, syntaktisch und semantisch eindeutig definiert ist.
+Texte sind vom Menschen les- und schreib-bar, sowie vom Computer eindeutig interpretierbar.
+
+\noindent
+\textbf{Compiler} übersetzt den Programmtext in Maschinensprache
+
+\noindent
+\textbf{Interpreter} arbeitet ein Programm direkt ab
+
+\noindent
+\textbf{Laufzeitsystem} stellt grundlegende Funktionen zur Ausführung und Abarbeitung eines Programms zur Verfügung.
+
+\begin{tikzpicture}
+  \node[box] (prob) {Problem ???};
+  \node[align=left, below left = 0cm and 1cm of prob] (analysis) {Analyse\\ des Problems};
+  \node[below = of prob, box] (algo) {
+    Algorithmus
+    \begin{struktogramm}(40,20)
+      \assign{bestimme Startwert}
+      \until{wiederhole, bis genau genug}
+      \assign{Iteration}
+      \untilend
+    \end{struktogramm}
+  };
+  \node[align=left, below left = 0cm and -2.5cm of algo] (code) {Kodierung in einer \\Programmiersprache};
+  \node[below = 5em of algo, box] (prog) {
+    Programm
+    \begin{lstlisting}[frame=single,language=Pascal, linewidth=16em]
+x := 1.5;
+repeat
+  xalt := x;
+  x := x - f(x) / f^(x)
+until (abs (x-xalt) < eps);
+\end{lstlisting}
+  };
+  \node[rectangle, draw, rounded corners = .1cm, above right = .5cm and -.5cm of prog] (input) {Eingabe};
+  \node[rectangle, draw, rounded corners = .1cm, below right = .5cm and -.5cm of prog] (output) {Ausgabe};
+
+  
+  \node[diamond, draw, below = of prog] (ok) {Okay?};
+  \node[align=left, left = of ok] (exec_test) {Ausführung \\und Test};
+  \node[box, below = of ok] (lsg) {Lösung};
+
+  \node[below left = .5cm and 0cm of ok] {alles richtig};
+  \node[below right = 0cm and .5cm of ok] {Fehler gefunden};
+  
+  \node[align=left, box, right = .3cm of prog] (e_prog) {Fehler im \\Programm};
+  \node[align=left, box, above right = .5cm and -.4cm of e_prog] (e_algo) {Fehler im \\Algorithmus};
+  \node[align=left, box, above right = .5cm and -.8cm of e_algo] (e_prob) {Problem \\überdenken};
+  
+  \draw[-latex] (prob.south) -> (algo.north);
+  \draw[-latex] (algo.south) -> (prog.north);
+  \draw[-latex] (prog.south) -> (ok.north);
+  \draw[-latex] (ok.south) -> (lsg.north);
+  
+  \draw[-latex] (ok.east) -| (e_prog.south);
+  \draw[-latex] (ok.east) -| (e_algo.south);
+  \draw[-latex] (ok.east) -| (e_prob.south);
+  \draw[-latex] (e_prob.north) |- (prob.east);
+  \draw[-latex] (e_algo.north) |- ([xshift=6.5em]analysis.east);
+  \draw[-latex] (e_prog.north) |- ([xshift=3em]code.east);
+
+  \draw[-latex] (input.south) -> ([xshift=3cm]prog.north);
+  \draw[-latex] ([xshift=3cm]prog.south) -> (output.north);
+\end{tikzpicture}
+
+\end{document}
