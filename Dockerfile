@@ -6,4 +6,8 @@ RUN apt-get update \
         ca-certificates \
         lftp \
 	make \
-        texlive
+        texlive \
+	texlive-latex-extra \
+	texlive-pictures \
+	texlive-science  \
+	&& rm -rf /var/lib/apt/lists/*
