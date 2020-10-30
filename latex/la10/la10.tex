@@ -5,6 +5,9 @@
 \usepackage{genealogytree}
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
 \usepackage{xcolor}
 \definecolor{light-gray}{gray}{.9}
 
@@ -113,6 +116,11 @@ Menge an Elementen, die in $A$ und $B$ liegen. Den Durchschnitt schreibt man
 
 $A \cap B = \{ x | x \in A \text{ und } x \in B\}$ \\
 
+\textbf{Definition Differenz}: Wenn $A$ und $B$ Mengen sind, dann ist die Differenz von $A$ und $B$ die
+Menge der Elemente, die in $A$ liegen, aber nicht in $B$. Die Differenz schreibt man
+
+$A \setminus B = \{ x | x \in A \text{ und } x \notin B\}$ \\
+
 Wenn $A$ und $B$ keine gemeinsamen Elemente haben, dann ist $A \cap B = \emptyset$.
 Die \textbf{leere Menge} $\emptyset$ ist eine Menge, die keine Elemente enthält. \\
 
@@ -120,7 +128,7 @@ Beispiel: \\
 $\{e \in \mathbb{R} | x^2 < 0\} = \emptyset$ \\
 
 Eigenschaften, für jede Menge $A$ gilt:
-\begin{itemize}
+o\begin{itemize}
 \item $A \cup \emptyset = A$
 \item $A \cap \emptyset = \emptyset$
 \end{itemize}
@@ -132,5 +140,163 @@ Jedoch hat die leere Menge keine Elemente.
 Intuitiv lässt sich diese Frage schwer beantworten, deswegen wurde eine Konvention geschaffen: \\
 
 Für jede Menge $A$ gilt $\emptyset \subseteq A$
+
+\subsection*{Ausblick: Aussagen}
+
+Bei den gelisteten Definition sieht man folgende Konstrukte:
+
+\begin{enumerate}
+\item $x \notin B$
+\item $x \in A$ und $x \in B$
+\item $x \in A$ oder $x \in B$
+\item \emph{"jedes Element von $A$ ist ein Element von $B$"}, oder anders gesagt aus $x \in A$ folgt $x \in B$
+\end{enumerate}
+
+Diese Konstrukte sind Beispiele für \textbf{Aussagen}. Eine Aussage ist eine Äußerung, von der man fragen kann
+ob sie wahr oder falsch ist.
+
+Die oben genannten Konstrukte entsprechen folgenden Operationen für Aussagen:
+
+$P = (x \in A)$ und $Q = (x \in B)$:
+\begin{enumerate}
+\item "nicht": die Aussage $\neg Q = "Q$ ist nicht wahr" heißt Negation von Q
+\item "und": die Aussage "$P$ und $Q$ sind beide wahr" heißt Konjunktion $P \wedge Q$ von $P$ und $Q$
+\item "oder": die Aussage "mindestens eine der Aussagen $P$ und $Q$ ist wahr" heißt Disjunktion $P \vee Q$ von
+  $P$ und $Q$
+\item "folgt": die Aussage "wenn $P$, dann $Q$" heißt Implikation und wird durch $P \implies Q$ dargestellt.
+\end{enumerate}
+
+Wann ist eigentlich $P \implies Q$ wahr? Per Konvention ist diese Aussage nur dann falsch, wenn $P$ wahr und
+$Q$ falsch ist, in allen anderen Fällen ist $P \implies Q$ wahr (Dies entspricht dem Prinzip "aus einer falschen Aussage folgt eine beliebige")!
+
+Bei Beweisen muss man sich somit nur um den Fall, dass $P$ wahr ist kümmern.
+
+\subsection*{Übung Wahrheitstabelle}
+
+\begin{displaymath}
+  \begin{array}{c | c }  
+    Q & \neg Q \\
+    \hline
+    w & f \\
+    f & w \\
+  \end{array}
+\end{displaymath}
+
+\begin{displaymath}
+  \begin{array}{ c | c | c | c }
+    P & Q & P \land Q & P \lor Q \\
+    \hline
+    0 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 1 \\
+    1 & 0 & 0 & 1 \\
+    1 & 1 & 1 & 1 \\
+  \end{array}
+\end{displaymath}
+
+\begin{displaymath}
+  \begin{array}{ c | c | c }
+    P & Q & P \implies Q \\
+    \hline
+    0 & 0 & 1 \\
+    0 & 1 & 1 \\
+    1 & 0 & 0 \\
+    1 & 1 & 1 \\
+  \end{array}
+\end{displaymath}
+
+Von diesem Standpunkt aus kann nun die Aussage $\emptyset \subseteq A$ erneut betrachtet werden,
+sie ist dann gleich $(x \in \emptyset) \implies (x \in A)$.
+Da $x \in \emptyset$ jedoch stets falsch ist, ist die Implikation nach dem obigen Prinzip wahr.
+
+Somit gilt $\emptyset \subseteq A$. \\
+
+Die Aussage "aus $P$ folgt $Q$ und aus $Q$ folgt $P$ $((P \implies Q) \land (Q \implies P))$ kürzt man
+als $P \iff Q$ ab ($P$ gilt genau dann, wenn $Q$ gilt), dies ist die Aussage, dass $P$ und $Q$ \emph{äquivalent}
+oder \emph{gleichbedeutend} sind. \\
+
+\textbf{Übung} Überprüfen Sie, dass $P \iff Q$ nur dann wahr ist, wenn $P$ und $Q$ gleichzeitig wahr oder
+gleichzeitig falsch sind.
+
+\textbf{Übung} Überprüfen Sie, dass $P \implies Q$ äquivalent zu $\neg Q \implies \neg P$ ist.
+
+\begin{displaymath}
+  \begin{array}{ c | c | c | c | c | c}
+    P & Q & P \implies Q & Q \implies P & \neg Q \implies \neg P & P \iff Q \\
+    \hline
+    0 & 0 & 1 & 1 & 1 & 1 \\
+    0 & 1 & 1 & 0 & 1 & 1 \\
+    1 & 0 & 0 & 1 & 0 & 0 \\
+    1 & 1 & 1 & 1 & 1 & 1 \\
+  \end{array}
+\end{displaymath}
+
+\textbf{Definition Abbildung}: Angenommen $X$ und $Y$ sind Mengen. Eine Abbildung (oder auch Funktion) $f$
+von $X$ nach $Y$ (Notation: $f: X \to Y$) ist eine Vorschrift, welche jedem Element $x \in X$ genau ein
+Element $f(x) \in Y$ zuordnet (Notation: $x \mapsto f(x)$). \\
+
+\emph{Beispiel} $f: \mathbb{R} \to \mathbb{R}, x \mapsto x^{3}$ ist die Notation zur Einführung der Funktion
+$f(x) = x^{3}$. \\
+
+\emph{Beispiel (Identität)}. Angenommen $X$ ist eine Menge. Die Abbildung $\text{id}_{x}: X \to X, x \mapsto x$
+heißt Identitätsbildung oder kurz Identität. \\
+
+\textbf{Definition kartesisches Produkt}: Das kartesische Produkt zweier Mengen $A$ und $B$ ist die Menge der
+Paare
+
+$A \times B \coloneqq \{(a,b) | a \in A, b \in B\}$
+
+\begin{tikzpicture}
+  %% Überschrift
+  \node at (3,5.5) {$A = [a_{0},b_{0}], B = [a_{1}, b_{1}]$};
+  %% Achsen
+  \draw (-1,0) -> (6,0);
+  \draw (0,-1) -> (0,5);
+  %% Intervall an der vertikalen Achse
+  \node[rotate=90] at (0, 1) (b0) {[};
+  \node[left = .3cm of b0] {$b_{0}$};
+  \node[rotate=90] at (0, 4) (b1) {]};
+  \node[left = .3cm of b1] {$b_{1}$};
+  %% Intervall an der horizontalen Achse
+  \node at (1, 0) (a0) {[};
+  \node[below = .3cm of a0] {$a_{0}$};
+  \node at (5, 0) (a1) {]};
+  \node[below = .3cm of a1] {$a_{1}$};
+
+  %% Rechteck innerhalb des Diagramms mit dashed Linien
+  \draw (1,1) rectangle ++(4,3);
+  \draw[dashed] (1,0) -- (1,5);
+  \draw[dashed] (5,0) -- (5,5);
+  \draw[dashed] (0,1) -- (6,1);
+  \draw[dashed] (0,4) -- (6,4);
+
+  %% Einzelner Punkt im Rechteck
+  \coordinate (dot) at (4,3);
+  \draw[fill] (dot) circle (.07);
+  \node[right = 0cm of dot] {$(a,b)$};
+
+  %% Rechteck mit B und A als Beschriftung der Seiten, sowie dem Punkt (a,b)
+  \draw (1,-4.5) rectangle ++(4,3);
+  \node at (0.5, -3) {B};
+  \node at (3,-5) {A};
+  \coordinate (dot2) at (4,-2.5);
+  \draw[fill] (dot2) circle (.07);
+  \node[right = 0cm of dot2] {$(a,b)$};  
+\end{tikzpicture}
+
+\emph{Beispiel (Projektionsabbildung)}: Angenommen $A$ und $B$ sind Mengen. Die Projektionsabbildung vom
+kartesischen Produkt auf die erste Komponente ist so definiert:
+
+\begin{align*}
+\pi_{A}: A \times B &\to A, \\
+(a,b) &\mapsto a\
+\end{align*}
+
+\textbf{Definition}: Eine Abbildung $f:X \to Y$ heißt
+
+\begin{enumerate}
+\item injektiv, falls für alle $x_1 \ne x_2 \in X$ gilt: $f(x_1) \ne f(x_2)$
+\item surjektiv, falls für jedes $y \in Y$ ein $x \in X$ existiert mit $f(x) = y$
+\item bijektiv, falls sie injektiv und surjektiv ist
+\end{enumerate}
 
 \end{document}
