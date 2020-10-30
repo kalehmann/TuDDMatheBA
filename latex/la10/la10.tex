@@ -1,0 +1,136 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{genealogytree}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{.9}
+
+\setlength\parindent{0pt}
+
+\author{Karsten Lehmann}
+\date{WiSe 2020}
+\title{Mitschriften Lineare Algebra - Grundlegende Konzepte (LA10)}
+
+\begin{document}
+
+
+\maketitle
+
+\vfill
+\begin{center}
+  Dozent: Vadim Alekseev \\
+  \href{mailto:vadim.alekseev@tu-dresden.de}{vadim.alekseev@tu-dresden.de}
+\end{center}
+
+\newpage
+
+\section*{Einführung}
+
+\textbf{Was ist Mathematik?}
+
+Mathematik beantwortet Fragen über Rechenstrukturen und geometrische Sachverhalte allgemeingültig.
+
+\textbf{Theorem} (Pythagoras):
+Wenn $a \leq b \leq c$ Längen von Seiten eines rechtwinkligen Dreiecks sind, so gilt:
+
+\begin{center}
+$a^2 + b^2 = c^2$
+\end{center}
+
+Hier haben wir Voraussetzungen \ldots
+\begin{itemize}
+\item $a \leq b \leq c$
+\item Dreieck
+\item Rechtwinklig
+\end{itemize}
+
+\ldots und eine Behauptung \emph{"dann gilt"} $a^2 + b^2 = c^2$ \\
+
+
+Damit dieses Theorem wirklich allgemeingültig ist müssen die Voraussetzungen präzise definiert sein.
+Zum Beispiel muss \emph{``Rechtwinkliges Dreieck''} genau definiert sein.
+
+Man hat am Anfang des 20. Jahrhunderts erkannt, dass diese genaue Definition eine spezielle Sprache
+benötigt - den Formalismus der Logik und Mengenlehre.
+
+Da diese Sprache sehr schwer intuitiv zu erfassen ist, wird hier mit "naiver" Logik und Mengenlehre
+angefangen, um später weitere Behauptungen in dieser Sprache formulieren zu können.
+
+\section{Mengenlehre}
+
+Die Mengenlehre befasst sich mit \emph{Mengen}.
+
+\fcolorbox{black}{light-gray}{
+  \begin{minipage}{\textwidth}
+    Georg Cantor \gtrsymBorn~19. Februar/3.März 1854 \gtrsymDied 6. Januar 1918
+
+    Deutscher Mathematiker und Begründer der Mengenlehre. \\
+
+    Definition der Menge (1895):
+    \emph{Unter einer Menge verstehen wir jede Zusammenfassung M von bestimmten wohlunterschiedenen Objekten
+    m unserer Anschauung oder unseres Denkens (welche die Elemente von M genannt werden) zu einem Ganzen}
+  \end{minipage}
+}
+
+
+\emph{Beispiel}: $Z = \{ \text{Zoomteilnehmer der Vorlesung} \}$ \\
+$Y = \{ \text{Teilnehmer der Vorlesung auf YouTube} \}$, \\
+$A = \{ 0, 1, 2, 3 \}$
+
+\textbf{Notation}: Wenn $a$ ein Element der Menge $A$ ist, dann schreibt man $a \in A$.
+
+\textbf{Standardnotation für bestimmte Mengen in der Mathematik}:
+
+\begin{itemize}
+\item Symbol $\mathbb{N}$: Natürliche Zahlen $\{0, 1, 2, 3, \ldots \}$
+\item Symbol $\mathbb{Z}$: Ganze Zahlen $\{ \ldots, -1, 0, 1, \ldots \}$
+\item Symbol $\mathbb{Q}$: Rationale Zahlen $\{ \frac{p}{q} | p \in \mathbb{Z}, q \in \mathbb{N}, q \ne 0 \} \subset \mathbb{R}$ 
+\item Symbol $\mathbb{R}$: Reelle Zahlen
+\end{itemize}
+
+\textbf{Notation}: Um eine Menge durch Eigenschaften ihrer Elemente zu beschreiben, verwendet man die Notation
+
+$A = \{a | a \text{ hat eine gewisse Eigenschaft} \}$ \\
+
+\textbf{Teilmenge}: $A$ und $B$ sind zwei Mengen. $A$ ist eine Teilmenge von $B$ wenn jedes Element von $A$ auch
+in $B$ enthalten ist. Man schreibt $A \subseteq B$. \\
+
+Wenn $A \subseteq B$ und $B \subseteq A$, dann gilt $A = B$. \\
+
+\textbf{Notation}: wenn $A \subseteq B, A \ne B$, dann schreibt man $A \subsetneq B$.
+
+Konstruktion von neuen Mengen aus bekannten Mengen: \\
+
+\textbf{Definition Vereinigung}: Wenn $A$ und $B$ Mengen sind, dann ist die Vereinigung von $A$ und $B$ die
+Menge $A \cup B = \{ x | x \in A \text{ oder } x \in B \}$. Ein \emph{"oder"} meint in der Mathematik immer
+\emph{"Nicht exklusives oder"}, das heißt $x$ kann in $A$, $B$ oder in beiden enthalten sein. \\
+
+\textbf{Definition Durchschnitt}: Wenn $A$ und $B$ Mengen sind, dann ist der Durchschnitt von $A$ und $B$ die
+Menge an Elementen, die in $A$ und $B$ liegen. Den Durchschnitt schreibt man
+
+$A \cap B = \{ x | x \in A \text{ und } x \in B\}$ \\
+
+Wenn $A$ und $B$ keine gemeinsamen Elemente haben, dann ist $A \cap B = \emptyset$.
+Die \textbf{leere Menge} $\emptyset$ ist eine Menge, die keine Elemente enthält. \\
+
+Beispiel: \\
+$\{e \in \mathbb{R} | x^2 < 0\} = \emptyset$ \\
+
+Eigenschaften, für jede Menge $A$ gilt:
+\begin{itemize}
+\item $A \cup \emptyset = A$
+\item $A \cap \emptyset = \emptyset$
+\end{itemize}
+
+Frage: Angenommen $A$ ist eine Menge, gilt dann $\emptyset \subseteq A$?
+Formal gesprochen ist diese Aussage \emph{"jedes Element der leeren Menge ist auch ein Element von A"}.
+Jedoch hat die leere Menge keine Elemente.
+
+Intuitiv lässt sich diese Frage schwer beantworten, deswegen wurde eine Konvention geschaffen: \\
+
+Für jede Menge $A$ gilt $\emptyset \subseteq A$
+
+\end{document}
