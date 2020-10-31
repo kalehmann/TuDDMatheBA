@@ -8,6 +8,7 @@ HTML_FILES = \
 
 PDF_FILES = \
 	$(OUTPUT_DIRECTORY)/pdf/schedule/1-semester.pdf \
+	$(OUTPUT_DIRECTORY)/pdf/an10/an10.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/pr10/pr10.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/la10/la10.pdf
 
@@ -23,6 +24,7 @@ all: $(OUTPUT_FILES)
 
 $(OUTPUT_DIRECTORY):
 	mkdir -p $(OUTPUT_DIRECTORY)
+	mkdir -p $(OUTPUT_DIRECTORY)/pdf/an10
 	mkdir -p $(OUTPUT_DIRECTORY)/pdf/la10
 	mkdir -p $(OUTPUT_DIRECTORY)/pdf/pr10
 	mkdir -p $(OUTPUT_DIRECTORY)/pdf/schedule
