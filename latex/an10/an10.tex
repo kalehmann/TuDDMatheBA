@@ -1,0 +1,198 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{genealogytree}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{.9}
+
+\author{Karsten Lehmann}
+\date{WiSe 2020}
+\title{Mitschriften Analysis - Grundlegende Konzepte (AN10)}
+
+\begin{document}
+
+
+\maketitle
+
+\vfill
+\begin{center}
+  Dozent: Ralph Chill \\
+  \href{mailto:ralph.chill@tu-dresden.de}{ralph.chill@tu-dresden.de}
+\end{center}
+
+\newpage
+
+\section{Die reellen Zahlen}
+
+\subsection{Körperaxiome}
+
+Auf der Menge der reellen Zahlen $\mathbb{R}$ sind die folgenden beiden Verknüpfungen definiert: \\
+
+\begin{minipage}{.45\textwidth}
+  \textbf{Addition}
+  \begin{align*}
+    \mathbb{R} \times \mathbb{R} &\to \mathbb{R} \\
+    (a,b) &\mapsto a + b \\
+  \end{align*}
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}{.45\textwidth}
+  \textbf{Multiplikation}
+  \begin{align*}
+    \mathbb{R} \times \mathbb{R} &\to \mathbb{R} \\
+    (a,b) &\mapsto a * b \\
+  \end{align*}
+\end{minipage}
+
+Diese beiden Verknüpfungen sind so definiert, dass folgende Eigenschaften gelten:
+
+\begin{enumerate}[label=(A\arabic*)]
+\item \textbf{Assoziativgesetz}
+  \[
+    \forall a,b,c \in \mathbb{R} \colon (a + b) + c = a + (b + c)
+  \]
+\item \textbf{Existenz eines neutralen Elements}
+  \[
+    \exists 0 \in \mathbb{R} \forall a \in \mathbb{R} \colon a + 0 = a
+  \]
+  \textbf{Achtung!!} hier ist nicht unbedingt die Zahl 0 gemeint.
+\item \textbf{Existenz eines Inversen}
+  \[
+    \forall a \in \mathbb{R} \exists -a \in \mathbb{R} \colon a + (-a) = 0
+  \]
+\item \textbf{Kommutativgesetz}
+  \[
+    \forall a,b \in \mathbb{R} \colon a + b = b + a
+  \]
+\item \textbf{Assoziativgesetz}
+  \[
+    \forall a,b,c \in \mathbb{R} \colon (a * b) * c = a * (b * c)
+  \]
+\item \textbf{Existenz eines neutralen Elements}
+  \[
+    \exists 1 \in \mathbb{R} \forall a \in \mathbb{R} \colon a * 1 = a
+  \]
+  \textbf{Achtung!!} hier ist nicht unbedingt die Zahl 1 gemeint.
+\item \textbf{Existenz eines Inversen}
+  \[
+    \forall a \in \mathbb{R}, a \ne 0 \exists a^{-1} \in \mathbb{R} \colon a * a^{-1} = 1
+  \]
+\item \textbf{Kommutativgesetz}
+  \[
+    \forall a,b \in \mathbb{R} \colon a * b = b * a
+  \]
+\item \textbf{Distributivgesetz}
+  \[
+    \forall a,b,c \in \mathbb{R} \colon (a + b) * c = a * c + b * c
+  \]
+\end{enumerate}
+
+\subsubsection{Definition}
+
+Ein Tripel $(K,+,*)$ bestehend aus einer Menge $K$ und den Verknüpfungen $+$ und $*$, so dass
+die Eigenschaften (A1) bis (A9) gelten, heißt Körper. \\
+
+Also ist $(\mathbb{R},+,*)$ (oder kurz $\mathbb{R}$) ein Körper.
+Es gibt auch andere Körper, zum Beispiel den Körper der rationalen Zahlen $\mathbb{Q}$ und den Körper
+der komplexen Zahlen $\mathbb{C}$.
+Zusätzlich gibt es sogar endliche Körper, zum Beispiel der kleinste mögliche Körper
+
+\[
+  F_2 = \{ 0, 1 \}
+\]
+
+Für diesen Körper sind Addition und Multiplikation folgendermaßen definiert: \\
+
+\begin{minipage}{.45\textwidth}
+  \textbf{Addition} \\
+  
+  \begin{tabular}{ c | c c }
+    + & 0 & 1 \\
+    \hline
+    0 & 0 & 1 \\
+    1 & 1 & 0 \\
+  \end{tabular}
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}{.45\textwidth}
+  \textbf{Multiplikation} \\
+  
+  \begin{tabular}{ c | c c }
+    * & 0 & 1 \\
+    \hline
+    0 & 0 & 0 \\
+    1 & 0 & 1 \\
+  \end{tabular}
+\end{minipage}
+\\
+
+Dieser Körper macht unter anderem dann Sinn, wenn man für die $0$ alle geraden Zahlen und für die $1$
+alle ungeraden Zahlen einsetzt. \\
+
+Auch $F_3 = \{ 0, 1, 2 \}$ ist ein Körper mit \\
+
+\begin{minipage}{.45\textwidth}
+  \textbf{Addition} \\
+  
+  \begin{tabular}{ c | c c c }
+    + & 0 & 1 & 2 \\
+    \hline
+    0 & 0 & 1 & 2 \\
+    1 & 1 & 2 & 0 \\
+    2 & 2 & 0 & 1 \\
+  \end{tabular}
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}{.45\textwidth}
+  \textbf{Multiplikation} \\
+  
+  \begin{tabular}{ c | c c c}
+    * & 0 & 1 & 2 \\
+    \hline
+    0 & 0 & 0 & 0 \\
+    1 & 0 & 1 & 2 \\
+    2 & 0 & 2 & 1 \\
+  \end{tabular}
+\end{minipage}
+\\
+
+Dieser Körper macht unter anderem dann Sinn, wenn man für die $0$ allen Zahlen einsetzt, die durch $3$
+teilbar sind, für die $1$ alle Zahlen, für die gilt $x \in \mathbb{R}, x \mod 3 = 1$ und für die $2$
+alle Zahlen, für die gilt $x \in \mathbb{R}, x \mod 3 = 2$.
+
+Es existieren noch weitere endliche Körper, zum Beispiel mit 4, 5, 7, 8 und 9 Elementen.
+Ein Körper mit 6 Elementen existiert nicht.
+
+Die Menge der ganzen Zahlen $\mathbb{Z}$ ist kein Körper, da dass 7. Axiom (\textbf{Existenz eines Inversen})
+nicht erfüllt ist.
+
+%% Ich habe eine Section aus dem Skript ausgelassen, will aber die Nummerierung behalten
+\addtocounter{subsubsection}{1}
+
+\subsubsection{Konventionen und Schreibweisen}
+
+``$\coloneqq$'' heißt ``ist per Definition gleich''
+\begin{align*}
+  ab &\coloneqq a * b \\
+  2a &\coloneqq a + a \\
+  a^2 &\coloneqq a * a \\
+  a - b &\coloneqq a + (-b) \\
+  \frac{a}{b} &\coloneqq a * (b^{-1}) \\
+  a + b + c &\coloneqq (a + b) + c &\text{beachte (A1)} \\
+  abc &\coloneqq a * b * c &\text{beachte (A5)} \\
+\end{align*}
+
+\end{document}
