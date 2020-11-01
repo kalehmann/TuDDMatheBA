@@ -195,4 +195,186 @@ nicht erfüllt ist.
   abc &\coloneqq a * b * c &\text{beachte (A5)} \\
 \end{align*}
 
+\subsubsection{Lemma (Folgerungen aus den Körperaxiomen)}
+
+Die Folgerungen aus den Körperaxiomen gelten in jedem Körper.
+
+\begin{enumerate}[(a)]
+\item Die neutralen Elemente $0$ und $1$ sind eindeutig bestimmt.
+\item Die inversen Elemente sind eindeutig bestimmt.
+\item Für jedes $a,b \in \mathbb{R}$ gibt es genau ein $x \in \mathbb{R}$, so dass $a + x = b$
+\item Für jedes $a,b \in \mathbb{R}, a \ne 0$ gibt es genau ein $x \in \mathbb{R}$, so dass
+  $a * x = b$
+\item $-(-a) = a$ und falls $a \ne 0$, dann gilt auch $(a^{-1})^{-1} = a$
+\item $a * b = 0$ genau dann, wenn $a = 0$ oder $b = 0$
+\item $-(a + b) = (-a) + (-b)$ und falls $a \ne 0, b \ne 0$ gilt $(a * b)^{-1} = a^{-1} * b^{-1}$
+\item $-(a*b) = (-a) * b = a * (-b)$ und falls $a \ne 0$, dann $(-a)^{-1} = -a^{-1}$
+\item Binomische Formeln
+  \[
+    (a + b)^2 = a^2 + 2ab + b^2
+  \]
+  \[
+    (a - b)^2 = a^2 - 2ab + b^2
+  \]
+  \[
+    (a + b) * (a - b) = a^2 - b^2
+  \]
+\item Bruchrechenregeln:
+  \begin{align*}
+    \frac{a + b}{c} &= \frac{a}{c} + \frac{b}{c} \\
+    \frac{a}{b} + \frac{c}{d} &= \frac{a * d + b * c}{b * d} \\
+    \frac{a}{b} * \frac{c}{d} &= \frac{a * c}{b * d} \\
+    \frac{\frac{a}{b}}{\frac{c}{d}} &= \frac{a * d}{b * c} \\
+  \end{align*}
+\end{enumerate}
+
+\textbf{Beweis} unter Verwendung der Axiome 1 bis 9.
+
+\begin{enumerate}[(a)]
+\item Sein $0$ und $0^{\prime}$ zwei neutrale Elemente der Addition, dann gilt
+  \[
+    0 \underset{\substack{0^{\prime} \text{ ist ein} \\ \text{neutrales Element}}}=
+    0 + 0^{\prime} \overset{\text{(A4)}}=
+    0^{\prime} + 0 \underset{\substack{0 \text{ ist ein} \\ \text{neutrales Element}}}= 0^{\prime}
+  \]
+  \\
+  Daraus folgt die Eindeutigkeit des neutralen Elementes der Addition.
+  \[
+    0 = 0^{\prime}
+  \]
+  \\
+  Für das neutrale Element der Multiplikation geht der Beweis analog.
+\item Sei $a \in \mathbb{R}$. Seien $-a \in \mathbb{R}$ und $b \in \mathbb{R}$ zwei inverse Elemente.
+  Dann gilt
+  \begin{align*}
+    -a &\underset{\substack{0 \text{ ist ein} \\ \text{neutrales Element}}}=-a + 0 \\
+     &\underset{
+       \substack{
+         \text{Die } 0 \text{ lässt sich auch als Summe aus} \\
+         a \text{ und dem inversen Elemen } b \text{ schreiben}
+       }
+    }= (-a) + (a + b) \\
+    &\overset{\text{(A1)}}= ((-a) + a) + b \\
+    &\overset{\text{(A4)}}= (a + (-a)) + b \\
+    &\underset{
+      \substack{
+        -a \text{ ist} \\
+        \text{inverses} \\
+        \text{Element}
+      }
+    }= 0 + b \\
+    &\overset{\text{(A4)}}= b + 0 \\
+    -a &\underset{
+      \substack{
+        0 \text{ ist} \\
+        \text{neutrales} \\
+        \text{Element}
+      }
+    }= b \\   
+  \end{align*}
+  \\
+  Daraus folgt, es gibt genau ein inverses Element der Addition.
+\item Existenz eines $x \in \mathbb{R}$ für welches gilt $a + x = b$
+  Sei $x = b - a$ (oder $x = b + (-a)$)
+  Dann gilt
+  \begin{align*}
+    a + x &= a + (b + (-a)) \\
+          &\overset{\text{(A4)}}= a + ((-a) + b) \\
+          &\overset{\text{(A1)}}= (a + (-a)) + b \\
+          &= 0 + b \\
+          &\overset{\text{(A4)}}= b + 0 \\
+    a + x &= b 
+  \end{align*}
+
+  Daraus folgt, dass \textbf{mindestens} ein $x \in \mathbb{R}$ existiert, für welches gilt $a + x = b$.
+  Nun soll gezeigt werden, dass auch nur \textbf{genau ein} $x$ existiert, für welches diese Behauptung
+  gilt. \\
+
+  Sei $y$ ein weiteres Element, so dass $a + y = b$ und $x = b - a$.
+  Dann gilt
+
+  \begin{align*}
+    x &= b + (-a) \\
+      &= (a + y) + (-a) \\
+      &\overset{\text{(A4)}}= (y + a) + (-a) \\
+      &\overset{\text{(A1)}}= y + (a + (-a)) \\
+      &= y + 0 \\
+    x &= y \\
+  \end{align*}
+\item analog zu (c)
+\item Es gilt
+  \[
+    (-a) + a = a + (-a) = 0
+  \]
+  Also ist $a$ ein inverses Element von $-a$ und aus (b) folgt, dass $a$ das einzige inverse Element von $-a$
+  ist, somit folgt
+  \[
+    a = -(-a)
+  \]
+\item \emph{``$\Leftarrow$''} Zuerst wird bewiesen, dass eine Zahl multipliziert mit Null auch Null ergibt.
+  Für alle $a \in \mathbb{R}$ gilt
+  \begin{align*}
+    0 &= a * 0 - a * 0 \\
+      &= a * (0 + 0) - a * 0 \\
+      &\overset{\text{(A9)}}= (a * 0 + a * 0) - a * 0 \\
+      &\overset{\text{(A1)}}= a * 0 + (a * 0 - a * 0) \\
+      &= a * 0 + 0 \\
+    0 &= a * 0 \\
+  \end{align*} \\
+  \emph{``$\Rightarrow$''} \\
+  \begin{minipage}[t]{.4\textwidth}
+    \textbf{1. Fall} $a = 0$ \\
+    Dann ist die Aussage \emph{``$a = 0$ oder $b = 0$''}natürlich wahr.
+  \end{minipage}
+  \hfill
+  \vrule
+  \hfill
+  \begin{minipage}[t]{.4\textwidth}
+    \textbf{2. Fall} $a \ne 0$. Wenn $a$ nicht Null ist, muss bewiesen werden, dass zwangsläufig $b = 0$ ist.
+    \begin{align*}
+      b &= a * 1 \\
+        &= b * (a * a^{-1}) \\
+        &\overset{\text{(A5)}}= (b * a) * a^{-1} \\
+        &= 0 * a^{-1} \\
+        &\overset{\text{(A8)}}= a^{-1} * 0 \\
+      b &= 0 \\
+        &\Rightarrow \text{\emph{"a = 0 oder b = 0"}}
+    \end{align*}
+  \end{minipage}
+\item
+  \begin{align*}
+    (a * b) * (a^{-1} * b^{-1}) &\overset{\text{(A8)}}= (a * b) * (b^{-1} * a^{-1}) \\
+                                &\overset{\text{(A5)}}= a * (b * b^{-1}) * a^{-1} \\
+                                &= a * 1 * a^{-1} \\
+                                &= a * a^{-1} \\
+    (a * b) * (a^{-1} * b^{-1})  &= 1\\
+  \end{align*}
+  Also ist $(a^{-1} * b^{-1})$ ein multiplikatives inverses Element von $a * b$.
+  Aus (b) (\emph{``Es gibt nur genau ein multiplikatives inverses}'') folgt:
+  \[
+    a^{-1} b^{-1} = (a * b)^{-1}
+  \]
+\item
+  \begin{align*}
+    a * b + a * (-b) &\overset{\text{(A9)}}= a * (b + (-b)) \\
+                     &= a * 0 \\
+                     &\overset{\text{(f)}}= 0 \\
+  \end{align*}
+  Also ist $a * (-b)$ ein additives Inverses von $a * b$.
+  Aus (b) folgt
+  \[
+    -(a * b) = a * (-b)
+  \]
+\item
+  \begin{align*}
+    (a + b)^2 &\underset{\overset{\Uparrow}{\text{Per Konvention}}}= (a + b) * (a + b) \\
+              &\overset{\text{(A9)}}= a * (a + b) + b * (a + b) \\
+              &\overset{\text{(A9)}}= a * a + a * b + b * a + b * b \\
+              &\overset{\text{(A8)}}= a * a + a * b + a * b + b * b \\
+    (a + b)^2 &\underset{\overset{\Uparrow}{\text{Per Konvention}}}= a^2 + 2ab + b^2 \\    
+  \end{align*}
+  Für die anderen binomischen Formeln sieht das ganze analog aus.
+\item Bitte nachrechnen
+\end{enumerate}
+
 \end{document}
