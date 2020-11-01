@@ -3,6 +3,7 @@
 \usepackage{aligned-overset}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{bbm}
 \usepackage[shortlabels]{enumitem}
 \usepackage{genealogytree}
 \usepackage{hyperref}
@@ -201,6 +202,39 @@ Zeigen Sie, dass für $(\mathbb{R}, \oplus, \odot)$ die Axiome (A1) bis (A9) aus
 
   Somit existiert ein neutrales Element $\mathit{1} \in \mathbb{R}$ als $0$ für welches gilt
   $a \odot \mathit{1} = a$
+
+\item $\forall a \in \mathbb{R}, a \ne 0 \exists \mathbbm{a}^{-1} \in \mathbb{R} \colon a \odot \mathbbm{a}^{-1} = 1$ \\
+
+  \begin{align*}
+    a \odot \mathbbm{a}^{-1} &= 1 \\
+    a + \mathbbm{a}^{-1} + a * \mathbbm{a}^{-1} &= 1 \\
+    a + \mathbbm{a}^{-1} * (1 + a) \overset{\text{(A9)}}&{=} 1 \\
+    a + (-a) + \mathbbm{a}^{-1} * (1 + a) \underset{\substack{\text{Addition des Inversen von} \\ a \text{ auf beiden Seiten}}}&{=} 1 + (-a) \\
+    \mathbbm{a}^{-1} * (1 + a) &= 1 - a \\
+    \mathbbm{a}^{-1} * (1 + a) * (1 + a)^{-1} \underset{\substack{\text{Multiplikation des Inversen von} \\ (1+a) \text{ auf beiden Seiten}}}&{=} (1 + a) * (1 + a)^{-1} \\
+    \mathbbm{a}^{-1} &= (1 + a) * (1 + a)^{-1} \\
+  \end{align*}
+
+  Somit existiert ein inverses Element $\mathbbm{a}^{-1} \in \mathbb{R}$ als $(1 + a) * (1 + a)^{-1}$ für welches gilt
+  $a \odot \mathbbm{a}^{-1} = 1$
+
+\item $\forall a,b \in \mathbb{R} \colon a \odot b = b \odot a$
+  \begin{align*}
+    a \odot b &= b \odot a \\
+    a + b + a * b &= b + a + b * a \\
+    a + b + a * b \overset{\text{(A4)}}&{=} a + b + b * a \\
+    a + b + a * b \overset{\text{(A8)}}&{=} a + b + a * b \\
+  \end{align*}
+
+\item $\forall a,b,c \in \mathbb{R} \colon (a \oplus b) \odot c = a \odot c \oplus b \odot c$
+
+  \begin{align*}
+    (a \oplus b) \odot c &= a \odot c \oplus b \odot c \\
+    (a + b + 1) \odot c &= a \odot c + b \odot c + 1 \\
+    (a + b + 1) + c + (a + b + 1) * c &= a + c + a * c + b + c * b + 1 \\
+    (a + b + 1) + c + a * c + b * c + c \overset{\text{(A9)}}&{=} a + c + a * c + b + c * b + 1 \\
+    a + b + c + c + a * c + b * c + 1 \overset{\text{(A4)}}&{=} a + b + c + c + a * c + b * c + 1 \\
+  \end{align*}
 \end{enumerate}
 
 \section*{Hausaufgabe 3}
