@@ -7,6 +7,7 @@ RUN apt-get update \
         lftp \
 	make \
         texlive \
+	texlive-fonts-extra \
 	texlive-latex-extra \
 	texlive-pictures \
 	texlive-science  \
