@@ -8,7 +8,13 @@
 \usepackage{genealogytree}
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
+\usepackage{interval}
+\intervalconfig{
+  soft open fences
+}
+
 \usepackage{mathtools}
+\usepackage{physics}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usepackage{xcolor}
@@ -238,5 +244,70 @@ Zeigen Sie, dass für $(\mathbb{R}, \oplus, \odot)$ die Axiome (A1) bis (A9) aus
 \end{enumerate}
 
 \section*{Hausaufgabe 3}
+
+\begin{align*}
+  A &\coloneqq \{ x \colon x \in \mathbb{R}, \abs{x - 1} < 2 \} \\
+  B &\coloneqq \{ x \colon x \in \mathbb{R}, x > -8 \} \\
+  C &\coloneqq \{ x \colon x \in \mathbb{R}, -8 <x \leq 1 \} \\
+\end{align*}
+
+\textbf{Stellen Sie die Menge $A$ als Intervall dar!} \\
+
+\begin{minipage}[t]{.45\textwidth}
+  \textbf{Fall 1}: $x \geq 1$ \\
+  \begin{align*}
+    x - 1 &< 2 & | +1\\
+    x &< 3 \\
+  \end{align*}
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \textbf{Fall 1}: $x < 1$ \\
+  \begin{align*}
+    -(x - 1) &< 2 \\
+    -x + 1) &< 2 &&| -1 \\
+    -x &< 1 &&| * (-1) \\
+    x &> -1 \\
+  \end{align*}
+\end{minipage}
+
+\[
+  A = \interval[open]{-1}{3}
+\]
+
+\textbf{Stellen Sie die Menge $B$ als Intervall dar!} \\
+
+\[
+  B = \interval[open]{-8}{\infty}
+\]
+
+\textbf{Stellen Sie die Menge $C$ als Intervall dar!} \\
+
+\[
+  C = \interval[open left]{-8}{-1}
+\]
+
+\textbf{Bestimmen Sie $A \cap B, A \cup B, A \setminus B, A \cap C, B \setminus C$}
+
+\begin{align*}
+  A \cap B &= \interval[open]{-1}{3} \cap \interval[open]{-8}{\infty} \\
+           &= \interval[open]{-1}{3} \\
+           &= A \\
+  \\
+  A \cup B &= \interval[open]{-1}{3} \cap \interval[open]{-8}{\infty} \\
+           &= \interval[open]{-8}{\infty} \\
+           &= B \\
+  \\
+  A \setminus B &= \interval[open]{-1}{3} \setminus \interval[open]{-8}{\infty} \\
+           &= \emptyset \\
+  \\
+  A \cup B &= \interval[open]{-1}{3} \cap \interval[open left]{-8}{-1} \\
+           &= \emptyset \\
+  \\
+  B \setminus C &= \interval[open]{-8}{\infty} \setminus \interval[open left]{-8}{-1} \\
+           &= \interval[open]{-1}{\infty} \\
+\end{align*}
 
 \end{document}
