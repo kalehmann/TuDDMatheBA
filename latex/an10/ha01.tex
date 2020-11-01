@@ -1,0 +1,208 @@
+\documentclass{article}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{genealogytree}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{.9}
+
+\author{Lukas Kamratzki \\ Karsten Lehmann}
+\date{01.11.2020}
+\title{Hausaufgabe 01 Analysis - Grundlegende Konzepte}
+
+\begin{document}
+
+
+\maketitle
+\newpage
+
+\section*{Hausaufgabe 1}
+
+\begin{enumerate}[(a)]
+\item Beweisen Sie, dass für alle $a, b \in \mathbb{R}$ gilt: $(a^{-1})^{-1} = a$ \\
+
+  $(a^{-1})^{-1}$ bezeichnet das multiplikative Inverse von $a^{-1}$.
+
+  \begin{align*}
+    1  &= a * a^{-1}  &\text{(Laut dem Axiom (A7))}\\
+       \overset{\text{(A8)}}&{=} a^{-1} * a  \\
+       &\Rightarrow a \text{ ist ein inverses von } a^{-1}
+  \end{align*}
+  \\
+  Sei $a \in \mathbb{R}$ und seien $a^{-1}, b \in \mathbb{R}$ zwei multiplikative Inverse Elemente von $a$.
+  Dann gilt
+
+  \begin{align*}
+    a^{-1} \underset{\substack{1 \text{ ist ein} \\ \text{neutrales Element}}}&{=} a^{-1} * 1 \\
+           \underset{\substack{\text{Die } 1 \text{ lässt sich auch als Produkt aus } a \text{ und dem}\\ \text{multiplikativen inversen Element } b \text{ beschreiben}}}&{=} a^{-1} * (a * b) \\
+           \overset{\text{(A5)}}&{=} (a^{-1} * a) * b \\
+           \overset{\text{(A8)}}&{=} (a * a^{-1}) * b \\
+           \overset{\text{(A7)}}&{=} 1 * b \\
+    a^{-1} \underset{\substack{1 \text{ ist ein} \\ \text{neutrales Element}}}&{=} b \\
+  \end{align*}
+
+  Somit ist gezeigt, dass es auch nur genau ein multiplikatives Inverses gibt. Weiterhin ist $a$ das einzige multiplikative Inverse von $a^{-1}$ und es gilt
+  \[
+    (a^{-1})^{-1} = a
+  \]
+
+\item Beweisen Sie, dass für alle $a, b \in \mathbb{R}$ gilt: $-(a + b) = (-a) + (-b)$ \\
+
+  \begin{align*}
+    (a + b) + ((-a) + (-b)) &= (a + b) + ((-a) + (-b)) \\
+                            \overset{\text{(A1)}}&{=} a + (b + (-b)) + (-a) \\
+                            \overset{\text{(A3)}}&{=} a + 0 + (-a) \\
+                            \overset{\text{(A2)}}&{=} a + (-a) \\
+                            \overset{\text{(A3)}}&{=} 0 \\
+    (a + b) + ((-a) + (-b)) &= 0 \\
+  \end{align*}
+
+  Also ist $(-a) + (-b)$ ein additives inverses Element von $a + b$. Aus (b)
+  (\emph{``Es gibt nur ein additives Inverses''}) folgt:
+
+  \[
+    -(a + b) = (-a) + (-b)
+  \]
+
+\item Beweisen Sie, dass für alle $a, b \in \mathbb{R}, a \ne 0$ gilt: $(-a)^{-1} = -a^{-1}$ \\
+
+  \begin{align*}
+    (-a) * (-a^{-1}) &= (-a) * (-a^{-1}) \\
+                     \overset{\text{(A5)}}&{=} (-(-a)) * a^{-1} \\
+                     \overset{\text{(e)}}&{=} a * a^{-1} \\
+                     \overset{\text{(A7)}}&{=} 1\\
+    (-a) * -a^{-1} &= 1 \\
+  \end{align*}
+
+  Somit ist $-(a^{-1})$ ein multiplikatives Inverses von $(-a)$ und aus (b)
+  (\emph{``Es gibt nur ein additives Inverses''}) folgt:
+  \[
+    (-a)^{-1} = -a^{-1}
+  \]
+
+\item Beweisen Sie, dass für alle $a, b \in \mathbb{R}, a \ne 0$ gilt: $a * x = b$ \\
+
+  Sei $a = a^{-1} * b$, dann gilt
+  \begin{align*}
+    a * x &= a * (a^{-1} * b) \\
+          \overset{\text{(A5)}}&{=} (a * a^{-1}) * b \\
+          \overset{\text{(A7)}}&{=} 1 * b \\
+          \overset{\text{(A8)}}&{=} b * 1 \\
+          \overset{\text{(A6)}}&{=} b\\
+    a * x = b \\
+  \end{align*}
+
+  Daraus folgt, es existiert \textbf{mindestens} ein $x \in \mathbb{R}$, für welches gilt $a * x = b$.
+  Nun soll gezeigt werden, dass auch nur \textbf{genau ein} $x$ existiert, für welches diese Behauptung
+  gilt. \\
+
+  Sei $y \in \mathbb{R}$ ein weiteres Element, so dass $a * y = b$ und $x = a^{-1} * b$. Dann gilt
+
+  \begin{align*}
+    x &= a^{-1} * b \\
+      &= a^{-1} * (a * y) \\
+      &\overset{\text{(A5)}}= (a^{-1} * a) * y \\
+      &\overset{\text{(A8)}}= (a * a^{-1}) * y \\
+      &\overset{\text{(A7)}}= 1 * y \\
+      &\overset{\text{(A5)}}= y * 1 \\
+      &\overset{\text{(A6)}}= y \\
+   x  &= y
+  \end{align*}
+
+  Somit existiert nur \textbf{genau ein} $x \in \mathbb{R}$, für welches gilt $a * x = b$.
+\end{enumerate}
+
+\section*{Hausaufgabe 2}
+
+In der Menge $\mathbb{R}$ der reellen Zahlen werden zwei Operatoren $\oplus, \odot \colon \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ erklärt durch
+
+\[
+  a \oplus b = a + b + 1 \text{ und } a \odot b = a + b + a * b
+\]
+
+Zeigen Sie, dass für $(\mathbb{R}, \oplus, \odot)$ die Axiome (A1) bis (A9) aus der Vorlesung erfüllt sind.
+
+\begin{enumerate}[label=(A\arabic*)]
+\item
+  \begin{align*}
+    a \oplus (b \oplus c) &= a + (b \oplus c) + 1 \\
+                          &= (a \oplus b) + c + 1 \\
+                          &= a + (b + c + 1) + 1 \\
+                          &\overset{\text{(A1)}}= (a + b + c) + 1 + 1 \\
+    \\
+    (a \oplus b) \oplus c &= (a \oplus b) + c + 1 \\
+                          &= (a + b + 1) + c + 1 \\
+    \overset{\text{(A1)}}&{=} (a + b + c) + 1 + 1 \\
+  \end{align*}
+
+  Somit ist $a \oplus (b \oplus c) = (a \oplus b) \oplus c$
+
+\item $\exists \mathbb{O} \forall a \in \mathbb{R} \colon a \oplus \mathbb{O} = a$
+  \begin{align*}
+    a \oplus \mathbb{O} &= a \\
+    a + \mathbb{O} + 1 &= a\\
+    a + (-a) + \mathbb{O} + 1 \underset{\substack{\text{Addition des Inversen von} \\ a \text{ auf beiden Seiten}}}&{=} a + (-a) \\
+    \mathbb{O} + 1 = 0 \\
+  \end{align*}
+
+  Somit existiert ein neutrales Element $\mathbb{O} \in \mathbb{R}$ als inverses Element von $1$ für welches gilt
+  $a \oplus \mathbb{R} = a$.
+
+\item $\forall a \in \mathbb{R} \exists -a \in \mathbb{R} \colon a \oplus (-a)' = 0$ \\
+
+  \begin{align*}
+    a \oplus (-a)' &= 0 \\
+    a + (-a)' + 1 &= 0 \\ 
+    a + (-a) + (-a)' + 1 \underset{\substack{\text{Addition des Inversen von} \\ a \text{ auf beiden Seiten}}}&{=} (-a)\\
+    (-a)' + 1 &= (-a) \\
+    (-a)' + (-1) \underset{\substack{\text{Addition des Inversen von} \\ 1 \text{ auf beiden Seiten}}}&{=} (-a) + (-1)\\
+    (-a)' &= (-a) + (-1) \\
+  \end{align*}
+
+  Somit existiert ein inverses Element $(-a)' \in \mathbb{R}$ als $(-a) + (-1)$ für welches gilt
+  $a \oplus (-a)' = 0$
+
+\item
+  \begin{align*}
+    a \oplus b &= b \oplus a \\
+    a + b + 1 &= b + a + 1 \\
+    a + b + 1 &\overset{\text{(A4)}}&{=} a + b + 1 \\
+  \end{align*}
+
+\item $\forall a,b,c \in \mathbb{R} \colon (a \odot b) \odot c = a \odot (b \odot c)$
+  \begin{align*}
+    (a \odot b) \odot c &= a \odot (b \odot c) \\
+    (a \odot b) + c + (a \odot b) * c &= a + (b \odot c) + a * (b \odot c) \\
+    (a + b + a * b) + c + (a + b + a * b) * c &= a + (b + c + b * c) + a * (b + c + b * c) \\
+    (a + b + a * b) + c + a * c + b * c + a * b * c \overset{\text{(A9)}}&{=} a + (b + c + b * c) + a * b + a * c + a* b * c \\
+    (a + b + c) + a * b + a * c + b * c + a * b * c \overset{\text{(A9)}}&{=} (a + b + c) + b * c + a * b + a * c + a* b * c \\
+    (a + b + c) + a * b + a * c + b * c + a * b * c \overset{\text{(A4)}}&{=} (a + b + c) + a * b + a * c + b * c + a * b * c \\
+  \end{align*}
+  
+\item $\exists \mathit{1} \in \mathbb{R} \forall a \in \mathbb{R} \colon a \odot \mathit{1} = a$ \\
+
+  \begin{align*}
+    a \odot \mathit{1} &= a \\
+    a + \mathit{1} + a * \mathit{1} &= a \\
+    a + \mathit{1} * (1 + a) \overset{\text{(A9)}}&{=} a \\
+    a + (-a) + \mathit{1} * (1 + a) \underset{\substack{\text{Addition des Inversen von} \\ a \text{ auf beiden Seiten}}}&{=} a + (-a) \\
+    \mathit{1} * (1 - a) &= 0 \\
+    \mathit{1} * (1 + a) * (1 + a)^{-1} \underset{\substack{\text{Multiplikation des Inversen von} \\ (1+a) \text{ auf beiden Seiten}}}&{=} 0 \\
+    \mathit{1} * 1 &= 0 \\
+    \mathit{1} &= 0 \\
+  \end{align*}
+
+  Somit existiert ein neutrales Element $\mathit{1} \in \mathbb{R}$ als $0$ für welches gilt
+  $a \odot \mathit{1} = a$
+\end{enumerate}
+
+\section*{Hausaufgabe 3}
+
+\end{document}
