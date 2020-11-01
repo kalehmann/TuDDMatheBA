@@ -377,4 +377,176 @@ Die Folgerungen aus den Körperaxiomen gelten in jedem Körper.
 \item Bitte nachrechnen
 \end{enumerate}
 
+\subsection{Die Anordnungsaxiome}
+
+In der Menge $\mathbb{R}$ der reellen Zahlen gibt es eine ausgezeichnete Teilmenge $P \subseteq R$ mit den folgenden
+Eigenschaften:
+
+\begin{enumerate}[label=(A\arabic*)]
+%% Fortführung der Nummerierung der Axiome
+\setcounter{enumi}{9}
+\item \textbf{Trichotomiegesetz}: Für jede reelle Zahl $a$ gilt genau eine der folgenden Aussagen:
+  \[
+    a = 0 \text{ oder } a \in P \text{ oder } -a \in P
+  \]
+\item $\forall a,b \in P \colon a + b \in P$
+\item $\forall a,b \in P \colon a * b \in P$
+\end{enumerate}
+
+\subsubsection{Definition}
+
+Ein Körper $(K, +, -)$, in dem es eine Teilmenge $P$ gibt, so dass die Anordnungsaxiome (A10) - (A12) gelten
+heißt \underline{angeordneter Körper}. \\
+
+Also ist $\mathbb{R}$ ein angeordneter Körper, aber auch der Körper $\mathbb{Q}$ ist angeordnet. \\
+
+Der Körper $F_2$ kann nicht angeordnet werden, denn $1 = -1$ und somit kann das Trichotomiegesetz (A10) nicht
+gelten. Genau so ist auch $F_3$ kein angeordneter Körper.
+
+\subsubsection{Konventionen und Schreibweisen}
+
+\begin{align*}
+  \text{Anstelle von $a \in P$ schreibt man $a > 0$} \\
+  a < b &\coloneqq b - a \in P \\
+  a > b &\coloneqq a - b \in P \\
+  a < b < c &\coloneqq a < b \land b < c \\
+  a \leq b &\coloneqq a < b \lor a = b \\
+  a \geq b &\coloneqq a = b \lor a > b \\
+\end{align*}
+
+\subsubsection{Lemma Folgerungen aus den Anordnungsaxiomen}
+
+Diese gelten in jedem angeordneten Körper
+
+\begin{enumerate}[(a)]
+\item \textbf{Trichotomiegesetz}: Für zwei reelle Zahlen $a, b \in \mathbb{R}$ gilt genau eine der beiden folgenden
+  Aussagen:
+
+  \[
+    a = b \text{ oder } a > b \text{ oder } a < b
+  \]
+\item \textbf{Transitivität}: Wenn $a < b$ und $b < c$, dann gilt
+  \[
+    a < c
+  \]
+\item Für $a < b$ und $c \in \mathbb{R}$ gilt
+  \[
+    a + c < b + c
+  \]
+\item Für $a < b$ und $c < d$ gilt
+  \[
+    a + c < b + d
+  \]
+\item Für $a < b$ und $c > 0$ gilt:
+  \[
+    a * c < b * c
+  \]
+\item Für $a < b$ und $c < 0$ gilt:
+  \[
+    a * c > b * c
+  \]
+\item Wenn $a \ne 0$, dann ist $a^2 > 0$. Insbesondere ist $1 > 0$.
+\item Wenn $a > 0$, dann ist auch $a^{-1} > 0$. Genau so gilt:
+  \[
+    0 < a < b \Rightarrow 0 < b^{-1} < a^{-1}
+  \]
+\item $a < b \Rightarrow a < \frac{a + b}{2} < b (2 \coloneqq 1 + 1)$ 
+\end{enumerate}
+
+\textbf{Beweis}
+\begin{enumerate}[(a)]
+\item Wende das Trichotomiegesetz (A10) auf $b - a$ an, dass heißt es gilt
+  \[
+    b - a = 0 \text{ oder } b - a \in P \text{ oder } -(b - a) \in P
+  \]
+\item Es gelte $a < b$ und $b < c$, dass heißt $b - a \in P$ und $c - b \in P$
+  \begin{align*}
+    &\overset{\text{(A11)}}\Rightarrow c - b + b - a \in P \\
+    &= c - a \in P \\
+    &\Rightarrow c > a \lor a < c \\
+  \end{align*}
+\item Es gelte $a < b$, dass heißt $b - a \in P$. Dann gilt für $c \in \mathbb{R}$
+  \begin{align*}
+    P &\ni b + 0 - a \\
+      &\ni b + (c + (-c)) - a \\
+      &\ni (b + c) - c - a \\
+      &\ni (b + c) - (a + c) \\
+      &\Rightarrow a + c < b + c
+  \end{align*}
+\item Es gelte $a < b$ und $c < d$, dann gilt
+  \begin{align*}
+    a + c &< b + c &\text{ (wegen (c))} \\
+    \text{und } c + b &< d + b &\text{ (wegen (c))} \\
+    \overset{\text{(b)}}\Rightarrow a + c &< b + d \\ 
+  \end{align*}
+\item Es gelte $a < b$ und sei $c > 0$, dann gilt $b - a \in P$ und $c \in P$.
+  \begin{align*}
+    \overset{\text{(A12)}}\Rightarrow P &\ni (b -a) * c \\
+                                        &\overset{\text{(A9)}}\ni b * c - a * c \\
+                                        &\Rightarrow a * c < b * c \\
+  \end{align*}
+\item $a < b$ und $c < 0$
+  \begin{align*}
+    &\Rightarrow b - a \in P \text{ und } -c \in P \\
+    &\overset{\text{(A12)}}\Rightarrow (b - a) * (-c) \\
+    &\overset{\text{(A9)}}= b * (-c)  + (-a) * (-c) \\
+    &= -(b * c)  + a * c \\
+    &= ac - bc \in P \\
+    &\Rightarrow bc < ac \\
+    &\Rightarrow ac > bc \\
+  \end{align*}
+\item
+  \begin{minipage}[t]{.4\textwidth}
+    \textbf{1. Fall}: $a > 0$ \\
+
+    \[
+      a^2 = a * a \overset{\text{(A12)}}> 0
+    \]
+  \end{minipage}
+  \hfill
+  \vrule
+  \hfill
+  \begin{minipage}[t]{.4\textwidth}
+    \textbf{2. Fall}: a < 0 \\
+
+    Dann ist nach Aussage (f)
+
+    \[
+      a * a = a^2 > 0 * a = 0
+    \]
+  \end{minipage}  \\
+  Insebsondere ist $1 = 1^2 > 0$
+\item Übung
+\item Es gilt $a < b$ Weiterhin ist $1 > 0$ wegen Aussage (g) und damit (siehe (A11)) $2 = 1 + 1 > 0$ \\
+
+  Dann gilt
+  \begin{align*}
+    a &= 1 * a = \frac{(1 + 1) * a}{2} \\
+      &overset{\text{(A9)}}= \frac{a + a}{2} < \frac{a+b}{2} \\
+      &< \frac{b+b}{2}  = b \\
+    a &< \frac{a + b}{2} < b \\ 
+  \end{align*}
+\end{enumerate}
+
+\subsubsection{Korollar}
+
+\fcolorbox{black}{light-gray}{
+  \begin{minipage}{\textwidth}
+    Korollar: Substantiv, Neutrum \\
+
+    \emph{Satz, der aus einem bewiesenen Satz folgt, von ihm abgeleitet wird}
+  \end{minipage}
+}
+
+Zu je zwei reellen Zahlen $a,b \in \mathbb{R}$ gibt es ein $c \in \mathbb{R}$ mit $a < c < b$
+
+\textbf{Beweis}:
+
+\[
+  c = \frac{a + b}{2}
+\]
+
+Daraus folgt, dass ein angeordneter Körper unendlich viele Elemente enthält.
+Somit kann ein endlicher Körper kein angeordneter Körper sein.
+
 \end{document}
