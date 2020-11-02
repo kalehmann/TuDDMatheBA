@@ -141,6 +141,46 @@ Ein Algorithmus hat folgende Eigenschaften:
   \hline
 \end{tabularx}
 
+\section*{Sprachen}
 
+\begin{tabularx}{\textwidth}{X | X | X}
+  Metasprache (Syntaxbeschreibungssprache) & Objektsprache & Element der Objektsprache \\
+  \hline
+  Grammatik der deutschen Sprache & natürliche Sprache (z.B. Deutsch) & $\ni$ Satz (z.B. Der Hund läuft schnell) \\
+  \hline
+  \begin{minipage}{\linewidth}
+    \begin{itemize}
+    \item EBNF
+    \item Syntaxdiagramm
+    \end{itemize}
+  \end{minipage} & Programmiersprache (z.B. C) & $\ni$ Programm (z.B. /* JuengstePerson */) \\
+  \hline
+  \begin{minipage}{\linewidth}
+    \begin{itemize}
+    \item Grammatik Typ 2
+    \item Kellerautomaten
+    \end{itemize}
+  \end{minipage} & formale Sprache (z.B. $L = \{ a^nb | n \geq 0\}$) & $\ni$ Wort (z.B. $w = aaab$) \\
+\end{tabularx} \\
 
+\begin{tabularx}{\textwidth}{>{\hsize=.8\hsize} X X}
+  \textbf{Alphabet}: & nichtleere, endliche Menge (von Symbolen) \\
+  & Sei $\Sigma$ ein Alphabet \\
+  \textbf{Wort über $\Sigma$}: & endliche Folge von Symbolen aus $\Sigma$, beliebige Länge $k \geq 0$ \\
+  \textbf{leeres Wort}: & bezeichnet durch $\epsilon$, Länge 0 \\
+  \textbf{Menge aller Wörter über $\Sigma$}: & mit $\Sigma^*$ bezeichnet \\
+  \textbf{Konkatenation}: & zweistellige Operation der Zeichenreihenverkettung,
+  Abbildung: $\Sigma^* \times \Sigma^* \to \Sigma^*$ für jedes $u, v \in \Sigma^*$ definiere
+  \[
+    u * v = u_1u_2 \dots u_mv_1v_2 \ldots v_n
+  \]
+  falls $m,n \geq 0, u = u_1u_2 \ldots u_m, v = v_1v_2 \ldots v_n, u_i \in \mathbb{Z} \text{ für } 1 \leq i \leq m \text{ und } v_j \in \mathbb{Z}$ \\
+  \textbf{$n$-te Potenz eines Wortes $w$}: & $w^n$ mit $w^0 = \epsilon$ und $w^{n+1} = w^n * w (n \geq 0)$ \\
+  \textbf{(formale) Sprache $L$ (über $\Sigma$)}: & Menge von Wörtern über $\Sigma$, d.h. $L \in \mathit{P}(\Sigma^*)$\\
+  \textbf{Konkatenation (oder Komplexprodukt) von $L_1$ und $L_2$}: & $L_1 * L_2 = \{w_1w_2 | w_1 \in L_1, w_2 \in L_2 \}$
+  Beachte: $\emptyset * L = \emptyset = L * \emptyset$ und $L * \{ \epsilon \} = \{ \epsilon \} * L = L$ \\
+  \textbf{Stern von $L$}: & $L^* = \cup_{n \geq 0}L^n$, wobei $L^0 = \{ \epsilon \}, L^{n + 1} = L^n * L$
+  für jedes $n \geq 0$ Beachte $\emptyset^* = \{ \epsilon \}$\\
+\end{tabularx}
+  
 \end{document}
