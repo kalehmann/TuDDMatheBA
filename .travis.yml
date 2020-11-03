@@ -1,7 +1,10 @@
+dist: "xenial"
 language: "c"
-sudo: "required"
+os: "linux"
+
 before_install:
     - "sudo apt-get install gfortran"
+    - "git clone https://github.com/bats-core/bats-core.git && cd bats-core && sudo ./install.sh /usr/local"
 
 script:
     - "cd latex/pr10/programme && make"
