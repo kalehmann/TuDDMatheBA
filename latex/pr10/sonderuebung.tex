@@ -1,0 +1,87 @@
+\documentclass{article}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{genealogytree}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{interval}
+\intervalconfig{
+  soft open fences
+}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{.9}
+
+\author{Karsten Lehmann}
+\date{03.11.2020}
+\title{Sonderübung Programmieren für Mathematiker}
+
+\begin{document}
+
+
+\maketitle
+\newpage
+
+\section*{Grundlegende Struktur eines FORTRAN-Programms}
+
+\begin{lstlisting}{Fortran}
+  PROGRAM taschenrechner
+    IMPLICIT NONE
+
+    INTEGER :: a, b, ergebnis
+
+    READ (*,*) a, b
+    ergebnis = a + b
+    WRITE(*,*) " a + b = ", ergebnis
+  END PROGRAM
+\end{lstlisting}
+
+\textbf{IMPLICIT NONE}
+\begin{itemize}
+\item IMPLICIT NONE Statement sollte verwendet werden
+\item wenn IMPLICIT NONE nicht verwendet, wird der Variable \emph{zufällig} (nach Lage
+  des Buchstaben im Alphabet) ein Datentyp zugewiesen ($\Rightarrow$ Chaos)
+\end{itemize}
+
+\textbf{Maximale Zeilenlänge}
+\begin{itemize}
+\item beträgt 132 Zeichen
+\item \textbf{Achtung} Es werden auch nur die ersten 132 Zeichen ausgewertet, wenn diese syntaktisch korrekt sind,
+  kompiliert das Programm dennoch (jedoch nur die ersten 132 Zeichen).
+\item mit \& kann man Zeilen fortführen, jedoch maximal 40 mal.
+\end{itemize}
+
+\textbf{Groß-/Kleinschreibung}
+\begin{itemize}
+\item Seit dem Fortran 90 Standard ist die Sprache case insensitive
+\end{itemize}
+
+\textbf{Kommentare}
+\begin{itemize}
+\item Werden mit dem ! eingeleitet
+\end{itemize}
+
+\textbf{Variablen}
+
+Werden deklariert mit
+
+\begin{lstlisting}{fortran}
+  DATENTYP :: variable1, variabl2, ...
+\end{lstlisting}
+
+\begin{tabular}{l l}
+  INTEGER   & ganze Zahlen \\
+  REAL      & Gleitkommazahlen \\
+  CHARACTER & Zeichenketten \\
+  LOGICAL & Boolean (Werte: .TRUE. und .FALSE.)\\
+\end{tabular}
+
+\end{document}
