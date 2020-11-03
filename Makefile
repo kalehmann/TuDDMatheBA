@@ -14,6 +14,7 @@ PDF_FILES = \
 	$(OUTPUT_DIRECTORY)/pdf/pr10/pr10.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/pr10/sonderuebung.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/la10/la10.pdf
+	$(OUTPUT_DIRECTORY)/pdf/la10/uebung.pdf
 
 OUTPUT_FILES = \
 	$(OUTPUT_DIRECTORY) \
