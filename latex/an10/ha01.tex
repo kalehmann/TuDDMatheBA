@@ -322,7 +322,7 @@ Zeigen Sie, dass für $(\mathbb{R}, \oplus, \odot)$ die Axiome (A1) bis (A9) aus
 \textbf{Stellen Sie die Menge $C$ als Intervall dar!} \\
 
 \[
-  C = \interval[open left]{-8}{-1}
+  C = \interval[open left]{-8}{1}
 \]
 
 \textbf{Bestimmen Sie $A \cap B, A \cup B, A \setminus B, A \cap C, B \setminus C$}
@@ -332,18 +332,18 @@ Zeigen Sie, dass für $(\mathbb{R}, \oplus, \odot)$ die Axiome (A1) bis (A9) aus
            &= \interval[open]{-1}{3} \\
            &= A \\
   \\
-  A \cup B &= \interval[open]{-1}{3} \cap \interval[open]{-8}{\infty} \\
+  A \cup B &= \interval[open]{-1}{3} \cup \interval[open]{-8}{\infty} \\
            &= \interval[open]{-8}{\infty} \\
            &= B \\
   \\
   A \setminus B &= \interval[open]{-1}{3} \setminus \interval[open]{-8}{\infty} \\
            &= \emptyset \\
   \\
-  A \cup C &= \interval[open]{-1}{3} \cap \interval[open left]{-8}{-1} \\
-           &= \emptyset \\
+  A \cap C &= \interval[open]{-1}{3} \cap \interval[open left]{-8}{1} \\
+           &= \interval[open left]{-1}{1} \\
   \\
-  B \setminus C &= \interval[open]{-8}{\infty} \setminus \interval[open left]{-8}{-1} \\
-           &= \interval[open]{-1}{\infty} \\
+  B \setminus C &= \interval[open]{-8}{\infty} \setminus \interval[open left]{-8}{1} \\
+           &= \interval[open]{1}{\infty} \\
 \end{align*}
 
 \end{document}
