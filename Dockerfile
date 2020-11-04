@@ -8,6 +8,7 @@ RUN apt-get update \
 	make \
         texlive \
 	texlive-fonts-extra \
+	texlive-lang-german \
 	texlive-latex-extra \
 	texlive-pictures \
 	texlive-science  \
