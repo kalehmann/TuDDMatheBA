@@ -1,0 +1,91 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[ngerman]{babel}
+\usepackage[shortlabels]{enumitem}
+\usepackage{genealogytree}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{.9}
+
+\author{Karsten Lehmann}
+\date{WiSe 2020}
+\title{Übung Programmieren für Mathematiker (PR10)}
+
+\begin{document}
+
+
+\maketitle
+
+\newpage
+
+\begin{tikzpicture}[scale=.5, every node/.style={scale=.5}]
+  \node[draw, rectangle, rounded corners] at (0,0) (start) {Start};
+  \node[draw, diamond, below = of start] (durst) {Durst?};
+  \node[align = left, draw, rectangle, right = of durst] (gb) {Inhalte Geldbörse \\- Preis der Besorgung \\= Rest};
+  \node[draw, diamond, below = of gb] (bp) {Rest $\geq$ Bierpreis};
+  \node[align=left, draw, rectangle, below = of bp] (wirtschaft) {Nächste \\Wirtschaft\\suchen};
+  \node[align = center, draw, diamond, below = of wirtschaft] (wfrage) {Wirtschaft\\annehmbar?};
+  \node[align=left, draw, rectangle, below = of wfrage] (bier) {Bier\\bestellen,\\Bier\\trinken};
+  \node[align = center, draw, diamond, below = of bier] (durst_frage) {Noch\\Durst?};
+  \node[align = left, draw, rectangle, right = of durst_frage] (rest) {verbleibender Rest\\- Bierpreis\\= neuer Rest};
+  \node[align = center, draw, diamond, below = of rest] (rest_frage) {Rest $\geq$\\Bierpreis?};
+  \node[align = center, draw, diamond, right = of rest_frage] (auto_frage) {Auto-\\fahrer?};  
+  \node[align = center, draw, diamond, below = of auto_frage] (pegel_frage) {0.5 \textperthousand\\erreicht?};
+
+  \node[align = left, draw, rectangle] at (durst_frage |- pegel_frage) (zahlen) {Bier\\bezahlen};
+  \coordinate (p1) at (start |- zahlen);
+  \coordinate (p2) at (durst_frage |- rest_frage);
+  \coordinate (p3) at (durst |- bp);
+  \coordinate[right = of wfrage] (p4);
+  \coordinate[below = .5cm of bp] (p5);
+  \coordinate[right = .5cm of auto_frage] (p6);
+  \coordinate[below = .5cm of wfrage] (p7);
+  \node[draw, rectangle, rounded corners, below = of p1] (ende) {Ende};
+
+  \draw[-latex] (start) -> (durst);
+  \draw[-latex] (durst) -> node[above] {Nein} (gb);
+  \draw[-latex] (gb) -> (bp);
+  \draw[-latex] (bp) -> node[left] {ja} (wirtschaft);
+  \draw[-latex] (wirtschaft) -> (wfrage);
+  \draw[-latex] (wfrage) -> node[left] {ja} (bier);
+  \draw[-latex] (bier) -> (durst_frage);
+  \draw[-latex] (durst_frage) -> node[above] {ja} (rest);
+  \draw[-latex] (rest) -> (rest_frage);
+  \draw[-latex] (rest_frage) -> node[above] {ja} (auto_frage);
+  \draw[-latex] (auto_frage) -> node[left] {ja} (pegel_frage);
+  \draw[-latex] (pegel_frage) -> node[above, xshift=3cm] {ja} (zahlen);
+  \draw[-latex] (durst) -> node[left, yshift=15cm] {nein} (ende); 
+  \draw[-latex] (zahlen) -> (p1); 
+  \draw[-latex] (durst_frage) -> node[left, yshift=3cm] {nein} (zahlen);
+  \draw[-latex] (rest_frage) -> node[above] {nein} (p2); 
+  \draw[-latex] (bp) -> node[above] {nein} (p3);
+  \draw (wfrage) -- (p4);
+  \draw[-latex] (p4) |- node[above] {Nein} (p5);
+  
+  \draw (pegel_frage) -| node[below] {Nein} (p6);
+  \draw (auto_frage) -- node[above] {Nein} (p6);
+  \draw[-latex] (p6) |- (p7);
+\end{tikzpicture}
+
+\section*{Variablen}
+
+\begin{tabularx}{\textwidth}{l X}
+Durst? & LOGICAL, Wert im Algorithmus nicht definiert, eventuell durch Funktion berechnet \\
+Inhalt\_Geldboerse & INTEGER (in Cent) oder REAL (in Euro), Konstante \\
+Preis\_der\_Besorgung & INTEGER oder REAL (siehe oben) \\
+Rest & INTEGER oder REAL (siehe oben) \\
+Bierpreis & INTEGER oder REAL (siehe oben), Konstante \\
+Wirtschaft\_annehmbar & LOGICAL \\
+Autofahrer & LOGICAL, Konstante \\
+\end{tabularx}
+
+\end{document}
