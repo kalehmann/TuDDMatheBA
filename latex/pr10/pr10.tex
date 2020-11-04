@@ -1,12 +1,15 @@
 \documentclass{article}
 
+\usepackage{caption}
 \usepackage{genealogytree}
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{struktex}
+\usepackage{tabularx}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usetikzlibrary{shapes}
+\usetikzlibrary{shapes.geometric}
 \tikzset{
   box/.style={rectangle, draw},
 }
@@ -105,5 +108,192 @@ until (abs (x-xalt) < eps);
   \draw[-latex] (input.south) -> ([xshift=3cm]prog.north);
   \draw[-latex] ([xshift=3cm]prog.south) -> (output.north);
 \end{tikzpicture}
+
+\section{Algorithmen}
+
+Ein Algorithmus ist ein endliches und vollständiges System von in einer formalen, eindeutig interpretierbaren
+Sprache oder Notation geschriebenen Regeln zur schrittweisen Lösung einer Klasse von Problemen in endlicher
+Zeit.
+
+\subsection*{Die 3 Grundstrukturen eines Algorithmus}
+
+\subsubsection*{Sequenz}
+
+Eine Sequenz ist eine Folge von Aktionen / Schritten / Befehlen / Anweisungen, welche in der Reihenfolge ihres Auftretens im Programm
+abgearbeitet werden.
+Innerhalb der anderen Grundstrukturen bezeichnet man die Sequenz als \emph{Anweisungsblock}.
+
+\subsubsection*{Selektion}
+
+Eine Selektion (Auswahl / Verzweigung) wählt anhand einer Entscheidung aus, welche an welcher Stelle der Algorithmus fortgesetzt wird.
+Der Standardfall ist das if-then-else Konstrukt, in dem auf Basis einer binären Entscheidung gewählt wird, welcher
+Anweisungslock ausgeführt wird.
+Viele Sprachen bieten auch die Möglichkeit einer Mehrfachverzweigung.
+
+\subsubsection*{Repetition}
+
+Eine Repetition (Wiederholung / Zyklus / Schleife) erlaubt die Mehrfache Abarbeitung eines Anweisungsblockes im Inneren der Schleife.
+Manche Sprachen erlauben auch das Verlassen der Schleife aus dem Schleifenkörper mittel \emph{break} oder \emph{exit}.
+
+\subsection*{Unterporgramme, Prozeduren, Funktionen}
+
+Die Prozedur ist die 4. Strukturierungsmöglichkeit für Programmcode. Mit dieser kann man logisch zusammengehörige Teile eines Algorithmus
+gruppieren.
+
+Prozeduren sind in der Regel parametrisiert. Ein Teilalgorithmus, der ein Ergebnis liefern soll wird \textbf{Funktion} genannt, wobei Teilalgorithmen
+unabhängig davon, ob Sie Ergebnisse liefern oder nicht in neueren Sprachen als Funktionen bezeichnet werden.
+
+\subsection*{Flussdiagramme}
+
+\begin{tabularx}{\textwidth}{X X}
+  Anfang / Ende &
+  \begin{tikzpicture}[baseline]
+    \node[draw, rectangle, rounded corners] at (0,0) (start) {Start};
+    \node[draw, rectangle, rounded corners] at (2,0) (end) {Ende};
+
+    \draw[-latex] (2,1) -> (end.north);
+    \draw[-latex] (start.south) -> (0,-1);
+  \end{tikzpicture}
+  \\
+  Ein- / Ausgabe &
+  \begin{tikzpicture}[baseline]
+    \node[draw, minimum height = .6cm, minimum width = 3cm, trapezium, trapezium left angle=60, trapezium right angle=-60, trapezium stretches = true] at (0,0) (input) {};
+    \draw[-latex] (0,1) -> (input.north);
+    \draw[-latex] (input.south) -> (0,-1);
+  \end{tikzpicture}
+  \\
+  Anweisung (Aktion) &
+  \begin{tikzpicture}[baseline]
+    \node[draw, rectangle, minimum height = .6cm,  minimum width = 3cm] at (0,0) (action) {}; 
+    \draw[-latex] (0,1) -> (action.north);
+    \draw[-latex] (action.south) -> (0,-1);
+  \end{tikzpicture}
+  \\
+  Verzweigung &
+  \begin{tikzpicture}[baseline]
+    \node[draw, diamond] at (0,0) (selection) {Bedingung};
+    \node[below right = .7cm and -.6cm of selection] {Ja};
+    \node[above right = -.6cm and .6cm of selection] {Nein};
+    \draw[-latex] (0,2) -> (selection.north);
+    \draw[-latex] (selection.south) -> (0,-2);
+    \draw[-latex] (selection.east) -> (2.5,0);
+  \end{tikzpicture}
+  \\
+  Ablauf / Zusammenführung &
+  \begin{tikzpicture}[baseline]
+    \draw[-latex] (0,0) -> (1.5,0);
+    \draw[-latex] (2,.75) -> (2,-.75);
+    \draw[-latex] (3.5,0) -> (2,0);
+  \end{tikzpicture}
+  \\
+  Anschlußstelle zwischen zwei Programmablaufteilen &
+  \begin{tikzpicture}[baseline]
+    \node[circle, draw] at (0,0) (left) {A};
+    \node[circle, draw] at (2,0) (right) {A};
+    \draw[-latex] (0,1) -> (left.north);
+    \draw[-latex] (right.south) -> (2,-1);
+  \end{tikzpicture}
+  \\
+  Aufruf von Teilalgorithmen &
+  \begin{tikzpicture}[baseline]
+    \node[draw,label=right:Name des Teilalgorithmus, rectangle split, rectangle split horizontal, rectangle split parts = 3, minimum height = .6cm] at (0,0) (call) {\nodepart{two}\hspace*{2cm}};
+    \draw (0,1.5) -- (call.north);
+    \draw (0.3,1) -- node[right] {Eingangsgrößen} ([xshift=.3cm]call.north);
+    \draw (call.south) -- (0,-1.5);
+    \draw ([xshift=.3cm]call.south) -- node[right] {Ausgangsgrößen} (0.3,-1);
+  \end{tikzpicture}
+  \\
+\end{tabularx}
+
+\subsection*{Struktogramme / Nassi-Shneidermann-Diagramme}
+
+\begin{tabularx}{\textwidth}{l X}
+  Anweisung &
+  \begin{struktogramm}(40,10)
+    \assign{Anw}
+  \end{struktogramm}
+  \\
+  Sequenz &
+  \begin{struktogramm}(40,20)
+    \assign{Anw\_1}
+    \assign{Anw\_2}
+    \assign{$\dots$}
+    \assign{Anw\_n}
+  \end{struktogramm}
+  \\
+  Selektion &
+  \begin{tabular}{c c}
+    \begin{struktogramm}(50,20)
+      \ifthenelse{2}{2}{Bedingung}{Ja}{Nein}
+        \assign{Anw}
+      \change
+        \assign{}
+      \ifend
+    \end{struktogramm}
+    &
+    \begin{struktogramm}(50,20)
+      \ifthenelse{2}{2}{Bedingung}{Ja}{Nein}
+        \assign{Anw\_1}
+      \change
+        \assign{Anw\_2}
+      \ifend
+    \end{struktogramm}
+    \\
+    einseitige & zweiseitige \\
+    \begin{struktogramm}(50,20)
+      \case[10]{0}{4}{Fallausdruck}{Wert\_1}
+        \assign{Anw\_1}
+      \switch{Wert\_2}
+        \assign{Anw\_2}
+      \switch{$\dots$}
+        \assign{$\ldots$}
+      \switch{}
+        \assign{Anw\_n}
+      \caseend
+    \end{struktogramm}
+    &
+    \begin{struktogramm}(60,20)
+      \case[10]{3}{5}{Fallausdruck}{Wert\_1}
+        \assign{Anw\_1}
+      \switch{Wert\_2}
+        \assign{Anw\_2}
+      \switch{$\dots$}
+        \assign{$\ldots$}
+      \switch{}
+        \assign{Anw\_n}
+      \switch[r]{sonst}
+        \assign{Anw\_0}
+      \caseend
+    \end{struktogramm}
+    \\
+    Mehrfachauswahl ohne und & mit Sonst-Zweig \\
+
+  \end{tabular}
+  \\
+  Zyklus &
+  \begin{tabular}{c c}
+    \begin{struktogramm}(60,10)
+      \while{Wiederhole solange Bed wahr ist}
+        \assign{Anw}
+      \whileend
+    \end{struktogramm}
+    &
+    \begin{struktogramm}(60,10)
+      \until{Wiederhole bis Bed wahr ist}
+        \assign{Anw}
+      \untilend
+    \end{struktogramm}
+    \\
+    abweisender & nicht-abweisender \\
+    \begin{struktogramm}(60,10)
+      \while{Lv := awert (s) ewert}
+        \assign{Anw}
+      \whileend
+    \end{struktogramm}
+    \\
+    Zählzyklus \\
+  \end{tabular}
+  \\
+\end{tabularx}
 
 \end{document}
