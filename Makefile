@@ -12,6 +12,7 @@ PDF_FILES = \
 	$(OUTPUT_DIRECTORY)/pdf/an10/ha01.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/an10/uebung.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/inf-b-210/inf-b-210.pdf \
+	$(OUTPUT_DIRECTORY)/pdf/pr10/homework/01.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/pr10/pr10.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/pr10/sonderuebung.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/pr10/uebung.pdf \
@@ -34,6 +35,7 @@ $(OUTPUT_DIRECTORY):
 	mkdir -p $(OUTPUT_DIRECTORY)/pdf/inf-b-210
 	mkdir -p $(OUTPUT_DIRECTORY)/pdf/la10
 	mkdir -p $(OUTPUT_DIRECTORY)/pdf/pr10
+	mkdir -p $(OUTPUT_DIRECTORY)/pdf/pr10/homework
 	mkdir -p $(OUTPUT_DIRECTORY)/pdf/schedule
 
 $(OUTPUT_DIRECTORY)/.htaccess: html/.htaccess
@@ -48,6 +50,11 @@ $(OUTPUT_DIRECTORY)/%.html: html/%.html
 $(OUTPUT_DIRECTORY)/pdf/%.pdf: latex/%.tex
 	$(PDFLATEX) $<
 	cp $$(basename $*.pdf) $(OUTPUT_DIRECTORY)/pdf/$*.pdf
+
+$(OUTPUT_DIRECTORY)/pdf/pr10/homework/%.pdf: latex/pr10/homework/%/homework.tex
+	$(PDFLATEX) $<
+	cp homework.pdf $(OUTPUT_DIRECTORY)/pdf/pr10/homework/$*.pdf
+
 
 clean:
 	rm -rf $(OUTPUT_DIRECTORY)

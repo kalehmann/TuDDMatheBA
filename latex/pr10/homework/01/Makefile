@@ -2,11 +2,12 @@ CC = gfortran
 CC_FLAGS = -Wall
 
 PROGS = \
-	loop01 \
-	loop02 \
-	loop03 \
-	loop04 \
-	loop05
+	potenz_a \
+	potenz_b \
+	potenz_c \
+	potenz_d \
+	fakultaet \
+	RoundingError
 
 all: $(PROGS)
 

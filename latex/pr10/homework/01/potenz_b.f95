@@ -1,17 +1,16 @@
-PROGRAM loop02
+PROGRAM Potenz_b
   IMPLICIT NONE
   INTEGER :: i, imax
 
-  WRITE(*,*) "Max i"
+  WRITE(*,*) "Anzahl Potenzen"
   READ(*,*) imax
 
   DO i = 1, imax
-     WRITE(*,*) 2**i
-     IF (i > 29) THEN
+     IF (i > 30) THEN
         WRITE(*,*) "Groessere Potenzen koennen &
              &mit dem Datentyp nicht mehr abgebildet werden"
-        
         EXIT
      END IF
+     WRITE(*,*) 2**i
   END DO
-END PROGRAM Loop02
+END PROGRAM Potenz_b

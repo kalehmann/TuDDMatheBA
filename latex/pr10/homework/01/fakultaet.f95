@@ -1,4 +1,4 @@
-PROGRAM loop05
+PROGRAM fakultaet
   IMPLICIT NONE
   INTEGER :: i, n, res
 
@@ -10,4 +10,4 @@ PROGRAM loop05
      res = res * i
   END DO
   WRITE(*,*) res
-END PROGRAM Loop05
+END PROGRAM fakultaet

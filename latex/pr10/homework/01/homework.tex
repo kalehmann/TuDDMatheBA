@@ -1,0 +1,190 @@
+\documentclass{article}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{rotating}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{.9}
+
+\author{
+  Albina Oscherowa (4694823) \\
+  Karsten Lehmann (4935758)
+}
+\date{WiSe 2020}
+\title{Hausaufgaben Programmieren - Grundlegende Konzepte (PR10)}
+
+\begin{document}
+\maketitle
+
+\newpage
+
+\section*{Aufgabe 1}
+
+Das tatsächliche Ergebnis des Ausdruck $x^4 - 4y^4 - 4y^2$ für $x = 665857$ und $y = 470832$ lautet $1$.
+In der folgenden Tabelle sind die Ergebnisse für die angegeben \emph{Precision} P und \emph{Exponent Range} R
+der Datentypen von $x$ und $y$ dargestellt.
+
+{
+  \footnotesize
+  \begin{tabularx}{\textwidth}{X | r | r | r}
+    Ausdruck & \begin{sideways}$P=6, R=37$\end{sideways} & \begin{sideways}$P=15, R=307$\end{sideways} & \begin{sideways}$P=18, R=4931$\end{sideways} \\
+    \hline
+    $x^4 - 4*y^4 - 4*y^2$                       & $-8.86731112E+11$ & $11885568$ & $7168$ \\
+    $x*x*x*x - 4*y*y*y*y - 4*y*y$               & $-8.86731112E+11$ & $11885568$ & $7168$ \\
+    $(x^2)^2 - (2*y^2)^2 - (2*y)^2$             & $-8.86731112E+11$ & $11885568$ & $7168$ \\
+    $(x^2)^2 - (2*y)^2*(y^2 + 1)$               & $0$               & $0$        & $0$    \\
+    $(x*x-2*y*(y+1)) * (x*x+2*y*(y+1)) + 8*y^3$ & $2.14225410E+16$  & $0$        & $1$    \\
+    $(x^2-2*y^2) * (x^2+2*y^2) - 4*y^2$         & $-8.86731112E+11$ & $1$        & $1$    \\
+  \end{tabularx}
+}
+
+\noindent
+Wie zu erkennen, sind die korrekten Ergebnisse nur in der unteren rechten Ecke der Tabelle enthalten.
+Warum ist das so? \\
+
+\noindent
+Die Variablen $x$ und $y$, sowie die Ergebnisse der Berechnungen werden als Gleitkommazahlen gespeichert. \\
+
+\noindent
+\fcolorbox{black}{light-gray}{\begin{minipage}{\textwidth}
+    \textbf{Gleitkommazahlen} beinhalten Zahlen mit Stellen vor und nach dem Komma.
+    Da bei Kommazahlen festgelegte Stellen für die Vor- und Nachkommastellen eher hinderlich wären,
+    hat man bei der Gleitkommadarstellung dafür gesorgt, dass das Komma jede beliebige Stelle einnehmen kann.
+    Man spricht davon, dass das Komma "gleitet". \cite{gleitkomma}
+\end{minipage}}
+\\
+
+Diesen Gleitkommazahlen sind in der Genauigkeit Grenzen gesetzt. Dadurch kommt es zu Rundungsfehlern und
+Auslöschungen.
+Insgesamt kann man sehen, dass sich die Lösungen mit gesteigerter Genauigkeit den korrekten Werten annähern.
+Weiterhin hängt die Qualität des Ergebnisses auch von den Zwischenschritten der Berechnung ab. 
+Je geringer der Betrag der Ergebnisse der einzelnen Zwischenschritte der Rechnung ist, desto
+genauer ist das Ergebnis.
+
+\pagebreak
+\section*{Aufgabe 2}
+
+\begin{enumerate}[a)]
+\item
+  Dieses Programm gibt eine bestimmte Anzahl an Zweierpotenzen aus.
+  Ab einer Eingabe von $31$ werden die letzten Potenzen Fehlerhaft
+  ausgegeben. Für $2^{31}$ wird anstatt $2147483648$ der Wert
+  $-2147483648$ ausgegeben. Für alle weiteren Potenzen wird $0$
+  ausgegeben.
+  \begin{lstlisting}[language=Fortran, showstringspaces=false]
+PROGRAM Potenz_a
+  IMPLICIT NONE
+  INTEGER :: i, imax
+
+  WRITE(*,*) "Anzahl Potenzen"
+  READ(*,*) imax
+
+  DO i = 1, imax
+     WRITE(*,*) 2**i
+  END DO
+END PROGRAM Potenz_a
+  \end{lstlisting}
+
+\item
+  Das Programm aus a) erweitert, um anstatt der fehlerhaften Potenzen auszugeben
+  mit einer Fehlermeldung abzubrechen.
+  \begin{lstlisting}[language=Fortran, showstringspaces=false]
+PROGRAM Potenz_b
+  IMPLICIT NONE
+  INTEGER :: i, imax
+
+  WRITE(*,*) "Anzahl Potenzen"
+  READ(*,*) imax
+
+  DO i = 1, imax
+     IF (i > 30) THEN
+        WRITE(*,*) "Groessere Potenzen koennen &
+             &mit dem Datentyp nicht mehr abgebildet werden"
+        EXIT
+     END IF
+     WRITE(*,*) 2**i
+  END DO
+END PROGRAM Potenz_b
+  \end{lstlisting}
+
+\pagebreak
+\item
+  Anstatt die Zweierpotenzen direkt zu berechnen wird hier jedes Mal der vorherige Wert
+  mit $2$ multipliziert.
+  \begin{lstlisting}[language=Fortran, showstringspaces=false]
+PROGRAM Potenz_c
+  IMPLICIT NONE
+  INTEGER :: i, imax, pot
+
+  WRITE(*,*) "Anzahl Potenzen"
+  READ(*,*) imax
+
+  pot = 1
+  DO i = 1, imax
+     IF (i > 30) THEN
+        WRITE(*,*) "Groessere Potenzen koennen &
+             &mit dem Datentyp nicht mehr abgebildet werden"
+        EXIT
+     END IF
+     pot = pot * 2
+     WRITE(*,*) pot
+  END DO
+END PROGRAM Potenz_c
+  \end{lstlisting}
+
+\item
+  In diesem Beispiel wurde das Programm aus c) um einen ganzzahligen Datentyp mit 64 Bit erweitert.
+  Somit können die Zweierpotenzen bis $2**62$ ausgegeben werden.
+  \begin{lstlisting}[language=Fortran, showstringspaces=false]
+PROGRAM Potenz_d
+  IMPLICIT NONE
+  INTEGER(kind=8) :: i, imax, pot
+
+  WRITE(*,*) "Anzahl Potenzen"
+  READ(*,*) imax
+
+  pot = 1
+  DO i = 1, imax
+     IF (i > 62) THEN
+        WRITE(*,*) "Groessere Potenzen koennen &
+             &mit dem Datentyp nicht mehr abgebildet werden"
+        EXIT
+     END IF
+     pot = pot * 2
+     WRITE(*,*) pot
+  END DO
+END PROGRAM Potenz_d
+  \end{lstlisting}
+
+\pagebreak
+\item
+  In diesem Programm wird anstatt Zweierpotenzen die Falkultät einer Zahl berechnet.
+  Diese Programm leidet unter dem selben Problem wie das Programm a), die Fakultät wird
+  mit $-2147483648$ falsch ausgegeben.
+  \begin{lstlisting}[language=Fortran, showstringspaces=false]
+PROGRAM fakultaet
+  IMPLICIT NONE
+  INTEGER :: i, n, res
+
+  WRITE(*,*) "Fakultaet von"
+  READ(*,*) n
+
+  res = 1
+  DO i = 1, n
+     res = res * i
+  END DO
+  WRITE(*,*) res
+END PROGRAM fakultaet
+\end{lstlisting}
+\end{enumerate}
+
+\begin{thebibliography}{9}
+
+\bibitem{gleitkomma}
+  \emph{``Gleitkommadarstellung / Gleitkommazahlen''},
+  \href{https://www.elektronik-kompendium.de/sites/dig/1807231.htm}{https://www.elektronik-kompendium.de/sites/dig/1807231.htm},
+  abgerufen am 06.11.2020 um 21:00
+\end{thebibliography}
+\end{document}

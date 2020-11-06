@@ -1,11 +1,11 @@
-PROGRAM loop01
+PROGRAM Potenz_a
   IMPLICIT NONE
   INTEGER :: i, imax
 
-  WRITE(*,*) "Max i"
+  WRITE(*,*) "Anzahl Potenzen"
   READ(*,*) imax
 
   DO i = 1, imax
      WRITE(*,*) 2**i
   END DO
-END PROGRAM Loop01
+END PROGRAM Potenz_a
