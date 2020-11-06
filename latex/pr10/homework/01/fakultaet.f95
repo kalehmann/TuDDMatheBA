@@ -1,4 +1,7 @@
 PROGRAM fakultaet
+  !!  In diesem Programm wird anstatt Zweierpotenzen die Falkultät einer Zahl
+  !! berechnet. Diese Programm leidet unter dem selben Problem wie das
+  !! Programm a), die Fakultät wird mit −2147483648 falsch ausgegeben.
   IMPLICIT NONE
   INTEGER :: i, n, res
 

@@ -1,4 +1,9 @@
+!! Albina Oscherowa (4694823)
+!! Karsten Lehmann (4935758)
 PROGRAM Potenz_d
+  !! In diesem Beispiel wurde das Programm aus c) um einen ganzzahligen
+  !! Datentyp mit 64 Bit erweitert. Somit können die Zweierpotenzen bis
+  !! 2 ∗ ∗62 ausgegeben werden.
   IMPLICIT NONE
   INTEGER(kind=8) :: i, imax, pot
 

@@ -1,4 +1,8 @@
+!! Albina Oscherowa (4694823)
+!! Karsten Lehmann (4935758)
 PROGRAM Potenz_c
+  !! Anstatt die Zweierpotenzen direkt zu berechnen wird hier jedes Mal der
+  !! vorherige Wert mit 2 multipliziert.
   IMPLICIT NONE
   INTEGER :: i, imax, pot
 

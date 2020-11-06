@@ -1,4 +1,8 @@
+!! Albina Oscherowa (4694823)
+!! Karsten Lehmann (4935758)
 PROGRAM Potenz_b
+  !! Das Programm aus a) erweitert, um anstatt der fehlerhaften Potenzen
+  !! auszugeben mit einer Fehlermeldung abzubrechen.
   IMPLICIT NONE
   INTEGER :: i, imax
 
