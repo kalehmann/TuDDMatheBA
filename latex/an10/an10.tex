@@ -1,12 +1,15 @@
 \documentclass{article}
 
+\usepackage{aligned-overset}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[shortlabels]{enumitem}
 \usepackage{genealogytree}
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
+\usepackage{interval}
 \usepackage{mathtools}
+\usepackage{physics}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usepackage{xcolor}
@@ -507,7 +510,7 @@ Diese gelten in jedem angeordneten Körper
   \vrule
   \hfill
   \begin{minipage}[t]{.4\textwidth}
-    \textbf{2. Fall}: a < 0 \\
+    \textbf{2. Fall}: $a < 0$ \\
 
     Dann ist nach Aussage (f)
 
@@ -548,5 +551,161 @@ Zu je zwei reellen Zahlen $a,b \in \mathbb{R}$ gibt es ein $c \in \mathbb{R}$ mi
 
 Daraus folgt, dass ein angeordneter Körper unendlich viele Elemente enthält.
 Somit kann ein endlicher Körper kein angeordneter Körper sein.
+
+\subsubsection{Definition}
+
+Für jede reelle Zahl $a \in \mathbb{R}$ definieren wir das \emph{Signum} (bzw. Vorzeichen)
+
+\[
+  \text{sgn}(a) \coloneqq \begin{cases}
+    1  & \text{falls } a > 0 \\
+    0  & \text{falls } a = 0 \\
+    -1 & \text{falls } a < 0 \\
+  \end{cases}
+\]
+
+und den \emph{Absolutbetrag}
+
+\[
+  \text{abs}(a) \coloneqq \abs{a} \coloneqq \begin{cases}
+    a  & \text{falls } a > 0 \\
+    0  & \text{falls } a = 0 \\
+    -a & \text{falls } a < 0 \\
+  \end{cases}
+\]
+
+Es gilt:
+
+\[
+  \abs{a} = \text{sgn}(a) * a
+\]
+
+\subsubsection{Satz}
+
+Es gilt:
+
+\begin{enumerate}[(a)]
+\item $\abs{a} = \abs{-a}$
+\item $\abs{a} \geq 0$ und ($\abs{a} = 0 \iff a = 0$)
+\item $\abs{a * b} = \abs{a} * \abs{b}$
+\item ($a \leq b$ und $-a \leq b$) wenn $\abs{a} \leq b$
+\item $a = 0$ genau dann wenn $\forall \epsilon > 0 \colon \abs{a} < \epsilon$
+\end{enumerate}
+
+\textbf{Beweis}:
+
+\begin{enumerate}[(a)]
+\item Bemerke, dass $\text{sgn}(-a) = -\text{sgn}(a)$ und somit gilt
+  \begin{align*}
+    \abs{-a} = \text{sng}(-a) * (-a) &= (-\text{sgn}(a)) * (-a) \\
+                                     &= \text{sgn}(a) * a \\
+                                     &= \abs{a}
+  \end{align*}
+  
+\item $\abs{a} \geq 0$ (Man betrachte die Fälle $a > 0$, $a = 0$ und $a < 0$). Sodann gilt:
+  \[
+    a = 0 \overset{text{Def}}\Rightarrow \abs{a} = 0
+  \]
+  Umgekehrt gilt:
+  \begin{align*}
+    \abs{a} = 0 &\Rightarrow \text{sgn}(a) * a = 0 \\
+    \overset{\text{Folgerung aus den Körperaxiomen (f)}}&{\Rightarrow} \text{sgn}(a) = 0 \text{ oder } a = 0\\
+                &\Rightarrow a = 0
+  \end{align*}
+    
+\item $\abs{a * b} = \abs{a} * \abs{b}$ \\
+  \begin{tabular}{ c | c | c | c | c | c | c }
+    $a$ & $b$ & $a * b$ & $\text{sgn}(a)$ & $\text{sgn}(b)$ & $\text{sng}(a) * \text{sgn}(b)$ & $\text{sgn}(a * b)$ \\
+    \hline
+    -1 & -1 & 1  & -1 &  -1 & 1  & 1  \\
+    -1 & 0  & 0  & -1 &  0  & 0  & 0  \\
+    -1 & 1  & -1 & -1 &  1  & -1 & -1 \\
+    0  & -1 & 0  & 0  &  -1 & 0  & 0  \\
+    0  & 0  & 0  & 0  &  0  & 0  & 0  \\
+    0  & 1  & 0  & 0  &  1  & 0  & 0  \\
+    1  & -1 & -1 & 1  &  -1 & -1 & -1 \\
+    1  & 0  & 0  & 1  &  0  & 0  & 0  \\
+    1  & 1  & 1  & 1  &  1  & 1  & 1  \\
+  \end{tabular}
+  
+  \begin{align*}
+    \abs{a * b} &= \text{sgn}(a * b) * (a * b) \\
+                &= \text{sgn}(a) * \text{sgn}(b) * a * b \\
+                &= \text{sgn}(a) * a * \text{sgn}(b) * b \\
+                &= \abs{a} * \abs{b} \\
+  \end{align*}
+\item ($a \leq b$ und $-a \leq b$) wenn $\abs{a} \leq b$ \\
+  folgt aus $\abs{a} = a$ (falls $a \geq 0$) oder $\abs{a} = -a$ (falls $a < 0$)
+  
+\item $a = 0$ genau dann wenn $\forall \epsilon > 0 \colon \abs{a} < \epsilon$ \\
+  ``$\Rightarrow$" $a = 0 \Rightarrow \forall \epsilon > 0 \colon \epsilon > 0 = \abs{a}$ \\
+  ``$\Leftarrow$" Es gelte $\forall \epsilon > 0 \colon \abs{a} < \epsilon$ Angenommen $a \ne 0$, dann
+  ist $\abs{a} > 0$ (wegen Aussage (b)). Aber dann gilt für $\epsilon \coloneqq \abs{a}$ $(>0)$ nicht $\abs{a} < \epsilon$.
+  Somit kann $a \ne 0$ nicht gelten, d.h. $a = 0$.
+\end{enumerate}
+
+\subsubsection{Satz (Dreiecksungleichung)}
+
+Für zwei reelen Zahlen $a,b \in \mathbb{R}$ gilt
+\begin{enumerate}[(a)]
+\item $\abs{a + b} \leq \abs{a} + \abs{b}$
+\item $\abs{\abs{a} - \abs{b}}  \leq \abs{a - b}$
+\end{enumerate}
+
+\noindent
+Warum sind dies die Dreiecksungleichungen? Im Dreieck ist die Länge einer Seite immer kleiner als die Summe der Längen
+der beiden anderen Seiten.
+
+\textbf{Beweis}:
+\begin{enumerate}[(a)]
+\item
+  \begin{align*}
+    \abs{a + b} &= \text{sgn}(a + b) * (a + b) \\
+                &= \text{sgn}(a + b) * a + \text{sgn}(a + b) * b \\
+                &\text{Man kann abschätzen, dass die Summe der Beträge größer oder gleich dem Betrag $a + b$ ist} \\
+                &\leq \abs{\text{sgn}(a + b)} * \abs{a} + \abs{\text{sgn}(a + b)} * \abs{b} \\
+                &\text{Man kann weiterhin den Betrag des Vorzeichens von $a + b$ auf $1$ abschätzen} \\
+                &\leq 1 * \abs{a} + 1 * \abs{b} \\
+                &\leq \abs{a} + \abs{b} \\
+  \end{align*}
+\item $\abs{\abs{a} - \abs{b}}  \leq \abs{a - b}$
+  \begin{align*}
+    \abs{a} &= \abs{a + 0} \\
+            &= \abs{a + ((-b) + b)} \\
+            &= \abs{(a - b) + b} \\
+    \overset{\text{wegen (a)}}&{\leq} \abs{a - b} + \abs{b} \\
+  \end{align*}
+  bzw.
+  \[
+    \abs{a} - \abs{b} \leq \abs{a - b}
+  \]
+  Vertausche die Rollen von $a$ und $b$
+  \begin{align*}
+    &\Rightarrow \underbrace{\abs{b} - \abs{a}}_{-(\abs{a} - \abs{b})} \leq \abs{b - a} = \abs{a - b} \\
+    \overset{\text{1.2.6 (d)}}&{\Rightarrow} \abs{\abs{a} * \abs{b}} \leq \abs{a * b} \\
+  \end{align*}
+\end{enumerate}
+
+\subsubsection{Definition (Intervalle)}
+
+Für zwei reelle Zahlen $a,b \in \mathbb{R}$ heißt
+\begin{align*}
+  (a,b) \coloneqq &\interval[open]{a}{b}       &\coloneqq \{ x \in \mathbb{R} | a < x < b \}       &\text{ offenes Intervall} \\
+                  &\interval{a}{b}             &\coloneqq \{ x \in \mathbb{R} | a \leq x \leq b \} &\text{ abgeschlossenes Intervall} \\
+  [a,b) \coloneqq &\interval[open right]{a}{b} &\coloneqq \{ x \in \mathbb{R} | a \leq x < b \}    &\text{ halboffenes Intervall} \\
+  (a,b] \coloneqq &\interval[open left]{a}{b}  &\coloneqq \{ x \in \mathbb{R} | a < x \le b \}     &\text{ halboffenes Intervall} \\
+\end{align*}
+
+Diese vier genannten Intervalle sind alle beschränkte Intervalle. Wir definieren außerdem:
+
+\begin{align*}
+\interval[open]{a}{+\infty}       &= \{ x \in \mathbb{R} | x > a \} \\
+\interval[open right]{a}{+\infty} &= \{ x \in \mathbb{R} | x  \geq a \} \\
+\interval[open]{-\infty}{a}       &= \{ x \in \mathbb{R} | x < a \} \\
+\interval[open left]{-\infty}{a}  &= \{ x \in \mathbb{R} | x \leq a \} \\
+\interval[open]{a}{\infty}        &= \mathbb{R} \\
+\end{align*}
+
+Diese Intervalle sind unbeschränkte Intervalle.
 
 \end{document}
