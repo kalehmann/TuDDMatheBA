@@ -1,3 +1,5 @@
+!! Albina Oscherowa (4694823)
+!! Karsten Lehmann (4935758)
 PROGRAM fakultaet
   !!  In diesem Programm wird anstatt Zweierpotenzen die Falkultät einer Zahl
   !! berechnet. Diese Programm leidet unter dem selben Problem wie das
