@@ -708,4 +708,132 @@ Diese vier genannten Intervalle sind alle beschränkte Intervalle. Wir definiere
 
 Diese Intervalle sind unbeschränkte Intervalle.
 
+\subsection{Supremum und Infinum, Vollständigkeitsaxiom}
+
+\subsubsection{Definition}
+\label{sec:1.3.1}
+
+Sei $K$ ein angeordneter Körper und $M \subseteq K$ eine nichtleere Teilmenge.
+
+\begin{enumerate}[(a)]
+\item Ein Element $s \in K$ heißt \emph{obere Schranke} von $M$, falls
+  \[
+    \forall a \in M \colon a \leq s
+  \]
+  bzw. \emph{untere Schranke} für
+  \[
+    \forall a \in M \colon a \geq s
+  \]
+\item Die Menge $M$ heißt nach \emph{oben (unten) beschränkt}, falls eine obere (untere) Schranke von $M$ existiert.
+  Sie heißt beschränkt, falls sie nach oben und unten beschränkt ist. Anderenfalls heißt sie \emph{unbeschränkt}.
+  \begin{align*}
+    K &= \mathbb{Q} \\
+    M &= \interval[open]{0}{1} \\
+    M &= \interval{0}{1} \\
+    M &= \interval[open right]{0}{1} \\
+  \end{align*}
+  Obere Schranken sind hier zum Beispiel $20, 300, 1000, ...$ und untere Schranken $-20, -\frac{2}{3}, ...$.
+\item Ein Element $s \in K$ heißt \emph{Maximum von $M$} (bzw. Minimum von $M$), falls gilt:
+  \begin{enumerate}[i)]
+  \item $s$ ist obere Schranke von $M$ (bzw. untere Schranke von M)
+  \item $s \in M$
+  \end{enumerate}
+  \textbf{Bezeichnung}: $\text{max}M, \text{min}M$
+\item Ein Element $s \in K$ heißt \emph{Supremum von M} (bzw. Infinum von M), falls
+  \begin{enumerate}[i)]
+  \item $s$ obere (bzw. untere) Schranke von $M$ ist
+  \item \label{sec:1.3.1_d_ii} $s < s'$ für alle oberen Schranken von $M$ ist (bzw. $s > s'$ für allen unteren Schranken von $M$ ist)
+  \end{enumerate}
+  Ein Supremum heißt auch \emph{kleinste obere Schranke} und ein Infinum heißt auch \emph{kleinste untere Schranke}.\\
+  \textbf{Bezeichnung}: $\text{sup}M, \text{inf}M$ \\
+  \textbf{Bemerkung}: Ein Element $s \in K$ ist genau dann Supremum von $M$, falls $s$ Minimum in der Menge aller oberen Schranken von $M$ ist.
+\end{enumerate}
+
+\subsubsection{Konvention und Schreibweisen}
+
+\begin{align*}
+  \text{sup }\emptyset &\coloneqq - \infty \\
+  \text{inf }\emptyset &\coloneqq + \infty \\
+  \text{sup }M &\coloneqq \infty &&\text{,falls $M$ nicht nach oben beschränkt ist} \\
+  \text{sup }M &\coloneqq -\infty &&\text{,falls $M$ nicht nach unten beschränkt ist} \\
+\end{align*}
+
+\fcolorbox{black}{light-gray}{\begin{minipage}{\textwidth}
+    \textbf{Warum ist das Supremum der leeren Menge minus unendlich?} \\
+
+    Die leere Menge hat kein Element. Daher kann man Sie an jeder beliebigen Stelle einer geordneten Menge sehen.
+    Jedes Element dieser geordneten Menge ist dann sowohl obere als auch untere Schranke von der leeren Menge. \\
+
+    Somit ist 
+    \[
+      \text{sup } \emptyset = \text{min}(\{ - \infty, + \infty \} \cup \mathbb{R}) = - \infty  
+    \]
+
+    Analog gilt für das Infinum
+    \[
+      \text{inf } \emptyset = \text{max}(\{ - \infty, + \infty \} \cup \mathbb{R}) = \infty  
+    \]
+\end{minipage}}
+
+\begin{align*}
+  M &= \interval[open right]{0}{+\infty} \\
+    &= \{ x \in K | x \geq 0 \} && \text{Dieses Intervall hat keine obere Schranke} \\
+  M &= \interval[open right]{-\infty}{4} \\
+    &= \{ x \in K | x \leq 4 \} && \text{Dieses Interval hat keine untere Schranke}\\
+\end{align*}
+
+\subsubsection{Bemerkungen}
+\begin{enumerate}[(a)]
+\item Ein Maximum ist obere Schranke, aber eine obere Schranke ist nicht unbedingt Maximum
+\item Ein Supremum ist obere Schranke, aber eine obere Schranke ist nicht unbedingt Supremum
+\item Maximum, Minimum, Supremum, Infinum sind eindeutig bestimmt. Dies heißt nicht, dass sie immer existieren, aber es gibt sie höchstens ein mal.
+  \\
+  Seien $m, m'$ Maxima von $M$
+  \begin{align*}
+    \Rightarrow \forall a \in \mathbb{M} \colon &m \geq a && \text{und} \\
+                                                &m' \geq a
+  \end{align*}
+  und $m, m' \in M$!
+  \[
+    \overset{\text{(A10)}}\Rightarrow m = m'
+  \]
+\item Beschränkte Intervalle sind beschränkt im Sinne von \hyperref[sec:1.3.1]{Definition 1.3.1}
+\item Nach oben beschränkte Mengen besitzen im Allgemeinen weder ein Maximum noch ein Supremum. \\
+  Beispiel: $M = \interval[open right]{0}{1} \to $ kein Maximum
+  \begin{align*}
+    K &= \mathbb{Q} \\
+    M &= \{ x \in \mathbb{Q} | x^2 \leq 2\} && \text{kein Supremum in $\mathbb{Q}$ !} \\
+  \end{align*}
+\item Falls $M$ nach oben beschränkt ist und $N \subseteq N$, dann ist auch $N$ nach oben beschränkt.
+\item Eine Menge $M$ ist genau dann beschränkt, wenn es $M = \subseteq \interval{a}{b}$ für geeignete $a, b \in \mathbb{R}$
+\item Wenn ein Maximum $m$ existiert, dann auch ein Supremum $s$ und $m = s$
+\end{enumerate}
+
+\subsubsection{Satz}
+
+Sei $K$ ein angeordneter Körper und $M \subseteq K$ eine nichtleere Teilmenge:
+\begin{enumerate}[(a)]
+\item $m = \text{max}M$ existiert genau dann, wenn ein $s = \text{sup}M$ existiert und $s \in M$
+  (und dann ist $m = s$)
+\item $s = \text{sup}M$ genau dann, wenn
+  \begin{enumerate}[(i)]
+  \item $\forall a \in M \colon a \leq s$ ($s$ ist obere Schranke)
+  \item \label{sec:1.3.4_b_ii} $\forall \epsilon > 0 \exists a \in M \colon a \geq s - \epsilon$
+  \end{enumerate}
+\item $s = \text{inf}M$ genau dann, wenn
+  \begin{enumerate}[(i)]
+  \item $\forall a \in M \colon a \geq s$ ($s$ ist untere Schranke)
+  \item $\forall \epsilon > 0 \exists a \in M \colon: a \leq s + \epsilon$
+  \end{enumerate}
+\item $m = \text{min}M$ existiert genau dann, wenn ein $s = \text{inf}M$ existiert und $s \in M$
+  (und dann ist $m = s$)
+\end{enumerate}
+
+\textbf{Beweis}:
+\begin{enumerate}[(a)]
+\item Klar, denn wenn $s \in M$ und $s'$ obere Schranke von $M$, dann ist $s \leq s'$
+\item folgt, indem man zeigt, dass die Negation von \hyperref[sec:1.3.1_d_ii]{Definition 1.3.1 (d) (ii)}
+  äquivalent zur Negation von Aussage \hyperref[sec:1.3.4_b_ii]{(b) (ii)} ist.
+\end{enumerate}
+
 \end{document}
