@@ -896,5 +896,186 @@ Aus dem \hyperref[axiom:10]{Trichotomiegesetz} folgt nun
   \Rightarrow b^2 = a
 \]
 
+\subsection{Natürliche Zahlen und vollständige Induktion}
+
+\subsubsection{Definition}
+
+Eine Teilmenge $M \subseteq \mathbb{R}$ heißt \emph{induktiv}, wenn
+
+\begin{enumerate}[(i)]
+\item $1 \in M$
+\item $\forall a \in M \colon a + 1 \in M$
+\end{enumerate}
+
+\subsubsection{Satz (und Definition)}
+
+Es gibt (genau) eine kleinste induktive Menge in den $\mathbb{R}$. Diese heißt Menge der \emph{natürlichen Zahlen}
+und wird mit $\mathbb{N}$ bezeichnet. \\
+
+\textbf{Beweis}:
+
+\[
+  \mathbb{N} \coloneqq \cup \{ M \in \mathbb{R} | M \text{ ist induktiv}\}
+\]
+
+Es gilt $1 \in \mathbb{N}$, da $1 \in m$ für jede induktive Menge.
+
+$\forall a \in \mathbb{N}$: $a \in M$ für jede induktive Menge $M \subseteq \mathbb{R}$
+
+\begin{align*}
+  &\Rightarrow \forall a \in \mathbb{N} \colon a + 1 \in M \text{ für jede induktive Menge $M \subseteq \mathbb{R}$} \\
+  &\Rightarrow \forall a \in \mathbb{N} \colon a + 1 \in \mathbb{N} \\
+\end{align*}
+
+Also ist $\mathbb{N}$ induktiv.
+
+\subsubsection{Korollar (Induktionsprinzip)}
+\label{sec:1.4.3}
+
+Wenn $M \subseteq \mathbb{N}$ induktiv ist, dann ist $M = \mathbb{N}$ \\
+
+\noindent
+\textbf{Für die Vorlesung ist die Konvention, dass die natürlichen Zahlen bei 1 beginnen!}
+
+\subsubsection{Satz (Eigenschaften der natürlichen Zahlen)}
+
+\fcolorbox{black}{light-gray}{\begin{minipage}{\textwidth}
+    \textbf{Trivial} \\
+
+    Etwas ist trivial, wenn es aus der Definition folgt.
+\end{minipage}}
+
+
+\begin{enumerate}[(a)]
+\item $1 \in \mathbb{N}$
+\item \label{sec:1.4.4_b} $\forall n \in \mathbb{N} \colon n \geq 1$
+\item $\forall m, n \in \mathbb{N} \colon m + n \in \mathbb{N} \land m * n \in \mathbb{N}$
+\item $\forall n in \mathbb{N} \colon n - 1 \in \mathbb{N}_0 \coloneqq \mathbb{N} \cup \{ 0 \}$
+\item $\forall m, n in \mathbb{N}, m > n \colon m - n \in \mathbb{N}$
+\item \label{sec:1.4.4_f} $\forall n in \mathbb{N} \colon$ Zwischen $n$ und $n + 1$ liegt keine weitere natürliche Zahl.
+  \[
+    \interval[open]{n}{n + 1} \cup \mathbb{N} = \emptyset
+  \]
+\end{enumerate}
+
+\textbf{Beweis}:
+\begin{enumerate}[(a)]
+\item trivial, 
+\item \label{sec:1.4.4_bew_b} $M \coloneqq \{ n \in \mathbb{N} | n \geq 1 \}$. \\
+  Dann gilt $1 \in M$. Falls $n \in M$, dann ist $m + 1 \in \mathbb{N}$ und $n + 1 \geq 1 + 1 \geq 1$, d.h.
+  $n + 1 \in M$. Damit ist $M \subseteq  \mathbb{N}$ induktiv.
+  \[
+    \overset{\hyperref[sec:1.4.3]{Induktionsprinzip}}\Rightarrow M = \mathbb{N}
+  \]
+\item Sei $n \in \mathbb{N}$ beliebig. Setze
+  \[
+    M \coloneqq \{ m \in \mathbb{N} | m + n \in \mathbb{N} \}
+  \]
+  Dann gilt $1 \in M$, weil $\mathbb{N}$ induktiv und $n \in \mathbb{N}$ ist.
+  Falls $m \in M$, dann ist $m + 1 \in \mathbb{N}$ und $n + (m + 1) = (n + m) + 1 \in \mathbb{N}$,
+  d.h. $m + 1 \in M$
+  Damit ist $M \subseteq  \mathbb{N}$ induktiv.
+  \[
+    \overset{\hyperref[sec:1.4.3]{Induktionsprinzip}}\Rightarrow M = \mathbb{N}
+  \]
+  Weil $n$ beliebig $\Rightarrow$ Behauptung. \\
+  Für das Produkt gilt der Beweis analog.
+\item \label{sec:1.4.4_bew_d} $M = \{ n \in \mathbb{N} | n - 1 \in \mathbb{N}_0 \}$ \\
+  Zeige, dass $M$ induktiv ist. (ToDo: Übung)
+\item \label{sec:1.4.4_bew_e} $M \coloneqq \{ n \in \mathbb{N} | \forall m \in \mathbb{N}, m > n \colon m - n \in \mathbb{N} \}$
+  Dann gilt $1 \in M$ wegen \hyperref[sec:1.4.4_bew_d]{Aussage (d)}. \\
+  Falls $n \in M$, dann gilt für alle $m > n + 1$
+  \[
+    m - (n + 1) = (m - n) - 1 \in \mathbb{N} \text{\hyperref[sec:1.4.3_bew_d]{ (wegen (d))}}
+  \]
+  Das heißt $n + 1 \in M \overset{\hyperref[sec:1.4.3]{Induktionsprinzip}}\rightsquigarrow M = \mathbb{N}$ 
+\item Beweis durch Widerspruch:\\
+  Angenommen es gibt $n, m \in \mathbb{N}$ mit $n < m < n + 1$.
+  Dann gilt wegen \hyperref[sec:1.4.4_bew_e]{(e)}, $m - n \in \mathbb{N}$ und $m - n < 1$.
+  Das ist ein Widerspruch zur \hyperref[sec:1.4.4_bew_b]{Aussage (b)}. Damit ist die Annahme falsch und das Gegenteil richtig.
+  Somit liegt zwischen $n$ und $n + 1$ keine weitere natürliche Zahl.
+\end{enumerate}
+
+\subsubsection{Satz (Wohlordnungssatz)}
+
+Jede nichtleere Teilmenge von $\mathbb{N}$ besitzt ein Minimum. \\
+
+\textbf{Beweis} (durch Widerspruch):
+
+Sei $M \subseteq \mathbb{R}$ nichtleer. Angenommen, $M$ besitzt kein Minimum.
+Sei $N \coloneqq \{ n \in \mathbb{N} | n \text{ ist untere Schranke von} M \}$.
+Dann gilt $1 \in N$ (Siehe \hyperref[sec:1.4.4_b]{Satz 1.4.4 (b)}).
+Fall $n \in N$, dann ist $n \leq m \forall m \in M$.
+Weil $M$ kein Minimum besitzt, gilt sogar $n < m \forall m \in M$.
+Damit ist auch $n + 1$ untere Schranke von $M$ (verwende \hyperref[sec:1.4.4_f]{Satz 1.4.4 (f)})
+und somit ist $n + 1 \in N$, dass heißt $N \subseteq \mathbb{N}$ ist induktiv.
+\[
+  \overset{\hyperref[sec:1.4.3]{Induktionsprinzip}}\Rightarrow N = \mathbb{N}
+\]
+Also ist jede natürliche Zahl untere Schranke von $M \ne \emptyset$.
+Das ist ein Widerspruch, somit ist unsere Annahme falsch und $M$ besitzt ein Minimum.
+
+\subsubsection{Satz}
+\label{sec:1.4.6}
+Die Menge der natürlichen Zahlen $\mathbb{N}$ ist unbeschränkt.
+
+\textbf{Beweis} (durch Widerspruch): \\
+
+Angenommen, $\mathbb{N}$ ist nach oben beschränkt. Da $\mathbb{N} \ne \emptyset$ ($1 \in \mathbb{N}$),
+existiert nach \hyperref[axiom:13]{Axiom (A13)}
+
+\[
+  s \coloneqq \text{sup} N
+\]
+
+Nach Charakterisierung des Supremums existiert zu $\epsilon = \frac{1}{2} = \frac{1}{1 + 1}$
+ein $n \in \mathbb{N}$ mit $n + \epsilon \geq s$
+
+Dann gilt aber auch
+
+\begin{align*}
+  n + 1 &= \underbrace{n + \frac{1}{2}}_{\geq s} + \underbrace{\frac{1}{2}}_{> 0} \\
+        &> s
+\end{align*}
+
+Dies ist ein Widerspruch dazu, dass $s$ obere Schranke von $\mathbb{N}$ ist und damit ist $\mathbb{N}$
+nach oben unbeschränkt.
+
+\subsubsection{Satz (ARCHIMEDISCHES Prinzip)}
+\label{sec:1.4.7}
+
+Zu jeder reellen Zahl $a \in \mathbb{R}$ gibt es eine natürliche Zahl $n \in \mathbb{N}$ mit $a \leq n$. \\
+
+\textbf{Beweis}: folgt aus dem \hyperref[sec:1.4.6]{Satz 1.4.6}
+
+\subsubsection{Korollar}
+
+Zu jeder reellen Zahl $\epsilon > 0$ gibt es eine natürliche Zahl $n \in \mathbb{N}$ mit
+\[
+  0 < \frac{1}{n} < \epsilon 
+\]
+
+\textbf{Beweis}:
+
+\[
+  \text{\hyperref[sec:1.4.7]{Archimedes}} \Rightarrow \exists n \in \mathbb{N} \colon n > \frac{1}{\epsilon} > 0
+\]
+sowie Folgerungen aus den \hyperref[sec:1.2.3]{Anordnungsaxiomen}.
+
+\subsubsection{Korollar}
+
+Für alle reellen Zahlen $a, b \in \mathbb{R}, a < b$ gibt es eine rationale Zahl $x$
+und eine irrationale Zahl $y$ mit
+
+\[
+  x, y \in \interval[open]{a}{b}
+\]
+
+\begin{align*}
+  \mathbb{N}_0                    &\coloneqq \mathbb{N} \cup \{ 0 \} \\
+  \mathbb{Z}                      &\coloneqq \{ a \in \mathbb{R} | a \in \mathbb{N} \lor a = 0 \lor -a \in \mathbb{N} \} \\
+  \mathbb{Q}                      &\coloneqq \{ a \in \mathbb{R} | \exists p, q \in \mathbb{Z}, q \ne 0, a = \frac{p}{q} \} \\
+  \mathbb{R} \setminus \mathbb{Q} &\rightsquigarrow \text{ Menge der irrationalen Zahlen} \\
+\end{align*}
 
 \end{document}
