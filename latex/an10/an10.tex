@@ -59,41 +59,41 @@ Auf der Menge der reellen Zahlen $\mathbb{R}$ sind die folgenden beiden Verknüp
 Diese beiden Verknüpfungen sind so definiert, dass folgende Eigenschaften gelten:
 
 \begin{enumerate}[label=(A\arabic*)]
-\item \textbf{Assoziativgesetz}
+\item \label{axiom:1} \textbf{Assoziativgesetz}
   \[
     \forall a,b,c \in \mathbb{R} \colon (a + b) + c = a + (b + c)
   \]
-\item \textbf{Existenz eines neutralen Elements}
+\item \label{axiom:2} \textbf{Existenz eines neutralen Elements}
   \[
     \exists 0 \in \mathbb{R} \forall a \in \mathbb{R} \colon a + 0 = a
   \]
   \textbf{Achtung!!} hier ist nicht unbedingt die Zahl 0 gemeint.
-\item \textbf{Existenz eines Inversen}
+\item \label{axiom:3} \textbf{Existenz eines Inversen}
   \[
     \forall a \in \mathbb{R} \exists -a \in \mathbb{R} \colon a + (-a) = 0
   \]
-\item \textbf{Kommutativgesetz}
+\item \label{axiom:4} \textbf{Kommutativgesetz}
   \[
     \forall a,b \in \mathbb{R} \colon a + b = b + a
   \]
-\item \textbf{Assoziativgesetz}
+\item \label{axiom:5} \textbf{Assoziativgesetz}
   \[
     \forall a,b,c \in \mathbb{R} \colon (a * b) * c = a * (b * c)
   \]
-\item \textbf{Existenz eines neutralen Elements}
+\item \label{axiom:6} \textbf{Existenz eines neutralen Elements}
   \[
     \exists 1 \in \mathbb{R} \forall a \in \mathbb{R} \colon a * 1 = a
   \]
   \textbf{Achtung!!} hier ist nicht unbedingt die Zahl 1 gemeint.
-\item \textbf{Existenz eines Inversen}
+\item \label{axiom:7} \textbf{Existenz eines Inversen}
   \[
     \forall a \in \mathbb{R}, a \ne 0 \exists a^{-1} \in \mathbb{R} \colon a * a^{-1} = 1
   \]
-\item \textbf{Kommutativgesetz}
+\item \label{axiom:8} \textbf{Kommutativgesetz}
   \[
     \forall a,b \in \mathbb{R} \colon a * b = b * a
   \]
-\item \textbf{Distributivgesetz}
+\item \label{axiom:9} \textbf{Distributivgesetz}
   \[
     \forall a,b,c \in \mathbb{R} \colon (a + b) * c = a * c + b * c
   \]
@@ -388,12 +388,12 @@ Eigenschaften:
 \begin{enumerate}[label=(A\arabic*)]
 %% Fortführung der Nummerierung der Axiome
 \setcounter{enumi}{9}
-\item \textbf{Trichotomiegesetz}: Für jede reelle Zahl $a$ gilt genau eine der folgenden Aussagen:
+\item \label{axiom:10} \textbf{Trichotomiegesetz}: Für jede reelle Zahl $a$ gilt genau eine der folgenden Aussagen:
   \[
     a = 0 \text{ oder } a \in P \text{ oder } -a \in P
   \]
-\item $\forall a,b \in P \colon a + b \in P$
-\item $\forall a,b \in P \colon a * b \in P$
+\item \label{axiom:11} $\forall a,b \in P \colon a + b \in P$
+\item \label{axiom:12} $\forall a,b \in P \colon a * b \in P$
 \end{enumerate}
 
 \subsubsection{Definition}
@@ -418,6 +418,7 @@ gelten. Genau so ist auch $F_3$ kein angeordneter Körper.
 \end{align*}
 
 \subsubsection{Lemma Folgerungen aus den Anordnungsaxiomen}
+\label{sec:1.2.3}
 
 Diese gelten in jedem angeordneten Körper
 
@@ -436,7 +437,7 @@ Diese gelten in jedem angeordneten Körper
   \[
     a + c < b + c
   \]
-\item Für $a < b$ und $c < d$ gilt
+\item \label{sec:1.2.3_d} Für $a < b$ und $c < d$ gilt
   \[
     a + c < b + d
   \]
@@ -835,5 +836,65 @@ Sei $K$ ein angeordneter Körper und $M \subseteq K$ eine nichtleere Teilmenge:
 \item folgt, indem man zeigt, dass die Negation von \hyperref[sec:1.3.1_d_ii]{Definition 1.3.1 (d) (ii)}
   äquivalent zur Negation von Aussage \hyperref[sec:1.3.4_b_ii]{(b) (ii)} ist.
 \end{enumerate}
+
+\begin{enumerate}[label=(A\arabic*)]
+%% Fortführung der Nummerierung der Axiome
+\setcounter{enumi}{12}
+\item \label{axiom:13} \textbf{Vollständigkeitsaxiom} In $\mathbb{R}$ besitzt jede nichtleere, nach oben beschränkte Menge ein Supremum.
+\end{enumerate}
+
+Wir sagen, dass $\mathbb{R}$ ein \emph{vollständig angeordneter Körper} ist. Die rationalen Zahlen sind nicht
+vollständig angeordnet.
+
+Die Menge der reellen Zahlen ist durch (A1) - (A13) ``eindeutig'' (bis auf ``Isomorphie'') bestimmt..
+
+\subsubsection{Satz (Existenz und Eindeutigkeit der Quadratwurzel)}
+
+Zu jeder reellen Zahl $a \geq 0$ gibt es genau eine reelle Zahl $b \geq 0$, so dass $b^2 = a$.
+
+
+\noindent
+\textbf{Beweis}:
+
+Eindeutigkeit: Seien $b, c \geq 0$, so dass $b^2 = c^2 = a$. Angenommen, $b \ne c$. Ohne Beschränkung können wir dann
+annehmen, dass $0 \leq b < c$. Dann folgt aus \hyperref[sec:1.2.3_d]{Satz 1.2.3 (d)}
+\[
+  b^2 < c^2
+\]
+
+und das ist ein Widerspruch zu $b^2 = a = c^2$.
+Also ist die Annahme $b \ne c$ falsch, d.h. es gilt  $b = c$. \\
+
+Existenz: Sei $M = \{ x \in \mathbb{R} | 0 \leq x^2 \text{ und } x^2 \leq a \}$. Dann ist $M$ nichtleer,
+denn $0 \in M$.
+Außerdem ist $a + 1$ eine obere Schranke von $M$, d.h. $M$ ist nach oben beschränkt.
+
+Nach \hyperref[axiom:13]{(A13)} besitzt $M$ ein Supremum. Sei $b \coloneqq \text{sup}M$.
+Wir zeigen, dass $b^2 = a$.
+
+\begin{enumerate}[1.]
+\item Annahme $b^2 > a$. Dann gilt $b > 0$ und
+  \begin{align*}
+    (b - \epsilon)^2 &= b^2 + 2b\epsilon + \epsilon^2 \\
+                     &> b^2 - 2b\epsilon = a\\
+  \end{align*}
+  für $\epsilon = \frac{b^2 - a}{2b} > 0$.
+  Also ist $b - \epsilon > c$ für alle $c \in M$, d.h. $b - \epsilon$ ist ebenfalls (wie $b$) obere
+  Schranke von $M$, ein Widerspruch dazu, dass $b$ kleinste obere Schranke ist.
+\item Annahme $b^^2 < a$. Dann gilt
+  \begin{align*}
+    (b + \epsilon)^2 &= b^2 + \epsilon(2b + \epsilon) \\
+    \overset{\epsilon \leq 1}&{\leq} b^2 + \epsilon(2b + \epsilon) \\
+                     &\leq a
+  \end{align*}
+  für $\epsilon = \frac{a - b^2}{2b + 1} > 0$ und $b \geq 0$ ($b$ ist obere Schranke von $M$ und $0 \in M$).
+  Also ist $b + \epsilon \in M$, ein Widerspruch dazu, dass $b$ obere Schranke von $M$ ist.
+\end{enumerate}
+
+Aus dem \hyperref[axiom:10]{Trichotomiegesetz} folgt nun
+\[
+  \Rightarrow b^2 = a
+\]
+
 
 \end{document}
