@@ -1,7 +1,7 @@
 OUTPUT_DIRECTORY=_site
 
-PDFLATEX=pdflatex
-PDFLATEX_OPTS=-output-directory $(OUTPUT_DIRECTORY)
+LATEXMK=latexmk
+LATEXMK_OPTS=-pdf -quiet
 
 HTML_FILES = \
 	$(OUTPUT_DIRECTORY)/index.html
@@ -49,11 +49,11 @@ $(OUTPUT_DIRECTORY)/%.html: html/%.html
 	cp $< $@
 
 $(OUTPUT_DIRECTORY)/pdf/%.pdf: latex/%.tex
-	$(PDFLATEX) $<
+	$(LATEXMK) $(LATEXMK_OPTS) $< || (cat $$(basename $*.log) && exit 1) 
 	cp $$(basename $*.pdf) $(OUTPUT_DIRECTORY)/pdf/$*.pdf
 
 $(OUTPUT_DIRECTORY)/pdf/pr10/homework/%.pdf: latex/pr10/homework/%/homework.tex
-	$(PDFLATEX) $<
+	$(LATEXMK) $(LATEXMK_OPTS) $<
 	cp homework.pdf $(OUTPUT_DIRECTORY)/pdf/pr10/homework/$*.pdf
 
 

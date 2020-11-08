@@ -3,6 +3,8 @@ _site
 \#*\#
 *~
 *.aux
+*.fdb_latexmk
+*.fls
 *.log
 *.pdf
 *.out
