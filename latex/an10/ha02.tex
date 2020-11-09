@@ -12,17 +12,17 @@
 \intervalconfig{
   soft open fences
 }
-
 \usepackage{mathtools}
+\usepackage{pgfplots}
 \usepackage{physics}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usepackage{xcolor}
 \definecolor{light-gray}{gray}{.9}
 
-\author{Lisa Würzebesser (4981474) HA-02 \\ Lukas Kamratzki (3752330) HA-04 \\ Karsten Lehmann (4935758) HA-01}
-\date{07.11.2020}
-\title{Hausaufgabe 01 Analysis - Grundlegende Konzepte}
+\author{Karsten Lehmann}
+\date{09.11.2020}
+\title{Hausaufgabe 02 Analysis - Grundlegende Konzepte}
 
 \begin{document}
 
@@ -150,6 +150,125 @@
   Aus diesen beiden Fällen ergibt sich, dass $ac \geq bc \forall a \leq b \land c < 0$ 
 \end{enumerate}
 
+\section*{Hausaufgabe 2}
 
+\begin{enumerate}[a)]
+%% a)
+\item Stellen Sie $A = \{ x \in \mathbb{R} | 2 < x \leq 4 \}$ als Intervall dar.
+  \[
+    A = \interval[open left]{2}{4}
+  \]
 
+%% b)
+\item Stellen Sie $B = \{ x \in \mathbb{R} | x^2 - 4x + 3 > 0 \}$ als Intervall dar.
+  \begin{align*}
+    x_{1|2} &= -\frac{(-4)}{2} \pm \sqrt{\frac{4^2}{4} - 3} \\
+            &= 2 \pm \sqrt{\frac{16}{4} - 3} \\
+            &= 2 \pm \sqrt{\frac{16}{4} - \frac{12}{4}} \\
+            &= 2 \pm \sqrt{\frac{4}{4}} \\
+            &= 2 \pm 1 \\
+  \end{align*}
+
+  \[
+    x_1 = 1, x_2 = 3
+  \]
+
+  \begin{tikzpicture}
+    \begin{axis}[
+        axis x line=center,
+        axis y line=center,
+        domain=-4:8,
+        grid=major,
+        samples=100,
+        xlabel={x Achse},
+        xmax=8,
+        xmin=-4,
+        ylabel={y Achse},
+        ymax=16,
+        ymin=-10,
+      ]
+      \addplot[black, thick](x,x * x - 4 * x - 3);
+    \end{axis}
+  \end{tikzpicture}
+  
+  \[
+    B = \interval[open]{-\infty}{1} \cup \interval[open]{3}{\infty}
+  \]
+
+%% c)
+\item Stelle Sie $C = \{ x \in \mathbb{R} | \frac{2x + 1}{x - 1} \leq x - 1 \}$ als Intervall dar.
+  \begin{align*}
+    \frac{2x + 1}{x - 1} &\leq x - 1        &&| * (x - 1), \text{ $x$ ist für $1$ nicht definiert} \\
+                  2x + 1 &\leq (x - 1)^2 \\
+                  2x + 1 &\leq x^2 - 2x + 1 &&| -(2x + 1)\\
+                       0 &\leq x^2 - 4x \\
+  \end{align*}
+  \begin{align*}
+    x_{1|2} &= -\frac{(-4)}{2} \pm \sqrt{\frac{4^2}{4} - 0} \\
+            &= 2 \pm \sqrt{4} \\
+            &= 2 \pm 2 \\
+  \end{align*}
+  \[
+    x_1 = 0, x_2 = 4
+  \]
+
+  \begin{tikzpicture}
+    \begin{axis}[
+        axis x line=center,
+        axis y line=center,
+        domain=-4:8,
+        grid=major,
+        restrict y to domain=-10:20,
+        samples=100,
+        xlabel={x Achse},
+        xmax=8,
+        xmin=-4,
+        ylabel={y Achse},
+        ymax=16,
+        ymin=-6,
+      ]
+      \addplot[blue, thick] { x - 1 };
+      \addplot[red!50, thick] {(2*x + 1) / (x - 1) };
+    \end{axis}
+  \end{tikzpicture}
+  \[
+    C = \interval[open right]{0}{1} \cup \interval[open right]{4}{+\infty}
+  \]
+
+%% d)
+\item
+  \begin{align*}
+    A \cup B        &= \interval[open left]{2}{4} \cup \interval[open]{3}{+\infty} \cup \interval[open]{-\infty}{1} \\
+                    &= \interval[open]{-\infty}{1} \cup \interval[open]{2}{\infty} \\
+    A \cap C        &= \{ 4 \} \\
+    A \cup B \cup C &= \interval[open]{-\infty}{1} \cup \interval[open]{2}{\infty} \\
+    A \cap B \cap C &= \{ 4 \} \\
+  \end{align*}
+\end{enumerate}
+
+\section*{Hausaufgabe 3}
+
+\begin{enumerate}[a)]
+%% a)
+\item $A \coloneqq \{ \frac{x}{x + 1} | x \in \mathbb{R}, x > -1 \}$
+  \begin{align*}
+    \text{inf}(A) &= -1 \\
+    \text{sup}(A) &= 1 \\
+  \end{align*}
+  \begin{itemize}
+  \item $A$ hat kein Minimum, da das Infimum von $A$ nicht in der Menge liegt 
+  \item $A$ hat kein Minimum, da das Supremum von $A$ nicht in der Menge liegt 
+  \end{itemize}
+%% b)
+\item $B \coloneqq \{ 1 + 2 * (-1)^n + 3 * (-1)^{\frac{n*(n - 1)}{2}} | n \in \mathbb{N}\}$
+
+  \[
+    B \coloneqq \{ 2, 0, -4, 6 \} 
+  \]
+  \begin{itemize}
+  \item es existiert ein Minimum, da $\text{inf}(B) = -4$ in der Menge liegt 
+  \item es existiert ein Minimum, da $\text{sup}(B) = 6$ in der Menge liegt 
+  \end{itemize}
+
+\end{enumerate}
 \end{document}
