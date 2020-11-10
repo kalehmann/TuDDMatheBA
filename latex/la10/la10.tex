@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
 \usepackage{genealogytree}
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
@@ -293,10 +294,152 @@ kartesischen Produkt auf die erste Komponente ist so definiert:
 
 \textbf{Definition}: Eine Abbildung $f:X \to Y$ heißt
 
-\begin{enumerate}
+\begin{enumerate}[(i)]
 \item injektiv, falls für alle $x_1 \ne x_2 \in X$ gilt: $f(x_1) \ne f(x_2)$
 \item surjektiv, falls für jedes $y \in Y$ ein $x \in X$ existiert mit $f(x) = y$
 \item bijektiv, falls sie injektiv und surjektiv ist
 \end{enumerate}
+
+\textbf{Definition}: Seien $X, Y$ Mengen, $A \subseteq X, B \subseteq Y, f \colon X \to Y$ eine Abbildung.
+Das Bild (die Bildmenge) von $A$ unter $f$ wird definiert als
+
+\[
+  f(A) \coloneqq \{ f(a) | a \in A\}
+\]
+
+Das Urbild (die Urbildmenge) von $B$ unter $f$ wird definiert als
+
+\[
+  f^{-1}(B) \coloneqq \{ x \in X | f(x) \in B \}
+\]
+
+Wenn $B = \{ b \}$ nur aus einem Element besteht, schreibt man auch $f^{-1}(b)$. \\
+
+Mann kann dann Injektivität und Surjektivität so umformulieren: \\
+\begin{itemize}
+\item $f \colon X \to Y$ ist surjektiv genau dann, wenn für jedes $y \in Y$ die Urbildmenge $f^{-1}(y)$ nicht leer ist. \\ 
+\item $f \colon X \to Y$ ist injektiv genau dann, wenn jedes $y \in Y$ höchstens ein Urbild hat (die Urbildmenge $f^{-1}(y)$ ist leer
+  oder besteht aus einem Element) \\
+\end{itemize}
+
+Daher gilt auch: $f \colon X \to Y$ ist bijektiv genau dann, wenn jedes Element $y \in Y$ genau ein Urbild hat.
+
+\subsection*{Quantoren}
+
+\fcolorbox{black}{light-gray}{
+  \begin{minipage}{\textwidth}
+    \textbf{Allquantor} \\
+
+    Notation: $\forall$ = ``für alle''
+  \end{minipage}
+}
+\vspace{3mm} \\
+\fcolorbox{black}{light-gray}{
+  \begin{minipage}{\textwidth}
+    \textbf{Existenzquantor} \\
+
+    Notation: $\exists$ = ``es existiert mindestens ein''
+  \end{minipage}
+}
+\vspace{3mm} \\
+Die Bedingung für Surjektivität schreibt man dann zum Beispiel so:
+
+\[
+  \forall y \in Y \exists x \in X \colon f(x) = y
+\]
+
+Es gibt folgende Negationsregeln für Aussagen mit Quantoren:
+
+\[
+  \neg (\forall x \in X P(x)) \iff \exists x \in X \colon \neg P(x)
+\]
+
+Oder aussgeschrieben: ``$P(x)$ gilt nicht für alle $x$ genau dann, wenn ein $x \in X$ existiert, für welches
+$P(x)$ nicht zutrifft''
+
+\[
+  \neg (\exists x \in X P(x)) \iff \forall x \in X \colon \neg P(x)
+\]
+
+Oder ausgeschrieben: ``es existiert kein $x$ für welches $P(x)$ gilt genau dann, wenn für alle $x \in X P(x)$
+falsch ist''. \\
+
+Die Quantoren sollen nur die benutzt werden, wo sie die Lesbarkeit durch Abkürzung erhöhen.
+Im Fließtext ist deren Verwendung kontraindiziert. \\
+
+Die Nicht-Surjektivität von einer Abbildung $f \colon X \to Y$ können wir jetzt schnell aufschreiben:
+
+\[
+  \exists y \in Y \colon \forall f(x) \ne y
+\]
+
+\textbf{Defintition}: Seien $f \colon X \to Y$ und $g \colon Y \to Z$ zwei Abbildungen. Die Verknüpfung
+$g \circ f \colon X \to Z$ ist die Abbildung, die durch die Vorschrift $x \mapsto g(f(x))$ definiert ist. \\
+
+\emph{Beispiel}:
+
+\begin{align*}
+  f \colon \mathbb{R} \to \mathbb{R} \\
+  x \mapsto x + 1 \\
+  g \colon \mathbb{R} \to \mathbb{R} \\
+  x \mapsto x^2 \\
+  g \circ f = \colon \mathbb{R} \to \mathbb{R}, x \mapsto (x + 1)^2 \\
+  f \circ g = \colon \mathbb{R} \to \mathbb{R}, x \mapsto x^2 + 1 \\
+\end{align*}
+
+Man sieht, im Allgemeinen $g \circ f \ne f \circ g$.
+
+\[
+  X \overset{f}\to Y \overset{g}\to Z \overset{h}\to W
+\]
+
+\textbf{Lemma} Seien $f \colon X \to Y, g \colon Y \to Z, h \colon Z \to W$ Abbildungen. Dann gilt
+$(h \circ g) \circ f = h \circ (g \circ f)$ (die Verknüpfung ist assoziativ) \\
+
+\emph{Beweis}: Für jedes $x \in X$ gilt
+
+\[
+  ((h \circ g) \circ f)(x) = (h \circ g)(f(x)) = h(g(f(x))) = h((g \circ f)(x)) = (h \circ (g \circ f))(x)
+\]
+
+\textbf{Lemma} Eine Abbildung $f \colon X \to Y$ ist genau dann bijektiv, wenn eine Abbildung $g \colon Y \to X$
+existiert mit $g \circ f = \text{id}_x, f \circ g = \text{id}_y$
+
+\emph{Vorbereitung}: umschreiben als \\
+(Eine Abbildung $f \colon X \to Y$ ist bijektiv) $\iff$ (es existiert eine Abbildung $g \colon Y \to X$
+mit $g \circ f = \text{id}_x, f \circ g = \text{id}_y$) \\
+
+\emph{Beweis} ( $\Rightarrow$ ): Sei $f \colon X \to Y$ bijektiv. Das heißt, dass nach obiger Überlegung über Urbilder,
+dass jedes Element $y \in Y$ genau ein Urbild in $X$ unter $f$ hat, welches wir durch $x_y$ bezeichnen.
+Wir definieren dann die Abbildung $g \colon Y \to X$ durch $y \mapsto x_y$.
+
+\[
+  (g \circ f)(x) = g(f(x)) = x_{f(x)} = x
+\]
+(nach Definition von $x_y$ gilt $x_{f(x)} = x$). Ferner gilt
+
+\[
+  (f \circ g)(y) = f(g(y)) = f(x_y) = y
+\]
+(nach Definition von $x_y$ gilt $f(x_y) = y$). Also gilt $\Rightarrow$. \\
+
+\emph{Beweis} ( $\Leftarrow$ ): Angenommen, es existiert $g: Y \to X$ mit $g \circ f = id_x, f \circ g = id_y$.
+Wir müssen zeigen, dass $f$ injektiv und surjektiv ist.\\
+
+Zur Surjektivität: sei $y \in Y$ beliebig; setze $x \coloneqq g(y)$.
+Nun gilt $f(x) = f(g(y)) = (f \circ g)(y) = id_y(y) = y$. Somit ist $f$ surjektiv. \\
+
+Zur Injektivität: es muss gezeigt werden, dass aus $f(x_1) = f(x_2)$ folgt: $x_1 = x_2$ (hier haben wir
+eine Kontraposition benutzt, um eine äquivalente ``leichter zu beweisende'' Aussage zu bekommen).
+Sei $x_1, x_2 \in X$ beliebig mit $f(x_1) = f(x_2)$.
+
+Wende $g$ and: $g(f(x_1)) = g(f(x_2))$. Es gilt aber $g \circ f = id_x$, also folgt $x_1 = x_2$. Somit ist $f$ injektiv. \\
+
+\textbf{Alternativer Beweis}: Widerspruchsbeweis \\
+
+Zur Injektivität: wir müssen zeigen, dass aus $x_1 \ne x_2$ folgt: $f(x_1) \ne f(x_2)$. Nehmen wir an, das wäre falsch:
+dann existieren zwei Elemente $x_1, x_2 \in X$ mit $x_1 \ne x_2$, aber $f(x_1) = f(x_2)$.
+Es gilt aber $g \circ f = id_x$, also folgt $x_1 = x_2$. Dies widerspricht aber der Annahme, dass $x_1 \ne x_2$.
+Somit ist die Annahme ``$f$ ist nicht injektiv'' falsch und die Injektivität von $f$ folgt.
 
 \end{document}
