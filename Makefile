@@ -52,11 +52,12 @@ $(OUTPUT_DIRECTORY)/%.html: html/%.html
 $(OUTPUT_DIRECTORY)/pdf/%.pdf: latex/%.tex
 	$(LATEXMK) $(LATEXMK_OPTS) $< || (cat $$(basename $*.log) && exit 1) 
 	cp $$(basename $*.pdf) $(OUTPUT_DIRECTORY)/pdf/$*.pdf
+	$(LATEXMK) -C $<
 
 $(OUTPUT_DIRECTORY)/pdf/pr10/homework/%.pdf: latex/pr10/homework/%/homework.tex
 	$(LATEXMK) $(LATEXMK_OPTS) $<
 	cp homework.pdf $(OUTPUT_DIRECTORY)/pdf/pr10/homework/$*.pdf
-
+	$(LATEXMK) -C $<
 
 clean:
 	rm -rf $(OUTPUT_DIRECTORY)
