@@ -1,0 +1,126 @@
+\documentclass{article}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{rotating}
+\usepackage{struktex}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{.9}
+
+\author{
+  Albina Oscherowa (4694823) \\
+  Karsten Lehmann (4935758)
+}
+\date{WiSe 2020}
+\title{Hausaufgaben Programmieren - Grundlegende Konzepte (PR10)}
+
+\begin{document}
+\maketitle
+
+\newpage
+
+\section*{Aufgabe 3}
+
+\begin{struktogramm}(100, 100)
+  \assign{Eingabe : Kredithöhe, Zinssatz}
+  \assign{Zinsen := Kredithöhe * Zinssatz / 100}
+  \until{Wiederhole bis Rate > Zinsen}
+    \assign{Eingabe: rate}
+  \untilend
+  \assign{Restschuld := Kredithöhe}  
+  \while[1]{Solange Restschuld > 0}  
+    \assign{Laufzeit := Laufzeit + 1}  
+    \assign{Zinsen := Restschuld * Zinssatz / 100}
+    \assign{Restschuld := Restschuld + Zinsen - Rate}
+    \assign{Zinssumme := Zinssumme + Zinsen}
+  \whileend
+  \ifthenelse{3}{3} {Restschuld < 0} {Ja}{Nein}
+    \assign{Rate := Rate + Restschuld}
+    \assign{Ausgabe: Rate}
+    \change
+  \ifend
+  \assign{Ausgabe: Laufzeit, Zinssumme}  
+\end{struktogramm}
+
+\section*{Aufgabe 4}
+
+\begin{struktogramm}(100, 100)
+  \until{Wiederhole bis n > 0}
+    \assign{Eingabe: n}
+  \untilend
+  
+  \assign{Maximum := 0}
+  \assign{Minimum := MAX\_INT}
+  \assign{Summe := 0}
+  \assign{Mittelwert := 0}
+  \assign{Maximum := 0}
+
+  \while[1]{Solange i < n}
+    \assign{i = i + 1}
+    \assign{Eingabe: x}
+    \ifthenelse{3}{3} {x $>$ Maximum} {Ja} {Nein}
+      \assign{Maximum = x}
+      \change
+    \ifend
+    \ifthenelse{3}{3} {x $<$ Minimum} {Ja} {Nein}
+      \assign{Minimum = x}
+      \change
+    \ifend
+    \assign{Summe := Summe + x}
+    \assign{Mittelwert := Summe / i}
+  \whileend
+  \assign{Ausgabe der Ergebnisse}
+\end{struktogramm}
+
+\section*{Aufgabe 5}
+
+\begin{struktogramm}(150, 100)
+  \assign{weiterspielen := wahr}
+  \while[1]{solange weiterspielen}
+    \assign{Ausgabe der Spielanleitung}
+    \until{Solange bis l $<$ r}
+      \assign{Eingabe: l, r}
+    \untilend
+    \assign{i := 0}
+    \assign{erraten := falsch}
+    \while[1]{solange nicht erraten}
+      \assign{z := (l + r) / 2}
+      \assign{Ausgabe: z}
+      \assign{i := i + 1}
+      \until{Solange bis c = "$<$" oder c = "$>$" oder c = "="}
+        \assign{Eingabe: c}
+      \untilend
+      \ifthenelse{2}{4} {c = "="} {Ja} {Nein}
+        \assign{erraten := wahr}
+        \assign{Ausgabe: Zahl der Versuche i}
+        \assign{Ausgabe: Frage nach weiterspielen}
+        \until{Solange bis c = "y" oder c = "n"}
+          \assign{Eingabe: c}
+        \untilend
+        \ifthenelse{3}{3} {c = "n"} {Ja} {Nein}
+          \assign{Weiterspielen := Falsch}
+        \change
+        \ifend
+        \change
+        \ifthenelse {2} {5} {r - l $<$ 2} {Ja} {Nein}
+          \assign{Ausgabe Logikfehler}
+          \assign{Programm beenden}
+        \change
+          \ifthenelse {3}{3} {(r - l) = 2 und c = "$>$"} {Ja} {Nein}
+            \assign{r = l}
+          \change
+            \ifthenelse {1}{1} {c = "$>$"} {ja} {nein}
+              \assign{l = z}
+            \change
+              \assign{r = z}
+            \ifend
+          \ifend
+        \ifend
+      \ifend
+    \whileend
+  \whileend
+\end{struktogramm}
+
+\end{document}
