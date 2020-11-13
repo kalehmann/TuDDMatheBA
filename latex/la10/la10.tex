@@ -7,6 +7,7 @@
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
+\usepackage{physics}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usepackage{xcolor}
@@ -440,6 +441,229 @@ Wende $g$ and: $g(f(x_1)) = g(f(x_2))$. Es gilt aber $g \circ f = id_x$, also fo
 Zur Injektivität: wir müssen zeigen, dass aus $x_1 \ne x_2$ folgt: $f(x_1) \ne f(x_2)$. Nehmen wir an, das wäre falsch:
 dann existieren zwei Elemente $x_1, x_2 \in X$ mit $x_1 \ne x_2$, aber $f(x_1) = f(x_2)$.
 Es gilt aber $g \circ f = id_x$, also folgt $x_1 = x_2$. Dies widerspricht aber der Annahme, dass $x_1 \ne x_2$.
-Somit ist die Annahme ``$f$ ist nicht injektiv'' falsch und die Injektivität von $f$ folgt.
+Somit ist die Annahme ``$f$ ist nicht injektiv'' falsch und die Injektivität von $f$ folgt. \\
+
+\textbf{Definition}: Sei $f \colon X \to Y$ eine bijektive Abbildung. Die Abbildung $g$ aus dem obigen Lemma
+heißt \emph{inverse Abbildung zu $f$} und wird durch $f^{-1}$ bezeichnet. \\
+
+\[
+  \underbrace{
+    \overbrace{
+      X
+        \underset{\underset{f^-1}\longleftarrow}{\overset{f}\to}
+      Y
+        \underset{\underset{g^-1}\longleftarrow}{\overset{g}\to}
+      Z
+    }^{\overset{f \circ g}\longrightarrow}
+  }_{\underset{f^-1 \circ g^-1}\longleftarrow}
+\]
+
+\textbf{Korollar}: Die Verknüpfung zweier bijektiver Abbildungen $f \colon X \to Y$ und $g \colon Y \to Y$
+ist bijektiv und es gilt
+
+\[
+  (g \circ f)^{-1} = f^{-1} \circ g^{-1}
+\]
+
+\emph{Beweis}: Seien $f, g$ bijektiv; nach dem Lemma existieren inverse Abbildungen $f^{-1}, g^{-1}$.
+Nun gilt:
+
+\[
+  f^{-1} \circ g^{-1} \circ (g \circ f) = f^{-1} \circ \text{id}_y \circ f = f^{-1} \circ f = \text{id}_x
+\]
+
+\[
+  (g \circ f) \circ f^{-1} \circ g^{-1} = g \circ \text{id}_y \circ g^{-1} = g \circ g^{-1} = \text{id}_y
+\]
+
+Also erfüllt $f^{-1} \circ g^{-1}$ die Aussagen des Lemmas und daher ist $(g \circ f)$ bijektiv.
+
+\subsubsection*{Kardinalität}
+
+\textbf{Definition}: Die Anzahl der Element einer Endlichen Menge $X$ heißt Kardinalität oder Mächtigkeit
+von $X$. Bezeichnung $\abs{X} \in \mathbb{N}$.
+
+Die spannende Frage ist nun, wie man die Kardinalität von unendlichen Mengen definiert.
+Georg Cantor hat hier bereits erkannt: Die Menge der reellen Zahlen $\mathbb{R}$ hat mehr Elemente als
+die Menge der natürlichen Zahlen $\mathbb{N}$. \\
+
+\textbf{Definition}: Eine Menge $X$ heißt abzählbar unendlich, wenn es eine Bijektion
+$f \colon \mathbb{N} \to X$ gibt.  \\
+
+\textbf{Lemma} Jede unendliche Menge besitzt eine abzählbar unendliche Teilmenge. \\
+
+\emph{Beweis}:  Wenn $x_1, x_2, \ldots \in X$ paarweise verschiedene Elemente sind und
+$X' = \{ x_n | n \in \mathbb{N} \}$ so ist die Abbildung
+$f \colon \mathbb{N} \to X' \subseteq{X}, n \mapsto x_n$ eine Bijektion: sie ist
+offensichtlich surjektiv, aber da die Elemente paarweise verschieden sind, ist sie auch injektiv. \\
+
+\textbf{Definition}: Eine unendliche Menge, die nicht abzählbar ist, heißt überabzählbar. \\
+
+\textbf{Satz} (Cantor): Die Menge der reellen Zahlen ist überabzählbar: es gibt keine Bijektion
+$f \colon \mathbb{N} \to \mathbb{R}$
+
+\fcolorbox{black}{light-gray}{
+  \begin{minipage}{\textwidth}
+    \textbf{Homomorphismus} von altgriechisch ``gleiche Form'' oder ``ähnliche Form'' \\
+
+    Ein Homomorphismus bildet Elemente aus einer Menge in eine andere so ab, so dass sich ihre
+    Bilder hinsichtlich der Struktur wie die Urbilder verhalten.
+  \end{minipage}
+}
+\vspace{1mm} \\
+
+Seien nun $X, Y$ zwei Mengen und
+
+\[
+  \text{Hom}(X, Y) \coloneqq \{ f \colon X \to Y \}
+\]
+
+die Menge der Abbildungen von $X$ nach $Y$.
+
+Sei nun $X$ endlich, $X = \{ x_1, \ldots, x_n\}$. Wir ordnen jeder Abbildung $f \colon X \to Y$ das
+$n$-Tupel ihrer Werte zu:
+
+\[
+  w(f) = (f(x_1), \ldots, f(x_n)) \in \underbrace{(Y \times \ldots \times Y)}_n \eqqcolon Y^n
+\]
+
+Da jede Abbildung $f \colon X \to Y$ eindeutig durch die Folge ihrer Werte definiert ist, ist die Abbildung
+$w \colon \text{Hom}(X,y) \to Y^n, f \mapsto w(f)$ bijektiv. \\
+
+\fcolorbox{black}{light-gray}{
+  \begin{minipage}{\textwidth}
+    \textbf{Symmetrie} oder ``symmetrische Relation'' einer Menge \\
+
+    Eine Relation ist symmetrisch genau wenn, aus $x$ steht in Relation zu $y$ auch
+    $y$ steht in Relation zu $x$ folgt.
+  \end{minipage}
+}
+\vspace{1mm} \\
+
+\textbf{Definition}: Sei $X$ eine Menge. Die Elemente der Menge
+
+\[
+  \text{Sym}(X) \coloneqq \{ f \colon X \to X | f \text{ bijektiv} \}
+\]
+
+heißen Permutation von $X$. \\
+
+\textbf{Lemma} (Anzahl der Permutationen): Sei $n > 0$ eine natürliche Zahle und $X, Y$
+endliche Mengen mit $\abs{X} = \abs{Y} = n$. Dann isst die Anzahl $s_n$ von Bijektionen $f \colon X \to Y$
+gleich
+
+\begin{align*}
+  n! = 1 * 2 * \ldots * n && \text{"($n$ Fakultät)"} \\ 
+\end{align*}
+
+\textbf{Korollar}: Wenn $X$ nichtleer ist und $\abs{X} = n$, gilt $\abs{\text{Sym}(X)} = n!$ \\
+
+``Naiver Beweisversuch'': In der obigen Konstruktion entsprechen Bijektionen den Folgen, wo jedes Element
+von $Y$ genau einmal vorkommt. Für das erste Element so einer Folge haben wir $n$ Möglichkeiten,
+danach haben wir für das zweite Element $n - 1$ Möglichkeiten, für das dritte $n - 2$ Möglichkeiten,
+$\ldots$, und für das letzte Element nur eine Möglichkeit.
+Insgesamt hat man also $n * (n - 1) * \ldots * 1 = n!$ Möglichkeiten. \\
+
+\emph{Beweis}: Sei $X = \{ x_1, \ldots, x_n\}, Y = \{ y_1, \ldots, y_n \}$ und $s_n$ die gesuchte Anzahl
+der Bijektionen (diese hängt nur von $n$ ab, weil jede bijektive Abbildung $X \to Y$ eindeutig durch eine
+Permutation von $\{ 1, \ldots, n \}$ bestimmt ist.)
+
+Jede Bijektion $f \colon X \to Y$ ist eindeutig durch ihren Wert $f(x_1)$ an $x_1$ und die Einschränkung
+von $f$ auf $X' \coloneqq X \setminus \{ x_1 \}$ beschrieben.
+Letztere ist eine Bijektion $f|_{x'} \colon X' \to Y \setminus \{ y_i \}$.
+Die Menge der Bijektionen von $X$ nach $Y$ zerlegt sich in $n$ Teilmengen
+
+\[
+  F_i \coloneqq \{ f \colon X \to Y | f \text{ bijektiv und } f(x_1) = y_i \},  i = 1, \ldots, n
+\]
+
+und jedes Element $f \in F_i$ ist eindeutig durch die Bijektion $f|_{x'} \colon X' \to Y \setminus {y_i}$
+beschrieben.
+Das heißt, jedes $F_i$ hat Kardinalität gleich der Anzahl der Bijektionen $X' \to Y \setminus \{ y_i \}$.
+Somit gilt: $s_n = s_{n - 1} * n$ und die Behauptung folgt durch den Abstieg zu $s_1 = 1$
+
+\begin{align*}
+  F_i \cap F_j                    &= \emptyset, i \ne j, \\
+  \{ \text{Bijektion } X \to Y \} &= F_1 \cup \ldots \cup F_n && \text{Die Vereinigung von } F_1, \ldots, F_n \text{ ist disjunkt.}\\
+\end{align*}
+
+\[
+  \abs{\{ \text{Bijektionen } X \to Y \}} = \abs{F_1} + \abs{F_2} + \ldots + \abs{F_n}
+\]
+
+\[
+  s_n = s_{n - 1} * n = s_{n - 2} * (n - 1) * n = \ldots = 1 * 2 * \ldots * (n - 1) * n = n!
+\]
+
+\subsubsection*{Induktion}
+
+Im letzten Beweis gibt es im letzten Schritt eine Stelle, die formal eine Frage aufwirft:
+inwiefern ist dieser ``Abstieg zu $s_1$'' gerechtfertigt?
+Bei dieser (recht einfachen) Aussage scheint es nicht so problematisch, aber in komplizierten Situationen
+kann man bei solchen naiven Abstiegsargumenten relativ leicht einen Fehler machen.
+Um solche Abstiegsargumente in ``normale'' Folgerungsaussagen zu zerlegen, die man leichter nachprüfen
+kann, benutzt man folgendes \emph{Induktionsprinzip}: \\
+
+\textbf{Induktionsprinzip}: Sei für jedes $n \in \mathbb{N}$ eine Aussage $P(n)$ gegeben.
+Wenn die Aussage $P(0)$ (Induktionsanfang) wahr ist und für jedes $n$ aus der Gültigkeit aller
+Aussagen $P(k)$ für $k < n$ (Induktionsvoraussetzung) die Aussage $P(n$) folgt (Induktionsschritt),
+dann gilt $P(n)$ für alle $n \in \mathbb{N}$. \\
+
+\emph{Beispiel}:
+
+\[
+  P(n) = (\text{Anzahl von Bijektionen zwischen zwei $n$-elementigen Mengen ist $n!$})
+\]
+
+Statt mit einem Abstieg wird hier mit einem Aufstieg von $P(0)$ an gearbeitet.
+Manchmal will man die Aussage eher für alle $n \in \mathbb{N}^* = \{ n \in \mathbb{N} | n > 0 \}$ zeigen,
+dann ist der Induktionsanfang die Aussage $P(1)$.
+
+Mit Hilfe der Induktion könnte man im obigen Beweis den letzten Schritt so durchführen: \\
+
+\emph{Beweis durch Induktion}: Wir benutzen Induktion über $n = \abs{X} = \abs{Y}$.
+Für $n = 1$ ist die Aussage wahr, weil es nur eine Abbildung von $\{ x_1^\}$ nach $\{ y_1 \}$ gibt,
+nämlich die, die $x_1$ auf $y_1$ schickt und diese ist bijektiv.
+
+Sei $X = \{ x_1, \ldots, x_n\}, Y = \{ y_1, \ldots, y_n \}$ und $s$ die gesuchte Anzahl der Bijektionen.
+Jede Bijektion $f \colon X \to Y$ lässt sich folgendermaßen zerlegen: wenn $f(x_1) = y_i$, ist
+die Einschränkung von $f$ auf $X' \coloneqq X \setminus \{ x_1 \}$ eine Bijektion
+$f|x' \colon X' \to Y \setminus \{ y_i \}$. Das heißt, die Menge der Bijektionen von $X$ nach $Y$ zerlegt sich in $n$
+disjunkte Teilmengen.
+
+\[
+  F_i \coloneqq \{ f \colon X \to Y | f \text{ bijektiv und } f(x_1) = y_i \},  i = 1, \ldots, n
+\]
+
+und jede davon hat Kardinalität gleich der Anzahl der Bijektionen $X' \to Y \setminus \{ y_i \}$.
+Nach Induktionsvoraussetzung ist diese gleich $(n - 1)!$ und es folgt $s_n = n * (n - 1)! = n!$.
+
+\subsubsection*{Abbildungen als Graphen}
+
+Der Sonderfall $X = Y = \emptyset$ kann man im obigen Lemma auch abarbeiten: man setzt $0! \coloneqq 1$,
+weil $\abs{\text{Sym}(\emptyset)} = 1$. Das Letztere ist mit der Definition durch ``Vorschrift'' nicht
+ganz offensichtlich, ergibt aber schon Sinn, wenn man eine Abbildung $f \colon X \to Y$ mit den
+\emph{Graphen der Abbildung}
+
+\[
+  \Gamma_f = \{ (x, f(x)) | x \in X \} \subseteq X \times Y 
+\]
+
+identifiziert. Wenn man tatsächlich rein durch Formalismus der Mengenlehre definieren möchte, was eine
+Abbildung ist, kann man es so machen: \\
+
+\textbf{Definition}: Eine Abbildung $f \colon X \to Y$ ist eine Teilmenge $\Gamma_f \subseteq X \times Y$,
+welche die Eigenschaft
+
+\[
+  \forall x \in X \hspace{2pt} \exists! y \in Y \colon (x, y) \in \Gamma_f
+\]
+
+hat. ($\exists!$ heißt ``existiert ein eindeutig bestimmtes'') \\
+
+Dann ist für $X = \emptyset$ wegen $X \times Y = \emptyset$ klar, dass nur eine mögliche Abbildung
+$f_\emptyset \colon \emptyset \to Y$ existiert, und zwar die mit $\Gamma_f = \emptyset$. Andererseits
+gibt es keine Abbildung $X \to \emptyset$, wenn $X$ nichtleer ist, weil die Existenzaussage nie
+erfüllt ist.
 
 \end{document}
