@@ -1,13 +1,13 @@
 #! /usr/bin/env bats
 
 @test "bauzins.f95" {
-      run ./bauzins.f95 <<EOF
+      run ./bauzins <<EOF
 100
 0
 10
 EOF
       [[ "$status" -eq 0 ]]
-      [[ "${#lines[@]}" -eq 4 ]
+      [[ "${#lines[@]}" -eq 4 ]]
       [[ "${lines[3]}" == *"Laufzeit:    10.0000000      Zinssumme:    0.00000000"* ]]
 }
 
