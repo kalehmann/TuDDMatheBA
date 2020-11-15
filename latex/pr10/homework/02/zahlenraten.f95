@@ -11,21 +11,24 @@ PROGRAM zahlenraten
 
   DO WHILE (weiterspielen .eqv. .true.)
   
-     WRITE(*,*) "=================================================================="
+     WRITE(*,*) "==========================================="
      WRITE(*,*) " Zahlenraten"
-     WRITE(*,*) "=================================================================="
-     WRITE(*,*) "Der Computer wird Sie nach einer oberen und unteren Grenze fragen."
-     WRITE(*,*) "Denken Sie sich anschliessend eine Zahl zwischen beiden Grenzen"
-     WRITE(*,*) "und der Computer versucht dann diese Zahl zu erraten."
-     WRITE(*,*) "Wenn ihre gedachte Zahl größer als die vom Computer erratene Zahl"
-     WRITE(*,*) "ist, dann geben Sie '>' ein, ist die Zahl kleiner '<'."
-     WRITE(*,*) "Wenn der Computer richtig geraten hat, bestätigen Sie dies mit '='."
+     WRITE(*,*) "==========================================="
+     WRITE(*,*) "Der Computer wird Sie nach einer oberen und"
+     WRITE(*,*) "unteren Grenze fragen. Denken Sie sich"
+     WRITE(*,*) "anschliessend eine Zahl zwischen beiden"
+     WRITE(*,*) "Grenzen und der Computer versucht dann diese"
+     WRITE(*,*) "Zahl zu erraten. Wenn ihre gedachte Zahl"
+     WRITE(*,*) "groesser als die vom Computer erratene Zahl"
+     WRITE(*,*) "ist, dann geben Sie '>' ein, ist die Zahl"
+     WRITE(*,*) "kleiner '<'. Wenn der Computer richtig"
+     WRITE(*,*) "geraten hat, bestaetigen Sie dies mit '='."
      
-     WRITE(*,*) "Wählen Sie die untere Grenze: "
+     WRITE(*,*) "Waehlen Sie die untere Grenze: "
      READ(*,*) l
   
      DO
-        WRITE(*,*) "Wählen Sie die obere Grenze: "
+        WRITE(*,*) "Waehlen Sie die obere Grenze: "
         READ(*,*) r
         
         IF (l < r) THEN
@@ -41,7 +44,8 @@ PROGRAM zahlenraten
        WRITE(*,*) "Ich rate: ", z
        i = i + 1
        DO
-          WRITE(*,*) "Was halten Sie von dem Ergebnis? (<,>,=)"
+          WRITE(*,*) "Was halten Sie von dem Ergebnis? &
+               &(<,>,=)"
           READ(*,*) c
           IF (c == '>' .or. c == '<' .or. c == '=') THEN
              EXIT
@@ -49,8 +53,10 @@ PROGRAM zahlenraten
        END DO
        IF (c == '=') THEN
           erraten = .true.
-          WRITE(*,*) "Ich habe folgende Zahl an Versuchen benötigt: ", i
-          WRITE(*,*) "Möchten Sie noch einmal spielen? (y,n)"
+          WRITE(*,*) "Ich habe folgende Zahl an Versuchen &
+               &benoetigt: ", i
+          WRITE(*,*) "Moechten Sie noch einmal spielen? &
+               &(y,n)"
           DO
              READ(*,*) c
              IF (c == 'y' .or. c == 'n') THEN

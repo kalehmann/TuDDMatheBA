@@ -2,7 +2,8 @@
 !! Karsten Lehmann (4935758)
 PROGRAM bauzins
   IMPLICIT NONE
-  REAL :: kredithoehe, laufzeit, rate, restschuld, zinsen, zinssatz, zinssumme
+  REAL :: kredithoehe, laufzeit, rate, restschuld, zinsen, &
+       zinssatz, zinssumme
   WRITE (*,*) "Kredithoehe ?"
   READ (*,*) kredithoehe
   WRITE (*,*) "Zinssatz ?"
@@ -17,7 +18,8 @@ PROGRAM bauzins
      IF (rate > zinsen) THEN
         EXIT
      END IF
-     WRITE (*,*) "Fehler: Die Rate muss groesser als ", zinsen, " sein"
+     WRITE (*,*) "Fehler: Die Rate muss groesser als ", &
+          zinsen, " sein"
   END DO
   laufzeit = 0
   zinssumme = 0
@@ -35,5 +37,6 @@ PROGRAM bauzins
      WRITE(*,*) "Letzte Rate :", rate
   END IF
 
-  WRITE(*,*) "Laufzeit: ", laufzeit, " Zinssumme: ", zinssumme
+  WRITE(*,*) "Laufzeit: ", laufzeit, " Zinssumme: ", &
+       zinssumme
 END PROGRAM bauzins

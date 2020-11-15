@@ -23,7 +23,7 @@ EOF
 n
 EOF
       [[ "$status" -eq 0 ]]
-      [[ "${#lines[@]}" -eq 23 ]]
+      [[ "${#lines[@]}" -eq 26 ]]
 }
 
 
@@ -36,8 +36,8 @@ EOF
 >
 EOF
       [[ "$status" -eq 1 ]]
-      [[ "${#lines[@]}" -eq 19 ]]
-      [[ "${lines[17]}" == *"Logikfehler !"* ]]
+      [[ "${#lines[@]}" -eq 22 ]]
+      [[ "${lines[20]}" == *"Logikfehler !"* ]]
 }
 
 @test "zahlenraten.f95 Anzahl Versuche" {
@@ -49,8 +49,8 @@ EOF
 n
 EOF
       [[ "$status" -eq 0 ]]
-      [[ "${#lines[@]}" -eq 17 ]]
-      [[ "${lines[15]}" == *"Ich habe folgende Zahl an Versuchen benötigt:            2"* ]]
+      [[ "${#lines[@]}" -eq 20 ]]
+      [[ "${lines[18]}" == *"Ich habe folgende Zahl an Versuchen benötigt:            2"* ]]
 }
 
 

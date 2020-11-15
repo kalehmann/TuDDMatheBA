@@ -4,12 +4,14 @@ PROGRAM zyklus
   IMPLICIT NONE
   INTEGER :: n, max, min, sum, avg, i, x
 
-  WRITE (*,*) "Dieses Programm gibt das Minimum, das Maximum, den Durchschnitt"
-  WRITE (*,*) "und die Summe einer Endlichen Menge von ganzen Zahlen aus."
+  WRITE (*,*) "Dieses Programm gibt das Minimum, das &
+       &Maximum, den Durchschnitt"
+  WRITE (*,*) "und die Summe einer Endlichen Menge von &
+       &ganzen Zahlen aus."
  
   
   DO
-     WRITE (*,*) "Mächtigkeit der Menge :"
+     WRITE (*,*) "Maechtigkeit der Menge :"
      READ (*,*) n
      IF (n > 0) THEN
         EXIT
@@ -36,5 +38,6 @@ PROGRAM zyklus
      avg = sum / i
   END DO
 
-  WRITE(*,*) "Maximum: ", max, " Minimum: ", min, " Summe: ", sum, " Durchschnitt: ", avg
+  WRITE(*,*) "Maximum: ", max, " Minimum: ", min, " Summe: ", &
+       sum, " Durchschnitt: ", avg
 END PROGRAM zyklus
