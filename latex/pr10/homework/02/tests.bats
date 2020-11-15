@@ -43,14 +43,15 @@ EOF
 @test "zahlenraten.f95 Anzahl Versuche" {
       run ./zahlenraten <<EOF
 1
-4
-<
+7
+>
+>
 =
 n
 EOF
       [[ "$status" -eq 0 ]]
-      [[ "${#lines[@]}" -eq 20 ]]
-      [[ "${lines[18]}" == *"Ich habe folgende Zahl an Versuchen benötigt:            2"* ]]
+      [[ "${#lines[@]}" -eq 22 ]]
+      [[ "${lines[20]}" == *"Ich habe folgende Zahl an Versuchen benoetigt:            3"* ]]
 }
 
 

@@ -67,17 +67,19 @@ PROGRAM zahlenraten
              weiterspielen = .false.
           END IF
        ELSE
-          IF ((r - l) < 2) THEN
+          IF ((r - l) < 1 &
+               .or. (l == z .and. c == "<") &
+               .or. (r == z .and. c == ">")) THEN
              WRITE(*,*) "Logikfehler !"
              STOP 1
           ELSE
-             IF ((r - l) == 2 .and. c == ">") THEN
+             IF ((r - z) == 1 .and. c == ">") THEN
                 l = r
              ELSE
                 IF (c == '>') THEN
-                   l = z
+                   l = z + 1
                 ELSE
-                   r = z
+                   r = z - 1
                 END IF
              END IF
           END IF
