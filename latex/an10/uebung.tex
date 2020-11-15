@@ -210,4 +210,113 @@ Ist $M$ nach oben unbeschränkt ist, so wird das  $sup A \coloneq \infty$
       &= \{ 1,2,3,4,6,8,12,24 \}
   \end{align*}  
 \end{enumerate}
+
+\section*{Übungsblatt 3}
+
+\subsection*{Aufgabe 1}
+
+Per Definition ist das Supremum einer Menge $A$ die kleinste obere Schranke von $A$.
+
+\begin{enumerate}[a)]
+\item ist nicht äquivalent zu $\text{sup}(I) = b$, da nicht genannt wird, dass $b$ die kleinste
+  obere Schranke ist
+\item ist falsch, da $I$ nach oben offen ist.
+\item ist äquivalent zu $\text{sup}(I) = b$
+\item ist ausgeschlossen, weil a) und b)
+\end{enumerate}
+
+\subsection*{Aufgabe 2}
+
+\begin{enumerate}[a)]
+\item
+  $A_k \subseteq \mathbb{R}$ nichtleer, nach oben beschränkt ($k \in \mathbb{N}$)
+
+  \[
+    s_k = \text{sup} A_k
+  \]
+
+  \begin{align*}
+    A &= \overset{n}{\underset{k = 1}\cup} A_k \\
+      &= \{ a \in \mathbb{R} | \exists k = 1, \ldots, n \colon a \in A_k \} \\
+  \end{align*}
+
+  \[
+    s = \text{max} \{ s_1, s_2, \ldots, s_n\}
+  \]
+
+  Nach Definition von $s$ : $\forall k = 1, \ldots, n \colon s_k \leq s$. \\
+  Nach Definition von $s_k$ : $\forall A_k \colon a \leq s_k$. \\
+
+  Also:
+  \[
+    \forall k = 1, \ldots, n, \forall a \in A_k \colon a \leq s
+  \]
+
+  Also ist $A \ne \emptyset$ nach oben beschränkt.
+
+  \begin{align*}
+    s = \text{sup} A \iff (i) &s \text{ ist obere Schranke} \\
+                         (ii) & \forall \epsilon > 0 \exists a \in A \colon a > s - \epsilon \\ 
+  \end{align*}
+
+  Sei $\epsilon > 0$, Da $s = s_k$ für ein $k \in \{ 1, \ldots, n \}$, und da $s_k = \text{sup} A_k$,
+  gibt es ein $a \in A_k$ mit $a > s_k - \epsilon = s - \epsilon$. \\
+
+  Also gibt es ein $a \in A$ mit $a > s - \epsilon$
+
+  \[
+    \Rightarrow s = \text{sup} A
+  \]
+
+\item
+\end{enumerate}
+
+\subsection*{Aufgabe 3}
+
+\subsection*{Aufgabe 4}
+
+\begin{enumerate}[(a)]
+\item
+  $A, B \subseteq \mathbb{R}$ nichtleer
+  \[
+    \forall a \in A \forall b \in B \colon a \leq b
+  \]
+
+  Somit ist $A$ nach oben beschränkt, denn $A$ hat mindestens eine obere Schranke, da $B$ nicht leer ist.
+  Analog ist $B$ nicht nach unten beschränkt.
+
+  \begin{tikzpicture}
+    \draw (0,0) -- (2,0);
+    \draw[red] (2,0) -> node[below] {A} (3,0);
+    \draw (3,0) -- (4,0);
+    \draw[blue!50] (4,0) -> node[below] {B} (5,0);
+    \draw[-latex] (5,0) -> (6,0);
+    \node[draw, circle, fill, inner sep=1pt,  label=below:0] at (1,0) {};
+  \end{tikzpicture}
+
+  \[
+    \Rightarrow \exists s \in \mathbb{R} \forall a \in A \forall b \in B \colon a \leq s \leq b
+  \]
+  
+  \[
+    s = \frac{1}{2}(\text{sup}A + \text{inf}(B))
+  \]
+
+  Alternativ auch $s = \text{sup}(A)$ oder $s = \text{inf}(B)$.
+
+\item Sei $A$ eine nichtleere, nach oben beschränkte Teilmenge von $\mathbb{R}$. \\
+  Setze $B = \{ b \in \mathbb{R} | b \text{ ist obere Schranke von } A \} \ne \emptyset$. \\
+  Dann gilt $\forall a \in A \forall b \in B \colon a \leq b$. Also $\exists s \in \mathbb{R}$
+  mit
+  \[
+    \forall a \in A, \forall b \in B: a \leq s \leq b
+  \]
+  \[
+    s = \text{sup}(A) 
+  \]
+
+\end{enumerate}
+
+\subsection*{Aufgabe 5}
+
 \end{document}
