@@ -1,5 +1,7 @@
 \documentclass{article}
 
+\usepackage{amsmath}
+\usepackage{bm}
 \usepackage{caption}
 \usepackage{genealogytree}
 \usepackage{hyperref}
@@ -109,7 +111,7 @@ until (abs (x-xalt) < eps);
   \draw[-latex] ([xshift=3cm]prog.south) -> (output.north);
 \end{tikzpicture}
 
-\section{Algorithmen}
+\subsection{Algorithmen}
 
 Ein Algorithmus ist ein endliches und vollständiges System von in einer formalen, eindeutig interpretierbaren
 Sprache oder Notation geschriebenen Regeln zur schrittweisen Lösung einer Klasse von Problemen in endlicher
@@ -295,5 +297,181 @@ unabhängig davon, ob Sie Ergebnisse liefern oder nicht in neueren Sprachen als 
   \end{tabular}
   \\
 \end{tabularx}
+
+\section{Maß- und Speichereinheiten, Größenordnungen}
+
+\subsection{Grundeinheiten}
+
+\fcolorbox{black}{light-gray}{\begin{minipage}{\textwidth}
+    Hexadezimalzahlen \\
+
+    Hexadezimalzahlen sind Zahlen, welche zur Basis 16 dargestellt werden. Dabei ist Hexadezimal ein Mischwort aus
+    dem griechischen \emph{hexa} für Sechs und dem lateinischen \emph{decem} für 10.
+    Korrekte Namen wären Sedezimalzahlen von lateinisch \emph{sedecim} (Sechzehn) oder Hexadekadische Zahlen (griechisch).
+\end{minipage}} \\
+
+\textbf{Zahlkonversion}: binär $\Leftarrow$ dezimal
+
+\begin{align*}
+  10 &= [1010]_2 \\
+  57 &= [111001]_2 \\
+\end{align*}
+
+\[
+  \begin{array}{ cccc cccc }
+     &1&1&1&0&0&1 &: 10101 = 101_2 \text{ Rest } 111_2 = 5_{10} \text{ Rest } 7_{10} \\
+    -&1&0&1&0) \\
+    \cline{1-4}
+     &0&1&0&0&0 \\
+    -& &0&0&0&0 \\
+    \cline{2-6}
+     &0&1&0&0&0&1 \\    
+    -& & &1&0&1&0 \\
+    \cline{3-7}
+     & &0&0&1&1&1 \\    
+  \end{array}
+\]
+
+\[
+  \Rightarrow 111001_2 = 57_{10}
+\]
+
+\textbf{Zweierkomplement-Addition}:
+
+\begin{minipage}[t]{.4\textwidth}
+  \[
+    \begin{array}{ccc}
+       & 0101_2 &= 5_{10} \\
+      +& 1000_2 &= -8_{10} \\
+      \cline{1-2}
+       & 1101_2 &= -3_{10} \\
+    \end{array}
+  \]
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}[t]{.4\textwidth}
+  \[
+    \begin{array}{ccc}
+       & 0101_2 &= 5_{10} \\
+      +& 0101_2 &= 5_{10} \\
+      \cline{1-2}
+       & 1010_2 &= -6_{10} = 10_{10} - 16_{10}\\
+    \end{array}
+  \]
+\end{minipage}  \\
+
+\begin{minipage}[t]{.4\textwidth}
+  \[
+    \begin{array}{ccc}
+       & 1011_2 &= -5_{10} \\
+      +& 1011_2 &= -5_{10} \\
+      \cline{1-2}
+       & 1110_2 &= 6_{10} = -10_{10} + 16_{10} \\
+    \end{array}
+  \]
+\end{minipage}  \\
+
+\textbf{Zweierkomplement-Subtraktion}:
+
+\[
+  a - b = a + (-b) = a + \bar{b} + 1
+\]
+
+\[
+  \begin{array}{ccc}
+      & a \\
+    + & \bar{b} \hspace{5pt} &\text{(1er Komplement)} \\
+    + & 1                    &\text{(hinterer Übertrag)}\\
+    \cline{1-3}
+      & a - b \\
+  \end{array}
+\]
+
+\textbf{Gebrochenen Anteil konvertieren}:
+
+\begin{minipage}[t]{.4\textwidth}
+  \[
+    \begin{array}{cccc cccc cc}
+      0.&1&1&0&1 &* &1&0&1&0 \\
+      \cline{0-9}
+        & & & &  &  &0&0&0&0 \\
+        & & & &  &1 &1&0&1 \\
+        & & & &0 &0 &0&0 \\
+        & & &1&1 &0 &1 \\
+      \cline{0-9}
+      \bm{8}&=&\bm{1}&\bm{0}&\bm{0}&\bm{0}.&0&0&1&0 \\
+    \end{array}
+  \]
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}[t]{.4\textwidth}
+  \[
+    \begin{array}{cccc cccc cc}
+      0.&0&0&1&0 &* &1&0&1&0 \\
+      \cline{0-9}
+        & & & &  &  &0&0&0&0 \\
+        & & & &  &1 &1&0&1 \\
+        & & & &0 &0 &0&0 \\
+        & & &0&0 &0 &0 \\
+      \cline{0-9}
+      \bm{1}&=&\bm{0}&\bm{0}&\bm{0}&\bm{1}.&1&0&1&0 \\
+    \end{array}
+  \]
+\end{minipage}  \\
+\hrule
+\begin{minipage}[t]{.4\textwidth}
+  \[
+    \begin{array}{cccc cccc cc}
+      0.&0&1&0&0 &* &1&0&1&0 \\
+      \cline{0-9}
+        & & & &  &  &0&0&0&0 \\
+        & & & &  &0 &0&0&0 \\
+        & & & &1 &0 &1&0 \\
+        & & &0&0 &0 &0 \\
+      \cline{0-9}
+      \bm{2}&=&\bm{0}&\bm{0}&\bm{1}&\bm{0}.&1&0&0&0 \\
+    \end{array}
+  \]
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}[t]{.4\textwidth}
+  \[
+    \begin{array}{cccc cccc cc}
+      0.&1&0&0&0 &* &1&0&1&0 \\
+      \cline{0-9}
+        & & & &  &  &0&0&0&0 \\
+        & & & &  &0 &0&0&0 \\
+        & & & &0 &0 &0&0 \\
+        & & &1&0 &1 &0 \\
+      \cline{0-9}
+      \bm{5}&=&\bm{0}&\bm{1}&\bm{0}&\bm{1}.&0&0&0&0 \\
+    \end{array}
+  \]
+\end{minipage}  \\
+
+\[
+  \rightarrow 0.8125_{10}
+\]
+
+\textbf{Darstellung von $0.1$ im Binärsystem} \\
+
+\begin{align*}
+  0.1_{10} * 2_{10} &= \boxed{0}.2_{10} \\
+  0.2_{10} * 2_{10} &= \boxed{0}.4_{10} \\
+  0.4_{10} * 2_{10} &= \boxed{0}.8_{10} \\
+  0.8_{10} * 2_{10} &= \boxed{1}.6_{10} \\
+  0.6_{10} * 2_{10} &= \boxed{1}.2_{10} \\
+  \ldots \\
+\end{align*}
+
+$0.1_{10} \to 0.0\overline{0011}_2$
+
+Die zahl $0.1_{10}$ ist somit im Binärsystem nicht endlich darstellbar.
 
 \end{document}
