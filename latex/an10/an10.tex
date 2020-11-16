@@ -1078,4 +1078,46 @@ und eine irrationale Zahl $y$ mit
   \mathbb{R} \setminus \mathbb{Q} &\rightsquigarrow \text{ Menge der irrationalen Zahlen} \\
 \end{align*}
 
+\setcounter{subsubsection}{12}
+\subsubsection{Bemerkungen zu rekursiven Definitionen}
+
+\fcolorbox{black}{light-gray}{\begin{minipage}{\textwidth}
+    Carl Friedrich Gauß \gtrsymBorn~30. April 1777 \gtrsymDied~23. Februar 1855 \\
+
+    Deutscher Mathematiker und ``Fürst der Mathematiker''. Bekannt u.a. für die Gaußsche Summenformel,
+    mit welcher er der Überlieferung nach die Schulaufgabe der Addition der Zahlen von 1 bis 100
+    besonders schnell lösen konnte.
+\end{minipage}} \\
+
+\noindent
+\textbf{Beispiel}: Es gilt für die Summe der Zahlen $1$ bis $n$:
+
+\begin{align*}
+  s_n \coloneqq \sum\limits_{k = 1}^n k \overset{\text{Siehe (3) Kommutativgesetz}}&{=} \sum\limits_{k = 1}^n (n + 1 - k)  \\
+                                                                                   &= \sum\limits_{k = 1}^n (n + 1) - \sum\limits_{k = 1}^n k && | + \sum\limits_{k = 1}^n k \\
+  2 * \sum\limits_{k = 1}^n k &=  \sum\limits_{k = 1}^n (n + 1)  && | : 2 \\
+                                                                                   &= \frac{1}{2} * \sum\limits_{k = 1}^n (n + 1) \\
+  s_n &= \frac{n * (n + 1)}{2} \\
+\end{align*}
+
+\subsubsection{Beispiele zur vollständigen Induktion}
+
+\textbf{Endliche Geometrische Reihe}
+
+\[
+  \sum\limits_{k = 0}^n a^k = \frac{1 - a^{n + 1}}{1 - a}
+\]
+
+\emph{Beweis (ohne vollständige Indukltion)}
+
+
+\begin{align*}
+  (1 - a) * \sum\limits_{k = 0}^n a^k &= \sum\limits_{k = 0}^n a^k - \sum\limits_{k = 0}^n a^{k + 1} \\
+                                      &= \sum\limits_{k = 0}^n a^k - \sum\limits_{k = 1}^{n + 1} a^k
+                                      && \parbox{10em}{Das ist eine Teleskopsumme, für $k = 1$ bis $k = n$ stehen nur Paare $a^k - a^k$} \\
+  (1 - a) * \sum\limits_{k = 0}^n a^k &= 1 - a^{n + 1} && | :(1 - a) \\
+  \sum\limits_{k = 0}^n a^k &= \frac{1 - a^{n + 1}}{1 - a} \\
+\end{align*}
+
+
 \end{document}
