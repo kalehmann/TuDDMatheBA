@@ -68,8 +68,33 @@
   Folglich ist $s$ Supremum des Durchschnitts der Mengen $A_k$.
   \[
     s = \min \{ s_1, \ldots, s_n \}
+  \] \\
+
+  \emph{Folgt aus der Beschränktheit von $B$ auch die Beschränktheit jeder der Mengen $A_k, k = 1, \ldots, n$?}
+
+  Beweis durch Widerspruch:
+  
+  Sei $A_1 \subseteq \mathbb{R} = \{ 1 \}$ eine beschränkte Menge und $A_2 \subseteq \mathbb{R} = \mathbb{R}_{> 0}$
+  eine nach oben unbeschränkte Menge, dann ist
+  \[
+    B = \bigcap_{k = 1}^{2} A_k = A_1
   \]
-\item
+  $A_1$ (und damit auch $B$) ist nach oben beschränkt, $A_2$ jedoch nicht. Ein Widerspruch zu
+  \[
+    B \text{ ist beschränkt} \Rightarrow \forall k = 1, \ldots, n \colon A_k \text{ ist beschränkt}
+  \]
+
+\item \emph{Ist die Menge $\overset{\infty}{\underset{k = 1}{\bigcap}} A_k$ beschränkt?}
+
+  Der Durchschnitt der Mengen $A_k$ von $k = 1$ bis $k = \infty$ ist definiert als
+  \[
+    \{ a | a \in A_1 \land a \in A_2 \land \ldots \land a \in A_\infty \}
+  \]
+
+  Der Definition kann entnommen werden, dass der Durchschnitt eine Teilmenge jedes $A_k$ von $k = 1$ bis $k = \infty$
+  ist. Nach der Aufgabenstellung ist jede Menge $A_k$ nach oben beschränkt und nach 1.3.3 (h) aus der Vorlesung
+  ist jede Teilmenge einer nach oben beschränkten Menge ebenfalls nach oben beschränkt.
+  
 \end{itemize}
 
 \section*{Hausaufgabe 2}
