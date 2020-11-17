@@ -62,14 +62,15 @@
   \]
   beschränkt ist. \\
 \item
-  Man betrachte die Menge aller Suprema $s_k$ der Mengen $A_k$ für $k = 1$ bis $n$, insbesondere das kleinste Element dieser Menge $s$.
+  Man betrachte die Menge aller Suprema $s_k$ der Mengen $A_k$ für $k = 1$ bis $n$, insbesondere das kleinste Element dieser Menge $s = \min \{ s_1, \ldots, s_n \}$.
   Im Durchschnitt aller Mengen $A_k$ kann kein Element echt größer als $s$ sein, denn ansonsten wäre dieses Element
   auch in der Menge $A_k$ enthalten aus der $s$ entnommen wurde und $s$ wäre nicht Supremum dieser Menge, ein Widerspruch.
-  Folglich ist $s$ Supremum des Durchschnitts der Mengen $A_k$.
+  Folglich ist $s$ eine obere Schranke des Durchschnitts der Mengen $A_k$. Somit gilt
   \[
-    s = \min \{ s_1, \ldots, s_n \}
-  \] \\
+    \sup B \leq \min \{ s_1, \ldots, s_n \}
+  \]
 
+  \newpage
   \emph{Folgt aus der Beschränktheit von $B$ auch die Beschränktheit jeder der Mengen $A_k, k = 1, \ldots, n$?}
 
   Beweis durch Widerspruch:
@@ -97,19 +98,45 @@
   
 \end{itemize}
 
+\newpage
 \section*{Hausaufgabe 2}
 
-Angenommen $\inf A^{-1} = (\sup A)^{-1}$, dann ist $\sup A * \inf A^{-1} = 1$, 
-sei nun $\frac{1}{s}$ das Infimum von $A^{-1}$, dann ist nach Definition
+Nach Definition ist das Supremum einer Menge größer oder gleich jedem Element der Menge.
+Sei nun $s = \sup A$, dann schreiben wir
+
 \begin{align*}
+  \forall a \in A      &\colon a \leq s                     && | : s \\
+                       &\colon \frac{a}{s} \leq 1           && | : a \\
+                       &\colon \frac{1}{s} \leq \frac{1}{a} && (\text{Definition von $A^{-1}$}) \\
   \forall b \in A^{-1} &\colon \frac{1}{s} \leq b \\
-  \forall a \in A      &\colon \frac{1}{s} \leq \frac{1}{a}  && | *a \\
-                       &\colon \frac{a}{s} \leq 1            && | *s \\
-                       &\colon a \leq s \\
 \end{align*}
 
-Und $\forall a \in A \colon a \leq s$ entspricht $s = \sup A$/
+Somit ist $\frac{1}{s}$ eine untere Schranke von $A^{-1}$ für $s = \sup A$.
+Angenommen $\frac{1}{s}$ \textbf{ist nicht} Infimum von $A^{-1}$, dann
+existiert eine Zahl, die kleiner oder gleich jedem Element von $A^{-1}$,
+aber größer als $\frac{1}{s}$ ist.
 
+\begin{align*}
+  \forall \epsilon > 0, \epsilon \ne s \colon s &> s - \epsilon && | :(s - \epsilon) \\
+  \frac{s}{s - \epsilon} &> 1 && | :s\\
+  \frac{1}{s - \epsilon} &> \frac{1}{s} \\
+\end{align*}
+\[
+  \exists \epsilon > 0, \epsilon \ne s \colon \forall a \in A \colon \frac{1}{s - \epsilon} \leq \frac{1}{a} 
+\]
+
+Den Ausdruck $\frac{1}{s - \epsilon} \leq \frac{1}{a}$ kann man umschreiben zu
+
+\begin{align*}
+  \frac{1}{s - \epsilon} &\leq \frac{1}{a} && | *a \\
+  \frac{a}{s - \epsilon} &\leq 1           && | *(s - \epsilon)\\
+  a &\leq s - \epsilon 
+\end{align*}
+
+Dies ist ein Widerspruch dazu, dass $s$ Supremum von $A$ ist. Also ist $\frac{1}{s}$ Infimum von $A^{-1}$.
+Da $\frac{1}{s} * s = 1$ folgt $\frac{1}{s} = (\sup A)^{-1}$
+
+\newpage
 \section*{Hausaufgabe 3}
 
 
