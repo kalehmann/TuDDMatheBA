@@ -1,0 +1,126 @@
+\documentclass{article}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{genealogytree}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{interval}
+\intervalconfig{
+  soft open fences
+}
+\usepackage{mathtools}
+\usepackage{pgfplots}
+\usepackage{physics}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{.9}
+
+\author{Karsten Lehmann}
+\date{17.11.2020}
+\title{Hausaufgabe 03 Analysis - Grundlegende Konzepte}
+
+\begin{document}
+
+
+\maketitle
+\newpage
+
+\section*{Hausaufgabe 1}
+\begin{itemize}
+\item
+  \[
+    s_k = \sup A_k
+  \]
+  
+  \begin{align*}
+    B &\coloneqq \bigcap_{k = 1}^n A_K \\
+      &= \{ a \in \mathbb{R} | \forall k = 1, \ldots, n \colon  a \in A_k \} \\
+  \end{align*}
+  
+  In der Aufgabe 2 der Übung wurde bereits bewiesen, dass
+  
+  \[
+    A = \bigcup_{k = 1}^n A_k
+  \]
+  
+  nach oben beschränkt ist mit
+  \begin{itemize}
+  \item der Definition von $s$ : $\forall k = 1, \ldots, n \colon s_k \leq s$
+  \item der Definition von $s_k$ : $\forall a \in A_k \colon a \leq s_k$
+  \end{itemize}
+
+  Aus den Anordnungsaxiomen folgt nun $\forall k = 1, \ldots, n, \forall a \in A_k \colon a \leq s$. Da der Durchschnitt zweier Mengen eine
+  Teilmenge der Vereinigung ist (und die Vereinigung nach oben beschränkt ist) folgt aus 1.3.3 (h) der Vorlesung, dass
+  
+  \[
+    \bigcap_{k = 1}^n A_K \ne \subseteq \bigcup_{k = 1}^n A_k
+  \]
+  beschränkt ist. \\
+\item
+  Man betrachte die Menge aller Suprema $s_k$ der Mengen $A_k$ für $k = 1$ bis $n$, insbesondere das kleinste Element dieser Menge $s$.
+  Im Durchschnitt aller Mengen $A_k$ kann kein Element echt größer als $s$ sein, denn ansonsten wäre dieses Element
+  auch in der Menge $A_k$ enthalten aus der $s$ entnommen wurde und $s$ wäre nicht Supremum dieser Menge, ein Widerspruch.
+  Folglich ist $s$ Supremum des Durchschnitts der Mengen $A_k$.
+  \[
+    s = \min \{ s_1, \ldots, s_n \}
+  \]
+\item
+\end{itemize}
+
+\section*{Hausaufgabe 2}
+
+Angenommen $\inf A^{-1} = (\sup A)^{-1}$, dann ist $\sup A * \inf A^{-1} = 1$, 
+sei nun $\frac{1}{s}$ das Infimum von $A^{-1}$, dann ist nach Definition
+\begin{align*}
+  \forall b \in A^{-1} &\colon \frac{1}{s} \leq b \\
+  \forall a \in A      &\colon \frac{1}{s} \leq \frac{1}{a}  && | *a \\
+                       &\colon \frac{a}{s} \leq 1            && | *s \\
+                       &\colon a \leq s \\
+\end{align*}
+
+Und $\forall a \in A \colon a \leq s$ entspricht $s = \sup A$/
+
+\section*{Hausaufgabe 3}
+
+
+\begin{enumerate}[a)]
+\item
+  \emph{Behauptung}
+  \[
+    A(m) \colon (a^n)^m = a^{n * m} = (a^m)^n
+  \]
+  \emph{Induktionsanfang}
+  \[
+    A(1) colon (a^n)^1 = a^{n * 1} = (a^1)^n (= a^n) 
+  \]
+  Diese Aussage ist wahr. \\
+  \emph{Induktionsschritt}
+  \begin{align*}
+    A(m + 1) \colon &(a^n)^m * a^n = a^{n * m} * a^{n} = (a^m * a) ^ n  &&  \text{(Anwendung der Definition der Potenz)}\\
+                    &(a^n)^{m + 1} = a^{n * m + n} = (a^{m + 1})^n      && \text{(A9)} \\
+                    &(a^n)^{m + 1} = a^{n * (m + 1)} = (a^{m + 1})^n
+  \end{align*}
+
+\item
+    \emph{Behauptung}
+  \[
+    B(n) \colon a^n * b^n = (a * b)^n
+  \]
+  \emph{Induktionsanfang}
+  \[
+    B(1) colon a^1 * b^1 = (a * b)^1 
+  \]
+  Diese Aussage ist wahr. \\
+  \emph{Induktionsschritt}
+  \begin{align*}
+    B(n + 1) \colon &a^n * a * b^n * b = (a * b)^n * (a * b) &&  \text{(Anwendung der Definition der Potenz)}\\
+                    &a^{n + 1} * b^{n + 1} = (a * b)^{n + 1}
+  \end{align*}
+\end{enumerate}
+
+\end{document}
