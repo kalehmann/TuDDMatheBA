@@ -1,0 +1,260 @@
+\documentclass{article}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{genealogytree}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{interval}
+\intervalconfig{
+  soft open fences
+}
+\usepackage{mathtools}
+\usepackage{pgfplots}
+\usepackage{physics}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{.9}
+
+\author{Karsten Lehmann}
+\date{21.11.2020}
+\title{Hausaufgabe 04 Analysis - Grundlegende Konzepte}
+
+\begin{document}
+
+
+\maketitle
+\newpage
+
+\section*{Hausaufgabe 1}
+
+\begin{enumerate}[a)]
+\item Beweisen Sie, dass für alle $n \in \mathbb{N}$ gilt:
+  $\sum\limits_{k = 1}^n k^2 = \frac{1}{6} n (n + 1) (2n + 1)$.
+
+  \textbf{Beweis durch vollständige Induktion}: \\
+  \emph{Behauptung}:
+  \[
+    P(n) \colon \sum\limits_{k = 1}^n k^2 = \frac{1}{6} n (n + 1) (2n + 1)
+  \]
+  \emph{Induktionsanfang}:
+  \begin{align*}
+    P(1) &\colon \sum\limits_{k = 1}^n k^2 = \frac{1}{6} * 1 * (1 + 1) (2 * 1 + 1) \\
+         &\colon 1^2 = \frac{1}{6} * 1 * 2 * 3 \\
+         &\colon 1 = \frac{1 * 2 * 3}{6} = \frac{6}{6} = 1 \\
+  \end{align*}
+  \emph{Induktionsschritt}:
+  \begin{align*}
+    P(n + 1) \colon \sum\limits_{k = 1}^n k^2 &= \frac{1}{6} * n * (n + 1) (2n + 1) + (n + 1)^2 \\
+                                              &= \frac{1}{6} * (n^2 + 1) (2n + 1) + \frac{6n^2 + 12n + 6}{6} \\
+                                              &= \frac{(n^2 + n) (2n + 1) + 6n^2 + 12n + 6}{6} \\
+                                              &= \frac{2n^3  + 3n^2 + n + 6n^2 + 12n + 6}{6} \\
+                                              &= \frac{2n^3 + 9n^2 + 13n + 6}{6} \\
+                                              &= \frac{(n + 1)(2n^2 + 7n + 6)}{6} \\
+                                              &= \frac{(n + 1)(n + 2)(2n + 3)}{6} \\
+                                              &= \frac{1}{6} * (n + 1) (n + 2) (2n + 3)\\
+  \end{align*}
+\item
+  \begin{align*}
+    2^1 &\nleq 1! \\
+    2^2 &\nleq 2! \\
+    2^3 &\nleq 3! \\
+    2^4 &\leq 4! \\
+    2^5 &\leq 5! \\
+    \ldots \\
+  \end{align*}
+  $2^n \leq n!$ gilt für alle $n \geq 4 \in \mathbb{N}$. \\
+  \emph{Behauptung}:
+  \[
+    P(n) \colon 2^n \leq n! 
+  \]
+  \emph{Induktionsanfang}
+  \begin{align*}
+    P(4) \colon 2^4 &\leq 4! \\
+                 16 &\leq 24 \\
+  \end{align*}
+  \emph{Induktionsschritt}
+  \begin{align*}
+    P(n + 1) \colon 2^{n + 1} &\leq (n + 1)! \\
+                      2^n * 2 &\leq n! * (n + 1) \\
+  \end{align*}
+  Für alle $n \geq 4 \in \mathbb{N}$ gilt $2 < (n + 1)$. \\
+  
+  \begin{minipage}[t]{.45\textwidth}
+    \textbf{Fall 1}: $n! - 2^n \in P$: \\
+    
+    Es folgt
+    \[
+      2^n * 2 < n! * 2 < n! * (n + 1)
+    \]
+  \end{minipage}
+  \hfill
+  \vrule
+  \hfill
+  \begin{minipage}[t]{.45\textwidth}
+    \textbf{Fall 2}: $n! - 2^n = 0$ \\
+
+    Also ist $n! = 2^n$. Man substituiere $n!$ mit $c$
+    
+    Aus den Folgerungen aus den Anordnungsaxiomen (1.2.3 (e) in der Vorlesung) folgt nun
+    
+    $2 * c < (n + 1) * c$.
+  \end{minipage}
+
+\newpage
+\item Für $a \in \mathbb{R}$ gilt $s_n = \sum\limits_{k = 1}^n a^{2k - 1} = \frac{a(a^{2n} - 1)}{a^2 - 1}, n \in \mathbb{N}$ \\
+  \emph{Behauptung}:
+  \[
+    P(n) \colon \sum\limits_{k = 1}^n a^{2k - 1} = \frac{a(a^{2n} - 1)}{a^2 - 1} 
+  \]
+  \emph{Induktionsanfang}:
+  \begin{align*}
+    P(1) \colon \sum\limits_{k = 1}^1 a^{2k - 1} &= \frac{a(a^{2 * 1} - 1)}{a^2 - 1}  \\
+                                   a^{2 * 1 - 1} &= \frac{a(a^2 - 1)}{a^2 - 1}  \\
+                                               a &= a * 1 = a \\
+  \end{align*}
+
+  \emph{Induktionsschritt}:
+  \begin{align*}
+    P(n + 1) \colon \sum\limits_{k = 1}^{n + 1} a^{2k - 1} &= \frac{a(a^{2(n + 1)} - 1)}{a^2 - 1}  \\
+                                                           &= \frac{a(a^{2n + 2} - 1)}{a^2 - 1}  \\
+                                                           &= \frac{(a^{2n + 3} - a)}{a^2 - 1}  \\   
+                                                           &= \frac{a^{2n + 3} - a^{2n + 1} + a^{2n + 1} - a}{a^2 - 1} \\
+                                                           &= \frac{a^{2n + 1} - a}{a^2 - 1} + \frac{a^{2n + 3} - a^{2n + 1}}{a^2 - 1}  \\
+                                                           &= \frac{a(a^{2n} - 1)}{a^2 - 1} + \frac{a^{2n + 1} * (a^2 - 1)}{a^2 - 1}  \\
+                                                           &= \frac{a(a^{2n} - 1)}{a^2 - 1} + a^{2n + 1}  \\
+  \end{align*}
+\end{enumerate}
+
+\newpage
+\section*{Hausaufgabe 2}
+
+\begin{enumerate}[a)]
+\item $\forall n \in \mathbb{N} \colon n - 1 \in \mathbb{N} \cup \{ 0 \} \coloneqq \mathbb{N}_0$ \\
+  \label{sec:2_a}
+  \emph{Behauptung}: \\
+  \[
+    P(n) \colon n - 1 \in \mathbb{N} \cup \{ 0 \} 
+  \]
+  \emph{Induktionsanfang}: \\
+  \begin{align*}
+    P(1) \colon 1 - 1 &\in \mathbb{N} \cup \{ 0 \} \\
+                    0 &\in \mathbb{N} \cup \{ 0 \} \\
+  \end{align*}
+  $0$ ist in $\{ 0 \}$ enthalten, also ist $P(1)$ wahr. \\
+  \emph{Induktionsschritt}: Die Behauptung $P(n)$ sei wahr für ein $n \in \mathbb{N}$,
+  dann gilt \\
+  \begin{align*}
+    (n + 1) - 1    &\in \mathbb{N} \cup \{ 0 \} && (\text{A1}) \\
+    n + (1 + (-1)) &\in \mathbb{N} \cup \{ 0 \} && (\text{A3}) \\
+    n + 0          &\in \mathbb{N} \cup \{ 0 \} && (\text{A2}) \\
+    n              &\in \mathbb{N} \cup \{ 0 \} \\
+  \end{align*}
+  $n$ ist nach Definition ein Element aus $\mathbb{N}$, also ist die Behauptung wahr für $n + 1$.
+  Aus dem Satz über die vollständige Induktion folgt die Behauptung.
+  
+\item $\forall n, m \in \mathbb{N} \text{ mit } m > n \colon m - n - 1 \in \mathbb{N}_0$
+  \emph{Behauptung}: \\
+  \[
+    Q(n) \colon m - n - 1 \in \mathbb{N}_0 
+  \]
+  \emph{Induktionsanfang}: \\
+  \[
+    Q(1) \colon m - 1 - 1 \in \mathbb{N}_0
+  \]
+  $m - 1$ ist wie in \hyperref[sec:2_a]{2. a)} gezeigt in $\mathbb{N}_0$ enthalten. Aus $m > n$ folgt
+  $m - 1 \in P$. Per Definition ist jedes Element von $P$ größer als $0$, es folgt $m - 1 \in \mathbb{N}$.
+  Substituiert man nun $m - 1$ in $Q(1)$ mit $m'$ erhält man $Q(1) \colon m' - 1 \in \mathbb{N}_0$, eine wahre Aussage.
+
+  \emph{Induktionsschritt}: Die Behauptung $Q(n)$ sei wahr für ein $n \in \mathbb{N}$,
+  dann gilt \\
+  \begin{align*}
+    m - (n + 1) - 1    &\in \mathbb{N}_0 && (\text{A1}) \\
+    m - n + (1 + (-1)) &\in \mathbb{N}_0 && (\text{A3}) \\
+    m - n              &\in \mathbb{N}_0 \\
+  \end{align*}
+  $m$ und $n$ sind ganze Zahlen. Aus der Schule ist bekannt, dass das Ergebnis der Addition oder Subtraktion zweier
+  ganzer Zahlen ebenfalls eine ganze Zahl ist, also ist $m - n \in \mathbb{Z}$. Zusätzlich ist $m - n \in P$, also ist
+  $m - n > 0$. Die ganzen Zahlen größer $0$ sind definiert als die natürlichen Zahlen, somit ist die Behauptung wahr für
+  $n + 1$.
+  Aus dem Satz über die vollständige Induktion folgt die Behauptung.
+
+\end{enumerate}
+
+\section*{Hausaufgabe 3}
+
+\emph{Behauptung}: \\
+\[
+  P(n) \colon \prod\limits_{k = 1}^n (1 + a_k) \geq 1 + \sum\limits_{k = 1}^n a_k
+\]
+\emph{Induktionsanfang}: \\
+\begin{align*}
+  P(1) \colon \prod\limits_{k = 1}^1 (1 + a_k) &\geq 1 + \sum\limits_{k = 1}^1 a_k \\
+                                     1 + a_k  &\geq 1 + a_k \\
+\end{align*}
+Die Behauptung $P(1)$ ist offensichtlich wahr.  \\
+
+\noindent
+\emph{Induktionsschritt}:   Die Behauptung $P(n)$ sei wahr für ein $n \in \mathbb{N}$. Dann gilt \\
+
+\begin{enumerate}[label={Fall \arabic*}]
+\item $\forall k \in \{1, \ldots, n \} \colon a_k \in \interval[open right]{-1}{0}$ \\
+  \[
+    \prod\limits_{k = 1}^{n+1} (1 + a_k) \geq 1 + \sum\limits_{k = 1}^{n + 1} a_k
+  \]
+
+  Annahme: $\prod\limits_{k = 1}^{n+1} (1 + a_k) = 0$: \\
+    
+  Ein Produkt ist genau dann $0$, wenn einer der Faktoren $0$ ist (Folgerungen aus den Körperaxiomen 1.1.4 (f)).
+  $(1 + a_k) = 0$ genau dann, wenn $a_k = -1$ (A3). Somit
+  \[
+    \exists k \in \{1, \ldots, n \} \colon a_k = -1
+  \]
+  
+  Die linke Seite der Ungleichung ist nun $0$ unabhängig von allen weiteren $a_1, \ldots, a_n$. \\
+  
+  Betrachtet man die rechte Seite der Gleichung, ist bereits ein $a_1, \ldots, a_n$ mit $-1$ bekannt.
+  Da per Intervall alle $a_1, \ldots, a_n$ kleiner als $0$ sind, ist die rechte Seite der Ungleichung
+  kleiner oder gleich $0$
+
+  Im folgenden wird nun angenommen $\prod\limits_{k = 1}^{n+1} (1 + a_k) \ne 0$. Dann gilt
+  $\forall k \ in \{1, \ldots, n \} \colon (1 - a_k) \in \interval[open]{0}{1} \subseteq P$.
+
+  \begin{align*}
+    1                                                                   &\geq \prod\limits_{k = 1}^n (1 + a_k)                     && (\text{Vorlesung 1.2.3 (h)}) \\
+    1^{-1}                                                              &\leq (\prod\limits_{k = 1}^n (1 + a_k))^{-1}              && (1 * 1 = 1, 1 = 1^{-1}) \\
+    1                                                                   &\leq(\prod\limits_{k = 1}^n (1 + a_k))^{-1}               && | *(a_{n + 1} < 0) \\
+    a_{n + 1}                                                           &\geq \frac{a_{n + 1}}{\prod\limits_{k = 1}^n (1 + a_k))}  && | -(\frac{a_{n + 1}}{\prod\limits_{k = 1}^n (1 + a_k))}) \\
+    a_{n + 1} - \frac{a_{n + 1}}{\prod\limits_{k = 1}^n (1 + a_k))}     &\geq 0                                                    && | +1 \\
+    1 + a_{n + 1} - \frac{a_{n + 1}}{\prod\limits_{k = 1}^n (1 + a_k))} &\geq 1                                                    && | *:(\prod\limits_{k = 1}^n (1 + a_k)) \\
+    \prod\limits_{k = 1}^n (1 + a_k) * (1 + a_{n + 1}) - a_{n + 1}      &\geq \prod\limits_{k = 1}^n (1 + a_k)                     && | (P(n) \\
+    \prod\limits_{k = 1}^n (1 + a_k) * (1 + a_{n + 1}) - a_{n + 1}      &\geq 1 + \sum\limits_{k = 1}^n a_k                        && | + (a_{n + 1}) \\
+    \prod\limits_{k = 1}^n (1 + a_k) * (1 + a_{n + 1})                  &\geq 1 + \sum\limits_{k = 1}^n a_k + a_{n + 1}            && | + (a_{n + 1}) \\
+    \prod\limits_{k = 1}^{n + 1} (1 + a_k)                              &\geq 1 + \sum\limits_{k = 1}^{n + 1} a_k \\
+  \end{align*}
+
+\newpage
+\item $\forall k \in \{1, \ldots, n \} \colon a_k \geq 0$ \\  
+\begin{align*}
+ \prod\limits_{k = 1}^n (1 + a_k) * (1 + a_{n + 1})                   &\geq 1 + \sum\limits_{k = 1}^n a_k + a_{n + 1}  && | - (a_{n + 1}) \\
+ \prod\limits_{k = 1}^n (1 + a_k) * (1 + a_{n + 1}) -  a_{n + 1}      &\geq 1 + \sum\limits_{k = 1}^n a_k              && | P(n) \\
+ \prod\limits_{k = 1}^n (1 + a_k) * (1 + a_{n + 1}) -  a_{n + 1}      &\geq \prod\limits_{k = 1}^n (1 + a_k)           && | :(\prod\limits_{k = 1}^n (1 + a_k)) \\
+  1 + a_{n + 1} -  \frac{a_{n + 1}}{\prod\limits_{k = 1}^n (1 + a_k)} &\geq 1                                          && | -1 \\
+  a_{n + 1} -  \frac{a_{n + 1}}{\prod\limits_{k = 1}^n (1 + a_k)}     &\geq 0 \\
+  a_{n + 1} * (1 - (\prod\limits_{k = 1}^n (1 + a_k))^{-1})           &\geq 0                                          && |: (a_{n + 1}) \\
+  1 - (\prod\limits_{k = 1}^n (1 + a_k))^{-1}                         &\geq 0                                          && | + ((\prod\limits_{k = 1}^n (1 + a_k))^{-1}) \\
+  1                                                                   &\geq (\prod\limits_{k = 1}^n (1 + a_k))^{-1}  \\
+  1                                                                   &\leq \prod\limits_{k = 1}^n (1 + a_k) \\
+\end{align*}
+Aus der Definition von $a_k$ folgt, dass $1 + a_k \geq 1$ und aus Schulwissen ist bekannt, dass das Produkt Multiplikation von Faktoren größer
+oder gleich $1$ ebenfalls größer oder gleich $1$ ist.
+\end{enumerate}
+
+\noindent
+Somit ist die Behauptung wahr für $n + 1$ und aus dem Satz über die vollständige Induktion folgt die Behauptung.
+
+\end{document}
