@@ -666,4 +666,42 @@ $f_\emptyset \colon \emptyset \to Y$ existiert, und zwar die mit $\Gamma_f = \em
 gibt es keine Abbildung $X \to \emptyset$, wenn $X$ nichtleer ist, weil die Existenzaussage nie
 erfüllt ist.
 
+\subsection*{Gruppen}
+
+\fcolorbox{black}{light-gray}{
+  \begin{minipage}{\textwidth}
+    Nils Henrik Abel \gtrsymBorn~5. August 1802 \gtrsymDied 6. April 1829
+
+    Norwegischer Mathematiker und wichtiger Mitbegründer der Gruppentheorie. \\
+    Ihm zu Ehren nennt man kommutative Gruppen auch \emph{Abelsche Gruppen}. 
+  \end{minipage}
+}
+
+Übung: konstruieren Sie zwei Permutationen $f, g$ von $\{ 1, 2, 3 \}$,
+die nicht kommutieren: $g \circ f \ne  f \circ g$
+\[
+  f \colon 1 \mapsto 2, 2 \mapsto 3, 3 \mapsto 1
+\]
+\[
+  g \colon 1 \mapsto 1, 2 \mapsto 3, 3 \mapsto 2
+\]
+\[
+  g \circ f \colon 1 \mapsto 3, 2 \mapsto 1, 3 \mapsto 1
+\]
+\[
+  f \circ g \colon 1 \mapsto 2, 2 \mapsto 1, 3 \mapsto 3
+\]
+\[
+  g \circ f \ne f \circ g
+\]
+
+Übung: $(\mathbb{Z} \setminus \{ 0 \}, *)$ ist keine abelsche Gruppe, warum?
+
+\begin{enumerate}[label=(G\arabic*)]
+\item $\forall a,b,c \in \mathbb{Z} \colon a * (b * c) = (a * b) * c$
+\item $\exists e \in \mathbb{Z} \colon \forall a \in \mathbb{Z} \colon a * e = a$, mit $e = 1$
+\item $\forall a \in \mathbb{Z} \colon \exists a^{-1} \in \mathbb{Z} \colon a * a^{-1} = e$ mit $e = 1$. \\
+  Diese Aussage gilt nicht. Es gibt kein $a^{-1} \in \mathbb{Z}$ mit $2 * a^{-1} = 1$
+\end{enumerate}
+
 \end{document}
