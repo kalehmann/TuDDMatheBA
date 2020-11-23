@@ -16,6 +16,7 @@ PDF_FILES = \
 	$(OUTPUT_DIRECTORY)/pdf/an10/uebung.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/inf-b-210/inf-b-210.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/la10/ha01.pdf \
+	$(OUTPUT_DIRECTORY)/pdf/la10/ha02.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/la10/la10.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/la10/uebung.pdf \
 	$(OUTPUT_DIRECTORY)/pdf/pr10/homework/01.pdf \
