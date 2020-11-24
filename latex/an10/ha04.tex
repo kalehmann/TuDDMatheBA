@@ -84,6 +84,7 @@
   \end{align*}
   \emph{Induktionsschritt}: Die Behauptung $P(n)$ sei wahr für ein $n \in \mathbb{N}$,
   dann gilt \\
+  
   \begin{align*}
     P(n + 1) \colon 2^{n + 1} &\leq (n + 1)! \\
                       2^n * 2 &\leq n! * (n + 1) \\
@@ -248,22 +249,40 @@ Die Behauptung $P(1)$ ist offensichtlich wahr.  \\
 
 \newpage
 \item $\forall k \in \{1, \ldots, n \} \colon a_k \geq 0$ \\  
-\begin{align*}
- \prod\limits_{k = 1}^n (1 + a_k) * (1 + a_{n + 1})                   &\geq 1 + \sum\limits_{k = 1}^n a_k + a_{n + 1}  && | - (a_{n + 1}) \\
- \prod\limits_{k = 1}^n (1 + a_k) * (1 + a_{n + 1}) -  a_{n + 1}      &\geq 1 + \sum\limits_{k = 1}^n a_k              && | P(n) \\
- \prod\limits_{k = 1}^n (1 + a_k) * (1 + a_{n + 1}) -  a_{n + 1}      &\geq \prod\limits_{k = 1}^n (1 + a_k)           && | :(\prod\limits_{k = 1}^n (1 + a_k)) \\
-  1 + a_{n + 1} -  \frac{a_{n + 1}}{\prod\limits_{k = 1}^n (1 + a_k)} &\geq 1                                          && | -1 \\
-  a_{n + 1} -  \frac{a_{n + 1}}{\prod\limits_{k = 1}^n (1 + a_k)}     &\geq 0 \\
-  a_{n + 1} * (1 - (\prod\limits_{k = 1}^n (1 + a_k))^{-1})           &\geq 0                                          && |: (a_{n + 1}) \\
-  1 - (\prod\limits_{k = 1}^n (1 + a_k))^{-1}                         &\geq 0                                          && | + ((\prod\limits_{k = 1}^n (1 + a_k))^{-1}) \\
-  1                                                                   &\geq (\prod\limits_{k = 1}^n (1 + a_k))^{-1}  \\
-  1                                                                   &\leq \prod\limits_{k = 1}^n (1 + a_k) \\
-\end{align*}
-Aus der Definition von $a_k$ folgt, dass $1 + a_k \geq 1$ und aus Schulwissen ist bekannt, dass das Produkt Multiplikation von Faktoren größer
-oder gleich $1$ ebenfalls größer oder gleich $1$ ist.
+  \begin{align*}
+    \prod\limits_{k = 1}^{n + 1} (1 + a_k)                                            &\geq 1 + \sum\limits_{k = 1}^{n + 1} a_k       && (\text{Def. Summe und Def. Produkt})\\
+    \prod\limits_{k = 1}^n (1 + a_k) * (1 + a_{n + 1})                                &\geq 1 + \sum\limits_{k = 1}^n a_k = a_{n + 1} && (P(n)) \\
+    \left(1 + \sum\limits_{k = 1}^n a_k\right) * (1 + a_{n + 1})                      &\geq 1 + \sum\limits_{k = 1}^n a_k + a_{n + 1} \\
+    1 + a_{n + 1} + \sum\limits_{k = 1}^n a_k + a_{n + 1} * \sum\limits_{k = 1}^n a_k &\geq 1 + \sum\limits_{k = 1}^n a_k + a_{n + 1} &&|  - \left(1 + a_{n + 1} + \sum\limits_{k = 1}^n a_k\right)\\
+    a_{n + 1} * \sum\limits_{k = 1}^n a_k                                             &\geq 0 \\  
+  \end{align*}
+
+  \begin{minipage}[t]{.45\textwidth}
+    \textbf{Fall 1}: $a_{n + 1} = 0$: \\
+    
+    Es folgt per den Folgerungen aus den Körperaxiomen (f)
+    \[
+      a_{n + 1} * \sum\limits_{k = 1}^n a_k = 0
+    \]
+    Somit ist die Behauptung in diesem Fall wahr.
+  \end{minipage}
+  \hfill
+  \vrule
+  \hfill
+  \begin{minipage}[t]{.45\textwidth}
+    \textbf{Fall 2}: $a_{n + 1} > 0$ \\
+    
+    Das Axiom (A11) besagt, dass die Summe aus Summanden größer $0$ ebenfalls größer als $0$ ist.
+    Da in diesem Fall alle $a_k > 0$, folgt $\sum\limits_{k = 1}^n a_k > 0$
+    
+    Aus der Definition von $a_k$ und (A12) folgt nun $a_{n + 1} * \sum\limits_{k = 1}^n a_k > 0$ und
+    die Behauptung ist wahr.
+  \end{minipage} \\
 \end{enumerate}
 
 \noindent
 Somit ist die Behauptung wahr für $n + 1$ und aus dem Satz über die vollständige Induktion folgt die Behauptung.
+
+
 
 \end{document}
