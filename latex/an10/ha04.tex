@@ -84,34 +84,16 @@
   \end{align*}
   \emph{Induktionsschritt}: Die Behauptung $P(n)$ sei wahr für ein $n \in \mathbb{N}$,
   dann gilt \\
-  
-  \begin{align*}
-    P(n + 1) \colon 2^{n + 1} &\leq (n + 1)! \\
-                      2^n * 2 &\leq n! * (n + 1) \\
-  \end{align*}
-  Für alle $n \geq 4 \in \mathbb{N}$ gilt $2 < (n + 1)$. \\
-  
-  \begin{minipage}[t]{.45\textwidth}
-    \textbf{Fall 1}: $n! - 2^n \in P$: \\
-    
-    Es folgt
-    \[
-      2^n * 2 < n! * 2 < n! * (n + 1)
-    \]
-  \end{minipage}
-  \hfill
-  \vrule
-  \hfill
-  \begin{minipage}[t]{.45\textwidth}
-    \textbf{Fall 2}: $n! - 2^n = 0$ \\
 
-    Also ist $n! = 2^n$. Man substituiere $n!$ mit $c$
-    
-    Aus den Folgerungen aus den Anordnungsaxiomen (1.2.3 (e) in der Vorlesung) folgt nun
-    
-    $2 * c < (n + 1) * c$.
-  \end{minipage} \\
-  Somit ist die Behauptung wahr für $n + 1$.
+  \begin{align*}
+    2^{n + 1} &\leq (n + 1)!     && (\text{Def. Potenz und Def. Fakultät}) \\
+    2^n * 2  &\leq n! * (n + 1)  && (\text{Abschätzung durch $P(n)$}) \\\
+    2^n * 2  &\leq 2^n * (n + 1) && | : 2^n \\
+    2        &\leq n + 1         && | - 1 \\
+    1        &\leq n
+  \end{align*}
+  
+  Diese Aussage ist per Definition von $n$ wahr, somit ist auch die Behauptung wahr für $n + 1$.
   Aus dem Satz über die vollständige Induktion folgt die Behauptung.
 
 \newpage
