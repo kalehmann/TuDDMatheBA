@@ -704,4 +704,72 @@ die nicht kommutieren: $g \circ f \ne  f \circ g$
   Diese Aussage gilt nicht. Es gibt kein $a^{-1} \in \mathbb{Z}$ mit $2 * a^{-1} = 1$
 \end{enumerate}
 
+\setcounter{section}{2}
+\section{Lineare Gleichungssystem und Matrizen}
+
+\setcounter{subsection}{1}
+\subsection{Matrizen}
+
+\begin{align*}
+  \begin{pmatrix}
+    \textcolor{red}{1} & \textcolor{red}{2} & \textcolor{red}{3} \\
+    4 & 5 & 6 \\
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    1  & 1  & 1 \\
+    -1 & 0  & 0 \\
+    2  & -2 & 0 \\
+  \end{pmatrix}
+  &=
+  \begin{small}      
+    \begin{pmatrix}
+      \textcolor{red}{1} * 1 + \textcolor{red}{2} * (-1) + \textcolor{red}{3} * 2 &
+      \textcolor{red}{1} * 1 + \textcolor{red}{2} * 0 + \textcolor{red}{3} * (-2) &
+      \textcolor{red}{1} * 1 + \textcolor{red}{2} * 0 + \textcolor{red}{3} * 0 \\
+      1 * 4 + 5 * (-1) + 6 * 2 & 4 * 1 + 5 * 0 + 6 * (-2) & 4 * 1 + 5 * 0 + 6 * 0 \\
+    \end{pmatrix}
+  \end{small}\\
+  &=
+  \begin{pmatrix}
+    5  & -5 & 1 \\
+    11 & -8 & 4 \\
+  \end{pmatrix}
+\end{align*}
+
+\textbf{Vorsicht!! Selbst wenn $A \cdot B$ und $B \cdot A$ definiert sind, muss $A \cdot B = B \cdot A$
+nicht gelten!}
+
+\begin{align*}
+  \begin{pmatrix}
+    1 & 0 \\
+    0 & 2 \\
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    1 & 2 \\
+    3 & 4 \\
+  \end{pmatrix}
+  &=
+  \begin{pmatrix}
+    1 & 2 \\
+    6 & 8 \\
+  \end{pmatrix} \\
+  \begin{pmatrix}
+    1 & 2 \\
+    3 & 4 \\
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    1 & 0 \\
+    0 & 2 \\
+  \end{pmatrix}
+  &=
+  \begin{pmatrix}
+    1 & 4 \\
+    3 & 8 \\
+  \end{pmatrix}
+\end{align*}
+
+
 \end{document}
