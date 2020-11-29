@@ -1,0 +1,6 @@
+*
+!.gitignore
+!Makefile
+!*.f95
+!*.py
+!*.tex
