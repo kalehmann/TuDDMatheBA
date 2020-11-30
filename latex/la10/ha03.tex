@@ -1,0 +1,424 @@
+\documentclass{article}
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{genealogytree}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{MnSymbol}
+\usepackage{pgfplots}
+\usepackage{physics}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{.9}
+\usepackage{xfrac}
+
+\author{Karsten Lehmann}
+\date{WiSe 2020}
+\title{Lineare Algebra I: Übungen - Blatt 3}
+
+\begin{document}
+
+\maketitle
+
+\vfill
+
+\newpage
+\section*{Übung 9}
+
+\begin{enumerate}[(i)]
+\item
+  \[
+    \left(
+      \begin{array}{ccc}
+        1 & 1 & 1 \\
+      \end{array}
+    \right)
+    \cdot
+    \left(
+      \begin{array}{ccc}
+        1 & 2 & 3 \\
+        2 & 3 & 4 \\
+        3 & 4 & 5 \\
+      \end{array}
+    \right)
+    =
+    \left(
+      \begin{array}{ccc}
+        6 & 9 & 12 \\
+      \end{array}
+    \right)
+  \]
+\item
+  \[
+    \left(
+      \begin{array}{cccc}
+        \lambda_1 &           &        & 0 \\
+                  & \lambda_2 \\
+                  &           & \ddots \\
+        0         &           &        & \lambda_n \\
+      \end{array}
+    \right)
+    \cdot
+    \left(
+      \begin{array}{cccc}
+        \sfrac{1}{\lambda_1} &                      &        & 0 \\
+                             & \sfrac{1}{\lambda_2} \\
+                             &                      & \ddots \\
+        0                    &                      &        & \sfrac{1}{\lambda_n} \\
+      \end{array}
+    \right)
+    =
+    \left(
+      \begin{array}{cccc}
+        1 &   &        & 0 \\
+          & 1 &        &   \\
+          &   & \ddots &   \\
+        0 &   &        & 1 \\
+      \end{array}
+    \right)
+  \]
+
+\item
+  \[
+    \left(
+      \begin{array}{cccc}
+        \lambda_1 &           &        & 0 \\
+                  & \lambda_2 \\
+                  &           & \ddots \\
+        0         &           &        & \lambda_n \\
+      \end{array}
+    \right)
+    \cdot
+    \left(
+      \begin{array}{cccc}
+        0         &        &        & \lambda_1 \\
+                  &        & \lambda_2 \\
+                  & \udots \\
+        \lambda_n &        &        & 0 \\
+      \end{array}
+    \right)
+    =
+    \left(
+      \begin{array}{cccc}
+        0           &         &             & \lambda_1^2 \\
+                    &         & \lambda_2^2 &   \\
+                    & \udots  &             &   \\
+        \lambda_n^2 &         &             & 0 \\
+      \end{array}
+    \right)
+  \]
+
+\item
+  \[
+    \left(
+      \begin{array}{cccc}
+        0         &        &        & \lambda_1 \\
+                  &        & \lambda_2 \\
+                  & \udots \\
+        \lambda_n &        &        & 0 \\
+      \end{array}
+    \right)
+    \cdot
+    \left(
+      \begin{array}{cccc}
+        \lambda_1 &           &        & 0 \\
+                  & \lambda_2 \\
+                  &           & \ddots \\
+        0         &           &        & \lambda_n \\
+      \end{array}
+    \right)
+    =
+    \left(
+      \begin{array}{cccc}
+        \lambda_1^2 &             &        & 0 \\
+                    & \lambda_2^2 &        &   \\
+                    &             & \ddots &   \\
+        0           &             &        & \lambda_n^2 \\
+      \end{array}
+    \right)
+  \]
+
+\item
+  \[
+    \left(
+      \begin{array}{ccc}
+        0 & 0 & 1 \\
+        0 & 1 & 0 \\
+        1 & 0 & 0 \\
+      \end{array}
+    \right)
+    \cdot
+    \left(
+      \begin{array}{ccc}
+        0 & 0 & 1 \\
+        0 & 1 & 0 \\
+        1 & 0 & 0 \\
+      \end{array}
+    \right)
+    =
+    \left(
+      \begin{array}{ccc}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+      \end{array}
+    \right)
+  \]
+  
+\end{enumerate}
+
+\section*{Übung 10}
+\begin{enumerate}[(i)]
+\item
+  \begin{enumerate}[a)]
+  \item
+    \begin{align*}
+      \left(
+        \begin{array}{cc}
+          1 & 1 \\
+          1 & 1 \\
+        \end{array}
+      \right)^2
+      - 2 *
+      \left(
+        \begin{array}{cc}
+          1 & 1 \\
+          1 & 1 \\
+        \end{array}
+      \right)
+      + 1
+      &=
+      \left(
+        \begin{array}{cc}
+          2 & 2 \\
+          2 & 2 \\
+        \end{array}
+      \right)
+      - 
+      \left(
+        \begin{array}{cc}
+          2 & 2 \\
+          2 & 2 \\
+        \end{array}
+      \right)
+      + 1 \\
+      &= 1\\
+    \end{align*}
+
+  \item
+    \begin{align*}
+      \left(
+        \begin{array}{cc}
+          1 & 1 \\
+          0 & 1 \\
+        \end{array}
+      \right)^2
+      - 2 *
+      \left(
+        \begin{array}{cc}
+          1 & 1 \\
+          0 & 1 \\
+        \end{array}
+      \right)
+      + 1
+      &=
+      \left(
+        \begin{array}{cc}
+          1 & 2 \\
+          0 & 1 \\
+        \end{array}
+      \right)
+      - 
+      \left(
+        \begin{array}{cc}
+          2 & 2 \\
+          0 & 2 \\
+        \end{array}
+      \right)
+      + 1 \\
+      &=
+      \left(
+        \begin{array}{cc}
+          -1 & 0 \\
+          0 & -1 \\
+        \end{array}
+      \right)
+      + 1 \\
+      &=
+      \left(
+        \begin{array}{cc}
+          0 & 1 \\
+          1 & 0 \\
+        \end{array}
+      \right)  
+      \\
+    \end{align*}
+  \end{enumerate}
+
+\item
+  \begin{align*}
+    \left(
+    \begin{array}{ccc}
+      -1 & 1   & 1   \\
+      -5 & 21  & 17  \\
+      6  & -26 & -21 \\
+    \end{array}
+    \right)^2
+    +
+    \left(
+    \begin{array}{ccc}
+      -1 & 1   & 1   \\
+      -5 & 21  & 17  \\
+      6  & -26 & -21 \\
+    \end{array}
+    \right)
+    + 1
+    &=
+    \left(
+    \begin{array}{ccc}
+      2  & -6 & -5 \\
+      2  & -6 & -5 \\
+      -2 & 6  & 5  \\
+    \end{array}
+    \right)
+    +
+    \left(
+    \begin{array}{ccc}
+      -1 & 1   & 1   \\
+      -5 & 21  & 17  \\
+      6  & -26 & -21 \\
+    \end{array}
+    \right)
+    + 1 \\
+    &=
+    \left(
+    \begin{array}{ccc}
+      1  & -5  & -4  \\
+      -3 & 15  & 12  \\
+      4  & -20 & -16 \\
+    \end{array}
+    \right)
+    + 1 \\
+    &=
+    \left(
+    \begin{array}{ccc}
+      2  & -4  & -3  \\
+      -2 & 16  & 13  \\
+      5  & -19 & -15 \\
+    \end{array}
+    \right)
+    \end{align*}
+\end{enumerate}
+
+\section*{Übung 11}
+
+\begin{enumerate}[(i)]
+\item
+  \begin{align*}
+    e'_i * A                                            &= \left( a_{i1}, a_{i2}, \ldots, a_{in} \right) \\
+    \left( a_{i1}, a_{i2}, \ldots, a_{in} \right) * e_j &= \left( a_{ij} \right)
+  \end{align*}
+
+\item
+  $B$ ist eine $n \times 1$ Matrix und die erste Spalte der Einheitsmatrix der Größe $n$ (siehe (i)).
+  \[
+    B = \left(
+      \begin{array}{c}
+        1 \\
+        0 \\
+        \vdots \\
+        0
+      \end{array}
+    \right)
+  \]
+
+  $C$ ist eine $1 \times m$ Matrix und die erste Zeile der Einheitsmatrix der Größe $n$.
+  \[
+    C = \left(
+      \begin{array}{cccc}
+        1 & 0 & \ldots & 0 \\
+      \end{array}
+    \right)
+  \]
+\end{enumerate}
+
+\newpage
+\section*{Übung 12}
+
+\begin{enumerate}[(i)]
+\item
+  \begin{align*}
+    (A + B)^2 &= (A + B) \cdot (A + B) \\
+              &= A \cdot  (A + B) + B \cdot (A + B) \\
+              &= A \cdot A + A \cdot B + B \cdot A + B \cdot B \\
+              &= A^2 + A \cdot B + B \cdot A + B^2 \\
+  \end{align*}
+  
+  Sei nun $A = \left(\begin{array}{cc}1 & 0 \\ 0 & 2 \\ \end{array}\right)$ und
+  $B = \left(\begin{array}{cc}1 & 2 \\ 3 & 4 \\ \end{array}\right)$
+
+  \begin{align*}
+    A \cdot B =
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 2 \\
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+      1 & 2 \\
+      3 & 4 \\
+    \end{pmatrix}
+    &=
+    \begin{pmatrix}
+      1 & 2 \\
+      6 & 8 \\
+    \end{pmatrix} \\
+    B \cdot A =
+    \begin{pmatrix}
+      1 & 2 \\
+      3 & 4 \\
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 2 \\
+    \end{pmatrix}
+    &=
+    \begin{pmatrix}
+      1 & 4 \\
+      3 & 8 \\
+    \end{pmatrix} \\
+    A \cdot B + B \cdot A
+    &=
+    \begin{pmatrix}
+      2 & 6 \\
+      9 & 16 \\
+    \end{pmatrix} \\
+    2 \cdot A \cdot B
+    &=
+    \begin{pmatrix}
+      2  & 4  \\
+      12 & 16 \\
+    \end{pmatrix} \\
+  \end{align*}
+
+  Somit ist in diesem Fall $2 \cdot A \cdot B \ne A \cdot B + B \cdot A$ und die Aussage stimmt nicht.
+
+\item
+  \begin{align*}
+    (A + B) \cdot (A - B) &= A \cdot (A - B) + B \cdot (A - B) \\
+                          &= A \cdot A - A \cdot B + B \cdot A - B \cdot B \\
+                          &= A^2 - A \cdot B + B \cdot A - B^2 \\
+                          &= (A^2 - B^2) + B \cdot A - A \cdot B \\
+  \end{align*}
+
+  In (i) wurde bereits ein Beispiel gezeigt, in dem $B \cdot A \ne A \cdot B$. Somit stimmt
+  die Aussage $(A^2 - B^2) = (A + B) \cdot (A - B)$ ebenfalls nicht.
+\end{enumerate}
+
+
+\end{document}
