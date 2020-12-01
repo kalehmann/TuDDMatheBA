@@ -1,5 +1,8 @@
 \documentclass{article}
 
+\usepackage[dvipsnames]{xcolor}
+\definecolor{light-gray}{gray}{.9}
+\usepackage{aligned-overset}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[shortlabels]{enumitem}
@@ -10,9 +13,6 @@
 \usepackage{physics}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
-\usepackage{xcolor}
-\definecolor{light-gray}{gray}{.9}
-
 \setlength\parindent{0pt}
 
 \author{Karsten Lehmann}
@@ -771,5 +771,88 @@ nicht gelten!}
   \end{pmatrix}
 \end{align*}
 
+\section{Vektorräume}
+
+\subsection{Definition und erste Beispiele}
+
+Formale Summen sind Koeffizientenfolgen.
+
+\[
+  = \{ a \colon \mathbb{N} \to \mathbb{K} | a(k) \ne 0 \text{ für endlich viele } k \in \mathbb{N} \}
+\]
+
+\emph{Übung}. In jedem Vektorraum $V$ über einem Körper $\mathbb{K}$ gilt für beliebige
+
+$\lambda, \mu \in \mathbb{K}, \upsilon, \omega \in V$
+
+\begin{enumerate}[1)]
+\item
+  \[
+    \lambda \cdot {\color{ForestGreen}0} = {\color{ForestGreen}0}
+  \]
+\item
+  \[
+    \lambda \cdot (-\upsilon) = - \lambda \cdot \upsilon
+  \]
+\item
+  \[
+    \lambda \cdot (\upsilon - \omega) = \lambda \cdot \upsilon - \lambda \cdot \omega)
+  \]
+\item
+  \[
+    {\color{BurntOrange}0} \cdot \upsilon = {\color{ForestGreen}0}
+  \]
+\item
+  \[
+    -1 \cdot \upsilon = - \upsilon
+  \]
+\item
+  \[
+    (\lambda - \mu) \cdot \upsilon = \lambda \cdot \upsilon - \mu \cdot \upsilon
+  \]
+\end{enumerate}
+
+Welche Bedeutung hat $0$ in jedem der obigen Fälle?
+
+{\color{ForestGreen}Nullvektor}, {\color{BurntOrange}Element aus Körper} \\
+
+\emph{Beweis}
+
+\begin{enumerate}[1)]
+\item
+  Sei $\upsilon \coloneqq \lambda \cdot 0$
+
+  \begin{align*}
+    \upsilon + \upsilon &= \lambda \cdot 0 + \lambda \cdot 0 \\
+                        &= \lambda \cdot (0 + 0) \\
+                        &= \lambda \cdot 0 = \upsilon \\
+    \Rightarrow \ upsilon + \upsilon = \upsilon &\Rightarrow \upsilon = 0 \\
+  \end{align*}
+\item
+  \begin{align*}
+    \lambda \cdot (- \upsilon) &= -\lambda \cdot \upsilon \\
+    \lambda \cdot (- \upsilon) + \lambda \cdot \upsilon &= \lambda \cdot (- \upsilon + \upsilon) \\
+                               &= \lambda \cdot 0 \\
+                               &= 0\\
+  \end{align*}
+\item
+\item
+\item
+  \begin{align*}
+    -1 \cdot \upsilon &= -\upsilon \\
+    \iff -1 \cdot \upsilon + \upsilon &= 0 \\
+    -1 \cdot \upsilon + \upsilon &= -1 \cdot \upsilon + 1 \cdot \upsilon \\
+                      &= (-1 + 1) \cdot \upsilon \\
+                      &= 0 \cdot \upsilon \\
+                      &= 0 \\
+  \end{align*}
+\item
+  \begin{align*}
+    (\lambda - \mu) \cdot \upsilon                           &= \lambda \cdot \upsilon - \mu \cdot \upsilon \\
+    \iff (\lambda - \mu) \cdot \upsilon + \mu \cdot \upsilon &= \lambda \cdot \upsilon \\
+    \overset{(V2)}&{=} (\lambda - \mu + \mu) \cdot \upsilon \\
+                                                             &= \lambda \cdot \upsilon \\
+  \end{align*}
+\end{enumerate}
 
 \end{document}
