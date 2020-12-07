@@ -384,77 +384,68 @@ sind diese Darstellungen als Linearkombinationen eindeutig?
     \left(
     \begin{array}{cccc|c}
       1  & 2 & 1 & 3 & 1 \\
-      1  & 1 & 0 & 5 & 1 \\
-      -1 & 5 & 1 & 4 & 1 \\
+      1  & 1 & 0 & 5 & 0 \\
+      -1 & 5 & 1 & 4 & 0 \\
       -1 & 3 & 1 & 7 & 1 \\
     \end{array}
     \right)
     &=
     \left(
     \begin{array}{cccc|c}
-      1  & 2 & 1 & 3  & 1 \\
-      0  & 1 & 1 & -2 & 0 \\
-      0  & 6 & 1 & 9  & 2 \\
-      0  & 4 & 1 & 12 & 2 \\
+      1 & 2 & 1           & 3            & 1            \\
+      0 & 1 & 1           & -2           & 1            \\
+      0 & 1 & \frac{1}{6} & \frac{3}{2}  & 0            \\
+      0 & 1 & \frac{1}{4} & 3            & \frac{1}{4}  \\
     \end{array}
     \right) \\
     &=
     \left(
     \begin{array}{cccc|c}
-      1  & 2  & 1 & 3  & 1 \\
-      0  & 1  & 1 & -2 & 0 \\
-      0  & 12 & 2 & 18 & 4 \\
-      0  & 12 & 3 & 36 & 6 \\
+      1 & 2 & 1            & 3            & 1            \\
+      0 & 1 & 1            & -2           & 1            \\
+      0 & 0 & -\frac{5}{6} & \frac{7}{2}  & -1           \\
+      0 & 0 & \frac{1}{12} & \frac{3}{2}  & \frac{1}{4}  \\
     \end{array}
     \right) \\
     &=
     \left(
     \begin{array}{cccc|c}
-      1  & 2 & 1   & 3  & 1 \\
-      0  & 1 & 1   & -2 & 0 \\
-      0  & 0 & -10 & 42 & 4 \\
-      0  & 0 & 1   & 18 & 2 \\
+      1 & 2 & 1 & 3             & 1            \\
+      0 & 1 & 1 & -2            & 1            \\
+      0 & 0 & 1 & -\frac{21}{5} & \frac{6}{5}  \\
+      0 & 0 & 0 & 1             & \frac{3}{37} \\
     \end{array}
     \right) \\
     &=
     \left(
     \begin{array}{cccc|c}
-      1  & 2 & 1  & 3  & 1 \\
-      0  & 1 & 1  & -2 & 0 \\
-      0  & 0 & -5 & 21 & 2 \\
-      0  & 0 & 0  & 1  & \frac{4}{37} \\
+      1 & 2 & 1 & 3  & 1             \\
+      0 & 1 & 1 & -2 & 1             \\
+      0 & 0 & 1 & 0  & \frac{57}{37} \\
+      0 & 0 & 0 & 1  & \frac{3}{37}  \\
     \end{array}
     \right) \\
     &=
     \left(
     \begin{array}{cccc|c}
-      1  & 2 & 1 & 3  & 1 \\
-      0  & 1 & 1 & -2 & 0 \\
-      0  & 0 & 1 & 0  & \frac{2}{37} \\
-      0  & 0 & 0 & 1  & \frac{4}{37} \\
+      1 & 2 & 1 & 3  & 1              \\
+      0 & 1 & 0 & 0  & -\frac{14}{37} \\
+      0 & 0 & 1 & 0  & \frac{57}{37}  \\
+      0 & 0 & 0 & 1  & \frac{3}{37}   \\
     \end{array}
     \right) \\
     &=
     \left(
     \begin{array}{cccc|c}
-      1  & 1 & 0 & 5 & 1 \\
-      0  & 1 & 0 & 0 & \frac{6}{37} \\
-      0  & 0 & 1 & 0 & \frac{2}{37} \\
-      0  & 0 & 0 & 1 & \frac{4}{37} \\
-    \end{array}
-    \right) \\
-    &=
-    \left(
-    \begin{array}{cccc|c}
-      1  & 0 & 0 & 0 & \frac{11}{37} \\
-      0  & 1 & 0 & 0 & \frac{6}{37} \\
-      0  & 0 & 1 & 0 & \frac{2}{37} \\
-      0  & 0 & 0 & 1 & \frac{4}{37} \\
+      1 & 0 & 0 & 0  & -\frac{1}{37}  \\
+      0 & 1 & 0 & 0  & -\frac{14}{37} \\
+      0 & 0 & 1 & 0  & \frac{57}{37}  \\
+      0 & 0 & 0 & 1  & \frac{3}{37}   \\
     \end{array}
     \right) \\
   \end{align*}
   \[
-    L = \left\{\begin{pmatrix}\frac{11}{37} \\ \frac{6}{37} \\ \frac{2}{37} \\ \frac{4}{37} \end{pmatrix}\right\}
+    L = \left\{\begin{pmatrix}-\frac{1}{37} \\ -\frac{14}{37} \\ \frac{57}{37} \\ \frac{3}{37} \end{pmatrix}\right\}
   \]
 
   Es existiert genau eine Lösung. Damit ist $1_2$ als Linearkombination der Vektoren darstellbar und diese Darstellung ist eindeutig.
@@ -551,5 +542,30 @@ Zwei Vektoren sind genau dann linear abhängig, wenn einer ein Vielfaches von de
 
 Da $\lambda \in \mathbb{R}$, sind $v_1, v_2$ in $V_1$ linear abhängig. Allerdings ist $\sqrt{2}$ irrational. Somit existiert
 kein $\lambda \in \mathbb{Q}$, für welches gilt $\lambda \cdot v_1 = v_2$ und $v_1, v_2$ sind in $V_2$ linear unabhängig.
+
+\newpage
+\section*{Übung 18}
+
+Beweisen Sie, dass die Elemente $\sqrt{2}, \sqrt{3}, \sqrt{5} \in \mathbb{R}$ linear unabhängig über $\mathbb{Q}$
+sind.
+
+Für lineare Abhängigkeit muss gelten:
+
+\[
+  \lambda_1\sqrt{2} + \lambda_2\sqrt{3} + \lambda_3\sqrt{5} = 0 
+\]
+
+mit $\lambda_1, \lambda_2, \lambda_3 \in \mathbb{Q}$ und nicht $\lambda_1 = \lambda_2 = \lambda_3 = 0$
+
+\begin{align*}
+  -\lambda_1\sqrt{2} &= \lambda_2\sqrt{3} + \lambda_3\sqrt{5}                                                && | (\ldots)^2 \\
+  2\lambda_1^2       &= (\lambda_2\sqrt{3} + \lambda_3\sqrt{5})^2 \\
+                     &= 3\lambda_2^2 + 2\lambda_2\lambda_3\sqrt{15} + 5\lambda_3^2                           && | -(3\lambda_2^2 + 5\lambda_3^2) \\
+  2\lambda_1^2 - 3\lambda_2^2  - 2\lambda_2\lambda_3\sqrt{15} + 5\lambda_3^2 &= 2\lambda_2\lambda_3\sqrt{15} && | :(2\lambda_2\lambda_3) \\                       
+  \frac{2\lambda_1^2 - 3\lambda_2^2  - 2\lambda_2\lambda_3\sqrt{15} + 5\lambda_3^2}{2\lambda_2\lambda_3} &= \sqrt{15} \\         
+\end{align*}
+
+Ein Widerspruch zu $\lambda_1, \lambda_2, \lambda_3 \in \mathbb{Q}$, damit sind die Elemente über $\mathbb{Q}$
+linear unabhängig.
 
 \end{document}
