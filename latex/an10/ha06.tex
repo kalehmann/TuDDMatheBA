@@ -1,0 +1,188 @@
+\documentclass{article}
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+
+\author{Karsten Lehmann}
+\date{WiSe 2020}
+\title{Hausaufgabe 06 Analysis - Grundlegende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\section*{Hausaufgabe 1}
+
+Zeigen Sie unter Verwendung entsprechender Definitionen, dass die Folge $(a_n)_{n \in \mathbb{N}}$ mit
+$a_n \coloneqq \frac{n^3 + 5n}{3n^3 - 6}, n \in \mathbb{N}$ gegen $\frac{1}{3}$ konvergiert und eine
+Cauchy-Folge ist. \\
+
+\noindent
+Dann in der Vorlesung unter 2.1.2 bereits bewiesen wurde, dass alle konvergenten Folgen auch Cauchy-Folgen sind,
+muss nur die Konvergenz bewiesen werden. Sei $\frac{1}{3}$ der Grenzwert der Folge $(a_n)$. Dann gilt
+
+\[
+  \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n \in \mathbb{N}_{\geq n_0} \colon \abs{a_n - \frac{1}{3}} < \epsilon
+\]
+Es gilt
+\begin{align*}
+  \abs{\frac{n^3 + 5n}{3n^3 - 6} - \frac{1}{3}} &= \abs{\frac{n^3 + 5n}{3n^3 - 6} - \frac{1(n^3 - 2)}{3(n^3 - 2)}} \\
+                                                &= \abs{\frac{n^3 + 5n}{3n^3 - 6} - \frac{n^3 - 2}{3n^3 - 6}} \\
+                                                &= \abs{\frac{5n + 2}{3n^3 - 6}} \\
+  \text{Sei nun $n_0 \geq 2$} \\
+                                                &= \frac{5n + 2}{3n^3 - 6} \\
+                                                &< \frac{6n + 12}{3n^3} \\
+                                                &= \frac{2n + 4}{n^3} \\
+                                                &= \frac{2 + \frac{4}{n}}{n^2} && \frac{4}{n} \leq 2 \text{ für alle } n_0 \geq 2 \\
+                                                &\leq \frac{2 + 2}{n^2} \\
+                                                &< \frac{4}{n} \\
+                                                &< \epsilon
+\end{align*}
+
+für alle $n \in \mathbb{N}_{\geq n_0}$, wenn $n_0 \in \mathbb{N}$ so gewählt, dass $n_0 \geq 2 \land \frac{4}{n} < \epsilon$. \\
+
+\newpage
+\section*{Hausaufgabe 2}
+
+Geben Sie jeweils zwei reelle Nullfolgen $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}}$ mit $b_n \ne 0$ für
+alle $n \in \mathbb{N}$ an, so dass die Folge $(c_n)_{n \in \mathbb{N}}$ mit $c_n \coloneqq \frac{a_n}{b_n}$
+
+\begin{enumerate}[a)]
+\item eine Nullfolge ist
+  \[
+    a_n \coloneqq 0, b_n \coloneqq \frac{1}{n}
+  \]
+  \[
+    \frac{a_n}{b_n} = \frac{0}{\sfrac{1}{n}} = 0 
+  \]
+  
+\item gegen einen von Null verschiedenen Wert konvergiert
+  \[
+    a_n \coloneqq \frac{2}{n}, b_n \coloneqq \frac{1}{n}
+  \]
+  \[
+    \frac{a_n}{b_n} = \frac{\sfrac{2}{n}}{\sfrac{1}{n}} = \frac{2}{n} \cdot \frac{n}{1} = \frac{2n}{n} = 2
+  \]
+  
+\item bestimmt divergiert
+  \[
+    a_n \coloneqq \frac{1}{n}, b_n \coloneqq \frac{1}{n^2}
+  \]
+
+  \[
+    \frac{a_n}{b_n} = \frac{\sfrac{1}{n}}{\sfrac{1}{n^2}} = \frac{1}{n} \cdot \frac{n^2}{1} = \frac{n^2}{n} = n
+  \]
+  
+\item unbestimmt divergiert
+  \[
+    a_n \coloneqq \frac{(-1)^n}{n}, b_n \coloneqq \frac{1}{n}
+  \]
+
+  \[
+    \frac{a_n}{b_n} = \frac{\sfrac{(-1)^n}{n}}{\sfrac{1}{n}} = \frac{(-1)^n}{n} \cdot \frac{n}{1} = \frac{(-1)^nn}{n} = (-1)^n
+  \]
+
+  
+\end{enumerate}
+
+\newpage
+\section*{Hausaufgabe 3}
+
+Untersuchen Sie die angegebenen Folgen $(a_n)_{n \in \mathbb{N}}$ auf Konvergenz und bestimmen Sie gegebenenfalls deren
+Grenzwerte:
+
+\begin{enumerate}[a)]
+\item $a_n \coloneqq \text{sgn}\left(-\frac{1}{n^2}\right)^n$ \\
+  Per Definition ist $n > 0$, somit ist auch $n^2 > 0$ und $\frac{1}{n^2} > 0$.
+  Damit ist $\text{sgn}\left(-\frac{1}{n^2}\right) = -1$ und die Folge lässt sich als $(-1)^n$ beschreiben.
+
+  \[
+    a_n \coloneqq \begin{cases}
+      -1 & n \text{ ist ungerade} \\
+      1  & n \text{ ist gerade} \\
+    \end{cases}
+  \]
+
+  Damit ist die Menge divergent und besitzt keinen Grenzwert.
+  
+\item $a_n \coloneqq \frac{\sfrac{(2+\sfrac{1}{n})}{n}}{1+\sfrac{1}{n}}$ \\
+  $1 + \frac{1}{n}$ konvergiert gegen $1$ (Vorlesung 2.1.4 (a), (b), 2.1.5 (b)).
+  Somit konvergiert auch $2 + \frac{1}{n}$ gegen $2$ und $\frac{2}{0}$ konvergiert gegen $0$.
+  Damit konvergiert die Folge gegen $\frac{0}{1} = 0$.
+\item $a_n \coloneqq \sqrt[3]{n+1} - \sqrt[3]{n}$ \\
+  \begin{align*}
+    \sqrt[3]{n+1} - \sqrt[3]{n} &= \sqrt[3]{n \cdot \left(1 + \frac{1}{n}\right)} - \sqrt[3]{n} \\
+                                &= \sqrt[3]{n} \cdot \sqrt[3]{1 + \frac{1}{n}} - \sqrt[3]{n}
+  \end{align*}
+  Die Folge $\frac{1}{n}$ konvergiert gegen $0$ (Vorlesung 2.1.4), somit konvergiert $\sqrt[3]{1 + \frac{1}{n}}$
+  gegen $\sqrt[3]{1} = 1$. Sei nun $\underset{n\to\infty}\lim \sqrt[3]{n} = b$, dann konvergiert die Folge gegen
+  $b \cdot 1 - b = 0$.
+\end{enumerate}
+
+\newpage
+\section*{Hausaufgabe 4}
+
+Sei $A \subseteq \mathbb{R}$ eine nichtleere Menge. Beweisen Sie, dass es eine Folge $(a_n)$ aus $A$ gibt mit
+$\underset{n\to\infty}\lim a_n = \inf A$.
+
+\noindent
+Für $\inf A$ gilt
+
+\begin{enumerate}[(i)]
+\item $\forall a \in A \colon a \geq \inf A$
+\item $\forall \epsilon > 0 \exists a \in A \colon a \leq \inf A + \epsilon$.
+\end{enumerate}
+Angenommen es gibt nun ein $b \in A$ mit $a > b$ und $\epsilon = a - b > 0$, dann gilt nach (ii):
+
+\begin{minipage}[t]{.45\textwidth}
+  \textbf{Fall 1}: $a < \inf A - \epsilon$:
+  \begin{align*}
+    a &< \inf A + (a - b) \\
+    a &< \inf A + a - b && | -a \\
+    0 &< \inf A - b     && | +b \\
+    b &< \inf A \\
+  \end{align*}\
+  Ein Widerspruch zu (i)
+\end{minipage}
+\begin{minipage}[t]{.45\textwidth}
+  \textbf{Fall 2}: $a = \inf A - \epsilon$
+  \begin{align*}
+    a &= \inf A + (a - b) \\
+    a &= \inf A + a - b && | -a \\
+    0 &= \inf A - b     && | +b \\
+    b &= \inf A \\
+  \end{align*}
+  Damit ist $a > \inf A - \frac{a - b}{2}$, ein Widerspruch zu (ii)
+\end{minipage}
+\\
+Aus (ii) folgt:
+\begin{align*}
+  a &> \inf A - \epsilon && | - \inf A \\
+  -\inf A + a &> \epsilon && | \cdot (-1) \\
+  \inf A - a &< \epsilon \\
+  \abs{a - \inf A} &< \epsilon \\ 
+\end{align*}
+Sei nun $(a_n)$ die Folge der Elemente aus $A$, geordnet nach der Größe beginnend mit dem größten Element.
+Da kein Element in $A$ echt kleiner als $a$ ist, gilt für diese Folge:
+
+\[
+  \forall \epsilon > 0 \exists n_0 \in \mathbb{N}_{\leq \abs{A}} \exists n \in \left(\mathbb{N}_{\geq n_0} \setminus \mathbb{N}_{> \abs{A}}\right) \colon \abs{a_n - \inf A} < \epsilon
+\]
+
+Somit konvergiert die Folge $(a_n)$ gegen $\inf A$
+
+
+\end{document}
