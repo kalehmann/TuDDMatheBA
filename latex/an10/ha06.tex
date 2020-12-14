@@ -12,7 +12,7 @@
 \usepackage{fancyhdr}
 \usepackage{xfrac}
 
-\author{Karsten Lehmann}
+\author{Albina Oscherowa \\ Karsten Lehmann}
 \date{WiSe 2020}
 \title{Hausaufgabe 06 Analysis - Grundlegende Konzepte}
 
@@ -44,15 +44,17 @@ Es gilt
                                                 &= \abs{\frac{5n + 2}{3n^3 - 6}} \\
   \text{Sei nun $n_0 \geq 2$} \\
                                                 &= \frac{5n + 2}{3n^3 - 6} \\
-                                                &< \frac{6n + 12}{3n^3} \\
-                                                &= \frac{2n + 4}{n^3} \\
-                                                &= \frac{2 + \frac{4}{n}}{n^2} && \frac{4}{n} \leq 2 \text{ für alle } n_0 \geq 2 \\
-                                                &\leq \frac{2 + 2}{n^2} \\
-                                                &< \frac{4}{n} \\
+                                                &= \frac{5n + 2}{n^3 + 2n^3  - 6} && | 2n^3 - 6 \text{ ist größer als 0 für } n_o \geq 2 \\
+                                                &< \frac{5n + 2}{n^3} \\
+                                                &= \frac{5 + \sfrac{2}{n}}{n^2} && \frac{2}{n} \leq 1 \text{ für alle } n_0 \geq 2 \\
+                                                &= \frac{5 + 1}{n^2}  \\
+                                                &\leq \frac{6}{n^2} \\
+                                                &< \frac{6}{n} \\
                                                 &< \epsilon
 \end{align*}
 
-für alle $n \in \mathbb{N}_{\geq n_0}$, wenn $n_0 \in \mathbb{N}$ so gewählt, dass $n_0 \geq 2 \land \frac{4}{n} < \epsilon$. \\
+für alle $n \in \mathbb{N}_{\geq n_0}$, wenn $n_0 \in \mathbb{N}$ so gewählt, dass $n_0 \geq 2 \land \frac{6}{n} < \epsilon$.
+Damit ist der Grenzwert tatsächlich $\frac{1}{3}$\\
 
 \newpage
 \section*{Hausaufgabe 2}
@@ -148,7 +150,7 @@ Für $\inf A$ gilt
 Angenommen es gibt nun ein $b \in A$ mit $a > b$ und $\epsilon = a - b > 0$, dann gilt nach (ii):
 
 \begin{minipage}[t]{.45\textwidth}
-  \textbf{Fall 1}: $a < \inf A - \epsilon$:
+  \textbf{Fall 1}: $a < \inf A + \epsilon$:
   \begin{align*}
     a &< \inf A + (a - b) \\
     a &< \inf A + a - b && | -a \\
@@ -158,14 +160,14 @@ Angenommen es gibt nun ein $b \in A$ mit $a > b$ und $\epsilon = a - b > 0$, dan
   Ein Widerspruch zu (i)
 \end{minipage}
 \begin{minipage}[t]{.45\textwidth}
-  \textbf{Fall 2}: $a = \inf A - \epsilon$
+  \textbf{Fall 2}: $a = \inf A + \epsilon$
   \begin{align*}
     a &= \inf A + (a - b) \\
     a &= \inf A + a - b && | -a \\
     0 &= \inf A - b     && | +b \\
     b &= \inf A \\
   \end{align*}
-  Damit ist $a > \inf A - \frac{a - b}{2}$, ein Widerspruch zu (ii)
+  Damit ist $a > \inf A + \frac{a - b}{2}$, ein Widerspruch zu (ii)
 \end{minipage}
 \\
 Aus (ii) folgt:
