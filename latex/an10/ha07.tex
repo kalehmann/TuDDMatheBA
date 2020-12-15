@@ -1,0 +1,212 @@
+\documentclass{article}
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+
+\author{Karsten Lehmann}
+\date{WiSe 2020}
+\title{Hausaufgabe 07 Analysis - Grundlegende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\section*{Hausaufgabe 1}
+
+Beweisen Sie die folgenden Grenzwertaussagen:
+
+\begin{enumerate}[(i)]
+\item Sei $(a_n)_{n \in \mathbb{N}}$ eine konvergente Folge nichtnegativer Zahlen. Dann gilt
+  \[
+    \lim_{n \to \infty} \sqrt{a_n} = \sqrt{\lim_{n \to \infty} a_n}
+  \]
+  Sei $a = \lim_{n \to \infty} a_n$, dann gilt
+  \begin{align*}
+    \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n \in \mathbb{N}_{\geq  n_0} \colon \abs{a_n - a} &< \epsilon  \\
+    \abs{(\sqrt{a_n} - \sqrt{a})(\sqrt{a_n} + \sqrt{a})} &< \epsilon \\
+    \abs{\sqrt{a_n} - \sqrt{a}} \cdot \abs{\sqrt{a_n} + \sqrt{a}} &< \epsilon && | : (\abs{\sqrt{a_n} + \sqrt{a}})\\
+    \abs{\sqrt{a_n} - \sqrt{a}} &< \frac{\epsilon}{\abs{\sqrt{a_n} + \sqrt{a}}}
+  \end{align*}
+  \begin{minipage}[t]{.4\textwidth}
+    \textbf{Fall 1}: $\abs{\sqrt{a_n} + \sqrt{a}} \geq 1$
+    \[
+        \abs{\sqrt{a_n} - \sqrt{a}} < \epsilon 
+    \]
+  \end{minipage}
+  \hfill
+  \vrule
+  \hfill
+  \begin{minipage}[t]{.4\textwidth}
+    \textbf{Fall 2}: $\abs{\sqrt{a_n} + \sqrt{a}} < 1$
+    \[
+        \abs{\sqrt{a_n} - \sqrt{a}} < \frac{\epsilon}{\sqrt{a_n} + \sqrt{a}} < \frac{\epsilon}{\sqrt{a}} 
+    \]
+  \end{minipage}
+
+\item Es gilt $\lim_{n \to \infty} n^{\frac{1}{n}} = 1$
+  \label{sec:1.2}
+  \begin{align*}
+    \abs{a_n - 1} &< \epsilon \\
+    \abs{n^{\frac{1}{n}} - 1} &< \epsilon && | n^{\frac{1}{n}} \geq 1 \\
+    n^{\frac{1}{n}} - 1 &< \epsilon && | + 1 \\
+    n^{\frac{1}{n}} &< \epsilon + 1 && | (\ldots)^n \\
+    n &< (\epsilon + 1)^n && \text{Binomische Formel (1.4.14 (g))} \\
+    n &< \sum\limits_{m = 0}^n \begin{pmatrix}n \\ m \end{pmatrix} \epsilon^m \cdot  1^{n - m} \\
+    n &< \sum\limits_{m = 0}^n \begin{pmatrix}n \\ m \end{pmatrix} \epsilon^m \\
+    n &< \begin{pmatrix}n \\ 0 \end{pmatrix} \cdot \epsilon^0 + \sum\limits_{m = 1}^n \begin{pmatrix}n \\ m \end{pmatrix} \epsilon^m \\
+    n &< 1 + \sum\limits_{m = 1}^n \begin{pmatrix}n \\ m \end{pmatrix} \epsilon^m \\
+    n &< 1 + \begin{pmatrix}n \\ 1 \end{pmatrix} \epsilon^1 + \sum\limits_{m = 2}^n \begin{pmatrix}n \\ m \end{pmatrix} \epsilon^m \\
+    n &< 1 + n\epsilon + \sum\limits_{m = 2}^n \begin{pmatrix}n \\ m \end{pmatrix} \epsilon^m \\
+    n &< 1 + n\epsilon + \begin{pmatrix}n \\ 2 \end{pmatrix} \epsilon^2 + \sum\limits_{m = 3}^n \begin{pmatrix}n \\ m \end{pmatrix} \epsilon^m \\
+    n &< 1 + n\epsilon + \frac{n(n - 1)}{2} \epsilon^2 + \sum\limits_{m = 3}^n \begin{pmatrix}n \\ m \end{pmatrix} \epsilon^m \\
+                  & \text{Angenommen $n^k$ ist kleiner als ein Teil der rechten Seite} \\
+    n &< 1 + \frac{n(n - 1)}{2} \epsilon^2 && | - 1 \\
+    n - 1  &< \frac{n(n - 1)}{2} \epsilon^2 && | : (n - 1) \\
+    1  &< \frac{n}{2} \epsilon^2 && | : \epsilon^2 \\
+    \frac{1}{\epsilon^2}  &< \frac{n}{2} && | \cdot 2 \\
+    \frac{2}{\epsilon^2}  &< n \\
+  \end{align*}
+
+  für alle $n \in \mathbb{N}_{\geq n_0}$, wenn $n_0 \in \mathbb{N}$ so gewählt ist, dass $n_0 < \frac{2}{}$.
+\item Es gilt $\lim_{n \to \infty} \frac{n!}{n^n} = 0$
+  \begin{align*}
+    \abs{\frac{n!}{n^n} - 0} &< \epsilon \\
+    \abs{\frac{n!}{n^n}} &< \epsilon && | \text{Def. $n!$, Def. $n^n$} \\
+    \frac{n!}{n^n} &< \epsilon \\
+    \frac{n}{n} \cdot \frac{n - 1}{n} \cdot \ldots \cdot \frac{1}{n} < \epsilon \\
+    \prod\limits_{m=2}^{n}\frac{m}{n} \cdot \frac{1}{n} < \epsilon && | \prod\limits_{m=2}^{n}\frac{m}{n} \leq 1 \\
+    \frac{1}{n} < \epsilon \\
+  \end{align*}
+  für alle $n \in \mathbb{N}_{\geq n_0}$, wenn $n_0 \in \mathbb{N}$ so gewählt ist, dass $\frac{1}{n_0} < \epsilon$ (Korollar 1.4.8 der Vorlesung).
+\item Für $k \in \mathbb{N}_0$ gilt $\lim_{n \to \infty} n^{\frac{k}{n}} = 1$ \\
+  Angenommen $k = 0$, dann ist $\lim_{n \to \infty} n^{\frac{0}{n}} = \lim_{n \to \infty} n^0 = \lim_{n \to \infty} 1 = 1$.
+
+  \begin{align*}
+    \lim_{n \to \infty} n^{\frac{k}{n}} &= \lim_{n \to \infty} \left(n^{\frac{1}{n}}\right)^k \\
+    \overset{\text{Vorlesung 2.1.5 (f)}}&= \left( \lim_{n \to \infty} n^{\frac{1}{n}} \right)^k \\
+    \overset{\hyperref[sec:1.2]{(ii)}}&= 1^k \\
+                                        &= 1\\
+  \end{align*}
+  
+\end{enumerate}
+
+\newpage
+\section*{Hausaufgabe 2}
+
+Die reelle Folge $(a_n)$ sei definiert durch $a_1 \coloneqq 1$ und
+$a_{n + 1} \coloneqq \sqrt{1 + a_n}$ für $n \in \mathbb{N}$. Untersuchen Sie diese Folge auf Konvergenz und
+berechnen Sie gegebenenfalls ihren Grenzwert.
+
+\begin{tabular}{cccc c}
+  $a_1$ & $a_2$ & $a_3$ & $a_5$ & $a_5$ \\
+  \hline
+  $1$ & $\approx 1.4142$ & $\approx 1.5538$ & $\approx 1.5981$ & $\approx 1.6119$
+\end{tabular}
+
+Durch kurze Betrachtung der ersten Folgenglieder entsteht der Eindruck einer monoton wachsenden Folge. \\
+\emph{Annahme}: $P(n) \colon a_{n+1} > a_n$ \\
+\emph{Induktionsanfang} $P(1) \colon \sqrt{1 + 1} > 1$
+Die Aussage $P(1)$ ist offensichtlich wahr. \\
+\emph{Induktionsschritt}: Sei nun $P(n)$ für ein beliebiges $n \in \mathbb{N}$ wahr.
+
+\begin{minipage}[t]{.4\textwidth}
+  \begin{align*}
+    P(n) \colon a_{n+1} &> a_n \\
+    \sqrt{1 + a_n} &> a_n  && |(\ldots)^2 \\
+    1 + a_n &> (a_n)^2     && | -(1 + a_n)\\
+    0 &> (a_n)^2 - a_n - 1
+  \end{align*}
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}[t]{.4\textwidth}
+  \label{defn:liman}
+  \begin{align*}
+    (a_n)_{1|2} &= \frac{1}{2} \pm \sqrt{\left(\frac{1}{2}\right)^2 + 1} \\
+    (a_n)_1 &= \frac{1 + \sqrt{5}}{2} \\
+    (a_n)_2 &= \frac{\sqrt{5} - 1}{2}
+  \end{align*}
+\end{minipage}
+
+$(a_n)_2$ entfällt aufgrund des Induktionsanfangs und der Annahme.
+Somit ist die Behauptung unter der Einschränkung $a_n < \frac{\sqrt{5} + 2}{2}$ wahr und aus
+dem Satz über die vollständige Induktion folgt die Behauptung (unter der Einschränkung).
+
+Nun soll bewiesen werden, dass $\forall a_n < \frac{\sqrt{5} + 1}{2} \colon a_{n+1} < \frac{\sqrt{5} + 1}{2}$:
+\begin{align*}
+  a_{n+1} &= \sqrt{1 + a_n} && \text{Abschätzung nach oben durch $a_n = \frac{\sqrt{5} + 1}{2}$} \\
+  a_{n+1} &< \sqrt{1 + \frac{\sqrt{5} + 1}{2}} =  \frac{\sqrt{5} + 1}{2}
+\end{align*}
+Da $a_1 = 1$ gilt für alle weiteren Folgenglieder $a_{n+1} > a_n$ und $a_n < \frac{\sqrt{5} + 1}{2}$.
+Aus Proposition 2.2.4 (a) der Vorlesung folgt nun die Beschränktheit von $(a_n)$.
+Sei nun $a = \lim_{n \to \infty} (a_n)$, dann gilt auch $a = \lim_{n \to \infty} (a_{n+1})$.
+\begin{align*}
+  \lim_{n\to\infty} a_{n+1} \overset{\text{2.1.5 (f)}}&= \sqrt{\lim_{n\to\infty}1+a_n} \\
+  \lim_{n\to\infty} a_{n+1} \overset{\text{2.1.5 (b)}}&= \sqrt{(\lim_{n\to\infty}1)+(lim_{n\to\infty}a_n)}
+                                                      && | \underset{n\to\infty}\lim a_{n+1} = \underset{n\to\infty}\lim a_n  \\
+  \lim_{n\to\infty} a_n \overset{\text{2.1.5 (b)}}&= \sqrt{(\lim_{n\to\infty}1)+(lim_{n\to\infty}a_n)} \\
+\end{align*}
+
+Die Lösung dafür wurde \hyperref[defn:liman]{oben} bereits berechnet, $\lim_{n\to\infty} a_n = \frac{\sqrt{5} + 1}{2}$
+
+\newpage
+\section*{Hausaufgabe 3}
+
+Sein $(a_n)$ eine beschränkte Folge in $\mathbb{R}$. Beweise Sie:
+
+\[
+  \lim_{n \to \infty} a_n = 0 \iff \limsup_{n \to \infty} \abs{a_n} = 0
+\]
+
+\begin{itemize}
+\item[$\Rightarrow$]
+  \begin{align*}
+    \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n \in \mathbb{N}_{\geq n_0} &\colon \abs{a_n - 0} < \epsilon \\
+                                                                                        &= \abs{a_n} < \epsilon \\
+                                                                                        &= \abs{\abs{a_n}} < \epsilon \\
+                                                                                        &= \abs{\abs{a_n} - 0} < \epsilon \\
+  \end{align*}
+  Somit folgt aus $\lim_{n \to \infty} a_n = 0$, dass $\lim_{n \to \infty} \abs{a_n} = 0$.
+  Weiterhin folgt aus der Definition des Grenzwertes, dass $\limsup_{n \to \infty} \abs{a_n} = 0$.
+\item[$\Leftarrow$]
+  Aus $\limsup_{n \to \infty} \abs{a_n} = 0$ folgt:
+  \begin{align*}
+    \forall \epsilon > 0 \forall N \in \mathbb{N} \exists n \in \mathbb{N}_{\geq N} &\colon \abs{\abs{a_n} - 0} < \epsilon \\
+                                                                                    &= \abs{a_n} < \epsilon \\
+  \end{align*}
+  Angenommen die Folge $(\abs{a_n})$ hat einen weiteren Häufungswert $b \ne \limsup_{n \to \infty} \abs{a_n}$,
+  dann muss gelten:
+  \[
+    \forall \epsilon > 0 \forall N \in \mathbb{N} \exists n \in \mathbb{N}_{\geq N} \colon \abs{\abs{a_n} - b} < \epsilon
+  \]
+
+  Per Definition des Betrages ist $\abs{a_n} \geq 0$ und per Definition ist der Limes superior der
+  größte Häufungswert, somit folgt $b < 0$. Also ist $\abs{a_n} - b \geq \abs{b}$.
+  Somit ist
+  \[
+    \forall \epsilon > 0 \forall N \in \mathbb{N} \exists n \in \mathbb{N}_{\geq N} \colon \abs{\abs{a_n} - b} < \epsilon
+  \]
+  für alle $\epsilon < \abs{b}$ nicht erfüllt.
+
+  Damit existiert kein kleinerer Häufungswert als $0$, es folgt \\
+  $\limsup_{n \to \infty} \abs{a_n} = \liminf_{n \to \infty} \abs{a_n} = 0$.
+  
+  Aus 2.2.8 der Vorlesung folgt, dass $\lim_{n \to \infty} \abs{a_n} = 0$. 
+  
+\end{itemize}
+
+\end{document}
