@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+
+\author{Karsten Lehmann}
+\date{WiSe 2020}
+\title{Hausaufgabe 09 Analysis - Grundlegende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\section*{Hausaufgabe 1}
+
+Ermitteln Sie die folgenden Grenzwerte:
+
+\begin{enumerate}[a)]
+\item
+  \begin{align*}
+    a_n &\coloneqq \left( 1 + \frac{1}{n + 2} \right)^{2n + 1} \\
+        &= \left( 1 + \frac{1}{n + 2} \right) \cdot \left( 1 + \frac{1}{n + 2} \right)^{2n} \\  
+        &= \left( 1 + \frac{1}{n + 2} \right) \cdot \left(\left( 1 + \frac{1}{n + 2} \right)^n\right)^2 \\
+  \end{align*}
+  \begin{align*}
+    \lim_{n\to\infty} \left( 1 + \frac{1}{n + 2} \right) \cdot \left(\left( 1 + \frac{1}{n + 2} \right)^n\right)^2
+    &= \lim_{n\to\infty}\left( 1 + \frac{1}{n + 2} \right) \cdot \left(\lim_{n\to\infty}\left( 1 + \frac{1}{n + 2} \right)^n\right)^2 \\
+    &= 1 \cdot e^2 \\
+    &= e^2 
+  \end{align*}
+\item
+  \begin{align*}
+    a_n &\coloneqq \frac{(n^2 - 1)^{n + 1} \cdot n^{2n+1}}{(n+1)^{2n+3} \cdot (n^2 - n)^n} \\
+        &= \frac{(n^3 - n) \cdot (n^2 - 1)^n \cdot n^{2n}}{(n+1)^3 \cdot (n+1)^{2n} \cdot (n^2 - n)^n} \\
+        &= \frac{n^3 - n}{(n+1)^3} \cdot \frac{(n^2-1)^n}{(n^2-n)^n} \cdot \frac{n^{2n}}{(n+1)^{2n}}
+  \end{align*}
+  \begin{align*}
+    \lim_{n\to\infty} \frac{n^3 - n}{(n+1)^3} &= \lim_{n\to\infty} \frac{1 - \sfrac{1}{n^2}}{1 + \sfrac{3}{n} + \sfrac{3}{n^2} + \sfrac{1}{n^2}} \\
+    &= 1
+  \end{align*}
+  \begin{align*}
+      \lim_{n\to\infty} \frac{n^{2n}}{(n+1)^{2n}}
+      &= \left(\lim_{n\to\infty} \left(\frac{n}{(n+1)}\right)^n\right)^2 \\
+      &= \left(\lim_{n\to\infty} \left(\frac{1}{(1+\sfrac{1}{n})}\right)^n\right)^2 \\
+      &= \left(\frac{\lim_{n\to\infty} 1^n}{\lim_{n\to\infty} (1+\sfrac{1}{n})^n}\right)^2 \\
+      &= \frac{1}{e^2}
+  \end{align*}
+  \begin{align*}
+    \lim_{n\to\infty} \frac{(n^2-1)^n}{(n^2-n)^n}
+    &= \lim_{n\to\infty} \left(\frac{1 -\sfrac{1}{n^2}}{1 - \sfrac{1}{n}}\right)^n \\
+    &= \frac{
+       \lim_{n\to\infty} \left( 1 - \sfrac{1}{n} \right)^n
+       \cdot
+       \lim_{n\to\infty} \left( 1 + \sfrac{1}{n} \right)^n
+      }{
+       \lim_{n\to\infty} \left( 1 - \sfrac{1}{n} \right)^n
+      } \\
+    &= \frac{\sfrac{1}{e} \cdot e}{\sfrac{1}{e}} \\
+    &= e
+  \end{align*}
+  \begin{align*}
+    \lim_{n\to\infty} \frac{n^3 - n}{(n+1)^3} \cdot \frac{(n^2-1)^n}{(n^2-n)^n} \cdot \frac{n^{2n}}{(n+1)^{2n}}
+    &= \lim_{n\to\infty} \frac{n^3 - n}{(n+1)^3} \cdot \lim_{n\to\infty} \frac{(n^2-1)^n}{(n^2-n)^n} \cdot \lim_{n\to\infty} \frac{n^{2n}}{(n+1)^{2n}} \\\
+    &= 1 \cdot e \cdot \frac{1}{e^2} \\
+    &= \frac{1}{e}
+  \end{align*}
+
+\end{enumerate}
+
+\section*{Hausaufgabe 2}
+
+Zeigen Sie, dass die Reihe $\overset{\infty}{\underset{k=1}\sum} \frac{k^2+k+1}{(k+1)!}$ absolut konvergiert und berechnen
+Sie ihren Wert.
+
+Nach Quotientenkriterium:
+
+\begin{align*}
+  \frac{ \frac{(k+1)^2 + (k+1) + 1}{(k+2)!} }{ \frac{k^2 + k + 1}{(k+1)!} }
+  &= \frac{ ((k+1)^2 + (k+1) + 1)(k+1)! }{ (k^2 + k + 1) (k+2)! }\\
+  &= \frac{ (k^2 + 2k + 1 + k + 2)(k+1)! }{ (k^2 + k + 1) (k+2) (k+1)! }\\
+  &= \frac{ (k^2 + 2k + 1 + k + 2) }{ (k^2 + k + 1) (k+2) }\\
+  &= \frac{ (k^2 + 3k + 3) }{ (k^3 + 2k^2 + k^2 + 2k + k + 2) }\\
+  &= \frac{ (k^2 + 3k + 3) }{ (k^3 + 3k^2 + 3k + 2) }\\
+\end{align*}
+
+\begin{align*}
+  \lim_{k \to \infty} \abs{\frac{ (k^2 + 3k + 3) }{ (k^3 + 3k^2 + 3k + 2) }}
+  &= \lim_{k \to \infty} \abs{\frac{ \sfrac{1}{k} + \sfrac{3}{k^2} + \sfrac{3}{k^3} }{ (1 + \sfrac{3}{k} + \sfrac{3}{k^2} + \sfrac{2}{k^3}) }} \\
+  &< 1 
+\end{align*}
+
+Somit folgt die absolute Konvergenz nach dem Quotientenkriterium.
+
+\section*{Hausaufgabe 3}
+
+\begin{enumerate}[a)]
+\item
+  \begin{align*}
+    z_n &= n - \frac{in^2}{1 + in} \\
+        &= n - \frac{in^2}{1 + in} \cdot \frac{1 - in}{1 - in} \\
+        &= n - \frac{n^3 + in^2}{n^2 + 1} \\
+        &= n - \frac{n}{1 + \sfrac{1}{n^2}} - i \cdot \frac{1}{1 + \sfrac{1}{n^2}}  \\
+        &= \frac{n + \sfrac{1}{n}}{1 + \sfrac{1}{n^2}} - \frac{n}{1 + \sfrac{1}{n^2}} -i \cdot \frac{1}{1 + \sfrac{1}{n^2}} \\
+        &= \frac{\sfrac{1}{n}}{1 + \sfrac{1}{n^2}} - i \cdot \frac{1}{1 + \sfrac{1}{n^2}}
+  \end{align*}
+  \begin{align*}
+    \lim_{n\to\infty} z_n &= \frac{\lim_{n\to\infty} \frac{1}{n}}{\lim_{n\to\infty} 1 + \frac{1}{n^2}} - i \cdot  \lim_{n\to\infty} \frac{1}{1 + \sfrac{1}{n^2}} \\
+                          &= 0  - i \cdot 1 \\
+                          &= - i
+  \end{align*}
+\item
+  \begin{align*}
+    z_n &= \left( \frac{1 - i}{1 + 2i}\right)^n \\
+        &= \left( \frac{1 - i}{1 + 2i} \cdot \frac{1 - 2i}{1 - 2i} \right)^n \\
+        &= \left( \frac{-1 - 3i}{5}\right)^n \\
+        &= \left( -\frac{1}{5} - \frac{3}{5}i\right)^n \\
+  \end{align*}
+  $\underset{n\to\infty}\lim z_n = 0$, da $\abs{-\frac{1}{5} - \frac{3}{5}i} = \frac{\sqrt{10}}{5} < 1$.
+\end{enumerate}
+
+\end{document}
