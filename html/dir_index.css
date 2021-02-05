@@ -1,0 +1,21 @@
+a {
+    color: #FF8126;
+    text-decoration: none;
+}
+
+html {
+    background-color: #1c1c1c;
+    color: #cccccc;
+    font-family: Monospace;
+    font-size: 1.5rem;
+    margin: auto;
+    max-width: 60rem;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    text-align: left;
+}

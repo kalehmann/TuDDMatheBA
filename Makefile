@@ -3,8 +3,12 @@ OUTPUT_DIRECTORY=_site
 LATEXMK=latexmk
 LATEXMK_OPTS=-pdf -quiet
 
+CSS_FILES = \
+	$(OUTPUT_DIRECTORY)/dir_index.css
+
 HTML_FILES = \
-	$(OUTPUT_DIRECTORY)/index.html
+	$(OUTPUT_DIRECTORY)/index.html \
+	$(OUTPUT_DIRECTORY)/dir_footer.html
 
 PDF_FILES = \
 	$(OUTPUT_DIRECTORY)/pdf/schedule/1-semester.pdf \
@@ -37,6 +41,7 @@ OUTPUT_FILES = \
 	$(OUTPUT_DIRECTORY) \
 	$(OUTPUT_DIRECTORY)/.htaccess \
 	$(OUTPUT_DIRECTORY)/pdf/.htaccess \
+	$(CSS_FILES) \
 	$(HTML_FILES) \
 	$(PDF_FILES)
 
@@ -59,6 +64,9 @@ $(OUTPUT_DIRECTORY)/pdf/.htaccess: html/pdf/.htaccess
 	cp $< $@
 
 $(OUTPUT_DIRECTORY)/%.html: html/%.html
+	cp $< $@
+
+$(OUTPUT_DIRECTORY)/%.css: html/%.css
 	cp $< $@
 
 $(OUTPUT_DIRECTORY)/pdf/%.pdf: latex/%.tex
