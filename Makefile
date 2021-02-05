@@ -10,57 +10,27 @@ HTML_FILES = \
 	$(OUTPUT_DIRECTORY)/index.html \
 	$(OUTPUT_DIRECTORY)/dir_footer.html
 
+TEX_FILES = \
+	$(shell find . -type f -name '*.tex' -printf '_site/%P\n')
+
 PDF_FILES = \
-	$(OUTPUT_DIRECTORY)/pdf/schedule/1-semester.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/an10/an10.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/an10/ha01.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/an10/ha02.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/an10/ha03.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/an10/ha04.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/an10/ha05.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/an10/ha06.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/an10/ha07.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/an10/uebung.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/inf-b-210/inf-b-210.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/la10/ha01.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/la10/ha02.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/la10/ha03.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/la10/ha04.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/la10/ha05.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/la10/la10.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/la10/uebung.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/pr10/homework/01.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/pr10/homework/02.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/pr10/homework/03.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/pr10/homework/04.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/pr10/pr10.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/pr10/sonderuebung.pdf \
-	$(OUTPUT_DIRECTORY)/pdf/pr10/uebung.pdf
+	$(patsubst %.tex,%.pdf,$(TEX_FILES))
 
 OUTPUT_FILES = \
 	$(OUTPUT_DIRECTORY) \
-	$(OUTPUT_DIRECTORY)/.htaccess \
-	$(OUTPUT_DIRECTORY)/pdf/.htaccess \
 	$(CSS_FILES) \
 	$(HTML_FILES) \
-	$(PDF_FILES)
+	$(PDF_FILES) \
+	$(OUTPUT_DIRECTORY)/.htaccess \
+	$(OUTPUT_DIRECTORY)/courses/.htaccess \
+	$(OUTPUT_DIRECTORY)/schedules/.htaccess
 
 all: $(OUTPUT_FILES)
 
-
 $(OUTPUT_DIRECTORY):
 	mkdir -p $(OUTPUT_DIRECTORY)
-	mkdir -p $(OUTPUT_DIRECTORY)/pdf/an10
-	mkdir -p $(OUTPUT_DIRECTORY)/pdf/inf-b-210
-	mkdir -p $(OUTPUT_DIRECTORY)/pdf/la10
-	mkdir -p $(OUTPUT_DIRECTORY)/pdf/pr10
-	mkdir -p $(OUTPUT_DIRECTORY)/pdf/pr10/homework
-	mkdir -p $(OUTPUT_DIRECTORY)/pdf/schedule
 
-$(OUTPUT_DIRECTORY)/.htaccess: html/.htaccess
-	cp $< $@
-
-$(OUTPUT_DIRECTORY)/pdf/.htaccess: html/pdf/.htaccess
+$(OUTPUT_DIRECTORY)/%htaccess: html/%htaccess
 	cp $< $@
 
 $(OUTPUT_DIRECTORY)/%.html: html/%.html
@@ -69,14 +39,11 @@ $(OUTPUT_DIRECTORY)/%.html: html/%.html
 $(OUTPUT_DIRECTORY)/%.css: html/%.css
 	cp $< $@
 
-$(OUTPUT_DIRECTORY)/pdf/%.pdf: latex/%.tex
+$(OUTPUT_DIRECTORY)/%.pdf: %.tex
+	echo $(@D)
+	mkdir -p $(@D)
 	$(LATEXMK) $(LATEXMK_OPTS) $< || (cat $$(basename $*.log) && exit 1) 
-	cp $$(basename $*.pdf) $(OUTPUT_DIRECTORY)/pdf/$*.pdf
-	$(LATEXMK) -C $<
-
-$(OUTPUT_DIRECTORY)/pdf/pr10/homework/%.pdf: latex/pr10/homework/%/homework.tex
-	$(LATEXMK) $(LATEXMK_OPTS) $<
-	cp homework.pdf $(OUTPUT_DIRECTORY)/pdf/pr10/homework/$*.pdf
+	cp $$(basename $*.pdf) $(OUTPUT_DIRECTORY)/$*.pdf
 	$(LATEXMK) -C $<
 
 clean:

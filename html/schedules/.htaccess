@@ -1,0 +1,4 @@
+Options +Indexes
+IndexOptions +FancyIndexing
+IndexStyleSheet "/tuddmatheba/dir_index.css"
+ReadmeName "/tuddmatheba/dir_footer.html"
