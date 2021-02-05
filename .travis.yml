@@ -7,6 +7,6 @@ before_install:
     - "git clone https://github.com/bats-core/bats-core.git && pushd bats-core && sudo ./install.sh /usr/local && popd"
 
 script:
-    - "pushd latex/pr10/homework/01 && make && bats tests.bats && popd"
-    - "pushd latex/pr10/homework/02 && make && bats tests.bats && popd"
-    - "pushd latex/pr10/programme && make && bats tests.bats && popd"
+    - "pushd courses/pr10/homework/01 && make && bats tests.bats && popd"
+    - "pushd courses/pr10/homework/02 && make && bats tests.bats && popd"
+    - "pushd courses/pr10/programme && make && bats tests.bats && popd"
