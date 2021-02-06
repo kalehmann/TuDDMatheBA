@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{pgfplots}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+
+\newtheorem*{definition}{Definition}
+\newtheorem*{satz}{Satz}
+
+\author{Karsten Lehmann}
+\date{WiSe 2020}
+\title{Konvergenz}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\section*{Konvergenz und Grenzwert}
+
+\begin{definition}[Folge]
+  Eine Folge ist eine Funktion $a \colon \mathbb{N} \to \mathbb{R}$. \\
+  Dabei ist
+  \begin{itemize}
+  \item $a(n) \iff a_n$
+  \item $a \iff \left(a_n\right)_{n\in\mathbb{N}}$ oder kurz $\left(a_n\right)$
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Konvergente Folge]
+  Eine Folge $\left(a_n\right)$ heißt konvergent, wenn es ein $a \in \mathbb{R}$ gibt, so dass
+
+  \[
+    \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n \in \mathbb{N}_{\geq n_0} \colon \abs{a_n - a} < \epsilon
+  \]
+
+  In Worten ausgedrückt: Die Folgenglieder nähern sich für ein zunehmendes $n$ immer weiter an $a$ an.
+  $a$ heißt in diesem Fall Grenzwert.
+
+  \begin{tikzpicture}
+
+  \end{tikzpicture}
+\end{definition}
+
+\begin{definition}[Divergente Folge]
+  Eine Folge die nicht konvergent ist.
+\end{definition}
+
+\begin{definition}[Nullfolge]
+  Als Nullfolge bezeichnet man eine Folge mit dem Grenzwert $0$.
+\end{definition}
+
+\begin{definition}[Cauchyfolge]
+  Eine Folge $\left(a_n\right)$ heißt Cauchyfolge, wenn
+  \[
+    \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n, m \exists \mathbb{N}_{\geq n_0} \colon \abs{a_n - a_m} < \epsilon
+  \]
+
+  In Worten ausgedrückt: Der Abstand der Folgenglieder wird für ein zunehmendes $n$ beliebig klein.
+\end{definition}
+
+\begin{definition}[Beschränkte Folge]
+  Eine Folge $\left( a_n \right)$ heißt beschränkt, wenn es $C \geq 0$ gibt mit
+  \[
+    \forall n \in \mathbb{N} \colon \abs{a_n} \leq C
+  \]
+\end{definition}
+
+\begin{definition}[Häufungswert]
+  Die Zahl $a$ heißt Häufungswert der Folge $\left(a_n\right)$, wenn
+
+  \[
+    \forall \epsilon > 0 \forall N \in \mathbb{N} \exists n \in \mathbb{N}_{\geq N} \colon \abs{a_n - a} < \epsilon
+  \]
+
+  In Worten ausgedrückt: Ab jedem Punkt der Folge sind viele (aber nicht alle) Glieder der Folge beliebig nah an $a$.
+\end{definition}
+
+\begin{definition}[Teilfolge]
+  Sei $\left(a_n\right)_n$ eine Folge und $\left( n_k \right)_k$ eine streng monoton wachsende Folge in $\mathbb{N}$ ($n_k < n_{k+1}$),
+  dann heißt $\left(a_{n_k}\right)_k$ Teilfolge von $\left(a_n\right)_n$.
+\end{definition}
+
+\begin{satz}[Bolzano-Weierstraß]
+  Jede beschränkte Folge besitzt (mindestens) eine konvergente Teilfolge und (mindestens) einen Häufungspunkt.
+\end{satz}
+
+\end{document}
