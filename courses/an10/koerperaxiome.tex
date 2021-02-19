@@ -1,0 +1,129 @@
+\documentclass{article}
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{pgfplots}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+
+\newtheorem*{definition}{Definition}
+\newtheorem*{satz}{Satz}
+
+\author{Karsten Lehmann}
+\date{WiSe 2020}
+\title{Körperaxiome}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\section*{Körperaxiome}
+
+\subsection*{Algebraische Strukturen}
+
+\begin{definition}[Abelsche Gruppe]
+  \label{def:abel}
+  Eine Abelsche Gruppe $(G, *)$ ist ein paar aus einer Menge $G$ und einer Verknüpfung $*$, so dass gilt:
+  \begin{itemize}
+  \item $(a * b) * c = a * (b * c)$ (Assoziativität)
+  \item $a * e = e * a = a$ (Existenz eines neutralen Elementes $e$)
+  \item es existiert für jedes $a \in G$ ein $a^{-1} \in G$, so dass $a * a^{-1} = e$
+    (Existenz eines Inversen Elementes)
+  \item $a * b = b * a$ (Kommutativität)
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Ring]
+  \label{def:ring}
+  Ein Ring $(R, +, \cdot)$ ist eine Menge $R$ mit zwei Verknüpfungen $+$ und $\cdot$, so dass gilt:
+  \begin{itemize}
+  \item $(R, +)$ ist eine \hyperref[def:abel]{Abelsche Gruppe}
+  \item $a \cdot b + a \cdot c = a \cdot (b + c)$ (Distributivität)
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Trivialer Ring]
+  \label{def:trivring}
+  Der Triviale Ring $(\{ 0 \}, +, \cdot)$ ist ein \hyperref[def:ring]{Ring} mit der Zahl Null als
+  einzigem Element und den beiden trivialen Verknüpfungen $+ \colon 0 + 0 = 0$ und
+  $\cdot \colon 0 \cdot 0 = 0$.
+\end{definition}
+
+\begin{definition}[Körper]
+  Ein Körper $(K, +, \cdot)$ ist ein \hyperref[def:trivring]{nicht-trivialer Ring}, in dem zusätzlich gilt:
+  \begin{itemize}
+  \item $a \cdot b = b \cdot a$ (Kommutativität)
+  \item $a \cdot e = e \cdot a = a$ (Existenz eines multiplikativen Neutral-/Einzelelementes)
+  \item $\forall a \in K, a \ne 0 \colon \exists \; a^{-1} \in K \colon a \cdot a^{-1} = 0$
+    (Existenz eines multiplikativen inversen Elementes)
+  \end{itemize}
+\end{definition}
+
+\pagebreak
+
+\subsection*{Körperaxiome}
+
+Zusammengefasst ergeben sich somit in einem Körper $(K, +, \cdot)$ mit den beiden Verknüpfungen $+$
+und $\cdot$ die folgenden Rechenregeln:
+
+\begin{enumerate}[label=(A\arabic*)]
+\item $\forall a,b,c \in K \colon (a + b) + c = a + (b + c)$ (Additive Assoziativität)
+\item $\exists \; 0 \in K \colon \forall a \in K \colon a + 0 = a$ (Additives neutrales Element)
+\item $\forall a \in K \exists \; (-a) \in K \colon a + (-a) = 0$ (Additives Inverses)
+\item $\forall a,b \in K \colon a + b = b + a$ (Additive Kommutativität)
+\item $\forall a,b,c \in K \colon (a \cdot b) \cdot c = a \cdot (b \cdot c)$ (Multiplikative Assoziativität)
+\item $\exists \; 1 \in K \colon \forall a \in K \colon a \cdot 1 = a$ (Multiplikatives neutrales Element)
+\item $\forall a \in K, a \ne 0 \: \exists \; a^{-1} \in K \colon a \cdot a^{-1} = 1$ (Multiplikatives Inverses)
+\item $\forall a,b \in K \colon a + b = b + a$ (Multiplikative Kommutativität)
+\item $\forall a,b,c \in K \colon a \cdot b + a \cdot c = a \cdot (b + c)$ (Distributivität)
+\end{enumerate}
+
+Eine Menge $K$, welche mit zwei Verknüpfungen von $K$ nach $K$, $+\colon K \times K \to K$ und
+$\cdot\colon K \times K \to K$ die Axiome (A1) bis (A9) erfüllt ist somit ein Körper.
+
+\subsubsection*{Beispiele für Körper}
+
+Unendliche Körper sind zum Beispiel die Reellen Zahlen $\mathbb{R}$ oder die komplexen Zahlen $\mathbb{C}$.
+
+Ein endlicher Körper mit zwei Elementen ist zum Beispiel die Menge $\{ 0, 1\}$ mit folgenden Verknüpfungen:
+
+\begin{itemize}
+\item $0 + 0 = 0$
+\item $0 + 1 = 1$
+\item $1 + 0 = 1$
+\item $1 + 1 = 0$
+\item $0 \cdot 0 = 0$
+\item $1 \cdot 0 = 0$
+\item $0 \cdot 1 = 0$
+\item $1 \cdot 1 = 1$
+\end{itemize}
+
+\pagebreak
+
+\section*{Anordnungsaxiome}
+
+Sei $(K,+,\cdot)$ ein Körper. Falls es eine Teilmenge $P \subseteq K$ gibt, sodass die folgenden 3 Axiome
+gelten:
+
+\begin{enumerate}[label=(A\arabic*)]
+\setcounter{enumi}{9}
+\item $\forall a \in K \colon a = 0 \lor a \in P \lor (-a) \in P$ (Trichotomiegesetz)
+\item $\forall a, b \in P \colon a + b \in P$
+\item $\forall a, b \in P \colon a \cdot b \in P$
+\end{enumerate}
+
+dann heißt $(K,+,\cdot)$ auch \textbf{angeordneter Körper}.
+
+\end{document}
