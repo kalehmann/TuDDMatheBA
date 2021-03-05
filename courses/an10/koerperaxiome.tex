@@ -17,6 +17,8 @@
 \newtheorem*{definition}{Definition}
 \newtheorem*{satz}{Satz}
 
+\renewcommand{\thesubsection}{\arabic    {subsection}}
+
 \author{Karsten Lehmann}
 \date{WiSe 2020}
 \title{Körperaxiome}
@@ -118,15 +120,24 @@ Zusammengefasst ergeben sich somit in einem Körper $(K, +, \cdot)$ mit den beid
 und $\cdot$ die folgenden Rechenregeln:
 
 \begin{enumerate}[label=(A\arabic*)]
-\item $\forall a,b,c \in K \colon (a + b) + c = a + (b + c)$ (Additive Assoziativität)
-\item $\exists \; 0 \in K \colon \forall a \in K \colon a + 0 = a$ (Additives neutrales Element)
-\item $\forall a \in K \exists \; (-a) \in K \colon a + (-a) = 0$ (Additives Inverses)
-\item $\forall a,b \in K \colon a + b = b + a$ (Additive Kommutativität)
-\item $\forall a,b,c \in K \colon (a \cdot b) \cdot c = a \cdot (b \cdot c)$ (Multiplikative Assoziativität)
-\item $\exists \; 1 \in K \colon \forall a \in K \colon a \cdot 1 = a$ (Multiplikatives neutrales Element)
-\item $\forall a \in K, a \ne 0 \: \exists \; a^{-1} \in K \colon a \cdot a^{-1} = 1$ (Multiplikatives Inverses)
-\item $\forall a,b \in K \colon a + b = b + a$ (Multiplikative Kommutativität)
-\item $\forall a,b,c \in K \colon a \cdot b + a \cdot c = a \cdot (b + c)$ (Distributivität)
+\item \label{a1} $\forall a,b,c \in K \colon (a + b) + c = a + (b + c)$
+  (Additive Assoziativität)
+\item \label{a2} $\exists \; 0 \in K \colon \forall a \in K \colon a + 0 = a$
+  (Additives neutrales Element)
+\item \label{a3} $\forall a \in K \exists \; (-a) \in K \colon a + (-a) = 0$
+  (Additives Inverses)
+\item \label{a4} $\forall a,b \in K \colon a + b = b + a$
+  (Additive Kommutativität)
+\item \label{a5} $\forall a,b,c \in K \colon (a \cdot b) \cdot c = a \cdot (b \cdot c)$
+  (Multiplikative Assoziativität)
+\item \label{a6} $\exists \; 1 \in K \colon \forall a \in K \colon a \cdot 1 = a$
+  (Multiplikatives neutrales Element)
+\item \label{a7} $\forall a \in K, a \ne 0 \: \exists \; a^{-1} \in K \colon a \cdot a^{-1} = 1$
+  (Multiplikatives Inverses)
+\item \label{a8} $\forall a,b \in K \colon a + b = b + a$
+  (Multiplikative Kommutativität)
+\item \label{a9} $\forall a,b,c \in K \colon a \cdot b + a \cdot c = a \cdot (b + c)$
+  (Distributivität)
 \end{enumerate}
 
 Eine Menge $K$, welche mit zwei Verknüpfungen von $K$ nach $K$, $+\colon K \times K \to K$ und
@@ -158,9 +169,9 @@ gelten:
 
 \begin{enumerate}[label=(A\arabic*)]
 \setcounter{enumi}{9}
-\item $\forall a \in K \colon a = 0 \lor a \in P \lor (-a) \in P$ (Trichotomiegesetz)
-\item $\forall a, b \in P \colon a + b \in P$
-\item $\forall a, b \in P \colon a \cdot b \in P$
+\item \label{a10} $\forall a \in K \colon a = 0 \lor a \in P \lor (-a) \in P$ (Trichotomiegesetz)
+\item \label{a11} $\forall a, b \in P \colon a + b \in P$
+\item \label{a12} $\forall a, b \in P \colon a \cdot b \in P$
 \end{enumerate}
 
 dann heißt $(K,+,\cdot)$ auch \textbf{angeordneter Körper}.
@@ -169,9 +180,80 @@ dann heißt $(K,+,\cdot)$ auch \textbf{angeordneter Körper}.
 
 \begin{enumerate}[label={(A\arabic*)}]
 \setcounter{enumi}{12}
-\item
+\item  \label{a13}
   In $\mathbb{R}$ besitzt jede nichtleere, nach oben beschränkte Menge ein Supremum \textbf{und}
   jede nichtleere, nach unten beschränkte Menge ein Infimum
 \end{enumerate}
+
+\pagebreak
+
+\section*{Anwendung}
+
+\subsection{Eindeutigkeit des additiven Neutralelementes}
+
+Angenommen es gäbe zwei neutrale Elemente der Addition $a$ und $b$.
+Dann gilt $\forall x \in K \colon x + a = x \land x + b = x$ und es folgt:
+
+\begin{align*}
+  a &= a \\
+  \overset{\text{\hyperref[a2]{(A2)}, $b$ ist neutrales Element}}&= a + b \\
+  \overset{\text{\hyperref[a4]{(A4)}, Kommutativität der Addition}}&= b + a \\
+  \overset{\text{\hyperref[a4]{(A2)}, $a$ ist neutrales Element}}&= b \\
+\end{align*}
+
+Folglich ist das neutrale Element der Addition eindeutig.
+
+\subsection{Eindeutigkeit des multiplikativen Neutralelementes}
+
+Angenommen es gäbe zwei neutrale Elemente der Multiplikation $a$ und $b$.
+Dann gilt $\forall x \in K \colon x \cdot a = x \land x \cdot b = x$ und es folgt:
+
+\begin{align*}
+  a &= a \\
+  \overset{\text{\hyperref[a6]{(A6)}, $b$ ist neutrales Element}}&= a \cdot b \\
+  \overset{\text{\hyperref[a8]{(A8)}, Kommutativität der Multiplikation}}&= b \cdot a \\
+  \overset{\text{\hyperref[a4]{(A6)}, $a$ ist neutrales Element}}&= b \\
+\end{align*}
+
+Folglich ist das neutrale Element der Addition eindeutig.
+
+\pagebreak
+
+\subsection{Eindeutigkeit des additiven Inversen}
+
+Angenommen für ein Element $a \in K$ gäbe es zwei additive Inverse Element $b$ und $c$ mit
+$a + b = 0 \land a + c = 0$.
+
+\begin{align*}
+  b &= b \\ 
+  \overset{\text{\hyperref[a2]{(A2), $0$ ist neutrales Element der Addition}}}&= b + 0 \\
+  \overset{\text{Annahme $a + c = 0$}}&= b + (a + c) \\
+  \overset{\text{\hyperref[a1]{(A1)}}}&= (b + a) + c \\
+  \overset{\text{\hyperref[a4]{(A4)}, Kommutativität der Addition}}&= (a + b) + c \\
+  \overset{\text{Annahme $a + b = 0$}}&= 0 + c \\
+  \overset{\text{\hyperref[a4]{(A4)}, Kommutativität der Addition}}&= c + 0 \\
+  \overset{\text{\hyperref[a2]{(A2), $0$ ist neutrales Element der Addition}}}&= c \\
+\end{align*}
+
+Somit ist das additive Inverse eindeutig bestimmt.
+
+\subsection{Eindeutigkeit des multiplikativen Inversen}
+
+Angenommen für ein Element $a \in K$ gäbe es zwei multiplikative Inverse Elemente $b$ und $c$ mit
+$a \cdot b = 1 \land a \cdot c = 1$.
+
+\begin{align*}
+  b &= b \\
+  \overset{\text{\hyperref[a6]{(A6), $1$ ist neutrales Element der Multiplikation}}}&= b \cdot 1 \\
+  \overset{\text{Annahme $a \cdot c = 1$}}&= b \cdot (a \cdot c) \\
+  \overset{\text{\hyperref[a5]{(A5)}}}&= (b \cdot a) \cdot c \\
+  \overset{\text{\hyperref[a8]{(A8)}, Kommutativität der Multiplikation}}&= (a \cdot b) \cdot c \\
+  \overset{\text{Annahme $a \cdot b = 1$}}&= 1 \cdot c \\
+  \overset{\text{\hyperref[a8]{(A8)}, Kommutativität der Multiplikation}}&= c \cdot 1 \\
+  \overset{\text{\hyperref[a6]{(A6), $1$ ist neutrales Element der Multiplikation}}}&= c \\
+\end{align*}
+
+Somit ist das multiplikative Inverse eindeutig bestimmt.
+
 
 \end{document}
