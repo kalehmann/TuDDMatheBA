@@ -73,6 +73,45 @@
 
 \pagebreak
 
+\subsection*{Schranken}
+
+\begin{definition}[Obere Schranke]
+  $K$ ist ein angeordneter Körper. $M \subseteq K \land M \ne \emptyset$.
+  Ein Element $s \in K$ ist \textbf{obere Schranke} von $M$, wenn $\forall x \in M \colon x \leq s$. 
+\end{definition}
+
+\begin{definition}[untere Schranke]
+  $K$ ist ein angeordneter Körper. $M \subseteq K \land M \ne \emptyset$.
+  Ein Element $s \in K$ ist \textbf{untere Schranke} von $M$, wenn $\forall x \in M \colon x \geq s$. 
+\end{definition}
+
+\begin{definition}[Maximum]
+  $K$ ist ein angeordneter Körper. $M \subseteq K \land M \ne \emptyset$.
+  Ein Element $s \in K$ heißt Maximum von $M$ oder $\max M$, falls $s$ eine obere Schranke von $M$
+  ist und $s \in M$.
+\end{definition}
+
+\begin{definition}[Minimum]
+  $K$ ist ein angeordneter Körper. $M \subseteq K \land M \ne \emptyset$.
+  Ein Element $s \in K$ heißt Minimum von $M$ oder $\min M$, falls $s$ eine untere Schranke von $M$
+  ist und $s \in M$.
+\end{definition}
+
+\begin{definition}[Supremum]
+  $K$ ist ein angeordneter Körper. $M \subseteq K \land M \ne \emptyset$.
+  Ein Element $s \in K$ heißt Supremum von $M$ oder $\sup M$, falls $s$ eine obere Schranke von $M$
+  ist und $s \leq \overset\_s$ für alle oberen Schranken $\overset\_s$ von $M$.
+\end{definition}
+
+\begin{definition}[Infimum]
+  $K$ ist ein angeordneter Körper. $M \subseteq K \land M \ne \emptyset$.
+  Ein Element $s \in K$ heißt Infimum von $M$ oder $\inf M$, falls $s$ eine untere Schranke von $M$
+  ist und $s \geq \overset\_s$ für alle unteren Schranken $\overset\_s$ von $M$.
+\end{definition}
+
+
+\pagebreak
+
 \subsection*{Körperaxiome}
 
 Zusammengefasst ergeben sich somit in einem Körper $(K, +, \cdot)$ mit den beiden Verknüpfungen $+$
@@ -112,7 +151,7 @@ Ein endlicher Körper mit zwei Elementen ist zum Beispiel die Menge $\{ 0, 1\}$ 
 
 \pagebreak
 
-\section*{Anordnungsaxiome}
+\subsection*{Anordnungsaxiome}
 
 Sei $(K,+,\cdot)$ ein Körper. Falls es eine Teilmenge $P \subseteq K$ gibt, sodass die folgenden 3 Axiome
 gelten:
@@ -125,5 +164,14 @@ gelten:
 \end{enumerate}
 
 dann heißt $(K,+,\cdot)$ auch \textbf{angeordneter Körper}.
+
+\subsubsection*{Das Vollständigkeitsaxiom}
+
+\begin{enumerate}[label={(A\arabic*)}]
+\setcounter{enumi}{12}
+\item
+  In $\mathbb{R}$ besitzt jede nichtleere, nach oben beschränkte Menge ein Supremum \textbf{und}
+  jede nichtleere, nach unten beschränkte Menge ein Infimum
+\end{enumerate}
 
 \end{document}
