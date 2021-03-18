@@ -134,7 +134,7 @@ und $\cdot$ die folgenden Rechenregeln:
   (Multiplikatives neutrales Element)
 \item \label{a7} $\forall a \in K, a \ne 0 \: \exists \; a^{-1} \in K \colon a \cdot a^{-1} = 1$
   (Multiplikatives Inverses)
-\item \label{a8} $\forall a,b \in K \colon a + b = b + a$
+\item \label{a8} $\forall a,b \in K \colon a \cdot b = b \cdot a$
   (Multiplikative Kommutativität)
 \item \label{a9} $\forall a,b,c \in K \colon a \cdot b + a \cdot c = a \cdot (b + c)$
   (Distributivität)
@@ -295,6 +295,19 @@ Angenommen $x$ wäre gleich $\frac{b}{a}$, dann gilt
 
 Damit ist $a$ ein additives inverses Element von $(-a)$.
 Somit ist $(-(-a)) = a$
+
+\subsection{Das multiplikative Inverse des multiplikativen Inversen eines Elementes ist das Element selbst}
+
+\begin{align*}
+  a^{-1} \cdot a \overset{\hyperref[a8]{(A8)}}&= a \cdot a^{-1} \\
+  \overset{\hyperref[a7]{(A7)}}&= 0 \\
+\end{align*}
+
+Damit ist $a$ ein multiplikatives inverses Element von $a^{-1}$.
+Somit ist
+\[
+  (a^{-1})^{-1} = a
+\]
 
 
 \end{document}
