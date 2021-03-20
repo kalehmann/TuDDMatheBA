@@ -309,5 +309,35 @@ Somit ist
   (a^{-1})^{-1} = a
 \]
 
+\subsection{Wenn $ab = 0$ impliziert, dass  $a = 0$ oder $b = 0$}
 
+\begin{itemize}
+\item[``$\Rightarrow$''] $a \cdot 0 = 0 \cdot a =  0$
+  \label{ab0:right}
+  \begin{align*}
+    0 &= 0 \\
+      \overset{\hyperref[a3]{(A3)}}&= a \cdot 0 - a \cdot 0 \\
+      \overset{\hyperref[a2]{(A2)}}&= a \cdot (0 + 0) - a \cdot 0 \\
+      \overset{\hyperref[a9]{(A9)}}&= (a \cdot 0 + a \cdot 0) - a \cdot 0 \\
+      \overset{\hyperref[a1]{(A1)}}&= a \cdot 0 + (a \cdot 0 - a \cdot 0) \\
+      \overset{\hyperref[a3]{(A3)}}&= a \cdot 0 + 0 \\
+      \overset{\hyperref[a2]{(A2)}}&= a \cdot 0 \\
+      \overset{\hyperref[a8]{(A8)}}&= 0 \cdot a \\
+  \end{align*}
+\item[``$\Leftarrow$'']
+  Vorausgesetzt $a \cdot b = 0$.
+
+  \begin{enumerate}[label=\textbf{\arabic*. Fall}]
+  \item $a = 0$. In diesem Fall ist die Annahme direkt bestätigt.
+  \item $a \ne 0$.
+    \begin{align*}
+      b &= b \\
+      \overset{\hyperref[a6]{(A6)}}&= b \cdot 1 \\
+      \overset{\hyperref[a7]{(A7)}}&= b \cdot (a \cdot a^{-1})  \\      
+      \overset{\hyperref[a5]{(A5)}}&= (b \cdot a) \cdot a^{-1}  \\
+      \overset{\text{Voraussetzung}}&= 0 \cdot a^{-1}  \\
+      \overset{\hyperref[ab0:right]{\text{Implikation }\Rightarrow}}&= 0 
+    \end{align*}
+  \end{enumerate}
+\end{itemize}
 \end{document}
