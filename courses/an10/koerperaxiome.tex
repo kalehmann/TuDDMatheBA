@@ -220,6 +220,7 @@ Folglich ist das neutrale Element der Addition eindeutig.
 \pagebreak
 
 \subsection{Eindeutigkeit des additiven Inversen}
+\label{eindeutigkeit_add_inv}
 
 Angenommen für ein Element $a \in K$ gäbe es zwei additive Inverse Element $b$ und $c$ mit
 $a + b = 0 \land a + c = 0$.
@@ -340,4 +341,20 @@ Somit ist
     \end{align*}
   \end{enumerate}
 \end{itemize}
+
+\subsection{Das additive Inverse der Summe zweier Elemente ist die Summe der beiden Inversen}
+
+Es sei zu beweisen, dass `-(a + b) = (-a) + (-b)`.
+
+\begin{align*}
+  ((-a) + (-b)) + (a + b) \overset{\hyperref[a1]{(A1)}}&= ((-a) + a) + ((-b) + b) \\
+                          \overset{\hyperref[a4]{(A4)}}&= (a + (-a)) + (b + (-b)) \\
+                          \overset{\hyperref[a3]{(A3)}}&= 0 + 0 \\
+                          \overset{\hyperref[a2]{(A2)}}&= 0
+\end{align*}
+
+Somit ist `(a + b)` ein additives Inverses von `(-a) + (-b)`. Aus der
+\hyperref[eindeutigkeit_add_inv]{Eindeutigkeit des additiven Inversen}
+folgt, dass `-(a + b) = (-a) + (-b)`.
+
 \end{document}
