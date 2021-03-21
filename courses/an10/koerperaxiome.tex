@@ -348,13 +348,12 @@ Somit ist
 Es sei zu beweisen, dass $-(a + b) = (-a) + (-b)$.
 
 \begin{align*}
-  ((-a) + (-b)) + (a + b) \overset{\hyperref[a1]{(A1)}}&= ((-a) + a) + ((-b) + b) \\
-                          \overset{\hyperref[a4]{(A4)}}&= (a + (-a)) + (b + (-b)) \\
+  (a + b) + ((-a) + (-b)) \overset{\hyperref[a1]{(A1)}}&= (a + (-a)) + (b + (-b)) \\
                           \overset{\hyperref[a3]{(A3)}}&= 0 + 0 \\
                           \overset{\hyperref[a2]{(A2)}}&= 0
 \end{align*}
 
-Somit ist $(a + b)$ ein additives Inverses von $(-a) + (-b)$. Aus der
+Somit ist $(-a) + (-b)$ ein additives Inverses von $(a + b)$. Aus der
 \hyperref[eindeutigkeit_add_inv]{Eindeutigkeit des additiven Inversen}
 folgt, dass $-(a + b) = (-a) + (-b)$.
 
@@ -363,14 +362,27 @@ folgt, dass $-(a + b) = (-a) + (-b)$.
 Es sei zu beweisen, dass $(a \cdot b)^{-1} = a^{-1} \cdot b^{-1}$.
 
 \begin{align*}
-  (a^{-1} \cdot b^{-1}) \cdot (a \cdot b) \overset{\hyperref[a5]{(A5)}}&= (a^{-1} \cdot a) \cdot (b^{-1} \cdot b) \\
-                                         \overset{\hyperref[a8]{(A8)}}&= (a \cdot a^{-1}) \cdot (b \cdot b^{-1}) \\
+  (a \cdot b) \cdot (a^{-1} \cdot b^{-1}) \overset{\hyperref[a5]{(A5)}}&= (a \cdot a^{-1}) \cdot (b \cdot b^{-1}) \\
                                          \overset{\hyperref[a7]{(A7)}}&= 1 \cdot 1 \\
                                          \overset{\hyperref[a6]{(A6)}}&= 1
 \end{align*}
 
-Somit ist $(a \cdot b)$ ein multiplikatives Inverses von $a^{-1} \cdot b^{-1}$. Aus der
+Somit ist $a^{-1} \cdot b^{-1}$ ein multiplikatives Inverses von $(a \cdot b)$. Aus der
 \hyperref[eindeutigkeit_mul_inv]{Eindeutigkeit des multiplikativen Inversen}
-folgt, dass $(a \cdot b) = a^{-1} \cdot b^{-1}$.
+folgt, dass $(a \cdot b)^{-1} = a^{-1} \cdot b^{-1}$.
+
+\subsection{Das Produkt eines Elementes mit dem additiven Inversen eines weiteren Elementes ist das additive Inverse des Produktes beider Elemente}
+
+Es sei zu beweisen, dass $a \cdot (-b) = -(a \cdot b)$.
+
+\begin{align*}
+  a \cdot b + a \cdot (-b) \overset{\hyperref[a9]{(A9)}}&= a \cdot (b + (-b)) \\
+                           \overset{\hyperref[a3]{(A3)}}&= a \cdot 0 \\
+                           \overset{\hyperref[ab0:right]{a \cdot 0 = 0}}&= 0
+\end{align*}
+
+Somit ist $a \cdot (-b)$ ein additives Inverses von $a \cdot b$. Aus der
+\hyperref[eindeutigkeit_add_inv]{Eindeutigkeit des additiven Inversen}
+folgt, dass $a \cdot (-b) = -(a \cdot b)$.
 
 \end{document}
