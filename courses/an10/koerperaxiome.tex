@@ -239,6 +239,7 @@ $a + b = 0 \land a + c = 0$.
 Somit ist das additive Inverse eindeutig bestimmt.
 
 \subsection{Eindeutigkeit des multiplikativen Inversen}
+\label{eindeutigkeit_mul_inv}
 
 Angenommen für ein Element $a \in K$ gäbe es zwei multiplikative Inverse Elemente $b$ und $c$ mit
 $a \cdot b = 1 \land a \cdot c = 1$.
@@ -344,7 +345,7 @@ Somit ist
 
 \subsection{Das additive Inverse der Summe zweier Elemente ist die Summe der beiden Inversen}
 
-Es sei zu beweisen, dass `-(a + b) = (-a) + (-b)`.
+Es sei zu beweisen, dass $-(a + b) = (-a) + (-b)$.
 
 \begin{align*}
   ((-a) + (-b)) + (a + b) \overset{\hyperref[a1]{(A1)}}&= ((-a) + a) + ((-b) + b) \\
@@ -353,8 +354,23 @@ Es sei zu beweisen, dass `-(a + b) = (-a) + (-b)`.
                           \overset{\hyperref[a2]{(A2)}}&= 0
 \end{align*}
 
-Somit ist `(a + b)` ein additives Inverses von `(-a) + (-b)`. Aus der
+Somit ist $(a + b)$ ein additives Inverses von $(-a) + (-b)$. Aus der
 \hyperref[eindeutigkeit_add_inv]{Eindeutigkeit des additiven Inversen}
-folgt, dass `-(a + b) = (-a) + (-b)`.
+folgt, dass $-(a + b) = (-a) + (-b)$.
+
+\subsection{Das multiplikative Inverse des Produktes zweier Elemente ist das Produkt der beiden Inversen}
+
+Es sei zu beweisen, dass $(a \cdot b)^{-1} = a^{-1} \cdot b^{-1}$.
+
+\begin{align*}
+  (a^{-1} \cdot b^{-1}) \cdot (a \cdot b) \overset{\hyperref[a5]{(A5)}}&= (a^{-1} \cdot a) \cdot (b^{-1} \cdot b) \\
+                                         \overset{\hyperref[a8]{(A8)}}&= (a \cdot a^{-1}) \cdot (b \cdot b^{-1}) \\
+                                         \overset{\hyperref[a7]{(A7)}}&= 1 \cdot 1 \\
+                                         \overset{\hyperref[a6]{(A6)}}&= 1
+\end{align*}
+
+Somit ist $(a \cdot b)$ ein multiplikatives Inverses von $a^{-1} \cdot b^{-1}$. Aus der
+\hyperref[eindeutigkeit_mul_inv]{Eindeutigkeit des multiplikativen Inversen}
+folgt, dass $(a \cdot b) = a^{-1} \cdot b^{-1}$.
 
 \end{document}
