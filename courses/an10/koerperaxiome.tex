@@ -289,6 +289,7 @@ Angenommen $x$ wäre gleich $\frac{b}{a}$, dann gilt
 \end{align*}
 
 \subsection{Das additive Inverse des additiven Inversen eines Elementes ist das Element selbst}
+\label{add_add_inv}
 
 \begin{align*}
   (-a) + a \overset{\hyperref[a4]{(A4)}}&= a + (-a) \\
@@ -372,6 +373,7 @@ Somit ist $a^{-1} \cdot b^{-1}$ ein multiplikatives Inverses von $(a \cdot b)$. 
 folgt, dass $(a \cdot b)^{-1} = a^{-1} \cdot b^{-1}$.
 
 \subsection{Das Produkt eines Elementes mit dem additiven Inversen eines weiteren Elementes ist das additive Inverse des Produktes beider Elemente}
+\label{prod_add_inv}
 
 Es sei zu beweisen, dass $a \cdot (-b) = -(a \cdot b)$.
 
@@ -384,5 +386,24 @@ Es sei zu beweisen, dass $a \cdot (-b) = -(a \cdot b)$.
 Somit ist $a \cdot (-b)$ ein additives Inverses von $a \cdot b$. Aus der
 \hyperref[eindeutigkeit_add_inv]{Eindeutigkeit des additiven Inversen}
 folgt, dass $a \cdot (-b) = -(a \cdot b)$.
+
+
+\subsection{Für jedes Element verschieden von 0 ist das multiplikative Inverse des additiven Inversen gleich dem additiven Inversen des multiplikativen Inversen}
+
+Es sei zu beweisen, dass $(-a)^{-1} = -(a^{-1})$.
+
+\begin{align*}
+  (-a) \cdot -(a^{-1}) \overset{\hyperref[prod_add_inv]{(a \cdot (-b) = -(a \dot b))}}&= -((-a) \cdot a^{-1}) \\
+                       \overset{\hyperref[a8]{(A8)}}&= -(a^{-1} \cdot (-a)) \\
+                       \overset{\hyperref[prod_add_inv]{(a \cdot (-b) = -(a \dot b))}}&= -(-(a^{-1} \cdot a)) \\
+                       \overset{\hyperref[a8]{(A8)}}&= -(-(a \cdot a^{-1})) \\
+                       \overset{\hyperref[a7]{(A7)}}&= -(-(1) \\
+                       \overset{\hyperref[add_add_inv]{-(-(a)) = a}}&= 1
+\end{align*}
+
+Somit ist $-(a^{-1})$ ein multiplikatives Inverses von $(-a)$. Aus der
+\hyperref[eindeutigkeit_mul_inv]{Eindeutigkeit des multiplikativen Inversen}
+folgt, dass $(-a)^{-1} = -(a^{-1})$.
+
 
 \end{document}
