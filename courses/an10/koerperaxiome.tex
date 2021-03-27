@@ -419,4 +419,35 @@ Es sei zu beweisen, dass $(a + b)^2 = a^2 + 2ab + b^2$.
             \overset{a + a = 2a}&= a^2 + 2ab + b^2
 \end{align*}
 
+\subsection{2. Binomische Formel}
+
+Es sei zu beweisen, dass $(a - b)^2 = a^2 - 2ab + b^2$.
+
+\begin{align*}
+  (a - b)^2 \overset{a^2 = a \cdot a}&= (a - b) \cdot (a - b) \\
+            \overset{a - b = a + (-b)}&= (a + (-b)) \cdot (a + (-b)) \\
+            \overset{\hyperref[a9]{(A9)}}&= (a + (-b)) \cdot a + (a + (-b)) \cdot (-b) \\
+            \overset{\hyperref[a8]{(A8)}}&= a \cdot (a + (-b)) + (-b) \cdot (a + (-b)) \\
+            \overset{\hyperref[a9]{(A9)}}&= a \cdot a + a \cdot (-b) + (-b) \cdot a + (-b) \cdot (-b) \\
+            \overset{\hyperref[a8]{(A8)}}&= a \cdot a + a \cdot (-b) + a \cdot (-b) + (-b) \cdot (-b) \\
+            \overset{\hyperref[prod_add_inv]{a \cdot (-b) = -(af \cdot b)}}&= a \cdot a + (-(ab)) + (-(ab)) + (-(-(b \cdot b))) \\
+            \overset{a + a = 2a}&= a \cdot a + 2 \cdot (-(ab)) + (-(-(b \cdot b))) \\
+            \overset{\hyperref[prod_add_inv]{a \cdot (-b) = -(ab)}}&= a \cdot a - 2ab + (-(-(b \cdot b))) \\
+            \overset{a \cdot a = a^2}&= a^2 - 2ab + (-(-(b^2))) \\
+            \overset{\hyperref[add_add_inv]{-(-(a)) = a}}&= a^2 - 2ab + b^2
+\end{align*}
+
+\subsection{3. Binomische Formel}
+
+Es sei zu beweisen, dass $(a + b)(a - b) = a^2 - b^2$.
+
+\begin{align*}
+  (a + b)(a - b) \overset{\hyperref[a9]{(A9)}}&= (a + b) \cdot a + (a + b) \cdot (-b) \\
+                 \overset{\hyperref[a8]{(A8)}}&= a \cdot (a + b) + (-b) \cdot (a + b) \\
+                 \overset{\hyperref[a9]{(A9)}}&= a \cdot a + a \cdot b + (-b) \cdot a + (-b) \cdot b \\
+                 \overset{\hyperref[prod_add_inv]{a \cdot (-b) = -(ab)}}&= a \cdot a + ab + (-(ab)) + (-(b \cdot b)) \\
+                 \overset{\hyperref[a3]{(A3)}}&= a \cdot a + 0 + (-(b \cdot b)) \\
+                 \overset{\hyperref[a2]{(A2)}}&= a \cdot a + (-(b \cdot b)) \\
+                 \overset{a \cdot a = a^2}&= a^2 - b^2
+\end{align*}
 \end{document}
