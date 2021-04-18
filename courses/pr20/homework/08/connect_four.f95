@@ -1,6 +1,7 @@
 !! Albina Oscherowa (4694823)
 !! Karsten Lehmann (4935758)
 PROGRAM connect_four
+  !! Das Spiel Vier Gewinnt in Fortran
   IMPLICIT NONE
   INTEGER :: m, &        ! Breite des Spielfeldes
        &     n, &        ! Hoehe des Spielfeldes
@@ -55,6 +56,7 @@ PROGRAM connect_four
   END DO
 CONTAINS
   SUBROUTINE AUSGABE(spielfeld)
+    !! Gibt das Spielfeld im Terminal aus.
     INTEGER :: m, &  ! Breite des Spielfeldes
          &     n, &  ! Hoehe des Spielfeldes
          &     i, &  ! Zaehler fuer die Breite
@@ -94,6 +96,7 @@ CONTAINS
   END SUBROUTINE AUSGABE
 
   INTEGER FUNCTION GEWINNER(spielfeld)
+    !! Ermittelt, ob bereits ein Spieler gewonnen hat.
     INTEGER :: m, &  ! Breite des Spielfeldes
          &     n, &  ! Hoehe des Spielfeldes
          &     i, &  ! Zaehler fuer die Breite
@@ -133,6 +136,8 @@ CONTAINS
   END FUNCTION GEWINNER
 
   SUBROUTINE LESEGROESSE(m, n)
+    !! Liesst solange Breite und Hoehe des Spielfeldes ein, bis diese den
+    !! minimalen Anforderungen genuegen.
     INTEGER, INTENT(OUT) :: m, &  ! Breite des Spielfeldes
          &                  n     ! Hoehe des Spielfeldes
     DO
@@ -145,4 +150,21 @@ CONTAINS
        END IF
     END DO
   END SUBROUTINE LESEGROESSE
+
+  SUBROUTINE SETZE(spielfeld, spalte, chip)
+    !! Setzt einen Chip fuer einen Spieler in der gegebenen Spalte.
+    INTEGER, DIMENSION(:,:), INTENT(INOUT) :: spielfeld
+    INTEGER, INTENT(IN) :: spalte, chip
+    INTEGER :: j, &  ! Zaehler fuer die Hoehe
+         &     n     ! Hoehe des Spielfeldes
+    n = SIZE(spielfeld, 1)
+
+    DO j = 1, n
+       IF (spielfeld(j, spalte) .eq. 0) THEN
+          WRITE(*,*) "setze"
+          spielfeld(j, spalte) = chip
+          RETURN
+       END IF
+    END DO
+  END SUBROUTINE SETZE
 END PROGRAM connect_four
