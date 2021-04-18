@@ -102,10 +102,11 @@ CONTAINS
          &     i, &  ! Zaehler fuer die Breite
          &     j     ! Zaehler fuer die Hoehe
     INTEGER, DIMENSION(:,:), INTENT(IN) :: spielfeld
-    INTEGER, DIMENSION(16) :: test
+    INTEGER, DIMENSION(16) :: flachesfeld
     m = SIZE(spielfeld, 2)
     n = SIZE(spielfeld, 1)
 
+    !! Test auf 4 in einer Spalte
     DO i = 1, n
        DO j = 1, m - 3
           IF (ABS(SUM(spielfeld(i, j:j + 3))) .eq. 4) THEN
@@ -114,6 +115,7 @@ CONTAINS
           END IF
        END DO
     END DO
+    !! Test auf 4 in einer Reihe
     DO i = 1, n - 3
        DO j = 1, m
           IF (ABS(SUM(spielfeld(i:i + 3, j))) .eq. 4) THEN
@@ -122,11 +124,16 @@ CONTAINS
           END IF
        END DO
     END DO
+    !! Test auf Diagonalen
     DO i = 1, n - 3
        DO j = 1, m - 3
-          test = RESHAPE(spielfeld(i:i + 3, j:j + 3), (/ 16 /))
-          IF (ABS(SUM(test(::5))) .eq. 4 .or. ABS(SUM(test(4::3))) .eq. 4) THEN
+          flachesfeld= RESHAPE(spielfeld(i:i + 3, j:j + 3), (/ 16 /))
+          IF (ABS(SUM(flachesfeld(::5))) .eq. 4) THEN
              GEWINNER = spielfeld(i, j)
+             RETURN
+          END IF
+          IF (ABS(SUM(flachesfeld(4::3))) .eq. 4) THEN
+             GEWINNER = spielfeld(i + 3, j)
              RETURN
           END IF
        END DO
