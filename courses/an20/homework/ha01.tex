@@ -12,6 +12,9 @@
 \usepackage{titling}
 \usepackage{fancyhdr}
 \usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
 
 \author{}
 \date{SoSe 2021}
@@ -75,6 +78,65 @@ $f([a, b]) \subseteq [c, d]$ und $g([c, d]) \subseteq [a, b]$.
   Somit existiert keine Partition
   $\sigma \colon a = x_0 < x_1 < \ldots < x_n = b$
   so dass $g \circ f$ auf dem Intervall $[x_0, x_1[$ konstant ist.
+\end{enumerate}
+
+\section*{Hausaufgabe 2}
+
+Sind die folgenden angegebenen Funktionen
+$f_k \colon [0, 2] \to \mathbb{R}, k = 1, 2, 3, 4$ Riemann-integrierbar?
+Begründen Sie Ihre Entscheidung.
+
+\begin{enumerate}
+\item $f_1(x) \coloneqq \left\lfloor x \right\rfloor$
+  
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xmax = 2.5,
+      xmin = -0.5,
+      ymax = 9,
+      ymin = -1]
+      \addplot [
+      jump mark mid,
+      domain=0:2,
+      samples=100,
+      very thick, red
+      ] {floor(4*x)};
+    \end{axis}
+  \end{tikzpicture}
+
+  Für die Funktion existiert die Partition
+  $\sigma \coloneqq \left\{ 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 \right\}$,
+  so dass $f_1$ auf jedem Intervall $[x_x, x_{k + 1}[ (0 \leq k \leq 8)$
+  konstant ist.
+
+  Damit ist $f_1$ eine Treppenfunktion und wie aus der Vorlesung bereits
+  bekannt ist jede Treppenfunktion Riemann-integrierbar.
+  
+\item $f_2(x) \coloneqq e^{-x^2}$
+
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xmax = 2.5,
+      xmin = -0.5,
+      ymax = 1.2,
+      ymin = -0.2]
+      \addplot [
+      domain=0:2,
+      samples=100,
+      very thick, red
+      ] {e^(-x^2)};
+    \end{axis}
+  \end{tikzpicture}
+
+  Angenommen $g(x) = 1$ und $h(x) = x^2$ seien Funktionen,
+  Dann entspricht $e^{-x^2} = \frac{g}{\exp \circ j}$.
+  Aus den Beispielen und Rechenregeln für stetige Funktionen unter Punkt
+  3.2 der Vorlesung folgt, dass $e^{-x^2}$ stetig ist.
+  Nach Proposition 5.1.5 der Vorlesung ist jede stetige Funktion auf einem
+  kompakten Intervall Riemann-integrierbar, somit ist $f_2$ Riemann-integrierbar.
+  
 \end{enumerate}
 
 \section*{Hausaufgabe 4}
