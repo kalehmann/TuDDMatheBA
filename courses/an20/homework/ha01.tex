@@ -139,6 +139,31 @@ Begründen Sie Ihre Entscheidung.
   
 \end{enumerate}
 
+\section*{Hausaufgabe 3}
+
+Berechnen Sie $\int_a^b e^k \,dx$  mittels Riemann-Summen. Wählen Sie hierfür
+gleichabständige Stützstellen $x_0, \ldots, x_n$ und als Zwischenstellen
+$\xi_k \in [x_k, x_{k + 1}]$ den Intervallmittelpunkt.
+
+\begin{align*}
+  \int_a^b e^k \,dx &= \lim_{n \to \infty} \frac{b - a}{n} \sum_{k=0}^n e^{a + (k + \sfrac{1}{2}) \cdot \frac{b-a}{n}} \\
+                    &= \lim_{n \to \infty} \frac{b - a}{n} \sum_{k=0}^n e^a \cdot e^{(k + \sfrac{1}{2}) \cdot \frac{b-a}{n}} \\
+                    &= e^a \cdot  \lim_{n \to \infty} \frac{b - a}{n} \sum_{k=0}^n e^{(k + \sfrac{1}{2}) \cdot \frac{b-a}{n}} \\
+                    &= e^a \cdot  \lim_{n \to \infty} \frac{b - a}{n} \sum_{k=0}^n e^{\frac{b-a}{2n}} \cdot e^{k \cdot \frac{b-a}{n}} \\
+                    &= e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{b - a}{n} \sum_{k=0}^n  e^{k \cdot \frac{b-a}{n}} \\
+                    &= e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{b - a}{n} \sum_{k=0}^n  \left(e^{\frac{b-a}{n}}\right)^k \\
+  \overset{\text{Substituiere $e^{\frac{b-a}{n}}$ mit $g$}}&= e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{b - a}{n} \sum_{k=0}^n  g^k \\
+  \overset{\text{Geometrische Reihe}}&= e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{b - a}{n} \cdot \frac{g^{n + 1} - 1}{g - 1} \\
+  \overset{\text{Substituiere $g$ mit $e^{\frac{b-a}{n}}$}}&= e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{b - a}{n} \cdot \frac{\left(e^{\frac{b-a}{n}}\right)^{n + 1} - 1}{e^{\frac{b-a}{n}} - 1} \\
+                    &=  e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{b - a}{n} \cdot \frac{e^{b - a} \cdot e^{\frac{b-a}{n}} - 1}{e^{\frac{b-a}{n}} - 1} \\
+                    &=  e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{e^{b - a} \cdot e^{\frac{b-a}{n}} - 1}{\frac{n}{b - a} \cdot \left(e^{\frac{b-a}{n}} - 1\right)} \\
+                    &=  e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \lim_{n \to \infty} \frac{e^{b - a} \cdot e^{\frac{b-a}{n}} - 1}{\frac{n}{b - a} \cdot \left(e^{\frac{b-a}{n}} - 1\right)} \\
+                    &=  e^a \cdot \lim_{n \to \infty} \frac{e^{b - a} \cdot e^{\frac{b-a}{n}} - e^0}{\frac{e^{\frac{b-a}{n}} - 1}{\frac{b - a}{n} + 0}} \\
+                    &=  e^a \cdot  \frac{\lim_{n \to \infty} e^{b - a} \cdot \lim_{n \to \infty} e^{\frac{b-a}{n}} - \lim_{n \to \infty} e^0}{\lim_{n \to \infty} \frac{e^{\frac{b-a}{n}} - 1}{\frac{b - a}{n} + 0}} \\
+                    &= e^a \cdot \frac{e^{b - a} \cdot 1 - 1}{1} \\
+                    &= e^a \cdot \left( \frac{e^b}{e^a} - 1\right) = e^b - e^a
+\end{align*}
+
 \section*{Hausaufgabe 4}
 
 Ermitteln Sie größtmögliche Intervalle $I \in \mathbb{R}$ auf denen
