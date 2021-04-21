@@ -79,15 +79,15 @@ $f([a, b]) \subseteq [c, d]$ und $g([c, d]) \subseteq [a, b]$.
   $\sigma \colon a = x_0 < x_1 < \ldots < x_n = b$
   so dass $g \circ f$ auf dem Intervall $[x_0, x_1[$ konstant ist.
 \end{enumerate}
-
+\newpage
 \section*{Hausaufgabe 2}
 
 Sind die folgenden angegebenen Funktionen
 $f_k \colon [0, 2] \to \mathbb{R}, k = 1, 2, 3, 4$ Riemann-integrierbar?
 Begründen Sie Ihre Entscheidung.
 
-\begin{enumerate}
-\item $f_1(x) \coloneqq \left\lfloor x \right\rfloor$
+\begin{enumerate}[a)]
+\item $f_1(x) \coloneqq \left\lfloor 4x \right\rfloor$
   
   \begin{tikzpicture}
     \begin{axis}[
@@ -136,9 +136,42 @@ Begründen Sie Ihre Entscheidung.
   3.2 der Vorlesung folgt, dass $e^{-x^2}$ stetig ist.
   Nach Proposition 5.1.5 der Vorlesung ist jede stetige Funktion auf einem
   kompakten Intervall Riemann-integrierbar, somit ist $f_2$ Riemann-integrierbar.
+
+\item $f_3(x) = \begin{cases}
+    0 & \text{für $x = 0$} \\
+    x^{-2} & \text{für $x \in (0, 2]$} \\
+  \end{cases}$
+
+    \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xmax = 2.5,
+      xmin = -0.5,
+      ymax = 12,
+      ymin = -2]
+      \addplot [
+      domain=0.1:2,
+      samples=100,
+      very thick, red]{x^(-2)};
+      \node [
+      circle,
+      fill,
+      inner sep=1pt, red] at (0,0) {};
+    \end{axis}
+  \end{tikzpicture}
+
+  Diese Funktion ist an der Stelle $0$ unstetig und somit nicht Riemann-integrierbar.
+
+\item $f_4(x) = \underset{k \colon r_k < x}{\sum} 2^{-k}$  wobei
+  $(r_k)_{k \in \mathbb{N}}$ eine Folge aller rationalen Zahlen aus dem
+  Intervall $[0, 2)$ ist.
+
+  Diese Funktion ist nicht Riemann-integrierbar, da sie überabzählbar viele
+  Definitionslücken aufweist.
   
 \end{enumerate}
 
+\newpage
 \section*{Hausaufgabe 3}
 
 Berechnen Sie $\int_a^b e^k \,dx$  mittels Riemann-Summen. Wählen Sie hierfür
@@ -147,7 +180,6 @@ $\xi_k \in [x_k, x_{k + 1}]$ den Intervallmittelpunkt.
 
 \begin{align*}
   \int_a^b e^k \,dx &= \lim_{n \to \infty} \frac{b - a}{n} \sum_{k=0}^n e^{a + (k + \sfrac{1}{2}) \cdot \frac{b-a}{n}} \\
-                    &= \lim_{n \to \infty} \frac{b - a}{n} \sum_{k=0}^n e^a \cdot e^{(k + \sfrac{1}{2}) \cdot \frac{b-a}{n}} \\
                     &= e^a \cdot  \lim_{n \to \infty} \frac{b - a}{n} \sum_{k=0}^n e^{(k + \sfrac{1}{2}) \cdot \frac{b-a}{n}} \\
                     &= e^a \cdot  \lim_{n \to \infty} \frac{b - a}{n} \sum_{k=0}^n e^{\frac{b-a}{2n}} \cdot e^{k \cdot \frac{b-a}{n}} \\
                     &= e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{b - a}{n} \sum_{k=0}^n  e^{k \cdot \frac{b-a}{n}} \\
@@ -155,7 +187,6 @@ $\xi_k \in [x_k, x_{k + 1}]$ den Intervallmittelpunkt.
   \overset{\text{Substituiere $e^{\frac{b-a}{n}}$ mit $g$}}&= e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{b - a}{n} \sum_{k=0}^n  g^k \\
   \overset{\text{Geometrische Reihe}}&= e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{b - a}{n} \cdot \frac{g^{n + 1} - 1}{g - 1} \\
   \overset{\text{Substituiere $g$ mit $e^{\frac{b-a}{n}}$}}&= e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{b - a}{n} \cdot \frac{\left(e^{\frac{b-a}{n}}\right)^{n + 1} - 1}{e^{\frac{b-a}{n}} - 1} \\
-                    &=  e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{b - a}{n} \cdot \frac{e^{b - a} \cdot e^{\frac{b-a}{n}} - 1}{e^{\frac{b-a}{n}} - 1} \\
                     &=  e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \frac{e^{b - a} \cdot e^{\frac{b-a}{n}} - 1}{\frac{n}{b - a} \cdot \left(e^{\frac{b-a}{n}} - 1\right)} \\
                     &=  e^a \cdot  \lim_{n \to \infty} e^{\frac{b-a}{2n}} \cdot \lim_{n \to \infty} \frac{e^{b - a} \cdot e^{\frac{b-a}{n}} - 1}{\frac{n}{b - a} \cdot \left(e^{\frac{b-a}{n}} - 1\right)} \\
                     &=  e^a \cdot \lim_{n \to \infty} \frac{e^{b - a} \cdot e^{\frac{b-a}{n}} - e^0}{\frac{e^{\frac{b-a}{n}} - 1}{\frac{b - a}{n} + 0}} \\
@@ -207,6 +238,8 @@ Berechnen Sie Stammfunktionen auf diesen Intervallen.
     &\int_0^t \left( \frac{3}{\sqrt{t} + \sqrt{t + 1}} \right)\,dt + \int_0^t \left( \frac{t^2}{\sqrt{t^2 + 1}} \right)\,dt \\
     = &3 \cdot \int_0^t \left( \sqrt{t + 1} - \sqrt{t} \right)\,dt + \int_0^t \left( 1 - \frac{1}{t^2 - 1} \right)\,dt
   \end{align*}
+
+\newpage
 \item $f(x) = \frac{\sqrt{1 + x} + \sqrt{1 - x^2}}{\sqrt{1 - x^4}}$
 
   $I = [0, 1)$ sei $F(t) = F(x), x \in I$
