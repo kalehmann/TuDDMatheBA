@@ -16,7 +16,7 @@
 
 \pgfplotsset{compat = newest}
 
-\author{}
+\author{Albina Oscherowa \\ Lukas Kamratzki \\ Karsten Lehmann \\ Sofia Hettwer}
 \date{SoSe 2021}
 \title{Hausaufgabe 01 Analysis - Weiterführende Konzepte}
 
@@ -28,6 +28,7 @@
 \rfoot{Seite \thepage}
 
 \begin{document}
+\section*{}
 \section*{Hausaufgabe 1}
 
 Es seien $f \colon [a, b] \to \mathbb{R}$ eine stetige Funktion und
@@ -160,7 +161,9 @@ Begründen Sie Ihre Entscheidung.
     \end{axis}
   \end{tikzpicture}
 
-  Diese Funktion ist an der Stelle $0$ unstetig und somit nicht Riemann-integrierbar.
+  Diese Funktion ist an der Stelle $0$ unstetig und zusätzlich strebt der
+  Funktionswert für $x \to 0$ gegen $\infty$.
+  Somit ist die Funktion nicht Riemann-integrierbar.
 
 \item $f_4(x) = \underset{k \colon r_k < x}{\sum} 2^{-k}$  wobei
   $(r_k)_{k \in \mathbb{N}}$ eine Folge aller rationalen Zahlen aus dem
@@ -207,14 +210,14 @@ Berechnen Sie Stammfunktionen auf diesen Intervallen.
   $I = [0, \infty]$ sei $F(t) = F(x), x \in I$
 
   \begin{align*}
-    \int_0^t \left( 2^te^t + 23 t^{\frac{15}{8}} \right)\,dt &=
-    \overset{(i)}{\int_0^t \left( 2^te^t \right) \,dt} + 23 \cdot \overset{(ii)}{\int_0^t \left(t^{\frac{15}{8}} \right) \,dt} \\
+    \int_0^x \left( 2^te^t + 23 t^{\frac{15}{8}} \right)\,dt &=
+    \overset{(i)}{\int_0^x \left( 2^te^t \right) \,dt} + 23 \cdot \overset{(ii)}{\int_0^x \left(t^{\frac{15}{8}} \right) \,dt} \\
   \end{align*}
   \begin{minipage}[t]{.45\textwidth}
     \textbf{$(i)$}
     \begin{align*}
-      &\int_0^t \left( 2^te^t \right) \,dt \\
-      = & \int_0^t \left( e^{(\ln(2) + 1)t} \right) \,dt \\
+      &\int_0^x \left( 2^te^t \right) \,dt \\
+      = & \int_0^x \left( e^{(\ln(2) + 1)t} \right) \,dt \\
       = & \frac{e^{(\ln(2) + 1)t}}{\ln(2) + 1}
     \end{align*}
   \end{minipage}
@@ -222,7 +225,7 @@ Berechnen Sie Stammfunktionen auf diesen Intervallen.
   \begin{minipage}[t]{.45\textwidth}
     \textbf{$(ii)$}
     \begin{align*}
-      &\int_0^t \left( t^{\frac{15}{8}} \right) \,dt \\
+      &\int_0^x \left( t^{\frac{15}{8}} \right) \,dt \\
       = & \frac{8}{23} \cdot t^{\frac{23}{8}} \\
       = & 2 \cdot (t + 1)^{\frac{3}{2}} + t \cdot \arctan (t) + c
     \end{align*}
@@ -235,8 +238,8 @@ Berechnen Sie Stammfunktionen auf diesen Intervallen.
 
   $I = (0, \infty]$ sei $F(t) = F(x), x \in I$
   \begin{align*}
-    &\int_0^t \left( \frac{3}{\sqrt{t} + \sqrt{t + 1}} \right)\,dt + \int_0^t \left( \frac{t^2}{\sqrt{t^2 + 1}} \right)\,dt \\
-    = &3 \cdot \int_0^t \left( \sqrt{t + 1} - \sqrt{t} \right)\,dt + \int_0^t \left( 1 - \frac{1}{t^2 - 1} \right)\,dt
+    &\int_0^x \left( \frac{3}{\sqrt{t} + \sqrt{t + 1}} \right)\,dt + \int_0^x \left( \frac{t^2}{\sqrt{t^2 + 1}} \right)\,dt \\
+    = &3 \cdot \int_0^x \left( \sqrt{t + 1} - \sqrt{t} \right)\,dt + \int_0^x \left( 1 - \frac{1}{t^2 - 1} \right)\,dt
   \end{align*}
 
 \newpage
@@ -245,16 +248,16 @@ Berechnen Sie Stammfunktionen auf diesen Intervallen.
   $I = [0, 1)$ sei $F(t) = F(x), x \in I$
 
   \begin{align*}
-    \int_0^t \left( \frac{\sqrt{t^2 + 1} + \sqrt{1 - t^2}}{\sqrt{1 - t^4}}\right) \,dt
-    &= \int_0^t \left( \frac{\sqrt{t^2 + 1}}{\sqrt{1 - t^4}} + \frac{\sqrt{1 - t^2}}{\sqrt{1 - t^4}}\right) \,dt \\
-    &= \overset{(i)}{\int_0^t \left( \frac{\sqrt{t^2 + 1}}{\sqrt{1 - t^4}}\right) \,dt} +
-       \overset{(ii)}{\int_0^t \left(\frac{\sqrt{1 - t^2}}{\sqrt{1 - t^4}}\right) \,dt} \\
+    \int_0^x \left( \frac{\sqrt{t^2 + 1} + \sqrt{1 - t^2}}{\sqrt{1 - t^4}}\right) \,dt
+    &= \int_0^x \left( \frac{\sqrt{t^2 + 1}}{\sqrt{1 - t^4}} + \frac{\sqrt{1 - t^2}}{\sqrt{1 - t^4}}\right) \,dt \\
+    &= \overset{(i)}{\int_0^x \left( \frac{\sqrt{t^2 + 1}}{\sqrt{1 - t^4}}\right) \,dt} +
+       \overset{(ii)}{\int_0^x \left(\frac{\sqrt{1 - t^2}}{\sqrt{1 - t^4}}\right) \,dt} \\
   \end{align*}
   \begin{minipage}[t]{.45\textwidth}
     \textbf{$(i)$}
     \begin{align*}
-      &\int_0^t \left( \frac{\sqrt{t^2 + 1}}{\sqrt{1 - t^4}}\right) \,dt \\
-      = & \int \frac{1}{\sqrt{1 - t^2}} \\
+      &\int_0^x \left( \frac{\sqrt{t^2 + 1}}{\sqrt{1 - t^4}}\right) \,dt \\
+      = & \int_0^x \frac{1}{\sqrt{1 - t^2}} \\
       = & \arcsin (x)
     \end{align*}
   \end{minipage}
@@ -262,8 +265,8 @@ Berechnen Sie Stammfunktionen auf diesen Intervallen.
   \begin{minipage}[t]{.45\textwidth}
     \textbf{$(ii)$}
     \begin{align*}
-      &\int_0^t \left( \frac{\sqrt{1 - t^2}}{\sqrt{1 - t^4}}\right) \,dt \\
-      = & \int_0^t \frac{1}{\sqrt{t^2 + 1}} \\
+      &\int_0^x\left( \frac{\sqrt{1 - t^2}}{\sqrt{1 - t^4}}\right) \,dt \\
+      = & \int_0^x \frac{1}{\sqrt{t^2 + 1}} \\
       = & \ln \left( \sqrt{t^2 + 1} + t\right)
     \end{align*}
   \end{minipage}
