@@ -296,11 +296,24 @@ durch Anwendung des Hauptsatzes.
 
 \begin{enumerate}[a)]
 \item $f(x) = x (\sin x^2 + \cos x^2)$
+
+  $\mathbb{D}_f = \mathbb{R}$
+
+  $g(x) = x^2, g'(x) = 2x, h(u) = \sin(u) + \cos(u)$
+
+  \begin{align*}
+    F(x) &= \int_{x_0 = 0}^x f(t) \,dt = \frac{1}{2} \int_{g(x_0)}^{g(x)} h(u) \,du \\
+         &= \frac{1}{2}(- \cos(u) + \sin(u)) {\Big |}_0^{x^2} \\
+         &= \frac{1}{2} {\Big (}\left( - \cos\left( x^2 \right) + \sin\left( x^2 \right) \right) -
+           \left( - \cos\left( 0^2 \right) + \sin\left( 0^2 \right) \right){\Big )} \\
+         &= \frac{1}{2} ( - \cos(x^2) + \sin(x^2) + 1)
+  \end{align*}
 \item $f(x) = x^2 \sin x$
 \item $f(x) = \exp\left( a \sqrt{x} + b \right), a \ne 0$
 \item $f(x) = (x^2 -  4) \cos(2x)$
 \item $f(x) = \frac{x^3 + 4x}{(x^2 + 4)^2}$
 \item $f(x) = \exp(ax) \cos(bx), a, b \ne 0$
+
 \end{enumerate}
 
 \section*{Rekursionsformeln}
