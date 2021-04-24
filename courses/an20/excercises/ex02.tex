@@ -245,8 +245,20 @@ so folgt $F(x) = H(g(x)) - H(g(x_0))$
   $F(x) = \int_0^x f(t) \,dt$ \textbf{Achtung} $f \notin R([-\infty, +\infty])$, da wir die
   Riemann-Integrale nur auf kompakten Intervallen erklärt haben.
 
+  \fcolorbox{black}{light-gray}{
+    \begin{minipage}{\textwidth}
+      \textbf{Herleitung der Doppelwinkelformel}
+      \begin{align*}
+        e^{i(x + y)} &= e^{ix} \cdot e^{iy} = (\cos(x) + i\sin(x))(\cos(y) + i\sin(y)) \\
+                     &= (\underset{\cos(x + y)}{\underbrace{\cos(x)\cos(y) - \sin(x)\sin(y)}}) +
+                       i(\underset{\sin(x + y)}{\underbrace{\sin(x)\cos(y) + \cos(x)\sin(y)}}) \\
+      \end{align*}
+      Daraus folgt für $x = y \Rightarrow \substack{\cos(2x) = \cos^2(x) - \sin^2(x) \\ \sin(2x) = 2 \sin(x)\cos(x)}$
+    \end{minipage}
+  }
+  
   \begin{align*}
-    \text{Es gilt } f(x) &= \cos (x) \sin (2x) = \cos (x) 2 \sin (x) \cos (x) \\
+    \text{Es gilt } f(x) &= \cos (x) \sin (2x) \overset{\text{Doppelwinkelformel}}= \cos (x) 2 \sin (x) \cos (x) \\
                          &= 2 \sin (x) \cos^2 (x) \\
   \end{align*}
   $g(x) = \cos(x), g'(x) = - \sin(x), h(u) = u^2 \Rightarrow f(x) = -2 g'(x) h(g(x))$
