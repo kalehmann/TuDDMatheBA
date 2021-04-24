@@ -122,6 +122,27 @@ Untersuchen Sie, ob folgenden Aussagen wahr oder falsch sind:
     0 & x = 0 \\
   \end{cases}$
 
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xmax = 1.2,
+      xmin = -1.2,
+      ymax = 0.5,
+      ymin = -0.4,]
+      \addplot [
+      domain=0.01:1,
+      samples=200,
+      smooth,
+      very thick, blue]{x^2 * sin(deg(1 / x^2))};
+      \addplot [
+      domain=-1:0.01,
+      samples=200,
+      smooth,
+      very thick, blue]{x^2 * sin(deg(1 / x^2))};
+    \end{axis}
+  \end{tikzpicture}
+
+  
   \begin{align*}
     \Rightarrow x \ne 0 \colon f'(x) &= 2x \sin\left(\frac{1}{x^2}\right) + x^2 \cos\left(\frac{1}{x^2}\right)\left(-\frac{2}{x^3}\right) \\
                                      &= 2x \sin\left(\frac{1}{x^2}\right) - \colorbox{yellow}{$\frac{2}{x} \cos\left(\frac{1}{x^2}\right)$} \\
@@ -146,8 +167,44 @@ folgenden Ausdrücke $f(x)$ Stammfunktionen besitzen.
 Berechnen Sie zugehörige Stammfunktionen $F \colon I \to \mathbb{R}$
 durch Anwendung des Hauptsatzes.
 
+\begin{enumerate}[a)]
+\item $f(x) = \frac{6}{1 - 3x}$
+\item $f(x) = 3 \sqrt{8x - 4}$
+\item $f(x) = \frac{1}{\sqrt[3]{5x - 7}}$
+\item $f(x) = \frac{x}{4 + x^2}$
+\item $f(x) = \frac{2x + 4}{x^2 + 4x + 7}$
+\item $f(x) = \frac{x^2}{x^3 - 27}$
+\item $f(x) = \frac{1}{x \cdot \ln x}$
+\item $f(x) = 3e^x \sqrt{e^x + 1}$
+\item $f(x) = \cos(x) \sin(2x)$
+\end{enumerate}
+
 \section*{Integration mittels Substitution oder partieller Integration}
 
+Ermitteln Sie größtmögliche Intervalle $I \in \mathbb{R}$ auf denen die
+folgenden Ausdrücke $f(x)$ Stammfunktionen besitzen.
+Berechnen Sie zugehörige Stammfunktionen $F \colon I \to \mathbb{R}$
+durch Anwendung des Hauptsatzes.
+
+\begin{enumerate}[a)]
+\item $f(x) = x (\sin x^2 + \cos x^2)$
+\item $f(x) = x^2 \sin x$
+\item $f(x) = \exp\left( a \sqrt{x} + b \right), a \ne 0$
+\item $f(x) = (x^2 -  4) \cos(2x)$
+\item $f(x) = \frac{x^3 + 4x}{(x^2 + 4)^2}$
+\item $f(x) = \exp(ax) \cos(bx), a, b \ne 0$
+\end{enumerate}
+
 \section*{Rekursionsformeln}
+
+Stellen Sie für die folgenden Integrale
+$F_n (x) \coloneqq \int_0^x f_n(t) \,dt, x \in \mathbb{R}$ und
+$n \in \mathbb{N}_0$ Rekursionsformeln auf.
+Geben Sie explizite Darstellungen von $F_0, \ldots, F_3$ an.
+
+\begin{enumerate}[a)]
+\item $f_n(t) = t^n e^{at}, a \ne 0$
+\item $f_n(t) = \sin^n(t)$
+\end{enumerate}
 
 \end{document}
