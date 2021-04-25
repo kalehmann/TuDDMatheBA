@@ -34,6 +34,97 @@
 
 \section*{Hausaufgabe 1}
 
+Untersuchen Sie, ob die folgenden Aussagen wahr oder falsch sind.
+Begründen Sie Ihre Antworten.
+
+\begin{enumerate}[(i)]
+\item Die Funktion $F(x) \coloneqq x\abs{x}, x \in [-1,1]$, ist die Stammfunktion einer
+  Funktion $f \in R([-1, 1])$.
+
+  \label{dia:1.1}
+  \begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xmax = 1.2,
+        xmin = -1.2,
+        ymax = 1.2,
+        ymin = -1.2,]
+      \addplot [
+        domain=-1:1,
+        name path=f,
+        samples=100,
+        very thick, blue]{x * abs(x)};
+    \end{axis}
+  \end{tikzpicture}
+
+  $F(x) = \begin{cases}
+    x^2 & x \geq 0 \\
+    - x^2 & x < 0 \\
+  \end{cases}, F'(x) = \begin{cases}
+    2x & x \geq 0 \\
+    -2x & x < 0 \\
+  \end{cases} = 2 \abs{x} = f(x)$.
+  Die Funktion $f(x)$ ist auf dem kompakten Intervall $[-1, 1]$ stetig, somit ist
+  $f \in R([-1, 1])$ und die Aussage ist wahr.
+  
+\item Die Funktion $f(x) \coloneqq \text{sign}(x) \sqrt{\abs{x}}, x \in [-1,1]$, besitzt
+  auf $[-1,1]$ eine Stammfunktion.
+
+  \label{dia:1.2}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xmax = 1.2,
+      xmin = -1.2,
+      ymax = 1.2,
+      ymin = -1.2,]
+      \addplot [
+        domain=-1:1,
+        name path=f,
+        samples=100,
+        very thick, blue]{sign(x) * sqrt(abs(x))};
+    \end{axis}
+  \end{tikzpicture}
+
+  Die Funktion ist auf den Intervallen $[-1, 0)$ und $(0, 1]$ stetig.
+  Weiterhin ist $\lim_{x \to 0-} f(x) = \lim_{x \to 0+} f(x) = f(x) = 0$.
+  Somit ist die Funktion auf dem kompakten Intervall $[-1, 1]$ stetig und
+  besitzt auf diesem Intervall eine Stammfunktion.
+  Damit ist die Aussage wahr.
+  
+\item Die Funktion $f(x) \coloneqq \text{sign}(x) \sqrt{\abs{x + \frac{1}{2}}}, x \in [-1,1]$, besitzt
+  auf $[-1,1]$ eine Stammfunktion.
+
+  \label{dia:1.2}
+  \begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xmax = 1.2,
+        xmin = -1.2,
+        ymax = 1.2,
+        ymin = -1.2,]
+      \addplot [
+        domain=-1:-0.01,
+        name path=f,
+        samples=100,
+        very thick, blue]{sign(x) * sqrt(abs(x + 0.5))};
+      \node [
+        circle,
+        fill,
+        inner sep=1pt, blue] at (0,0) {};
+      \addplot [
+        domain=0.01:1,
+        name path=f,
+        samples=100,
+        very thick, blue]{sign(x) * sqrt(abs(x + 0.5))};
+    \end{axis}
+  \end{tikzpicture}
+
+  $\lim_{x \to 0-} f(x) = - \sqrt{\frac{1}{2}}, \lim_{x \to 0+} f(x) = \sqrt{\frac{1}{2}}$ und $f(0) = 0$.
+  Damit besitzt die Funktion an der Stelle $0$ einen Sprung.
+  Aus dem Satz von Darboux folgt, dass die Funktion auf dem Intervall $[-1, 1]$ keine Stammfunktion besitzt.
+\end{enumerate}
+
 \section*{Hausaufgabe 2}
 
 \section*{Hausaufgabe 3}
