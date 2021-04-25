@@ -162,6 +162,22 @@ Anwendung des Hauptsatzes. \\
     Damit lässt sich $f(x) = \cos(\ln(x)) + \sin(\ln(x))$ als $f(x) = g(x) + h(x)$ schreiben.
     Das unbestimmte Integral $\int f(x)\,dx$ wird nun zu der Summe $\int g(x)dx + \int h(x)dx$.
 
+    \label{dia:1.2}
+    \begin{tikzpicture}
+      \begin{axis}[
+          axis lines=middle,
+          xmax = 570,
+          xmin = -50,
+          ymax = 1.6,
+          ymin = -1.6,]
+        \addplot [
+          domain=1:600,
+          name path=f,
+          samples=100,
+          very thick, blue]{cos(deg(ln(x))) + sin(deg(ln(x)))};
+      \end{axis}
+    \end{tikzpicture}
+
     \newpage
     \begin{landscape}
       \begin{enumerate}[(i)]
