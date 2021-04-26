@@ -223,102 +223,48 @@ Anwendung des Hauptsatzes. \\
     \end{align*}
 
   \newpage
-  \begin{landscape}
-    \item $f(x) \coloneqq \cos(\ln x) + \sin(\ln x)$
-      \begin{flalign*}
-        & \makebox[\textwidth]{} & %% This little hack ensures, that the whole width is used.
-      \end{flalign*}
+  \item $f(x) \coloneqq \cos(\ln x) + \sin(\ln x)$
 
-      \label{dia:3.1.b}
-      \begin{tikzpicture}
-        \begin{axis}[
-            axis lines=middle,
-            xmax = 570,
-            xmin = -50,
-            ymax = 1.6,
-            ymin = -1.6,]
-          \addplot [
-            domain=1:600,
-            name path=f,
-            samples=100,
-            very thick, blue]{cos(deg(ln(x))) + sin(deg(ln(x)))};
-        \end{axis}
-      \end{tikzpicture}
+    \label{dia:3.1.b}
+    \begin{tikzpicture}
+      \begin{axis}[
+          axis lines=middle,
+          xmax = 570,
+          xmin = -50,
+          ymax = 1.6,
+          ymin = -1.6,]
+        \addplot [
+          domain=1:600,
+          name path=f,
+          samples=100,
+          very thick, blue]{cos(deg(ln(x))) + sin(deg(ln(x)))};
+      \end{axis}
+    \end{tikzpicture}
 
-      $\mathbb{D}_f = \mathbb{R}_{>0}$
+    $\mathbb{D}_f = \mathbb{R}_{>0}$
+    \begin{flalign*}
+      F(x) &= \int \cos(\ln(x))\,dx + \underset{
+          \begin{aligned}
+            &= x \cdot \sin(\ln x) - \int x \cdot \frac{\cos(\ln(x))}{x} \,dx \\
+            &= x \cdot \sin(\ln x) - \int \cos(\ln(x)) \,dx \\
+          \end{aligned}
+    }{\underbrace{\int \sin(\ln x)\,dx}} & \\
+           &= \int \cos(\ln(x))\,dx + x \cdot \sin(\ln x) - \int \cos(\ln(x)) \,dx & \\
+      F(x) &= x \cdot \sin(\ln x), x \in \mathbb{R}
+    \end{flalign*}
+  \item $f(x) \coloneqq \frac{\ln x}{x^3}$
 
-      Zuerst wird die Funktion aufgeteilt in $g(x) = \cos(\ln(x))$ und $h(x) = \sin(\ln(x))$.
-      Damit lässt sich $f(x) = \cos(\ln(x)) + \sin(\ln(x))$ als $f(x) = g(x) + h(x)$ schreiben.
-      Das unbestimmte Integral $\int f(x)\,dx$ wird nun zu der Summe $\int g(x)dx + \int h(x)dx$.
+    $\mathbb{D} = \mathbb{R}_{>0}$
 
-      \newpage
-      \begin{enumerate}[b) (i)]
-        \item \textbf{Integration von $g(x) = \cos(\ln(x))$ per Substitution}
-          \begin{flalign*}
-            u &= \ln(x) \iff e^u = e^{\ln(x)} = x & \\
-            du &= \frac{1}{x}dx & \\
-            dx &= x \cdot du = e^u \cdot du
-          \end{flalign*}
-          \begin{flalign*}
-            G(x) &= \int \cos(\ln(x))dx \overset{\substack{\text{Substitution} \\ u = \ln(x)}}= \int \cos(u) e^udu &
-          \end{flalign*}
-          \begin{flalign*}
-            \int \cos(u) e^udu \overset{\substack{\text{Partielle}\\\text{Integration}}}
-                                &= e^u \cos(u) -\underset{\makebox[0pt]{$\displaystyle \left(e^u (-\sin(u)) - \int e^u (-\cos(u))du\right)$}}
-                                  {\underbrace{\int e^u (-\sin(u))du}} &\\
-                                &= e^u \cos(u) - \left(e^u (-\sin(u)) + \int e^u \cos(u)du\right) &\\
-                                &= e^u \cos(u) + e^u \sin(u) - \int e^u \cos(u)du && | + \int e^u \cos(u)du &\\
-            2 \int \cos(u) e^udu &= e^u \cos(u) + e^u \sin(u) && | :2 &\\
-                                &= \frac{e^u \cos(u) + e^u \sin(u)}{2} &\\
-            \overset{\text{Substituiere } u = \ln(x)}&=  \frac{e^{\ln(x)} \cos(\ln(x)) + e^{\ln(x)} \sin(\ln(x))}{2} &\\
-            G(x) &= \frac{x (\cos(\ln(x)) + \sin(\ln(x)))}{2}
-          \end{flalign*}
-        \newpage 
-        \item \textbf{Integration von $h(x) = \sin(\ln(x))$ per Substitution}
-          \begin{flalign*}
-            u &= \ln(x) \iff e^u = e^{\ln(x)} = x & \\
-            du &= \frac{1}{x}dx & \\
-            dx &= x \cdot du = e^u \cdot du
-          \end{flalign*}
-          \begin{flalign*}
-            H(x) &= \int \sin(\ln(x))dx \overset{\substack{\text{Substitution} \\ u = \ln(x)}}= \int \sin(u) e^udu &
-          \end{flalign*}
-          \begin{flalign*}
-            \int \sin(u) e^udu \overset{\substack{\text{Partielle}\\\text{Integration}}}
-                                &= e^u \sin(u) -\underset{\makebox[0pt]{$\displaystyle \left(e^u \cos(u) - \int e^u (-\sin(u))du\right)$}}
-                                  {\underbrace{\int e^u \cos(u)du}} &\\
-                                &= e^u \sin(u) - \left(e^u \cos(u) - \int e^u (-\sin(u))du\right) &\\
-                                &= e^u \sin(u) - e^u \cos(u) - \int e^u \sin(u)du && | + \int e^u \sin(u)du &\\
-            2 \int \sin(u) e^udu &= e^u \sin(u) - e^u \cos(u) && | :2 &\\
-                                &= \frac{e^u \sin(u) - e^u \cos(u)}{2} &\\
-            \overset{\text{Substituiere } u = \ln(x)}&=  \frac{e^{\ln(x)} \sin(\ln(x)) - e^{\ln(x)} \cos(\ln(x))}{2} &\\
-            H(x) &= \frac{x (\sin(\ln(x)) - \cos(\ln(x)))}{2}
-          \end{flalign*}
-      \end{enumerate}
-
-      \begin{flalign*}
-        F(x) &= G(x) + H(x) &\\
-             &= \frac{x (\cos(\ln(x)) + \sin(\ln(x)))}{2} + \frac{x (\sin(\ln(x)) - \cos(\ln(x)))}{2} &\\
-             &= x \cdot \frac{\cos(\ln(x)) + \sin(\ln(x)) + \sin(\ln(x)) - \cos(\ln(x))}{2} &\\
-             &= x \cdot \sin(\ln(x)), x \in \mathbb{R}_{>0}
-      \end{flalign*}
-      \begin{flalign*}
-        & \makebox[\textwidth]{} & %% This little hack ensures, that the whole width is used.
-      \end{flalign*}
-    \item $f(x) \coloneqq \frac{\ln x}{x^3}$
-
-      $\mathbb{D} = \mathbb{R}_{>0}$
-
-      $u'(x) = x^{-3}, u(x) = -\frac{1}{2}x^{-2}, v(x) = \ln(x), v'(x) = \frac{1}{x}$
-      \begin{align*}
-        \int f(x)\,dx &= u(x) \cdot v(x) - \int v'(x) \cdot u(x) \,dx \\
-                      &= -\frac{1}{2} x^{-2} \cdot \ln(x) - \int \frac{1}{x} \cdot \left(-\frac{1}{2} x^{-2}\right) \,dx \\
-                      &= -\frac{1}{2} x^{-2} \cdot \ln(x) - \int -\frac{1}{2} x^{-3} \,dx \\
-                      &= -\frac{1}{2} x^{-2} \cdot \ln(x) - \frac{1}{4} x^{-2} \,dx \\
-        F(x) &= -\frac{1}{2} x^{-2} (ln(x) + \frac{1}{2}), x \in \mathbb{R}_{>0}
-      \end{align*}
-    \end{landscape}
-  \end{enumerate}
+    $u'(x) = x^{-3}, u(x) = -\frac{1}{2}x^{-2}, v(x) = \ln(x), v'(x) = \frac{1}{x}$
+    \begin{align*}
+      \int f(x)\,dx &= u(x) \cdot v(x) - \int v'(x) \cdot u(x) \,dx \\
+                    &= -\frac{1}{2} x^{-2} \cdot \ln(x) - \int \frac{1}{x} \cdot \left(-\frac{1}{2} x^{-2}\right) \,dx \\
+                    &= -\frac{1}{2} x^{-2} \cdot \ln(x) - \int -\frac{1}{2} x^{-3} \,dx \\
+                    &= -\frac{1}{2} x^{-2} \cdot \ln(x) - \frac{1}{4} x^{-2} \,dx \\
+      F(x) &= -\frac{1}{2} x^{-2} (ln(x) + \frac{1}{2}), x \in \mathbb{R}_{>0}
+    \end{align*}
+\end{enumerate}
 
 \newpage
 \item Stellen Sie für die folgenden Integrale
