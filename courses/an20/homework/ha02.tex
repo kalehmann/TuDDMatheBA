@@ -278,6 +278,25 @@ Anwendung des Hauptsatzes. \\
   eine Rekursionsformel bzgl. $n \in \mathbb{N}$ auf.
   Geben Sie explizite Darstellungen von $F_0, F_1, F_2$ an.
 
+  \begin{flalign*}
+    n = 0: F_0(x) &= \int_1^x t \ln^0(t) \,dt, x \in (0, \infty) &\\
+                  &= \int_1^x t \cdot 1 \,dt, x \in (0, \infty) = \left[ \frac{1}{2}x^2 \right]_0^x
+                    = \frac{1}{2}x^2 &\\
+    n \geq 1: F_n(x) &= \int_1^x t \ln^n(t) \,dt, x \in (0, \infty) &\\
+                     &= \frac{1}{2}t^2 \cdot \ln^n(t) {\Big |}_0^x - \frac{1}{2} \int_0^x t^2 \cdot
+                       \colorbox{yellow}{$\displaystyle n\frac{\ln^{n-1}(t)}{t}$} \,dt, x \in (0, \infty) \\
+                     &= \frac{1}{2} \left( x^2 \cdot \ln^n(x) - n \cdot
+                       \underset{= F_{n - 1}(x)}{
+                         \underbrace{\int_0^x t \cdot \ln^{n-1}(t) \,dt}} \right), x \in (0, \infty) \\
+    F_1(x) &= \frac{1}{2} x^2 \left( \ln(x) - \frac{1}{2} \right) & \\
+    F_2(x) &= \frac{1}{2} x^2 \left( \ln^2(x) - \ln(x) + \frac{1}{2} \right) & \\
+  \end{flalign*}
+
+  \colorbox{yellow}{Ableitung von $f(x) = \ln^n(x)$:}
+
+  $g(x) = x^n, g'(x) = n \cdot x^{n - 1}, h(x) = \ln(x), h'(x) = \frac{1}{x}$
+
+  $f(x) = g(h(x)), f'(x) = g'(h(x)) \cdot h'(x) = n \cdot \ln^{n-1}(x) \cdot \frac{1}{x} = n \frac{\ln^{n-1}(x)}{x}$
 \end{enumerate}
 
 \newpage
