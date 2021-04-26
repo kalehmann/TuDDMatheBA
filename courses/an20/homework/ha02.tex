@@ -129,6 +129,56 @@ Begründen Sie Ihre Antworten.
 
 \section*{Hausaufgabe 2}
 
+Ermitteln Sie größtmögliche Intervalle $I \in \mathbb{R}$ auf denen die folgenden Ausdrücke
+$f(x)$ Stammfunktionen besitzen.
+Berechnen Sie zughörige Stammfunktionen $F \colon I \to \mathbb{R}$
+durch Anwendung des Hauptsatzes.
+
+\begin{enumerate}[a)]
+\item $f(x) = \frac{\sin x}{\sqrt{9 + \cos x}}$
+
+  $\mathbb{D}_f = \mathbb{R}$
+  \begin{flalign*}
+    u &= 9 + \cos x & \\
+    du &= - \sin(x) \,dx & \\
+    dx &= - \frac{1}{\sin x} \,du &
+  \end{flalign*}
+  \begin{flalign*}
+    F(x) &= \int \frac{\sin x}{\sqrt{9 + \cos x}} \, dx = \int \frac{\sin x}{\sqrt{9 + \cos x}} \cdot \left( - \frac{1}{\sin x} \right) \,du & \\
+    \overset{\substack{\text{Substitution} \\ u = 9 + \cos x}}&= - \int \frac{1}{\sqrt{u}} \,du =  - \int u^{\frac{1}{2}} \,du & \\
+         &= -2 u^{\frac{1}{2}} = -2 \sqrt{u} & \\
+    F(x) &= -2 \cdot \sqrt{9 + \cos x}, x \in \mathbb{R} & 
+  \end{flalign*}
+  
+\item $f(x) = \frac{\sin x}{\cos^2 x}$
+
+  $(a_n)_{n \in \mathbb{Z}} \coloneqq \pi n - \frac{\pi}{2}, \mathbb{D}_f = \mathbb{R} \setminus (a_n)$
+  \begin{flalign*}
+    u &= \cos x & \\
+    du &= - \sin(x) \,dx & \\
+    dx &= - \frac{1}{\sin x} \,du &
+  \end{flalign*}
+  \begin{flalign*}
+    F(x) &= \int \frac{\sin x}{\cos^2 x}\,dx = \int \frac{\sin x}{\cos^2 x} \cdot \left(- \frac{1}{\sin x} \right) \,du& \\
+    \overset{\substack{\text{Substitution} \\ u = \cos x}}&= - \int \frac{1}{u^2} \,du = - \int u^{-2} \,du & \\
+         &= - \left( - \frac{1}{u} \right) \\
+    F(x) &= \frac{1}{\cos x}, x \in \mathbb{R} \setminus (a_n) 
+  \end{flalign*}
+\item $f(x) = \frac{4x \arctan(x^2)}{1 + x^4}$
+    $\mathbb{D}_f = \mathbb{R}$
+  \begin{flalign*}
+    u &= \arctan(x^2) & \\
+    du &= 2x \cdot \frac{1}{1 + \left( x^2 \right)^2} \,dx = \frac{2x}{1 + x^4} \,dx & \\
+    dx &= \frac{1 + x^4}{2x} \,du &
+  \end{flalign*}
+  \begin{flalign*}
+    F(x) &= \int \frac{4x \arctan(x^2)}{1 + x^4} \,dx = \int \frac{4x \arctan(x^2)}{1 + x^4} \cdot \frac{1 + x^4}{2x} \,du & \\
+         &= \int 2 \arctan(x^2) \,du & \\
+    \overset{\substack{\text{Substitution} \\ u = \arctan(x^2)}}&= \int 2 \cdot u \,du = 2 \int u \,du & \\
+    F(x) &= u^2 = arctan^2\left( x^2 \right), x \in \mathbb{R}     
+  \end{flalign*}
+\end{enumerate}
+
 \newpage
 \section*{Hausaufgabe 3}
 
@@ -254,7 +304,7 @@ Anwendung des Hauptsatzes. \\
       \end{flalign*}
       \begin{flalign*}
         & \makebox[\textwidth]{} & %% This little hack ensures, that the whole width is used.
-      \end{flalign*}     
+      \end{flalign*}
     \item $f(x) \coloneqq \frac{\ln x}{x^3}$
 
       $\mathbb{D} = \mathbb{R}_{>0}$
