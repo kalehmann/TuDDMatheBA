@@ -219,6 +219,81 @@
   \]
 
   existiert.
+
+  \textit{Lsg.}
+  \begin{itemize}
+  \item $s < 0$. Für $x \geq 1$ gilt $0 < x^s + x^{\sfrac{1}{x}} = 1 + 1 = 2$
+    \begin{flalign*}
+      \Rightarrow & \frac{1}{x^s + x^{\frac{1}{s}}} \geq \frac{1}{2} \text{ für } x \geq 1 & \\
+      \Rightarrow & \int_0^{\infty} \frac{1}{x^s + x^{\frac{1}{s}}}\,dx \geq  \int_0^{\infty} \frac{1}{2} = \infty
+    \end{flalign*}
+    $\Rightarrow$ das uneigentliche Integral existiert nicht.
+
+  \newpage
+  \item $0 < s < 1$
+
+    \begin{minipage}[t]{.4\textwidth}
+      \[ \swarrow \]
+      $x \in (0, 1]$
+      \[
+        0 < \frac{1}{x^s + x^{\sfrac{1}{s}}} \leq \frac{1}{x^s}
+      \]
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{.4\textwidth}
+      \[ \searrow \]
+      $x \geq 1$
+      \[
+        0 < \frac{1}{x^s + x^{\sfrac{1}{s}}} \leq \frac{1}{x^{\sfrac{1}{s}}}
+      \]
+    \end{minipage}
+
+    Somit folgt
+    \begin{align*}
+      \int_0^{\infty} \frac{1}{x^s + x^{\sfrac{1}{s}}}\,dx
+        &\leq \int_0^1 \frac{1}{x^s}\,dx + \int_1^{\infty} \frac{1}{x^{\sfrac{1}{s}}} \,dx
+          = \lim_{a \to +0} \int_a^1 \frac{1}{x^s}\,dx + \lim_{b \to \infty} \int_1^b \frac{1}{x^{\sfrac{1}{s}}}\,dx \\
+        &= \lim_{a \to 0} \eval{\frac{x^{1 - s}}{1 - s}}_a^1 +
+          \lim_{b \to \infty} \eval{\frac{x^{1 - \sfrac{1}{s}}}{1 - \sfrac{1}{s}}}_1^b \\
+        &= \frac{1}{1 - s} - \frac{1}{1 - \sfrac{1}{s}} = \frac{1}{1 - s} + \frac{s}{1 - s} < \infty
+    \end{align*}
+    $\Rightarrow$ das uneigentliche Integral existiert
+  \item $s = 1, \frac{1}{x^s + x^{\sfrac{1}{s}}} = \frac{2}{x}$
+    \[
+      \int_0^{\infty} \frac{1}{x^s + x^{\sfrac{1}{s}}}\,dx \geq \int_0^{\infty} \frac{2}{x}\,dx =
+      \lim_{b \to \infty} \eval{2 \ln(x)}_1^b = \infty
+    \]
+    $\Rightarrow$ das uneigentliche Integral existiert nicht.
+
+  \item $s > 1$
+
+    \begin{minipage}[t]{.4\textwidth}
+      \[ \swarrow \]
+      $x \in (0, 1]$
+      \[
+        0 < \frac{1}{x^s + x^{\sfrac{1}{s}}} \leq \frac{1}{x^{\sfrac{1}{s}}}
+      \]
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{.4\textwidth}
+      \[ \searrow \]
+      $x \geq 1$
+      \[
+        0 < \frac{1}{x^s + x^{\sfrac{1}{s}}} \leq \frac{1}{x^s}
+      \]
+    \end{minipage}
+    
+    Somit folgt
+    \begin{align*}
+      \int_0^{\infty} \frac{1}{x^s + x^{\sfrac{1}{s}}}\,dx
+        &\leq \int_0^1 \frac{1}{x^{\sfrac{1}{s}}}\,dx + \int_1^{\infty} \frac{1}{x^s} \,dx
+          = \lim_{a \to +0} \int_a^1 \frac{1}{x^{\sfrac{1}{s}}}\,dx + \lim_{b \to \infty} \int_1^b \frac{1}{x^s}\,dx \\
+        &= \lim_{a \to 0} \eval{\frac{x^{1 - \sfrac{1}{s}}}{1 - \sfrac{1}{s}}}_a^1 +
+          \lim_{b \to \infty} \eval{\frac{x^{1 - s}}{1 - s}}_1^b \\
+        &= \frac{1}{1 - \sfrac{1}{s}} - \frac{1}{1 - s} = \frac{s}{s - 1} + \frac{1}{s - 1} < \infty
+    \end{align*}
+    $\Rightarrow$ das uneigentliche Integral existiert
+  \end{itemize}
 \end{enumerate}
 
 \newpage
