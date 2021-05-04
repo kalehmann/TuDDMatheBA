@@ -1,0 +1,180 @@
+\documentclass{article}
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+
+\author{Albina Oscherowa \\ Lukas Kamratzki \\ Karsten Lehmann}
+\date{SoSe 2021}
+\title{Hausaufgabe 03 Analysis - Weiterführende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+
+\section*{Hausaufgabe 1}
+
+Für eine stetige Funktion $f \colon [0, \infty) \to \mathbb{R}$ und
+$\lambda \in \mathbb{R}$ sei
+\[
+  \mathscr{L}f(\lambda) \coloneqq \int_0^{\infty} f(x)e^{-\lambda x}\,dx
+\]
+wenn das uneigentliche Integral existiert.
+$\mathscr{L}f$ wird als Laplace-Transformation von $f$ bezeichnet.
+Beweisen Sie die folgenden Aussagen:
+\begin{enumerate}[(i)]
+\item Ist $f$ beschränkt, so existiert $\mathscr{L}f$ für alle $\lambda > 0$.
+
+  \textit{Lsg.:} Da $f$ beschränkt ist, existiert ein $C \in \mathbb{R}_{\geq 0}$
+  mit $\abs{f(x)} \leq C \quad \forall \, x \in \mathbb{R}$.
+  Sei $g(x) = \abs{f(x)} e^{-\lambda x}$ und $h(x) = C \cdot e^{-\lambda x}$.
+  
+  \begin{align*}
+    &\Rightarrow \quad g \leq  h  \\
+    \overset{s > r > 0}&\Rightarrow \quad \int_r^s g(x)\,dx \leq \int_r^s h(x)\,dx
+  \end{align*}
+  Aus der Dreiecksungleich folgt
+  \begin{flalign*}
+    \abs{\int_r^s f(x) e^{-\lambda x}\,dx} \leq \int_r^s \abs{f(x)} e^{-\lambda x} \,dx
+    &\leq \int_r^s C \cdot e^{-\lambda x}\,dx \\
+    &= \qty[-\frac{c}{\lambda} \cdot e^{-\lambda x}]_r^s \\
+    &= \frac{C}{\lambda} \qty(e^{-\lambda r} - e^{-\lambda s}) \\
+    &\leq \frac{C}{\lambda} e^{-\lambda r} = \epsilon \\
+    \Rightarrow r = -\frac{\ln\qty(\frac{\lambda\epsilon}{C})}{\lambda}
+  \end{flalign*}
+  Somit besitzt $\mathscr{L}f(\lambda)$ für $\lambda > 0$ die Eigenschaft
+  \[
+    \forall \epsilon > 0 \exists R > 0 \forall s \geq r > R \abs{\mathscr{L}f(\lambda)} < \epsilon
+  \]
+  Aus der Aufgabe 2. (i) des Blattes 3 folgt die Existenz von $\mathscr{L}f$
+  
+\item Existiert $\mathscr{L}f$ für eine $\lambda_0 \in \mathbb{R}$, so existiert
+  $\mathscr{L}f$ für alle $\lambda \geq \lambda_0$.
+\end{enumerate}
+
+\newpage
+\section*{Hausaufgabe 2}
+
+Seien $(X, \norm{\cdot})$ ein normierter Raum und
+$d(x, y) \coloneqq \norm{x - y}, x, y \in X$.
+Bekanntlich ist $(X, d)$ ein metrischer Raum.
+\begin{enumerate}[a)]
+\item Geben Sie für $x \in X$ und $\epsilon > 0$ die Mengen $B(x, \epsilon)$ an.
+  Welche Beziehung besteht zwischen den Mengen $B(0, \epsilon)$ und
+  $B(x, \epsilon)$?
+
+  \textit{Lsg.:}
+  \begin{align*}
+    B(x, \epsilon) &= \qty{ y \in X \middle| \norm{x - y} < \epsilon} \\
+    B(0, \epsilon) &= \qty{ y \in X \middle| \norm{-y} < \epsilon}
+  \end{align*}
+  
+\item Zeigen Sie, dass die Kugeln $B(x, \epsilon)$ für $x \in X$ und
+  $\epsilon > 0$ konvexe Mengen sind.
+
+  \textbf{Hinweis:} Eine Teilmenge $M \subseteq$ eines Vektorraumes $X$ heißt
+  konvex. wenn aus $x, y \in M$ und $\lambda \in (0, 1)$ die Beziehung
+  $\lambda x + (1 - \lambda)y \in M$ folgt, d.h., die Verbindungsstrecke
+  zweier Punkte aus $M$ ist in $M$ enthalten.
+\end{enumerate}
+
+\newpage
+\section*{Hausaufgabe 3}
+
+Sei $M$ eine nichleere Menge.
+\begin{enumerate}[a)]
+\item Zeigen Sie, dass durch $d(x, y) \colon \begin{cases}
+    1 & \text{für $x \ne y$} \\
+    0 & \text{für $x = y$} \\
+  \end{cases}$ eine Metrik auf $M \times M$ definiert ist.
+
+  \textit{Lsg.:} $d$ definiert eine Metrik auf $M \times M$, wenn
+  \begin{itemize}
+  \item $\forall x, y \in M \colon d(x,y) \geq 0$ und
+    $\forall x,y \in M \colon d(x,y) = 0 \iff x = y$
+
+    Diese Bedingung ist durch die Definition von $d$ erfüllt.
+
+  \item $\forall x,y \in M \colon d(x, y) = d(x, y)$
+    \begin{enumerate}[label={Fall \arabic*:},leftmargin=*]
+    \item $x \ne y \colon d(x, y) = 1 = d(y, x)$
+    \item $x = y \colon d(x, y) = 0 = d(y, x)$
+    \end{enumerate}
+    
+  \item $\forall x,y,z \in M \colon d(x,y) \leq d(x,z) + d(y,z)$
+    \begin{enumerate}[label={Fall \arabic*:},leftmargin=*]
+    \item $x \ne y \land x \ne z \land y \ne z \colon d(x, y) = 1 \leq d(x, z) + d(y, z) = 2$
+    \item $x = y \land x = z \land y = z \colon d(x, y) = 0 \leq d(x, z) + d(y, z) = 0$
+    \item $x \ne y \land y = z \colon d(x, y) = 1 \leq d(x, z) + d(y, z) = 1$
+    \item $x = y \land x \ne z \colon d(x, y) = 0 \leq d(x, z) + d(y, z) = 2$
+    \end{enumerate}
+    
+  \end{itemize}
+  
+\item Geben Sie für ein festes $x \in M$ und $r > 0$ die Kugeln
+  $B(x, r) = \qty{ y \in M \middle| d(x, y) < r}$ und
+  $B[x, r] = \qty{ y \in M \middle| d(x, y) \leq r}$ an.
+
+  \textit{Lsg.:}
+  \begin{enumerate}[label={Fall \arabic*:},leftmargin=*]
+  \item $0 < r < 1$
+
+    $d(x, y) < r$ wenn $x = y$
+
+    $\Rightarrow$ Kugel entspricht $\qty{x}$
+  \item $r = 1$
+
+    $B(x, r) = \qty{x}$ und $B[x,r] = M$
+  \item $r > 1$
+
+    $B(x, r) = B[x, r] = M$
+  \end{enumerate}
+\end{enumerate}
+
+\textbf{Hinweis:} Die so definierte Metrik $d$ heißt diskrete Metrik von $M$.
+
+\newpage
+\section*{Hausaufgabe 4}
+
+Untersuchen Sie, ob folgende Aussagen wahr oder falsch sind:
+\begin{enumerate}[(i)]
+\item Für alle $x, y \in \mathbb{R}^N$ und $p \in (1, \infty)$ gilt
+  \[
+    \qty(\sum_{k = 1}^N \abs{x_k y_k}^3)^{\sfrac{1}{3}} \leq \norm{x}_{3p} \norm{y}_{\frac{3p}{p - 1}}
+  \]
+
+  \textit{Lsg.:}
+  \begin{align*}
+    \qty(\sum_{k = 1}^N \abs{x_k y_k}^3)^{\sfrac{1}{3}}
+    &\leq \qty(\sum_{k = 1}^N \qty(\abs{x_k}^3)^p )^{\frac{1}{3} \cdot \frac{1}{p}} \cdot
+      \qty(\sum_{k = 1}^N \qty(\abs{y_k}^3)^p )^{\frac{1}{3} \cdot \frac{1}{p}} \\
+    &= \qty(\sum_{k = 1}^N \abs{x_k}^{3p})^{\frac{1}{3p}} \cdot
+      \qty(\sum_{k = 1}^N \abs{y_k}^{\frac{3p}{p - 1}} )^{\frac{p - 1}{3p}} \\
+    &= \norm{x}_{3p} \cdot \norm{y}_{\frac{3p}{p - 1}}
+  \end{align*}
+\item Für alle $x, y \in \mathbb{R}^N$ und $p \in (1, \infty)$ gilt
+  \[
+    \qty(\sum_{k = 1}^N \abs{x_k y_k}^3)^{\sfrac{1}{3}} \leq \leq \norm{x}_{3p} \norm{y}_1
+  \]
+\item Seien $x, y \in \mathbb{R}^N$ und $p \in (1, \infty)$. Dann gilt
+  \[
+    \norm{x + y}_p \geq \norm{x}_p + \norm{y}_p \Rightarrow x = y
+  \]
+\end{enumerate}
+
+\end{document}
