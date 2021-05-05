@@ -62,9 +62,29 @@ Beweisen Sie die folgenden Aussagen:
     \forall \epsilon > 0 \exists R > 0 \forall s \geq r > R \abs{\mathscr{L}f(\lambda)} < \epsilon
   \]
   Aus der Aufgabe 2. (i) des Blattes 3 folgt die Existenz von $\mathscr{L}f$
-  
+
+\newpage
 \item Existiert $\mathscr{L}f$ für eine $\lambda_0 \in \mathbb{R}$, so existiert
   $\mathscr{L}f$ für alle $\lambda \geq \lambda_0$.
+
+  \textit{Lsg.} Der Ausdruck $\int_0^{\infty} f(x) e^{-\lambda_0 x}\,dx$ existiert.
+  \begin{align*}
+    &\Rightarrow& \lim_{x \to \infty} \abs{f(x) e^{-\lambda_0 x}} &< \infty  \\
+    &\Rightarrow& \, \exists C \in \mathbb{R}_{\geq 0} \colon f(x) &\leq C \cdot e^{\lambda_0 x} \\
+    \overset{\lambda > \lambda_0}&\Rightarrow& f(x) e^{-\lambda x} &\leq C \cdot e^{\lambda_0 x} \\
+    &\Rightarrow& \abs{\int_r^s f(x) e^{-\lambda_0 x} \,dx} &\leq \abs{\int_r^s C \cdot e^{\lambda_0 x} e^{-\lambda_0 x} \,dx} \\
+    &&&= \int_r^s C \cdot e^{\lambda_0 x} e^{-\lambda_0 x} \,dx = \int_r^s C \cdot e^{x \qty(\lambda_0 - \lambda)} \,dx \\
+    &&&= \int_r^s C \cdot e^{-\qty(\lambda - \lambda_0) x} \,dx \\
+    &&&= \qty[-\frac{C}{\lambda - \lambda_0} \cdot e^{-\qty(\lambda - \lambda_0) x}]_r^s = \frac{C}{\lambda - \lambda_0}
+        \qty(e^{-\qty(\lambda - \lambda_0) r} - e^{-\qty(\lambda - \lambda_0) s}) \\
+    &&&\leq \frac{C}{\lambda - \lambda_0} e^{-\qty(\lambda - \lambda_0) r} = \epsilon \\
+    &\Rightarrow& r = -\frac{\ln\frac{\epsilon(\lambda - \lambda_0)}{C}}{\lambda - \lambda_0}
+  \end{align*}
+  Somit besitzt $\mathscr{L}f(\lambda)$ für $\lambda > \lambda_0$ die Eigenschaft
+  \[
+    \forall \epsilon > 0 \exists R > 0 \forall s \geq r > R \abs{\mathscr{L}f(\lambda)} < \epsilon
+  \]
+  Aus der Aufgabe 2. (i) des Blattes 3 folgt die Existenz von $\mathscr{L}f$
 \end{enumerate}
 
 \newpage
@@ -83,6 +103,9 @@ Bekanntlich ist $(X, d)$ ein metrischer Raum.
     B(x, \epsilon) &= \qty{ y \in X \middle| \norm{x - y} < \epsilon} \\
     B(0, \epsilon) &= \qty{ y \in X \middle| \norm{-y} < \epsilon}
   \end{align*}
+  $\norm{-y} = \norm{-1 \cdot y} = -1 \cdot \norm{y} < 0 \Rightarrow \norm{-y} < \epsilon$.
+  Somit ist $B(0, \epsilon) = X$.
+  Damit folgt die Beziehung $B(0, \epsilon) \geq B(x, \epsilon)$.
   
 \item Zeigen Sie, dass die Kugeln $B(x, \epsilon)$ für $x \in X$ und
   $\epsilon > 0$ konvexe Mengen sind.
@@ -91,6 +114,18 @@ Bekanntlich ist $(X, d)$ ein metrischer Raum.
   konvex. wenn aus $x, y \in M$ und $\lambda \in (0, 1)$ die Beziehung
   $\lambda x + (1 - \lambda)y \in M$ folgt, d.h., die Verbindungsstrecke
   zweier Punkte aus $M$ ist in $M$ enthalten.
+
+  \textit{Lsg.:} $\lambda x + (1 - \lambda)y \in B(x, \epsilon)$ wenn
+  $\norm{x - (\lambda x + (1 - \lambda)y)} < \epsilon$.
+  \begin{flalign*}
+    \norm{x - (\lambda x + (1 - \lambda)y)} &= \norm{x - \lambda x - (1 - \lambda)y)} & \\
+                                            &= \norm{x (1 - \lambda) - (1 - \lambda)y)} & \\
+                                            &= \norm{(1 - \lambda)(x - y)} & \\
+                                            &= (1 - \lambda) \cdot \norm{x - y}
+  \end{flalign*}
+  Da $x, y \in M$ folgt $\norm{x - y} < \epsilon$ und mit $(1 - \lambda) \in (0, 1)$
+  folgt, dass auch $(1 - \lambda) \cdot \norm{x - y} < \epsilon$.
+
 \end{enumerate}
 
 \newpage
@@ -134,9 +169,9 @@ Sei $M$ eine nichleere Menge.
   \begin{enumerate}[label={Fall \arabic*:},leftmargin=*]
   \item $0 < r < 1$
 
-    $d(x, y) < r$ wenn $x = y$
+    $d(x, y) < r$ wenn $y = x$
 
-    $\Rightarrow$ Kugel entspricht $\qty{x}$
+    $\Rightarrow$ Kugeln entsprechen $\qty{x}$
   \item $r = 1$
 
     $B(x, r) = \qty{x}$ und $B[x,r] = M$
@@ -162,19 +197,44 @@ Untersuchen Sie, ob folgende Aussagen wahr oder falsch sind:
   \begin{align*}
     \qty(\sum_{k = 1}^N \abs{x_k y_k}^3)^{\sfrac{1}{3}}
     &\leq \qty(\sum_{k = 1}^N \qty(\abs{x_k}^3)^p )^{\frac{1}{3} \cdot \frac{1}{p}} \cdot
-      \qty(\sum_{k = 1}^N \qty(\abs{y_k}^3)^p )^{\frac{1}{3} \cdot \frac{1}{p}} \\
+      \qty(\sum_{k = 1}^N \qty(\abs{y_k}^3)^{p^*} )^{\frac{1}{3} \cdot \frac{1}{p^*}} \\
     &= \qty(\sum_{k = 1}^N \abs{x_k}^{3p})^{\frac{1}{3p}} \cdot
       \qty(\sum_{k = 1}^N \abs{y_k}^{\frac{3p}{p - 1}} )^{\frac{p - 1}{3p}} \\
     &= \norm{x}_{3p} \cdot \norm{y}_{\frac{3p}{p - 1}}
   \end{align*}
+
+  $\Rightarrow$ Die Aussage ist wahr.
+
 \item Für alle $x, y \in \mathbb{R}^N$ und $p \in (1, \infty)$ gilt
   \[
-    \qty(\sum_{k = 1}^N \abs{x_k y_k}^3)^{\sfrac{1}{3}} \leq \leq \norm{x}_{3p} \norm{y}_1
+    \qty(\sum_{k = 1}^N \abs{x_k y_k}^3)^{\sfrac{1}{3}} \leq \norm{x}_{3p} \norm{y}_1
   \]
+
+  \textit{Lsg.:}
+ \begin{align*}
+    \qty(\sum_{k = 1}^N \abs{x_k y_k}^3)^{\sfrac{1}{3}}
+    &\leq \qty(\sum_{k = 1}^N \qty(\abs{x_k}^3)^p )^{\frac{1}{3} \cdot \frac{1}{p}} \cdot
+      \qty(\sum_{k = 1}^N \qty(\abs{y_k}^3)^{p^*} )^{\frac{1}{3} \cdot \frac{1}{p^*}} \\
+    &= \qty(\sum_{k = 1}^N \abs{x_k}^{3p})^{\frac{1}{3p}} \cdot
+      \qty(\sum_{k = 1}^N \abs{y_k}^{\frac{3p}{p - 1}} )^{\frac{p - 1}{3p}} \\
+    &\leq \qty(\sum_{k = 1}^N \abs{x_k}^{3p})^{\frac{1}{3p}} \cdot
+      \qty(\sum_{k = 1}^N \abs{y_k}^1 )^{\frac{1}{1}} \\
+    &= \norm{x}_{3p} \cdot \norm{y}_1
+  \end{align*}
+
+  $\Rightarrow$ Die Aussage ist wahr.
+  
 \item Seien $x, y \in \mathbb{R}^N$ und $p \in (1, \infty)$. Dann gilt
   \[
     \norm{x + y}_p \geq \norm{x}_p + \norm{y}_p \Rightarrow x = y
   \]
+
+  \textit{Lsg.:} Sei $x = 1$, $y = 2$ und $p = 1$.
+  Dann ist $\norm{x + y}_p = \norm{3}_1 = \qty(\sum_{k=1}^1\abs{3}^1)^{\sfrac{1}{1}} = 3$.
+  Weiterhin ist $\norm{1}_1 = 1$ und $\norm{2}_1 = 2$.
+
+  Somit ist $\norm{x + y}_p = \norm{x}_p + \norm{y}_p$ für $x \ne y$ und die
+  Aussage ist falsch.
 \end{enumerate}
 
 \end{document}
