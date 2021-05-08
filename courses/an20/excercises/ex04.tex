@@ -1,0 +1,144 @@
+
+\documentclass{article}
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\definecolor{light-gray}{gray}{.9}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2021}
+\title{Übung 04 Analysis - Weiterführende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+
+\section*{Räume stetiger und differenzierbarer Funktionen}
+
+Wir betrachten den Vektorraum $C[0, 1]$ der stetigen Funktionen auf dem
+Intervall $[0, 1]$.
+Für $f \in C[0, 1]$ definieren wir die \textit{Supremumsnorm} durch
+\[
+  \norm{f}_{\infty} \coloneqq \sup\qty{\abs{f(x)} \middle| x \in [0, 1]}
+\]
+
+\textit{Lsg.} $C([0, 1]) = \qty{f \colon [0, 1] \to \mathbb{R} \middle| \,\text{$f$ ist stetig}}$ ist ein Vektorraum.
+  \begin{align*}
+    (f + g)(x) &\coloneqq f(x) + g(x) \\
+    (\lambda \cdot f)(x) &\coloneqq \lambda \cdot f(x)
+  \end{align*}
+  Die Dimension von $C([0, 1])$ ist unendlich, da
+  $f_n(x) \coloneqq x^n, n \in \mathbb{N}$
+  Jedes Teilsystem $\qty{f_{n_1}, \ldots, f_{n_k}}$ besteht aus linear unabhängigen Funktionen.
+
+  \[
+    \underset{\lambda_0 = \lambda_1 = \ldots = \lambda_n = 0}{\underset{\Updownarrow}{\underbrace{\sum_{k = 0}^n \lambda_k f_k}}} = 0
+    \underset{\iff \lambda_0 = \lambda_1 = \ldots = \lambda_n = 0}{\iff \sum_{k = 0}^n \lambda_k f_k(x) = 0} \text{ für alle } x \in [0, 1]
+  \]
+
+\begin{enumerate}[(i)]
+\item Ermitteln Sie $\norm{f_k}_{\infty}$ für $f_1(x) \coloneqq \sin(2\pi x)$,
+  $f_2(x) \coloneqq x(1 - x)$, $f_3(x) \coloneqq (x + 1)(2x - 1)$.
+
+  \textit{Lsg.} Ermittlung lokaler Extrema:
+  \begin{enumerate}[1)]
+  \item $f_1'(x) = 2 \pi \cos(2\pi x)$
+
+    $f_1'(x) = 0, x \in [0, 1] \iff x_1 = \sfrac{1}{4}, x_2 = \sfrac{3}{4}$
+
+    $\norm{f_1}_{\infty} = \max\qty{\abs{f_1(0)}, \abs{f_1(\sfrac{1}{4})}, \abs{f_1(\sfrac{3}{4})}, \abs{f_1(1}} = 1$
+
+  \item $f_2'(x) = -2x + 1$
+
+    $f_2'(x) = 0, x \in [0, 1] \iff x = \sfrac{1}{2}$
+
+    $\norm{f_2}_{\infty} = \max\qty{\abs{f_2(0)}, \abs{f_2(\sfrac{1}{2})}, \abs{f_2(1}} = \sfrac{1}{4}$
+
+  \item $f_3'(x) = 4x + 1$
+
+    $f_3'(x) = 0, x \in [0, 1] \iff x = -\sfrac{1}{4}$ und $-\sfrac{1}{4}$ ist nicht im Intervall $[0, 1]$ enthalten.
+
+    $\norm{f_3}_{\infty} = \max\qty{\abs{f_3(0)}, \abs{f_3(1}} = 2$
+  \end{enumerate}
+
+\newpage
+\item Zeigen Sie, dass $(C([0, 1]), \norm{\cdot}_{\infty})$ ein normierter Raum ist.
+
+  \textit{Lsg.}
+  \begin{itemize}
+  \item $\norm{f}_{\infty} = \underset{x \in [0, 1]}{\sup \abs{f(x)}}
+    \overset{\text{Satz von Bolzano-Weierstraß}}{< +\infty}$
+  \item $\norm{f}_{\infty} \geq \abs{f(0)} > 0 \,\forall f \in C([0, 1])$
+  \item $\norm{f}_{\infty} = 0 \iff \underset{x \in [0, 1]}{\sup} \abs{f(x)} \iff \abs{f(x)} = 0
+    \,\forall x \in [0, 1] \iff f = 0$
+  \item $\forall \lambda \in \mathbb{R}, f \in C([0, 1]) \colon
+    \norm{\lambda f}_{\infty} = \underset{x \in [0, 1]}{\sup} \abs{\lambda f(x)}
+    = \abs{\lambda} \underset{x \in [0, 1]}{\sup} \abs{f(x)} = \abs{\lambda} \norm{f}_{\infty}$
+  \item Dreiecksungleichung: $\forall f, g \in C([0, 1])$ gilt:
+
+    $\norm{f + g}_{\infty} = \underset{x \in [0, 1]}{\sup}
+    \underset{\leq \underset{\leq \norm{f}_{\infty}}{\underbrace{\abs{f(x)}}} +
+      \underset{\leq \norm{g}_{\infty}}{\underbrace{\abs{g(x)}}}}
+    {\underbrace{\abs{f(x) + g(x)}}}
+    \leq \norm{f}_{\infty} + \norm{g}_{\infty}$
+  \end{itemize}
+
+\item Beweisen Sie, dass $(C([0, 1]), \norm{\cdot}_{\infty})$ vollständig ist.
+
+  \textit{Lsg.} Sei $\qty(f_n)$ eine Cauchy-Folge, d.h.
+  \[
+    \forall \epsilon > 0 \,\exists n_0 \in \mathbb{N} \forall m, n > n_0 \colon \norm{f_n - f_m}
+    = \underset{x \in [0, 1]}{\sup} \abs{f_n(x) - f_m(x)} < \epsilon
+  \]
+  $\Rightarrow$ Für alle $x \in [0, 1]$ gilt $\abs{f_n(x) - f_m(x)} < \epsilon$ für alle $m, n \geq n_0$
+
+  $\Rightarrow$ Für alle $x \in [0, 1]$ ist $\qty(f_n(x))_{n \in \mathbb{N}}$ eine Cauchy-Folge.
+
+  Da $(\mathbb{R}, \abs{\cdot})$ vollständig ist, existiert der Punktweise Grenzwert
+  $f(x) \coloneqq \lim_{n \to \infty} f_n(x)$ für alle $x \in [0, 1]$.
+
+  Da $\qty(f_n)$ eine Cauchy-Folge ist existiert für alle $\epsilon > 0$ ein $n_0 \in \mathbb{N}$
+  mit $\norm{f_n - f_m}_{\infty} < \frac{\epsilon}{2}$ für alle $m, n \geq n_0$.
+
+  Für $x \in [0, 1]$ folgt für $n > n_0$
+  \[
+    \lim_{m \to \infty} \abs{f_n(x) - f_m(x)} = \abs{f_n(x) - f(x)} \leq \frac{\epsilon}{2}
+  \]
+
+  $\Rightarrow \norm{f_{n_0} - f}_{\infty} =
+  \underset{x \in [0, 1]}{\sup} \abs{f_{n_0} (x) - f()x}
+  \leq \frac{\epsilon}{2}$
+
+  Für $n \geq n_0$ ergibt sich
+  \[
+    \norm{f_n - f}_{\infty} \leq \underset{< \frac{\epsilon}{2}}{\underbrace{\norm{f_n - f_{n_0}}_{\infty}}} +
+    \underset{\leq \frac{\epsilon}{2}}{\underbrace{\norm{f_{n_0} - f}_{\infty}}} < \epsilon
+  \]
+
+  $\Rightarrow f_n \overset{n \to \infty}{\longrightarrow} f$ bezüglich $\norm{\cdot}_{\infty}$ (Gleichmäßige Konvergenz)
+
+  $f \in C([0, 1])$, wegen Theorem 3.4.2 der Vorlesung (\textit{Gleichmäßige Limiten stetiger Funktionen sind stetig})
+\end{enumerate}
+
+\end{document}
