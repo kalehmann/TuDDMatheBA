@@ -266,4 +266,68 @@ $x$ ist isolierter Punkt von $A \iff \exists r > 0 \colon B(x, r) \cap A = \qty{
   Alle Punkte aus $A$ sind isoliert.
 \end{enumerate}
 
+\newpage
+Wir betrachten den metrischen Raum $(\mathbb{R}, d)$ mit $d(x, y) = \abs{x - y}, x, y \in \mathbb{R}$.
+Die Menge $M = [0, 1) \cup \qty{\frac{3}{2}} \cup(2, 3)$ sei mit der induzierten Metrik
+$d_M \coloneqq d|_{M \times M}$ versehen, so dass der metrische Raum $\qty(M, d_M)$ entsteht.
+
+\textit{Lsg.} Sei $(X, d)$ ein metrischer Raum und $M \subseteq X$ eine nichtleere Teilmenge von $X$.
+
+$d_M \colon M \times M \to \mathbb{R}$ mit $d_m(x, y) \coloneqq d(x, y) \quad x, y \in M$
+auf $M$ induzierte Metrik.
+
+\begin{align*}
+  B_d(x, r) &= \qty{ y \in X \middle| d(x, y) < r } \\
+  B_{d_M}(x, r) &= \qty{ y \in M \middle| d_M(x, y) = d(x, y) < r } \\
+            &= B_d(x, r) \cap M
+\end{align*}
+
+($A \subseteq M$ ist $d_M$-abgeschlossen $\iff \exists B \subseteq X$, die $d$-abgeschlossen ist, mit $A = B \cap M$)
+
+$(R, d), d(x, y) = \abs{x - y}$
+
+\begin{enumerate}[a)]
+\item Geben Sie die Mengen $B_d\qty(\frac{3}{2}, r)$ und $B_{d_M}\qty(\frac{3}{2}, r)$
+  für $r = 1$ bzw. $r = \frac{1}{2}$ an.
+
+  \textit{Lsg.} $B_d\qty(\frac{3}{2}, 1) = \qty(\frac{3}{2} - 1, \frac{3}{2} + 1) = \qty(\frac{1}{2}, \frac{5}{2})$
+
+  $B_{d_M}\qty(\frac{3}{2}, 1) = B_d\qty(\frac{3}{2}, 1) \cap M = \left(\frac{1}{2}, 1\right] \cup \qty{\frac{3}{2}} \cup \qty(2, \frac{5}{2})$
+
+  $B_d\qty(\frac{3}{2}, \frac{1}{2}) = \qty(\frac{3}{2} - \frac{1}{2}, \frac{3}{2} + \frac{1}{2}) = \qty(1, 2)$
+
+  $B_{d_M}\qty(\frac{3}{2}, \frac{1}{2}) = B_d\qty(\frac{3}{2}, \frac{1}{2}) \cap M = \qty{\frac{3}{2}}$
+
+\item Welche der folgenden Mengen $A_k$ sind offen/abgeschlossen in den Räumen $(\mathbb{R}, d)$
+  bzw. $(M, d_M)$, wobei $A_1 = [0, 1)$, $A_2 = [0, 1) \cup \qty{\frac{3}{2}}$, $A_3 = (2, 3)$,
+  $A_4 = M$ gilt?
+
+  \textit{Lsg.}
+  $B_{d_M}\qty(\frac{3}{2}, 0) = \left[0, \frac{1}{2}\right) \colorbox{green}{$\subseteq A_1$}$ ist offen in $\qty(M, d_M)$
+
+  \begin{enumerate}[label={$A_{\arabic*}$}]
+  \item $= [0, 1)$ ist in $(\mathbb{R}, d)$ weder offen noch abgeschlossen.
+  \item $= [0, 1) \cup \qty{\frac{3}{2}}$ ist in $(\mathbb{R}, d)$ weder offen noch abgeschlossen.
+  \item $= (2, 3)$ ist in $(\mathbb{R}, d)$ offen aber nicht abgeschlossen.
+  \item $= M$ ist in $(\mathbb{R}, d)$ weder offen noch abgeschlossen.
+  \end{enumerate}
+  \begin{enumerate}[label={$A_{\arabic*}$}]
+  \item $= [0, 1)$ ist in $(M, d_M)$ \colorbox{green}{offen} und abgeschlossen.
+  \item $= [0, 1) \cup \qty{\frac{3}{2}}$ ist in $(M, d_M)$ offen und abgeschlossen.
+  \item $= (2, 3)$ ist in $(M, d_M)$ offen und abgeschlossen.
+  \item $= M$ ist in $(M, d_M)$ offen und abgeschlossen.
+  \end{enumerate}
+
+\item Ist $\qty(M, d_M)$ ein vollständiger metrischer Raum?
+
+  \textit{Lsg.} Sei $x_n \coloneqq 1 - \frac{1}{n} \in M$
+
+  $\Rightarrow \qty(x_n)$ ist in $(\mathbb{R}, d)$ eine konvergente Folge mit
+  $\lim_{n \to \infty} x_n = 1 \Rightarrow \qty(x_n)$ ist eine Cauchy-Folge in
+  $(\mathbb{R}, d)$ und $\qty(M, d_M)$.
+
+  Wegen $1 \notin M$ ist $\qty(x_n)$ nicht konvergent in $\qty(M, d_M)$
+  und somit ist $\qty(M, d_M)$ nicht vollständig.
+\end{enumerate}
+
 \end{document}
