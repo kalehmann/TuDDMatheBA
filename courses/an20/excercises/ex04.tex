@@ -330,4 +330,19 @@ $(R, d), d(x, y) = \abs{x - y}$
   und somit ist $\qty(M, d_M)$ nicht vollständig.
 \end{enumerate}
 
+\newpage
+Seien $(M, d)$ ein metrischer Raum und $\qty(x_n)$ eine Folge in $M$.
+Zeigen Sie
+\[
+  \lim_{n \to \infty} x_n = x \iff \qty(d\qty(x, x_n))_{n \in \mathbb{N}} \text{ ist eine Nullfolge}
+\]
+
+\textit{Lsg.}
+
+\begin{align*}
+  \lim_{n \to \infty} x_n = x &\iff \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n \geq n_0 \colon d(x, x_n) < \epsilon \\
+                              &\iff \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n \geq n_0 \colon \abs{d(x, x_n) - 0} < \epsilon \\
+                              &\iff \lim_{n \to \infty} d(x, x_n) = 0 \\
+\end{align*}
+
 \end{document}
