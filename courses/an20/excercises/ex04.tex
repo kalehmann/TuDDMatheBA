@@ -19,6 +19,7 @@
 
 \pgfplotsset{compat = newest}
 \usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
 \usepgfplotslibrary{fillbetween}
 
 \author{Karsten Lehmann}
@@ -136,9 +137,133 @@ Für $f \in C[0, 1]$ definieren wir die \textit{Supremumsnorm} durch
     \underset{\leq \frac{\epsilon}{2}}{\underbrace{\norm{f_{n_0} - f}_{\infty}}} < \epsilon
   \]
 
-  $\Rightarrow f_n \overset{n \to \infty}{\longrightarrow} f$ bezüglich $\norm{\cdot}_{\infty}$ (Gleichmäßige Konvergenz)
+  $\Rightarrow f_n \overset{n \to \infty}{\longrightarrow} f$ bezüglich $\norm{\cdot}_{\infty}$ (Gleichmäßige Konvergen z)
 
   $f \in C([0, 1])$, wegen Theorem 3.4.2 der Vorlesung (\textit{Gleichmäßige Limiten stetiger Funktionen sind stetig})
+\end{enumerate}
+
+\section*{Metrische Räume und induzierte Metrik}
+
+Wir betrachten den normierten Raum $(\mathbb{R}^2, \norm{\cdot}_2)$.
+Skizzieren Sie die folgenden Mengen $A \subseteq \mathbb{R}^2$ und untersuchen Sie,
+ob diese offen, abgeschlossen bzw. Umgebungen des Nullpunktes sind.
+Geben Sie jeweils das Innere $\mathring A$, den Abschluss $\overline{A}$,
+den Rand $\partial A$ und die isolierten Punkte dieser Mengen an.
+
+\textit{Lsg.} Sei $(M, d)$ ein metrischer Raum und $A \subseteq M$.
+
+\begin{itemize}
+\item $x \in \mathring A = \text{int} A \iff \exists r > 0 \colon B(x, r) \subseteq A$
+\item $\mathring A$ ist die größte offene Teilmenge von $A$.
+  $A \subseteq M$ heißt offen, falls $A = \mathring A$ gilt.
+
+  $x \in \partial A \iff x \in \overline A \setminus \mathring A
+  \iff \forall r > 0 \colon B(x, r) \cap A \ne \emptyset \land B(x, r) \cap (M \setminus A) \ne \emptyset$
+
+  $\partial A = \partial (M \setminus A)$
+\item $A \subseteq M$ heißt abgeschlossen $\iff M \setminus A$ ist offen.
+  $\overline A$ Abschluss von $A \colon$ kleinste abgeschlossene Menge von $A$
+
+  $x \in \overline A \iff \forall r > 0 \colon B(x, r) \cap A \ne \emptyset$
+
+  Es gibt eine Folge $\qty(x_n)$ in $A$ mit $x_n \to x$
+\end{itemize}
+
+$x$ ist isolierter Punkt von $A \iff \exists r > 0 \colon B(x, r) \cap A = \qty{x})$
+
+\begin{enumerate}[(i)]
+\item $A = B(x, r)$ mit $x \in \mathbb{R}^2$ und $r > 0$
+
+  \textit{Lsg.} $A = \mathring A \colon $ Sei $y \in B(x, r) \Rightarrow \epsilon = r - \norm{x - y}_2 > 0$
+
+  Zu zeigen ist nun, dass $y \in \mathring A$:
+
+  Es gilt $B(y, \epsilon) \subseteq B(x, r) \colon$ Sei $z \in B(y, \epsilon)$
+
+  $\Rightarrow \norm{x - z}_2 \leq \norm{x - y}_2 + \underset{< \epsilon}{\underbrace{\norm{y - z}_2}}
+  < \norm{x - y}_2 + (r - \norm{x - y}_2) = r$
+
+  $\Rightarrow z \in B(x, r) \Rightarrow$ die Menge ist offen.
+
+  Es gilt $\partial A = S(x, r) = \qty{ y \in \mathbb{R}^2 \middle| \norm{x - y}_2 = r }$
+
+  Ist $\norm{x - y} > r$, dann existiert ein $\epsilon > 0$ mit
+  $B(y, \epsilon) \subseteq \mathbb{R}_2 \setminus A$
+
+  $\Rightarrow y$ ist kein Randpunkt von $A$ und gehört nicht zu $\mathring A$.
+
+  $A = \mathring A \cup \partial A = B[x, r]$
+\item $A = B[x, r] = \qty{y \in \mathbb{R}^2 \middle| \norm{x - y}_2 \leq r}$ mit $x \in \mathbb{R}^2$ und $r > 0$
+
+  \textit{Lsg.} $A$ ist eine abgeschlossene Kugel, da $\overline A = A$ gilt.
+
+  Weiter ist $\mathring A = B(x, r)$ und $\partial A = S(x, r)$
+
+\item $A = \qty{y \in \mathbb{R}^2 \middle| \norm{x - y}_2 > r}$ mit $x \in \mathbb{R}^2$ und $r > 0$
+
+  \textit{Lsg.} $A$ ist offen (da $\mathbb{R}^2$ ohne abgeschlossene Kugel), d.h. $A = \mathring A$
+
+  $\partial A = \partial B[x, r] = S(x, r)$
+
+  $\overline A = \qty{y \in \mathbb{R}^2 \middle| \norm{x - y}_2 \geq r}$
+
+\item $A = \qty{x = \qty(x_1, x_2) \in \mathbb{R}^2 \middle| \qty(x_1 > -1) \land \qty(x_2 \geq -1)}$
+
+  \textit{Lsg.}:
+
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xmax = 1.7,
+      xmin = -1.7,
+      ymax = 1.5,
+      ymin = -1.5,]
+      \addplot [
+        name path=f,
+        very thick,
+        gray!50] coordinates {(-1,-2) (-1, 2)};
+      \addplot [
+        name path=g,
+        domain=-2:2,
+        samples=100,
+        very thick, orange]{-1};
+      \addplot[draw=none, pattern color=orange!20, pattern=north west lines] coordinates
+        {(-2, 1.3) (1.3, 1.3) (1.3, -1) (-2, -1)};
+      \addplot[draw=none, pattern color=gray!30, pattern=north east lines] coordinates
+        {(-1, 1.3) (1.3, 1.3) (1.3, -2) (-1, -2)};
+      \node[orange] at (-1.4, -1.2) {$x_2 \geq -1$};
+      \node at (-0.6, 1.4) {$x_1 > -1$};
+      \node[red] at (1.5, 1.2) {$A$};
+      \addplot[fill=red, fill opacity=.1] coordinates {(-1,-1) (-1,1.3) (1.3,1.3) (1.3,-1)};
+    \end{axis}
+  \end{tikzpicture}
+
+  $\mathring A = \qty{x = \qty(x_1, x_2) \middle| x_1 > -1 \land x_2 > -1 }$ (eine echte Teilmenge von $A$).
+
+  $\partial A = \qty{ (-1, x_2), (x_1, -1) \middle| x_1, x_2 \geq 0 }$
+
+  $\overline A = \mathring A \cup \partial A = \qty{x \in \mathbb{R}^2 \middle| x_1 \geq 0 \land x_2 \geq 0}$
+  (eine echte Unmenge zu $A \Rightarrow A$ ist nicht abgeschlossen)
+
+\item $A = \qty{ x_n = \qty(\frac{1}{n}, 0) \middle| n \in \mathbb{N}}$
+
+  \textit{Lsg.}
+
+    \begin{tikzpicture}
+      \draw[-stealth, thick] (0,0) -> (11,0);
+      \draw[thick] (0,.1) -- ++(0,-.2);
+      \draw[thick] (10,.1) -- ++(0,-.2);
+      \node at (0, -.6) {0};
+      \foreach \x [evaluate=\x as \xx using (10/\x)]in {1,...,8} {
+        \node[circle, fill=red, inner sep=1pt, label=below:$\frac{1}{\x}$] at (\xx, 0) {};
+      }
+  \end{tikzpicture}
+
+  $\mathring A = \emptyset, \partial A = A \cup \qty{(0, 0)} \supsetneqq A$ wegen $\lim_{n \to \infty} x_n = 0$
+
+  $\Rightarrow A$ ist weder offen noch abgeschlossen.
+
+  Alle Punkte aus $A$ sind isoliert.
 \end{enumerate}
 
 \end{document}
