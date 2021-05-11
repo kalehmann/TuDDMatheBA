@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+
+\author{Albina Oscherowa \\ Lukas Kamratzki \\ Karsten Lehmann}
+\date{SoSe 2021}
+\title{Hausaufgabe 04 Analysis - Weiterführende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+
+\section*{Hausaufgabe 1}
+
+Wir betrachten $D = \mathbb{Q}$ als Teilmenge von $\mathbb{R}$.
+Zeigen Sie, dass $\mathring{\mathbb{Q}} = \emptyset$, $\overline{\mathbb{Q}} = \mathbb{R}$
+und $\partial \mathbb{Q} = \mathbb{R}$ gelten. \\
+
+\textit{Lsg.} Das Innere von $\mathbb{Q}$, die Menge $\mathring{\mathbb{Q}}$ ist definiert als die Vereinigung aller
+offenen Teilmengen von $\mathbb{Q}$.
+Eine Teilmenge $A \subseteq \mathbb{Q}$ heißt offen, wenn es ein Element $q \in \mathbb{Q}$
+und ein $r > 0$ gibt, so dass $B(x, r) \subseteq A$.
+Nun sind $q, q + r \in \mathbb{R}, q < q + r$.
+Damit ist $(q, q + r) \setminus \mathbb{Q} \ne \emptyset$, denn zwischen zwei reellen Zahlen liegt
+immer mindestens eine irrationale Zahl (Korollar 1.4.9 der Vorlesung).
+Somit existiert keine offene Teilmenge $A \subseteq \mathbb{Q}, A \ne \emptyset$.
+
+Damit ist $\mathring{\mathbb{Q}} = \emptyset$. \\
+
+Der Abschluß von $\mathbb{Q}$, die Menge $\overline{\mathbb{Q}}$ ist definiert als
+die Schnittmenge aller abgeschlossenen Teilmengen von $\mathbb{R}$, die $\mathbb{Q}$
+enthalten.
+
+Sei $A$ eine abgeschlossene, echte Teilmenge von $\mathbb{R}$, die $\mathbb{Q}$ enthält.
+Damit $A$ abgeschlossen ist, muss das Komplement von $A$, die Menge $\mathbb{R} \setminus A$
+offen sein, das heißt für jedes $x \in A$ existiert ein $r > 0$ mit $B(x, r) \subseteq A$.
+Nun sind $x, x + r \in \mathbb{R}, x < x + r$.
+Damit ist $(q, q + r) \cap \mathbb{Q} \ne \emptyset$, denn zwischen zwei reellen Zahlen liegt
+immer mindestens eine rationale Zahl (Korollar 1.4.9 der Vorlesung).
+Das ist ein Widerspruch dazu, dass $\mathbb{Q} \subseteq A$.
+Somit existiert keine abgeschlossene, echte Teilmenge von $\mathbb{R}$, die $\mathbb{Q}$ enthält.
+Damit ist die Schnittmenge aller abgeschlossenen Teilmengen von $\mathbb{R}$, die $\mathbb{Q}$
+enthalten gleich $\mathbb{R} = \overline{\mathbb{Q}}$.
+
+Der Rand von $\mathbb{Q}$, die Menge $\partial \mathbb{Q}$ ist definiert als
+$\overline{\mathbb{Q}} \setminus \mathring{\mathbb{Q}} = \mathbb{R} \setminus \mathbb{R} = \emptyset$.
+
+\end{document}
