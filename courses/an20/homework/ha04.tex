@@ -62,4 +62,38 @@ enthalten gleich $\mathbb{R} = \overline{\mathbb{Q}}$.
 Der Rand von $\mathbb{Q}$, die Menge $\partial \mathbb{Q}$ ist definiert als
 $\overline{\mathbb{Q}} \setminus \mathring{\mathbb{Q}} = \mathbb{R} \setminus \mathbb{R} = \emptyset$.
 
+\section*{Hausaufgabe 2}
+
+Sei $M$ eine nichtleere Menge und $d$ die diskrete Metrik auf $M$.
+
+\[
+  d(x, y) \coloneqq \begin{cases}
+    1 & x = y \\
+    0 & x \ne y \\
+  \end{cases}
+\]
+
+\begin{enumerate}[a)]
+\item Sei $x \in M$ gegeben. Beschreiben Sie die Menge aller Folgen $\qty(x_n)$ in $M$
+  mit $\lim_{n \to \infty} x_n = x$.
+
+  \textit{Lsg.} Für eine Folge $\qty(x_n)$ aus $M$ ist $\lim_{n \to \infty} x_n = x$,
+  wenn
+  \[
+    \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n \in \mathbb{N}_{\geq n_0} \colon d(x_n, x) < \epsilon
+  \]
+  Das heißt, alle Glieder der Folge $\qty(x_n)$ sind ab einem $n_0$ konstant gleich $x$.
+\newpage
+\item Geben Sie die Systeme der offenen und abgeschlossen Mengen in $M$ an.
+
+  \textit{Lsg.} Eine Teilmenge $A \subseteq M$ heißt offen, wenn es für jedes $a \in A$
+  ein $r > 0$ gibt mit $B(a, r) = \qty{y \in M \colon d(a, y) < r} \subseteq A$.
+
+  Für jedes $a \in A$ und $r \in (0, 1]$ gilt $B(a, r) = \qty{a} \subseteq{A}$.
+  Somit ist jede Teilmenge von $M$ eine offene Menge.
+
+  Gleichzeitig ist auch das Komplement jeder Teilmenge aus $M$ eine offene Menge.
+  Damit sind alle Teilmengen aus $M$ offen und abgeschlossen.
+\end{enumerate}
+
 \end{document}
