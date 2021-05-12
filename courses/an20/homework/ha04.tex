@@ -132,6 +132,30 @@ $d(x, y) = \abs{\ln x - \ln y}$.
     \end{align*}
   \end{enumerate}
 
+\newpage
+\item Sei $d|_M$ die von $(\mathbb{R}, \abs{\cdot})$ induzierte Metrik auf $M$.
+  Untersuchen Sie, ob die Räume $(M, d)$ und $\qty(M, d|_M)$ vollständig sind. \\
+
+  \textit{Lsg.} $d|_M \colon M \times M \to \mathbb{R}, d|_m(x, y) = \abs{x - y}$.
+
+  Sei $a_n \coloneqq \frac{1}{n} \in M$.
+  Dann ist $\qty(a_n)$ in $(\mathbb{R}, \abs{\cdot})$ eine konvergente Folge mit
+  $\lim_{n \to \infty} a_n = 0$.
+  Damit ist $\qty(a_n)$ eine Cachy-Folge in $(\mathbb{R}, \abs{\cdot})$ und $(M, d|_M)$.
+
+  Wegen $0 \notin M$ ist $\qty(a_n)$ nicht konvergent in $(M, d|_M)$ und somit ist $(M, d|_M)$
+  nicht vollständig. \\
+
+  Sei $\qty(b_n)$ eine Cauchy-Folge in $(M, d)$.
+  Sei $e^r$ so, dass
+  \[
+    \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n \in \mathbb{N}_{\geq n_0} \colon
+    \abs{\ln b_n - \ln e^r} = \abs{\ln b_n - r} < \epsilon
+  \]
+  Da $\qty(b_n)$ eine Cauchy-Folge ist, gilt $\ln b_n \in \mathbb{R}$ somit ist auch $r \in \mathbb{R}$
+  und $e^r \in M$.
+  Damit konvergieren alle Cauchy-Folgen in $\qty(M, d|_M)$ gegen einen Wert in $M$ und $\qty(M, d|_M)$
+  ist vollständig.
 
 \end{enumerate}
 
