@@ -6,7 +6,7 @@ steps:
     - name: "Pull existing documents"
       image: "registry.kalehmann.de/tuddmatheba:latest"
       commands:
-          - 'lftp -e :
+          - 'lftp -e "
                set ftp:ssl-force true;
                set ssl:verify-certificate yes;
                open -u $${USER},$${PASSWORD} $${SERVER};
