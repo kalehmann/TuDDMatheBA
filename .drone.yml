@@ -26,7 +26,8 @@ steps:
       when:
           branch:
               - 'master'
-
+      depends_on:
+          - 'Pull existing documents'
     - name: "Deploy the website"
       image: "registry.kalehmann.de/tuddmatheba:latest"
       commands:
