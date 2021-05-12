@@ -96,4 +96,43 @@ Sei $M$ eine nichtleere Menge und $d$ die diskrete Metrik auf $M$.
   Damit sind alle Teilmengen aus $M$ offen und abgeschlossen.
 \end{enumerate}
 
+\section*{Hausaufgabe 3}
+
+Sei $M \coloneqq (0, \infty)$ und $d \colon M \times M \to \mathbb{R}$ sei definiert durch
+$d(x, y) = \abs{\ln x - \ln y}$.
+
+\begin{enumerate}[(i)]
+\item Beweisen Sie, dass $(M, d)$ ein metrischer Raum ist.
+
+  \textit{Lsg.} $(M, d)$ ist ein metrischer Raum, falls die Abbildung $d$ folgende 3 Eigenschaften
+  erfüllt:
+  \begin{enumerate}[(i)]
+  \item $\forall x, y \in M \colon d(x, y) \geq 0$ und $d(x, y) = 0 \iff x = f$
+
+    Der erste Teil der Eigenschaft ist durch die Definition des Betrags erfüllt.
+    Weiterhin  gilt $\abs{\ln x - \ln y} = 0 \iff \ln x = \ln y \iff x = y$,
+    da $\ln$ monoton steigend und somit injektiv ist.
+
+  \item \textbf{Symmetrie}. $\forall x, y \in M \colon d(x, y) = d(y, x)$
+
+    Diese Eigenschaft ist erfüllt, da
+    \[
+      \abs{\ln x - \ln y} = \abs{-1 \cdot (\ln y - \ln x)} = \abs{\ln y - \ln x}
+    \]
+
+  \item \textbf{Dreiecksungleichung}. $\forall x, y, z \in M \colon d(x, y) \leq d(x, z) + d(z, y)$
+
+    Diese Eigenschaft ist erfüllt, da
+    \begin{align*}
+      d(x, y) &= \abs{\ln x - \ln y} \\
+              &= \abs{\ln x + 0 - \ln y} \\
+              &= \abs{\ln x - \ln z + \ln z -  \ln y} \\
+              &\leq \abs{\ln x - \ln z} + \abs{\ln z - \ln y} \\
+              &= d(x, z) + d(z, y)
+    \end{align*}
+  \end{enumerate}
+
+
+\end{enumerate}
+
 \end{document}
