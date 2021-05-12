@@ -40,7 +40,6 @@ $(OUTPUT_DIRECTORY)/%.css: html/%.css
 	cp $< $@
 
 $(OUTPUT_DIRECTORY)/%.pdf: %.tex
-	echo $(@D)
 	mkdir -p $(@D)
 	$(LATEXMK) $(LATEXMK_OPTS) $< || (cat $$(basename $*.log) && exit 1) 
 	cp $$(basename $*.pdf) $(OUTPUT_DIRECTORY)/$*.pdf
