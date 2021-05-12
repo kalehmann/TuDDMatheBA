@@ -22,6 +22,7 @@ steps:
     - name: "Build the website"
       image: "registry.kalehmann.de/tuddmatheba:latest"
       commands:
+          - 'git restore-mtime'
           - 'make'
       when:
           branch:
