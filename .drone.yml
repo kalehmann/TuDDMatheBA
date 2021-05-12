@@ -3,6 +3,22 @@ type: "docker"
 name: "publish"
 
 steps:
+    - name: "Pull existing documents"
+      image: "registry.kalehmann.de/tuddmatheba:latest"
+      commands:
+          - 'lftp -e :
+               set ftp:ssl-force true;
+               set ssl:verify-certificate yes;
+               open -u $${USER},$${PASSWORD} $${SERVER};
+               mirror --reverse --delete public_html/kalehmann-de/tuddmatheba $(pwd)/_site;
+               exit;"'
+      environment:
+          USER:
+              from_secret: 'ftp_user'
+          PASSWORD:
+              from_secret: 'ftp_password'
+          SERVER:
+              from_secret: 'ftp_server'
     - name: "Build the website"
       image: "registry.kalehmann.de/tuddmatheba:latest"
       commands:
