@@ -159,4 +159,44 @@ $d(x, y) = \abs{\ln x - \ln y}$.
 
 \end{enumerate}
 
+\section*{Hausaufgabe 4}
+
+Untersuchen Sie, ob die folgenden Folgen $\qty(x_n)$ aus $\mathbb{R}^3$ beschränkt bzw.
+konvergent bezüglich der Euklidischen Norm sind.
+Geben Sie gegebenfalls den Grenzwert von $\qty(x_n)$ an.
+
+\begin{enumerate}[(i)]
+\item Für ein $q \in (0, 1)$ und $f(x) = 1 + qx$ sei
+  $x_n = \qty(f^n(q), f^n(1), f^n(1 + q)) \in \mathbb{R}^3$, hierbei bezeichne
+  $f^n = \underset{n-\text{mal}}{\underbrace{f \circ \ldots \circ f}}$ die $n$-fache
+  Anwendung der Funktion $f$. \\
+
+  \textit{Lsg.} Bestimmung einer expliziten Darstellung von $f^n(x)$
+
+  \textit{Behauptung:} $P(n) \colon f^n (x) = \qty(\sum_{k = 0}^{n - 1} q^k) + q^nx$ \\
+  \textit{Induktionsanfang}: $P(1) \colon f^1(x) = \qty(\sum_{k = 0}^{0} q^k) + q^1x = 1 + qx$ \\
+  \textit{Induktionsschritt}: $P(n + 1) \colon f^{n + 1} = \qty(\sum_{k = 0}^{n} q^k) + q^{n + 1}x
+  = 1 + q\qty(\qty(\sum_{k = 0}^{n - 1} q^k) + q^{n}x) = f(f^{n - 1}(x))$.
+  \begin{align*}
+    x_n = \qty(\frac{q^n - 1}{q - 1} + q^{n + 1}, \frac{q^{n + 1} - 1}{q - 1}, \frac{q^{n + 2} - 1}{q - 1})
+  \end{align*}
+  Die Folgen $\qty(\frac{q^n - 1}{q - 1} + q^{n + 1})_{n \in \mathbb{N}}$,
+  $\qty(\frac{q^{n + 1} - 1}{q - 1})_{n \in \mathbb{N}}$
+  und
+  $\qty(\frac{q^{n + 2} - 1}{q - 1})_{n \in \mathbb{N}}$ sind konvergente Folgen aus
+  $\mathbb{R}$ mit $\lim_{m \to \infty} (\ldots) = \frac{1}{1 - q}$.
+  Folglich ist auch $(x_n)$ beschränkt mit
+  $\lim_{n \to \infty} x_n = \qty( \frac{1}{1 - q},  \frac{1}{1 - q},  \frac{1}{1 - q}) \in \mathbb{R}^3$.
+\newpage
+\item
+  Für eine Nullfolge $\qty(y_n)$ aus $\mathbb{R}$ sei $x_n = \qty(y_n, y_{2n}^2, y_{3n}^n) \in \mathbb{R}^3$.
+
+  \textit{Lsg.} $\qty(y_n)$ ist eine Nullfolge aus $\mathbb{R}$.
+  Somit sind auch $\qty(y_{2n})$ und $\qty(y_{3n})$ Nullfolgen.
+  Aus Proposition 2.1.5 (b) der Vorlesung folgt, dass auch $y_{2n}^2$ und $y_{3n}^n$ Mullfolgen sind.
+
+  Folglich ist auch $\qty(x_n)$ beschränkt mit $\lim_{n \to \infty} x_n = 0$
+
+\end{enumerate}
+
 \end{document}
