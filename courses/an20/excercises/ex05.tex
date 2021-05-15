@@ -1,0 +1,109 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\definecolor{light-gray}{gray}{.9}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2021}
+\title{Übung 05 Analysis - Weiterführende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+
+\section*{Stetigkeit in metrischen Räumen}
+
+Sei $d$ die Betragsmetrik auf $\mathbb{R}$.
+Die Menge $M \coloneqq [0, 1] \cup [2, 4)$ sei mit der induzierten Metrik
+$d|_M$ versehen.
+Untersuchen Sie mit Hilfe der \colorbox{green}{$\epsilon-\delta$-Definition}, in welchen Punkten
+von $M$ die Abbildung $f \colon \qty(M, d|_M) \to \qty(\mathbb{R}, d)$
+definiert durch
+\[
+  f(x) \coloneqq \begin{cases}
+    \colorbox{blue!20}{1} & \text{für } x \in [0, 1] \\
+    \colorbox{yellow!50}{0} & \text{für } x \in [2, 4] \\
+  \end{cases}
+\]
+stetig ist. \\
+
+\textit{Lsg.}
+
+\colorbox{green}{$\epsilon-\delta$-Definition}: Seien $\qty(M_1, d_1)$
+und $\qty(M_2, d_2)$ metrische Räume.
+Eine Funktion $f \colon M_1 \to M_2$ heißt stetig in $x \in M_1$, wenn
+\[
+  \forall \epsilon > 0 \exists \delta > 0 \forall y \in M_1 \colon d_1(x, y) < \delta
+  \iff d_2(f(x), f(y)) < \epsilon
+\]
+
+Es gilt für $x \in M$ und $\delta > 0$ per Definition der induzierten Metrik:
+\colorbox{orange}{$B_{d|_M} (x, \delta) = B_d(x, \delta) \cap M$}
+
+Teilen wir die Menge $M$ nun in die beiden Teilmengen
+$M_1 = [0, 1]$ und $M_2 = [2, 4)$ auf.
+
+Sei die Menge $A = (0, 1) \cup (2, 4) \subseteq M$ mit der induzierten Metrik
+$d|_A$ und $A, d|_A)$ ein metrischer Raum.
+\begin{itemize}
+\item Die Menge $A$ ist offen $\Rightarrow$ für jedes $x \in A$ existiert ein
+  $\delta > 0$ mit $B_{d|_A}(x, \delta \subseteq A)$.
+  \[
+    \colorbox{orange}{$B_{d|_M} (x, \delta) = B_d(x, \delta) \cap M$}
+    = B_d(x, \delta) \cap A \subseteq M_1 \cup M_2
+  \]
+
+\item $x = 0 \colon$ Für $\delta \in (0, 1]$ ist
+  $B_{d|_M}(x, \delta) = B_{\underset{d}{\underbrace{\abs{\cdot}}}}(x, \delta) \cap M
+  = [0, \delta) \subseteq M_1$
+
+\item $x = 2 \colon$ Für $\delta \in (0, 1]$ ist
+  $B_{d|_M}(x, \delta) = B_{\underset{d}{\underbrace{\abs{\cdot}}}}(x, \delta) \cap M
+  = [2, 2 + \delta) \subseteq M_2$
+
+\item $x = 1 \colon$ Für $\delta \in (0, 1]$ ist
+  $B_{d|_M}(x, \delta) = B_{\underset{d}{\underbrace{\abs{\cdot}}}}(x, \delta) \cap M
+  = (1 - \delta, 1] \subseteq M_1$
+
+\end{itemize}
+\begin{flalign*}
+  &\Rightarrow \text{ für jedes } x \in M_1 \text{ existiert ein } \delta > 0
+  \text{ mit } B_{d_M}(x, \delta) \subseteq M_1 & \\
+  &\Rightarrow y \in B_{d|_M}(x, \delta) \colon f(x) = f(y) = \colorbox{blue!20}{$1$} \\
+  &\Rightarrow \colon \forall \epsilon > 0 \colon d(f(x), f(y)) = \abs{f(x) - f(y)} = 0 < \epsilon \\
+  &\Rightarrow f \text{ ist auf $M_1$ stetig}
+\end{flalign*}
+Analog für $M_2$:
+\begin{flalign*}
+  &\Rightarrow \text{ für jedes } x \in M_2 \text{ existiert ein } \delta > 0
+  \text{ mit } B_{d_M}(x, \delta) \subseteq M_2 & \\
+  &\Rightarrow y \in B_{d|_M}(x, \delta) \colon f(x) = f(y) = \colorbox{yellow!50}{$0$} \\
+  &\Rightarrow \colon \forall \epsilon > 0 \colon d(f(x), f(y)) = \abs{f(x) - f(y)} = 0 < \epsilon \\
+  &\Rightarrow f \text{ ist auf $M_2$ stetig}
+\end{flalign*}
+
+\end{document}
