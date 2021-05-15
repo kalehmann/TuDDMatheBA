@@ -106,4 +106,31 @@ Analog für $M_2$:
   &\Rightarrow f \text{ ist auf $M_2$ stetig}
 \end{flalign*}
 
+\newpage
+Gegeben sei die Funktion $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
+\[
+  f(x) \coloneqq \begin{cases}
+    \frac{x_1 \cdot x_2}{x_1^2 + x_2^2} & \text{für } x = \qty(x_1, x_2) \ne (0, 0) \\
+    0 & \text{für } x = (0, 0)
+  \end{cases}
+\]
+\begin{enumerate}[a)]
+\item Zeigen Sie, dass die Funktion $f$ partiell stetig auf $\mathbb{R}^2$ ist,
+  dass heißt für jeden Punkt $x = (x_1, x_2) \in \mathbb{R}^2$ sind die
+  Abbildungen $g_1(t) \coloneqq f(x_1 + t, x_2)$ und
+  $g_2(t) \coloneqq f(x_1, x_2 + t)$ stetig in $t = 0$.
+\item Zeigen Sie, dass die Funktion $f$ nicht stetig auf $\mathbb{R}^2$ ist.
+
+  \textit{Lsg.} Die Funktion ist nicht stetig im Punkt $x = (0, 0)$.
+
+  Falls die Funktion $f$ in $x$ stetig wäre, müsste gelten:
+  \[
+    \lim_{t \to 0} f(t, t) = f(0, 0)
+  \]
+  Nun ist jedoch $f(0, 0) = 0$ und
+  $\lim_{t \to 0} f(t, t) = \lim_{t \to 0} \frac{t^2}{2t^2} = \frac{1}{2}$.
+  Ein Widerspruch, damit ist $f$ auf $\mathbb{R}^2$ nicht stetig.
+
+\end{enumerate}
+
 \end{document}
