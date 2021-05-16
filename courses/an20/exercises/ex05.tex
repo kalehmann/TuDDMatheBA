@@ -248,5 +248,30 @@ stetige Funktion $f \colon M_1 \to M_2$.
 
 \end{enumerate}
 
+\noindent
+Zeigen Sie, dass die abgeschlossene Einheitskugel
+$M = B[0, 1]$ des Raumes
+$\qty(C([0, 1]), \norm{\cdot}_{\infty})$ nicht kompakt ist.
+Betrachten Sie dazu die Folge $\qty(f_n)$ mit $f_n(x) = x^n, n \in \mathbb{N}$. \\
+
+\textit{Lsg.} $C[0, 1]$ ist die Menge aller auf dem Intervall $[0, 1]$ stetigen
+Funktionen.
+Sei $M$ kompakt, dann ist $M$ eine abgeschlossene und beschränkte Teilmenge von
+$C([0, 1])$.
+Alle Funktionen $f_n$ mit $f_n(x) = x^n$ liegen in $M$.
+Der Punktweise Grenzwert der Folge $\qty(f_n)$ ist
+\[
+  \lim_{n \to \infty} f_n(x) = f(x) = \begin{cases}
+    0 & \text{für } x \in [0, 1) \\
+    1 & \text{für } x = 1
+  \end{cases}
+\]
+
+Damit ist $f$ nicht stetig und somit nicht in $C[0, 1]$ enthalten.
+Falls $M$ kompakt wäre, dann existiert nach Proposition 6.4.2 der Vorlesung -
+\textit{Ein Metrischer Raum $(K, d)$ ist genau dann kompakt, wenn jede Folge in
+  $K$ eine konvergente Teilfolge besitzt} - eine konvergente Teilfolge
+$\qty(f_{n_k})$ mit dem Grenzwert $f$.
+Das ist ein Widerspruch $\Rightarrow M$ ist nicht kompakt
 
 \end{document}
