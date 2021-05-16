@@ -198,4 +198,55 @@ Seien $\qty(M_1, d_1)$ und $\qty(M_2, d_2)$ metrische Räume.
 
 \end{enumerate}
 
+\section*{Kompakte Mengen}
+
+Gegeben seien metrische Räume $\qty(M_1, d_1)$, $\qty(M_2, d_2)$ und eine
+stetige Funktion $f \colon M_1 \to M_2$.
+\begin{enumerate}[a)]
+\item Beweisen Sie folgende Aussage:
+  Ist $K$ eine nichtleere kompakte Teilmenge von $M_1$, so ist $f$ auf $K$
+  gleichmäßig stetig.
+
+  \textit{Lsg.} Sei $f$ nicht gleichmäßig stetig auf $K$
+  \[
+    \exists \epsilon > 0 \forall \delta > 0 \exists x, y \in K \colon
+    d_1(x, y) < \delta \Rightarrow d_2(f(x), f(y)) \geq \epsilon
+  \]
+
+  Sei $\delta_n \coloneqq \frac{1}{n}, n \in \mathbb{N}$.
+  Dann existieren Folgen $\qty(x_n)$ und $\qty(y_n)$ in $K$ mit
+  $d_1(x_n, y_n) < \frac{1}{n}$ und
+  $d_2 \qty(f\qty(x_n), f\qty(y_n)) \geq \epsilon$.
+
+  Nach Proposition 6.3.2 der Vorlesung -
+  ``Die Funktion $f \colon M_1 \to M_2$ ist stetig in $x \in M_1 \iff $
+  Für jede Folge $\qty(x_n)$ in $M_1$ gilt
+  $\lim_{n \to \infty} x_n = x \Rightarrow \lim_{n \to \infty} f\qty(x_n) = f(x)$''
+  - und der Kompaktheit von $K$ existiert eine Teilfolge $\qty(x_{n_k})$
+  und ein $x \in K$ mit $x_n \overset{k \to \infty}\longrightarrow x$.
+  \[
+    \Rightarrow d_1\qty(x, y_{n_k}) \geq d_1\qty(x, x_{n_k}) + d_1\qty(x_{n_k}, y_{n_k})
+    \overset{k \to \infty}\longrightarrow x
+  \]
+  $\Rightarrow \qty(y_{n_k})$ konvergiert gegen $x$.
+
+  Aus der Stetigkeit von $f$ folgt
+  $f\qty(x_{n_k}) \overset{k \to \infty}\longrightarrow f(x)$ und
+  $f\qty(y_{n_k}) \overset{k \to \infty}\longrightarrow f(x)$.
+  \[
+    \Rightarrow d_2\qty(f\qty(x_{n_k}), f\qty(y_{n_k}))
+    \geq d_2\qty(f\qty(x_{n_k}), f(x)) + d_2\qty(f(x), f\qty(y_{n_k}))
+    \overset{k \to \infty}\longrightarrow 0
+  \]
+  Das ist ein Widerspruch zu $d_2\qty(f\qty(x_{n_k}), f\qty(y_{n_k})) \geq \epsilon$.
+
+\item Folgt aus der Kompaktheit von $K \subseteq M_2$ auch die Kompaktheit
+  des Urbildes $f^{-1}(K) \subseteq M_1$ von $K$?
+
+  \textit{Lsg.} Sei $f(x) \coloneqq 0, x \in R$.
+  Dann ist das Urbild $f^{-1}(\qty{0}) = \mathbb{R}$ und $\mathbb{R}$ ist nicht kompakt.
+
+\end{enumerate}
+
+
 \end{document}
