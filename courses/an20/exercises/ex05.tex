@@ -133,4 +133,69 @@ Gegeben sei die Funktion $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
 
 \end{enumerate}
 
+Seien $\qty(M_1, d_1)$ und $\qty(M_2, d_2)$ metrische Räume.
+\begin{enumerate}[(i)]
+\item Beweisen Sie, dass eine Abbildung $f \colon M_1 \to M_2$ genau dann
+  stetig ist, wenn das Urbild
+  $f^{-1}(A) = \qty{x \in M_1 \middle| f(x) \in A} \subseteq M_1$
+  abgeschlossener Mengen $A \subseteq M_2$ in $M_1$ abgeschlossen ist.
+
+  \textit{Lsg.} Es wird bewiesen, dass
+  \textit{Das Urbild offener Mengen ist offen}
+  $\iff$ \textit{Das Urbild abgeschlossener Mengen ist abgeschlossen}
+
+  $"\Rightarrow"$ Sei nun das Urbild offener Mengen offen, $A \subseteq M_2$ eine
+  abgeschlossene Teilmenge und $B = M_2 \setminus A$ eine offene Teilmenge
+  von $M_2$.
+  \begin{flalign*}
+    M_1 \setminus f^{-1}(B) &= \qty{x \in M_1 \middle| f(x) \notin B } & \\
+                            &= \qty{x \in M_1 \middle| f(x) \in A} = f^{-1}(A)
+  \end{flalign*}
+  \begin{flalign*}
+    &\Rightarrow f^{-1}(A) \text{ ist das Komplement der in $M_1$ offenen Menge $f^{-1}(B)$} & \\
+    &\Rightarrow \text{ Das Urbild $f^{-1}(A)$ der abgeschlossenen Menge $A$ ist in $M_1$ abgeschlossen}
+  \end{flalign*}
+  $"\Leftarrow"$ Sei nun das Urbild abgeschlossener Mengen abgeschlossen,
+  $B \subseteq M_2$ eine offene Teilmenge und $A = M_2 \setminus B$ eine
+  abgeschlossene Teilmenge von $M_2$.
+  \begin{flalign*}
+    &\Rightarrow f^{-1}(A) \text{ ist abgeschlossen} & \\
+    &\Rightarrow M_1 \setminus f^{-1}(A) = f^{-1}(B) \text{ ist offen}
+  \end{flalign*}
+
+  Nach Proposition 6.3.3 (iii) der Vorlesung -
+  ``Für jede offene Menge $U \subseteq M_2$ ist das Urbild $f^{-1}(U)$ offen in $M_1$''
+  - folgt die Behauptung.
+
+\newpage
+\item Sei $d_1$ die diskrete Metrik auf $M_1$.
+  Welche Stetigkeitseigenschaften besitzt eine beliebige Abbildung
+  $f \colon M_1 \to M_2$?
+
+  \textit{Lsg.}
+  \[
+    d_1 (x, y) = \begin{cases}
+      0 & x = y \\
+      1 & x \ne y \\
+    \end{cases}
+  \]
+  Für alle $x \in M_1$ gilt $B\qty(x, \sfrac{1}{2}) \subseteq \qty{x}$.
+  Sei nun $A \in M_1$ eine beliebige Teilmenge, dann ist $A$ offen, da
+  für alle $x \in A \colon B\qty(x, \sfrac{1}{2}) \subseteq A$.
+
+  Sei $C = M_1 \setminus A$ die Komplementärmenge von $A$, dann ist $B$
+  ebenfalls offen, da für alle
+  $x \in C \colon B\qty(x, \sfrac{1}{2}) \subseteq A$.
+
+  $\Rightarrow$ alle Teilmengen von $M_1$ sind gleichzeitig offen und
+  abgeschlossen.
+
+  $\Rightarrow$ Für eine beliebige Abbildung $f \colon M_1 \to M_2$
+  und eine beliebige Teilmenge $A \in M_1$ ist sowohl $A$ offen und
+  abgeschlossen, als auch $f^{-1}(A)$ offen und abgeschlossen.
+
+  $\Rightarrow f$ ist stetig.
+
+\end{enumerate}
+
 \end{document}
