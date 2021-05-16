@@ -303,14 +303,38 @@ Für $k = 0$ setzen wir $x_0 \coloneqq 0$ und $r_0 \coloneqq 10^{-3}$.
 
   \textit{Lsg.} $B\qty(x_0, r_0) \cap [0, 1] = \left[0, r_0\right) = \left[0, 10^{-3}\right) \subseteq \qty[0, 10^{-2}]$
   \[
-    \bigcup_{k = 1}^{10} B\qty(x_k, r_k) \cap I = \qty(\frac{1}{2^{10}}, 1)
+    \bigcup_{k = 1}^{10} B\qty(x_k, r_k) \cap I = \qty(\frac{1}{2^{10}}, 1) \Rightarrow
+    I \subseteq \qty(\bigcup_{k = 1}^{10} B\qty(x_k, r_k)) \cup B\qty(x_0, r_0)
   \]
-  Also ist $I \subseteq \qty(\bigcup_{k = 1}^{10} B\qty(x_k, r_k)) \cup B\qty(x_0, r_0)$
 
 \item Geben Sie eine offene Überdeckung $\qty(U_k)_{k \in \mathbb{N}}$ von
   $\mathring I = (0, 1)$ an, die keine endliche Teilmenge von $\mathring I$
   enthält (Nachweis).
 
 \end{enumerate}
+
+\newpage
+\noindent
+Gegeben seien ein kompakter metrischer Raum $(K, d)$ und eine nichtleere
+Teilmenge $M \subseteq K$.
+Beweisen Sie, dass $\qty(M, d_M)$ genau dann kompakt ist, wenn $M$ abgeschlossen
+in $\qty(K, d)$ ist. \\
+
+\textit{Lsg.} Nach Proposition 6.4.2 der Vorlesung ist
+``Ein metrischer Raum ist genau dann kompakt, wenn er folgenkompakt ist''.
+
+``$\Rightarrow$'' Sei $M \subseteq K$ eine kompakte Teilmenge.
+Falls $M$ nicht abgeschlossen ist, existieren eine Folge $\qty(x_n)$ aus $M$
+und ein $x \in K \setminus M$ mit $\lim_{n \to \infty} x_n = x$.
+Da jede Teilfolge von $\qty(x_n)$ gegen $x$ konvergiert, ist dies ein
+Widerspruch zur Kompaktheit von $M$.
+Also ist $M$ abgeschlossen.
+
+``$\Leftarrow$'' Sei $M \subseteq K$ eine nichtleere, abgeschlossene Teilmenge
+und $\qty(x_n)$ eine Folge aus $M$.
+Aus der Kompaktheit von $K$ folgt die Existenz einer in $(K, d)$ konvergenten
+Teilfolge $\qty(x)$.
+Da $M$ abgeschlossen ist, liegt $\lim_{n \to \infty} x_n \in M$.
+Also ist $M$ kompakt.
 
 \end{document}
