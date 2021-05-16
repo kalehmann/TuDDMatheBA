@@ -272,6 +272,45 @@ Falls $M$ kompakt wäre, dann existiert nach Proposition 6.4.2 der Vorlesung -
 \textit{Ein Metrischer Raum $(K, d)$ ist genau dann kompakt, wenn jede Folge in
   $K$ eine konvergente Teilfolge besitzt} - eine konvergente Teilfolge
 $\qty(f_{n_k})$ mit dem Grenzwert $f$.
-Das ist ein Widerspruch $\Rightarrow M$ ist nicht kompakt
+Das ist ein Widerspruch $\Rightarrow M$ ist nicht kompakt. \\
+
+\noindent
+$\mathbb{R}$ sei mit der Betragsmetrik versehen.
+Wir betrachten das Intervall $I = [0, 1]$.
+Für $k \in \mathbb{N}$ seien $x_k \coloneqq \frac{1}{x^{k - 1}}$ und
+$r_k \coloneqq \frac{1}{2^k}$.
+Für $k = 0$ setzen wir $x_0 \coloneqq 0$ und $r_0 \coloneqq 10^{-3}$.
+\begin{enumerate}[a)]
+\item Geben Sie die Mengen $B_k \coloneqq B\qty(x_k, r_k)$ für
+  $k = 1, \ldots, 4$ und deren Vereinigung an.
+
+  \textit{Lsg.} Für $k \in \mathbb{N}$ ist
+  \[
+    B_k = \qty(\frac{1}{2^{k - 1}} - \frac{1}{2^k}, \frac{1}{2^{k - 1}} + \frac{1}{2^k}) =
+    \qty(\frac{1}{2^k}, \frac{3}{2^k})
+  \]
+  \[
+    B_1 = \qty(\frac{1}{2}, \frac{3}{2}), B_2 = \qty(\frac{1}{4}, \frac{3}{4}),
+    B_3 = \qty(\frac{1}{8}, \frac{3}{8}), B_4 = \qty(\frac{1}{16}, \frac{3}{16}),
+  \]
+  \[
+    B_1 \cup B_2 \cup B_3 \cup B_4 = \qty(\frac{1}{16}, \frac{3}{2})
+  \]
+
+\item Beweisen Sie, dass das System $\qty(B_k)_{k \in \mathbb{N}_0}$ eine
+  offene Überdeckung von $I$ ist.
+  Geben Sie eine endliche Teilüberdeckung an.
+
+  \textit{Lsg.} $B\qty(x_0, r_0) \cap [0, 1] = \left[0, r_0\right) = \left[0, 10^{-3}\right) \subseteq \qty[0, 10^{-2}]$
+  \[
+    \bigcup_{k = 1}^{10} B\qty(x_k, r_k) \cap I = \qty(\frac{1}{2^{10}}, 1)
+  \]
+  Also ist $I \subseteq \qty(\bigcup_{k = 1}^{10} B\qty(x_k, r_k)) \cup B\qty(x_0, r_0)$
+
+\item Geben Sie eine offene Überdeckung $\qty(U_k)_{k \in \mathbb{N}}$ von
+  $\mathring I = (0, 1)$ an, die keine endliche Teilmenge von $\mathring I$
+  enthält (Nachweis).
+
+\end{enumerate}
 
 \end{document}
