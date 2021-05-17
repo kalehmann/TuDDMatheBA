@@ -36,14 +36,81 @@
 Wir betrachten die metrischen Räume $\qty(\mathbb{R}^2, \norm{\cdot}_2)$ und
 $\qty(\mathbb{R}^2, d)$, wobei $d$ die französische Eisenbahnmetrik sei.
 Untersuchen Sie, welche Stetigkeitseigenschaften die folgenden Abbildungen
-besitzen.
+besitzen. \\
+
+\textit{Lsg.} Die französische Eisenbahnmetrik verdankt ihren Namen dem
+zentralisiertem Eisenbahnnetz Frankreichs.
+Wenn Paris nicht auf der Luftlinie zweier Orte $A$ und $B$ liegt, muss man
+auf dem Weg von $A$ nach $B$ in Paris umsteigen.
+Die zurückgelegte Strecke von $A$ nach $B$ setzt sich somit aus der Entfernung
+von $A$ nach Paris und der Entfernung von Paris nach $B$ zusammen.
+
+Es gilt nun zu beweisen, dass dies auch für den Sonderfall, dass Paris auf der
+Luftlinie zwischen $A$ und $B$ liegt gilt.
+Sei Paris im Punkt $\qty(0, 0)$ und zwei Punkte $x, y \in \mathbb{R}^2$ so,
+dass sie auf einer Geraden mit Paris liegen, dass heißt
+$xt + (1 - t)y = 0, t \in \mathbb{R}$.
+\begin{align*}
+  \qty(d(x, y))^2 &= \norm{x - y}_2^2 = \norm{\frac{1 - t}{1 - t} x + \frac{t}{1 - t} y}_2^2
+                   = \norm{\frac{1}{1 - t} x}_2^2
+                   = \sum_{k = 1}^2 \abs{\frac{1}{1 - t} x_k}^2 & \\
+                  &= \frac{1}{\abs{1 - t}^2} \norm{x}_2^2
+                   = \norm{x}_2^2 \qty(\frac{\abs{1 - t}^2}{\abs{1 - t}^2} + 2\frac{\abs{t}}{\abs{1 - t}^2} - \frac{\abs{t}^2}{\abs{1 - t}^2}) \\
+                  &= \norm{x}_2^2 +
+                   \underset{
+                     2 \qty(\sum_{k = 1}^2 \abs{x_k}^2 \cdot \sum_{k = 1}^2 \abs{- \frac{t}{1 - t} x_k}^2)^{\sfrac{1}{2}} = 2 \norm{x}_2 \norm{y}_2
+                   }{\underbrace{2\frac{\abs{t}}{\abs{1 - t}^2} \norm{x}_2^2}}
+                   + \norm{-\frac{t}{1 - t} x}_2^2 \\
+  \qty(d(x, y))^2 &= \norm{x}_2^2 + 2 \norm{x}_2 \norm{y}_2 + \norm{y}_2^2 \\
+  d(x, y)         &= \norm{x} + \norm{y}
+\end{align*}
+
 \begin{enumerate}[(i)]
 \item $g \colon \qty(\mathbb{R}^2, d) \to \qty(\mathbb{R}^2, \norm{\cdot}_2)$
   mit $g(x) \coloneqq x$
+
+  \textit{Lsg.} Seien $d_1$ die französische Eisenbahnmetrik und $d_2$ die von
+  der euklidischen Norm induzierte Metrik.
+
+  \textbf{Annahme}: $g$ ist Lipschitzstetig.
+  \begin{align*}
+    \forall x, y \in \mathbb{R}^2 \colon d_2(g(x), g(y)) &\leq d_1(x, y) \\
+    \norm{x - y}_2 &\leq \norm{x}_2 + \norm{y}_2 \\
+  \end{align*}
+  Diese Aussage ist offensichtlich war, damit ist $g$ Lipschitzstetig,
+  gleichmäßig stetig und stetig.
+
+
+\newpage
 \item $h \colon \qty(\mathbb{R}^2, \norm{\cdot}_2) \to \qty(\mathbb{R}^2, d)$
   mit $h(x) \coloneqq x$
+
+  \textit{Lsg.} Seien $d_1$ die von der euklidischen Norm induzierte Metrik und
+  $d_2$ die französische Eisenbahnmetrik.
+
+  \textbf{Annahme}: $h$ ist Lipschitzstetig.
+  \begin{align*}
+    \exists L \geq 0 \forall x, y \in \mathbb{R}^2 \colon d_2(h(x), h(y)) &\leq L d_1(x, y) \\
+    \norm{x}_2 + \norm{y}_2 &\leq L \norm{x - y}_2 \\
+    \text{Angenommen $x = y = (1, 0)$} \to \quad 1 + 1 &\leq L 0 \\
+    \Rightarrow h \text{ ist nicht Lipschitzstetig.}
+  \end{align*}
+
+  \textbf{Annahme}: $h$ ist gleichmäßig stetig.
+  \begin{align*}
+    \forall \epsilon > 0 \exists \delta > 0 \forall x, y \in \mathbb{R}^2 \colon d_1(x, y) < \delta
+    &\Rightarrow d_2(h(x), h(y)) \\
+    \norm{x - y}_2 < \delta &\Rightarrow \norm{x}_2 + \norm{y}_2 < \epsilon
+  \end{align*}
+  Sei nun neben $x$ und $y$ auch $z = (0, 0)$ aus $\mathbb{R}^2$.
+  Nach der Dreiecksungleichung ist
+  $\norm{x - y}_2 \leq \norm{x - z}_2 + \norm{y - z}_2$.
+  Da $\norm{x - z}_2 + \norm{y - z}_2 = \norm{x}_2 + \norm{y}_2$ ist die Annahme
+  für $\delta = \frac{\epsilon}{2}$ wahr, somit ist $h$ gleichmäßig stetig.
+
 \end{enumerate}
 
+\newpage
 \section*{Hausaufgabe 2}
 
 Untersuchen Sie die Funktionen $f \colon \mathbb{R}^2 \to \mathbb{R}$ definiert
@@ -56,6 +123,7 @@ durch
 \]
 auf Stetigkeit.
 
+\newpage
 \section*{Hausaufgabe 3}
 
 Wir betrachten $\qty(\mathbb{R}^N, \norm{\cdot})$ mit einer beliebigen Norm
