@@ -170,11 +170,38 @@ Wir betrachten $\qty(\mathbb{R}^N, \norm{\cdot})$ mit einer beliebigen Norm
 $\norm{\cdot}$.
 Beweisen Sie folgende Aussagen: Sind $A, B \subseteq \mathbb{R}^N$ kompakte
 Mengen, dann sind die Mengen
-\[
-  A \times B = \qty{(x, y) \middle| x \in A, y \in B} \subseteq \mathbb{R}^{2N}
-  \text{ und }
-  A + B = \qty{x + y \middle| x \in A, y \in B} \subseteq \mathbb{R}^N
-\]
-ebenfalls kompakt.
+\begin{enumerate}[a)]
+\item $A \times B = \qty{(x, y) \middle| x \in A, y \in B} \subseteq \mathbb{R}^{2N}$ und
+\item $A + B = \qty{x + y \middle| x \in A, y \in B} \subseteq \mathbb{R}^N$
+\end{enumerate}
+ebenfalls kompakt. \\
+
+\textit{Lsg.}
+\begin{enumerate}[a)]
+\item Seien $A, B \in \mathbb{R}^N$ beschränkte und abgeschlossene Teilmengen
+  und $\qty(x_n)$ eine Folge in $A \times B$.
+  Weiterhin sei $x_n = \qty(a_n, b_n)$ mit $a_n \in A$ und $b_n \in B$.
+
+  Nach Proposition 6.4.2 der Vorlesung -
+  ``Ein metrischer Raum ist genau dann kompakt, wenn er folgenkompakt ist'' -
+  folgt, dass $A$ und $B$ folgenkompakt sind.
+  Damit existieren konvergente Teilfolgen $a_{n_j}$ und $b_{n_j}$ mit
+  $\lim_{j \to \infty} a_{n_j} = a \in A$ und $\lim_{j \to \infty} b_{n_j} = b \in A$.
+  Somit ist $\lim_{j \to \infty} u_{n_j} = \qty(a, b) \in A \times B$.
+  $\Rightarrow A \times B$ ist folgenkompakt.
+
+\item Seien $A, B \in \mathbb{R}^N$ beschränkte und abgeschlossene Teilmengen.
+  Dann existieren nach $(A13)$ auch $\inf A, \sup A$ und $\inf B, \sup B$.
+  Die Menge $A + B$ ist durch $\sup A + \sup B$ nach oben und durch
+  $\inf A + \inf B$ nach unten beschränkt.
+
+  Jede Folge $\qty(x_n)$ aus $A + B$ lässt sich durch $x_n \coloneqq a_n + b_n$
+  mit $\qty(a_n) \in A$ und $\qty(b_n) \in B$ beschreiben.
+  Falls $\lim_{n \to \infty} x_n = x$ existiert, dann ist
+  $x = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n$.
+  Da $A$ und $B$ abgeschlossen sind liegt $a \in A$, $b \in B$
+  und $x \in A + B$.
+  Damit ist $A + B$ ebenfalls abgeschlossen und kompakt.
+\end{enumerate}
 
 \end{document}
