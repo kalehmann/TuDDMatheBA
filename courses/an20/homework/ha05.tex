@@ -150,14 +150,19 @@ auf Stetigkeit. \\
 Seien $(\mathbb{R}^2, \norm{\cdot}_2)$ und $(\mathbb{R}, \abs{\cdot})$
 metrische Räume. \textbf{Vorüberlegungen}
 \[
+  \text{Für ein $y \in \mathbb{R}$ ist $\sin(xy)$ periodisch und $\sup\qty(\frac{\sin(xy)}{x}) = $ }
   \lim_{x \to 0} \frac{\sin(xy)}{x} = y
 \]
 
 \textbf{Annahme}: $f$ ist Lipschtzstetig.
 \begin{align*}
-  \exists L \geq 0 \forall (x_1, y_1), (x_2, y_2) \in \mathbb{R}^2 \colon d_2(f(x_1, y_1), f(x_2, y_2)) &\leq L d_1((x_1, y_1), (x_2, y_2)) \\
-  \abs{\frac{\sin(x_1y_1)}{x_1} - \frac{\sin(x_2y_2)}{x_2}} &\leq\sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2} \\
-x_1, x_2 \to 0 \quad  \abs{y_1 - y_2} &\leq L \cdot \abs{y_1 - y_2} && \Big| :\abs{y_1 - y_2} \\
+  \exists L \geq 0 \forall (x_1, y_1), (x_2, y_2) \in \mathbb{R}^2 \colon d_2(f(x_1, y_1), f(x_2, y_2))
+    &\leq L d_1((x_1, y_1), (x_2, y_2)) \\
+  \abs{\frac{\sin(x_1y_1)}{x_1} - \frac{\sin(x_2y_2)}{x_2}}
+    &\leq L \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2} \\
+  \abs{\frac{\sin(x_1y_1)}{x_1} - \frac{\sin(x_2y_2)}{x_2}}
+    \leq \abs{y_1 - y_2} &\leq L \cdot \abs{y_1 - y_2}
+    \leq L\sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2} \\
   \frac{\abs{y_1 - y_2}}{\abs{y_1 - y_2}} &\leq L \\
   1 &\leq L \\
   \Rightarrow f \text{ ist Lipschitzstetig}
