@@ -165,4 +165,77 @@ Minimum und Maximum auf $K$ besitzen.
 
 \end{enumerate}
 
+\newpage
+\noindent
+Gegeben seien ein metrischer Raum $(M, d)$ und nichtleere Teilmengen
+$A, K \subseteq M$.
+\begin{enumerate}[a)]
+\item Beweisen Sie die sogenannte Vierecksungleichung:
+  Für $x, y, u, v \in M$ gilt
+  \[
+    \abs{d(x, y) - d(u, v)} \leq d(x, u) + d(y, v)
+  \]
+  \textit{Lsg.} Nach der Dreiecksungleichung ist
+  \begin{align*}
+    d(x, y) &\leq d(x, u) + d(y, u) \leq d(x, u) + d(u, v) + d(v, y) \\
+            &\Rightarrow d(x, y) - d(u, v) \leq d(x, u) + d(y, v) \\
+    d(u, v) &\leq d(u, x) + d(v, x) \leq d(x, u) + d(x, y) + d(y, v) \\
+            &\Rightarrow -1 \cdot (d(x, y) - d(u, v)) \leq d(x, u) + d(y, v) \\
+            &\Rightarrow \abs{d(x, y) - d(u, v)} \leq d(x, u) + d(y, v)
+  \end{align*}
+
+\item $M \times M$ sei mit der Metrik
+  $\hat{d}((x, y), (u, v)) = d(x, u) + d(y, v)$ versehen.
+  Beweisen Sie, dass die Abbildung $d \colon M \times M \to \mathbb{R}$
+  stetig ist.
+
+  \textit{Lsg.} seien $(x, y) \in M \times M$ ein Punkt und
+  $\qty(x_n), \qty(y_n)$ zwei Folgen mit
+  $x_n \overset{n \to \infty}\longrightarrow x$ und
+  $y_n \overset{n \to \infty}\longrightarrow y$.
+  Aus $a)$ folgt
+  \[
+    \abs{d(x, y) - d(x_n, y_n)} \leq d(x, x_n) + d(y, y_n)
+    \overset{n \to \infty}\longrightarrow 0
+  \]
+  Folglich ist $d$ stetig in $(x, y) \in M \times M$.
+  Da $(x, y)$ beliebig ist, ist $d$ auf $M \times M$ stetig.
+
+\item Beweisen Sie, dass durch
+  $f(x) \coloneqq d(x, A) \coloneqq \underset{y \in A}\inf d(x, y)$
+  eine Lipschitz-stetige Abbildung $f \colon M \to \mathbb{R}$
+  definiert ist.
+
+  \textit{Lsg.} Seien $a, b \in M$ gegeben.
+  Dann gilt für $c \in A$:
+  \begin{align*}
+    f(a) &= \underset{y \in A}\inf d(a, y) \leq d(a, c) \leq d(a, b) + d(b, c) \\
+    f(a) &\leq \underset{c \in A}\inf \qty(d(a, b) + d(b, c)) = d(a, b) + \inf \leq d(a, b) + f(b) \\
+    \abs{f(a) - f(b)} &\leq d(a, b) \Rightarrow f \text{ ist Lipschitzstetig mit $L = 1$}
+  \end{align*}
+
+\item Sei $g(A, K) \coloneqq \underset{(x, y) \in A \times K}\inf d(x, y)$.
+  Zeigen Sie: Ist $A \subseteq M$ abgeschlossen und $K \subseteq M$ kompakt
+  mit $A \cap K = \emptyset$, so gilt $g(A, K) > 0$.
+
+  \textit{Lsg.} Angenommen $g(A, K) = 0$.
+  Dann existieren Folgen $\qty(a_n)$ in $A$ und $\qty(b_n)$ in $K$
+  mit $d\qty(a_n, b_n) \overset{n \to \infty}\longrightarrow g(A, K) = 0$
+  Aus der Kompaktheit von $K$ folgt die Existenz einer in $K$
+  konvergenten Teilfolge $\qty(b_{n_k})$ mit
+  $b_{n_k} \overset{k \to \infty}\longrightarrow b \in K$.
+  Jetzt ist $d\qty(b, a_{n_k}) \leq d\qty(b, b_{n_k}) + d(a_{n_k}, b_{n_k})
+  \overset{k \to \infty}\longrightarrow 0$.
+  Da $A$ abgeschlossen ist, muss nun $b \in A \cap K = \emptyset$ sein,
+  ein Widerspruch.
+
+\item Geben Sie Beispiele abgeschlossener,disjunkter Mengen $A, B$ aus
+  $\mathbb{R}$ bzw. $\mathbb{R}^2$ an, deren Abstand $g(A, K) = 0$ ist.
+
+  \textit{Lsg.} In $\mathbb{R}$: $A \coloneqq \qty{n \middle| n \in \mathbb{N}}$
+  und $B \coloneqq \qty{n + \frac{1}{n} \middle| n \in \mathbb{N}}$ \\
+  In $\mathbb{R}^2$ : $A \coloneqq \qty{(x, 0) \middle| x \in \mathbb{R}}$
+  und $B \coloneqq \qty{(x, y) \middle| x \in \mathbb{R} \land y \geq e^x}$
+\end{enumerate}
+
 \end{document}
