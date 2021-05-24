@@ -238,4 +238,38 @@ $A, K \subseteq M$.
   und $B \coloneqq \qty{(x, y) \middle| x \in \mathbb{R} \land y \geq e^x}$
 \end{enumerate}
 
+\newpage
+\noindent
+Gegeben seien ein vollständiger metrischer Raum $(M, d)$, eine Folge
+abgeschlossener Kugeln $B_n \coloneqq B\qty[x_n, \epsilon_n]$ mit
+$x_n \in M, \epsilon_n > 0$, so dass $B_{n + 1} \subseteq B_n$ und
+$\lim_{n \to \infty} \epsilon_n = 0$ gilt.
+
+Beweisen Sie, dass der Durchschnitt $\underset{n \in \mathbb{N}}\bigcap B_n$
+nichtleer ist und genau ein Element enthält.
+
+\textit{Lsg.} Für $n \in \mathbb{N}$ und $m \leq n$ gilt
+$x_m \in B_n$, dass heißt $d(x_n, x_m) < \epsilon_n$.
+Sei $\epsilon > 0$ gegeben, dann existiert wegen
+$\lim_{n \to \infty} \epsilon_n = 0$ ein $n_0 \in \mathbb{N}$ mit
+$\epsilon_{n_0} < \frac{\epsilon}{2}$.
+Für $m, n \geq n_0$ folgt
+\[
+  d(x_n, m_m) \leq d\qty(x_n, x_{n_0}) + d\qty(x_{n_0}, x_m) < 2 \epsilon_{n_0} < \epsilon
+\]
+$\Rightarrow \qty(x_n)$ ist eine Cauchy-Folge.
+Da $M$ vollständig ist, existiert $x_n \overset{n \to \infty}\longrightarrow x$
+und $B$ ist als Durchschnitt abgeschlossener Kugeln abgeschlossen.
+Somit ist $x \in B$.
+
+Sei nun $y \ne x \in B$.
+Dann ist $\epsilon \coloneqq d(x, y) > 0$.
+Wegen $\lim_{n \to \infty} \epsilon_n = 0$ ein $n_0 \in \mathbb{N}$ mit
+$\epsilon_{n_0} < \frac{\epsilon}{2}$.
+Wegen $x, y \in B_n$ gilt für $n \geq n_0$
+\[
+  d(x, y) \leq d(x, x_n) + d(x_n, y) < 2 \epsilon_{n_0} < \epsilon
+\]
+ein Widerspruch.
+
 \end{document}
