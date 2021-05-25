@@ -104,4 +104,59 @@ $\Rightarrow f(K)$ ist kompakt.
 Damit existieren $a, b \in K$ mit $f(a) \leq f(x) \leq f(b)$ für alle
 $x \in K$.
 
+\newpage
+\section*{Hausaufgabe 2}
+
+Seien $(M, d)$ ein metrischer Raum und $a \in M$ ein isolierter Punkt.
+
+\noindent
+Der Punkt $a \in M$ heißt isoliert, wenn ein $r > 0$ existiert, so dass
+$B_d(a, r) \cap M = \qty{a}$.
+
+\begin{enumerate}[a)]
+\item Zeigen Sie, dass jede Funktion $f \colon M \to \mathbb{R}$ in $a$
+  stetig ist. \\
+
+  \textit{Lsg.} Eine Funktion $f \colon M \to \mathbb{R}$ heißt stetig in
+  $a \in M$, wenn
+  \[
+    \forall \epsilon > 0 \exists \delta > 0 \forall b \in M
+    \colon d(a, b) < \delta \Rightarrow \abs{f(a) - f(b)} < \epsilon
+  \]
+  Sei nun $\delta = \frac{r}{2}$, dann ist die Ungleichung
+  $d(a, b) < \delta$ für $b \ne a$ falsch.
+  Weiterhin ist $\abs{f(a) - f(a)} = 0$.
+  Somit ist $f$ stetig in $a$ stetig.
+
+\item Die Menge $M \coloneqq \qty{\frac{1}{n} \middle| n \in \mathbb{N}}$
+  sei mit der von $(\mathbb{R}, \abs{\cdot})$ induzierten Metrik versehen.
+  Geben Sie die Menge der stetigen Funktionen $f \colon M \to \mathbb{R}$
+  an. \\
+
+  \textit{Lsg.}
+  $\frac{1}{n - 1} > \frac{1}{n} > \frac{1}{n + 1}, n \in \mathbb{N}$ und
+  $\frac{1}{n} - \frac{1}{n \pm 1} > \frac{1}{2n(n + 1)}$.
+  Somit ist jeder Punkt $a \in M$ isoliert mit
+  $r = \frac{1}{\sfrac{2}{a}\qty(\sfrac{1}{a} + 1)}$.
+  $\Rightarrow$ jede Funktion $f \colon M_0 \to \mathbb{R}$ ist in allen
+  Punkten stetig.
+
+\item $M_0 \coloneqq \qty{0} \cup M$ sei ebenfalls mit der von
+  $(\mathbb{R}, \abs{\cdot})$ induzierten Metrik versehen.
+  Geben Sie die Menge der stetigen Funktionen $f \colon M \to \mathbb{R}$
+  an. \\
+
+  \textit{Lsg.} $M_0 = \qty{0} \cup \qty{\frac{1}{n} \middle| n \in \mathbb{N}}$.
+  Der Punkt $0$ ist nun nicht isoliert, da für jedes $r > 0$ ein
+  $n \in \mathbb{N}$ mit $0 < \frac{1}{n} < r$ existiert.
+
+  Somit sind Funktionen $f \colon M_0 \to \mathbb{R}$ stetig, die im Punkt $0$
+  stetig sind, also:
+  \[
+    \forall \epsilon > 0 \exists \delta > 0 \forall x \in M_0
+    \colon \abs{x} < \delta \Rightarrow \abs{f(0) - f(x)} < \epsilon
+  \]
+
+\end{enumerate}
+
 \end{document}
