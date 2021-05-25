@@ -159,4 +159,57 @@ $B_d(a, r) \cap M = \qty{a}$.
 
 \end{enumerate}
 
+\newpage
+\section*{Hausaufgabe 3}
+
+Es sei $M$ der Vektorraum aller reellen $2 \times 2$-Matrizen, d.h.
+\[
+  M \coloneqq \qty{A = \qty(\begin{array}{cc} a_{11} & a_{12} \\ a_{21} & a_{22}\end{array}) \middle| a_{ik} \in \mathbb{R}}
+\]
+Welche der folgenden Abbildungen $p_x \colon M \to \mathbb{R}$ sind Normen auf $M$?
+\begin{enumerate}[a)]
+\item $p_1(A) \coloneqq \det A$ \\
+
+  \textit{Lsg.} Sei $A = \qty(\begin{array}{cc}0&1\\1&0\end{array}) \in M$,
+  dann ist $p_2(A) = -1$, ein Widerspruch zu
+  $\forall x \in M \colon \norm{x} \geq 0$.
+
+  $\Rightarrow p_2$ ist keine Norm auf $M$.
+
+\item $p_2(A) \coloneqq \abs{\det A}$ \\
+
+  \textit{Lsg.} Sei $A = \qty(\begin{array}{cc}1&1\\1&1\end{array}) \in M$,
+  dann ist $p_1(A) = 0$, ein Widerspruch zu
+  $\forall x \in M \colon \norm{x} = 0 \iff x = 0$.
+
+  $\Rightarrow p_1$ ist keine Norm auf $M$.
+
+\item $p_3(A) \coloneqq \abs{a_{11}} + \abs{a_{12}} + \abs{a_{21}} + \abs{a_{22}}$ \\
+
+  \textit{Lsg.}
+  \begin{enumerate}[(i)]
+  \item $\forall A \in M \colon p_3(A) \geq 0 \land p_3(A) = 0 \iff A = 0$ folgt aus der Definition des Betrags
+  \item $\forall \lambda \in \mathbb{R}, A \in M \colon p_3(\lambda \cdot A) = \abs{\lambda} \cdot p_3(A)$ \\
+    $\abs{\lambda a_{11}} + \abs{\lambda a_{12}} + \abs{\lambda a_{21}} + \abs{\lambda a_{22}} =
+    \abs{\lambda} \cdot \qty(\abs{a_{11}} + \abs{a_{12}} + \abs{a_{21}} + \abs{a_{22}})$
+  \item $\forall A, B \in M \colon p_3(A + B) \leq p_3(A) + p_3(B)$
+    folgt aus der Dreiecksungleichung und Proposition 1.2.3 (d) der Vorlesung.
+  \end{enumerate}
+  $\Rightarrow p_3$ ist eine Norm auf $M$.
+
+\item $p_4(A) \coloneqq \max\qty{\abs{a_{11}}, \abs{a_{12}}, \abs{a_{21}}, \abs{a_{22}}}$
+
+  \textit{Lsg.}
+  \begin{enumerate}[(i)]
+  \item $\forall A \in M \colon p_3(A) \geq 0 \land p_3(A) = 0 \iff A = 0$ folgt aus der Definition des Betrags
+  \item $\forall \lambda \in \mathbb{R}, A \in M \colon p_3(\lambda \cdot A) = \abs{\lambda} \cdot p_3(A)$
+    folgt aus Proposition  1.2.3 (e) der Vorlesung.
+  \item $\forall A, B \in M \colon p_3(A + B) \leq p_3(A) + p_3(B)$
+    Seine $a \in A, b \in B$ beliebig, dann folgt aus
+    $\abs{a} \leq p_4(A)$ und $\abs{b} \leq p_4(B)$, dass
+    $\abs{a} + \abs{b} \leq p_4(A) + p_4(B) \Rightarrow p_4(A + B) \leq p_4(A) + p_4(B)$
+  \end{enumerate}
+  $\Rightarrow p_4$ ist eine Norm auf $M$.
+\end{enumerate}
+
 \end{document}
