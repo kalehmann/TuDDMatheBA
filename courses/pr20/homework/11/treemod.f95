@@ -49,7 +49,7 @@ CONTAINS
           i = i + 1
        END DO
     END IF
-    DO WHILE(c .eq. ' ')
+    DO WHILE(c .eq. ' ' .OR. c .eq. ')')
        CALL getnextchar(c)
     END DO
     t%operator = c
@@ -70,19 +70,30 @@ CONTAINS
        END DO
     END IF
   END SUBROUTINE buildtree
+
+  SUBROUTINE printtree(t, postfix)
+    TYPE(tree), INTENT(IN) :: t
+    LOGICAL, INTENT(IN), OPTIONAL :: postfix
+
+    IF (PRESENT(postfix)) THEN
+       CALL printtree_postfix(t)
+    ELSE
+       CALL printtree_infix(t)
+    END IF
+  END SUBROUTINE printtree
   
-  RECURSIVE SUBROUTINE printtree(t, sub)
+  RECURSIVE SUBROUTINE printtree_infix(t, sub)
     TYPE(tree), INTENT(IN) :: t
     LOGICAL, INTENT(IN), OPTIONAL :: sub
     WRITE(*,'(A)',ADVANCE='NO') '('
     IF (LEN_TRIM(t%left%operand) == 0) THEN
-       CALL printtree(t%left, .TRUE.)
+       CALL printtree_infix(t%left, .TRUE.)
     ELSE
        WRITE(*,'(A)',ADVANCE='NO') TRIM(t%left%operand)
     END IF
     WRITE(*,'(A)',ADVANCE='NO') TRIM(t%operator)
-    IF (t%right%operand == '') THEN
-       CALL printtree(t%right, .TRUE.)
+    IF (LEN_TRIM(t%right%operand) == 0) THEN
+       CALL printtree_infix(t%right, .TRUE.)
     ELSE
        WRITE(*,'(A)',ADVANCE='NO') TRIM(t%right%operand)
     END IF
@@ -91,5 +102,25 @@ CONTAINS
     ELSE
        WRITE(*,'(A)') ')'
     END IF
-  END SUBROUTINE printtree
+  END SUBROUTINE PRINTTREE_INFIX
+
+  RECURSIVE SUBROUTINE printtree_postfix(t, sub)
+    TYPE(tree), INTENT(IN) :: t
+    LOGICAL, INTENT(IN), OPTIONAL :: sub
+    IF (LEN_TRIM(t%left%operand) == 0) THEN
+       CALL printtree_postfix(t%left, .TRUE.)
+    ELSE
+       WRITE(*,'(A)',ADVANCE='NO') TRIM(t%left%operand) // ' '
+    END IF
+    IF (LEN_TRIM(t%right%operand) == 0) THEN
+       CALL printtree_postfix(t%right, .TRUE.)
+    ELSE
+       WRITE(*,'(A)',ADVANCE='NO') TRIM(t%right%operand) // ' '
+    END IF
+    IF (PRESENT(sub)) THEN
+       WRITE(*,'(A)',ADVANCE='NO') TRIM(t%operator) // ' '
+    ELSE
+       WRITE(*,'(A)') TRIM(t%operator)
+    END IF
+  END SUBROUTINE PRINTTREE_POSTFIX
 END MODULE treemod
