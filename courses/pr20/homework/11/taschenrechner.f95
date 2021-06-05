@@ -13,6 +13,17 @@ PROGRAM taschenrechner
   !! CALL printtree(t, .TRUE.)
 
   CALL init(s)
+  WRITE(*,*) 'Stack based calculator'
+  WRITE(*,*) ' Enter a number or operator - one per row'
+  WRITE(*,*) ' ~ for negation'
+  WRITE(*,*) ' + for addition'
+  WRITE(*,*) ' - for subtraktion'
+  WRITE(*,*) ' * for multiplikation'
+  WRITE(*,*) ' : for division'
+  WRITE(*,*) ' ^ for exponents'
+  WRITE(*,*) ' = for the result'
+  WRITE(*,*) ' i for infix mode'
+  WRITE(*,*) ' q for exit'
   DO
      READ(*,*) input
      IF (input .EQ. 'q') THEN
