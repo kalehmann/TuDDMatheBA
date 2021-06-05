@@ -89,7 +89,7 @@ CONTAINS
     CHARACTER(LEN=10) :: elementa , elementb
     CALL pop(s, elementa)
     CALL pop(s, elementb)
-    WRITE(elementa,'(I10)') toint(elementa) / toint(elementb)
+    WRITE(elementa,'(I10)') toint(elementb) / toint(elementa)
     CALL push(s, elementa)
   END SUBROUTINE div
 
