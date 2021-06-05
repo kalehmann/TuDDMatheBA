@@ -1,3 +1,5 @@
+!! Albina Oscherowa
+!! Karsten Lehmann
 MODULE stringmod
   IMPLICIT NONE
 

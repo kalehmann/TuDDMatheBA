@@ -1,3 +1,5 @@
+!! Albina Oscherowa
+!! Karsten Lehmann
 PROGRAM taschenrechner
   USE stackmod
   USE stringmod

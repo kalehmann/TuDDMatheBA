@@ -1,3 +1,5 @@
+!! Albina Oscherowa
+!! Karsten Lehmann
 MODULE stackmod
   IMPLICIT NONE
 
