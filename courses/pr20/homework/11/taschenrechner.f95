@@ -170,6 +170,13 @@ CONTAINS
     DO WHILE (LEN_TRIM(buffer) > 0)
        CALL split_space(buffer, part, buffer)
        WRITE(*,*) part
+       IF (part(1:1) >= 'a' .AND. part(1:1) <= 'z') THEN
+          DO WHILE(.NOT. empty(s))
+             CALL pop(s, part)
+          END DO
+          WRITE(*,*) 'No vars in infix mode!'
+          RETURN
+       END IF
        CALL stackcalc(s, part(1:10))
     END DO
     CALL evaluate(s)
