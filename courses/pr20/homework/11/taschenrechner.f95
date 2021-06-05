@@ -1,5 +1,7 @@
 !! Albina Oscherowa
 !! Karsten Lehmann
+
+!! Stack basierter Taschenrechner mit optionalem Infix-Modus
 PROGRAM taschenrechner
   USE stackmod
   USE stringmod
@@ -8,9 +10,6 @@ PROGRAM taschenrechner
 
   CHARACTER(LEN=10) :: input
   TYPE(stack) :: s
-  !! CALL readstring()
-  !! CALL printtree(t)
-  !! CALL printtree(t, .TRUE.)
 
   CALL init(s)
   WRITE(*,*) 'Stack based calculator'
@@ -34,6 +33,8 @@ PROGRAM taschenrechner
      CALL stackcalc(s, input)
   END DO
 CONTAINS
+  !! Nimmt die beiden obersten Elemente von Stack, addiert sie und fuegt
+  !! das Ergebnis wieder dem Stack zu
   SUBROUTINE add(s)
     TYPE(stack), INTENT(INOUT) :: s
     CHARACTER(LEN=10) :: elementa , elementb
@@ -43,6 +44,8 @@ CONTAINS
     CALL push(s, elementa)
   END SUBROUTINE add
 
+  !! Nimmt die beiden obersten Elemente von Stack, subtrahiert sie und fuegt
+  !! das Ergebnis wieder dem Stack zu
   SUBROUTINE sub(s)
     TYPE(stack), INTENT(INOUT) :: s
     CHARACTER(LEN=10) :: elementa , elementb
@@ -52,6 +55,8 @@ CONTAINS
     CALL push(s, elementa)
   END SUBROUTINE SUB
 
+  !! Nimmt die beiden obersten Elemente von Stack, multipliziert sie und fuegt
+  !! das Ergebnis wieder dem Stack zu
   SUBROUTINE mul(s)
     TYPE(stack), INTENT(INOUT) :: s
     CHARACTER(LEN=10) :: elementa , elementb
@@ -61,6 +66,8 @@ CONTAINS
     CALL push(s, elementa)
   END SUBROUTINE MUL
 
+  !! Nimmt die beiden obersten Elemente von Stack, potenziert sie und fuegt
+  !! das Ergebnis wieder dem Stack zu
   SUBROUTINE pot(s)
     TYPE(stack), INTENT(INOUT) :: s
     CHARACTER(LEN=10) :: elementa , elementb
@@ -70,6 +77,8 @@ CONTAINS
     CALL push(s, elementa)
   END SUBROUTINE pot
 
+  !! Nimmt die beiden obersten Elemente von Stack, dividiert sie und fuegt
+  !! das Ergebnis wieder dem Stack zu
   SUBROUTINE div(s)
     TYPE(stack), INTENT(INOUT) :: s
     CHARACTER(LEN=10) :: elementa , elementb
@@ -79,6 +88,8 @@ CONTAINS
     CALL push(s, elementa)
   END SUBROUTINE div
 
+  !! Nimmt das oberste Elemente von Stack, negiert es und fuegt
+  !! das Ergebnis wieder dem Stack zu
   SUBROUTINE negate(s)
     TYPE(stack), INTENT(INOUT) :: s
     CHARACTER(LEN=10) :: element
@@ -87,6 +98,7 @@ CONTAINS
     CALL push(s, element)
   END SUBROUTINE NEGATE
 
+  !! ibt das oberste Element aus und entleert den Stack
   SUBROUTINE evaluate(s)
     TYPE(stack), INTENT(INOUT) :: s
     CHARACTER(LEN=10) :: element
@@ -98,6 +110,7 @@ CONTAINS
     END DO
   END SUBROUTINE evaluate
 
+  !! Prueft ob die gegebene Zeichenkette einen Integer enthaelt
   LOGICAL FUNCTION isnumeric(s)
     CHARACTER(LEN=10), INTENT(IN) :: s
     INTEGER :: err, i
@@ -105,11 +118,13 @@ CONTAINS
     isnumeric = err .EQ. 0
   END FUNCTION isnumeric
 
+  !! Konvertiert die Zeichenkette zu einem Integer
   INTEGER FUNCTION toint(s)
     CHARACTER(LEN=10), INTENT(IN) :: s
     READ(s,*) toint
   END FUNCTION toint
 
+  !! Wertet input als Befehl fuer den Taschenrechner
   SUBROUTINE stackcalc(s, input)
     CHARACTER(LEN=10), INTENT(IN) :: input
     TYPE(stack), INTENT(INOUT) :: s
@@ -137,6 +152,7 @@ CONTAINS
     END IF
   END SUBROUTINE stackcalc
 
+  !! Startet den Infix-Modus
   SUBROUTINE infix(s)
     TYPE(stack), INTENT(INOUT) :: s
     TYPE(tree) :: t
@@ -154,6 +170,8 @@ CONTAINS
     CALL evaluate(s)
   END SUBROUTINE infix
 
+  !! Spalten die Zeichenkette 'in' am ersten Leerzeichen in 'string1'
+  !! und 'string2' auf.
   SUBROUTINE split_space(in, string1, string2)
     CHARACTER(80) :: in
     CHARACTER(80), INTENT(OUT) :: string1, string2
