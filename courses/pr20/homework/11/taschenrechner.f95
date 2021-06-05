@@ -30,8 +30,9 @@ PROGRAM taschenrechner
         EXIT
      ELSE IF (input .EQ. 'i') THEN
         CALL infix(s)
+     ELSE
+        CALL stackcalc(s, input)
      END IF
-     CALL stackcalc(s, input)
      WRITE(*,'(A)',ADVANCE='NO') 'Current stack  '
      CALL write(s)
      WRITE(*,*) '|'
