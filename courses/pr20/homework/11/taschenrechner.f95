@@ -59,14 +59,14 @@ CONTAINS
     CALL push(s, elementa)
   END SUBROUTINE pot
 
-  SUBROUTINE diff(s)
+  SUBROUTINE div(s)
     TYPE(stack), INTENT(INOUT) :: s
     CHARACTER(LEN=10) :: elementa , elementb
     CALL pop(s, elementa)
     CALL pop(s, elementb)
     WRITE(elementa,'(I10)') toint(elementa) / toint(elementb)
     CALL push(s, elementa)
-  END SUBROUTINE diff
+  END SUBROUTINE div
 
   SUBROUTINE negate(s)
     TYPE(stack), INTENT(INOUT) :: s
@@ -116,7 +116,7 @@ CONTAINS
     ELSE IF (input .EQ. '*') THEN
        CALL mul(s)
     ELSE IF (input .EQ. ':') THEN
-       CALL diff(s)
+       CALL div(s)
     ELSE IF(input .EQ. '^') THEN
        CALL pot(s)
     ELSE IF (input .EQ. '=') THEN
