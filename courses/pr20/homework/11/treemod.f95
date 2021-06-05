@@ -44,38 +44,64 @@ CONTAINS
        !! Ignore first bracket
        CALL getnextchar(c)
     END IF
-    IF (c .eq. '(') THEN
-       CALL buildtree(t%left, .TRUE.)
-       t%left%operand = ' '
+    IF (c .EQ. '~') THEN
+       t%operator = '~'
        CALL getnextchar(c)
-    ELSE
-       i = 1
-       t%left%operand = ' '
-       DO WHILE(isnumber(c) .OR. islowerletter(c))
-          t%left%operand(i:i) = c
+       DO WHILE(c .eq. ' ')
           CALL getnextchar(c)
-          i = i + 1
        END DO
-    END IF
-    DO WHILE(c .eq. ' ' .OR. c .eq. ')')
-       CALL getnextchar(c)
-    END DO
-    t%operator = c
-    CALL getnextchar(c)
-    DO WHILE(c == ' ')
-       CALL getnextchar(c)
-    END DO
-    IF (c .eq. '(') THEN
-       CALL buildtree(t%right, .TRUE.)
-       t%right%operand = ' '
-    ELSE
-       i = 1
-       t%right%operand = ' '
-       DO WHILE(isnumber(c) .OR. islowerletter(c))
-          t%right%operand(i:i) = c
+       CALL getnextchar(c) !! 'Eat' bracket
+       IF (c .eq. '(') THEN
+          CALL buildtree(t%left, .TRUE.)
+          t%left%operand = ' '
           CALL getnextchar(c)
-          i = i + 1
+       ELSE
+          i = 1
+          t%left%operand = ' '
+          DO WHILE(isnumber(c) .OR. islowerletter(c))
+             t%left%operand(i:i) = c
+             CALL getnextchar(c)
+             i = i + 1
+          END DO
+       END IF
+       DO WHILE(c .eq. ' ')
+          CALL getnextchar(c)
        END DO
+       CALL getnextchar(c) !! Eat bracket
+    ELSE
+       IF (c .eq. '(') THEN
+          CALL buildtree(t%left, .TRUE.)
+          t%left%operand = ' '
+          CALL getnextchar(c)
+       ELSE
+          i = 1
+          t%left%operand = ' '
+          DO WHILE(isnumber(c) .OR. islowerletter(c))
+             t%left%operand(i:i) = c
+             CALL getnextchar(c)
+             i = i + 1
+          END DO
+       END IF
+       DO WHILE(c .eq. ' ' .OR. c .eq. ')')
+          CALL getnextchar(c)
+       END DO
+       t%operator = c
+       CALL getnextchar(c)
+       DO WHILE(c == ' ')
+          CALL getnextchar(c)
+       END DO
+       IF (c .eq. '(') THEN
+          CALL buildtree(t%right, .TRUE.)
+          t%right%operand = ' '
+       ELSE
+          i = 1
+          t%right%operand = ' '
+          DO WHILE(isnumber(c) .OR. islowerletter(c))
+             t%right%operand(i:i) = c
+             CALL getnextchar(c)
+             i = i + 1
+          END DO
+       END IF
     END IF
   END SUBROUTINE buildtree
 
@@ -108,6 +134,17 @@ CONTAINS
     TYPE(tree), INTENT(IN) :: t
     CHARACTER(LEN=80), INTENT(INOUT) :: output
 
+    IF (t%operator .EQ. '~') THEN
+       IF (LEN_TRIM(t%left%operand) == 0) THEN
+          output = TRIM(output) // '~('
+          CALL printtree_infix(t%left, output)
+          output = TRIM(output) // ')'
+       ELSE
+          output = TRIM(output) // '~(' // TRIM(t%left%operand) // ')'
+       END IF
+       RETURN
+    END IF
+
     output = TRIM(output) // '('
     IF (LEN_TRIM(t%left%operand) == 0) THEN
        CALL printtree_infix(t%left, output)
@@ -127,6 +164,16 @@ CONTAINS
   RECURSIVE SUBROUTINE printtree_postfix(t, output)
     TYPE(tree), INTENT(IN) :: t
     CHARACTER(LEN=80), INTENT(INOUT) :: output
+
+    IF (t%operator .EQ. '~') THEN
+       IF (LEN_TRIM(t%left%operand) == 0) THEN
+          CALL printtree_postfix(t%left, output)
+          output = TRIM(output) // ' ~'
+       ELSE
+          output = TRIM(output) // TRIM(t%left%operand) // ' ~'
+       END IF
+       RETURN
+    END IF
 
     IF (LEN_TRIM(t%left%operand) == 0) THEN
        CALL printtree_postfix(t%left, output)

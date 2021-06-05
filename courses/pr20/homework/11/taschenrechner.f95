@@ -2,6 +2,9 @@
 !! Karsten Lehmann
 
 !! Stack basierter Taschenrechner mit optionalem Infix-Modus
+!! Beispiele fuer Postfix Ausdruecke
+!!  ((4*9)-((2^5):(18-2))) -> 4 9 * 2 5 ^ 18 2 - : -
+!!
 PROGRAM taschenrechner
   USE stackmod
   USE stringmod
