@@ -2,6 +2,7 @@ CC = gfortran
 CC_FLAGS = -Wall -g -O0
 
 MODS = \
+	stackmod.o \
 	stringmod.o \
 	treemod.o
 
