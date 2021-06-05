@@ -69,8 +69,11 @@ CONTAINS
     TYPE(stackelement), POINTER :: current
 
     current => s%current
+    IF (.NOT. ASSOCIATED(current)) THEN
+       WRITE(*,'(A)', ADVANCE='NO') ' | <empty>'
+    END IF
     DO WHILE(ASSOCIATED(current))
-       WRITE(*,'(A)', ADVANCE='NO') TRIM(current%data) // ' '
+       WRITE(*,'(A)', ADVANCE='NO') ' | ' // TRIM(ADJUSTL(current%data))
        current => current%previous
     END DO
   END SUBROUTINE write

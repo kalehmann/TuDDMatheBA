@@ -24,6 +24,7 @@ PROGRAM taschenrechner
   WRITE(*,*) ' i for infix mode'
   WRITE(*,*) ' q for exit'
   DO
+     WRITE(*,'(A)',ADVANCE='NO') '> '
      READ(*,*) input
      IF (input .EQ. 'q') THEN
         EXIT
@@ -31,6 +32,9 @@ PROGRAM taschenrechner
         CALL infix(s)
      END IF
      CALL stackcalc(s, input)
+     WRITE(*,'(A)',ADVANCE='NO') 'Current stack  '
+     CALL write(s)
+     WRITE(*,*) '|'
   END DO
 CONTAINS
   !! Nimmt die beiden obersten Elemente von Stack, addiert sie und fuegt
