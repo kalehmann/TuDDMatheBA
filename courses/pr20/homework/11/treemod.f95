@@ -1,5 +1,8 @@
 !! Albina Oscherowa
 !! Karsten Lehmann
+
+!! Enthaelt einen Datentypen 'tree' und Helferfuntionen um
+!! Enen Ausdrucksbaum zu bauen.
 MODULE treemod
   USE stringmod
   IMPLICIT NONE
@@ -12,16 +15,19 @@ MODULE treemod
      CHARACTER(LEN=10) :: operand
   END type tree
 CONTAINS
+  !! Gibt zurueck ob das Zeichen in 'c' ein Kleinbuchstabe ist
   LOGICAL FUNCTION islowerletter(c)
     CHARACTER(LEN=1), INTENT(IN) :: c
     islowerletter = 'a' <= c .AND. c <= 'z'
   END FUNCTION ISLOWERLETTER
-  
+
+  !! Gibt zurueck ob das Zeichen in 'c' eine Zahl ist
   LOGICAL FUNCTION isnumber(c)
     CHARACTER(LEN=1), INTENT(IN) :: c
     isnumber = '0' <= c .AND. c <= '9'
   END FUNCTION isnumber
 
+  !! Baut den Baum mit dem Datenstrom aus dem Modul 'stringmod'
   RECURSIVE SUBROUTINE buildtree(t, sub)
     TYPE(tree), INTENT(OUT) :: t
     LOGICAL, INTENT(IN), OPTIONAL :: sub
@@ -73,6 +79,11 @@ CONTAINS
     END IF
   END SUBROUTINE buildtree
 
+  !! Gibt den Ausdruck aus
+  !! Standardmaessig in Infixnotation, wenn das Argument 'postfix'
+  !! gegeben ist in Postfixnotation.
+  !! Normalerweise wird der Ausdruck auf der Standardausgabe ausgegeben,
+  !! optional wird er in das Argument 'output' geschrieben.
   SUBROUTINE printtree(t, postfix, output)
     TYPE(tree), INTENT(IN) :: t
     LOGICAL, INTENT(IN), OPTIONAL :: postfix
@@ -91,7 +102,8 @@ CONTAINS
        WRITE(*,*) ADJUSTL(buffer)
     END IF
   END SUBROUTINE printtree
-  
+
+  !! Gibt den Baum in Infixnotation aus
   RECURSIVE SUBROUTINE printtree_infix(t, output)
     TYPE(tree), INTENT(IN) :: t
     CHARACTER(LEN=80), INTENT(INOUT) :: output
@@ -111,6 +123,7 @@ CONTAINS
     output = TRIM(output) // ')'
   END SUBROUTINE PRINTTREE_INFIX
 
+  !! Gibt den Baum in Postfixnotation aus
   RECURSIVE SUBROUTINE printtree_postfix(t, output)
     TYPE(tree), INTENT(IN) :: t
     CHARACTER(LEN=80), INTENT(INOUT) :: output
