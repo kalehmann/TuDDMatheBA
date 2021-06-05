@@ -1,5 +1,7 @@
 !! Albina Oscherowa
 !! Karsten Lehmann
+
+!! Verwaltet einen Stack mit 10 Zeichen langen Zeichenketten.
 MODULE stackmod
   IMPLICIT NONE
 
@@ -13,17 +15,20 @@ MODULE stackmod
      INTEGER :: size
   END type stack
 CONTAINS
+  !! Initialisiert den Stack
   SUBROUTINE init(s)
     TYPE(stack), INTENT(OUT) :: s
     NULLIFY(s%current)
     s%size = 0
   END SUBROUTINE init
 
+  !! Prueft ob der Stack leer ist
   LOGICAL FUNCTION empty(s)
     TYPE(stack), INTENT(IN) :: s
     empty = s%size == 0
   END FUNCTION empty
 
+  !! Fuegt dem Stack ein Element zu
   SUBROUTINE push(s, data)
     TYPE(stack), INTENT(OUT) :: s
     CHARACTER(LEN=10), INTENT(IN) :: data
@@ -35,6 +40,7 @@ CONTAINS
     s%size = s%size + 1
   END SUBROUTINE push
 
+  !! Entnimmt dem Stack ein Element
   SUBROUTINE pop(s, data)
     TYPE(stack), INTENT(OUT) :: s
     CHARACTER(LEN=10), INTENT(OUT) :: data
@@ -51,11 +57,13 @@ CONTAINS
     s%size = s%size - 1
   END SUBROUTINE pop
 
+  !! Gibt das oberste Element des Stacks zurueck (ohne Modifikation)
   CHARACTER(LEN=10) FUNCTION top(s)
     TYPE(stack), INTENT(IN) :: s
     top = s%current%data
   END FUNCTION top
 
+  !! Gibt den Stackinhalt aus
   SUBROUTINE write(s)
     TYPE(stack), INTENT(IN) :: s
     TYPE(stackelement), POINTER :: current
