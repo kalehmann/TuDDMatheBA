@@ -71,56 +71,58 @@ CONTAINS
     END IF
   END SUBROUTINE buildtree
 
-  SUBROUTINE printtree(t, postfix)
+  SUBROUTINE printtree(t, postfix, output)
     TYPE(tree), INTENT(IN) :: t
     LOGICAL, INTENT(IN), OPTIONAL :: postfix
+    CHARACTER(LEN=80), INTENT(OUT), OPTIONAL :: output
+    CHARACTER(LEN=80) :: buffer
 
+    buffer = ' '
     IF (PRESENT(postfix)) THEN
-       CALL printtree_postfix(t)
+       CALL printtree_postfix(t, buffer)
     ELSE
-       CALL printtree_infix(t)
+       CALL printtree_infix(t, buffer)
+    END IF
+    IF (PRESENT(output)) THEN
+       output = ADJUSTL(buffer)
+    ELSE
+       WRITE(*,*) ADJUSTL(buffer)
     END IF
   END SUBROUTINE printtree
   
-  RECURSIVE SUBROUTINE printtree_infix(t, sub)
+  RECURSIVE SUBROUTINE printtree_infix(t, output)
     TYPE(tree), INTENT(IN) :: t
-    LOGICAL, INTENT(IN), OPTIONAL :: sub
-    WRITE(*,'(A)',ADVANCE='NO') '('
+    CHARACTER(LEN=80), INTENT(INOUT) :: output
+
+    output = TRIM(output) // '('
     IF (LEN_TRIM(t%left%operand) == 0) THEN
-       CALL printtree_infix(t%left, .TRUE.)
+       CALL printtree_infix(t%left, output)
     ELSE
-       WRITE(*,'(A)',ADVANCE='NO') TRIM(t%left%operand)
+       output = TRIM(output) // TRIM(t%left%operand)
     END IF
-    WRITE(*,'(A)',ADVANCE='NO') TRIM(t%operator)
+    output = TRIM(output) // TRIM(t%operator)
     IF (LEN_TRIM(t%right%operand) == 0) THEN
-       CALL printtree_infix(t%right, .TRUE.)
+       CALL printtree_infix(t%right, output)
     ELSE
-       WRITE(*,'(A)',ADVANCE='NO') TRIM(t%right%operand)
+       output = TRIM(output) // TRIM(t%right%operand)
     END IF
-    IF (PRESENT(sub)) THEN
-       WRITE(*,'(A)',ADVANCE='NO') ')'
-    ELSE
-       WRITE(*,'(A)') ')'
-    END IF
+    output = TRIM(output) // ')'
   END SUBROUTINE PRINTTREE_INFIX
 
-  RECURSIVE SUBROUTINE printtree_postfix(t, sub)
+  RECURSIVE SUBROUTINE printtree_postfix(t, output)
     TYPE(tree), INTENT(IN) :: t
-    LOGICAL, INTENT(IN), OPTIONAL :: sub
+    CHARACTER(LEN=80), INTENT(INOUT) :: output
+
     IF (LEN_TRIM(t%left%operand) == 0) THEN
-       CALL printtree_postfix(t%left, .TRUE.)
+       CALL printtree_postfix(t%left, output)
     ELSE
-       WRITE(*,'(A)',ADVANCE='NO') TRIM(t%left%operand) // ' '
+       output = TRIM(output) // ' ' // TRIM(t%left%operand)
     END IF
     IF (LEN_TRIM(t%right%operand) == 0) THEN
-       CALL printtree_postfix(t%right, .TRUE.)
+       CALL printtree_postfix(t%right, output)
     ELSE
-       WRITE(*,'(A)',ADVANCE='NO') TRIM(t%right%operand) // ' '
+       output = TRIM(output) // ' ' // TRIM(t%right%operand)
     END IF
-    IF (PRESENT(sub)) THEN
-       WRITE(*,'(A)',ADVANCE='NO') TRIM(t%operator) // ' '
-    ELSE
-       WRITE(*,'(A)') TRIM(t%operator)
-    END IF
+    output = TRIM(output) // ' ' // TRIM(t%operator)
   END SUBROUTINE PRINTTREE_POSTFIX
 END MODULE treemod
