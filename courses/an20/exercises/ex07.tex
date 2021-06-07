@@ -1,0 +1,151 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\definecolor{light-gray}{gray}{.9}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\usepackage{titlesec}
+
+\titleformat{\section}[runin]
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}[runin]
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\author{Karsten Lehmann}
+\date{SoSe 2021}
+\title{Übung 07 Analysis - Weiterführende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\fcolorbox{black}{light-gray}{\begin{minipage}{\textwidth}
+    \textbf{Linearer Operator} (auch lineare Abbildung) ist eine
+    strukturerhaltende Abbildung zwischen Vektorräumen über einen
+    gemeinsamen Körper.
+
+    Seien $X, Y$ Vektorräume und $T \colon X \to Y$ eine Abbildung, dann heißt
+    $T$ linearer Operator, wenn
+    \begin{enumerate}
+    \item $\forall x, y \in X$ und $\lambda \in \mathbb{R} \colon T(\lambda x) = \lambda T(x)$
+    \item $\forall x, y \in X \colon T(x + y) = T(x) + T(y)$
+    \end{enumerate}
+\end{minipage}}
+
+Sei $X, Y$ normiert, ein Operator $T \colon X \to Y$ linear.
+\begin{enumerate}[(i)]
+\item $T$ ist stetig $\iff$
+\item $T$ ist in $0$ stetig $\iff$
+\item $T$ ist beschränkt, d.h. $\exists c > 0 \forall x \in X\colon \norm{T_x}_y \leq c \norm{x}$
+\end{enumerate}
+\[
+  T \in \mathcal{L}\qty{X, Y} = \qty{T \colon X \to Y {\Big |} T \text{ ist linear stetig}} (*)
+\]
+\begin{flalign*}
+  \norm{T} &= \inf\qty{c > 0 \, {\Big |} \text{ Es gilt } (*)} & \\
+  &= \sup\qty{\frac{\norm{Tx}_y}{\norm{x}_x} \, {\Big |} \, x \ne 0} & \frac{\norm{T_x}_y}{\norm{x}_x} = \norm{T\qty(\frac{x}{\norm{x}_x})} \\
+  &= \sup\qty{\norm{T_x}_y {\Big |} \norm{x}_x = 1} =  \sup\qty{\norm{T_x}_y {\Big |} \norm{x}_x \leq 1}
+\end{flalign*}
+
+$T \in \mathcal{L}\qty(\mathbb{R}^N, \mathbb{R}^M)$ und Basen $\phi$ auf
+$\mathbb{R}^N$ und $\psi$ auf $\mathbb{R}^M$ seien gegeben.
+
+$\Rightarrow$ Es gibt genau eine Matrix $A$, die die Koordinatenvektoren transformiert.
+
+$x = \sum_{k=1}^N x_k \phi_k, \underline{x} = \qty{x_1, \ldots, x_n} T_x = \sum_{k=1}^N x_k T(\phi_k) = \sum_{j=1}^M y_i \psi_j, \underline{y} = \qty{y_1, \ldots, y_m}$
+
+$\Rightarrow \underline{y} = A \cdot \underline{x}$
+
+\section*{Aufgabe 1} Der Raum $\mathcal{L}\qty(\mathbb{R}^N, \mathbb{R}^M)$ kann mit
+$R^{M \times N}$ identifiziert werden.
+Sind Normen $\norm{\cdot}_{\mathbb{R}^N}$ und
+$\norm{\cdot}_{\mathbb{R}^M}$ auf den Räumen $\mathbb{R}^N$ bzw.
+$\mathbb{R}^M$ gegeben, so ist durch
+\[
+  \norm{A} \coloneqq \sup\qty{ \norm{A \cdot x}_{\mathbb{R}^M} {\Big |} \norm{x}_{\mathbb{R}^N} \leq 1}
+\]
+eine Operatornorm auf $R^{M \times N}$ definiert.
+Die Räume $\mathbb{R}^N$ und $\mathbb{R}^M$ seien mit der $\norm{\cdot}_1$-Norm
+versehen.
+Beweisen Sie, dass sich als Operatornorm von $A \in R^{M \times N}$ die
+sogenannte \textit{Spaltensummennorm} ergibt:
+\[
+  \norm{A} = \underset{k=1,\ldots,N}\sum_{j=1}^M \abs{a_{jk}} \text{ für alle } A \in \mathcal{L}\qty(\mathbb{R}^N, \mathbb{R}^M)
+\]
+
+\newpage
+\textit{Lsg.} \\
+Sei $T \in \mathcal{L}\qty(\mathbb{R}^N, \mathbb{R}^M)$ und $A$ die
+Abbildungsmatrix bezüglich der Standardbasen.
+\[
+  \norm{x}_1 = \sum_{k = 1}^N \abs{x_k}, \quad \norm{y}_1 = \sum_{j = 1}^M \abs{y_j}
+\]
+Wir betrachten zunächst
+\[
+  A \cdot e^k =
+  \qty(
+    \begin{array}{ccccc}
+      a_{11} & \ldots & a_{1k} & \ldots & a_{1N} \\ \\ \\
+      \vdots & \vdots & \vdots & \vdots & \vdots \\ \\ \\
+      a_{M1} & \ldots & a_{Mk} & \ldots & a_{MN}
+    \end{array}
+  )
+  \cdot
+  \qty(
+    \begin{array}{c}
+      0 \\
+      \vdots \\
+      0 \\
+      1 \\
+      0 \\
+      \vdots \\
+      0
+    \end{array}
+  )
+  = \qty(a_{1k}, \ldots, a_{Mk}) \text{ (die $k$-te Spalte)}
+\]
+\[
+  \Rightarrow \norm{A \cdot e_k}_1 = \norm{\qty(a_{1k}, \ldots, a_{Mk})}_1
+  = \sum_{j = 1}^M \abs{a_{jk}}
+\]
+Wegen $\norm{e_k}_1 = 1$ folgt
+$\frac{\norm{A \cdot e_k}_1}{\norm{e_k}_1} = \sum_{j = 1}^M \abs{a_{jk}}
+\leq \sup\qty{\frac{\norm{A \cdot x}_1}{\norm{x}_1} {\Big |} x \in \mathbb{R^N}} = \norm{A}$
+\begin{flalign*}
+  \Rightarrow & \max_{k=1, \ldots, N} \sum_{j = 1}^M \abs{a_{jk}} \leq \norm{A} &
+\end{flalign*}
+Weiter gilt: Jedes $x \in \mathbb{R}^N$ besitzt eine eindeutige Darstellung der Form
+$x = \sum_{k = 1}^N x_k e_k$
+\begin{align*}
+  \Rightarrow \norm{A \cdot x}_1 &= \norm{\sum_{k = 1}^N x_k \cdot A \cdot e_k}_1
+  \leq \sum_{k = 1}^N \abs{x_k} \cdot \norm{A \cdot e_k}_1 \\
+  &\leq \max_{k=1, \ldots, N}\norm{A \cdot e_k} \cdot \underset{= \norm{x}_1}{\underbrace{\sum_{k = 1}^N \abs{x_k}}} \\
+  &= \max_{k=1, \ldots, N}\norm{A \cdot e_k} \cdot \norm{x}_1
+\end{align*}
+\begin{align*}
+  \overset{x \ne 0}&\Rightarrow \frac{\norm{A \cdot x}_1}{\norm{x}_1} \leq \max_{k=1, \ldots, N}\sum_{j = 1}^M \abs{a_jk} \\
+  \norm{A} &= \sup\qty{\frac{\norm{A \cdot x}_1}{\norm{x}_1} {\Big |}, \, x \ne 0 } \leq \max_{k=1, \ldots, N}\sum_{j = 1}^M \abs{a_jk} \\
+\end{align*}
+$\norm{A} = \max_{k = 1 \ldots N} \sum_{j = 1}^M \abs{a_{jk}}$ (die Spaltensummennorm)
+\end{document}
