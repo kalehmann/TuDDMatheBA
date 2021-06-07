@@ -261,4 +261,23 @@ mit
 \end{enumerate}
 $f'(x_0) \coloneqq T$
 
+\paragraph{Aufgabe 5}
+\begin{enumerate}[a)]
+\item Für $a, b, c \in \mathbb{R}$ sei $f \colon \mathbb{R} \to \mathbb{R}$
+  definiert durch $f(x) \coloneqq ax^2 + bx + c$.
+  Geben Sie die Weierstraßsche Zerlegungsformel für ein festes
+  $x_0 \in \mathbb{R}$ an.
+  Wie lautet $f'(x_0)$?
+
+  \textit{Lsg.}
+  Es gilt $f(x_0 + h) - f(x_0) = \qty(a(x_0 + h)^2 + b(x_0 + h) + c)
+  - \qty(ax_0^2 + bx_0 + c)$
+  $= \underset{h \mapsto (2ax_0 + b)h  \text{ ist linear}}{\underbrace{(2ax_0 + b) \cdot h}} + \underset{r(h)}{\underbrace{h^2}}$
+
+  Es gilt $\abs{\frac{r(h)}{h}} = \frac{h^2}{\abs{h}} = \abs{h} \overset{h \to 0}\longrightarrow 0$
+
+  $\Rightarrow f'(x_0)(h) = \underset{f'(x_0)}{\underbrace{(2ax_0 + b)}} h$
+\end{enumerate}
+
+
 \end{document}
