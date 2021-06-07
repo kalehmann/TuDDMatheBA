@@ -221,4 +221,50 @@ $\Rightarrow \norm{T} = 1$
 \end{flalign*}
 $\Rightarrow \norm{S} = 1$
 
+\section*{Differenzierbarkeit} $f \colon \mathbb{R} \to \mathbb{R}, x_0 \in \mathbb{R}$. \\
+$\exists f'(x_0) \lim_{h \to 0} \frac{1}{h} \qty(f(x_0 + h) - f(x_0))
+\iff \exists a \in \mathbb{R}, r \colon \mathbb{R} \to \mathbb{R} \colon
+f(x_0 + h) = f(x_0) + a \cdot h + r(h)$
+mit $\frac{r(h)}{h} \overset{h \to 0} \longrightarrow 0$. (Weierstraßsche Zerlegingsformel)
+
+$h \mapsto a \cdot h$ ist linear und stetig. $f'(x_0) = a$
+
+\begin{tikzpicture}
+  \begin{axis}[
+      axis lines=middle,
+      xmax = 5,
+      xmin = -0.2,
+      ymax = 4,
+      ymin = -0.2]
+    \addplot [
+      domain=-5:5,
+      samples=100,
+      name path=upper,
+      very thick, orange]{ln(3 * x)};
+    \node at (1.3,-.1) {$x_0$};
+    \node[purple] at (2,3.5) {affin lineare Approximation};
+    \node[purple] at (1.6,2.9) {$f(x_0) + f'(x_0) \cdot \underset{h}{\underbrace{x - x_0}}$};
+    \node[orange] at (4,2.2) {$f$};
+    \addplot [
+      domain=-1:4,
+      samples=100,
+      very thick, purple
+    ] {1 / 1.3 * x + 0.4};
+    \path[dashed, draw] (1.3,0) -- (1.3, 1.36);
+  \end{axis}
+\end{tikzpicture}
+
+$X, Y$ normiert, $D \subseteq X$ offen, $f \colon D \to Y$ ist in $x_0 \in D$
+Fréchet-differenzierbar $\iff \exists \, T \in \mathcal{L}(X, Y), r \colon X \to Y$
+mit
+\begin{enumerate}
+\item $f(x_0) = f(x_0) + T(h) + r(h)$ \\
+  $f(x) = \colorbox{blue!20}{
+    $\overset{\text{Affin lineare Approximation}}{\overbrace{f(x_0) + T(x - x_0)}}$
+  } + r(x - x_0), x \in D$
+\item $\frac{\norm{r(h)}_X}{\norm{h}_X} \overset{h \to 0}\longrightarrow 0$
+  bzw. $\frac{\norm{r(x - x_0)}_X}{\norm{x - x_0}_X} \overset{x \to x_0}\longrightarrow 0$
+\end{enumerate}
+$f'(x_0) \coloneqq T$
+
 \end{document}
