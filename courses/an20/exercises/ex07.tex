@@ -161,15 +161,64 @@ Zeigen Sie folgende Ungleichung
 \textit{Lsg.} Eine Verkettung linearer Abbildungen ist ebenfalls linear.
 Für $x \in X$ gilt
 \begin{align*}
-  \norm{(S \circ T) x} \in Z &= \norm{S(T x)} \in Z \\
-                             &\leq \norm{S} \cdot \norm{T x}
-                               \text{(\hyperref[c_inf]{Siehe $(*)$})} \\
+  \norm{(S \circ T) x} \in Z &= \norm{S(T x)} \in Z
+                               \leq \norm{S} \cdot \norm{T x} \\
+                             &\text{(\hyperref[c_inf]{Siehe $(*)$})} \\
                              &\leq \norm{S} \cdot \norm{T} \cdot \norm{x}_X
 \end{align*}
 \begin{align*}
   \overset{x \ne 0}\Rightarrow \frac{\norm{\qty(S \circ T)x}_Z}{\norm{x}_X}
   &\leq \norm{S} \cdot \norm{T} \\
-  \norm{S \circ T} &= \sup\qty{\frac{\norm{\qty(S \circ T)x}_Z}{\norm{x}_X} {\Big |} \, x \ne 0}
-  \leq \norm{S} \cdot \norm{T}
+  \norm{S \circ T} &= \sup\qty{\frac{\norm{\qty(S \circ T)x}_Z}{\norm{x}_X} {\Big |} \, x \ne 0} \\
+  &\leq \norm{S} \cdot \norm{T}
 \end{align*}
+
+\section*{Hausaufgabe 3} $X = C([0, 1])$ sei mit der Supremumsnorm versehen.
+Wir betrachten die Abbildungen $S, T \colon C([0, 1]) \to \mathbb{R}$,
+definiert durch
+\[
+  T(f) \coloneqq \int_{0}^1 f(x)\,dx \text{ und }
+  \overset{\delta-\text{Distribution}}{\overbrace{S(f) = f(0)}}
+  \text{ für } f \in X
+\]
+Beweisen Sie, dass diese Abbildungen zu $\mathcal{L}\qty(X, \mathbb{R})$
+gehören und berechnen Sie deren Normen, wenn auf $\mathbb{R}$ die Betragsmetrik
+gegeben ist.
+
+\textit{Lsg.} $S, T$ sind linear: Seien
+$f, g \in C([0, 1]), \alpha, \beta \in \mathbb{R}$ gegeben.
+Dann gilt:
+\begin{align*}
+  T(\alpha \cdot f + \beta \cdot g)
+  &= \int_0^1 \qty\Big(\alpha \cdot f + \beta \cdot g)\qty\Big(x)\,dx \\
+  &=\int_0^1 \alpha \cdot f(x) + \beta \cdot g(x)\,dx \\
+  &= \alpha \int_0^1 f(x)\,dx + \beta \int_0^1 g(x)\,x  \\
+  &= \alpha \cdot T(f) + \beta \cdot T(g) \\
+  S(\alpha \cdot f + \beta \cdot g)
+  &= \qty\Big(\alpha \cdot f + \beta \cdot g)\qty\Big(0)
+    = \alpha \cdot f(0) + \beta \cdot g(0) \\
+    &= \alpha \cdot S(f) + \beta \cdot S(g) \\
+  \Rightarrow S, T & \text{ sind linear}
+\end{align*}
+\newpage
+$S, T$ sind stetig mit $\norm{S} = \norm{T} = 1$: Für $f \in C([0, 1])$ gilt:
+\begin{align*}
+  \abs{T(f)} &= \abs{\int_0^1 f(x)\,dx} \leq \int_0^1
+               \underset{\leq \norm{f}_{\infty}}{\underbrace{\abs{f(x)}}}\,dx
+               \leq \norm{f}_{\infty} \int_0^1 dx = \norm{f}_{\infty} \\
+  \overset{f \ne 0}&\Rightarrow \frac{\abs{T(f)}}{\norm{f}_{\infty}} \leq 1
+                     \Rightarrow \norm{T} \leq 1
+\end{align*}
+\begin{flalign*}
+  \text{Für $f_0(x) = 1, x \in \qty[0, 1]$, gilt $\abs{T(f)} = \int_0^1 1\,dx = 1$}
+  \Rightarrow \norm{T} &= \sup\qty{\abs{T f} {\Big |} \, \norm{f}_{\infty} = 1} & \\
+  &\geq \abs{T f_0} = 1
+\end{flalign*}
+$\Rightarrow \norm{T} = 1$
+\begin{flalign*}
+  \abs{S(f)} &= \abs{f(0)} \leq \norm{f}_{\infty} \Rightarrow \norm{S} \leq 1 & \\
+  \abs{S(f_0)} &= \abs{f_0(1)} = 1 \Rightarrow \norm{S} \geq 1
+\end{flalign*}
+$\Rightarrow \norm{S} = 1$
+
 \end{document}
