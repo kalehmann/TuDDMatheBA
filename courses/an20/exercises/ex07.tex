@@ -59,6 +59,7 @@ Sei $X, Y$ normiert, ein Operator $T \colon X \to Y$ linear.
 \item $T$ ist in $0$ stetig $\iff$
 \item $T$ ist beschränkt, d.h. $\exists c > 0 \forall x \in X\colon \norm{T_x}_y \leq c \norm{x}$
 \end{enumerate}
+\label{c_inf}
 \[
   T \in \mathcal{L}\qty{X, Y} = \qty{T \colon X \to Y {\Big |} T \text{ ist linear stetig}} (*)
 \]
@@ -148,4 +149,27 @@ $x = \sum_{k = 1}^N x_k e_k$
   \norm{A} &= \sup\qty{\frac{\norm{A \cdot x}_1}{\norm{x}_1} {\Big |}, \, x \ne 0 } \leq \max_{k=1, \ldots, N}\sum_{j = 1}^M \abs{a_jk} \\
 \end{align*}
 $\norm{A} = \max_{k = 1 \ldots N} \sum_{j = 1}^M \abs{a_{jk}}$ (die Spaltensummennorm)
+
+\section*{Hausaufgabe 2} Seien $X, Y, Z$ normierte Räume und
+$T \in \mathcal{L}\qty(X, Y)$ sowie $S \in \mathcal{L}\qty(Y, Z)$.
+Dann gehört $S \circ T$ zu $\mathcal{L}\qty(X, Z)$.
+Zeigen Sie folgende Ungleichung
+\[
+  \norm{S \circ T} \leq \norm{S} \cdot \norm{T}
+\]
+
+\textit{Lsg.} Eine Verkettung linearer Abbildungen ist ebenfalls linear.
+Für $x \in X$ gilt
+\begin{align*}
+  \norm{(S \circ T) x} \in Z &= \norm{S(T x)} \in Z \\
+                             &\leq \norm{S} \cdot \norm{T x}
+                               \text{(\hyperref[c_inf]{Siehe $(*)$})} \\
+                             &\leq \norm{S} \cdot \norm{T} \cdot \norm{x}_X
+\end{align*}
+\begin{align*}
+  \overset{x \ne 0}\Rightarrow \frac{\norm{\qty(S \circ T)x}_Z}{\norm{x}_X}
+  &\leq \norm{S} \cdot \norm{T} \\
+  \norm{S \circ T} &= \sup\qty{\frac{\norm{\qty(S \circ T)x}_Z}{\norm{x}_X} {\Big |} \, x \ne 0}
+  \leq \norm{S} \cdot \norm{T}
+\end{align*}
 \end{document}
