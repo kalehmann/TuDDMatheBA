@@ -277,6 +277,48 @@ $f'(x_0) \coloneqq T$
   Es gilt $\abs{\frac{r(h)}{h}} = \frac{h^2}{\abs{h}} = \abs{h} \overset{h \to 0}\longrightarrow 0$
 
   $\Rightarrow f'(x_0)(h) = \underset{f'(x_0)}{\underbrace{(2ax_0 + b)}} h$
+
+\item Für $A \in \mathbb{R}^{N \times N}, b \in \mathbb{R}^N, c \in \mathbb{R}$ sei
+  $f \colon \mathbb{R}^N \to \mathbb{R}$ definiert durch
+  \[
+    f(x) \coloneqq \left\langle x, Ax \right\rangle + \left\langle b, x \right\rangle + c
+  \]
+  dabei bezeichne $\left\langle ., . \right\rangle$ das Euklidische Skalarprodukt auf dem $\mathbb{R}^N \colon$
+  \[
+    \left\langle x, y \right\rangle = \sum_{k = 1}^N x_k y_k \text{ für } x = \qty(x_1, \ldots, x_N), y = \qty(y_1, \ldots, y_N) \in \mathbb{R}^N
+  \]
+  Wenden Sie die Weierstraßsche Zerlegungsformel an, um $f'(x_0)$ für ein festes
+  $x_0 \in \mathbb{R}^N$ zu bestimmen.
+  Wie lautet $f'(x_0)$, wenn $A$ eine symmetrische Matrix ist?
+
+  \textit{Lsg.} Es gilt
+  $f(x_0 + h) - f(x_0) = \left\langle x_0 + h, A \cdot (x_0 + h) \right\rangle
+  + \left\langle b, x_0 + h \right\rangle + c -
+  \qty(\left\langle x_0, A \cdot x_0 \right\rangle + \left\langle b, x_0 \right\rangle + c)$
+
+  $= \underset{
+    h \mapsto \langle x_0, A \cdot h \rangle + \langle h, A \cdot x_0 \rangle + \langle b, h \rangle \text{ ist linear}
+  }{\underbrace{\left\langle x_0, A \cdot h \right\rangle + \left\langle h, A \cdot x_0 \right\rangle
+  + \left\langle b, h \right\rangle}} +
+  \underset{r(h)}{\underbrace{\left\langle h, A \cdot h \right\rangle}}$
+
+  \fcolorbox{black}{light-gray}{\begin{minipage}{\textwidth}
+      \textbf{Cauchy-Schwarzsche Ungleichung}  \\
+      Wenn $x, y$ Elemente eines Vektorraumes sind, dann gilt für das
+      Skalarprodukt $\langle x, y \rangle$
+      \[
+        \abs{\langle x, y \rangle} \leq \norm{x} \cdot \norm{y}
+      \]
+  \end{minipage}}
+
+  Wegen $\frac{\abs{r(h)}}{\norm{h}_2} = \frac{\abs{\left\langle h, A \cdot h \right\rangle}}{\norm{h}_2}
+  \leq \frac{\norm{h}_2 \cdot \norm{A \cdot h}_2}{\norm{h}_2} \leq \norm{A} \cdot \norm{h}_2
+  \overset{h \to 0}\longrightarrow 0$ ist $f$ in jedem $x_0 \in \mathbb{R}^N$ Fréchet-Differenzierbar
+  mit
+  \begin{flalign*}
+    f'(x_0)(h) &= \langle x_0, A \cdot h \rangle + \langle h, A \cdot x_0 \rangle + \langle b, h \rangle & \\
+    &= x_0^T \cdot A \cdot h + h^T \cdot A \cdot x_0 + b^T \cdot h
+  \end{flalign*}
 \end{enumerate}
 
 
