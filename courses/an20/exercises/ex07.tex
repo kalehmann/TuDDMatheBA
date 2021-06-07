@@ -21,12 +21,6 @@
 \usetikzlibrary{intersections}
 \usetikzlibrary{patterns}
 \usepgfplotslibrary{fillbetween}
-\usepackage{titlesec}
-
-\titleformat{\section}[runin]
-  {\normalfont\Large\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}[runin]
-  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
 
 \author{Karsten Lehmann}
 \date{SoSe 2021}
@@ -78,7 +72,7 @@ $x = \sum_{k=1}^N x_k \phi_k, \underline{x} = \qty{x_1, \ldots, x_n} T_x = \sum_
 
 $\Rightarrow \underline{y} = A \cdot \underline{x}$
 
-\section*{Aufgabe 1} Der Raum $\mathcal{L}\qty(\mathbb{R}^N, \mathbb{R}^M)$ kann mit
+\paragraph{Aufgabe 1} Der Raum $\mathcal{L}\qty(\mathbb{R}^N, \mathbb{R}^M)$ kann mit
 $R^{M \times N}$ identifiziert werden.
 Sind Normen $\norm{\cdot}_{\mathbb{R}^N}$ und
 $\norm{\cdot}_{\mathbb{R}^M}$ auf den Räumen $\mathbb{R}^N$ bzw.
@@ -150,7 +144,7 @@ $x = \sum_{k = 1}^N x_k e_k$
 \end{align*}
 $\norm{A} = \max_{k = 1 \ldots N} \sum_{j = 1}^M \abs{a_{jk}}$ (die Spaltensummennorm)
 
-\section*{Hausaufgabe 2} Seien $X, Y, Z$ normierte Räume und
+\paragraph{Hausaufgabe 2} Seien $X, Y, Z$ normierte Räume und
 $T \in \mathcal{L}\qty(X, Y)$ sowie $S \in \mathcal{L}\qty(Y, Z)$.
 Dann gehört $S \circ T$ zu $\mathcal{L}\qty(X, Z)$.
 Zeigen Sie folgende Ungleichung
@@ -173,7 +167,7 @@ Für $x \in X$ gilt
   &\leq \norm{S} \cdot \norm{T}
 \end{align*}
 
-\section*{Hausaufgabe 3} $X = C([0, 1])$ sei mit der Supremumsnorm versehen.
+\paragraph{Hausaufgabe 3} $X = C([0, 1])$ sei mit der Supremumsnorm versehen.
 Wir betrachten die Abbildungen $S, T \colon C([0, 1]) \to \mathbb{R}$,
 definiert durch
 \[
@@ -221,7 +215,7 @@ $\Rightarrow \norm{T} = 1$
 \end{flalign*}
 $\Rightarrow \norm{S} = 1$
 
-\section*{Differenzierbarkeit} $f \colon \mathbb{R} \to \mathbb{R}, x_0 \in \mathbb{R}$. \\
+\paragraph{Differenzierbarkeit} $f \colon \mathbb{R} \to \mathbb{R}, x_0 \in \mathbb{R}$. \\
 $\exists f'(x_0) \lim_{h \to 0} \frac{1}{h} \qty(f(x_0 + h) - f(x_0))
 \iff \exists a \in \mathbb{R}, r \colon \mathbb{R} \to \mathbb{R} \colon
 f(x_0 + h) = f(x_0) + a \cdot h + r(h)$
