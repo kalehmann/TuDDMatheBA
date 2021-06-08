@@ -96,6 +96,27 @@
     \Rightarrow \norm{A}_{\infty} = \sup\qty{\norm{A \cdot x}_{\infty} {\Big |} \norm{x}_{\infty} \leq 1 }
   \]
   \newpage
+
+\item Die Menge $\mathbb{R}^{N \times N}$ der reellen $N \times N$-Matrizen sei
+  mit einer Norm $\norm{\cdot}$ versehen, z.B. eine der üblichen Operatornormen
+  oder der Frobenius-Norm.
+  Beweisen Sie, dass die Teilmenge der invertierbaren Matrizen eine offene Menge
+  in $\qty(\mathbb{R}^{N \times N}, \norm{\cdot})$ ist.
+  Argumentieren Sie unter der Verwendung der Determinanten quadratischer
+  Matrizen.
+
+  \subparagraph{Lsg.} Die Determinante ist eine stetige Abbildung
+  $\det \colon \mathbb{R}^{N \times N} \to \mathbb{R}$.
+  Für alle invertierbaren Matizen $A \in \mathbb{R}^{N \times N}$
+  gilt $\det A \ne 0$.
+  Nun findet existiert für jedes $x \in \mathbb{R} \setminus \qty{0}$
+  eine Matrix $A \in \mathbb{R}^{N \times N}$ mit
+  $\det A = X$.
+  Die Menge $\mathbb{R} \setminus \qty{0}$ ist offen und aus
+  Proposition 6.3.3 der Vorlesung
+  (``“Stetige Urbilder offener Mengen sind offen'')
+  folgt, dass die Menge der invertierbaren Matrizen in
+  $\mathbb{R}^{N \times N}w$ offen ist.
 \end{enumerate}
 
 \paragraph{Hausaufgabe 2} Der Raum $\mathbb{R}^{N \times N}$ sei durch eine
