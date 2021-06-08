@@ -1,0 +1,52 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usepgfplotslibrary{fillbetween}
+
+\author{}
+\date{SoSe 2021}
+\title{Hausaufgabe 07 \\Analysis - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+
+\paragraph{Hausaufgabe 2} Der Raum $\mathbb{R}^{N \times N}$ sei durch eine
+Matrixnorm normiert.
+Ermitteln Sie von $f \colon \mathbb{R}^{N \times N} \to \mathbb{R}^{N \times N}$
+mit $f(X) \coloneqq X^2$ die Weierstraßsche Zerlegungsformel für ein festes
+$X_0 \in \mathbb{R}^{N \times N}$.
+Bestimmen Sie daraus die Ableitung $f'(X_0)$.
+
+\subparagraph{Lsg.}
+
+Es gilt
+\begin{align*}
+  f(x_0 + h) - f(x_0) &= (x_0 + h)^2 - x_0^2 = x_0^2 + 2x_0h + h^2 - x_0^2 \\
+                      &= \underset{h \mapsto 2x_0h \text{ ist linear}}{\underbrace{2x_0h}} +
+                        \underset{r(h)}{\underbrace{h^2}}
+\end{align*}
+$\Rightarrow f'(X_0)(h) = 2X_0h$
+
+\end{document}
