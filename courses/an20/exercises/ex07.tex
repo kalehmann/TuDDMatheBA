@@ -33,6 +33,9 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
+\newcommand\skalprod[1]{\left\langle #1 \right\rangle}
+\newcommand\nnorm[1]{\left\lvert\left\lvert\left\lvert #1 \right\rvert\right\rvert\right\rvert}
+
 \begin{document}
 \fcolorbox{black}{light-gray}{\begin{minipage}{\textwidth}
     \textbf{Linearer Operator} (auch lineare Abbildung) ist eine
@@ -215,6 +218,57 @@ $\Rightarrow \norm{T} = 1$
 \end{flalign*}
 $\Rightarrow \norm{S} = 1$
 
+\paragraph{Aufgabe 4} Seien $\norm{\cdot}_1$ und $\norm{\cdot}_2$ die übliche
+1-Norm und die Euklidische Norm des $\mathbb{R}^N$.
+Beweisen Sie, dass jede lineare Abbildung
+$T \colon \qty(\mathbb{R}^N, \norm{\cdot}_1) \to \qty(\mathbb{R}^M, \norm{\cdot}_2)$
+stetig ist.
+Folgern Sie hieraus, dass
+$T \colon \qty(\mathbb{R}^N, \norm{\cdot}_1) \to \qty(\mathbb{R}^M, \nnorm{\cdot})$
+bezüglich beliebiger Normen $\norm{\cdot}$ auf $\mathbb{R}^N$ bzw.
+$\nnorm{\cdot}$ auf $\mathbb{R}^M$ stetig ist. \\
+
+\textit{Lsg.} Sei $\qty(e^1, \ldots, e^N)$ die Standardbasis des $\mathbb{R}^N$
+und $u^k \coloneqq T\qty(e^k)$ die Bilder der Basisvektoren.
+Jedes $x \in \mathbb{R}^N$ besitzt dann die eindeutige Darstellung
+$x = \sum_{k = 1}^N x_k e^k$.
+Da $T$ linear ist, folgt
+\[
+  T_x = T\qty(\sum_{k = 1}^N x_k e^k) = \sum_{k = 1}^N x_k T\qty(e^k) = \sum_{k = 1}^N x_k u^k
+\]
+
+Sei nun $\langle ., . \rangle$ das Euklidische Skalarprodukt des $\mathbb{R}^M$.
+Dann gilt $\norm{y}_2^2 = \langle y, y \rangle$ für alle $y \in \mathbb{R}^M$.
+Es folgt
+\begin{align*}
+  \norm{T_x}_2^2 &= \skalprod{T_x, T_x} = \skalprod{\sum_{k=1}^N x_ku^k, \sum_{k=1}^N x_ku^k}
+                   = \sum_{k=1}^N \sum_{j=1}^N x_k x_j \skalprod{u^k, u^j} \\
+                 &\leq \sum_{k=1}^N \qty(\abs{x_k} \sum_{j=1}^N \abs{x_j} \cdot \abs{\skalprod{u^ku^j}})
+                   \leq \underset{= C}{\underbrace{\max_{k,j = 1, \ldots, N} \abs{\skalprod{u^k, u^j}}}}
+                   \sum_{k=1}^N \qty(\abs{x_k} \sum_{j=1}^N \abs{x_j}) \\
+                 &= C \sum_{k=1}^N \abs{x_j} \cdot \norm{x}_1 = C \cdot \norm{x}_1 \sum_{k=1}^N \abs{x_k}
+                   = C \cdot \norm{x}_1^2 \qquad \forall x \in \mathbb{R}^N
+\end{align*}
+
+Somit ist $\norm{T_x}_2 \leq \sqrt{C} \norm{x}_1$ für alle $x \in \mathbb{R}^N$,
+woraus $\norm{T} \leq \sqrt{C} < \infty$ folgt.
+Seien nun beliebige Normen $\norm{\cdot}$ auf $\mathbb{R}^N$ bzw.
+$\nnorm{\cdot}$ auf $\mathbb{R}^M$ gegeben.
+Nach dem Satz über die Normenäquivalenz in endlichdimensionalen Räumen
+existieren Konstanten $c_1, c1, k_1, k_2 > 0$ mit
+\[
+  c_1\norm{x}_1 \leq \norm{x} \leq c_2 \norm{x}_1 \text{ für alle }
+  x \in \mathbb{R}^N \text{ und }
+  k_1\norm{y}_2 \leq \nnorm{y} \leq k_2 \norm{y}_2
+  \text{ für alle } y \in \mathbb{R}^M
+\]
+Mit $y = T_x$ erhalten wir für alle $x \in \mathbb{R}^N$
+\[
+  \frac{\nnorm{T_x}}{k_2} \leq \norm{T_x}_2 \leq C \norm{x}_1 \leq C \frac{\norm{x}}{c_1}
+  \text{ bzw. } \nnorm{T_x} \leq \frac{Ck_2}{c_1}\norm{x}
+\]
+Also ist $T$ bezüglich dieser Normen ebenfalls beschränkt und somit stetig.
+
 \paragraph{Differenzierbarkeit} $f \colon \mathbb{R} \to \mathbb{R}, x_0 \in \mathbb{R}$. \\
 $\exists f'(x_0) \lim_{h \to 0} \frac{1}{h} \qty(f(x_0 + h) - f(x_0))
 \iff \exists a \in \mathbb{R}, r \colon \mathbb{R} \to \mathbb{R} \colon
@@ -261,6 +315,7 @@ mit
 \end{enumerate}
 $f'(x_0) \coloneqq T$
 
+\newpage
 \paragraph{Aufgabe 5}
 \begin{enumerate}[a)]
 \item Für $a, b, c \in \mathbb{R}$ sei $f \colon \mathbb{R} \to \mathbb{R}$
