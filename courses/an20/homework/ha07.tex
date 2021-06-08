@@ -30,7 +30,73 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
+\newcommand\sign[1]{\text{sign}\qty(#1)}
+
 \begin{document}
+\paragraph{Hausaufgabe 1}
+\begin{enumerate}[1)]
+\item Die Räume $\mathbb{R}^N$ und $\mathbb{R}^M$ seien mit der
+  $\norm{\cdot}_{\infty}$-Norm versehen.
+  Beweisen Sie, dass sich als Operatornorm von $A \in \mathbb{R}^{M \times N}$
+  die sogenannte \textit{Zeilensummennorm} ergibt:
+  \[
+    \norm{A} = \max_{j = 1, \ldots, M} \sum_{k = 1}^N \abs{a_{jk}}
+    \text{ für alle } A \in \mathcal{L}\qty(\mathbb{R}^N, \mathbb{R}^M)
+  \]
+  \textbf{Anleitung:} Zeigen Sie
+  $\norm{A \cdot x}_{\infty} \leq \max_{j = 1, \ldots, M} \sum_{k = 1}^N \abs{a_{jk}}$
+  für alle $x \in \mathbb{R}^N$ mit $\norm{x}_{\infty} \leq 1$.
+  Wählen Sie zunächst geeignete $x^j \in \mathbb{R}^N$ mit
+  $\norm{x}_{\infty} = 1$, so dass
+  $\max_{j = 1, \ldots, M} \underset{\makebox[0pt]{Betragssumme der $j$-ten Zeile}}{\underbrace{\sum_{k = 1}^N \abs{a_{jk}}}}
+  \leq \max_{j = 1, \ldots, M} \norm{A \cdot x^j}_{\infty}$
+  gilt.
+
+  \subparagraph{Lsg.} $\norm{x}_{\infty} = \max\qty(\abs{x_1}, \ldots, \abs{x_N})$.
+  Aus $\norm{x}_{\infty} \leq 1$ folgt $\abs{x_k} \leq 1$ für $k = 1, \ldots, N$
+  und für alle
+  \colorbox{yellow}{$i = 1, \ldots, M \colon \sum_{k = 1}^N a_{ik} \cdot x_k
+  \leq \sum_{k = 1}^N \abs{a_{ik} \cdot x_k} \leq \sum_{k = 1}^N \abs{a_{ik}}$}.
+  Somit gilt:
+  \[
+    \norm{A \cdot x}_{\infty} = \max_{j = 1, \ldots, M} \sum_{k = 1}^N a_{jk} \cdot x_k
+    \leq \max_{j = 1, \ldots, M} \sum_{k = 1}^N \abs{a_{jk}}
+  \]
+  Sei nun $x^j \in \mathbb{R}^N$ mit $x^j = \begin{pmatrix} \sign{a_{j1}} \\ \vdots \\ \sign{a_{jN}} \end{pmatrix}$.
+  Dann ist $\norm{x^j}_{\infty} = 1$ und
+  \[
+    \norm{A \cdot x^j}_{\infty} = \begin{pmatrix}
+      \sum_{k = 1}^N a_{1k} \cdot x_k \\
+      \vdots \\
+      \sum_{k = 1}^N a_{jk} \cdot x_k \\
+      \vdots \\
+      \sum_{k = 1}^N a_{Mk} \cdot x_k \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      \sum_{k = 1}^N a_{1k} \cdot x_k \\
+      \vdots \\
+      \sum_{k = 1}^N a_{jk} \cdot \sign{a_{jk}} \\
+      \vdots \\
+      \sum_{k = 1}^N a_{Mk} \cdot x_k \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      \sum_{k = 1}^N a_{1k} \cdot x_k \\
+      \vdots \\
+      \sum_{k = 1}^N \abs{a_{jk}} \\
+      \vdots \\
+      \sum_{k = 1}^N a_{Mk} \cdot x_k \\
+    \end{pmatrix}
+  \]
+  Wie \colorbox{yellow}{bereits gezeigt} ist
+  $\sum_{k = 1}^N a_{ik} \cdot x_k\leq \sum_{k = 1}^N \abs{a_{ik}}$,
+  somit ist $\max\norm{A \cdot x^j}_{\infty} = \sum_{k = 1}^N \abs{a_{jk}}$
+  und
+  $\max_{j = 1, \ldots, M} \sum_{k = 1}^N \abs{a_{jk}} = \max_{j = 1, \ldots, M} \norm{A \cdot x^j}_{\infty}$.
+  \[
+    \Rightarrow \norm{A}_{\infty} = \sup\qty{\norm{A \cdot x}_{\infty} {\Big |} \norm{x}_{\infty} \leq 1 }
+  \]
+  \newpage
+\end{enumerate}
 
 \paragraph{Hausaufgabe 2} Der Raum $\mathbb{R}^{N \times N}$ sei durch eine
 Matrixnorm normiert.
