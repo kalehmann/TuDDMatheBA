@@ -303,6 +303,7 @@ $f'(x_0) \coloneqq T$
   \underset{r(h)}{\underbrace{\left\langle h, A \cdot h \right\rangle}}$
 
   \fcolorbox{black}{light-gray}{\begin{minipage}{\textwidth}
+      \label{CSU}
       \textbf{Cauchy-Schwarzsche Ungleichung}  \\
       Wenn $x, y$ Elemente eines Vektorraumes sind, dann gilt für das
       Skalarprodukt $\langle x, y \rangle$
@@ -319,7 +320,49 @@ $f'(x_0) \coloneqq T$
     f'(x_0)(h) &= \langle x_0, A \cdot h \rangle + \langle h, A \cdot x_0 \rangle + \langle b, h \rangle & \\
     &= x_0^T \cdot A \cdot h + h^T \cdot A \cdot x_0 + b^T \cdot h
   \end{flalign*}
-\end{enumerate}
 
+\newpage
+\item Der Raum $\mathbb{R}^{N \times N}$ sei mit einer Operatornorm
+  $\norm{\cdot}$ versehen.
+  Nach Hausaufgabe 1 ist die Menge $M \subseteq \mathbb{R}^{N \times N}$ der
+  invertierbaren Matrizen eine offene Teilmenge von $\mathbb{R}^{N \times N}$,
+  d.h. ist $X \in \mathbb{R}^{N \times N}$ invertierbar, dann existiert ein
+  $\epsilon > 0$, so dass $X + H$ für alle $H \in B(X, \epsilon)$
+  invertierbar ist.
+  Insbesondere ist $I + H$ für $\norm{H} < 1$ invertierbar, wobei
+  \[
+    (I + H)^{-1} = \sum_{k = 0}^{\infty}(-1)^k H^k
+  \]
+  gilt.
+  Die obige Reihe wird Neumannsche Reihe genannt.
+  Zeigen Sie, dass $f \colon M \to M$ mit $f(X) = X^{-1}$ differenzierbar ist
+  und geben Sie $f'(X)$ an.
+
+  \textit{Lsg.} Sei $X \in M$ und $H \in \mathbb{R}^{N \times N}$, so dass
+  $\norm{H} \cdot \norm{X^{-1}} < 1$ gilt und $(X + H)^{-1}$ existiert.
+  Mit $S = H \cdot X^{-1}$ folgt
+  \begin{align*}
+    f(X + H) - f(X) &= (X + H)^{-1} - X^{-1} \\
+                    &= X^{-1} \qty(X (X + H)^{-1} - I) = X^{-1} (X - (X + H))(X + H)^{-1} \\
+                    &= -X^{-1} H (X + H)^{-1} = -X^{-1}H((I + HX^{-1})X)^{-1} \\
+                    &= -X^{-1} H X^{-1} (I + S)^{-1} \\
+    \overset{\norm{S} \leq \norm{H} \norm{X^{-1}} \leq 1}&= -X^{-1} H X^{-1} \sum_{k = 0}^{\infty}(-1)^k S^k \\
+                    &= -X^{-1} H X^{-1} \qty(I + \sum_{k = 1}^{\infty}(-1)^k S^k) \\
+                    &= -X^{-1} H X^{-1} - X^{-1} H X^{-1} (-S) \sum_{k = 0}^{\infty}(-1)^k S^k \\
+                    &= \underset{H \mapsto -X^{-1} H X^{-1} \text{ ist linear}}{\underbrace{-X^{-1} H X^{-1}}}
+                      + \underset{r(H)}{\underbrace{X^{-1} \qty(H X^{-1})^2 \sum_{k = 0}^{\infty}(-1)^k \qty(H X^{-1})^k}} \\
+  \end{align*}
+
+  Weiter gilt
+  \begin{align*}
+    \frac{\norm{r(H)}}{\norm{H}} \overset{\hyperref[CSU]{\text{Cachy-Schwarze-Ungleichung}}}
+    &\leq \frac{\norm{X^{-1}}^3 \norm{H}^2}{\norm{H}} \cdot \norm{\sum_{k=0}^{\infty} (-1)^k \qty(HX^{-1})^k} \\
+    &\leq \norm{X^{-1}}^3 \norm{H} \sum_{k=0}^{\infty}
+      \underset{\leq \norm{H} \norm{X^{-1}} \leq 1}{\underbrace{\norm{HX^{-1}}^k}} \\
+    &= \frac{\norm{X^{-1}}^3 \norm{H}}{1 - \norm{H}\norm{X^{-1}}} \overset{H \to 0}\longrightarrow 0 \\
+    \Rightarrow f'(X)(H) = -X^{-1}HX^{-1}
+  \end{align*}
+  Reel: $f(x) \overset{x \ne 0}= \frac{1}{x} \Rightarrow f'(x) = -\frac{1}{x^2} = -x^{-1}x^{-1}$
+\end{enumerate}
 
 \end{document}
