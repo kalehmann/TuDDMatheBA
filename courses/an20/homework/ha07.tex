@@ -130,11 +130,18 @@ Bestimmen Sie daraus die Ableitung $f'(X_0)$.
 
 Es gilt
 \begin{align*}
-  f(x_0 + h) - f(x_0) &= (x_0 + h)^2 - x_0^2 = x_0^2 + 2x_0h + h^2 - x_0^2 \\
-                      &= \underset{h \mapsto 2x_0h \text{ ist linear}}{\underbrace{2x_0h}} +
+  f(X_0 + h) - f(x_0) &= (X_0 + h)^2 - X_0^2 = X_0^2 + 2X_0h + h^2 - X_0^2 \\
+                      &= \underset{h \mapsto 2X_0h \text{ ist linear}}{\underbrace{2X_0h}} +
                         \underset{r(h)}{\underbrace{h^2}}
 \end{align*}
+\[
+  \frac{\norm{r(h)}}{\norm{h}} = \frac{\norm{h^2}}{\norm{h}}
+  \leq \frac{\norm{h} \cdot \norm{h}}{\norm{h}} = \norm{h}
+  \overset{h \to 0}\longrightarrow 0
+\]
+
 $\Rightarrow f'(X_0)(h) = 2X_0h$
+
 
 \paragraph{Hausaufgabe 3} Beweisen Sie, dass die Fréchet-Ableitung einer
 differenzierbaren Funktion $f \colon D(f) \subseteq X \to Y$
