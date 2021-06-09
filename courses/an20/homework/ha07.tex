@@ -136,4 +136,23 @@ Es gilt
 \end{align*}
 $\Rightarrow f'(X_0)(h) = 2X_0h$
 
+\paragraph{Hausaufgabe 3} Beweisen Sie, dass die Fréchet-Ableitung einer
+differenzierbaren Funktion $f \colon D(f) \subseteq X \to Y$
+in einem Punkt $x \in D(f)$ eindeutig bestimmt ist, d.h., gibt es zwei
+Zerlegungen
+\[
+  f(x + h) = f(x) + Th + r_1(h) \text{ und } f(x + h) = f(x) + Sh + r_2(h)
+\]
+mit $T, S \in \mathcal{L}(X, Y)$ und $r_k \colon X \to Y$, für die
+$\lim_{h \to 0} \frac{\norm{r_k(h)}_Y}{\norm{h}_X} = 0$ gilt, so stimmen
+$T$ und $S$ überein.
+
+\subparagraph{Lsg.} $f(x) + Th + r_1(h) = f(x) + Sh + r_2(h)$
+\begin{align*}
+  \Rightarrow \norm{T - S} &= \frac{\norm{r_2(h) - r_1(h)}}{\norm{h}} = - \frac{\norm{r_1(h) + r_2(h)}}{\norm{h}}
+                             \leq -\frac{\norm{r_1(h)}}{\norm{h}} + \frac{\norm{r_2(h)}}{\norm{h}} \\
+  \overset{h \to 0}&= 0 \\
+  \Rightarrow T - S = 0 &\Rightarrow T = S
+\end{align*}
+
 \end{document}
