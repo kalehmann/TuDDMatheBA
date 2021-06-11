@@ -1,0 +1,100 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\definecolor{light-gray}{gray}{.9}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2021}
+\title{Übung 08 Analysis - Weiterführende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\skalprod[1]{\left\langle #1 \right\rangle}
+\newcommand\nnorm[1]{\left\lvert\left\lvert\left\lvert #1 \right\rvert\right\rvert\right\rvert}
+
+\begin{document}
+\section*{Partielle Ableitungen}
+
+$f \colon \mathbb{R}^N \to \mathbb{R}^M$ in $x \in \mathbb{R}^N$ differenzierbar
+\[
+  \iff \exists \: T \in \mathcal{L}\qty(\mathbb{R}^N, \mathbb{R}^M),
+  r \colon \mathbb{R}^N \to \mathbb{R}^M \colon f(x + h) =
+  f(x) + \underset{f'(x)}{\underbrace{T}}(h) + r(h),
+  \frac{r(h)}{\norm{h}} \overset{h \to 0}\longrightarrow 0
+\]
+\[
+  f'(x) \in \mathcal{L}\qty(\mathbb{R}^N, \mathbb{R}^M),
+  f' \colon d_f \subseteq \mathbb{R}^N \to \mathcal{L}\qty(\mathbb{R}^N, \mathbb{R}^M)
+\]
+Auf $\mathbb{R}^N, \mathbb{R}^M$ seien die Standardbasen gegeben.
+Dann gibt es genau eine Matrix $A \in \mathbb{R}^{M \times N}$ mit
+$y = \underset{\makebox[0pt]{$J_f(x_0)$ Jacobi-Matrix}}{\underbrace{A}} \cdot x$
+wobei $x$ Koordinatenvektor von $x$ und $y$ Koordinatenvektor von $f'(x_0)$
+bezüglich der Standardbasen ist.
+
+Wir betrachten zunächst $f \colon \mathbb{R}^N \to \mathbb{R}$ und
+Richtungsableitungen für $v \in \mathbb{R}^N, v \ne 0$.
+Sei $g(t) = f(x_0 + tv), g \colon \mathbb{R} \to \mathbb{R}$.
+\begin{flalign*}
+  \text{Falls } g'(0) &= \lim_{t \to 0} \frac{1}{t}\qty(g(t) - g(0)) & \\
+  &= \lim_{t \to 0} \frac{1}{t} \qty(f(x_0 + tv) - f(x_0)) \text{ existiert,}
+\end{flalign*}
+wird $d_v f\qty(x_0) \coloneqq \frac{f\qty(x_0)}{dv} = g'(0)$ gesetzt.
+
+Für $v = e_k$ ergeben sich die sogenannten partiellen Ableitungen:
+\begin{flalign*}
+  \frac{df}{d_{x_x}}\qty(x_0) &= \lim_{t \to 0} \frac{1}{t} \qty(f\qty(x_0 + t_{e_k}) - f\qty(x_0)) & \\
+  &= \lim_{t \to 0} \frac{1}{t}
+  \qty(\underset{g(t)}{\underbrace{f\qty(x_{0_1}, \ldots, x_{0_{k - 1}}, x_{0_k} + t, x_{0_{k + 1}}, x_{0_N})}}
+  - f(x_0))
+\end{flalign*}
+Falls $f$ in $x_0$ differenzierbar ist, existieren
+$\frac{d_f}{d_{x_k}}\qty(x_0), k = 1, \ldots, N$
+\[
+  D_{f(x)} \coloneqq \qty(\frac{d}{d_{x_1}}, \ldots, \frac{d}{d_{x_N}})f\qty(x_0) \quad\text{(Gradient)}
+\]
+$\forall h \in \mathbb{R}^N \colon f'\qty(x_0)(h) = \skalprod{D_{f\qty(x_0)}, h}
+= \underset{J_f\qty(x_0)}{\underbrace{D_{f\qty(x_0)}^T}} \cdot h$
+
+Zurück zu $f = \qty(_1, \ldots, f_M) \colon \mathbb{R}^N \to \mathbb{R}^M$.
+$J_f\qty(x_0) = \begin{pmatrix}
+  \frac{d}{d_{x_1}}f_1 & \ldots  & \frac{d}{d_{x_N}}f_1 \\
+  \vdots & \vdots & \vdots \\
+  \frac{d}{d_{x_1}}f_M & \ldots & \frac{d}{d_{x_N}}f_M
+\end{pmatrix}\qty(X_0)$
+
+Die Jacobi-Matrix ist nicht die Ableitung, sondern die Abbildungsmatrix
+der Ableitung an der Stelle $x_0$ unter Verwendung der Standardbasen.
+
+\paragraph{Aufgabe 1} Geben Sie von den folgenden Ausdrücken $f(x)$ den größten Bereich
+$D(f) \subseteq \mathbb{R}^N$, für den $f$ definiert ist.
+Wie lautet der Existenzbereich $D(f') \subseteq D(f)$ der Ableitung $f'$.
+Geben Sie die zugehörige Jacobi-Matrix $J_f$ an.
+\begin{enumerate}[a)]
+\item $f\qty(x_1, x_2) = \sqrt{2x_1 + 3x_1x_2 + 4x_2}$
+\end{enumerate}
+\end{document}
