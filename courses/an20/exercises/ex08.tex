@@ -231,5 +231,29 @@ Normalenvektor ist $n = \pm \qty(\nabla f\qty(x_0))$.
     \end{pmatrix}
   \]
 
+\item Bestimmen Sie die Tangentialebene von $f$ im Punkt $(1, -1)$.
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    x_0 = (1, -1) \colon t_{f, x_0} &= f\qty(x_0) + \skalprod{\nabla f\qty(x_0), x - x_0} & \\
+    &= f\qty(x_0) + \nabla f(x_0)^T \cdot (x - x_0)
+  \end{flalign*}
+  Es gilt $f\qty(x_0) = f(1, -1) = -\ln 3, \nabla f\qty(x_0) =
+  \nabla f(1, -1) = \qty(1 - \frac{2}{3}, 1 + \frac{2}{3})
+  = \qty(\frac{1}{3}, \frac{5}{3})$
+
+  \begin{flalign*}
+    t_{f, x_0} (x) &= -\ln 3 + \skalprod{\frac{1}{3}
+      \begin{pmatrix}
+        1 \\
+        5
+      \end{pmatrix},
+      \frac{x_1 - 1}{x_2 + 1}
+    } & \\
+    &= -\ln 3 + \frac{1}{3} \qty(\qty(x_1 - 1) + 5 \qty(x_2 + 1)) \\
+    &= -\ln 3 + \frac{1}{3} x_1 + \frac{5}{3} x_2 + \frac{4}{3}, x = \qty(x_1, x_2) \in \mathbb{R}^2
+  \end{flalign*}
+  Taylor-Polynom von $f$ in $x_0$ 1. Ordnung.
+  $E = \qty{(x_1, x_2, x_3) {\Big |} \qty(x_1, x_2) \in \mathbb{R}^2, x_3 = t_{f, x_0} \qty(x_1, x_2)}$
 \end{enumerate}
 \end{document}
