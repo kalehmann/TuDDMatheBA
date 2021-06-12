@@ -232,7 +232,6 @@ Normalenvektor ist $n = \pm \qty(\nabla f\qty(x_0))$.
   \]
 
 \item Bestimmen Sie die Tangentialebene von $f$ im Punkt $(1, -1)$.
-
   \subparagraph{Lsg.}
   \begin{flalign*}
     x_0 = (1, -1) \colon t_{f, x_0} &= f\qty(x_0) + \skalprod{\nabla f\qty(x_0), x - x_0} & \\
@@ -255,5 +254,30 @@ Normalenvektor ist $n = \pm \qty(\nabla f\qty(x_0))$.
   \end{flalign*}
   Taylor-Polynom von $f$ in $x_0$ 1. Ordnung.
   $E = \qty{(x_1, x_2, x_3) {\Big |} \qty(x_1, x_2) \in \mathbb{R}^2, x_3 = t_{f, x_0} \qty(x_1, x_2)}$
+
+ \newpage
+\item Geben Sie die Richtungsableitung von $f$ im Punkt $(1, -1)$ in Richtung
+  $v \coloneqq \frac{\nabla f(1, -1)}{\norm{\nabla f(1, -1)}_2}$ an.
+  \subparagraph{Lsg.} Allgemein: Fall $f$ in $x_0$ differenzierbar ist, gilt
+  $\frac{df}{dv} (x_0) = \skalprod{\nabla f\qty(x_0), v} = \nabla f\qty(x_0)^T v \forall v \in \mathbb{R}^N$.
+  \[
+    v = \frac{\nabla f(1, -1)}{\norm{\nabla f(1, -1)}_2}
+    = \frac{\qty(\frac{1}{3}, \frac{5}{3})}{\norm{\qty(\frac{1}{3}, \frac{5}{3})}_2}
+    = \frac{\frac{1}{3}(1,5)}{\frac{1}{3} \norm{(1, 5)}_2} = \frac{(1, 5)}{\sqrt{26}}
+  \]
+  \[
+    \Rightarrow \frac{df}{dv} = \skalprod{\nabla f\qty{x_0}, \frac{\nabla f\qty{x_0}}{\norm{\nabla f\qty{x_0}}_2}}
+    = \frac{\norm{\nabla f\qty{x_0}}_2^2}{\sqrt{26}}
+    = \norm{\nabla f\qty{x_0}}_2 = \norm{\qty(\frac{1}{3}, \frac{5}{3})}_2
+    = \frac{1}{3}\sqrt{26}
+  \]
+  Für $v \in \mathbb{R}^{2(N)}, \norm{v} = 1$ gilt
+  $\skalprod{\nabla f\qty(x_0), v} \leq \abs{\skalprod{\nabla f\qty(x_0), v}} \leq \norm{\nabla f\qty(x_0)}_2 \cdot \norm{v}_2$
+  $= \norm{\nabla f\qty(x_0)}_2$.
+
+  Frage: Existiert $v_0 \in \mathbb{R}^{2(N)}, \norm{v}_2 = 1$ mit
+  $\skalprod{\nabla f\qty(x_0), v_0} = \norm{\nabla f\qty(x_0)}_2$?
+  $v_0 = \frac{\nabla f\qty(x_0)}{\norm{\nabla f\qty(x_0)}_2}$ für $\nabla f\qty(x_0) \ne 0$
+  (Richtung des steilsten Anstiegs)
 \end{enumerate}
 \end{document}
