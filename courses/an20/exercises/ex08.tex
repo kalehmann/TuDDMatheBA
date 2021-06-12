@@ -146,4 +146,90 @@ Geben Sie die zugehörige Jacobi-Matrix $J_f$ an.
   eine hinreichende Bedingung, dass die Funktion differenzierbar und sogar stetig
   differenzierbar ist.
 \end{enumerate}
+
+\newpage
+\section*{Tangentialhyperebene und affin-lineare Approximation}
+\paragraph{Aufgabe 3} Sei $f \colon D(f) \subseteq \mathbb{R}^N \to \mathbb{R}$
+in $x_0 \in D(f)$ differenzierbar.
+Dann gibt es eine Funktion $r \colon \mathbb{R}^N$ mit
+\[
+  f(x_0 + h) = f(x_0) + \skalprod{\nabla f(x_0), h} + r(h) \text{ und }
+  \lim_{h \to 0} \frac{r(h)}{\norm{h}} = 0
+\]
+Damit ist die Funktion
+\[
+  t_{f,x_0}(x) \coloneqq f(x_0) + \skalprod{\nabla f(x_0), x - x_0}, x \in \mathbb{R}^N
+\]
+eine affin-lineare Approximation von $f$ in $x_0$.
+Dies stellt eine Verallgemeinerung der Tangenten im Fall $N = 1$ dar.
+Der Graph der Funktion $t_{f,x_0}$
+\[
+  \mathbb{T}_{f, x_0} \coloneqq \qty{\qty(x, t_{x_0}(x)) \in \mathbb{R}^{N + 1} {\Big |} x \in \mathbb{R}^N}
+  = \qty{(x, y) \in \mathbb{R}^{N + 1} {\Big |} y = f(x_0) + \skalprod{\nabla f(x_0), x - x_0}, x \in \mathbb{R}^N}
+\]
+wird \textit{Tangentialhyperebene} von $f$ in $x_0$ genannt.
+Sie wird von den $N$ Vektoren $\qty(e_k, \partial_k, f(x_0)), k = 1, \ldots, N$
+aufgespannt und verläuft durch den Punkt $(x_0, f(x_0))$.
+Normalenvektor $n \in \mathbb{R}^{N + 1}$ dieser Ebene ist
+\[
+  n = (-\nabla f(x_0), 1) \text{ bzw. } n = (\nabla f(x_0), -1)
+\]
+Damit erlaubt $\mathbb{T}_{f, x_0}$ die Darstellung
+\begin{flalign*}
+  \mathbb{T}_{f, x_0} &= \qty{(x, y) \in \mathbb{R}^{N + 1} {\Big |} \skalprod{\qty(\nabla f\qty(x_0), -1), (x, y)}
+    = \skalprod{(\nabla f \qty(x_0), -1), \qty(x_0, f\qty(x_0))}} & \\
+  &= \qty{(x, y) \in \mathbb{R}^{N + 1} {\Big |} \skalprod{n, (x, y)} = \skalprod{n, \qty(x_0, f\qty(x_0))}}
+\end{flalign*}
+Wobei $\skalprod{., .}$ das Euklidische Skalarprodukt im $\mathbb{R}^{N + 1}$
+bezeichnet.
+Wir betrachten die Funktion $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
+$f\qty(x_1, x_2) = \sin\qty(x_1 + x_2) - \ln\qty(1 + x_1^2 + x_2^2)$.
+
+\subparagraph{Vorbertrachtung} $f \colon D_f \subseteq \mathbb{R}^N \to \mathbb{R}$
+sei in $x_0 \in D_f$ differenzierbar.
+\begin{align*}
+  \Rightarrow f(\underset{= x}{\underbrace{x_0 + h}})
+  &= f\qty(x_0) + \skalprod{\nabla f\qty(x_0), h}
+    + r(h) \quad \text{mit } \frac{r(h)}{\norm{h}} \overset{h \to 0}\longrightarrow 0 & \\
+  f(x) &= \underset{\makebox[0pt]{$t_{f, x_0}(x)$ affin-lineare lokale Approximation von $f$ in $x_0$}}{
+         \underbrace{f\qty(x_0) + \skalprod{\nabla f\qty(x_0), x - x_0}}
+         } + \ldots
+\end{align*}
+($t_{f,x_0}$ ist die Tangente)
+\[
+  \mathbb{T}_{f, x_0} = \qty{\qty(x, t_{f, x_0}(x)) \in \mathbb{R}^{N + 1} {\Big |} x \in \mathbb{R}^N}
+\]
+ist Tangential-(hyper)-ebene von $f$ in $x_0$, die von
+$\qty(e_k, \frac{df}{dx_x}(x_0)), k = 1, \ldots, N$ aufgespannt wird.
+Normalenvektor ist $n = \pm \qty(\nabla f\qty(x_0))$.
+
+\newpage
+\begin{enumerate}[a)]
+\item Berechnen Sie den Gradienten von $f$.
+  Ist $f$ auf $\mathbb{R}^2$ differenzierbar?
+
+  \subparagraph{Lsg.}
+  $f\qty(x_1, x_2) = \sin\qty(x_1 + x_2) - \ln\qty(1 + x_1^2 + x_2^2), x \in D_f = \mathbb{R}^2$.
+  \[
+    \nabla f\qty(x_1, x_2) = \begin{pmatrix}
+      \frac{df}{dx_1}(x) \\
+      \frac{df}{dx_2}(x)
+    \end{pmatrix}
+    \underset{\makebox[0pt]{$f\qty(x_1, x_2) = f\qty(x_2, x_1)$}}{\underset{\Big \uparrow}{=}}
+    \begin{pmatrix}
+      \cos\qty(x_1 + x_2) - \frac{1 \cdot 2 x_1}{1 + x_1^2 + x_2^2} \\
+      \cos\qty(x_1 + x_2) - \frac{1 \cdot 2 x_2}{1 + x_1^2 + x_2^2}
+    \end{pmatrix}
+  \]
+
+  $x \mapsto \nabla f\qty(x_1, x_2)$ ist auf $D_f = \mathbb{R}^2$ stetig.
+  $\Rightarrow f$ ist auf $\mathbb{R}^2$ stetig differenzierbar.
+  \[
+    J_f\qty(x_1, x_2) = \begin{pmatrix}
+      \cos\qty(x_1 + x_2) - \frac{2 x_1}{1 + x_1^2 + x_2^2} &
+      \cos\qty(x_1 + x_2) - \frac{2 x_2}{1 + x_1^2 + x_2^2}
+    \end{pmatrix}
+  \]
+
+\end{enumerate}
 \end{document}
