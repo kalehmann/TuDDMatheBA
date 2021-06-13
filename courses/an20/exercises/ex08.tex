@@ -18,6 +18,8 @@
 \definecolor{light-gray}{gray}{.9}
 
 \pgfplotsset{compat = newest}
+\usepgfplotslibrary{patchplots}
+
 \usetikzlibrary{intersections}
 \usetikzlibrary{patterns}
 \usepgfplotslibrary{fillbetween}
@@ -357,4 +359,62 @@ Normalenvektor ist $n = \pm \qty(\nabla f\qty(x_0))$.
   \]
 
 \end{enumerate}
+
+\paragraph{Aufgabe 5} Gegeben sei die Funktion
+$f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
+\[
+  f(x) \coloneqq \begin{cases}
+    \frac{x_1x_2}{x_1^2 + x_2^2}, & \text{für } x = \qty(x_1, x_2) \ne (0, 0) \\
+    0, & \text{für } x = (0, 0)
+  \end{cases}
+\]
+
+\begin{enumerate}[a)]
+\item Untersuchen Sie, ob $f$ im Nullpunkt stetig ist.
+
+  \begin{center}
+    \resizebox{.8\textwidth}{!}{
+      \begin{tikzpicture}[
+        declare function={
+          f(\x, \y) = \x^2 + \y^2 != 0 ? (\x*\y)/(\x^2 + \y^2) : 0;
+        }
+        ]
+        \begin{axis}[
+          xlabel = $x$,
+          ylabel = $y$
+        ]
+          \addplot3[
+            surf,
+            domain=-1:1,
+            samples=15,
+            patch type=bilinear,
+            shader=faceted interp
+          ] {f(x, y)};
+        \end{axis}
+      \end{tikzpicture}
+    }
+  \end{center}
+  \subparagraph{Lsg.} $M = \mathbb{R}^2 \setminus \qty{0}$ ist offen.
+  $f$ ist auf $M$ der Quotient stetig differenzierbarer Funktionen,
+  wobei der Nenner ungleich $0$ ist.
+  $\Rightarrow f$ ist auf $M$ differenzierbar mit
+  \begin{flalign*}
+    \frac{df}{dx_1}(x_1, x_2) &= \frac{x_2}{x_1^2 + x_2^2} - \frac{x_1x_2 \cdot 2x_1}{\qty(x_1^2x_2^2)^2}
+    = \frac{x_2}{\qty(x_1^2 + x_2^2)^2} \qty\Big(\qty(x_1^2 + x_2^2) - 2x_1^2) & \\
+    &= \frac{x_2\qty(x_2^2 - x_1^2)}{\qty(x_1^2 + x_2^2)^2} \\
+    \overset{f(x_1, x_2) = f(x_2, x_1)}\Rightarrow \frac{df}{dx_2}(x_1, x_2) &= \frac{x_1\qty(x_1^2 - x_2^2)}{\qty(x_1^2 + x_2^2)^2} \\
+    \Rightarrow x = (x_1, x_2) \mapsto \nabla f(x) &= \frac{1}{\qty(x_1^2 + x_2^2)^2} \qty\Big(x_2\qty(x_2^2 - x_1^2), x_1\qty(x_1^2 + x_2^2))
+    \text{ ist stetig} \\
+    \Rightarrow f \text{ ist auf $M$ stetig differenzierbar}
+  \end{flalign*}
+  \begin{flalign*}
+    \text{Wir betrachten } g(t)
+    &= f\qty(t\qty(e_1 + e_2)) = f(t, t) = \frac{t^2}{2t^2} = \frac{1}{2} &\\
+    k(t) &= f\qty(t\qty(e_1 - e_2)) = f\qty(t, -t) = -\frac{t^2}{2t^2} = -\frac{1}{2} \\
+    \Rightarrow \lim_{t \to 0} g(t) = \frac{1}{2} &\ne \lim_{t \to 0} k(t) = -\frac{1}{2} \\
+    \Rightarrow \lim_{(x_1, x_2) \to (0,0)} f(x_1, x_2) &\text{ existiert nicht } \Rightarrow f
+    \text{ ist in $(0,0) nicht stetig$}
+  \end{flalign*}
+\end{enumerate}
+
 \end{document}
