@@ -77,6 +77,47 @@ $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
   \end{flalign*}
   $\Rightarrow f$ ist im Punkt $(0, 0)$ stetig mit $\delta > 2\epsilon$.
 
+\newpage
+\item Zeigen Sie, dass die partiellen Ableitungen $f$ in $(0, 0)$ existieren.
+  Existiert die Richtungsableitung von $f$ in $(0, 0)$ in Richtung von
+  $v = \frac{1}{\sqrt{2}}\qty(e_1 + e_2) = \frac{1}{\sqrt{2}(1, 1)}$?
+  Warum ist $f$ in $(0, 0)$ nicht differenzierbar?
+
+  \subparagraph{Lösung:} Für $t \in \mathbb{R}$ gilt
+  $g(t) = f(t, 0) = 0 = f(0, t)$.z
+  Folglich ist
+  \begin{flalign*}
+    \frac{\partial^nf(0,0)}{\partial x_1^n} &=
+    \frac{\partial^n f(0, 0)}{\partial x_2^n} = g^{(n)}(0) = 0
+    \text{ für alle } n \in \mathbb{N}
+  \end{flalign*}
+
+  Die Funktion $f$ heißt in $x = (0, 0) \in \mathbb{R}^2$ in Richtung
+  $v = \frac{1}{\sqrt{2}(1, 1)}$ differenzierbar, falls die Funktion
+  \[
+    k \colon ]-r, r[ \to \mathbb{R}, t \mapsto f(x + t \cdot v)
+  \]
+  (für $r > 0$ klein genug) in $0$ differenzierbar ist und dann heißt
+  \[
+    \frac{\partial f}{\partial v}(x) \coloneqq \lim_{t \to 0} \frac{k(t) - f(x)}{t}
+  \]
+  die Richtungsableitung von $f$ im Punkt $(0, 0)$ in Richtung $v$.
+
+  \[
+    k(t) = f((0,0) + t \cdot v) = f\qty(\frac{t}{\sqrt(2)}, \frac{t}{\sqrt(2)})
+    = \begin{cases}
+      \frac{\sfrac{t^2}{2}}{\sqrt{2\sfrac{t^2}{2}}} = \frac{t}{2} & t \ne 0 \\
+      0 & t = 0
+    \end{cases}
+  \]
+  Da für $t = 0$ der Wert von $\frac{t}{2} = k(0)$ entspricht, gilt
+  $k(t) = \frac{t}{2}$.
+  $\Rightarrow$ die Richtungsableitung von $f$ im Punkt $(0, 0)$ in Richtung
+  $v$ existiert mit
+  \[
+    \frac{\partial f}{\partial v}(x) \coloneqq \lim_{t \to 0} \frac{k(t) - f(x)}{t}
+    = \lim_{t \to 0} \frac{\sfrac{t}{2} - f((0,0))}{t} = \frac{1}{2}
+  \]
 \end{enumerate}
 
 \end{document}
