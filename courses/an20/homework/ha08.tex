@@ -31,6 +31,27 @@
 \rfoot{Seite \thepage}
 
 \begin{document}
+\paragraph{Hausaufgabe 1} Geben Sie den größtmöglichen Definitionsbereich
+$D(f) \subseteq \mathbb{R}^N$ der folgenden Ausdrücke an.
+Auf welcher Teilmenge $D(f') \subseteq D(h)$ existieren die Ableitungen $f'$?
+Ermitteln Sie die zugehörige Jacobi-Matrix $J_f(x)$.
+\begin{enumerate}[a)]
+\item $f(x_1, x_2) = \ln(2 - e^{x_1 - x_2})$
+  \subparagraph{Lösung:}
+  $D(f) = \qty{(x_1, x_2) \in \mathbb{R}^2 {\Big |} x_1 - x_2 \leq \ln 2}$
+  \begin{flalign*}
+    J_f(x) &= \begin{pmatrix}
+      - \frac{e^{x_1 - x_2}}{2 - e^{x_1 - x_2}} &
+      \frac{e^{x_1 - x_2}}{2 - e^{x_1 - x_2}}
+    \end{pmatrix} & \\
+    D(f') &= \qty{(x_1, x_2) \in \mathbb{R}^2 {\Big |} x_1 - x_2 \ne \ln 2}
+  \end{flalign*}
+
+\item $f(x_1, x_2, x_3) = \qty(1 + \ln x_1, x_1\sqrt{x_2}, \sqrt{x_1x_3})$
+\item $f(t) = e^t(\cos t, \sin t, 1)$
+\end{enumerate}
+
+\newpage
 \paragraph{Hausaufgabe 2} Gegeben sei die Funktion
 $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
 \begin{flalign*}
