@@ -48,6 +48,17 @@ Ermitteln Sie die zugehörige Jacobi-Matrix $J_f(x)$.
   \end{flalign*}
 
 \item $f(x_1, x_2, x_3) = \qty(1 + \ln x_1, x_1\sqrt{x_2}, \sqrt{x_1x_3})$
+  \subparagraph{Lösung:}
+  $D(f) = \qty{(x_1, x_2, x_3) \in \mathbb{R}^3 {\Big |} x_1, x_2, x_3 \geq 0}$
+  \begin{flalign*}
+    J_f(x) &= \begin{pmatrix}
+      \frac{1}{x_1} & 0 & 0 \\
+      \sqrt{x_2} & - \frac{x_1}{\sqrt{x_2}} & 0 \\
+      0 & 0 & - \frac{x_1}{\sqrt{x_1x_3}}
+    \end{pmatrix} & \\
+    D(f,) &= \qty{(x_1, x_2, x_3) \in \mathbb{R}^2 {\Big |} x_1 \ne 0, x_2 > 0, x_1 \cdot x_3 \geq 0}
+  \end{flalign*}
+
 \item $f(t) = e^t(\cos t, \sin t, 1)$
 \end{enumerate}
 
