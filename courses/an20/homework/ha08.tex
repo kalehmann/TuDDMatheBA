@@ -125,7 +125,7 @@ $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
   Warum ist $f$ in $(0, 0)$ nicht differenzierbar?
 
   \subparagraph{Lösung:} Für $t \in \mathbb{R}$ gilt
-  $g(t) = f(t, 0) = 0 = f(0, t)$.z
+  \colorbox{yellow}{$g(t) = f(t, 0) = 0 = f(0, t)$}.
   Folglich ist
   \begin{flalign*}
     \frac{\partial^nf(0,0)}{\partial x_1^n} &=
@@ -159,6 +159,12 @@ $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
     \frac{\partial f}{\partial v}(x) \coloneqq \lim_{t \to 0} \frac{k(t) - f(x)}{t}
     = \lim_{t \to 0} \frac{\sfrac{t}{2} - f((0,0))}{t} = \frac{1}{2}
   \]
+
+  Die \colorbox{yellow}{partiellen Ableitungen} entsprechen den
+  Richtungsableitungen $u_1 = e_1$ und $u_2 = e_2$.
+  Da
+  $\frac{\partial f}{\partial u_1}(x) = 0 \ne \frac{\partial f}{\partial v}(x) = \frac{1}{2}$
+  ist $f$ im Punkt $(0, 0)$ nicht differenzierbar.
 
 
 \end{enumerate}
