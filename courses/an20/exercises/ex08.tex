@@ -415,6 +415,25 @@ $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
     \Rightarrow \lim_{(x_1, x_2) \to (0,0)} f(x_1, x_2) &\text{ existiert nicht } \Rightarrow f
     \text{ ist in $(0,0) nicht stetig$}
   \end{flalign*}
+
+\setcounter{enumi}{2}
+\item Zeigen Sie, dass die partiellen Ableitungen beliebiger Ordnung von
+  $f$ in $(0, 0)$ existieren.
+  Warum ist $f$ in $(0, 0)$ trotzdem nicht differenzierbar?
+
+  \subparagraph{Lsg.}
+  $g(t) = \overset{f((0,0) + te_1)}{\overset{\downarrow}{f(t, 0)}} = 0 =
+  \overset{f((0,0) + te_2)}{\overset{\downarrow}{f(0, t)}}$.
+
+  $\Rightarrow \frac{df}{dx_1}(0, 0) = \frac{df}{dx_2} (0,0) = g'(0) = 0$
+  {
+    \color{red!60!black}
+    \[
+      \frac{d^n}{dx_1^n}f(0, 0) = \frac{d^nf}{dx_2^n} (0, 0) = 0
+    \]
+  }
+  Die Funktion ist natürlich trotzdem nicht differenzierbar, den Bedingung für
+  die Differenzierbarkeit ist die Stetigkeit.
 \end{enumerate}
 
 \end{document}
