@@ -169,6 +169,21 @@ $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
 \item Ermitteln Sie alle Punkte, in denen $f$ differenzierbar ist und geben Sie
   die zugehörige Jacobi-Matrix an.
 
+  \subparagraph{Lösung:} Seien $g, h \colon \mathbb{R}^2 \to \mathbb{R}$ zwei Funktionen mit
+  $g(x) = x_1x_2$ und $h(x) = x_1^2 + x_2^2$.
+  Außerdem sei $i \colon \mathbb{R}^2 \setminus \qty{(0, 0)} \to \mathbb{R}$
+  eine Funktion mit $i(x) = x^{-\frac{1}{2}}$.
+
+  Dann ist $g$, $h$ und $i$ nach Proposition 7.2.3 der Vorlesung differenzierbar.
+  Nun ist $f(x) = g(x) \cdot (i \circ h)(x)$ für alle $x \in \mathbb{R}^2 \setminus \qty{(0, 0)}$
+  differenzierbar.
+  \[
+    J_f(x) = \begin{pmatrix}
+      \frac{x_2^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}} &
+      \frac{x_1^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}}
+    \end{pmatrix}
+  \]
+
 \newpage
 \item Geben Sie die Richtungsableitung von $f$ in $x = (1, 0)$ in Richtung
   $v = \frac{1}{\sqrt{2}}(1, 1)$ und $u = \frac{1}{\sqrt{2}}(1, -1)$ an.
@@ -190,7 +205,6 @@ $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
   \]
 \end{enumerate}
 
-\newpage
 \paragraph{Hausaufgabe 3} Gegeben seien die Funktionen
 $f \colon (0, \infty) \times (0, \infty) \to \mathbb{R}^2$ und
 $g \colon \mathbb{R}^2 \setminus \qty{(0, 0)} \to \mathbb{R}$ mit
