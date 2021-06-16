@@ -166,7 +166,28 @@ $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
   $\frac{\partial f}{\partial u_1}(x) = 0 \ne \frac{\partial f}{\partial v}(x) = \frac{1}{2}$
   ist $f$ im Punkt $(0, 0)$ nicht differenzierbar.
 
+\item Ermitteln Sie alle Punkte, in denen $f$ differenzierbar ist und geben Sie
+  die zugehörige Jacobi-Matrix an.
 
+\newpage
+\item Geben Sie die Richtungsableitung von $f$ in $x = (1, 0)$ in Richtung
+  $v = \frac{1}{\sqrt{2}}(1, 1)$ und $u = \frac{1}{\sqrt{2}}(1, -1)$ an.
+
+  \subparagraph{Lösung:}
+  $\frac{\partial f}{\partial x_1} = \frac{x_2^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}}$,
+  $\frac{\partial f}{\partial x_2} = \frac{x_1^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}}$
+  \begin{flalign*}
+    \nabla f (x) &= J_f(x)^T = \begin{pmatrix}
+      \frac{x_2^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}} \\
+      \frac{x_1^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}}
+    \end{pmatrix} &
+  \end{flalign*}
+  Da $\norm{v}_2 = \norm{u}_2 = \sqrt{\frac{1}{2} + \frac{1}{2}} = 1$, gilt
+  \[
+    \frac{\partial f}{\partial v} = \nabla f(x) \cdot v = \frac{1}{\sqrt{2}}
+    \text{ und }
+    \frac{\partial f}{\partial u} = \nabla f(x) \cdot e = -\frac{1}{\sqrt{2}}
+  \]
 \end{enumerate}
 
 \newpage
