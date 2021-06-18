@@ -1,5 +1,7 @@
 !! Albina Oscherowa
 !! Karsten Lehmann
+
+!! Sucht nach Loesungen fuer das n-Damen Problem.
 PROGRAM aufgabe_23
   IMPLICIT NONE
 
@@ -21,6 +23,8 @@ PROGRAM aufgabe_23
      DEALLOCATE(chessboard)
   END DO
 CONTAINS
+  !! Gibt ein n * n Schachbrett (mit nur Damen) auf der
+  !! Kommandozeile aus.
   SUBROUTINE print_cb(cb)
     LOGICAL, DIMENSION(:,:), INTENT(IN) :: cb
     INTEGER :: i, j
@@ -56,6 +60,8 @@ CONTAINS
     WRITE(*,'(A)') '─╯'
   END SUBROUTINE print_cb
 
+  !! Prueft ob mit einer weiter Dame in der gegebenen Reihe und Spalte
+  !! ein Konflikt auf dem Brett bestehen wuerde.
   LOGICAL FUNCTION is_conflict(cb, row, column)
     LOGICAL, DIMENSION(:,:), INTENT(IN) :: cb
     INTEGER, INTENT(IN) :: row, column
@@ -66,11 +72,13 @@ CONTAINS
        RETURN
     END IF
 
+    !! Pruefe auf weitere Damen in der selben Reihe oder Spalte.
     IF (ANY(cb(row,:)) .OR. ANY(cb(:,column))) THEN
        is_conflict = .TRUE.
        RETURN
     END IF
 
+    !! Pruefe in den anderen Reihen die Felder diagonal zur neuen Dame.
     DO i = 1, row - 1
        IF (column + row - i <= n) THEN
           IF (cb(i, column + row - i)) THEN
@@ -87,6 +95,8 @@ CONTAINS
     END DO
   END FUNCTION is_conflict
 
+  !! Findet vom IST-Zustand des Schachbrettes Lousungen fuer das n-Damen Problem
+  !! und gibt diese auf der Kommandozeile aus.
   RECURSIVE SUBROUTINE set_queen(cb, row, solutions)
     LOGICAL, DIMENSION(:,:), INTENT(INOUT) :: cb
     INTEGER, INTENT(IN) :: row

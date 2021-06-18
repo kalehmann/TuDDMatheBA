@@ -1,3 +1,7 @@
+!! Albina Oscherowa
+!! Karsten Lehmann
+
+!! Vergleicht verschiedene Methoden zur Multiplikation von Matrizen.
 PROGRAM aufgabe_22
   USE mod_matmul
 
@@ -53,6 +57,8 @@ PROGRAM aufgabe_22
   DEALLOCATE(B)
   DEALLOCATE(C)
 CONTAINS
+  !! Liesst die Daten der Matrix aus einer Datei ein oder fuellt sie
+  !! als Hilbertmatrix.
   SUBROUTINE get_mat(A)
     REAL, DIMENSION(:,:), INTENT(OUT) :: A
     INTEGER :: i
@@ -71,6 +77,7 @@ CONTAINS
     END IF
   END SUBROUTINE get_mat
 
+  !! Fuellth die gegebene Matrix als Hilbert Matrix
   SUBROUTINE hilbert_mat(A)
     REAL, DIMENSION(:,:), INTENT(OUT) :: A
     INTEGER :: i, j
@@ -82,6 +89,7 @@ CONTAINS
     END DO
   END SUBROUTINE hilbert_mat
 
+  !! Gibt die Matrix auf der Kommandozeile aus.
   SUBROUTINE print_mat(A)
     REAL, DIMENSION(:,:), INTENT(IN) :: A
     INTEGER :: i, j

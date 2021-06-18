@@ -1,5 +1,7 @@
 !! Albina Oscherowa
 !! Karsten Lehmann
+
+!! Zwei alternative Implementierungen zur Multiplikation von Matrizen.
 MODULE mod_matmul
   IMPLICIT NONE
 
@@ -8,6 +10,7 @@ MODULE mod_matmul
   PUBLIC strassen_matmul, simple_matmul
 
 CONTAINS
+  !! Gibt das obere, linke Viertel einer quadratischen Matrix zurueck.
   FUNCTION T11(A) RESULT(B)
     REAL, DIMENSION(:,:), INTENT(IN) :: A
     REAL, DIMENSION(:,:) :: B(SIZE(A, DIM=1)/2, SIZE(A, DIM=2)/2)
@@ -17,6 +20,7 @@ CONTAINS
     B = A(1:n / 2, 1:n / 2)
   END FUNCTION T11
 
+  !! Gibt das obere, rechte Viertel einer quadratischen Matrix zurueck.
   FUNCTION T12(A) RESULT(B)
     REAL, DIMENSION(:,:), INTENT(IN) :: A
     REAL, DIMENSION(:,:) :: B(SIZE(A, DIM=1)/2, SIZE(A, DIM=2)/2)
@@ -26,6 +30,7 @@ CONTAINS
     B = A(1:n / 2, n / 2 + 1:n)
   END FUNCTION T12
 
+  !! Gibt das untere, linke Viertel einer quadratischen Matrix zurueck.
   FUNCTION T21(A) RESULT(B)
     REAL, DIMENSION(:,:), INTENT(IN) :: A
     REAL, DIMENSION(:,:) :: B(SIZE(A, DIM=1)/2, SIZE(A, DIM=2)/2)
@@ -35,6 +40,7 @@ CONTAINS
     B = A(n / 2 + 1:n, 1:n / 2)
   END FUNCTION T21
 
+  !! Gibt das untere, rechte Viertel einer quadratischen Matrix zurueck.
   FUNCTION T22(A) RESULT(B)
     REAL, DIMENSION(:,:), INTENT(IN) :: A
     REAL, DIMENSION(:,:) :: B(SIZE(A, DIM=1)/2, SIZE(A, DIM=2)/2)
@@ -44,6 +50,7 @@ CONTAINS
     B = A(n / 2 + 1:n, n / 2 + 1:n)
   END FUNCTION T22
 
+  !! Multiplikation der Matrizen A und B nach Volker Strassen.
   RECURSIVE FUNCTION strassen_matmul(A, B) RESULT(C)
     REAL, DIMENSION(:,:), INTENT(IN) :: A, B
     REAL, DIMENSION(:,:) :: C(SIZE(A, DIM=1), SIZE(A, DIM=2))
@@ -78,6 +85,7 @@ CONTAINS
     C(n/2+1:n, n/2+1:n) = M2 - M3 + M5 - M7
   END FUNCTION strassen_matmul
 
+  !! Einfache Multiplikation der Matrizen A und B "nach Lehrbuch"
   FUNCTION simple_matmul(A, B) RESULT(C)
     REAL, DIMENSION(:,:), INTENT(IN) :: A, B
     REAL, DIMENSION(:,:) :: C(SIZE(A, DIM=1), SIZE(A, DIM=2))
