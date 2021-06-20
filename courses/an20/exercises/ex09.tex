@@ -1,0 +1,73 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\definecolor{light-gray}{gray}{.9}
+
+\pgfplotsset{compat = newest}
+\usepgfplotslibrary{patchplots}
+
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2021}
+\title{Übung 09 Analysis - Weiterführende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\skalprod[1]{\left\langle #1 \right\rangle}
+\newcommand\nnorm[1]{\left\lvert\left\lvert\left\lvert #1 \right\rvert\right\rvert\right\rvert}
+
+\begin{document}
+
+\paragraph{Aufgabe 1} Seien $M \subseteq \mathbb{R}^N$ eine offene Menge und
+$f \colon M \to \mathbb{R}$.
+Die Menge
+\begin{flalign*}
+  N_C &\coloneqq \qty{x \in M {\Big |} f(x) = c} &
+\end{flalign*}
+heißt \textit{Niveaumenge} von $f$ zum Niveau $c \in \mathbb{R}$.
+Sei $x_0 \in N_c$.
+Zeigen Sie, dass $\nabla f\qty(x_0)$ auf $N_c$ in folgendem Sinne senkrecht
+steht:
+
+Für jede stetig differenzierbare Funktion
+$\varphi \colon (-\epsilon, \epsilon) \to \mathbb{R}^N, \epsilon > 0$,
+mit $\varphi(0) = x_0$ und $\varphi(t) \in N_c$ für $\abs{t} < \epsilon$
+gilt
+\begin{flalign*}
+  \skalprod{\nabla f\qty(x_0), \varphi'(0)} &= 0 &
+\end{flalign*}
+
+\subparagraph{Lösung:} Die Funktion
+$g \coloneqq f \circ \varphi \colon (-\epsilon, \epsilon) \to \mathbb{R}$
+ist ebenfalls stetig differenzierbar.
+Für $\abs{t} < \epsilon$ gilt $g(t) = f(\varphi(t)) = f\qty(x_0) = c$.
+Somit ist $g'(t)$ konstant mit
+\[
+  0 = g'(t) = f'\qty(\varphi(t)) \cdot \varphi'(t)
+  = \skalprod{\nabla f(\varphi(t)), \varphi'(t)}
+  \quad \text{(Kettenregel)}
+\]
+
+\end{document}
