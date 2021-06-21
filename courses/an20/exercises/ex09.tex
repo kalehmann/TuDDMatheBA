@@ -70,4 +70,117 @@ Somit ist $g'(t)$ konstant mit
   \quad \text{(Kettenregel)}
 \]
 
+\paragraph{Aufgabe 2} Gegeben sei die Funktion
+$f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
+$f\qty(x_1, x_2) = e^{2x_1}\qty(x_1 + x_2^2)$.
+\begin{enumerate}[a)]
+\item Verwenden Sie die Multiindexschreibweise um die Ausdrücke
+  \[
+    \qty(h_1\frac{\partial}{\partial x_1} + h_2 \frac{\partial}{\partial x_2})^k f\qty(x_1, x_2) \text{ für } k = 0,1,2,3
+  \]
+  darzustellen und berechnen Sie diese für die gegebene Funktion $f$.
+
+  \subparagraph{Lösung:} Die Funktion $f$ ist beliebig oft stetig partiell
+  differenzierbar.
+  Für $a = \qty(a_1, a_2) \in \mathbb{N}_0^2$ und $h = \qty(h_1, h_2) \in \mathbb{R}^2$ ist
+  \[
+    h^a \frac{\partial^a}{\partial x^a}f(x)
+    = h^{\qty(a_1, a_2)} \frac{\partial^{\qty(a_1, a_2)}}{\partial x^{\qty(a_1, a_2)}}f(x)
+    = h_1^{a_1} \cdot h_2^{a_2} \frac{\partial^{a_1}}{\partial x_1^{a_1}} \qty(\frac{\partial^{a_2}}{\partial x_2^{a_2}} f(x))
+  \]
+  \begin{flalign*}
+    \qty(h_1\frac{\partial}{\partial x_1} + h_2 \frac{\partial}{\partial x_2})^0 f\qty(x_1, x_2)
+    &= f\qty(x_1, x_2) & \\
+    \qty(h_1\frac{\partial}{\partial x_1} + h_2 \frac{\partial}{\partial x_2})^1 f\qty(x_1, x_2)
+    &= h^{(1, 0)}\frac{\partial^1}{\partial x_1^1} + h^{(0, 1)}\frac{\partial^1}{\partial x_2^1} \\
+    &= e^{2x_1} \qty(2x_1 + 2x_2^2 + 1) h_1 + 2e^{2x_1} x_2 h_2 \\
+    &= e^{2x_1} \qty\Big(\qty(2x_1 + 2x_2^2 + 1)h_1 + x_2h_2)
+  \end{flalign*}
+  \newpage
+  \begin{flalign*}
+    \qty(h_1\frac{\partial}{\partial x_1} + h_2 \frac{\partial}{\partial x_2})^2 f\qty(x_1, x_2)
+    &= \qty(h_1^2\frac{\partial^2}{\partial x_1^2}
+    + h_1h_2 \frac{\partial}{\partial x_1}\frac{\partial}{\partial x_2}
+    + h_2h_1 \frac{\partial}{\partial x_2}\frac{\partial}{\partial x_1}
+    + h_2^2\frac{\partial^2}{\partial x_2^2}) f(x) & \\
+    &= \begin{pmatrix}
+      h_1 \frac{\partial^2}{\partial x_1^2}
+      + h_2 \frac{\partial}{\partial x_1}\frac{\partial}{\partial x_2} &
+      h_1 \frac{\partial}{\partial x_2}\frac{\partial}{\partial x_1}
+      + h_2 \frac{\partial^2}{\partial x_2^2})
+    \end{pmatrix} \cdot
+    \begin{pmatrix}
+      h_1 \\
+      h_2
+    \end{pmatrix} f(x) \\
+    &= \begin{pmatrix}
+      h_1 & h_2
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+      \frac{\partial^2}{\partial x_1^2} & \frac{\partial}{\partial x_2}\frac{\partial}{\partial x_1} \\
+      \frac{\partial}{\partial x_1}\frac{\partial}{\partial x_2} & \frac{\partial^2}{\partial x_2^2}) \\
+    \end{pmatrix} \cdot
+    \begin{pmatrix}
+      h_1 \\
+      h_2
+    \end{pmatrix} f(x) \\
+     &= h^T \cdot
+    \begin{pmatrix}
+      \frac{\partial^2}{\partial x_1^2} & \frac{\partial}{\partial x_2}\frac{\partial}{\partial x_1} \\
+      \frac{\partial}{\partial x_1}\frac{\partial}{\partial x_2} & \frac{\partial^2}{\partial x_2^2}) \\
+    \end{pmatrix} \cdot h f(x) \\
+    &= h^T H_f(x) h \quad \text{(Die Hessematrix von $f$ in Richtung $h$)} \\
+    &= e^{2x_1}h^T \begin{pmatrix}
+      4x_1 + 4x_2^2 + 4 & 4x_2 \\
+      4x_2 & 2
+    \end{pmatrix} h \\
+    \qty(h_1\frac{\partial}{\partial x_1} + h_2 \frac{\partial}{\partial x_2})^3 f\qty(x_1, x_2)
+    &= \qty(h^{(3, 0)} \frac{\partial^{(3, 0)}}{\partial x^{(3, 0)}}
+    + h^{(2, 1)} \frac{\partial^{(2, 1)}}{\partial x^{(2, 1)}}
+    + h^{(1, 2)} \frac{\partial^{(1, 2)}}{\partial x^{(1, 2)}}
+    + h^{(0, 3)} \frac{\partial^{(0, 3)}}{\partial x^{(0, 3)}}) f(x) \\
+    &= 4 h_1^3 e^{2x_1}\qty(x_1 + x_2^2 + 2) + 8 e^{2x_1}h_1^2h_2 + 4 e^{2x_1}h_1h_2^2 + 0 \\
+    &= 4e^{2x_1}h_1 \qty\Big(h_1^2 \qty(x_1 + x_2^2 + 2) + 2h_1h_2 + h_2^2)
+  \end{flalign*}
+  (Die 3. Ableitung von $f$ in Richtung $h$).
+  \newpage
+  Vollständige Auflistung der verwendeten Ausdrücke:
+  \begin{flalign*}
+    h^{(0,0)} \frac{\partial^{(0, 0)}}{\partial x^{(0, 0)}} f(x)
+    &= h_1^0 \cdot h_2^0 \cdot \frac{\partial^0}{\partial x_1^0} \qty(\frac{\partial^0 f(x)}{\partial x_2^0})
+    = \frac{\partial^0}{\partial x_1^0} f(x) = f(x) & \\
+    h^{(1,0)} \frac{\partial^{(1, 0)}}{\partial x^{(1, 0)}} f(x)
+    &= h_1^1 \cdot h_2^0 \cdot \frac{\partial^1}{\partial x_1^1} \qty(\frac{\partial^0 f(x)}{\partial x_2^0})
+    = h_1 \frac{\partial}{\partial x_1} f(x)
+    = e^{2x_1} \qty(2x_1 + 2x_2^2 + 1) h_1 \\
+    h^{(0,1)} \frac{\partial^{(0, 1)}}{\partial x^{(0, 1)}} f(x)
+    &= h_1^0 \cdot h_2^1 \cdot \frac{\partial^0}{\partial x_1^0} \qty(\frac{\partial^1 f(x)}{\partial x_2^1})
+    = h_2 \cdot \frac{\partial}{\partial x_2} f(x)
+    = 2e^{2x_1} x_2 h_2 \\
+    h^{(1,1)} \frac{\partial^{(1, 1)}}{\partial x^{(1, 1)}} f(x)
+    &= h_1^1 \cdot h_2^1 \cdot \frac{\partial^1}{\partial x_1^1} \qty(\frac{\partial^1 f(x)}{\partial x_2^1})
+    = 4 e^{2x_1}x_2h_1h_2 \\
+    h^{(0,2)} \frac{\partial^{(0, 2)}}{\partial x^{(0, 2)}} f(x)
+    &= h_2^2 \cdot\frac{\partial^2 f(x)}{\partial x_2^2}
+    = 2h_2^2 e^{2x_1} \\
+    h^{(2,0)} \frac{\partial^{(2, 0)}}{\partial x^{(2, 0)}} f(x)
+    &= h_1^2 \cdot \frac{\partial^2 f(x)}{\partial x_1^2}
+    = 4 h_1^2 e^{2x_1}\qty(x_1 + x_2^2 + 1) \\
+    h^{(2,1)} \frac{\partial^{(2, 1)}}{\partial x^{(2, 1)}} f(x)
+    &= h_1^2 \cdot h_2^1 \cdot \frac{\partial^2}{\partial x_1^2} \qty(\frac{\partial^1 f(x)}{\partial x_2^1})
+    = 8 e^{2x_1}h_1^2h_2 \\
+    h^{(1,2)} \frac{\partial^{(1, 2)}}{\partial x^{(1, 2)}} f(x)
+    &= h_1^1 \cdot h_2^2 \cdot \frac{\partial^1}{\partial x_1^1} \qty(\frac{\partial^2 f(x)}{\partial x_2^2})
+    = 4 e^{2x_1}h_1h_2^2 \\
+    h^{(3,0)} \frac{\partial^{(3, 0)}}{\partial x^{(3, 0)}} f(x)
+    &= h_1^3 \cdot \frac{\partial^3 f(x)}{\partial x_1^3}
+    = 4 h_1^3 e^{2x_1}\qty(x_1 + x_2^2 + 2) \\
+    h^{(0,3)} \frac{\partial^{(0, 3)}}{\partial x^{(0, 3)}} f(x)
+    &= h_2^3 \cdot\frac{\partial^3 f(x)}{\partial x_2^3}
+    = 2h_2^3 \partial^3_2 f(x) = 0
+  \end{flalign*}
+
+\end{enumerate}
+
 \end{document}
