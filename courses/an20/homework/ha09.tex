@@ -1,0 +1,59 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usepgfplotslibrary{fillbetween}
+
+\author{Albina Oscherowa \\ Lukas Kamratzki \\ Karsten Lehmann}
+\date{SoSe 2021}
+\title{Hausaufgabe 09 \\Analysis - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Hausaufgabe 1} Sei $M \subseteq \mathbb{R}^N$ eine nichtleere offene
+Menge.
+Der \textit{Laplace-Operator} $\Delta \colon C^2(M) \to C(M)$ ist definiert
+durch
+\[
+  \Delta f(x) \coloneqq \qty(\frac{\partial^2f}{\partial x_1^2} + \ldots + \frac{\partial^2 f}{\partial x_N^2})(x)
+  = \sum_{k = 1}^N \frac{\partial^2 f(x)}{\partial x_k^2} \: \text{für} \: f \in C^2(M)
+\]
+\begin{enumerate}[a)]
+\item Berechnen Sie $\Delta f(x)$ für die Funktion
+  $f(x) \coloneqq -\ln\qty(x_1^2 + \ldots + x_N^2), x \ne 0, N \in \mathbb{N}$.
+  Für welches $N \in \mathbb{N}$ erfüllt $f$ die \textit{Laplace-Gleichung}
+  $\Delta f(x) = 0$ auf der Menge $M = \mathbb{R}^N \setminus \qty{0}$?
+
+  \subparagraph{Lösung:}
+  $\frac{\partial^2 f}{\partial x_1^2} = 2 \cdot \frac{\qty(x_1^2 + \ldots + x_N^2) - 2 x_1}{x_1^2 + \ldots + x_N^2}$.
+  \begin{flalign*}
+    \Delta f(x) &= \sum_{k = 1}^N 2 \cdot \frac{\qty(x_1^2 + \ldots + x_N^2) - 4 \cdot x_k^2}{x_1^2 + \ldots + x_N^2} & \\
+    &= 2N \cdot \frac{\qty(x_1^2 + \ldots + x_N^2)}{x_1^2 + \ldots + x_N^2} - 4 \sum_{k = 1}^N \frac{x_k^2}{x_1^2 + \ldots + x_N^2} \\
+    &= 2N - 4\frac{x_1^2 + \ldots + x_N^2}{x_1^2 + \ldots + x_N^2} \\
+    &= 2N - 4
+  \end{flalign*}
+  Die \textit{Laplace-Gleichung} ist erfüllt für $N = 2$.
+\end{enumerate}
+
+\end{document}
