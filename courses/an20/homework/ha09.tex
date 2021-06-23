@@ -133,6 +133,42 @@ $f(x, y) = e^{x + y}(x - y)$
     &= 0 + x - y + 2x^2 - 2y^2 \\
     &= 2x^2 + x - (2y^2 + y)
   \end{flalign*}
+
+\newpage
 \end{enumerate}
+
+\paragraph{Hausaufgabe 3} Untersuchen Sie die Funktion
+$f(x, y) = e^{-(x^2 + y^2)}\qty(x^2 + 2y^2), x, y \in \mathbb{R}$ auf lokale
+Extremal- und Sattelpunkte.
+
+\subparagraph{Lösung:} $\nabla f(x, y) = \begin{pmatrix}
+  -2x e^{-x^2 - y^2} (x^2 + 2 y^2  - 1) & -2y e^{-x^2 - y^2} (x^2 + 2y^2 - 2)
+\end{pmatrix}$
+Der Ausdruck $\nabla f(x, y) = 0$ gilt für $(x, y) = (0, 0), (0, 1), (0, -1)$.
+\begin{flalign*}
+  H_f(x, y) &= \begin{pmatrix}
+    \frac{\partial^2 f}{\partial x^2} f(x, y) & \frac{\partial^2 f}{\partial x \partial y} f(x, y) \\
+    \frac{\partial^2 f}{\partial y \partial x} f(x, y) & \frac{\partial^2 f}{\partial y^2} f(x, y) \\
+  \end{pmatrix} & \\
+  &= e^{-x^2 - y^2} \cdot \begin{pmatrix}
+    4 x^ 4 + 2 x^2 (4 y^2  - 5) - 4 y^2  + 2 & 4xy \qty\big(x^2 + 2y^2  - 3) \\
+    4xy \qty\big(x^2 + 2y^2  - 3) & x^2 (4 y^2 - 2) + 8 y^4 - 20 y^2 + 4
+  \end{pmatrix} \\
+  H_f(0, 0) &= \begin{pmatrix}
+    2 & 0 \\
+    0 & 4
+  \end{pmatrix}
+  \quad 2 > 0 \land \det H_f(0, 0) > 0 \\
+  & \Rightarrow H_f(0, 0) \text{ ist nach Aufgabe 3. (i) positiv definit}\\
+  H_f(0, 1) &= H_f (0, -1) \begin{pmatrix}
+    -2 & 0 \\
+    0 & -8
+  \end{pmatrix}
+  \quad -2 < 0 \land \det H_f(0, 0) > 0 \\
+  &\Rightarrow H_f(0, 1), H_f(0, -1) \text{ist nach Aufgabe 3. (ii) negativ definit}
+\end{flalign*}
+
+Somit besitzt $f$ an der Stelle $(0, 0)$ ein lokales Minimum und an den Stellen
+$(0, 1), (0, -1)$ lokale Maxima.
 
 \end{document}
