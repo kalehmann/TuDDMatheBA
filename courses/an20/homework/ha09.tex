@@ -144,7 +144,7 @@ Extremal- und Sattelpunkte.
 \subparagraph{Lösung:} $\nabla f(x, y) = \begin{pmatrix}
   -2x e^{-x^2 - y^2} (x^2 + 2 y^2  - 1) & -2y e^{-x^2 - y^2} (x^2 + 2y^2 - 2)
 \end{pmatrix}$
-Der Ausdruck $\nabla f(x, y) = 0$ gilt für $(x, y) = (0, 0), (0, 1), (0, -1)$.
+Der Ausdruck $\nabla f(x, y) = 0$ gilt für $(x, y) = (0, 0), (0, \pm1), (\pm1, 0)$.
 \begin{flalign*}
   H_f(x, y) &= \begin{pmatrix}
     \frac{\partial^2 f}{\partial x^2} f(x, y) & \frac{\partial^2 f}{\partial x \partial y} f(x, y) \\
@@ -160,15 +160,21 @@ Der Ausdruck $\nabla f(x, y) = 0$ gilt für $(x, y) = (0, 0), (0, 1), (0, -1)$.
   \end{pmatrix}
   \quad 2 > 0 \land \det H_f(0, 0) > 0 \\
   & \Rightarrow H_f(0, 0) \text{ ist nach Aufgabe 3. (i) positiv definit}\\
-  H_f(0, 1) &= H_f (0, -1) \begin{pmatrix}
-    -2 & 0 \\
-    0 & -8
+  H_f(0, \pm1) &= \begin{pmatrix}
+    -\frac{2}{e} & 0 \\
+    0 & -\frac{8}{e}
   \end{pmatrix}
-  \quad -2 < 0 \land \det H_f(0, 0) > 0 \\
-  &\Rightarrow H_f(0, 1), H_f(0, -1) \text{ist nach Aufgabe 3. (ii) negativ definit}
+  \quad -\frac{2}{e} < 0 \land \det H_f(0, 0) > 0 \\
+  &\Rightarrow H_f(0, \pm1) \text{ist nach Aufgabe 3. (ii) negativ definit} \\
+  H_f(\pm1, 0) &= \begin{pmatrix}
+    -\frac{4}{e} & 0 \\
+    0 & \frac{2}{e}
+  \end{pmatrix}
+  \quad -\frac{4}{e} < 0 \land \det H_f(0, 0) < 0 \\
+  &\Rightarrow H_f(\pm1, 0) \text{ist nach Aufgabe 3. (ii) indefinit}
 \end{flalign*}
 
-Somit besitzt $f$ an der Stelle $(0, 0)$ ein lokales Minimum und an den Stellen
-$(0, 1), (0, -1)$ lokale Maxima.
+Somit besitzt $f$ an der Stelle $(0, 0)$ ein lokales Minimum, an den Stellen
+$(0, \pm1)$ lokale Maxima und an den Stellen $(\pm1, 0)$ Sattelpunkte.
 
 \end{document}
