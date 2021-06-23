@@ -30,6 +30,8 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
+\newcommand\skalprod[1]{\left\langle #1 \right\rangle}
+
 \begin{document}
 \paragraph{Hausaufgabe 1} Sei $M \subseteq \mathbb{R}^N$ eine nichtleere offene
 Menge.
@@ -89,6 +91,47 @@ durch
   Sei nun $p = 2 - N, N \geq 3$.
   \begin{flalign*}
     \Delta f = - \frac{1}{N - 2 \cdot \qty(x_1^2 + \ldots x_N^2)^{\frac{N}{2} - 1}}
+  \end{flalign*}
+\end{enumerate}
+
+\paragraph{Hausaufgabe 2} Gegeben sei die Funktion
+$f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
+$f(x, y) = e^{x + y}(x - y)$
+\begin{enumerate}[a)]
+\item Ermitteln Sie das Taylor-Polynom 2. Ordnung von $f$ an der Stelle
+  $(x_0, y_0) = (0, 0)$.
+
+  \subparagraph{Lösung:} Die Funktion $f$ ist beliebig oft stetig partiell
+  differenzierbar.
+  Für $h = \qty(h_1, h_2) \in \mathbb{R}^2$ ist
+  \begin{flalign*}
+    \qty(h_1 \frac{\partial}{\partial x} + h_2 \frac{\partial}{\partial y})^0 f(x, y)
+    &= f(x, y) & \\
+    \qty(h_1 \frac{\partial}{\partial x} + h_2 \frac{\partial}{\partial y})^1 f(x, y)
+    &= \skalprod{\nabla f(x, y), h} = e^{x + y}\qty\Big(h_1(x - y + 1) + h_2(x - y - 1)) \\
+    \qty(h_1 \frac{\partial}{\partial x} + h_2 \frac{\partial}{\partial y})^2 f(x, y)
+    &= e^{x + y} \cdot h^T \cdot \begin{pmatrix}
+      x - y + 2 & x - y \\
+      x - y & x - y - 2 \\
+    \end{pmatrix} \cdot h \\
+    \qty(h_1 \frac{\partial}{\partial x} + h_2 \frac{\partial}{\partial y})^3 f(x, y)
+    &= \qty(h_1^3 \frac{\partial^3}{\partial x^3}
+    + h_1^2h_2 \frac{\partial^2}{\partial x^2}\frac{\partial}{\partial y}
+    + h_2^2h_1 \frac{\partial^2}{\partial y^2}\frac{\partial}{\partial x}
+    + h_2^3 \frac{\partial^3}{\partial y^3}) f(x, y) \\
+    = e^{x + y} \Big(
+      h_1^3 (x - y + 3) +
+      &h_1^2h_2 (x - y + 1) +
+      h_1h_2^2 (x - y - 1) +
+      h_2^3 (x - y - 3)
+    \Big)
+  \end{flalign*}
+  \begin{flalign*}
+    T_{x_0,2}^f(x)
+    &= \sum_{k = 0}^N \qty(x_1 \frac{\partial}{\partial x_1} + x_2 \frac{\partial}{\partial x_2})^k f(0,0) & \\
+    &= f(x_0, y_0) + f'(x_0, y_0)(x, y) + \frac{1}{2} \begin{pmatrix} x & y \end{pmatrix}H_f(x_0, y_0)\begin{pmatrix} x \\ y \end{pmatrix} \\
+    &= 0 + x - y + 2x^2 - 2y^2 \\
+    &= 2x^2 + x - (2y^2 + y)
   \end{flalign*}
 \end{enumerate}
 
