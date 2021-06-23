@@ -76,9 +76,10 @@ durch
   \begin{flalign*}
     \colorbox{yellow}{$\frac{\partial}{\partial x_k}(x)$} &= h'(g(x)) \cdot g'(x) = h'(g(x)) \cdot g'(x) & \\
     &= \frac{1}{2}p\qty(x_1^2 + \ldots + x_N)^{\frac{p}{2} - 1} \cdot 2 x_k \\
-    &= p x_k \qty(x_1^2 + \ldots + x_N)^{\frac{p}{2} - 1} \\
+    &= p x_k \qty(x_1^2 + \ldots + x_N)^{\frac{p}{2} - 1} = x_k \cdot p \cdot \norm{x}_2^{p - 1} \\
     \colorbox{orange!60}{$\frac{\partial}{\partial x_j \partial x_k}(x)$}
     &= (p - 2) \cdot p \cdot x_j \cdot x_k \cdot \qty(x_1^2 + \ldots x_N^2)^{\frac{p}{2} - 2} \\
+    &= (p - 2) \cdot p \cdot x_j \cdot x_k \cdot \norm{x}_2^{p - 2} \\
     \frac{\partial^2}{\partial x_k}(x)
     &= p \cdot \qty(x_1^2 + \ldots x_N^2)^{\frac{p}{2} - 1} + p \cdot x_k^2
   \end{flalign*}
