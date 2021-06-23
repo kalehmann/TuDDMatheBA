@@ -130,11 +130,22 @@ $f(x, y) = e^{x + y}(x - y)$
     T_{x_0,2}^f(x)
     &= \sum_{k = 0}^N \qty(x_1 \frac{\partial}{\partial x_1} + x_2 \frac{\partial}{\partial x_2})^k f(0,0) & \\
     &= f(x_0, y_0) + f'(x_0, y_0)(x, y) + \frac{1}{2} \begin{pmatrix} x & y \end{pmatrix}H_f(x_0, y_0)\begin{pmatrix} x \\ y \end{pmatrix} \\
-    &= 0 + x - y + 2x^2 - 2y^2 \\
-    &= 2x^2 + x - (2y^2 + y)
+    &= 0 + x - y + \frac{2x^2 - 2y^2}{2} \\
+    &= x^2 + x - (y^2 + y)
   \end{flalign*}
 
 \newpage
+\item Geben Sie eine Darstellung des zugehörigen Restgliedes an.
+  \subparagraph{Lösung:} Lagrangesches Restglied:
+  \begin{flalign*}
+    R_{x_0, 2} &= \frac{f^{(3)}(\xi)}{6} (x - x_0)^3 & \\
+    &= \frac{1}{6} e^{\xi_1 + \xi_2} \qty(
+      x_1^3 (\xi_1 - \xi_2 + 3) +
+      x_1^2h_2 (\xi_1 - \xi_2 + 1) +
+      x_1h_2^2 (\xi_1 - \xi_2 - 1) +
+      x_2^3 (\xi_1 - \xi_2  - 3)
+    )
+  \end{flalign*}
 \end{enumerate}
 
 \paragraph{Hausaufgabe 3} Untersuchen Sie die Funktion
