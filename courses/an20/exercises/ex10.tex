@@ -65,12 +65,36 @@ Beweises Sie die folgenden Abschätzungen:
   \[
     d\qty(x_n, x^*) \leq \frac{q}{1 - q} d\qty(x_n, x_{n - 1})
   \]
-
+  \label{sec:1_b}
   \subparagraph{Lösung:} Für $x = x_{n - 1}$ folgt aus \hyperref[sec:1_a]{a)}
   \begin{flalign*}
     d\qty(\varphi\qty(x_{n - 1}), x^*) \overset{\makebox[60pt]{\tiny Definition von $x_n$}}&= d\qty(x_n, x^*) & \\
     &\leq \frac{q}{1 - q} d\qty(x_{n - 1}, \varphi\qty(x_{n - 1})) \\
     &= \frac{q}{1 - q} d\qty(x_{n - 1}, x_n)
+  \end{flalign*}
+
+\newpage
+\item Für jeden Startwert $x_0 \in M$ und $n \in \mathbb{N}$ gilt die
+  \textit{a priori Abschätzung}
+  \[
+    d\qty(x_n, x^*) \leq \frac{q^n}{1 - q} d\qty(x_1, x_0)
+  \]
+
+  \subparagraph{Lösung:} Sei
+  $P \coloneqq \qty{n \in \mathbb{N} \middle| d\qty(x_n, x^*) \leq \frac{q^n}{1 - q} d\qty(x_1, x_0)}$.
+
+  Für $n = 1$ gilt nach \hyperref[sec:1_b]{b)}
+  \begin{flalign*}
+    d\qty(\varphi\qty(x_0), x^*) &= d(x_1, x^*) & \\
+    &\leq \frac{q}{1 - q} d\qty(x_1, x_0) = \frac{q}{1 - q} d\qty(\varphi\qty(x_0), x_0) \\
+    \Rightarrow n = 1 &\in P
+  \end{flalign*}
+  Sei $n \in P$. Für $n + 1$ folgt
+  \begin{flalign*}
+    d\qty(x_{n + 1}, x^*) &= d(\varphi\qty(x_n), \varphi\qty(x^*)) & \\
+    &\leq q \cdot d \qty(x_n, x^*) \\
+    \overset{n \in P}&\leq q \cdot \frac{q^n}{1 - q} d\qty(x_1, x_0) = \frac{q^{n + 1}}{1 - q} d\qty(x_1, x_0) \\
+    \Rightarrow n + 1 &\in P \Rightarrow P \text{ ist induktiv, d.h. Formel gilt für alle } n \in \mathbb{N}
   \end{flalign*}
 \end{enumerate}
 \end{document}
