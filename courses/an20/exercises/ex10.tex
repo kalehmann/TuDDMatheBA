@@ -1,0 +1,63 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\definecolor{light-gray}{gray}{.9}
+
+\pgfplotsset{compat = newest}
+\usepgfplotslibrary{patchplots}
+
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2021}
+\title{Übung 10 Analysis - Weiterführende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\skalprod[1]{\left\langle #1 \right\rangle}
+\newcommand\nnorm[1]{\left\lvert\left\lvert\left\lvert #1 \right\rvert\right\rvert\right\rvert}
+
+\begin{document}
+
+\paragraph{Aufgabe 1} Gegeben seien ein nichtleerer vollständiger metrischer
+Raum $(M, d)$ und eine kontrahierende Abbildung
+$\varphi \colon M \to M$ mit der Lipschtizkonstanten $q \in (0, 1)$.
+Nach dem Banachschen Fixpunktsatz besitzt $\varphi$ genau einen Fixpunkt
+$x^* \in M$ und für jedes $x_0 \in M$ konvergiert die Folge $\qty(x_n)$
+mit $x_{n + 1} = \varphi\qty(x_n)$ gegen $x^*$.
+Beweises Sie die folgenden Abschätzungen:
+\begin{enumerate}[a)]
+\item Für alle $x \in M$ gilt: $d(\varphi(x), x*) \leq \frac{q}{1 - q}d(\varphi(x), x)$
+
+  \subparagraph{Lösung:} Für alle $x \in M$ gilt
+  \begin{flalign*}
+    d \qty(\varphi(x), x^*) &= d \qty(\varphi(x), \varphi(x^*)) & \\
+    &\leq q \cdot d(x, x*) \\
+    \overset{\makebox[20pt]{\small Dreiecksungleichung}}&\leq q \cdot d(x, \varphi(x)) + q \cdot d(\varphi(x), x^*) & {\Big |} -  q \cdot d(\varphi(x), x^*) \\
+    \Rightarrow \quad (1 - q) \cdot d(\varphi(x), x^*) &\leq q \cdot d(x, \varphi(x)) \\
+    d(\varphi(x), x^*) &\leq \frac{q}{1 - q} \cdot d(x, \varphi(x)) \\
+    d(\varphi(x), x^*) \overset{\makebox[30pt]{\small Symmetrie}}&\leq \frac{q}{1 - q} \cdot d(\varphi(x), x) \\
+  \end{flalign*}
+\end{enumerate}
+\end{document}
