@@ -49,7 +49,7 @@ mit $x_{n + 1} = \varphi\qty(x_n)$ gegen $x^*$.
 Beweises Sie die folgenden Abschätzungen:
 \begin{enumerate}[a)]
 \item Für alle $x \in M$ gilt: $d(\varphi(x), x*) \leq \frac{q}{1 - q}d(\varphi(x), x)$
-
+  \label{sec:1_a}
   \subparagraph{Lösung:} Für alle $x \in M$ gilt
   \begin{flalign*}
     d \qty(\varphi(x), x^*) &= d \qty(\varphi(x), \varphi(x^*)) & \\
@@ -58,6 +58,19 @@ Beweises Sie die folgenden Abschätzungen:
     \Rightarrow \quad (1 - q) \cdot d(\varphi(x), x^*) &\leq q \cdot d(x, \varphi(x)) \\
     d(\varphi(x), x^*) &\leq \frac{q}{1 - q} \cdot d(x, \varphi(x)) \\
     d(\varphi(x), x^*) \overset{\makebox[30pt]{\small Symmetrie}}&\leq \frac{q}{1 - q} \cdot d(\varphi(x), x) \\
+  \end{flalign*}
+
+\item Für jeden Startwert $x_0 \in M$ und $n \in \mathbb{N}$ gilt die
+  \textit{a posteriori Abschätzung}
+  \[
+    d\qty(x_n, x^*) \leq \frac{q}{1 - q} d\qty(x_n, x_{n - 1})
+  \]
+
+  \subparagraph{Lösung:} Für $x = x_{n - 1}$ folgt aus \hyperref[sec:1_a]{a)}
+  \begin{flalign*}
+    d\qty(\varphi\qty(x_{n - 1}), x^*) \overset{\makebox[60pt]{\tiny Definition von $x_n$}}&= d\qty(x_n, x^*) & \\
+    &\leq \frac{q}{1 - q} d\qty(x_{n - 1}, \varphi\qty(x_{n - 1})) \\
+    &= \frac{q}{1 - q} d\qty(x_{n - 1}, x_n)
   \end{flalign*}
 \end{enumerate}
 \end{document}
