@@ -91,10 +91,60 @@ Beweises Sie die folgenden Abschätzungen:
   \end{flalign*}
   Sei $n \in P$. Für $n + 1$ folgt
   \begin{flalign*}
-    d\qty(x_{n + 1}, x^*) &= d(\varphi\qty(x_n), \varphi\qty(x^*)) & \\
-    &\leq q \cdot d \qty(x_n, x^*) \\
+    d\qty(x_{n + 1}, x^*) &= d(\varphi\qty(x_n), \varphi\qty(x^*))
+    \leq q \cdot d \qty(x_n, x^*) & \\
     \overset{n \in P}&\leq q \cdot \frac{q^n}{1 - q} d\qty(x_1, x_0) = \frac{q^{n + 1}}{1 - q} d\qty(x_1, x_0) \\
     \Rightarrow n + 1 &\in P \Rightarrow P \text{ ist induktiv, d.h. Formel gilt für alle } n \in \mathbb{N}
   \end{flalign*}
 \end{enumerate}
+
+\paragraph{Aufgabe 2:} Gegeben sei $a > \frac{1}{2}$.
+Beweisen Sie, dass die rekursiv definierte Folge $\qty(x_n)_{n \in \mathbb{N}}$
+mit $x_0 \coloneqq 1$ und
+\begin{flalign*}
+  x_{n + 1} &\coloneqq \frac{a\qty(1 + x_n)}{a + x_n} &
+\end{flalign*}
+konvergent ist.
+Wie lautet der Grenzwert der Folge?
+Für welche Werte von $a$ ist eine schnelle Konvergenz der Folge
+$\qty(x_n)_{n \in \mathbb{N}}$ zu erwarten?
+
+\subparagraph{Lösung:} Sei $\varphi(x) \coloneqq \frac{a(1 + x)}{a + x}$
+für $x \in [0, +\infty) \eqqcolon M$.
+$\Rightarrow \varphi \colon M \to \mathbb{R}$ mit $\varphi(M) \subseteq M$
+ist eine Selbstabbildung von $M$.
+Sei $d$ die vom Betrag induzierte Metrik auf $M$.
+$(M, d)$ ist vollständig, da $M \subseteq \mathbb{R}$ bezüglich des Betrages
+abgeschlossen ist.
+Für $0 \leq x < y$ existiert ein $t \in (x, y)$ mit
+\[
+  d(\varphi(x) - \varphi(y)) = \abs{\varphi(x) - \varphi(y)}
+  \underset{\text{Mittelwertsatz}}{\overset{\varphi(y) = \varphi(x) + r(y - x)}=}
+  \abs{\varphi'(t)} \cdot \abs{y - x}
+  = \abs{\varphi'(t)} d(x, y)
+\]
+Für $t \geq 0$ gilt
+$\varphi'(t) = a \frac{(a + t) - (1 + t)}{(a + t)^2} = \frac{a(a - 1)}{(a + t)^2}
+\overset{t = 0}\leq \frac{a\abs{a - 1}}{a^2} = \frac{\abs{a - 1}}{a} = q$.
+\begin{itemize}
+\item Für $a = 1$ gilt $q = 0$.
+\item Für $a \in \qty(\frac{1}{2}, 1)$ gilt $q = \frac{1 - a}{a} = \frac{1}{a} - 1 \overset{a = \frac{1}{2}}\leq 1$
+\item Für $a \in (1, +\infty)$ gilt $q = \frac{a - 1}{a} = 1 - \frac{1}{a} < 1$
+\end{itemize}
+
+Da $a$ fest gewählt ist, ist auch $q$ fest.
+Für alle $a > \frac{1}{2}$ ist $\varphi$ eine kontrahierende Abbildung und
+besitzt genau einen Fixpunkt $x^* \in M$, der sich aus
+$x^* = \varphi\qty(x^*) = \frac{a\qty(1 + x^*)}{1 + x^*}$ ergibt.
+\[
+  x^* = \varphi\qty(x^*)
+  \iff x^* \cdot (a + x^*) = a \cdot (1 + x^*)
+  \iff \qty(x^*)^2 = a
+  \overset{x_n > 0}\iff x^* = \sqrt{a}
+\]
+Wir haben hier ein Iterationsverfahren um Näherungsweise die Wurzel einer
+positiven reellen Zahl zu bestimmen.
+Eine schnelle Konvergenz ist für kleine Werte von $q$, also einem $a$ nahe bei
+$1$ zu erwarten.
+
 \end{document}
