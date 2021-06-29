@@ -151,7 +151,7 @@ $1$ zu erwarten.
 \[
   f(x) \coloneqq x^2 - \ln x  - 2 = 0, x > 0
 \]
-\begin{enumerate}
+\begin{enumerate}[a)]
 \item Bestimmen Sie Existenz und Lage der Nullstellen von $f$.
   \label{sec:3_a}
   \subparagraph{Lösung:} $\lim_{x \to +\infty} (x) =
@@ -180,7 +180,7 @@ $1$ zu erwarten.
   Beschränken Sie sich auf das Intervall $[1, 2]$
 
   \subparagraph{Lösung:} Wir bestimmen die Nullstelle in $[1, 2] \eqqcolon M$.
-
+  \label{sec:3_b}
   Da $f(2) = 4 - \underset{< 1}{\underbrace{\ln 2}} - 2 > 1$.
   $M$ ist mit der Betragsmetrik ein vollständiger metrischer Raum.
 
@@ -209,6 +209,19 @@ $1$ zu erwarten.
   $\Rightarrow \varphi_3(M) \subseteq M$.
 
   Somit ist der Fixpunktsatz von Banach anwendbar.
+
+\item Bestimmen Sie für die Startwerte $x_0 = 1$ bzw. $x_0 = 2$ die ersten vier
+  Iteriertien für das unter \hyperref[sec:3_b]{b)} bestimmte Fixpunktproblem.
+
+  \subparagraph{Lösung:}
+  \begin{tabular}{| c c c c c c |}
+    \hline
+    $x_0$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ \\
+    \hline
+    $1$ & $1.414$ & $1.532$ & $1.558$ & $1.563$ & $1.564$ \\
+    $2$ & $1.641$ & $1.580$ & $1.568$ & $1.565$ & $1.565$ \\
+    \hline
+  \end{tabular}
 \end{enumerate}
 
 \end{document}
