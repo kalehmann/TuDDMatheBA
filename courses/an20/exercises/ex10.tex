@@ -153,6 +153,7 @@ $1$ zu erwarten.
 \]
 \begin{enumerate}
 \item Bestimmen Sie Existenz und Lage der Nullstellen von $f$.
+  \label{sec:3_a}
   \subparagraph{Lösung:} $\lim_{x \to +\infty} (x) =
   \lim_{x \to +\infty} x^2 - \ln x  - 2
   = \lim_{x \to +\infty} x^2 \cdot \qty(1 + \frac{\ln x}{x ^ 2} - \frac{2}{x^2}) = +\infty$
@@ -172,6 +173,42 @@ $1$ zu erwarten.
   höchstens eine Nullstelle.
   $\Rightarrow f$ besitzt genau zwei Nullstellen.
 
+\item Finden Sie ein geeignetes äquivalentes Fixpunktproblem, welches
+  die Vorraussetzungen des Fixpunktsatzes von Banach in einer abgeschlossenen
+  Umgebung der größeren unter \hyperref[sec:3_a]{a)} ermittelten Nullstelle
+  erfüllt.
+  Beschränken Sie sich auf das Intervall $[1, 2]$
+
+  \subparagraph{Lösung:} Wir bestimmen die Nullstelle in $[1, 2] \eqqcolon M$.
+
+  Da $f(2) = 4 - \underset{< 1}{\underbrace{\ln 2}} - 2 > 1$.
+  $M$ ist mit der Betragsmetrik ein vollständiger metrischer Raum.
+
+  Wir erhalten eine Abbildung $\varphi (x)$ durch Auflösen von $f(x) = 0$
+  nach $x$ mit $f(x) = 0 \iff x = \varphi(x)$.
+  \begin{flalign*}
+    \varphi_1(x) &= x - f(x) & \\
+    \varphi_2(x) &= \frac{2 + \ln x}{x} \\
+    \varphi_3(x) &= \sqrt{2 + \ln x} \\
+    \varphi_4(x) &= e^{x^2 - 2}
+  \end{flalign*}
+  \newpage
+  Es gilt $\abs{\varphi_1'(x)} = \abs{1 - f'(x)} = \abs{1 - \qty(2x - \frac{1}{2})} = \abs{\frac{-2x^2 + x - 1}{x}}$
+  \begin{align*}
+    \varphi_1'(x) &\leq \frac{2x^2 + x + 1}{x} \leq \frac{2 \cdot 2^2 + 2 + 1}{1} = 11 \text{ (keine optimale Abschätzung)} \\
+    \abs{\varphi_2'(x)} &= \abs{\frac{1 - (2 + \ln x)}{x^2}} = \abs{\frac{1 + \ln x}{x^2}} < \frac{1 + x}{x^2} = \frac{1}{x^2} + \frac{1}{x} \leq 2 \\
+    \abs{\varphi_3'(x)} &= \colorbox{yellow}{$\abs{\frac{1}{2 \sqrt{2 + \ln x} \cdot x}} \overset{x = 1}\leq \frac{1}{2 \sqrt{2}} = q < 1$} \\
+    \abs{\varphi_4'(x)} &= \abs{e^{x^2 - 2} \cdot 2x} \overset{x = 2}\leq \underset{> 1}{\underbrace{e^2 \cdot 4}}
+  \end{align*}
+  Es ist nun noch zu zeigen, dass $\varphi_3$ eine Selbstabbildung ist,
+  also $\varphi_3(M) \subseteq M$.
+  Wegen $\varphi_3'(x) > 0$ für $x > 0$ ist $\varphi_3$ monoton wachsend.
+
+  $\Rightarrow \varphi_3(1) = \sqrt{2} \leq \varphi_3(x) \leq \varphi_3(2) = \sqrt{2 + \ln 2} < 2$
+
+  $\Rightarrow \varphi_3(M) \subseteq M$.
+
+  Somit ist der Fixpunktsatz von Banach anwendbar.
 \end{enumerate}
 
 \end{document}
