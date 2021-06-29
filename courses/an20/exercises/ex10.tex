@@ -147,4 +147,31 @@ positiven reellen Zahl zu bestimmen.
 Eine schnelle Konvergenz ist für kleine Werte von $q$, also einem $a$ nahe bei
 $1$ zu erwarten.
 
+\paragraph{Aufgabe 3:} Gegeben sei die Nullstellenaufgabe
+\[
+  f(x) \coloneqq x^2 - \ln x  - 2 = 0, x > 0
+\]
+\begin{enumerate}
+\item Bestimmen Sie Existenz und Lage der Nullstellen von $f$.
+  \subparagraph{Lösung:} $\lim_{x \to +\infty} (x) =
+  \lim_{x \to +\infty} x^2 - \ln x  - 2
+  = \lim_{x \to +\infty} x^2 \cdot \qty(1 + \frac{\ln x}{x ^ 2} - \frac{2}{x^2}) = +\infty$
+
+  $\lim_{x \downarrow 0} (x) =
+  \lim_{x \downarrow 0} x^2 - \ln x  - 2 = +\infty$.
+  Für $x = 1$ gilt $f(x) = 1$
+  $\Rightarrow f$ besitzt in den Intervallen $(0, 1)$ und $(1, +\infty)$
+  jeweils mindestens eine Nullstelle.
+  Weiterhin gilt $f'(x) = 2x - \frac{1}{x} = \frac{1}{x} \qty\Big(2 x^2  - 1)$
+  $\Rightarrow f$ ist für $x \in \qty(0, \frac{1}{\sqrt(2)})$ streng monoton
+  fallend und für $x \in \qty(\frac{1}{\sqrt{2}}, +\infty)$ ist $f$ streng
+  monoton wachsend mit
+  $f\qty(\frac{1}{\sqrt{2}}) = \frac{1}{2} - \frac{1}{2} \ln \frac{1}{2} - 2 < 0$.
+  $\Rightarrow f$ besitzt in jedem der Intervalle
+  $\qty(0, \frac{1}{\sqrt{2}})$ und $\qty(\frac{1}{\sqrt{2}}, +\infty)$
+  höchstens eine Nullstelle.
+  $\Rightarrow f$ besitzt genau zwei Nullstellen.
+
+\end{enumerate}
+
 \end{document}
