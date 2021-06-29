@@ -1,0 +1,79 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usepgfplotslibrary{fillbetween}
+
+\author{Albina Oscherowa \\ Lukas Kamratzki \\ Karsten Lehmann}
+\date{SoSe 2021}
+\title{Hausaufgabe 10 \\Analysis - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\skalprod[1]{\left\langle #1 \right\rangle}
+
+\begin{document}
+\paragraph{Hausaufgabe 1} Wir betrachten die folgenden Teilmengen
+$M \subseteq \mathbb{R}$, die mit der von $\qty(\mathbb{R}, \abs{\cdot})$
+induzierten Topologie versehen seien, und die Funktionen
+$\varphi \colon M \to \mathbb{R}$ definiert durch
+\begin{multicols}{2}
+  \begin{enumerate}[(1)]
+  \item $M = [1, \infty), \varphi(x) = x + \frac{1}{x}$
+  \item $M = (0, 1], \varphi(x) = \frac{1}{3}\qty\big(x^2 + 2)$
+  \item $M = [0, 2], \varphi(x) = \frac{1}{3}\qty\big(4 - x^2)$
+  \item $M = [3, 5], \varphi(x) = \arctan x + 3$
+  \end{enumerate}
+\end{multicols}
+Untersuchen Sie für jeden der Fälle, ob
+\begin{enumerate}[a)]
+\item die Funktion $\varphi$ kontrahierend ist
+
+  \subparagraph{Lösung:}
+  \begin{enumerate}[(1)]
+  \item $\forall x, y \in [1, \infty) \colon \abs{x + \frac{1}{x} - y - \frac{1}{y}}
+    = \abs{x - y + \frac{y - x}{x \cdot y}}
+    = \abs{\frac{\qty\big(xy - 1)}{xy} \qty\big(x - y)}
+    = \abs{\frac{\qty\big(xy - 1)}{xy}} \abs{x - y}$
+    $\lim_{x \to \infty}\frac{xy - 1}{xy} = 1 \Rightarrow$ die Abbildung ist nicht kontrahierend.
+  \item $\forall x, y \in (0, 1] \colon \abs{\varphi(x) - \varphi(y)}
+    = \abs{\frac{1}{3}\qty\big(x^2 + 2) - \frac{1}{3}\qty\big(y^2 + 2)}
+    = \frac{1}{3}\abs{x^2 - y^2}
+    \leq \frac{\abs{x + y}}{3}\abs{x - y}$
+    $\overset{x = 1, y = 1} \leq \frac{2}{3}\abs{x - y}
+    \Rightarrow$ die Abbildung ist kontrahierend mit
+    $q = \frac{2}{3}$
+  \item $\forall x, y \in (0, 1] \colon \abs{\varphi(x) - \varphi(y)}
+    = \abs{\frac{1}{3}\qty\big(4 - x^2) - \frac{1}{3}\qty\big(4 - y^2)}
+    = \frac{1}{3}\abs{y^2 - x^2}
+    \leq \frac{\abs{x + y}}{3}\abs{x - y}$
+    $\overset{x = 1, y = 1} \leq \frac{2}{3}\abs{x - y}
+    \Rightarrow$ die Abbildung ist kontrahierend mit
+    $q = \frac{2}{3}$
+  \item $\forall x, y \in (0, 1] \colon \abs{\varphi(x) - \varphi(y)}
+    = \abs{\arctan x + 3 - \arctan y + 3} = \abs{\arctan x - \arctan y}$
+    $\Rightarrow$ die Abbildung ist nicht kontrahierend.
+  \end{enumerate}
+\end{enumerate}
+\end{document}
