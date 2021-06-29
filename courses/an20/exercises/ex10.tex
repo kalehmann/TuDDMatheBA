@@ -224,4 +224,43 @@ $1$ zu erwarten.
   \end{tabular}
 \end{enumerate}
 
+\paragraph{Aufgabe 4:} Beweisen Sie, dass es genau ein $x \in C([-1, 1])$ gibt
+mit
+\[
+  x(t) = \exp\qty(t^2) + \frac{1}{5}\qty\Big(2 - \sin\qty\big(3x(t))) \: \text{für alle } t \in [-1, 1]
+\]
+
+\subparagraph{Lösung:} $M = C([-1, 1]), d_{\infty}(x, y) = \norm{x - y}_{\infty}$.
+$(M, d)$ ist ein vollständiger metrischer Raum.
+
+\begin{flalign*}
+  \varphi\qty\big(x(t)) &\coloneqq e^{t^2} + \frac{1}{5} \qty\Big(2 - \sin\qty\big(3x(t))), t \in [-1, 1] & \\
+  \varphi &\colon (x) \colon [-1, 1] \to \mathbb{R} \: \text{ist stetig} \\
+  \varphi &\colon M \to M \: \text{Selbstabbildung (Abbildung von den stetigen Funktionen zu den stetigen Funktionen)}
+\end{flalign*}
+Seien $x, y \in M$ gegeben.
+Dann gilt für $t \in [-1, 1]$
+\begin{flalign*}
+  \abs{\varphi(x)(t) - \varphi(y)(t)}
+  &= \abs{\qty(e^{t^2} + \frac{1}{5}\qty\Big(2 - \sin(3x(t)))) - \qty(e^{t^2} + \frac{1}{5}\qty\Big(2 - \sin(3y(t))))} \\
+  &= \frac{1}{5} \abs{\sin(3x(t)) - \sin(3y(t))}
+\end{flalign*}
+Sei $g(u) \coloneqq \sin u, u \in \mathbb{R}$.
+Nach dem Mittelwertsatz existiert für $u < v$ ein $\xi \in (u, v)$ mit
+$\abs{g(u) - g(v)} = \abs{g'(\xi)} \cdot \abs{u - v} = \underset{\leq 1}{\underbrace{\abs{\cos \xi}}} \abs{u - v} \leq \abs{u - v}$.
+
+Mit $u = 3x(t), v = 3y(t)$ folgt für alle $t \in [-1, 1]$
+\[
+  \abs{\varphi\qty\big(x(t)) - \varphi\qty\big(y(t))}
+  \leq \frac{3}{5}\abs{x(t) - y(t)}
+  \leq \frac{3}{5} \norm{x - y}_{\infty}
+  = \frac{3}{5}d_{\infty}(x, y)
+\]
+$\Rightarrow d_{\infty}(\varphi(x), \varphi(y))
+= \sup_{t \in [-1, 1]} \abs{\varphi\qty\big(x(t)) - \varphi\qty\big(y(t))}
+\leq \frac{3}{5} d_{\infty}(x, y)$
+
+$\Rightarrow \varphi$ ist kontrahierend.
+Nach dem Banachschen Fixpunktsatz gibt es genau einen Fixpunkt.
+
 \end{document}
