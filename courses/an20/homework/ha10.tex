@@ -9,6 +9,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 \usepackage{mathtools}
+\usepackage{listings}
 \usepackage{physics}
 \usepackage{tabularx}
 \usepackage{titling}
@@ -77,9 +78,12 @@ Untersuchen Sie für jeden der Fälle, ob
     $q = \frac{2}{3}$
 
   \label{sec:1_a_4}
-  \item $\forall x, y \in (0, 1] \colon \abs{\varphi(x) - \varphi(y)}
-    = \abs{\arctan x + 3 - \arctan y + 3} = \abs{\arctan x - \arctan y}$
-    $\Rightarrow$ die Abbildung ist nicht kontrahierend.
+  \item $\forall x, y \in (0, 1] \colon$
+    \begin{flalign*}
+      \abs{\varphi(x) - \varphi(y)} &\leq q \cdot \abs{x - y} & \\
+      \frac{\abs{\arctan x - arctan y}}{\abs{x - y}} &\leq \frac{\frac{pi}{2}}{9} \leq q \leq 1
+    \end{flalign*}
+      $\Rightarrow$ die Abbildung ist kontrahierend.
   \end{enumerate}
 
 \item $\varphi$ eine Selbstabbildung von $M$ ist, d.h. $\varphi(M) \subseteq M$ gilt
@@ -100,6 +104,7 @@ Untersuchen Sie für jeden der Fälle, ob
     $\varphi(0) = \frac{4}{3} \in M$ und $\varphi(2) = 0 \in M$
     $\Rightarrow \varphi$ ist eine Selbstabbildung.
 
+  \label{sec:1_b_4}
   \item $0 \leq \arctan M \leq \frac{\pi}{2} \Rightarrow 3 \leq \varphi(M) \leq \frac{6 + \pi}{2}$
     $\Rightarrow \varphi(M) \subseteq M$
   \end{enumerate}
@@ -129,8 +134,12 @@ Untersuchen Sie für jeden der Fälle, ob
 
     $\Rightarrow$ die Voraussetzungen für den Banachschen Fixpunktsatz sind erfüllt.
 
-  \item $\varphi$ ist nach \hyperref[sec:1_a_4]{1 a) (4)} nicht kontrahierend,
-    somit sind die Voraussetzungen für den Banchschen Fixpunktsatz nicht erfüllt.
+  \item $\qty\big(M, d)$ ist als abgeschlossene Teilmenge des vollständigen Raumes
+    $\qty\big(\mathbb{R}, d)$ ebenfalls abgeschlossen.z
+    Weiterhin ist $\varphi$ nach \hyperref[sec:1_a_4]{a)} kontrahierend und nach
+    \hyperref[sec:1_b_4]{b)} eine Selbstabbildung.
+
+    $\Rightarrow$ die Voraussetzungen für den Banachschen Fixpunktsatz sind erfüllt.
   \end{enumerate}
 
 \item $\varphi$ einen Fixpunkt in $M$ besitzt.
@@ -140,7 +149,7 @@ Untersuchen Sie für jeden der Fälle, ob
 
   \begin{multicols}{2}
     \begin{enumerate}[(1)]
-    \item Lösung durch Gleichsetzen: $x = \varphi(x)$
+    \item durch Gleichsetzen: $x = \varphi(x)$
       \begin{flalign*}
         x &= x + \frac{1}{x} & \\
         x^2 &= x^2 + 1 \\
@@ -148,7 +157,7 @@ Untersuchen Sie für jeden der Fälle, ob
       \end{flalign*}
       $\Rightarrow \varphi$ besitzt keinen Fixpunkt.
 
-    \item Lösung durch Gleichsetzen: $x = \varphi(x)$
+    \item durch Gleichsetzen: $x = \varphi(x)$
       \begin{flalign*}
         x &=  \frac{1}{3}\qty\big(x^2 + 2) & \\
         3x &= x^2 + 2 \\
@@ -156,7 +165,7 @@ Untersuchen Sie für jeden der Fälle, ob
       \end{flalign*}
       $\Rightarrow \varphi$ besitzt mit $x = 1$ einen Fixpunkt in $M$
 
-    \item Lösung durch Gleichsetzen: $x = \varphi(x)$
+    \item durch Gleichsetzen: $x = \varphi(x)$
       \begin{flalign*}
         x &= \frac{1}{3}\qty\big(4 - x^2) & \\
         3x &= 4 - x^2 \\
@@ -164,8 +173,15 @@ Untersuchen Sie für jeden der Fälle, ob
       \end{flalign*}
       $\Rightarrow \varphi$ besitzt mit $x = 1$ einen Fixpunkt in $M$
 
-    \item Lösung durch Gleichsetzen: $x = \varphi(x)$
-      \\\\\\\\\\\\\\\\
+    \item durch iterative Näherung: $x \approx 4.34$
+      Vgl. Python
+      \begin{lstlisting}[language=Python]
+import math
+f = lambda x: (math.atan(x) + 3)
+x = 1
+for i in range(100): x = f(x)
+print(x)
+      \end{lstlisting}
     \end{enumerate}
   \end{multicols}
 \end{enumerate}
