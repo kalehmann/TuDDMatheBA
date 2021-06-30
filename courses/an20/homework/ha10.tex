@@ -75,5 +75,27 @@ Untersuchen Sie für jeden der Fälle, ob
     = \abs{\arctan x + 3 - \arctan y + 3} = \abs{\arctan x - \arctan y}$
     $\Rightarrow$ die Abbildung ist nicht kontrahierend.
   \end{enumerate}
+
+\item $\varphi$ eine Selbstabbildung von $M$ ist, d.h. $\varphi(M) \subseteq M$ gilt
+
+  \subparagraph{Lösung:}
+  \begin{enumerate}[(1)]
+  \item Sei $x \in M$, dann ist
+    $\varphi(x) = \underset{\in M}{\underbrace{x}} + \underset{> 0}{\underbrace{\frac{1}{x}}}$
+    ebenfalls in $M$ \\
+    $\Rightarrow \varphi$ ist eine Selbstabbildung.
+
+  \item Wegen $\varphi'(x) = \frac{2}{3}x > 0$ für $x > 0$ ist $\varphi$ monoton wachsend.
+    $\varphi(x) \overset{x \to 0}= \frac{2}{3} \in M$ und $\varphi(1) = 1 \in M$
+    $\Rightarrow \varphi$ ist eine Selbstabbildung.
+
+  \item Wegen $\varphi'(x) = -\frac{2}{3}x < 0$ für $x > 0$ ist $\varphi$ monoton fallend.
+    $\varphi(0) = \frac{4}{3} \in M$ und $\varphi(2) = 0 \in M$
+    $\Rightarrow \varphi$ ist eine Selbstabbildung.
+
+  \item $0 \leq \arctan M \leq \frac{\pi}{2} \Rightarrow 3 \leq \varphi(M) \leq \frac{6 + \pi}{2}$
+    $\Rightarrow \varphi(M) \subseteq M$
+  \end{enumerate}
+
 \end{enumerate}
 \end{document}
