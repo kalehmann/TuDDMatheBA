@@ -52,11 +52,13 @@ Untersuchen Sie für jeden der Fälle, ob
 
   \subparagraph{Lösung:}
   \begin{enumerate}[(1)]
+  \label{sec:1_a_1}
   \item $\forall x, y \in [1, \infty) \colon \abs{x + \frac{1}{x} - y - \frac{1}{y}}
     = \abs{x - y + \frac{y - x}{x \cdot y}}
     = \abs{\frac{\qty\big(xy - 1)}{xy} \qty\big(x - y)}
     = \abs{\frac{\qty\big(xy - 1)}{xy}} \abs{x - y}$
     $\lim_{x \to \infty}\frac{xy - 1}{xy} = 1 \Rightarrow$ die Abbildung ist nicht kontrahierend.
+
   \item $\forall x, y \in (0, 1] \colon \abs{\varphi(x) - \varphi(y)}
     = \abs{\frac{1}{3}\qty\big(x^2 + 2) - \frac{1}{3}\qty\big(y^2 + 2)}
     = \frac{1}{3}\abs{x^2 - y^2}
@@ -64,6 +66,8 @@ Untersuchen Sie für jeden der Fälle, ob
     $\overset{x = 1, y = 1} \leq \frac{2}{3}\abs{x - y}
     \Rightarrow$ die Abbildung ist kontrahierend mit
     $q = \frac{2}{3}$
+
+  \label{sec:1_a_3}
   \item $\forall x, y \in (0, 1] \colon \abs{\varphi(x) - \varphi(y)}
     = \abs{\frac{1}{3}\qty\big(4 - x^2) - \frac{1}{3}\qty\big(4 - y^2)}
     = \frac{1}{3}\abs{y^2 - x^2}
@@ -71,6 +75,8 @@ Untersuchen Sie für jeden der Fälle, ob
     $\overset{x = 1, y = 1} \leq \frac{2}{3}\abs{x - y}
     \Rightarrow$ die Abbildung ist kontrahierend mit
     $q = \frac{2}{3}$
+
+  \label{sec:1_a_4}
   \item $\forall x, y \in (0, 1] \colon \abs{\varphi(x) - \varphi(y)}
     = \abs{\arctan x + 3 - \arctan y + 3} = \abs{\arctan x - \arctan y}$
     $\Rightarrow$ die Abbildung ist nicht kontrahierend.
@@ -89,6 +95,7 @@ Untersuchen Sie für jeden der Fälle, ob
     $\varphi(x) \overset{x \to 0}= \frac{2}{3} \in M$ und $\varphi(1) = 1 \in M$
     $\Rightarrow \varphi$ ist eine Selbstabbildung.
 
+  \label{sec:1_b_3}
   \item Wegen $\varphi'(x) = -\frac{2}{3}x < 0$ für $x > 0$ ist $\varphi$ monoton fallend.
     $\varphi(0) = \frac{4}{3} \in M$ und $\varphi(2) = 0 \in M$
     $\Rightarrow \varphi$ ist eine Selbstabbildung.
@@ -97,5 +104,33 @@ Untersuchen Sie für jeden der Fälle, ob
     $\Rightarrow \varphi(M) \subseteq M$
   \end{enumerate}
 
+\newpage
+\item alle Voraussetzungen des Banachschen Fixpunktsatzes erfüllt sind
+
+  \subparagraph{Lösung:} Für den Fixpunktsatz wird vorausgesetzt, dass
+  \begin{itemize}
+  \item $\qty\big(M, d)$ ein vollständiger, metrischer, nichtleerer Raum ist
+  \item $\varphi$ eine Selbstabbildung ist
+  \item $\varphi$ kontrahierend ist
+  \end{itemize}
+  \begin{enumerate}[(1)]
+  \item $\varphi$ kontrahiert wie in \hyperref[sec:1_a_1]{1 a) (1)} gezeigt nicht,
+    somit sind die Voraussetzungen für den Banchschen Fixpunktsatz nicht erfüllt.
+
+  \item $M$ ist nicht vollständig, da für $\qty\big(a_n) \coloneqq \frac{1}{n}$
+    gilt $\lim_{n \to \infty} a_n = 0 \notin M$
+
+    $\Rightarrow$ die Voraussetzungen für den Banachschen Fixpunktsatz sind nicht erfüllt.
+
+  \item $\qty\big(M, d)$ ist als abgeschlossene Teilmenge des vollständigen Raumes
+    $\qty\big(\mathbb{R}, d)$ ebenfalls abgeschlossen.z
+    Weiterhin ist $\varphi$ nach \hyperref[sec:1_a_3]{a)} kontrahierend und nach
+    \hyperref[sec:1_b_3]{b)} eine Selbstabbildung.
+
+    $\Rightarrow$ die Voraussetzungen für den Banachschen Fixpunktsatz sind erfüllt.
+
+  \item $\varphi$ ist nach \hyperref[sec:1_a_4]{1 a) (4)} nicht kontrahierend,
+    somit sind die Voraussetzungen für den Banchschen Fixpunktsatz nicht erfüllt.
+  \end{enumerate}
 \end{enumerate}
 \end{document}
