@@ -215,4 +215,70 @@ Sei nun $x_2 \ne x^*$ ein weiterer Fixpunkt von $\varphi$. Dann ist
 \]
 ein Widerspruch zum Banachschen Fixpunktsatz.
 $\Rightarrow \varphi$ besitzt genau einen Fixpunkt.
+
+\subparagraph{Aufgabe 3:} Für $f \in C([0, 1])$ sei
+$\varphi \colon C([0, 1]) \to C([0, 1])$ definiert durch
+\[
+  \varphi(f)(x) \coloneqq \frac{1}{2} \begin{cases}
+    f(3x) & \text{falls } 0 \leq x < \frac{1}{3} \\
+    f(1) & \text{falls } \frac{1}{3} \leq x < \frac{2}{3} \\
+    f(3x - 2) + f(1) & \text{falls } \frac{2}{3} \leq x \leq 1
+  \end{cases}
+\]
+Weiter sei $M \coloneqq \qty\big{f \in C([0, 1]) \colon f(0) = 0, f(1) = 1}$.
+\begin{enumerate}[(i)]
+\item Zeigen Sie, dass $\varphi(M) \subseteq M$ gilt.
+
+  \subparagraph{Lösung:} Die Abbildung $\varphi$ ist von $C([0, 1])$
+  nach $C([0, 1])$ definiert.
+  Weiterhin gilt für jedes $f \in C([0, 1]) \colon$
+  $\varphi(f)(0) = \frac{1}{2} f(3 \cdot 0) = 0$ und
+  $\varphi(f)(1) = \frac{1}{2} \qty\big(f(1) + f(1)) = 1$
+
+  $\Rightarrow \varphi(M) \subseteq M$.
+
+\newpage
+\item Für $x \in [0, 1]$ sei $f_0(x) \coloneqq x$ und
+  $f_n \coloneqq \varphi\qty(f_{n - 1})$.
+  Beweisen Sie, dass die Folge $\qty\big(f_n)$ gleichmäßig gegen ein
+  $f^* \in C([0, 1])$ konvergiert.
+
+  \subparagraph{Lösung:} $d_{\infty}(f, g) = \norm{f - g}_{\infty}$,
+  $\qty\big(M, d_{\infty})$ ist ein vollständiger metrischer Raum.
+  Es ist zu zeigen, dass $\varphi$ kontrahiert.
+  Dabei wird nach drei Fällen unterschieden:
+  \begin{enumerate}[label={Fall \arabic*:}]
+  \item $0 \leq x < \frac{1}{3}$, für alle $f, g \in M$ gilt
+    \begin{flalign*}
+      d_{\infty}(\varphi(f), \varphi(g))
+      &= \sup_{x \in \left[0, \frac{1}{3}\right)} \frac{f(3x) - g(3x)}{2}  & \\
+      &\overset{f(3x), g(3x) \in [0, 1]}\leq \frac{1}{2}
+      \sup _{x \in \left[0, \frac{1}{3}\right)} \abs{f(x) - g(x)}
+      = \frac{1}{2} d_{\infty}(f, g)
+    \end{flalign*}
+
+  \item $\frac{1}{3} \leq x < \frac{2}{3}$, für alle $f, g \in M$ gilt
+    \[
+      d_{\infty} (\varphi(f), \varphi(g)) = 0 \leq \frac{1}{2} d_{\infty}(f, g)
+    \]
+
+  \item $\frac{2}{3} \leq x \leq 1$, für alle $f, g \in M$ gilt
+    \begin{flalign*}
+      d_{\infty}(\varphi(f), \varphi(g))
+      &= \sup_{x \in \qty[\frac{2}{3}, 1]} \frac{f(3x - 2) - g(3x - 2) + f(1) - g(1)}{2} & \\
+      \overset{f(1) = g(1) = 1}&=
+      \sup_{x \in \qty[\frac{2}{3}, 1]} \frac{f(3x - 2) - g(3x - 2)}{2} \\
+      \overset{f(3x - 2), g(3x - 2) \in [0, 1]}&\leq \frac{1}{2} d_{\infty}(f, g)\\
+    \end{flalign*}
+  \end{enumerate}
+
+  $\Rightarrow \varphi$ ist eine Kontraktion.
+
+  $\Rightarrow$ nach dem Banachschen Fixpunktsatz besitzt $\varphi$ auf $M$
+  genau einen Fixpunkt.
+
+  $\Rightarrow$ die Folge $\qty\big(f^*)$ beschreibt die iterative Annäherung an
+  diesen Fixpunkt.
+
+\end{enumerate}
 \end{document}
