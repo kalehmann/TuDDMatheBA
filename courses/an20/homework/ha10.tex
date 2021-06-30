@@ -169,4 +169,34 @@ Untersuchen Sie für jeden der Fälle, ob
     \end{enumerate}
   \end{multicols}
 \end{enumerate}
+
+\newpage
+\paragraph{Aufgabe 2} Gegeben seien ein vollständiger metrischer Raum
+$\qty\big(M, d)$ und eine Abbildung $\varphi \colon M \to M$, so dass
+$\varphi^n$ für ein $n \in \mathbb{N}$ kontrahierend ist.
+Beweisen Sie, dass $\varphi$ genau einen Fixpunkt $x^* \in M$ besitzt.
+
+\subparagraph{Lösung:} Sei $n \in \mathbb{N}$ so gewählt, dass $\varphi^i$
+kontrahiert.
+Unter der Voraussetzung, dass $M$ nichtleer ist, existiert nach dem Banachschen
+Fixpunktsatz genau ein $x^* \in M$ mit $\varphi^n\qty\big(x^*) = x^*$.
+\begin{flalign*}
+  \varphi\qty\big(x^*) \overset{x^* \varphi^n\qty\big(x^*)}&= \varphi\qty\big(\varphi^n\qty\big(x^*)) & \\
+  & = \varphi^n\qty\big(\varphi\qty\big(x^*))
+\end{flalign*}
+$\Rightarrow \varphi\qty\big(x^*)$ ist ein Fixpunkt von $\varphi^n$.
+Da $\varphi^n$ eine nach Voraussetzung eine Kontraktion ist und $M$
+ein nichtleerer ($x^* \in M$) vollständiger metrischer Raum ist, besitzt
+$\varphi^n$ \textbf{genau einen} Fixpunkt.
+\begin{flalign*}
+  &\Rightarrow x^* = \varphi\qty\big(x^*) & \\
+  &\Rightarrow x^* \text{ ist ein Fixpunkt von } \varphi
+\end{flalign*}
+Sei nun $x_2 \ne x^*$ ein weiterer Fixpunkt von $\varphi$. Dann ist
+\[
+  x_2 = \varphi\qty\big(x_2) = \varphi\qty\big(\varphi\qty\big(x_2))
+  = \ldots = \varphi^n\qty\big(x^2),
+\]
+ein Widerspruch zum Banachschen Fixpunktsatz.
+$\Rightarrow \varphi$ besitzt genau einen Fixpunkt.
 \end{document}
