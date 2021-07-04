@@ -1,0 +1,163 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[table]{xcolor}
+\usepackage{pgfplots}
+
+\definecolor{light-gray}{gray}{.9}
+
+\pgfplotsset{compat = newest}
+\usepgfplotslibrary{patchplots}
+
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2021}
+\title{Übung 10 Analysis - Weiterführende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\skalprod[1]{\left\langle #1 \right\rangle}
+\newcommand\nnorm[1]{\left\lvert\left\lvert\left\lvert #1 \right\rvert\right\rvert\right\rvert}
+
+\begin{document}
+ \fcolorbox{black}{light-gray}{
+    \begin{minipage}{\textwidth}
+      \textbf{Satz über die lokale Auflösbarkeit (endlichdimensionale Version)}
+
+      $U \subseteq \mathbb{R}^N, V \subseteq \mathbb{R}^M$, offen.
+      $F \colon U \times V \to \mathbb{R}^M$ sei eine $C^k$-Funktion
+      ($k$-mal stetig differenzierbar), so dass
+      $(x, y) \mapsto J_F^{(y)} (x, y)$ auf $U \times V$ invertierbar ist.
+
+      $\Rightarrow$ Für alle $\qty(\overline{x}, \overline{y}) \in U \times V$
+      existieren offene Umgebungen $\tilde{U} \subseteq \mathbb{R}^N$ von
+      $\overline{x}$ und $\tilde{V} \subseteq \mathbb{R}^N$ von
+      $\overline{y}$ und eine $C^k$-Funktion
+      $f \colon \tilde{U} \times \tilde{V} \subseteq U \times V \to \tilde{V}$
+      mit folgenden Eigenschaften:
+      \begin{itemize}
+      \item $\forall (x, y) \in \tilde{U} \times \tilde{V} \colon F(x, y) = F(\overline{x}, \overline{y}) \iff y = f(x)$
+      \item $J_f(x) = - \qty\Big(J_F^{(y)}\qty(x, f(x)))^{-1} \cdot J_F^{(x)}\qty(x, f(x))$
+      \end{itemize}
+      Insofern gilt $\overline{y} = f(\overline{x})$ und
+      $J_f(\overline{x}) = - \qty(J_f^{(y)}(\overline{x}, \overline{y}))^{-1} J_F^{(x)}(\overline{x}, \overline{y})$
+    \end{minipage}
+  }
+
+
+\paragraph{Aufgabe 2} Gegeben sei eine Funktion
+$f \colon \mathbb{R}^4 \to \mathbb{R}^2$ mit
+\[
+  F(x, y, u, v) = \begin{pmatrix}
+    x^2 + y^2 - u^2 - v^2 \\
+    x^2 + 2y^2 + 3u^2 + 4v^2 - 1
+  \end{pmatrix}, \text{ für $(x, y, u, v) \in \mathbb{R}^4$}
+\]
+Betrachtet werde das nichtlineare Gleichungssystem
+$F(x, y, u, v) = (0, 0)$ in der Umgebung des Punktes
+$\qty\big(x_0, y_0, u_0, v_0) = \qty(\frac{1}{5}, \frac{2}{5}, \frac{2}{5}, \frac{1}{5})$
+
+\begin{enumerate}[a)]
+\item Überprüfen Sie, ob dieser Punkt das Gleichungssystem erfüllt.
+
+  \subparagraph{Lösung:} Durch Einsetzen und ausrechnen.
+  \begin{flalign*}
+    F\qty(x_0, y_0, u_0, v_0) &= \begin{pmatrix}
+      \frac{1}{25} + \frac{4}{25} - \frac{4}{25} - \frac{1}{25} \\
+      \frac{1}{25} + \frac{8}{25} + \frac{12}{25} + \frac{4}{25} - \frac{25}{25}
+    \end{pmatrix} & \\
+    &= \begin{pmatrix}
+      0 \\
+      0
+    \end{pmatrix}
+  \end{flalign*}
+  $\Rightarrow$ der Punkt erfüllt das Gleichungssytem.
+
+\item Zeigen Sie, dass es eine Umgebung $\tilde{U}$ von $\qty(x_0, y_0)$
+  und positive Funktionen $u, v \colon \tilde{U} \to \mathbb{R}$ gibt mit
+  $F\qty\big(x, y, u(x, y), v(x, y)) = (0, 0)$
+
+  \subparagraph{Lösung:} \textbf{Ist $F$ eine $C^1$-Funktion?}
+  Es gilt
+  \[
+    J_F(x, y, u, v) = \left(
+      \begin{array}{>{\color{red}}c >{\color{red}}c >{\color{black!40!green}}c >{\color{black!40!green}}c}
+        2x & 2y & -2u & -2v \\
+        2x & 4y & 6u & 8v \\
+      \end{array}
+    \right)
+  \]
+  Dabei teilt sich die Jakobimatrix auf in
+  \colorbox{red!30}{$J_F^{{x, y}}(\ldots)$} und
+  \colorbox{black!20!green!40}{$J_F^{(u, v)}(\ldots)$}.
+
+  Die Ableitung $(x, y, u, v) \mapsto J_F(\ldots)$ ist stetig
+  $\Rightarrow F$ ist eine $C^1$-Funktion (einmal stetig differenzierbar).
+
+  \textbf{Ist die Jakobimatrix invertierbar?}
+  \[
+    \det J_F^{(u, v)} (x, y, u, v) = -4uv \ne 0, \text{ für } u, v \ne 0
+  \]
+  Insbesondere ist $\det J_F^{(u, v)} (x_0, y_0, u_0, v_0) = -\frac{8}{25} < 0$.
+
+  $\Rightarrow \exists \qty\Big(J_F^{(u, v)}\qty(x_0, y_0, u_0, v_0))$
+
+  Wie können wir darauf schließen, dass es eine Umgebung des Punktes
+  $\qty(x_0, y_0, u_0, v_0)$ gibt, in der $J_F^{(u, v)}$ invertierbar ist?
+
+  $(x, y, u, v) \mapsto J_F^{(u, v)} (x, y, u, v)$ ist stetig und
+  $\det J_F^{(u, v)} \qty(x_0, y_0, u_0, v_0) < 0$
+
+  $\Rightarrow$ Es existiert eine offene Umgebung $\overline{W}$ von
+  $\qty(x_0, y_0, u_0, v_0)$ mit $\det J_F^{(u, v)} (x, y, u, v) < 0$
+  für alle $x, y, u, v \in \overline{W}$
+
+  $\Rightarrow J_F^{(u,v)}$ ist auf $\overline{W}$ invertierbar.
+
+  $\Rightarrow$ alle Vorraussetzungen des Satzes zur lokalen Auflösbarkeit sind
+  erfüllt.
+
+  $\Rightarrow$ es existiert $\tilde{U} \subseteq \mathbb{R}^2$ von $\qty(x_0, y_0)$
+  und eine $C^1$-Funktion $f \colon \tilde{U} \to \mathbb{R}^2$ mit
+  \[
+    F\qty\big(x, y, f(x, y)) = \begin{pmatrix}
+      0 \\
+      0
+    \end{pmatrix}
+    \text{ und }
+    f(x, y) = \begin{pmatrix}
+      u(x, y) \\
+      v(x, y)
+    \end{pmatrix}
+  \]
+  für alle $(x, y) \in \tilde{U}$.
+
+  \textbf{Warum sind $u, v$ positiv?}
+
+  Es gilt $u\qty(x_0, y_0) = u_0 > 0, v\qty(x_0, y_0) = v_0 > 0$
+  und $u, v \colon \tilde{U} \to \mathbb{R}^2$ sind $C^1$-Funktionen,
+  also auch stetig.
+  Demnach kann $\tilde{U}$ so gewählt werden, dass $u, v$ positiv sind.
+\end{enumerate}
+
+\end{document}
