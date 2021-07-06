@@ -201,8 +201,9 @@ sei definiert durch $F(r, \varphi) \coloneqq \qty(a \cdot r \cdot \cos \varphi, 
 \begin{enumerate}[a)]
 \item Beweisen Sie, dass $F$ ein lokaler Diffeomorphismus ist.
 
-  \subparagraph{Lösung:} Ein \textbf{Diffeomorphismus} ist eine bijektive, stetig differenzierbare Abbildung,
-  deren Umkehrabbildung auch stetig differenzierbar ist.
+  \subparagraph{Lösung:} Ein \textbf{lokaler Diffeomorphismus} ist eine stetig
+  differenzierbare Abbildung, deren Umkehrabbildung auch stetig differenzierbar
+  ist.
 
   Es gilt $J_F(r, \varphi) = \begin{pmatrix}
     a \cdot \cos \varphi & -a \cdot r \cdot \sin \varphi \\
@@ -258,6 +259,17 @@ sei definiert durch $F(r, \varphi) \coloneqq \qty(a \cdot r \cdot \cos \varphi, 
     \Rightarrow& F(r, \varphi) = (x, y) \Rightarrow F \text{ ist surjektiv}
   \end{flalign*}
 
+\newpage
+\item Zeigen Sie, dass $F$ ein globaler Diffeomorphismus ist.
+
+  \subparagraph{Lösung:} Ein \textbf{globaler Diffeomorphismus} ist eine
+  bijektive, stetig differenzierbare Abbildung, deren Umkehrabbildung auch
+  stetig differenzierbar ist.
+
+  $\Rightarrow$ es ist nur noch zu zeigen, dass $F$ injektiv ist.
+
+  $F$ ist injektiv, da nach Aufgabe b) für jedes $(x, y) \in \mathbb{R}^2$
+  höchstens ein $(r, \varphi) \in W$ mit $F(r, \varphi) = (x, y)$ existiert.
 \end{enumerate}
 
 \end{document}
