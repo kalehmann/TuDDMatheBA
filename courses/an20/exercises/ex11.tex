@@ -225,6 +225,39 @@ sei definiert durch $F(r, \varphi) \coloneqq \qty(a \cdot r \cdot \cos \varphi, 
   $(r, \varphi) \in \mathbb{R}_{> 0} \times (-\pi, \pi)$ existiert eine
   offene Umgebung $U$ und eine offene Menge $V \subseteq \mathbb{R}^2$,
   so dass $F \colon U \to V$ ein Diffeomorphismus ist.
+
+\item Beweisen Sie, dass $F$ surjektiv ist.
+
+  \subparagraph{Lösung:} Es gilt $F(\mathbb{R}_{>0} \times (-\pi, \pi)) =
+  \mathbb{R}^2 \setminus \qty{(x, 0) {\Big |} x \leq 0}$.
+
+  Sei $(x, y) \in \mathbb{R}^2 \setminus \qty{(x, 0) {\Big |} x \leq 0} \eqqcolon W$.
+  \begin{flalign*}
+    \Rightarrow& F(r, \varphi) = \begin{pmatrix}
+      a \cdot r \cdot \cos \varphi \\
+      a \cdot r \cdot \sin \varphi
+    \end{pmatrix} = \begin{pmatrix}
+      x \\ y
+    \end{pmatrix}
+    \iff
+    \begin{array}{rcl}
+      x & = & a \cdot r \cdot \cos \varphi \\
+      y & = & b \cdot r \cdot \sin \varphi
+    \end{array} & \\
+    \Rightarrow& r \cdot \cos \varphi = \frac{x}{a} \land r \cdot \sin \varphi = \frac{y}{b} \\
+    \Rightarrow& \qty(\frac{x}{a})^2 + \qty(\frac{y}{b})^2 = r^2 \text{ bzw. }
+    r = \sqrt{\qty(\frac{x}{a})^2 + \qty(\frac{y}{b})^2}
+  \end{flalign*}
+  Wir setzen
+  \begin{flalign*}
+    \varphi &= \begin{cases}
+      \arccos \frac{x}{a \cdot r} & \text{für } y > 0 \\
+      0 & \text{für } y = 0 \land x > 0 \\
+      -\arccos \frac{x}{a \cdot r} & \text{für } y < 0
+    \end{cases} & \\
+    \Rightarrow& F(r, \varphi) = (x, y) \Rightarrow F \text{ ist surjektiv}
+  \end{flalign*}
+
 \end{enumerate}
 
 \end{document}
