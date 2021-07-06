@@ -195,4 +195,36 @@ $\qty\big(x_0, y_0, u_0, v_0) = \qty(\frac{1}{5}, \frac{2}{5}, \frac{2}{5}, \fra
 
 \end{enumerate}
 
+\paragraph{Aufgabe 5:} Gegeben seien $a, b > 0$.
+$F \colon \mathbb{R}_{> 0} \times \qty(-\pi, \pi) \to \mathbb{R}^2 \setminus \qty{(x, 0) {\Big |} x \leq 0}$
+sei definiert durch $F(r, \varphi) \coloneqq \qty(a \cdot r \cdot \cos \varphi, b \cdot r \cdot \sin \varphi)$.
+\begin{enumerate}[a)]
+\item Beweisen Sie, dass $F$ ein lokaler Diffeomorphismus ist.
+
+  \subparagraph{Lösung:} Ein \textbf{Diffeomorphismus} ist eine bijektive, stetig differenzierbare Abbildung,
+  deren Umkehrabbildung auch stetig differenzierbar ist.
+
+  Es gilt $J_F(r, \varphi) = \begin{pmatrix}
+    a \cdot \cos \varphi & -a \cdot r \cdot \sin \varphi \\
+    b \cdot \sin \varphi & b \cdot r \cdot \cos \varphi
+  \end{pmatrix}$ und $(x, y) \mapsto J_F(x, y)$ ist stetig
+  $\Rightarrow F$ ist eine $C^1$-Funktion.
+
+  Weiter ist $\det J_F (r, \varphi) = a \cdot b \cdot r > 0$.
+  \[
+    \Rightarrow \exists \qty\Big(J_F(r, \varphi))^{-1}
+    = \frac{1}{abr} \begin{pmatrix}
+      b \cdot r \cdot \cos \varphi & a \cdot r \cdot \sin \varphi \\
+      -b \cdot \sin \varphi & a \cdot \cos \varphi
+    \end{pmatrix}
+  \]
+  $(x, y) \mapsto \qty\Big(J_F(r, \varphi))^{-1}$ ist stetig
+  $\Rightarrow F^{-1}$ ist $C^1$-Funktion.
+
+  $\Rightarrow F$ ist ein lokaler Diffeomorphismus, d.h. für alle
+  $(r, \varphi) \in \mathbb{R}_{> 0} \times (-\pi, \pi)$ existiert eine
+  offene Umgebung $U$ und eine offene Menge $V \subseteq \mathbb{R}^2$,
+  so dass $F \colon U \to V$ ein Diffeomorphismus ist.
+\end{enumerate}
+
 \end{document}
