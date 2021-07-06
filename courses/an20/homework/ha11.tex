@@ -78,6 +78,21 @@ definiert durch $F(x, y, z) = x^4z - 2xy^3 + yz^3 - 8$.
 \item Geben Sie eine Formel zur Berechnung $f'$ bzw. $J_f$ bzw.
   $\nabla f(x, y)$ auf $\tilde{U}$ an.
 
+  \subparagraph{Lösung:} Nach dem Satz über die lokale Auflösbarkeit ist
+  \begin{flalign*}
+    J_f(x, y) &= - \qty\Big(J_F^{(z)}(x, y, f(x, y)))^{-1} \cdot J_F^{(x, y)}(x, y, f(x, y)) & \\
+    &= - \qty\Big(x^4 + 3y\qty\big(f(x))^2)^{-1} \cdot \begin{pmatrix}
+      4x^3f(x) - 2 y^3 & 6y^2 + \qty\big(f(x))^3
+    \end{pmatrix} \\
+    &= - \frac{1}{x^4 + 3y\qty\big(f(x))^2} \cdot \begin{pmatrix}
+      4x^3f(x) - 2 y^3 & 6y^2 + \qty\big(f(x))^3
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+      \frac{4x^3f(x) - 2 y^3}{x^4 + 3y\qty\big(f(x))^2} &
+      \frac{6y^2 + \qty\big(f(x))^3}{x^4 + 3y\qty\big(f(x))^2}
+    \end{pmatrix} \\
+  \end{flalign*}
+
 \item Berechnen Sie $\nabla f(1, 1)$.
 \end{enumerate}
 
