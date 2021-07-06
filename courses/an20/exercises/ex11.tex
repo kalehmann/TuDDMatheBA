@@ -158,6 +158,41 @@ $\qty\big(x_0, y_0, u_0, v_0) = \qty(\frac{1}{5}, \frac{2}{5}, \frac{2}{5}, \fra
   und $u, v \colon \tilde{U} \to \mathbb{R}^2$ sind $C^1$-Funktionen,
   also auch stetig.
   Demnach kann $\tilde{U}$ so gewählt werden, dass $u, v$ positiv sind.
+
+\item Berechnen Sie die partielle Ableitung der Funktionen $u$ und $v$ an
+  der Stelle $\qty(x_0, y_0) = \qty(\frac{1}{5}, \frac{2}{5})$.
+
+  \subparagraph{Lösung:} Für $(x, y) \in \tilde{U}$ gilt
+  \begin{flalign*}
+    J_f(x, y) &= - \qty(J_F^{(u,v)} \qty\big(x, y, u(x, y), v(x, y))) \cdot J_F^{(x, y)} \qty(\ldots) & \\
+    &= - \begin{pmatrix}
+      -2u & -2v \\
+      6u & 8v \\
+    \end{pmatrix}^{-1} \cdot \begin{pmatrix}
+      2x & 2y \\
+      2x & 4y \\
+    \end{pmatrix} \\
+    &= - \frac{1}{-4uv} \begin{pmatrix}
+      8v & 2u \\
+      -6u & -2u \\
+    \end{pmatrix} \cdot \begin{pmatrix}
+      2x & 2y \\
+      2x & 4y
+    \end{pmatrix}
+    = \begin{pmatrix}
+      5 \frac{x}{u} & 6 \frac{y}{u} \\
+      - 4 \frac{x}{u} & - 5 \frac{y}{v}
+    \end{pmatrix}
+  \end{flalign*}
+  Man kann $f(x, y)$ explizit angeben:
+  \[
+    f(x, y) = \begin{pmatrix}
+      \sqrt{-1 + 5x^2 + 6y^2} \\
+      \sqrt{1 - 4x^2 - 5y^2}
+    \end{pmatrix}
+  \]
+  $D_f = \qty{(x, y) \in \mathbb{R}^2 {\big |} 5 x^2 + 6y^2 < 1 < 4x^2 + 5y^2  }$
+
 \end{enumerate}
 
 \end{document}
