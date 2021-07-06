@@ -93,7 +93,19 @@ definiert durch $F(x, y, z) = x^4z - 2xy^3 + yz^3 - 8$.
     \end{pmatrix} \\
   \end{flalign*}
 
+\newpage
 \item Berechnen Sie $\nabla f(1, 1)$.
+
+  \subparagraph{Lösung:} Aus $f(\overline{x}, \overline{y}) = \overline{z}$ folgt
+  \begin{flalign*}
+    \nabla f(1, 1) &= - \qty\Big(J_F^{(z)}(1, 1, 2))^{-1} \cdot J_F^{(x, y)}(1, 1, 2) & \\
+    &= - \qty\big(13)^{-1} \cdot \begin{pmatrix}
+      6 & 14
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+      -\frac{6}{13} & -\frac{14}{13}
+    \end{pmatrix}
+  \end{flalign*}
 \end{enumerate}
 
 \end{document}
