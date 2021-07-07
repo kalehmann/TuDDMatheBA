@@ -108,7 +108,7 @@ definiert durch $F(x, y, z) = x^4z - 2xy^3 + yz^3 - 8$.
   \end{flalign*}
 \end{enumerate}
 
-\paragraph{Aufgabe 2:} Gegeben sei ein Vektor
+\paragraph{Hausaufgabe 2:} Gegeben sei ein Vektor
 $a = \qty(a_0, a_1, \ldots, a_N) \in \mathbb{R}^{N + 1}$ mit $a_N \ne 0$.
 $F \colon \mathbb{R}^{N + 1} \times \mathbb{R} \to \mathbb{R}$ sei definiert durch
 \[
@@ -159,5 +159,75 @@ $C^1$-Funktion $g \colon U \to V$ mit den Eigenschaften
 \item $g(\overline{a}) = \overline{x}$
 \item $\forall (a, x) \in U \times V \colon F(a, f(a)) = F(\overline{a}, \overline{x}) = 0$
 \end{itemize}
+
+\newpage
+\paragraph{Hausaufgabe 3:} Seien
+$U \coloneqq B(0, 1) = \qty{ x \in \mathbb{R}^N {\Big |} \norm{x} < 1 } \subseteq \mathbb{R}^N$
+und $V \coloneqq \mathbb{R}^N$.
+Welche Beziehung besteht zwischen $f$ und $g$?
+Zeigen Sie, dass die Abbildungen $f \colon U \to V$ und $g \colon V \to U$ mit
+\[
+  f(x) \coloneqq \frac{x}{\sqrt{1 - \norm{x}^2}}
+  \text{ und }
+  g(y) \coloneqq \frac{y}{\sqrt{1 + \norm{y}^2}}
+\]
+$C^1$-Diffeomorphismen sind.
+Geben Sie die zugehörigen Jacobi-Matrizen an.
+
+\subparagraph{Lösung:} Sei $\norm{\cdot}$ die euklidische Norm.
+$\frac{\partial}{\partial x}\norm{x} = \frac{x}{\norm{x}}$,
+$\frac{\partial}{\partial x}\norm{x}^2 = 2\norm{x} \cdot \frac{x}{\norm{x}} = 2x$.
+\[
+  \frac{\partial}{\partial x} \frac{1}{\sqrt{1 - \norm{x}^2}}
+  = -\frac{1}{2 \qty(1 - \norm{x}^2)^{\frac{3}{2}}} \cdot (-2x)
+  = \frac{x}{\qty(1 - \norm{x}^2)^{\frac{3}{2}}}
+\]
+
+\begin{minipage}[t]{.4\textwidth}
+  \begin{flalign*}
+    J_f(x) &= \qty\Big( \frac{1}{\sqrt{1 - \norm{x}^2}} + \frac{x}{\qty(1 - \norm{x}^2)^{\frac{3}{2}}} \cdot x )& \\
+    &= \frac{1 - \norm{x}^2 + x^2}{\qty(1 - \norm{x}^2)^{\frac{3}{2}}}
+  \end{flalign*}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+  \begin{flalign*}
+    J_g(y) &= \qty\Big( \frac{1}{\sqrt{1 + \norm{y}^2}} - \frac{y}{\qty(1 + \norm{y}^2)^{\frac{3}{2}}} \cdot y )& \\
+    &= \frac{1 + \norm{y}^2 - y^2}{\qty(1 + \norm{y}^2)^{\frac{3}{2}}}
+  \end{flalign*}
+\end{minipage}
+Die Ableitungen $(x) \mapsto J_f(x), y \mapsto J_g(y)$
+sind für $x \in U, y \in V$ stetig.
+
+\noindent
+$\Rightarrow f, g$ sind $C^1$-Funktionen.
+
+\begin{minipage}[t]{.4\textwidth}
+  \begin{flalign*}
+    g(f(x)) &= \frac{\frac{x}{\sqrt{1 - \norm{x}^2}}}{\sqrt{1 + \norm{\frac{x}{\sqrt{1 - \norm{x}^2}}}^2}} & \\
+    &= \frac{\frac{x}{\sqrt{1 - \norm{x}^2}}}{\sqrt{1 + \frac{\norm{x}^2}{1 - \norm{x}^2}}} \\
+    &= \frac{\frac{x}{\sqrt{1 - \norm{x}^2}}}{\sqrt{\frac{1 - \norm{x}^2 + \norm{x}^2}{1 - \norm{x}^2}}} \\
+    &= x
+  \end{flalign*}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+  \begin{flalign*}
+    f(g(y)) &= \frac{\frac{y}{\sqrt{1 + \norm{y}^2}}}{\sqrt{1 - \norm{\frac{y}{\sqrt{1 + \norm{y}^2}}}^2}} & \\
+    &= \frac{\frac{y}{\sqrt{1 + \norm{y}^2}}}{\sqrt{1 - \frac{\norm{y}^2}{1 + \norm{y}^2}}} \\
+    &= \frac{\frac{x}{\sqrt{1 + \norm{y}^2}}}{\sqrt{\frac{1 + \norm{y}^2 - \norm{y}^2}{1 + \norm{y}^2}}} \\
+    &= y
+  \end{flalign*}
+\end{minipage}
+
+\noindent
+$\Rightarrow f^{-1} = g \land g^{-1} = f$
+
+\noindent
+Für jedes $x \in U$ existiert genau ein $y \in V$ mit $f(x) = y$ und $g(y) = x$.
+
+\noindent
+$\Rightarrow f$ und $g$ sind bijektiv.
+
+\noindent
+$\Rightarrow f, g$ sind $C^1$-Diffeomorphismen.
 
 \end{document}
