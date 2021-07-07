@@ -108,4 +108,56 @@ definiert durch $F(x, y, z) = x^4z - 2xy^3 + yz^3 - 8$.
   \end{flalign*}
 \end{enumerate}
 
+\paragraph{Aufgabe 2:} Gegeben sei ein Vektor
+$a = \qty(a_0, a_1, \ldots, a_N) \in \mathbb{R}^{N + 1}$ mit $a_N \ne 0$.
+$F \colon \mathbb{R}^{N + 1} \times \mathbb{R} \to \mathbb{R}$ sei definiert durch
+\[
+  F(a, x) = F(a_0, a_1, \ldots, a_N, x) \coloneqq
+  a_Nx^N + \ldots + a_1x + a_0 = \sum_{k = 0}^N a_kx^k, x \in \mathbb{R}
+\]
+Für ein $\overset{a} \in \mathbb{R}^{N + 1}$ sei $\overline{x} \in \mathbb{R}$
+eine einfache Nullstelle des Polynoms $F(\overline{a}, x)$.
+Beweisen Sie: Es existiert eine Umgebung $U \subseteq \mathbb{R}^{N + 1}$ von
+$\overline{a}$ und eine stetig differenzierbare Funktion
+$g \colon U \to \mathbb{R}$ mit $g(\overline{a}) = \overline{x}$ und
+$F(a, g(a)) = 0$ für alle $a \in U$.
+
+\subparagraph{Lösung:}
+\begin{flalign*}
+  J_F &= \begin{pmatrix}
+    {\color{red} 1} &
+    {\color{red} x} &
+    {\color{red} \ldots} &
+    {\color{red} x^N} &
+    {\color{blue} \sum_{k = 1}^N k \cdot a_kx^{k - 1}}
+  \end{pmatrix} &
+\end{flalign*}
+Die Jacobimatrix teilt sich auf in
+\colorbox{red!40}{$J_F^{(a)} (a, x)$} und
+\colorbox{blue!40}{$J_F^{(x)} (a, x)$}
+(eine endliche Summe stetiger Funktionen),
+die Ableitung $(a, x) \mapsto J_F(a, x)$ ist stetig und
+$F$ ist somit eine $C^1$-Funktion.
+
+\noindent
+Weiterhin ist $\det J_F^{(x)}(\overline{a}, \overline{x}) = \sum_{k = 1}^N k \cdot \overline{a}_k\overline{x}^{k - 1}
+\overset{\overline{x} \text{ ist einfache Nullstelle}}\ne 0$.
+
+\noindent
+$\Rightarrow \exists \qty(J_F^{(x)}(\overline{a}, \overline{x}))^{-1}$
+
+\noindent
+$\Rightarrow$ es existiert einen offene Umgebung von
+$(\overline{a}, \overline{x})$ mit $\det J_F^{(x)} (a, x) \ne 0$
+für jedes $a, x$ in dieser Umgebung.
+
+\noindent
+$\Rightarrow$ nach dem Satz über die lokale Auflösbarkeit existieren
+offene Umgebungen $U$ von $\overline{a}$, $V$ von $\overline{x}$ und eine
+$C^1$-Funktion $g \colon U \to V$ mit den Eigenschaften
+\begin{itemize}
+\item $g(\overline{a}) = \overline{x}$
+\item $\forall (a, x) \in U \times V \colon F(a, f(a)) = F(\overline{a}, \overline{x}) = 0$
+\end{itemize}
+
 \end{document}
