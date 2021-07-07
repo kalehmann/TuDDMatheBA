@@ -45,7 +45,7 @@ definiert durch $F(x, y, z) = x^4z - 2xy^3 + yz^3 - 8$.
   \subparagraph{Lösung:}
   \begin{flalign*}
     J_F &= \qty\Big(\begin{array}{>{\color{red}} c >{\color{red}} c >{\color{blue}} c}
-      4x^3z - 2y^3 & 6y^2 + z^3 & x^4 + 3yz^2
+      4x^3z - 2y^3 & z^3 - 6y^2 & x^4 + 3yz^2
     \end{array}) &
   \end{flalign*}
   Dabei teilt sich die Jakobimatrix auf in
@@ -82,14 +82,14 @@ definiert durch $F(x, y, z) = x^4z - 2xy^3 + yz^3 - 8$.
   \begin{flalign*}
     J_f(x, y) &= - \qty\Big(J_F^{(z)}(x, y, f(x, y)))^{-1} \cdot J_F^{(x, y)}(x, y, f(x, y)) & \\
     &= - \qty\Big(x^4 + 3y\qty\big(f(x))^2)^{-1} \cdot \begin{pmatrix}
-      4x^3f(x) - 2 y^3 & 6y^2 + \qty\big(f(x))^3
+      4x^3f(x) - 2 y^3 & \qty\big(f(x))^3 - 6y^2
     \end{pmatrix} \\
     &= - \frac{1}{x^4 + 3y\qty\big(f(x))^2} \cdot \begin{pmatrix}
-      4x^3f(x) - 2 y^3 & 6y^2 + \qty\big(f(x))^3
+      4x^3f(x) - 2 y^3 & \qty\big(f(x))^3 - 6y^2
     \end{pmatrix} \\
     &= \begin{pmatrix}
       \frac{4x^3f(x) - 2 y^3}{x^4 + 3y\qty\big(f(x))^2} &
-      \frac{6y^2 + \qty\big(f(x))^3}{x^4 + 3y\qty\big(f(x))^2}
+      \frac{\qty\big(f(x))^3 - 6y^2}{x^4 + 3y\qty\big(f(x))^2}
     \end{pmatrix} \\
   \end{flalign*}
 
@@ -100,10 +100,10 @@ definiert durch $F(x, y, z) = x^4z - 2xy^3 + yz^3 - 8$.
   \begin{flalign*}
     \nabla f(1, 1) &= - \qty\Big(J_F^{(z)}(1, 1, 2))^{-1} \cdot J_F^{(x, y)}(1, 1, 2) & \\
     &= - \qty\big(13)^{-1} \cdot \begin{pmatrix}
-      6 & 14
+      6 & 2
     \end{pmatrix} \\
     &= \begin{pmatrix}
-      -\frac{6}{13} & -\frac{14}{13}
+      -\frac{6}{13} & -\frac{2}{13}
     \end{pmatrix}
   \end{flalign*}
 \end{enumerate}
