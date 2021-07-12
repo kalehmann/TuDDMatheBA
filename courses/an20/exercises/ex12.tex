@@ -178,4 +178,110 @@ $\Rightarrow$ Diese befinden sich unter den kritischen Punkten.
 Wegen $f\qty(x_k, y_x) = \frac{3}{2}$ sind $\qty(x_1, y_1), \qty(x_2, y_2)$
 die globalen Minimalstellen.
 
+\paragraph{Aufgabe 3} Sei $f \colon \mathbb{R}^2 \to \mathbb{R}$ definiert durch
+$f(x, y) \coloneqq x^2 + xy + y^2$.
+Weiter sei $M \coloneqq \qty{(x, y) \in \mathbb{R}^2 {\Big |} x^2 + y^2 \leq 1}$.
+Ermitteln Sie $f_{\min} = \min_{(x, y) \in M} f(x, y)$ und
+$f_{\max} = \max_{(x, y) \in M} f(x, y)$
+
+\subparagraph{Lösung:} $M = \mathring{M} \cup \partial$.
+Mit $h(x, y) = x^2 + y^2 - 1$ gilt $\mathring{M} = h^{-1}\qty\big((-\infty, 0))$, \\
+$\partial M = h^{-1}(\qty{0})$ und $M = h^{-1}\big( (-\infty, 0]\big)$.
+Weiterhin ist $h$ stetig $\Rightarrow \mathring{M}$ ist offen, $\partial M$ und
+$M$ sind abgeschlossen.
+
+$M$ und $\partial M$ sind beschränkt $\Rightarrow$ kompakt.
+Weiterhin ist $f$ stetig $\Rightarrow f$ besitzt auf $M$, $\partial M$
+globale Extremstellen.
+\newpage
+\begin{itemize}
+\item lokale Extremstellen auf $\mathring{M}$ ermitteln.
+
+  Notwendige Bedingung: $\nabla f(x, y) = \begin{pmatrix}
+    2x + y \\
+    x + 2y
+  \end{pmatrix} = \underset{A \text{ mit } \det A = 3 \ne 0}{
+    \underbrace{\begin{pmatrix}
+        2 & 1 \\
+        1 & 2
+      \end{pmatrix}}
+  } \cdot \begin{pmatrix}
+    x \\
+    y
+  \end{pmatrix} = 0$
+
+  $\Rightarrow \begin{pmatrix}
+    \overline{x} \\
+    \overline{y}
+  \end{pmatrix} = A^{-1} \begin{pmatrix} 0 \\ 0\end{pmatrix} =
+  \begin{pmatrix} 0 \\ 0\end{pmatrix}$
+
+  Weiter gilt $H_f (x, y) = \begin{pmatrix}
+    2 & 1 \\
+    1 & 2
+  \end{pmatrix}$ mit $\det H_f(x, y) = 3 > 0$.
+
+  $\Rightarrow H_f(x, y)$ ist auf $\mathbb{R}^2$ positiv definit
+  ($f$ ist konvex)
+
+  $\Rightarrow (\overline{x}, \overline{y})$ ist lokale Minimalstelle mit
+  $f(\overline{x}, \overline{y}) = 0$.
+
+\item lokalle Extremstellen auf $\partial M$ ermitteln.
+
+  Lagrangefunktion: $F(x, y, \lambda) = f(x, y) + \lambda h(x, y)$
+  \begin{itemize}
+  \item $f, h$ sind stetig differenzierbar
+  \item Rangbedingung: $\nabla h(x, y) = \begin{pmatrix}
+      2x \\
+      2y
+    \end{pmatrix} = \begin{pmatrix}
+      0 \\
+      0
+    \end{pmatrix} \iff x = y = 0$, aber $(0, 0) \notin \partial M$
+
+    $\Rightarrow$ Rangbedingung gilt.
+  \end{itemize}
+  $\Rightarrow$ der Satz von Lagrange ist anwendbar.
+  \setcounter{equation}{0}
+  \begin{flalign}
+    \frac{\partial F(\ldots)}{\partial x} &= 2x (1 + \lambda) + y = 0 \label{eq:4} & \\
+    \frac{\partial F(\ldots)}{\partial y} &= 2y (1 + \lambda) + x = 0 \label{eq:5} \\
+    \frac{\partial F(\ldots)}{\partial \lambda} &= x^2 + y^2 - 1 = 0 \label{eq:6}
+  \end{flalign}
+  Angenommen es gilt $x = 0 \overset{\hyperref[eq:4]{(1)}}\Rightarrow y = 0
+  \overset{\hyperref[eq:6]{(3)}}\Rightarrow -1 = 0$, Widerspruch.
+
+  Angenommen es gilt $y = 0 \overset{\hyperref[eq:5]{(2)}}\Rightarrow x = 0
+  \overset{\hyperref[eq:6]{(3)}}\Rightarrow -1 = 0$, Widerspruch.
+
+  $\Rightarrow x \ne 0, y \ne 0$.
+  \begin{flalign*}
+    \hyperref[eq:4]{(1)} \cdot y &= \hyperref[eq:5]{(2)} \cdot x & \\
+    2xy (1 + \lambda) + y^2 &= 0 = 2xy (1 + \lambda) + x^2 \\
+    y^2 &= x^2 \iff \abs{y} = \abs{x} \iff y = \pm x \\
+    \hyperref[eq:6]{(3)} &\Rightarrow h(x, \pm x) = 2x^2 - 1 = 0 \Rightarrow x_{1|2} = \pm \frac{1}{\sqrt{2}}
+  \end{flalign*}
+  \newpage
+  Kritische Punkte:
+  \begin{enumerate}[label={$\qty(x_{\arabic*}, y_{\arabic*}) = $}]
+  \item $\frac{1}{\sqrt{2}} (1, 1)$
+  \item $-\frac{1}{\sqrt{2}} (1, 1)$
+  \item $\frac{1}{\sqrt{2}} (1, -1)$
+  \item $\frac{1}{\sqrt{2}} (-1, 1)$
+  \end{enumerate}
+  mit $f\qty(x_1, y_1) = f\qty(x_2, y_2) = \frac{3}{2}$ und
+  $f\qty(x_3, y_3) = f\qty(x_4, y_4) = \frac{1}{2}$.
+
+  Da die globalen Extremalstellen kritische Punkte sein müssen, sind
+  $\qty(x_1, y_1), \qty(x_2, y_2)$ die globalen Maximalstellen von
+  $f$ auf $\partial M$ und  $\qty(x_3, y_3), \qty(x_4, y_4)$ die globalen
+  Minimalstellen von $f$ auf $\partial M$.
+
+\item Vergleich von $f$ auf $\mathring{M}$ und $f$ auf $\partial M$
+
+  $\Rightarrow (\overline{x}, \overline{y}) = (0, 0)$ ist der globale
+  Minimalpunkt von $f$ auf $M$, $\qty(x_1, y_1), \qty(x_2, y_2)$ sind
+  globale Maximalpunkte von $f$ auf $M$.
+\end{itemize}
 \end{document}
