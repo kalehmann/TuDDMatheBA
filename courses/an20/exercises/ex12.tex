@@ -511,6 +511,69 @@ durch $f(x, y, z) \coloneqq (aby, abx, z)$
   \[
     L(\gamma) = \int_{-\pi}^{\pi} \norm{\gamma'(t)}_2\,dt = 2 \cdot \pi \cdot a
   \]
+
+\newpage
+\item Ermitteln Sie die mechanische Arbeit, die eine Punktmasse $P$ beim
+  Durchlaufen der Kurve verrichtet, wenn diese nacheinander die Punkte
+  $(-a, 0, 0), \qty(0, b, \sqrt{a^2 - b^2}), (a, 0, 0)$ und
+  $\qty(0, -b, -\sqrt{a^2 - b^2})$ passiert.
+  \subparagraph{Lösung:}
+  \begin{itemize}
+  \item $(-a, 0, 0) = \gamma(\pi) = \gamma(-\pi)$
+  \item $(0, b, bc) = \gamma\qty(\frac{\pi}{2})$
+  \item $(a, 0, 0) = \gamma(0)$
+  \item $(0, -b, -bc) = \gamma(-\frac{\pi}{2})$
+  \end{itemize}
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+          axis lines=middle,
+          xlabel=$x$,
+          xmax = 3,
+          xmin = -3,
+          xticklabels={,,}
+          ylabel=$y$,
+          ymax = 2,
+          ymin = -2,
+          yticklabels={,,}
+        ]
+        \node[
+          draw,
+          ellipse,
+          minimum height = 3cm,
+          minimum width = 5cm,
+        ] at (0, 0) {};
+        \node[circle, fill, inner sep=2pt] at (2.2,0){};
+        \node[circle, fill, inner sep=2pt] at (-2.2,0){};
+        \node[circle, fill, inner sep=2pt] at (0,1.05){};
+        \node[circle, fill, inner sep=2pt] at (0,-1.05){};
+        \node at (2.5, -0.2) {$a$};
+        \node at (2.6, 0.4) {$\gamma(0)$};
+        \node at (-2.5, 0.2) {$-a$};
+        \node at (-2.6, -0.3) {$\gamma(\pi)$};
+        \node at (0.4, 1.3) {$b$};
+        \node at (-0.5, 1.3) {$\gamma\qty(\frac{\pi}{2})$};
+        \node at (0.4, -1.3) {$-b$};
+        \node at (-0.6, -1.3) {$\gamma\qty(-\frac{\pi}{2})$};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+  $f(x, y, z) = (aby, abx, z)$
+  \[
+    \Rightarrow W = \int_{-\pi}^{\pi}
+    \underset{\begin{pmatrix}
+        ab^2 \sin t \\
+        a^2b \cos t \\
+        cb \sin t
+      \end{pmatrix} \cdot}{\underbrace{f(\gamma(t))}}
+    \cdot
+    \underset{\begin{pmatrix}
+        -a \sin t \\
+        b \cos t \\
+        bc \cos t
+      \end{pmatrix} = ?}{\underbrace{\gamma'(t)}}\,dt
+    = \ldots = 0
+  \]
 \end{enumerate}
 
 \end{document}
