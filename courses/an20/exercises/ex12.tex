@@ -17,6 +17,12 @@
 \usepackage[table]{xcolor}
 \usepackage{pgfplots}
 
+%% See https://tex.stackexchange.com/a/44954
+\newcounter{myequation}
+\makeatletter
+\@addtoreset{equation}{myequation}
+\makeatother
+
 %% Fix equation numbering for scrreprt class.
 \counterwithout{equation}{chapter}
 
@@ -228,7 +234,7 @@ Betrachten Sie dazu folgendes Optimalitätsproblem
     $\Rightarrow$ Rangbedingung erfüllt.
   \newpage
   \item Lagrangefunktion: $F(x, \lambda) = f(x) + \lambda h(x)$
-    \setcounter{equation}{0}
+    \stepcounter{myequation}
     \begin{flalign}
       \frac{\partial F}{\partial x_k}(x) &= 1 + \frac{\lambda}{x_k} = 0
       \quad \text{für } k = 1, \ldots, N \label{eq:2-1} & \\
@@ -322,7 +328,7 @@ globale Extremstellen.
     $\Rightarrow$ Rangbedingung gilt.
   \end{itemize}
   $\Rightarrow$ der Satz von Lagrange ist anwendbar.
-  \setcounter{equation}{0}
+  \stepcounter{myequation}
   \begin{flalign}
     \frac{\partial F(\ldots)}{\partial x} &= 2x (1 + \lambda) + y = 0 \label{eq:3-1} & \\
     \frac{\partial F(\ldots)}{\partial y} &= 2y (1 + \lambda) + x = 0 \label{eq:3-2} \\
