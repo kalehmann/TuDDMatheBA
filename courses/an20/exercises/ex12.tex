@@ -133,20 +133,20 @@ $\nabla F(\overline{x}, \overline{y}, \overline{\lambda}) = (0, 0, 0)$.
 \setcounter{section}{1}
 \begin{align}
   \frac{\partial F}{\partial x} (\ldots) &= 2(x - 1) - 2 \lambda x
-  = 2(x(1 - \lambda) - 1) = 0 & \label{eq:1} \\
-  \frac{\partial F}{\partial y} (\ldots) &= 2y + 2\lambda y = 2y(1 + \lambda) = 0 \label{eq:2} \\
-  \frac{\partial F}{\partial \lambda} (\ldots) &= h(x, y) = y^2 - x^2 - 1 = 0 \label{eq:3}
+  = 2(x(1 - \lambda) - 1) = 0 & \label{eq:1_1} \\
+  \frac{\partial F}{\partial y} (\ldots) &= 2y + 2\lambda y = 2y(1 + \lambda) = 0 \label{eq:1_2} \\
+  \frac{\partial F}{\partial \lambda} (\ldots) &= h(x, y) = y^2 - x^2 - 1 = 0 \label{eq:1_3}
 \end{align}
 $\Rightarrow$ nichtlineares Gleichungssystem.
 
-$\hyperref[eq:2]{(2)} \iff y = 0 \lor \lambda = -1$
+$\hyperref[eq:1_2]{(2)} \iff y = 0 \lor \lambda = -1$
 
-$y = 0$ in $\hyperref[eq:3]{(3)}$ einsetzen führt zu $-x^2 - 1 = 0$, nicht lösbar.
+$y = 0$ in $\hyperref[eq:1_3]{(3)}$ einsetzen führt zu $-x^2 - 1 = 0$, nicht lösbar.
 $\Rightarrow y \ne 0 \land \lambda = -1$
 
 $\lambda = -1$ in $(1)$ einsetzen: $2x - 1 = 0 \Rightarrow x_1 = \frac{1}{2}$
 
-$x_1 = \frac{1}{2}$ in $\hyperref[eq:3]{(3)}$ einsetzen:
+$x_1 = \frac{1}{2}$ in $\hyperref[eq:1_3]{(3)}$ einsetzen:
 $y^2 = \frac{5}{4}, y_{1|2} = \pm \frac{\sqrt{5}}{2}$.
 
 Kritische Punkte: $\qty(x_1, y_1) = \qty(\frac{1}{2}, \frac{\sqrt{5}}{2})$,
@@ -178,6 +178,85 @@ $\Rightarrow$ Diese befinden sich unter den kritischen Punkten.
 Wegen $f\qty(x_k, y_x) = \frac{3}{2}$ sind $\qty(x_1, y_1), \qty(x_2, y_2)$
 die globalen Minimalstellen.
 
+\newpage
+\paragraph{Aufgabe 2} (Ungleichung zwischen geometrischem und arithmetrischem
+Mittel).
+Beweisen Sie für $z = \qty(z_1, \ldots, z_N) \in \mathbb{R}_{\geq 0}^N$ die
+Ungleichung
+\[
+  A\qty(z_1, \ldots, z_N) \coloneqq \frac{1}{N} \sum_{k = 1}^N z_k \geq
+  G\qty(z_1, \ldots, z_N) \coloneqq \sqrt[N]{\prod_{k = 1}^N z_k}
+\]
+mittels der Methode der Lagrange-Multiplikatoren.
+Betrachten Sie dazu folgendes Optimalitätsproblem
+\[
+  f(x) = f\qty(x_1, \ldots, x_N) \coloneqq \sum_{k = 1}^N x_k \longrightarrow \min
+\]
+\[
+  \text{bei } x \in U \coloneqq \qty{x = \qty(x_1, \ldots, x_N) \in \mathbb{R}^R_{> 0}
+    \middle | h(x) \coloneqq \prod_{k = 1}^N x_k - 1 = 0
+  }
+\]
+
+\subparagraph{Lösung:} $N = 2 \colon \frac{x_1 + x_2}{2} \geq \sqrt{x_1x_2}
+\iff x_1^2 + 2 x_1x_2 + x_2^2 \geq 4x_1x_2
+\iff x_1^2 - 2x_1x_2 + x_2^2 = (x_1 - x_2)^2 \geq 0, x_{1|2} \geq 0$.
+
+\begin{enumerate}[label={Fall \arabic*:}]
+\item $\exists k_0 \colon z_{k_0} = 0 \Rightarrow A\qty(z_1, \ldots, z_N)
+  \geq \frac{z_{k_0}}{N} = 0 = G\qty(z_1, \ldots, z_N)$
+\item Für alle $z_k$ gilt $z_k > 0 \Rightarrow G\qty(z_1, \ldots, z_N) > 0$
+  \[
+    z \mapsto x \coloneqq \frac{z}{G(z)} \Rightarrow \prod_{k = 1}^N x_k
+    = \prod_{k = 1}^N \frac{z_k}{\qty(\prod_{j = 1}^N z_j)^{\frac{1}{N}}}
+    = 1
+  \]
+  $f(x) = NA(x) \longrightarrow \min$ bei
+  $h(x) = \prod_{k = 1}^N x_k - 1 = 0$.
+  \begin{itemize}
+  \item $f, h$ sind stetig differenzierbar mit
+    \[
+      \frac{\partial f}{\partial x_k}(x) = 1,
+      \frac{\partial h}{\partial x_k}(x) = \frac{1}{x_k} \underset{= 1}{\underbrace{\prod_{j = 1}^N x_j}} = \frac{1}{x_k}
+    \]
+  \item Rangbedingung:
+    \[
+      \nabla h(x) = \qty(\frac{1}{x_1}, \ldots, \frac{1}{x_N})
+      \ne \qty(0, \ldots, 0)
+    \]
+    $\Rightarrow$ Rangbedingung erfüllt.
+  \newpage
+  \item Lagrangefunktion: $F(x, \lambda) = f(x) + \lambda h(x)$
+    \setcounter{equation}{0}
+    \begin{flalign}
+      \frac{\partial F}{\partial x_k}(x) &= 1 + \frac{\lambda}{x_k} = 0
+      \quad \text{für } k = 1, \ldots, N \label{eq:_2_1} & \\
+      \frac{\partial F}{\partial \lambda}(x) &= h(x) = \prod_{k = 1}^N x_k - 1 = 0 \label{eq:2_2}
+    \end{flalign}
+    $\hyperref[eq:2_1]{(1)} \Rightarrow x_k = - \lambda$ für $k = 1, \ldots, N$
+    \[
+      \overset{\hyperref[eq:2_2]{(2)}}\Rightarrow h(x) =
+      \prod_{k = 1}^N (-\lambda) - 1 = (-\lambda)^N - 1 = 0
+    \]
+    $\Rightarrow \lambda = -1 \Rightarrow x_k = 1$ für $k = 1, \ldots, N$
+  \end{itemize}
+  Kritischer Punkt: $\overline{x} = e = (1, \ldots, 1)$.
+  Für $\epsilon > 1$ gilt
+  $x_{\epsilon} = \qty(\epsilon, \frac{1}{\epsilon}, 1, \ldots, 1) \in M$
+  und $f\qty(x_{\epsilon}) \geq \epsilon
+  \overset{\epsilon \to \infty}\longrightarrow \infty$.
+
+  $\Rightarrow \overline{x}$ ist kein Maximalpunkt.
+  Weitere Untersuchungen zeigen, dass $\overline{x}$ der globale
+  Minimalpunkt ist.
+
+  \[
+    \Rightarrow f(x) = N \cdot A(x) = N \cdot A\qty(\frac{z}{G(z)})
+    = N \frac{A(z)}{G(z)} \geq f(\overline{x}) = N
+  \]
+  $\Rightarrow A(z) \geq G(z)$
+\end{enumerate}
+
 \paragraph{Aufgabe 3} Sei $f \colon \mathbb{R}^2 \to \mathbb{R}$ definiert durch
 $f(x, y) \coloneqq x^2 + xy + y^2$.
 Weiter sei $M \coloneqq \qty{(x, y) \in \mathbb{R}^2 {\Big |} x^2 + y^2 \leq 1}$.
@@ -193,7 +272,6 @@ $M$ sind abgeschlossen.
 $M$ und $\partial M$ sind beschränkt $\Rightarrow$ kompakt.
 Weiterhin ist $f$ stetig $\Rightarrow f$ besitzt auf $M$, $\partial M$
 globale Extremstellen.
-\newpage
 \begin{itemize}
 \item lokale Extremstellen auf $\mathring{M}$ ermitteln.
 
@@ -245,26 +323,28 @@ globale Extremstellen.
   $\Rightarrow$ der Satz von Lagrange ist anwendbar.
   \setcounter{equation}{0}
   \begin{flalign}
-    \frac{\partial F(\ldots)}{\partial x} &= 2x (1 + \lambda) + y = 0 \label{eq:4} & \\
-    \frac{\partial F(\ldots)}{\partial y} &= 2y (1 + \lambda) + x = 0 \label{eq:5} \\
-    \frac{\partial F(\ldots)}{\partial \lambda} &= x^2 + y^2 - 1 = 0 \label{eq:6}
+    \frac{\partial F(\ldots)}{\partial x} &= 2x (1 + \lambda) + y = 0 \label{eq:3_1} & \\
+    \frac{\partial F(\ldots)}{\partial y} &= 2y (1 + \lambda) + x = 0 \label{eq:3_2} \\
+    \frac{\partial F(\ldots)}{\partial \lambda} &= x^2 + y^2 - 1 = 0 \label{eq:3_3}
   \end{flalign}
-  Angenommen es gilt $x = 0 \overset{\hyperref[eq:4]{(1)}}\Rightarrow y = 0
-  \overset{\hyperref[eq:6]{(3)}}\Rightarrow -1 = 0$, Widerspruch.
+  Angenommen es gilt $x = 0 \overset{\hyperref[eq:3_1]{(1)}}\Rightarrow y = 0
+  \overset{\hyperref[eq:3_3]{(3)}}\Rightarrow -1 = 0$, Widerspruch.
 
-  Angenommen es gilt $y = 0 \overset{\hyperref[eq:5]{(2)}}\Rightarrow x = 0
-  \overset{\hyperref[eq:6]{(3)}}\Rightarrow -1 = 0$, Widerspruch.
+  Angenommen es gilt $y = 0 \overset{\hyperref[eq:3_2]{(2)}}\Rightarrow x = 0
+  \overset{\hyperref[eq:3_3]{(3)}}\Rightarrow -1 = 0$, Widerspruch.
 
   $\Rightarrow x \ne 0, y \ne 0$.
   \begin{flalign*}
-    \hyperref[eq:4]{(1)} \cdot y &= \hyperref[eq:5]{(2)} \cdot x & \\
+    \hyperref[eq:3_1]{(1)} \cdot y &= \hyperref[eq:3_2]{(2)} \cdot x & \\
     2xy (1 + \lambda) + y^2 &= 0 = 2xy (1 + \lambda) + x^2 \\
     y^2 &= x^2 \iff \abs{y} = \abs{x} \iff y = \pm x \\
-    \hyperref[eq:6]{(3)} &\Rightarrow h(x, \pm x) = 2x^2 - 1 = 0 \Rightarrow x_{1|2} = \pm \frac{1}{\sqrt{2}}
+    \hyperref[eq:3_3]{(3)} &\Rightarrow h(x, \pm x) = 2x^2 - 1 = 0 \Rightarrow x_{1|2} = \pm \frac{1}{\sqrt{2}}
   \end{flalign*}
-  \newpage
   Kritische Punkte:
-  \begin{enumerate}[label={$\qty(x_{\arabic*}, y_{\arabic*}) = $}]
+  \begin{enumerate}[
+    labelindent=*,
+    leftmargin=*,
+    label={$\qty(x_{\arabic*}, y_{\arabic*}) = $}]
   \item $\frac{1}{\sqrt{2}} (1, 1)$
   \item $-\frac{1}{\sqrt{2}} (1, 1)$
   \item $\frac{1}{\sqrt{2}} (1, -1)$
