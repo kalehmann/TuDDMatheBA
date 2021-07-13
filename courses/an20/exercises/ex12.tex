@@ -24,6 +24,7 @@
 \usepgfplotslibrary{patchplots}
 \usetikzlibrary{intersections}
 \usetikzlibrary{shapes}
+\usetikzlibrary{shapes.geometric}
 \usetikzlibrary{patterns}
 \usepgfplotslibrary{fillbetween}
 
@@ -364,4 +365,147 @@ globale Extremstellen.
   Minimalpunkt von $f$ auf $M$, $\qty(x_1, y_1), \qty(x_2, y_2)$ sind
   globale Maximalpunkte von $f$ auf $M$.
 \end{itemize}
+
+\section*{Kurvenintegrale und Integrabilitätsbedingungen}
+\paragraph{Aufgabe 5:} Gegeben seien $a > b > 0$.
+Weiter sei $c = \frac{\sqrt{a^2 - b^2}}{b}$.
+Die Kurve $\Gamma$ sei die Schnittkurve des elliptischen Zylinders
+$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ mit der Ebene $z - c y = 0$.
+Weiterhin sei ein Kraftfeld $f \colon \mathbb{R}^3 \to \mathbb{R}^3$ gegeben
+durch $f(x, y, z) \coloneqq (aby, abx, z)$
+\subparagraph{Lösung:} $\pi \colon t_0 = a < t_1 < \ldots < t_N = b$
+  sei eine Zerlegung von $[a, b]$.
+  \[
+    \text{Var}_{[a, b]}(\gamma, \pi) = \sum_{k = 1}^N\norm{\gamma(t_k) - \gamma(t_{k - 1})}_2
+  \]
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+          axis lines=middle,
+          xlabel=$x(t)$,
+          xmax = 3,
+          xmin = -0.4,
+          xticklabels={,,}
+          ylabel=$y(t)$,
+          ymax = 3,
+          ymin = -0.4,
+          yticklabels={,,}
+        ]
+        \addplot[
+          domain = 0.7:2.7,
+          very thick,
+          blue,
+          samples=30,
+        ] {2 - (x - 2)^2};
+        \node[circle, fill, inner sep=2pt] at (0.7,0.31){};
+        \node[circle, fill, inner sep=2pt] at (1,1){};
+        \node[circle, fill, inner sep=2pt] at (2,2){};
+        \node[circle, fill, inner sep=2pt] at (2.7,1.51){};
+        \node at (1, 0.4) {$\gamma\qty(t_0)$};
+        \node at (0.8, 1.2) {$\gamma\qty(t_1)$};
+        \node at (2.2, 2.2) {$\gamma\qty(t_1)$};
+        \node at (2.5, 1.3) {$\gamma\qty(t_N)$};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+  \[
+    L(\gamma) = \text{Var}_{[a, b]}(\gamma) = \sup\qty{\text{Var}_{[a, b]}(\gamma, \pi) {\Big |} \pi \in \Pi_{[a, b]}} < \infty
+  \]
+  $\gamma$ besitzt endliche Variation (rektifizierbar).
+
+  $\gamma \colon [a, b] \to \mathbb{R}^N$ ist stetig differenzierbar.
+
+  $\Rightarrow L(\gamma) = \int_a^b \norm{\gamma'(t)}_2 \,dt$
+
+  Sei $f \colon \mathbb{R}^N \to \mathbb{R}$ stetig und
+  $\gamma \colon [a, b] \to \mathbb{R}^N$ stetig differenzierbar.
+  \[
+    \int_{\gamma} f\,dx = \int_a^b f(\gamma(t)) \cdot \gamma'(t)\,dt
+  \]
+\begin{enumerate}[a)]
+\item Parametrisieren Sie die Schnittkurve mittels elliptischer Polarkoordinaten
+  $\gamma(t), t \in [-\pi, \pi]$.
+  Zeigen Sie, dass $\gamma'$ und $\gamma''$ senkrecht aufeinander stehen.
+
+  \subparagraph{Lösung:} $Z = \qty{(x,y,z) \in \mathbb{R}^3 {\Big |}
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1}$
+
+  $E = \qty{(x,y,z) \in \mathbb{R}^3 {\Big |} Z - cy = 0}$
+
+  $\Gamma = Z \cap E$
+
+  Mit $F(x, y, z) = \begin{pmatrix}
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} - 1 \\
+    Z - cy
+  \end{pmatrix} = \begin{pmatrix}
+    0 \\
+    0
+  \end{pmatrix}$ gilt $\Gamma = \qty{
+    (x, y, z) \in \mathbb{R}^3 {\Big |} F(x, y, z) = \begin{pmatrix}
+      0 \\
+      0
+    \end{pmatrix}
+  }$
+
+  Elliptische Polarkoordinaten: $x(t) = a \cos t$,
+  $y(t) = b \sin t, t \in [-\pi, \pi]$.
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+          axis lines=middle,
+          xlabel=$x$,
+          xmax = 3,
+          xmin = -3,
+          xticklabels={,,}
+          ylabel=$y$,
+          ymax = 2,
+          ymin = -2,
+          yticklabels={,,}
+        ]
+        \node[
+          draw,
+          ellipse,
+          minimum height = 3cm,
+          minimum width = 5cm,
+        ] at (0, 0) {};
+        \node at (2.5, -0.2) {$a$};
+        \node at (-2.5, 0.2) {$-a$};
+        \node at (0.4, 1.3) {$b$};
+        \node at (0.4, -1.3) {$-b$};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+  \[
+    Z = \qty{
+      (x, y, z) \in \mathbb{R}^3
+      {\Big |}
+      x(t) = a \cos t,
+      y(t) = a \sin t,
+      z \in \mathbb{R},
+      t \in [-\pi, \pi]
+    }
+  \]
+  $\Rightarrow \gamma(t) = \begin{pmatrix}
+    x(t) \\
+    y(t) \\
+    cy(t)
+  \end{pmatrix} = (a \cos t, b \sin t, bc \sin t), t \in [-\pi, \pi]$
+  \[
+    \norm{\gamma(t)}_2^2 = a^2\cos^2t + b^2\sin^2t +
+    (\underset{a^2-b^2}{\underbrace{bc}})^2 \sin^2t = a^2
+  \]
+  $\Rightarrow \norm{\gamma(t)}_2 = a, t \in [-\pi, \pi]$
+
+  Für $g(t) = \norm{\gamma'(t)}_2^2 = \gamma'(t) \cdot \gamma'(t), t \in [-\pi, \pi]$
+  ist differenzierbar mit $g'(t) = \gamma''(t) \cdot \gamma''(t)$.
+  Weiter gilt
+  \begin{flalign*}
+    \gamma'(t) &= \qty\Big(-a \sin t, b \cos t, bc \cos t) & \\
+    \Rightarrow  \norm{\gamma'(t)}_2^2 &= a^2 \sin^2 t + b^2 \cos^2 t + bc \cos^2t = a^2 \\
+    \Rightarrow g'(t) &= \gamma''(t) \cdot \gamma'(t) = 0
+    \Rightarrow \gamma''(t) \perp \gamma'(t)
+  \end{flalign*}
+
+\end{enumerate}
+
 \end{document}
