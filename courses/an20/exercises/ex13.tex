@@ -124,5 +124,58 @@ Weiter sei $\gamma \colon [a, b] \to \mathbb{R}^{N + 1}$ definiert durch
   \]
 
 \end{enumerate}
+\newpage
+\paragraph{Aufgabe 2:} Untersuchen Sie, ob die Kurve
+$\gamma \colon [0, 1] \to \mathbb{R}^2$ mit
+\[
+  \gamma(t) \coloneqq \begin{cases}
+    \qty(t, t\cos\frac{\pi}{t}) & \text{für } t \in (0, 1] \\
+    \qty\big(0, 0) & \text{für } t = 0
+  \end{cases}
+\]
+von endlicher Variation ist.
+
+\subparagraph{Lösung:} Wir setzen $\gamma(t) \coloneqq \begin{cases}
+  t\cos\frac{\pi}{t} & \text{für } t \in (0, 1] \\
+  0 & \text{für } t = 0
+\end{cases}$ und $\gamma = \begin{pmatrix}
+  t \\
+  f(t)
+\end{pmatrix}$.
+
+Die Funktion $f$ ist auf $(0, 1]$ als Komposition stetiger Funktionen stetig.
+Im Fall $t = 0$ gilt
+$\abs{f(t) - f(0)} = \abs{t\cos\frac{\pi}{t}} \leq \abs{t - 0} \leq \epsilon
+\eqqcolon \delta$. $\Rightarrow f$ ist in $0$ stetig.
+
+Zerlegungungen $\Pi_n = \qty{
+  t_0 = 1, t_1 = \frac{1}{n - 1}, t_2 = \frac{1}{n - 2}, \ldots,
+  t_n = \frac{1}{n - (n - 1)} = 1
+}$
+\[
+  \Rightarrow \gamma\qty\big(t_k) = \begin{pmatrix}
+    x_k \\
+    y_k
+  \end{pmatrix} = \frac{1}{n - k} \cdot \begin{pmatrix}
+    1 \\
+    \cos\qty\big((n - k) \pi)
+  \end{pmatrix} = \frac{1}{n - k} \cdot \begin{pmatrix}
+    1 \\
+    (-1)^{n - k}
+  \end{pmatrix}
+\]
+Durch Verbindung der Punkte $\gamma(t_0), \gamma(t_1), \ldots, \gamma(t_n)$
+entsteht ein Streckenzug.
+Es gilt
+\begin{flalign*}
+  \text{Var}_{[0, 1]} \qty(\gamma, \Pi_n)
+  &= \sum_{k = 1}^n \norm{\gamma\qty(t_k) - \gamma\qty(t_{x - 1})}_2
+  = \sum_{k = 1}^n \qty\Big(\qty\big(x_k - x_{x - 1})^2 + \qty\big(y_k - y_{k - 1})^2)^{\frac{1}{2}} & \\
+  &\geq \sum_{k = 1}^n \abs{y_k - y_{k - 1}} \\
+  &\geq \sum_{k = 2}^n \qty(\frac{1}{n - k} + \frac{1}{n - k + 1}) \\
+  &\geq \sum_{k = 2}^{n - 1} \frac{1}{n - k} \overset{j = n - k}=
+  \sum_{j = 1}^{n - 2} \frac{1}{j} \overset{n \to \infty}\longrightarrow \infty
+\end{flalign*}
+$\Rightarrow \text{Var}_{[a, b]} \gamma = \infty$
 
 \end{document}
