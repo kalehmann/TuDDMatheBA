@@ -1,0 +1,74 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{chngcntr}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[table]{xcolor}
+\usepackage{pgfplots}
+
+%% See https://tex.stackexchange.com/a/44954
+\newcounter{myequation}
+\makeatletter
+\@addtoreset{equation}{myequation}
+\makeatother
+
+%% Fix equation numbering for scrreprt class.
+\counterwithout{equation}{chapter}
+
+\pgfplotsset{compat = newest}
+\usepgfplotslibrary{patchplots}
+\usetikzlibrary{intersections}
+\usetikzlibrary{shapes}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2021}
+\title{Übung 13 Analysis - Weiterführende Konzepte}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\skalprod[1]{\left\langle #1 \right\rangle}
+\newcommand\nnorm[1]{\left\lvert\left\lvert\left\lvert #1 \right\rvert\right\rvert\right\rvert}
+
+\begin{document}
+\setcounter{chapter}{1}
+\section*{Variation von Kurven}
+\paragraph{Aufgabe 1:} (Graph einer Funktion als Kurve).
+Gegeben sei eine stetige Funktion $f \colon [a, b] \to \mathbb{R}^N$.
+Weiter sei $\gamma \colon [a, b] \to \mathbb{R}^{N + 1}$ definiert durch
+\begin{flalign*}
+  \gamma(t) &\coloneqq \qty\big(t, f(t)) &
+\end{flalign*}
+\begin{enumerate}[(i)]
+\item Zeigen Sie, dass $\gamma$ eine Kurve ist.
+  \subparagraph{Lösung:} Es ist zu zeigen, dass $\gamma$ stetig ist.
+
+  Da $f$ stetig ist, ist auch die Abbildung
+  $t \mapsto \qty\big(t, f(t)) = \gamma(t)$ stetig
+  $\Rightarrow \gamma$ ist eine Kurve.
+
+\item Beweisen Sie: Ist $\gamma$ stetig differenzierbar, so ist
+  $\gamma$ von endlicher Variation.
+\item Berechnen Sie die Länge von $\gamma$ im Fall
+  $f \colon [0, 1] \to \mathbb{R}, f(x) = \alpha x + \beta$
+\end{enumerate}
+
+\end{document}
