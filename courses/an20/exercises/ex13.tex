@@ -84,6 +84,45 @@ Weiter sei $\gamma \colon [a, b] \to \mathbb{R}^{N + 1}$ definiert durch
 
 \item Berechnen Sie die Länge von $\gamma$ im Fall
   $f \colon [0, 1] \to \mathbb{R}, f(x) = \alpha x + \beta$
+
+  \subparagraph{Lösung:}
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+          axis lines=middle,
+          xlabel=$x$,
+          xmax = 1.3,
+          xmin = -0.3,
+          ylabel=$y$,
+          ymax = 1.3,
+          ymin = -0.3,
+          yticklabels={,,},
+        ]
+        \addplot[
+          domain = 0:1,
+          very thick,
+          blue,
+        ] {0.8 * x + 0.2};
+        \node[circle, fill, inner sep=2pt] at (0,0.2){};
+        \node[circle, fill, inner sep=2pt] at (1,1){};
+        \node at (-0.1, 0.2) {$\beta$};
+        \node at (-0.15, 1) {$\alpha + \beta$};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+  Es gilt $\gamma(t) = \begin{pmatrix}
+    t \\
+    \alpha t + \beta
+  \end{pmatrix} \Rightarrow \gamma'(t) = \begin{pmatrix}
+    1 \\
+    \alpha
+  \end{pmatrix}$
+  \[
+    \Rightarrow \text{Var}_{[0, 1]}\gamma = \int_0^2\norm{\gamma'(t)}_2\,dt
+    = \int_0^1\sqrt{1 + \alpha^2}\,dt = \sqrt{1 + a^2}
+    = \norm{\qty\big(1, \alpha + \beta) - \qty(0, \beta)}_2
+  \]
+
 \end{enumerate}
 
 \end{document}
