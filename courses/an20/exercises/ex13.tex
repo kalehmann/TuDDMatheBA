@@ -178,4 +178,96 @@ Es gilt
 \end{flalign*}
 $\Rightarrow \text{Var}_{[a, b]} \gamma = \infty$
 
+\paragraph{Aufgabe 3:}
+\begin{enumerate}[(i)]
+\item Skizzieren Sie die Kardioide $\gamma \colon [0, 2\pi] \to \mathbb{R}^2$
+  definiert durch
+  \[
+    \gamma(t) \coloneqq \qty\Big(\qty\big(1 - \cos t)\cos t, \qty\big(1 - \cos t) \sin t)
+  \]
+  und berechnen Sie deren Länge $L = \text{Var}_{[0, 2\pi]}(\gamma)$
+
+  \subparagraph{Lösung:} $\gamma(t) = r(t) \cdot \begin{pmatrix}
+    \cos t \\
+    \sin t
+  \end{pmatrix}, r(t) = 1 - \cos t, r(t) \leq 0, t \in [0, 2\pi]$
+  und $r'(t) = \sin t$.
+  \newpage
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+          axis lines=middle,
+          grid = both,
+          xlabel=$x$,
+          xmax = 0.3,
+          xmin = -2.3,
+          ylabel=$y$,
+          ymax = 1.3,
+          ymin = -1.3,
+        ]
+        \addplot[
+          data cs = polar,
+          domain = 0:360,
+          very thick,
+          blue,
+          smooth,
+          samples = 90,
+          ] ({x}, {1 - cos(x)});
+          \pgfplotsforeachungrouped \k in {0,...,8}{
+            \pgfmathsetmacro\x{\k * 360 / 8}
+            \pgfmathsetmacro\y{1 - cos(\x)}
+            \edef\temp{\noexpand\node[
+                circle,
+                draw,
+                fill,
+                inner sep=1.5pt,
+                blue,
+              ] at ({\x}:\y) {};}
+            \temp
+        }
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+  Graph der Kurve $\gamma$. Dabei sind die Punkte
+  $\gamma\qty(\frac{k\pi}{4})$ für $k = 0, \ldots, 8$ markiert.
+
+  $\gamma$ ist stetig differenzierbar mit
+  \begin{flalign*}
+    \gamma'(t) &= \begin{pmatrix}
+      x'(t) \\
+      y'(t)
+    \end{pmatrix} = r'(t) \cdot \begin{pmatrix}
+      \cos t \\
+      \sin t
+    \end{pmatrix} + r(t) \cdot \begin{pmatrix}
+      -\sin t \\
+      \cos t
+    \end{pmatrix} & \\
+    &= \begin{pmatrix}
+      \sin t \cdot \cos t + (1 - \cos t)(- \sin t) \\
+      \sin^2 t + (1 - \cos t)\cos t
+    \end{pmatrix}
+    = \begin{pmatrix}
+      - \sin t + 2 \sin t \cdot \cos t \\
+      \cos t - (\cos^2 t - \sin^2 t)
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+      - \sin t + \sin(2t) \\
+      \cos t - \cos(2t)
+    \end{pmatrix} \\
+    \Rightarrow \norm{\gamma'(t)}_2^2 &= \qty\Big(-\sin t + \sin(2t))^2
+    +\qty\Big(\cos t - \cos(2t))^2 \\
+    &= \sin^2 t - 2 \sin t \sin(2t) + \sin^2(2t) + \cos^2 t - 2 \cos t \cos(2t) + \cos^2(2t) \\
+    &= 2 \qty\Big(1 - \qty\big(2 \sin^2 t \cos t + \cos t \underset{1 - 2 \sin^2 t}{\underbrace{(\cos^2 t - \sin^2t)}})) \\
+    &= 2 \qty\big(1 - \underset{\cos\qty(\frac{t}{2} + \frac{t}{2})}{\underset{\uparrow}{\cos t}})
+    = 2 \qty\Big(1 - \qty(1 - 2\sin^2 \frac{t}{2})) \\
+    &= 4 \sin^2 \frac{t}{2} \\
+    \Rightarrow \text{Var}_{[0, 2\pi]}(\gamma) &= \int_0^{2\pi} \norm{\gamma'(t)}_2 \,dt
+    = 2 \int_0^{2\pi} \abs\Big{\underset{\geq 0}{\underbrace{\sin \frac{t}{2}}}}\,dt
+    = 0 \int_0^{2\pi} \sin \frac{t}{2}\,dt \\
+    &= 2 \qty[\cos \qty(\cos\frac{t}{2})(-1) 2]_0^{2\pi} = -4 \qty\big(\cos \pi - \cos 0) \\
+    &= 8
+  \end{flalign*}
+\end{enumerate}
+
 \end{document}
