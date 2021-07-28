@@ -127,4 +127,77 @@ CONTAINS
     nodea => nodeb
     nodeb => tmp
   END SUBROUTINE swap
+
+  !! A recursive function union, which unites two min-heaps and
+  !! returns a pointer to the new min-heap.
+  !! The binary trees are given by pointers
+  !! to their root nodes.
+  RECURSIVE FUNCTION union(heapa, heapb) RESULT(res)
+    TYPE(node), POINTER, INTENT(INOUT) :: heapa, heapb
+    TYPE(node), POINTER :: res
+    INTEGER :: left_rank, right_rank
+
+    !! If both heaps are empty (the pointers to their root nodes are not
+    !! associated), a non-associated pointer is returned.
+    IF (.NOT. ASSOCIATED(heapa) .AND. .NOT. ASSOCIATED(heapb)) THEN
+       NULLIFY(res)
+       RETURN
+    END IF
+    !! If one and only one of the heaps is empty, the other one is returned.
+    IF (ASSOCIATED(heapa) .AND. .NOT. ASSOCIATED(heapb)) THEN
+       res => heapa
+       RETURN
+    ELSE IF (ASSOCIATED(heapb) .AND. .NOT. ASSOCIATED(heapa)) THEN
+       res => heapb
+       RETURN
+    END IF
+    !! If both heaps are non-empty, the key values of their root elements are
+    !! compared. If the key of the first node is smaller than the key of the
+    !! second node, they will be exchanged with the swap routine.
+    IF (heapa%key < heapb%key) THEN
+       CALL swap(heapa, heapb)
+    END IF
+    !! The right subtree of the first (left) node will now be united
+    !! with the second node.
+    heapa%right => union(heapa%right, heapb)
+    !! To make sure, taht the new heap satisfies the rank condition,
+    !! the ranks of the left and right subtrees are compared and swapped
+    !! if necessary. If a subtree is empty, the rank is zero.
+    left_rank = 0
+    IF (ASSOCIATED(heapa%left)) THEN
+       left_rank = heapa%left%rank
+    END IF
+    right_rank = 0
+    IF (ASSOCIATED(heapa%right)) THEN
+       right_rank = heapa%right%rank
+    END IF
+    IF (right_rank < left_rank) THEN
+       CALL swap(heapa%left, heapa%right)
+    END IF
+    !! Finally the rank must be calculated again.
+    !! If the left or right subtree are empty, the rank is 1.
+    !! Otherwise the rank is the minimum of the ranks of the subtrees
+    !! increased by one.
+    IF (ASSOCIATED(heapa%left) .AND. ASSOCIATED(heapa%right)) THEN
+       heapa%rank = MIN(heapa%left%rank, heapa%right%rank) + 1
+    ELSE
+       heapa%rank = 1
+    END IF
+
+    res => heapa
+  END FUNCTION union
+
+  !! A subroutine insert, which generates a new heap node from a given key
+  !! and inserts the value into the supplied min-heap.
+  SUBROUTINE insert(key, heap)
+    TYPE(node), POINTER, INTENT(INOUT) :: heap
+    INTEGER, INTENT(IN) :: key
+    TYPE(node), POINTER :: nnode
+
+    ALLOCATE(nnode)
+    nnode%rank = 1
+    nnode%key = key
+
+    heap => union(heap, nnode)
+  END SUBROUTINE insert
 END MODULE modbintree
