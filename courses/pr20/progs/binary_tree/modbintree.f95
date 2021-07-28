@@ -72,4 +72,59 @@ CONTAINS
     END IF
   END FUNCTION numinner
 
+  !! A recursive function samestruct, which compares two binary trees.
+  !! The binary trees (do not have to be heaps) are given by pointers
+  !! to their root nodes.
+  !! The function returns .TRUE. if the trees have the same struture.
+  !! Note that they may have different contents.
+  RECURSIVE FUNCTION samestruct(roota, rootb) RESULT (same)
+    TYPE(node), POINTER, INTENT(IN) :: roota, rootb
+    LOGICAL :: same
+
+    IF (ASSOCIATED(roota%left)) THEN
+       IF (ASSOCIATED(rootb%left)) THEN
+          same = samestruct(roota%left, rootb%left)
+          IF (.NOT. same) THEN
+             RETURN
+          END IF
+       ELSE
+          same = .FALSE.
+          RETURN
+       END IF
+    ELSE
+       IF (ASSOCIATED(rootb%left)) THEN
+          same = .FALSE.
+          RETURN
+       END IF
+    END IF
+
+    IF (ASSOCIATED(roota%right)) THEN
+       IF (ASSOCIATED(rootb%right)) THEN
+          same = samestruct(roota%right, rootb%right)
+          IF (.NOT. same) THEN
+             RETURN
+          END IF
+       ELSE
+          same = .FALSE.
+          RETURN
+       END IF
+    ELSE
+       IF (ASSOCIATED(rootb%right)) THEN
+          same = .FALSE.
+          RETURN
+       END IF
+    END IF
+
+    same = .TRUE.
+  END FUNCTION samestruct
+
+  !! A subroutine swap, which exchanges to pointers to nodes.
+  !! The references are exchanged instead of the node contents.
+  SUBROUTINE swap(nodea, nodeb)
+    TYPE(node), POINTER, INTENT(INOUT) :: nodea, nodeb
+    TYPE(node), POINTER :: tmp
+    tmp => nodea
+    nodea => nodeb
+    nodeb => tmp
+  END SUBROUTINE swap
 END MODULE modbintree
