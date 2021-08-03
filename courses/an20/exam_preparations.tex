@@ -402,6 +402,17 @@ Berechnen Sie die Jacobi-Matrix der verketteten Funktion
 $\ell = g \circ f \colon (0, \infty) \times (0, \infty) \to \mathbb{R}^2$
 auf direktem Weg und durch Anwendung der Kettenregel.
 
+\section{Blatt 09 - Hausaufgabe 2}
+
+Gegeben sei die Funktion
+$f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
+$f(x, y) = e^{x + y}(x - y)$
+\begin{enumerate}[a)]
+\item Ermitteln Sie das Taylor-Polynom 2. Ordnung von $f$ an der Stelle
+  $(x_0, y_0) = (0, 0)$.
+\item Geben Sie eine Darstellung des zugehörigen Restgliedes an.
+\end{enumerate}
+
 \chapter{Lösungen}
 
 \section{Blatt 03 - Aufgabe 4}
@@ -1681,5 +1692,56 @@ $J_g = \begin{pmatrix}
     \frac{2xy^4 - 2}{xy^5 + y}
   \end{pmatrix}
 \end{flalign*}
+
+\section{Blatt 09 - Hausaufgabe 2}
+
+\begin{enumerate}[a)]
+\item Ermitteln Sie das Taylor-Polynom 2. Ordnung von $f$ an der Stelle
+  $(x_0, y_0) = (0, 0)$.
+
+  \subparagraph{Lösung:} Die Funktion $f$ ist beliebig oft stetig partiell
+  differenzierbar.
+  Für $h = \qty(h_1, h_2) \in \mathbb{R}^2$ ist
+  \begin{flalign*}
+    \qty(h_1 \frac{\partial}{\partial x} + h_2 \frac{\partial}{\partial y})^0 f(x, y)
+    &= f(x, y) & \\
+    \qty(h_1 \frac{\partial}{\partial x} + h_2 \frac{\partial}{\partial y})^1 f(x, y)
+    &= \skalprod{\nabla f(x, y), h} = e^{x + y}\qty\Big(h_1(x - y + 1) + h_2(x - y - 1)) \\
+    \qty(h_1 \frac{\partial}{\partial x} + h_2 \frac{\partial}{\partial y})^2 f(x, y)
+    &= e^{x + y} \cdot h^T \cdot \begin{pmatrix}
+      x - y + 2 & x - y \\
+      x - y & x - y - 2 \\
+    \end{pmatrix} \cdot h \\
+    \qty(h_1 \frac{\partial}{\partial x} + h_2 \frac{\partial}{\partial y})^3 f(x, y)
+    &= \qty(h_1^3 \frac{\partial^3}{\partial x^3}
+    + h_1^2h_2 \frac{\partial^2}{\partial x^2}\frac{\partial}{\partial y}
+    + h_2^2h_1 \frac{\partial^2}{\partial y^2}\frac{\partial}{\partial x}
+    + h_2^3 \frac{\partial^3}{\partial y^3}) f(x, y) \\
+    = e^{x + y} \Big(
+      h_1^3 (x - y + 3) +
+      &h_1^2h_2 (x - y + 1) +
+      h_1h_2^2 (x - y - 1) +
+      h_2^3 (x - y - 3)
+    \Big)
+  \end{flalign*}
+  \begin{flalign*}
+    T_{x_0,2}^f(x)
+    &= \sum_{k = 0}^N \qty(x_1 \frac{\partial}{\partial x_1} + x_2 \frac{\partial}{\partial x_2})^k f(0,0) & \\
+    &= f(x_0, y_0) + f'(x_0, y_0)(x, y) + \frac{1}{2} \begin{pmatrix} x & y \end{pmatrix}H_f(x_0, y_0)\begin{pmatrix} x \\ y \end{pmatrix} \\
+    &= 0 + x - y + \frac{2x^2 - 2y^2}{2} \\
+    &= x^2 + x - (y^2 + y)
+  \end{flalign*}
+\item Geben Sie eine Darstellung des zugehörigen Restgliedes an.
+  \subparagraph{Lösung:} Lagrangesches Restglied:
+  \begin{flalign*}
+    R_{x_0, 2} &= \frac{f^{(3)}(\xi)}{6} (x - x_0)^3 & \\
+    &= \frac{1}{6} e^{\xi_1 + \xi_2} \qty(
+      x_1^3 (\xi_1 - \xi_2 + 3) +
+      x_1^2x_2 (\xi_1 - \xi_2 + 1) +
+      x_1x_2^2 (\xi_1 - \xi_2 - 1) +
+      x_2^3 (\xi_1 - \xi_2  - 3)
+    )
+  \end{flalign*}
+\end{enumerate}
 
 \end{document}
