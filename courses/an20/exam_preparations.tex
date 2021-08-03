@@ -356,6 +356,18 @@ $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
   Warum ist $f$ in $(0, 0)$ trotzdem nicht differenzierbar?
 \end{enumerate}
 
+\section{Blatt 08 - Hausaufgabe 1}
+
+Geben Sie den größtmöglichen Definitionsbereich
+$D(f) \subseteq \mathbb{R}^N$ der folgenden Ausdrücke an.
+Auf welcher Teilmenge $D(f') \subseteq D(f)$ existieren die Ableitungen $f'$?
+Ermitteln Sie die zugehörige Jacobi-Matrix $J_f(x)$.
+\begin{enumerate}[a)]
+\item $f(x_1, x_2) = \ln(2 - e^{x_1 - x_2})$
+\item $f(x_1, x_2, x_3) = \qty(1 + \ln x_1, x_1\sqrt{x_2}, \sqrt{x_1x_3})$
+\item $f(t) = e^t(\cos t, \sin t, 1)$
+\end{enumerate}
+
 
 \chapter{Lösungen}
 
@@ -1423,6 +1435,44 @@ $\Rightarrow f'(X_0)(h) = 2X_0h$
   }
   Die Funktion ist natürlich trotzdem nicht differenzierbar, den Bedingung für
   die Differenzierbarkeit ist die Stetigkeit.
+\end{enumerate}
+
+\section{Blatt 08 - Hausaufgabe 1}
+
+\begin{enumerate}[a)]
+\item $f(x_1, x_2) = \ln(2 - e^{x_1 - x_2})$
+  \subparagraph{Lösung:}
+  $D(f) = \qty{(x_1, x_2) \in \mathbb{R}^2 {\Big |} x_1 - x_2 \leq \ln 2}$
+  \begin{flalign*}
+    J_f(x) &= \begin{pmatrix}
+      - \frac{e^{x_1 - x_2}}{2 - e^{x_1 - x_2}} &
+      \frac{e^{x_1 - x_2}}{2 - e^{x_1 - x_2}}
+    \end{pmatrix} & \\
+    D(f') &= \qty{(x_1, x_2) \in \mathbb{R}^2 {\Big |} x_1 - x_2 \ne \ln 2}
+  \end{flalign*}
+
+\item $f(x_1, x_2, x_3) = \qty(1 + \ln x_1, x_1\sqrt{x_2}, \sqrt{x_1x_3})$
+  \subparagraph{Lösung:}
+  $D(f) = \qty{(x_1, x_2, x_3) \in \mathbb{R}^3 {\Big |} x_1, x_2, x_3 \geq 0}$
+  \begin{flalign*}
+    J_f(x) &= \begin{pmatrix}
+      \frac{1}{x_1} & 0 & 0 \\
+      \sqrt{x_2} & - \frac{x_1}{\sqrt{x_2}} & 0 \\
+      - \frac{x_3}{\sqrt{x_1x_3}} & 0 & - \frac{x_1}{\sqrt{x_1x_3}}
+    \end{pmatrix} & \\
+    D(f,) &= \qty{(x_1, x_2, x_3) \in \mathbb{R}^2 {\Big |} x_1 , x_2 > 0, x_3 \geq 0}
+  \end{flalign*}
+
+\item $f(t) = e^t(\cos t, \sin t, 1)$
+  \subparagraph{Lösung:} $D(f) = \qty\big{t \in \mathbb{R}}$
+  \begin{flalign*}
+    J_f(t) &= e^t \cdot \begin{pmatrix}
+      \sin t + \cos t \\
+      \cos t - \sin t \\
+      1
+    \end{pmatrix} & \\
+    D(f') &= \qty\big{t \in \mathbb{R}}
+  \end{flalign*}
 \end{enumerate}
 
 
