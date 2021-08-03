@@ -18,6 +18,8 @@
 \usepackage[table]{xcolor}
 \usepackage{pgfplots}
 
+\definecolor{light-gray}{gray}{.9}
+
 %% See https://tex.stackexchange.com/a/44954
 \newcounter{myequation}
 \makeatletter
@@ -63,7 +65,6 @@
 \renewcommand\thesection{}
 % Custom title for table of contents
 \renewcaptionname{german}{\contentsname}{Prüfungsrelevante Aufgaben}
-
 
 \begin{document}
 \tableofcontents
@@ -265,6 +266,44 @@ auf der Menge
 \]
 Maximum und Minimum besitzt.
 
+\section{Blatt 07 - Aufgabe 5}
+
+\begin{enumerate}[a)]
+\item Für $a, b, c \in \mathbb{R}$ sei $f \colon \mathbb{R} \to \mathbb{R}$
+  definiert durch $f(x) \coloneqq ax^2 + bx + c$.
+  Geben Sie die Weierstraßsche Zerlegungsformel für ein festes
+  $x_0 \in \mathbb{R}$ an.
+  Wie lautet $f'(x_0)$?
+
+\item Für $A \in \mathbb{R}^{N \times N}, b \in \mathbb{R}^N, c \in \mathbb{R}$ sei
+  $f \colon \mathbb{R}^N \to \mathbb{R}$ definiert durch
+  \[
+    f(x) \coloneqq \left\langle x, Ax \right\rangle + \left\langle b, x \right\rangle + c
+  \]
+  dabei bezeichne $\left\langle ., . \right\rangle$ das Euklidische Skalarprodukt auf dem $\mathbb{R}^N \colon$
+  \[
+    \left\langle x, y \right\rangle = \sum_{k = 1}^N x_k y_k \text{ für } x = \qty(x_1, \ldots, x_N), y = \qty(y_1, \ldots, y_N) \in \mathbb{R}^N
+  \]
+  Wenden Sie die Weierstraßsche Zerlegungsformel an, um $f'(x_0)$ für ein festes
+  $x_0 \in \mathbb{R}^N$ zu bestimmen.
+  Wie lautet $f'(x_0)$, wenn $A$ eine symmetrische Matrix ist?
+\item Der Raum $\mathbb{R}^{N \times N}$ sei mit einer Operatornorm
+  $\norm{\cdot}$ versehen.
+  Nach Hausaufgabe 1 ist die Menge $M \subseteq \mathbb{R}^{N \times N}$ der
+  invertierbaren Matrizen eine offene Teilmenge von $\mathbb{R}^{N \times N}$,
+  d.h. ist $X \in \mathbb{R}^{N \times N}$ invertierbar, dann existiert ein
+  $\epsilon > 0$, so dass $X + H$ für alle $H \in B(X, \epsilon)$
+  invertierbar ist.
+  Insbesondere ist $I + H$ für $\norm{H} < 1$ invertierbar, wobei
+  \[
+    (I + H)^{-1} = \sum_{k = 0}^{\infty}(-1)^k H^k
+  \]
+  gilt.
+  Die obige Reihe wird Neumannsche Reihe genannt.
+  Zeigen Sie, dass $f \colon M \to M$ mit $f(X) = X^{-1}$ differenzierbar ist
+  und geben Sie $f'(X)$ an.
+
+\end{enumerate}
 
 \chapter{Lösungen}
 
@@ -1012,5 +1051,110 @@ $\Rightarrow f(K)$ ist kompakt.
 
 Damit existieren $a, b \in K$ mit $f(a) \leq f(x) \leq f(b)$ für alle
 $x \in K$.
+
+\section{Blatt 07 - Aufgabe 5}
+
+\begin{enumerate}[a)]
+\item Für $a, b, c \in \mathbb{R}$ sei $f \colon \mathbb{R} \to \mathbb{R}$
+  definiert durch $f(x) \coloneqq ax^2 + bx + c$.
+  Geben Sie die Weierstraßsche Zerlegungsformel für ein festes
+  $x_0 \in \mathbb{R}$ an.
+  Wie lautet $f'(x_0)$?
+
+  \textit{Lsg.}
+  Es gilt $f(x_0 + h) - f(x_0) = \qty(a(x_0 + h)^2 + b(x_0 + h) + c)
+  - \qty(ax_0^2 + bx_0 + c)$
+  $= \underset{h \mapsto (2ax_0 + b)h  \text{ ist linear}}{\underbrace{(2ax_0 + b) \cdot h}} + \underset{r(h)}{\underbrace{h^2}}$
+
+  Es gilt $\abs{\frac{r(h)}{h}} = \frac{h^2}{\abs{h}} = \abs{h} \overset{h \to 0}\longrightarrow 0$
+
+  $\Rightarrow f'(x_0)(h) = \underset{f'(x_0)}{\underbrace{(2ax_0 + b)}} h$
+
+\item Für $A \in \mathbb{R}^{N \times N}, b \in \mathbb{R}^N, c \in \mathbb{R}$ sei
+  $f \colon \mathbb{R}^N \to \mathbb{R}$ definiert durch
+  \[
+    f(x) \coloneqq \left\langle x, Ax \right\rangle + \left\langle b, x \right\rangle + c
+  \]
+  dabei bezeichne $\left\langle ., . \right\rangle$ das Euklidische Skalarprodukt auf dem $\mathbb{R}^N \colon$
+  \[
+    \left\langle x, y \right\rangle = \sum_{k = 1}^N x_k y_k \text{ für } x = \qty(x_1, \ldots, x_N), y = \qty(y_1, \ldots, y_N) \in \mathbb{R}^N
+  \]
+  Wenden Sie die Weierstraßsche Zerlegungsformel an, um $f'(x_0)$ für ein festes
+  $x_0 \in \mathbb{R}^N$ zu bestimmen.
+  Wie lautet $f'(x_0)$, wenn $A$ eine symmetrische Matrix ist?
+
+  \textit{Lsg.} Es gilt
+  $f(x_0 + h) - f(x_0) = \left\langle x_0 + h, A \cdot (x_0 + h) \right\rangle
+  + \left\langle b, x_0 + h \right\rangle + c -
+  \qty(\left\langle x_0, A \cdot x_0 \right\rangle + \left\langle b, x_0 \right\rangle + c)$
+
+  $= \underset{
+    h \mapsto \langle x_0, A \cdot h \rangle + \langle h, A \cdot x_0 \rangle + \langle b, h \rangle \text{ ist linear}
+  }{\underbrace{\left\langle x_0, A \cdot h \right\rangle + \left\langle h, A \cdot x_0 \right\rangle
+  + \left\langle b, h \right\rangle}} +
+  \underset{r(h)}{\underbrace{\left\langle h, A \cdot h \right\rangle}}$
+
+  \fcolorbox{black}{light-gray}{\begin{minipage}{\textwidth}
+      \label{CSU}
+      \textbf{Cauchy-Schwarzsche Ungleichung}  \\
+      Wenn $x, y$ Elemente eines Vektorraumes sind, dann gilt für das
+      Skalarprodukt $\langle x, y \rangle$
+      \[
+        \abs{\langle x, y \rangle} \leq \norm{x} \cdot \norm{y}
+      \]
+  \end{minipage}}
+
+  Wegen $\frac{\abs{r(h)}}{\norm{h}_2} = \frac{\abs{\left\langle h, A \cdot h \right\rangle}}{\norm{h}_2}
+  \leq \frac{\norm{h}_2 \cdot \norm{A \cdot h}_2}{\norm{h}_2} \leq \norm{A} \cdot \norm{h}_2
+  \overset{h \to 0}\longrightarrow 0$ ist $f$ in jedem $x_0 \in \mathbb{R}^N$ Fréchet-Differenzierbar
+  mit
+  \begin{flalign*}
+    f'(x_0)(h) &= \langle x_0, A \cdot h \rangle + \langle h, A \cdot x_0 \rangle + \langle b, h \rangle & \\
+    &= x_0^T \cdot A \cdot h + h^T \cdot A \cdot x_0 + b^T \cdot h
+  \end{flalign*}
+
+\newpage
+\item Der Raum $\mathbb{R}^{N \times N}$ sei mit einer Operatornorm
+  $\norm{\cdot}$ versehen.
+  Nach Hausaufgabe 1 ist die Menge $M \subseteq \mathbb{R}^{N \times N}$ der
+  invertierbaren Matrizen eine offene Teilmenge von $\mathbb{R}^{N \times N}$,
+  d.h. ist $X \in \mathbb{R}^{N \times N}$ invertierbar, dann existiert ein
+  $\epsilon > 0$, so dass $X + H$ für alle $H \in B(X, \epsilon)$
+  invertierbar ist.
+  Insbesondere ist $I + H$ für $\norm{H} < 1$ invertierbar, wobei
+  \[
+    (I + H)^{-1} = \sum_{k = 0}^{\infty}(-1)^k H^k
+  \]
+  gilt.
+  Die obige Reihe wird Neumannsche Reihe genannt.
+  Zeigen Sie, dass $f \colon M \to M$ mit $f(X) = X^{-1}$ differenzierbar ist
+  und geben Sie $f'(X)$ an.
+
+  \textit{Lsg.} Sei $X \in M$ und $H \in \mathbb{R}^{N \times N}$, so dass
+  $\norm{H} \cdot \norm{X^{-1}} < 1$ gilt und $(X + H)^{-1}$ existiert.
+  Mit $S = H \cdot X^{-1}$ folgt
+  \begin{align*}
+    f(X + H) - f(X) &= (X + H)^{-1} - X^{-1} \\
+                    &= X^{-1} \qty(X (X + H)^{-1} - I) = X^{-1} (X - (X + H))(X + H)^{-1} \\
+                    &= -X^{-1} H (X + H)^{-1} = -X^{-1}H((I + HX^{-1})X)^{-1} \\
+                    &= -X^{-1} H X^{-1} (I + S)^{-1} \\
+    \overset{\norm{S} \leq \norm{H} \norm{X^{-1}} \leq 1}&= -X^{-1} H X^{-1} \sum_{k = 0}^{\infty}(-1)^k S^k \\
+                    &= -X^{-1} H X^{-1} \qty(I + \sum_{k = 1}^{\infty}(-1)^k S^k) \\
+                    &= -X^{-1} H X^{-1} - X^{-1} H X^{-1} (-S) \sum_{k = 0}^{\infty}(-1)^k S^k \\
+                    &= \underset{H \mapsto -X^{-1} H X^{-1} \text{ ist linear}}{\underbrace{-X^{-1} H X^{-1}}}
+                      + \underset{r(H)}{\underbrace{X^{-1} \qty(H X^{-1})^2 \sum_{k = 0}^{\infty}(-1)^k \qty(H X^{-1})^k}} \\
+  \end{align*}
+
+  Weiter gilt
+  \begin{align*}
+    \frac{\norm{r(H)}}{\norm{H}} \overset{\hyperref[CSU]{\text{Cachy-Schwarze-Ungleichung}}}
+    &\leq \frac{\norm{X^{-1}}^3 \norm{H}^2}{\norm{H}} \cdot \norm{\sum_{k=0}^{\infty} (-1)^k \qty(HX^{-1})^k} \\
+    &\leq \norm{X^{-1}}^3 \norm{H} \sum_{k=0}^{\infty}
+      \underset{\leq \norm{H} \norm{X^{-1}} \leq 1}{\underbrace{\norm{HX^{-1}}^k}} \\
+    &= \frac{\norm{X^{-1}}^3 \norm{H}}{1 - \norm{H}\norm{X^{-1}}} \overset{H \to 0}\longrightarrow 0 \\
+    \Rightarrow f'(X)(H) = -X^{-1}HX^{-1}
+  \end{align*}
+  Reel: $f(x) \overset{x \ne 0}= \frac{1}{x} \Rightarrow f'(x) = -\frac{1}{x^2} = -x^{-1}x^{-1}$
+\end{enumerate}
 
 \end{document}
