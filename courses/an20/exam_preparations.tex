@@ -391,6 +391,16 @@ $f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
   $v = \frac{1}{\sqrt{2}}(1, 1)$ und $u = \frac{1}{\sqrt{2}}(1, -1)$ an.
 \end{enumerate}
 
+\section{Blatt 08 - Hausaufgabe 3}
+
+Gegeben seien die Funktionen
+$f \colon (0, \infty) \times (0, \infty) \to \mathbb{R}^2$ und
+$g \colon \mathbb{R}^2 \setminus \qty{(0, 0)} \to \mathbb{R}$ mit
+$f(x, y) \coloneqq \qty(xy, \frac{\sqrt{x}}{y})$ und
+$g(u, v) \coloneqq \ln\qty(u^2 + v^2)$.
+Berechnen Sie die Jacobi-Matrix der verketteten Funktion
+$\ell = g \circ f \colon (0, \infty) \times (0, \infty) \to \mathbb{R}^2$
+auf direktem Weg und durch Anwendung der Kettenregel.
 
 \chapter{Lösungen}
 
@@ -1622,5 +1632,54 @@ $\Rightarrow f'(X_0)(h) = 2X_0h$
     \frac{\partial f}{\partial u} = \nabla f(x) \cdot e = -\frac{1}{\sqrt{2}}
   \]
 \end{enumerate}
+
+\section{Blatt 08 - Hausaufgabe 3}
+
+$\ell(x, y) = (g \circ f)(x, y) = g\qty\big(f(x , y))$
+
+\textbf{Direkter Weg:} $\ell (x, y) = g\qty(x \cdot y, \frac{\sqrt{x}}{y}) = \ln\qty(x^2y^2 + \frac{x}{y^2})$
+
+\begin{flalign*}
+  J_{\ell}(x, y) &= \begin{pmatrix}
+    \frac{2xy^2 + \frac{1}{y^2}}{x^2y^2 + \frac{x}{y^2}} &
+    \frac{2x^2y - \frac{2x}{y^3}}{x^2y^2 + \frac{x}{y^2}}
+  \end{pmatrix} =
+  \begin{pmatrix}
+    \frac{2xy^4 + 1}{x^2y^4 + x} &
+    \frac{2xy^4 - 2}{xy^5 + y}
+  \end{pmatrix}&
+\end{flalign*}
+
+\textbf{Kettenregel:} $J_f = \begin{pmatrix}
+  y & x \\
+  \frac{1}{2y\sqrt{x}} & -\frac{\sqrt{x}}{y^2}
+\end{pmatrix}$ und
+$J_g = \begin{pmatrix}
+  \frac{2u}{u^2 + v^2} & \frac{2v}{u^2 + v^2}
+\end{pmatrix}$
+\begin{flalign*}
+  J_{\ell}
+  &= J_g(f(x, y)) \cdot J_f(x, y)
+  = J_g\qty(xy, \frac{\sqrt{x}}{y}) \cdot J_f(x, y) & \\
+  &= \begin{pmatrix}
+    \frac{2xy}{x^2y^2 + \frac{x}{y^2}} & \frac{\frac{2\sqrt{x}}{y}}{x^2y^2 + \frac{x}{y^2}}
+  \end{pmatrix} \cdot
+  \begin{pmatrix}
+    y & x \\
+    \frac{1}{2y\sqrt{x}} & -\frac{\sqrt{x}}{y^2}
+  \end{pmatrix} \\
+  &= \begin{pmatrix}
+    \frac{2xy}{x^2y^2 + \frac{x}{y^2}} \cdot y + \frac{\frac{2\sqrt{x}}{y}}{x^2y^2 + \frac{x}{y^2}} \cdot  \frac{1}{2y\sqrt{x}} &
+    \frac{2xy}{x^2y^2 + \frac{x}{y^2}} \cdot x + \frac{\frac{2\sqrt{x}}{y}}{x^2y^2 + \frac{x}{y^2}} \cdot  -\frac{\sqrt{x}}{y^2}
+  \end{pmatrix} \\
+  &= \begin{pmatrix}
+    \frac{2xy^2 + \frac{1}{y^2}}{x^2y^2 + \frac{x}{y^2}} &
+    \frac{2x^2y - \frac{2x}{y^3}}{x^2y^2 + \frac{x}{y^2}}
+  \end{pmatrix} =
+  \begin{pmatrix}
+    \frac{2xy^4 + 1}{x^2y^4 + x} &
+    \frac{2xy^4 - 2}{xy^5 + y}
+  \end{pmatrix}
+\end{flalign*}
 
 \end{document}
