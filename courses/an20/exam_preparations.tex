@@ -368,6 +368,29 @@ Ermitteln Sie die zugehörige Jacobi-Matrix $J_f(x)$.
 \item $f(t) = e^t(\cos t, \sin t, 1)$
 \end{enumerate}
 
+\section{Blatt 08 - Hausaufgabe 2}
+
+Gegeben sei die Funktion
+$f \colon \mathbb{R}^2 \to \mathbb{R}$ mit
+\begin{flalign*}
+  f(x) &\coloneqq \begin{cases}
+    \frac{x_1x_2}{\sqrt{x_1^2 + x_2^2}}, & \text{für } x = \qty(x_1, x_2) \ne (0, 0) \\
+    0, & \text{für } x = (0, 0)
+  \end{cases} &
+\end{flalign*}
+
+\begin{enumerate}[a)]
+\item Zeigen Sie, dass $f$ in $(0, 0)$ stetig ist.
+\item Zeigen Sie, dass die partiellen Ableitungen $f$ in $(0, 0)$ existieren.
+  Existiert die Richtungsableitung von $f$ in $(0, 0)$ in Richtung von
+  $v = \frac{1}{\sqrt{2}}\qty(e_1 + e_2) = \frac{1}{\sqrt{2}(1, 1)}$?
+  Warum ist $f$ in $(0, 0)$ nicht differenzierbar?
+\item Ermitteln Sie alle Punkte, in denen $f$ differenzierbar ist und geben Sie
+  die zugehörige Jacobi-Matrix an.
+\item Geben Sie die Richtungsableitung von $f$ in $x = (1, 0)$ in Richtung
+  $v = \frac{1}{\sqrt{2}}(1, 1)$ und $u = \frac{1}{\sqrt{2}}(1, -1)$ an.
+\end{enumerate}
+
 
 \chapter{Lösungen}
 
@@ -1475,5 +1498,129 @@ $\Rightarrow f'(X_0)(h) = 2X_0h$
   \end{flalign*}
 \end{enumerate}
 
+\section{Blatt 08 - Hausaufgabe 2}
+
+\begin{center}
+  \resizebox{.8\textwidth}{!}{
+    \begin{tikzpicture}[
+        declare function={
+          f(\x, \y) = \x^2 + \y^2 != 0 ? (\x*\y)/(sqrt(\x^2 + \y^2)) : 0;
+        }
+      ]
+      \begin{axis}[
+        xlabel = $x$,
+        ylabel = $y$,
+        view={20}{40},
+      ]
+        \addplot3[
+          surf,
+          domain=-1:1,
+          samples=25,
+          shader=faceted interp,
+        ] {f(x, y)};
+      \end{axis}
+    \end{tikzpicture}
+  }
+\end{center}
+
+\begin{enumerate}[a)]
+\item Zeigen Sie, dass $f$ in $(0, 0)$ stetig ist.
+  \subparagraph{Lösung:} Die Funktion $f$ heißt stetig im Punkt
+  $x_0 = (0, 0) \in \mathbb{R}^2$, wenn
+  \begin{flalign*}
+    \forall \epsilon > 0 \:\exists\: \delta > 0 \forall y \in \mathbb{R}^2 \colon \norm{x_0 - y}_2 < \delta
+    &\Rightarrow \abs{f(x_0) - f(y)} < \epsilon & \\
+    \sqrt{y_1^2 + y_2^2} < \delta &\Rightarrow \abs{\frac{y_1y_2}{\sqrt{y_1^2 + y_2^2}}} < \epsilon \\
+    \sqrt{y_1^2 + y_2^2} < \delta &\Rightarrow \frac{\abs{y_1y_2}}{\sqrt{y_1^2 + y_2^2}} < \epsilon \\
+    \sqrt{y_1^2 + y_2^2} < \delta &\Rightarrow \sqrt{y_1^2 + y_2^2} \cdot \frac{\abs{y_1y_2}}{y_1^2 + y_2^2} < \epsilon \\
+    \sqrt{y_1^2 + y_2^2} < \delta &\Rightarrow \sqrt{y_1^2 + y_2^2} \cdot \frac{1}{\abs{\frac{y_1}{y_2}} + \abs{\frac{y_2}{y_1}}}
+    \leq \frac{\sqrt{y_1^2 + y_2^2}}{2} < \epsilon
+  \end{flalign*}
+  $\Rightarrow f$ ist im Punkt $(0, 0)$ stetig mit $\delta > 2\epsilon$.
+
+\item Zeigen Sie, dass die partiellen Ableitungen $f$ in $(0, 0)$ existieren.
+  Existiert die Richtungsableitung von $f$ in $(0, 0)$ in Richtung von
+  $v = \frac{1}{\sqrt{2}}\qty(e_1 + e_2) = \frac{1}{\sqrt{2}(1, 1)}$?
+  Warum ist $f$ in $(0, 0)$ nicht differenzierbar?
+
+  \subparagraph{Lösung:} Für $t \in \mathbb{R}$ gilt
+  \colorbox{yellow}{$g(t) = f(t, 0) = 0 = f(0, t)$}.
+  Folglich ist
+  \begin{flalign*}
+    \frac{\partial^nf(0,0)}{\partial x_1^n} &=
+    \frac{\partial^n f(0, 0)}{\partial x_2^n} = g^{(n)}(0) = 0
+    \text{ für alle } n \in \mathbb{N}
+  \end{flalign*}
+
+  Die Funktion $f$ heißt in $x = (0, 0) \in \mathbb{R}^2$ in Richtung
+  $v = \frac{1}{\sqrt{2}(1, 1)}$ differenzierbar, falls die Funktion
+  \[
+    k \colon ]-r, r[ \to \mathbb{R}, t \mapsto f(x + t \cdot v)
+  \]
+  (für $r > 0$ klein genug) in $0$ differenzierbar ist und dann heißt
+  \[
+    \frac{\partial f}{\partial v}(x) \coloneqq \lim_{t \to 0} \frac{k(t) - f(x)}{t}
+  \]
+  die Richtungsableitung von $f$ im Punkt $(0, 0)$ in Richtung $v$.
+
+  \[
+    k(t) = f((0,0) + t \cdot v) = f\qty(\frac{t}{\sqrt(2)}, \frac{t}{\sqrt(2)})
+    = \begin{cases}
+      \frac{\sfrac{t^2}{2}}{\sqrt{2\sfrac{t^2}{2}}} = \frac{t}{2} & t \ne 0 \\
+      0 & t = 0
+    \end{cases}
+  \]
+  Da für $t = 0$ der Wert von $\frac{t}{2} = k(0)$ entspricht, gilt
+  $k(t) = \frac{t}{2}$.
+  $\Rightarrow$ die Richtungsableitung von $f$ im Punkt $(0, 0)$ in Richtung
+  $v$ existiert mit
+  \[
+    \frac{\partial f}{\partial v}(x) \coloneqq \lim_{t \to 0} \frac{k(t) - f(x)}{t}
+    = \lim_{t \to 0} \frac{\sfrac{t}{2} - f((0,0))}{t} = \frac{1}{2}
+  \]
+
+  Die \colorbox{yellow}{partiellen Ableitungen} entsprechen den
+  Richtungsableitungen $u_1 = e_1$ und $u_2 = e_2$.
+  Da
+  $\frac{\partial f}{\partial u_1}(x) = 0 \ne \frac{\partial f}{\partial v}(x) = \frac{1}{2}$
+  ist $f$ im Punkt $(0, 0)$ nicht differenzierbar.
+
+\item Ermitteln Sie alle Punkte, in denen $f$ differenzierbar ist und geben Sie
+  die zugehörige Jacobi-Matrix an.
+
+  \subparagraph{Lösung:} Seien $g, h \colon \mathbb{R}^2 \to \mathbb{R}$ zwei Funktionen mit
+  $g(x) = x_1x_2$ und $h(x) = x_1^2 + x_2^2$.
+  Außerdem sei $i \colon \mathbb{R}^2 \setminus \qty{(0, 0)} \to \mathbb{R}$
+  eine Funktion mit $i(x) = x^{-\frac{1}{2}}$.
+
+  Dann ist $g$, $h$ und $i$ nach Proposition 7.2.3 der Vorlesung differenzierbar.
+  Nun ist $f(x) = g(x) \cdot (i \circ h)(x)$ für alle $x \in \mathbb{R}^2 \setminus \qty{(0, 0)}$
+  differenzierbar.
+  \[
+    J_f(x) = \begin{pmatrix}
+      \frac{x_2^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}} &
+      \frac{x_1^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}}
+    \end{pmatrix}
+  \]
+
+\item Geben Sie die Richtungsableitung von $f$ in $x = (1, 0)$ in Richtung
+  $v = \frac{1}{\sqrt{2}}(1, 1)$ und $u = \frac{1}{\sqrt{2}}(1, -1)$ an.
+
+  \subparagraph{Lösung:}
+  $\frac{\partial f}{\partial x_1} = \frac{x_2^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}}$,
+  $\frac{\partial f}{\partial x_2} = \frac{x_1^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}}$
+  \begin{flalign*}
+    \nabla f (x) &= J_f(x)^T = \begin{pmatrix}
+      \frac{x_2^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}} \\
+      \frac{x_1^3}{\qty(x_1^2 + x_2^2)^{\frac{3}{2}}}
+    \end{pmatrix} &
+  \end{flalign*}
+  Da $\norm{v}_2 = \norm{u}_2 = \sqrt{\frac{1}{2} + \frac{1}{2}} = 1$, gilt
+  \[
+    \frac{\partial f}{\partial v} = \nabla f(x) \cdot v = \frac{1}{\sqrt{2}}
+    \text{ und }
+    \frac{\partial f}{\partial u} = \nabla f(x) \cdot e = -\frac{1}{\sqrt{2}}
+  \]
+\end{enumerate}
 
 \end{document}
