@@ -327,6 +327,16 @@ Geben Sie die zugehörige Jacobi-Matrix $J_f$ an.
 \item $f\qty(x_1, x_2) = \qty(x_1, x_2, e^{x_1^2 + 4 x_2})$
 \end{enumerate}
 
+\section{Blatt 08 - Aufgabe 4}
+
+\begin{enumerate}[a)]
+\item Gegeben seien die Funktionen
+  $f, g \colon \mathbb{R}^2 \to \mathbb{R}^2$ mit
+  $f(x, y) = (x - y, xy)$ und $g(u, v) = (u^2, v^2 - u^2)$.
+  Berechnen Sie die Jacobi-Matrix der verketteten Funktion
+  $l = g \circ f \colon \mathbb{R}^2 \to \mathbb{R}^2$
+  auf direktem Weg und durch Anwendung der Kettenregel.
+\end{enumerate}
 
 \chapter{Lösungen}
 
@@ -1249,6 +1259,82 @@ $\Rightarrow f'(X_0)(h) = 2X_0h$
   Die Bedingung, dass die Abbildung von $x$ in die Jacobi-Matrix stetig ist, ist
   eine hinreichende Bedingung, dass die Funktion differenzierbar und sogar stetig
   differenzierbar ist.
+\end{enumerate}
+
+\section{Blatt 08 - Aufgabe 4}
+
+\begin{enumerate}[a)]
+\item Gegeben seien die Funktionen
+  $f, g \colon \mathbb{R}^2 \to \mathbb{R}^2$ mit
+  $f(x, y) = (x - y, xy)$ und $g(u, v) = (u^2, v^2 - u^2)$.
+  Berechnen Sie die Jacobi-Matrix der verketteten Funktion
+  $l = g \circ f \colon \mathbb{R}^2 \to \mathbb{R}^2$
+  auf direktem Weg und durch Anwendung der Kettenregel.
+
+  \subparagraph{Lsg.}
+  $f, g \colon \mathbb{R}^2 \to \mathbb{R}^2$
+  und $f(x, y) = \begin{pmatrix}
+    x - y \\
+    x \cdot y
+  \end{pmatrix},
+  g(u, v) = \begin{pmatrix}
+    u^2 \\
+    v^2 - u^2
+  \end{pmatrix}$
+  $l \colon \mathbb{R}^2 \to \mathbb{R}^2$ und
+  $l(x, y) = (g \circ f) (x, y) = g(f(x, y))$,
+
+  \textbf{direkt:} $l(x, y) = g(x - y, x \cdot y) = \begin{pmatrix}
+    (x - y)^2 \\
+    (xy)^2 - (x - y)^2
+  \end{pmatrix}$
+  \[
+    J_l(x, y) = \begin{pmatrix}
+      2(x - y) & -2 (x - y) \\
+      2xy^2 - 2(x - y) & 2x^2y + 2(x - y)
+    \end{pmatrix}
+  \]
+  \textbf{Kettenregel:}
+  $J_f (x, y) = \begin{pmatrix}
+    1 & -1 \\
+    x & y
+  \end{pmatrix},
+  J_g (u, v) = \begin{pmatrix}
+    2u & 0 \\
+    -2u & 2v
+  \end{pmatrix}$
+  \begin{flalign*}
+    \Rightarrow J_l (x, y) &= J_g(f(x, y)) \cdot J_f(x, y)
+    = J_g(x - y, x \cdot y) \cdot J_f(x, y) & \\
+    &= \begin{pmatrix}
+      2 (x - y) & 0 \\
+      2 (y - x) & 2xy
+    \end{pmatrix} \cdot
+    \begin{pmatrix}
+      1 & -1 \\
+      y & x \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      2 (x - y) & -2 (x - y) \\
+      -2 (x - y) + 2xy^2 & 2(x - y) + 2x^2 y
+    \end{pmatrix}
+  \end{flalign*}
+
+  Alternative Verkettung:
+  $k(u, v) = (f \circ g) (u, v) = f(u^2, v^2 - u^2) = \begin{pmatrix}
+    u^2 - (v^2 - u^2) \\
+    u^2(v^2 - u^2)
+  \end{pmatrix} = \begin{pmatrix}
+    2u^2 -  v^2 \\
+    u^2v^2 - u^4
+  \end{pmatrix}, (u,v) \in \mathbb{R}^2$
+  \[
+    J_k (u, v) = \begin{pmatrix}
+      4u & -2v \\
+      2uv^2-4u^3 & 2u^2v
+    \end{pmatrix}
+  \]
+
 \end{enumerate}
 
 \end{document}
