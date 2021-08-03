@@ -314,6 +314,20 @@ mit $f(X) \coloneqq X^2$ die Weierstraßsche Zerlegungsformel für ein festes
 $X_0 \in \mathbb{R}^{N \times N}$.
 Bestimmen Sie daraus die Ableitung $f'(X_0)$.
 
+\section{Blatt 08 - Aufgabe 1}
+
+Geben Sie von den folgenden Ausdrücken $f(x)$ den größten Bereich
+$D(f) \subseteq \mathbb{R}^N$, für den $f$ definiert ist.
+Wie lautet der Existenzbereich $D(f') \subseteq D(f)$ der Ableitung $f'$.
+Geben Sie die zugehörige Jacobi-Matrix $J_f$ an.
+\begin{enumerate}[a)]
+\item $f\qty(x_1, x_2) = \sqrt{2x_1 + 3x_1x_2 + 4x_2}$
+\item
+\item $f\qty(x_1, x_2) = \qty(\tan\qty(x_1) + x_2^4, \ln\qty(x_1 + x_2))$
+\item $f\qty(x_1, x_2) = \qty(x_1, x_2, e^{x_1^2 + 4 x_2})$
+\end{enumerate}
+
+
 \chapter{Lösungen}
 
 \section{Blatt 03 - Aufgabe 4}
@@ -1181,5 +1195,60 @@ Es gilt
 \]
 
 $\Rightarrow f'(X_0)(h) = 2X_0h$
+
+\section{Blatt 08 - Aufgabe 1}
+
+\begin{enumerate}[a)]
+\item $f\qty(x_1, x_2) = \sqrt{2x_1 + 3x_1x_2 + 4x_2}$
+\item
+\item $f\qty(x_1, x_2) = \qty(\tan\qty(x_1) + x_2^4, \ln\qty(x_1 + x_2))$
+  \subparagraph{Lsg.} $f \colon D_f \subseteq \mathbb{R}^2 \to \mathbb{R}^2$
+  \begin{flalign*}
+    f\qty(x_1, x_2) &= \begin{pmatrix}
+      \tan\qty(x_1) + x_2^4 \\
+      \ln\qty(x_1 + x_2)
+    \end{pmatrix} & \\
+    \Rightarrow &D_f = \qty{x = \qty(x_1, x_2) \in \mathbb{R}^2 {\Big |}
+      \underset{\tan(\ldots)}{\underbrace{x_1 \ne \frac{\pi}{2} + k\pi, k \in \mathbb{Z}}}
+      , \underset{\ln(\ldots)}{\underbrace{x_1 + x_2 > 0}}}
+    \subseteq \mathbb{R}^2 \: \text{ist eine offene Menge}
+  \end{flalign*}
+  \[
+    x \in D_f \colon J_f (x) = \begin{pmatrix}
+      \frac{1}{\cos^2 x_1} & 4 x_2^3 \\
+      \frac{1}{x_1 + x_2} & \frac{1}{x_1 + x_2}
+    \end{pmatrix}
+  \]
+  $x \mapsto J_f(x)$ ist stetig auf $D_f = D_{f'} \Rightarrow f$ ist auf
+  $D_{f'} = D_f$ stetig differenzierbar.
+  \[
+    \qty(\text{Die Jacobi-Matrix ist stetig, weil }
+     x \mapsto \frac{d_{f_1}(x)}{dx_1}, \frac{d_{f_1}(x)}{dx_2}, \frac{d_{f_2}(x)}{dx_1}, \frac{d_{f_2}(x)}{dx_2},
+    \text{ stetig sind})
+  \]
+
+\item $f\qty(x_1, x_2) = \qty(x_1, x_2, e^{x_1^2 + 4 x_2})$
+  \subparagraph{Lsg.} $f \colon D_f \subseteq \mathbb{R}^2 \to \mathbb{R}^3, D_f = \mathbb{R}^2$
+  \[
+    f\qty(x_1, x_2) = \begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      e^{x_1^2 + 4x_2}
+    \end{pmatrix},
+    J_f(x) = \begin{pmatrix}
+      1 & 0 \\
+      0 & 1 \\
+      2 x_1 e^{x_1^2 + 4 x_2} & 4e^{x_1^2 + 4x_2}
+    \end{pmatrix}
+  \]
+  $f$ ist für alle $x \in \mathbb{R}^2$ stetig differenzierbar, da
+  $x = \qty(x_1, x_2) \mapsto J_f(x)$ stetig Abbildbar ist.
+
+  \textbf{Achtung:} Generell reicht die Existenz des Gradienten oder der
+  Jacobi-Matrix reicht nicht dafür aus, dass die Funktion differenzierbar ist.
+  Die Bedingung, dass die Abbildung von $x$ in die Jacobi-Matrix stetig ist, ist
+  eine hinreichende Bedingung, dass die Funktion differenzierbar und sogar stetig
+  differenzierbar ist.
+\end{enumerate}
 
 \end{document}
