@@ -413,6 +413,12 @@ $f(x, y) = e^{x + y}(x - y)$
 \item Geben Sie eine Darstellung des zugehörigen Restgliedes an.
 \end{enumerate}
 
+\section{Blatt 09 - Hausaufgabe 3}
+
+Untersuchen Sie die Funktion
+$f(x, y) = e^{-(x^2 + y^2)}\qty(x^2 + 2y^2), x, y \in \mathbb{R}$ auf lokale
+Extremal- und Sattelpunkte.
+
 \chapter{Lösungen}
 
 \section{Blatt 03 - Aufgabe 4}
@@ -1743,5 +1749,43 @@ $J_g = \begin{pmatrix}
     )
   \end{flalign*}
 \end{enumerate}
+
+\section{Blatt 09 - Hausaufgabe 3}
+
+$\nabla f(x, y) = \begin{pmatrix}
+  -2x e^{-x^2 - y^2} (x^2 + 2 y^2  - 1) & -2y e^{-x^2 - y^2} (x^2 + 2y^2 - 2)
+\end{pmatrix}$
+Der Ausdruck $\nabla f(x, y) = 0$ gilt für $(x, y) = (0, 0), (0, \pm1), (\pm1, 0)$.
+\begin{flalign*}
+  H_f(x, y) &= \begin{pmatrix}
+    \frac{\partial^2 f}{\partial x^2} f(x, y) & \frac{\partial^2 f}{\partial x \partial y} f(x, y) \\
+    \frac{\partial^2 f}{\partial y \partial x} f(x, y) & \frac{\partial^2 f}{\partial y^2} f(x, y) \\
+  \end{pmatrix} & \\
+  &= e^{-x^2 - y^2} \cdot \begin{pmatrix}
+    4 x^ 4 + 2 x^2 (4 y^2  - 5) - 4 y^2  + 2 & 4xy \qty\big(x^2 + 2y^2  - 3) \\
+    4xy \qty\big(x^2 + 2y^2  - 3) & x^2 (4 y^2 - 2) + 8 y^4 - 20 y^2 + 4
+  \end{pmatrix} \\
+  H_f(0, 0) &= \begin{pmatrix}
+    2 & 0 \\
+    0 & 4
+  \end{pmatrix}
+  \quad 2 > 0 \land \det H_f(0, 0) > 0 \\
+  & \Rightarrow H_f(0, 0) \text{ ist nach Aufgabe 3. (i) positiv definit}\\
+  H_f(0, \pm1) &= \begin{pmatrix}
+    -\frac{2}{e} & 0 \\
+    0 & -\frac{8}{e}
+  \end{pmatrix}
+  \quad -\frac{2}{e} < 0 \land \det H_f(0, 0) > 0 \\
+  &\Rightarrow H_f(0, \pm1) \text{ist nach Aufgabe 3. (ii) negativ definit} \\
+  H_f(\pm1, 0) &= \begin{pmatrix}
+    -\frac{4}{e} & 0 \\
+    0 & \frac{2}{e}
+  \end{pmatrix}
+  \quad -\frac{4}{e} < 0 \land \det H_f(0, 0) < 0 \\
+  &\Rightarrow H_f(\pm1, 0) \text{ist nach Aufgabe 3. (ii) indefinit}
+\end{flalign*}
+
+Somit besitzt $f$ an der Stelle $(0, 0)$ ein lokales Minimum, an den Stellen
+$(0, \pm1)$ lokale Maxima und an den Stellen $(\pm1, 0)$ Sattelpunkte.
 
 \end{document}
