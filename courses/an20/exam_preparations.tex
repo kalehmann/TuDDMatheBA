@@ -419,6 +419,13 @@ Untersuchen Sie die Funktion
 $f(x, y) = e^{-(x^2 + y^2)}\qty(x^2 + 2y^2), x, y \in \mathbb{R}$ auf lokale
 Extremal- und Sattelpunkte.
 
+\section{Blatt 10 - Aufgabe 4:}
+Beweisen Sie, dass es genau ein $x \in C([-1, 1])$ gibt
+mit
+\[
+  x(t) = \exp\qty(t^2) + \frac{1}{5}\qty\Big(2 - \sin\qty\big(3x(t))) \: \text{für alle } t \in [-1, 1]
+\]
+
 \chapter{Lösungen}
 
 \section{Blatt 03 - Aufgabe 4}
@@ -1787,5 +1794,40 @@ Der Ausdruck $\nabla f(x, y) = 0$ gilt für $(x, y) = (0, 0), (0, \pm1), (\pm1, 
 
 Somit besitzt $f$ an der Stelle $(0, 0)$ ein lokales Minimum, an den Stellen
 $(0, \pm1)$ lokale Maxima und an den Stellen $(\pm1, 0)$ Sattelpunkte.
+
+\section{Blatt 10 - Aufgabe 4:}
+
+$M = C([-1, 1]), d_{\infty}(x, y) = \norm{x - y}_{\infty}$.
+$(M, d)$ ist ein vollständiger metrischer Raum.
+
+\begin{flalign*}
+  \varphi\qty\big(x(t)) &\coloneqq e^{t^2} + \frac{1}{5} \qty\Big(2 - \sin\qty\big(3x(t))), t \in [-1, 1] & \\
+  \varphi &\colon (x) \colon [-1, 1] \to \mathbb{R} \: \text{ist stetig} \\
+  \varphi &\colon M \to M \: \text{Selbstabbildung (Abbildung von den stetigen Funktionen zu den stetigen Funktionen)}
+\end{flalign*}
+Seien $x, y \in M$ gegeben.
+Dann gilt für $t \in [-1, 1]$
+\begin{flalign*}
+  \abs{\varphi(x)(t) - \varphi(y)(t)}
+  &= \abs{\qty(e^{t^2} + \frac{1}{5}\qty\Big(2 - \sin(3x(t)))) - \qty(e^{t^2} + \frac{1}{5}\qty\Big(2 - \sin(3y(t))))} \\
+  &= \frac{1}{5} \abs{\sin(3x(t)) - \sin(3y(t))}
+\end{flalign*}
+Sei $g(u) \coloneqq \sin u, u \in \mathbb{R}$.
+Nach dem Mittelwertsatz existiert für $u < v$ ein $\xi \in (u, v)$ mit
+$\abs{g(u) - g(v)} = \abs{g'(\xi)} \cdot \abs{u - v} = \underset{\leq 1}{\underbrace{\abs{\cos \xi}}} \abs{u - v} \leq \abs{u - v}$.
+
+Mit $u = 3x(t), v = 3y(t)$ folgt für alle $t \in [-1, 1]$
+\[
+  \abs{\varphi\qty\big(x(t)) - \varphi\qty\big(y(t))}
+  \leq \frac{3}{5}\abs{x(t) - y(t)}
+  \leq \frac{3}{5} \norm{x - y}_{\infty}
+  = \frac{3}{5}d_{\infty}(x, y)
+\]
+$\Rightarrow d_{\infty}(\varphi(x), \varphi(y))
+= \sup_{t \in [-1, 1]} \abs{\varphi\qty\big(x(t)) - \varphi\qty\big(y(t))}
+\leq \frac{3}{5} d_{\infty}(x, y)$
+
+$\Rightarrow \varphi$ ist kontrahierend.
+Nach dem Banachschen Fixpunktsatz gibt es genau einen Fixpunkt.
 
 \end{document}
