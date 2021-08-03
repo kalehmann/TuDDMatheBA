@@ -426,6 +426,23 @@ mit
   x(t) = \exp\qty(t^2) + \frac{1}{5}\qty\Big(2 - \sin\qty\big(3x(t))) \: \text{für alle } t \in [-1, 1]
 \]
 
+\section{Blatt 11 - Hausaufgabe 1}
+
+Sei $F \colon \mathbb{R}^3 \to \mathbb{R}$
+definiert durch $F(x, y, z) = x^4z - 2xy^3 + yz^3 - 8$.
+\begin{enumerate}[a)]
+\item Zeigen Sie, dass es eine Umgebung
+  $\tilde{U} \times \tilde{V} \subseteq \mathbb{R}^2 \times \mathbb{R}$
+  des Punktes $(\overline{x}, \overline{y}, \overline{z}) = (1, 1, 2)$
+  und eine $C^1$-Funktion
+  $f \colon \tilde{U} \subseteq \mathbb{R}^2 \to \tilde{V} \subseteq \mathbb{R}$
+  gibt mit $F(x, y, f(x, y)) = 0$ für alle $(x, y) \in \tilde{U}$.
+\item Geben Sie eine Formel zur Berechnung $f'$ bzw. $J_f$ bzw.
+  $\nabla f(x, y)$ auf $\tilde{U}$ an.
+\item Berechnen Sie $\nabla f(1, 1)$.
+\end{enumerate}
+
+
 \chapter{Lösungen}
 
 \section{Blatt 03 - Aufgabe 4}
@@ -1829,5 +1846,80 @@ $\Rightarrow d_{\infty}(\varphi(x), \varphi(y))
 
 $\Rightarrow \varphi$ ist kontrahierend.
 Nach dem Banachschen Fixpunktsatz gibt es genau einen Fixpunkt.
+
+\section{Blatt 11 - Hausaufgabe 1}
+
+\begin{enumerate}[a)]
+\item Zeigen Sie, dass es eine Umgebung
+  $\tilde{U} \times \tilde{V} \subseteq \mathbb{R}^2 \times \mathbb{R}$
+  des Punktes $(\overline{x}, \overline{y}, \overline{z}) = (1, 1, 2)$
+  und eine $C^1$-Funktion
+  $f \colon \tilde{U} \subseteq \mathbb{R}^2 \to \tilde{V} \subseteq \mathbb{R}$
+  gibt mit $F(x, y, f(x, y)) = 0$ für alle $(x, y) \in \tilde{U}$.
+
+  \subparagraph{Lösung:}
+  \begin{flalign*}
+    J_F &= \qty\Big(\begin{array}{>{\color{red}} c >{\color{red}} c >{\color{blue}} c}
+      4x^3z - 2y^3 & z^3 - 6xy^2 & x^4 + 3yz^2
+    \end{array}) &
+  \end{flalign*}
+  Dabei teilt sich die Jakobimatrix auf in
+  \colorbox{red!40}{$J_F^{(x,y)} (\ldots)$} und
+  \colorbox{blue!40}{$J_F^{(z)} (\ldots)$}.
+  Weiterhin ist die Ableitung $(x, y, z) \mapsto J_F(x, y, z)$ stetig.
+
+  $\Rightarrow F$ ist eine $C^1$-Funktion.
+
+  Wegen
+  $\det J_F^{(z)}(\overline{x}, \overline{y}, \overline{z}) =
+  \overline{x}^4 + 3\overline{y} \cdot \overline{z}^2 = 13$ und
+  $(x, y, z) \mapsto J_F^{(z)}(x, y, z)$ ist stetig, folgt die
+  Existenz einer offenen Umgebung $\overline{W}$ von
+  $(\overline{x}, \overline{y}, \overline{z})$ mit
+  $\det J_F^{(z)} > 0$ für alle $x, y, z \in \overline{W}$.
+
+  $\Rightarrow J_F^{(z)}$ ist auf $\overline{W}$ invertierbar.
+
+  $\Rightarrow$ nach dem Satz über die lokale Auflösbarkeit existieren
+  offene Umgebungen $\tilde{U} \in \mathbb{R}^2$ und $\tilde{V} \in \mathbb{R}$,
+  sowie eine $C^1$-Funktion $f \colon \tilde{U} \to \tilde{V}$
+  mit der Eigenschaft
+  \[
+    \forall (x, y, z) \in \tilde{U} \times \tilde{V} \colon
+    F(x, y, z) = F(\overline{x}, \overline{y}, \overline{z}) = 0
+    \iff z = f(x, y)
+  \]
+
+\item Geben Sie eine Formel zur Berechnung $f'$ bzw. $J_f$ bzw.
+  $\nabla f(x, y)$ auf $\tilde{U}$ an.
+
+  \subparagraph{Lösung:} Nach dem Satz über die lokale Auflösbarkeit ist
+  \begin{flalign*}
+    J_f(x, y) &= - \qty\Big(J_F^{(z)}(x, y, f(x, y)))^{-1} \cdot J_F^{(x, y)}(x, y, f(x, y)) & \\
+    &= - \qty\Big(x^4 + 3y\qty\big(f(x))^2)^{-1} \cdot \begin{pmatrix}
+      4x^3f(x) - 2 y^3 & \qty\big(f(x))^3 - 6xy^2
+    \end{pmatrix} \\
+    &= - \frac{1}{x^4 + 3y\qty\big(f(x))^2} \cdot \begin{pmatrix}
+      4x^3f(x) - 2 y^3 & \qty\big(f(x))^3 - 6xy^2
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+      \frac{4x^3f(x) - 2 y^3}{x^4 + 3y\qty\big(f(x))^2} &
+      \frac{\qty\big(f(x))^3 - 6xy^2}{x^4 + 3y\qty\big(f(x))^2}
+    \end{pmatrix} \\
+  \end{flalign*}
+
+\item Berechnen Sie $\nabla f(1, 1)$.
+
+  \subparagraph{Lösung:} Aus $f(\overline{x}, \overline{y}) = \overline{z}$ folgt
+  \begin{flalign*}
+    \nabla f(1, 1) &= - \qty\Big(J_F^{(z)}(1, 1, 2))^{-1} \cdot J_F^{(x, y)}(1, 1, 2) & \\
+    &= - \qty\big(13)^{-1} \cdot \begin{pmatrix}
+      6 & 2
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+      -\frac{6}{13} & -\frac{2}{13}
+    \end{pmatrix}
+  \end{flalign*}
+\end{enumerate}
 
 \end{document}
