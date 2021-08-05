@@ -1,0 +1,365 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[german]{babel}
+\usepackage{bm}
+\usepackage{chngcntr}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[table]{xcolor}
+\usepackage{pgfplots}
+
+\definecolor{light-gray}{gray}{.9}
+
+%% See https://tex.stackexchange.com/a/44954
+\newcounter{myequation}
+\makeatletter
+\@addtoreset{equation}{myequation}
+\makeatother
+
+%% Fix equation numbering for scrreprt class.
+\counterwithout{equation}{chapter}
+
+\pgfplotsset{compat = newest}
+\usepgfplotslibrary{patchplots}
+\usetikzlibrary{intersections}
+\usetikzlibrary{shapes}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2021}
+\title{Analysis - Satz über die implizite Funktion}
+
+\fancypagestyle{main}{
+  \fancyhf{}
+  \lhead{\thetitle}
+  \rhead{\theauthor}
+  \lfoot{\thedate}
+  \rfoot{Seite \thepage}
+}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \lhead{\thetitle}
+  \rhead{\theauthor}
+  \lfoot{\thedate}
+  \rfoot{Seite \thepage}
+}
+\pagestyle{main}
+
+\newcommand\skalprod[1]{\left\langle #1 \right\rangle}
+\newcommand\nnorm[1]{\left\lvert\left\lvert\left\lvert #1 \right\rvert\right\rvert\right\rvert}
+
+% Hide the chapter and section numbers
+\renewcommand\thechapter{}
+\renewcommand\thesection{}
+% Custom title for table of contents
+\renewcaptionname{german}{\contentsname}{Prüfungsrelevante Aufgaben}
+
+\begin{document}
+
+\chapter{Satz über die implizite Funktion}
+
+\section{Voraussetzungen}
+
+\begin{enumerate}[1)]
+\item \label{vor:1}
+  Seien $U \subseteq \mathbb{R}^N$ und $V \subseteq \mathbb{R}^M$ zwei
+  \hyperref[sec:offene_menge]{offene} Mengen.
+
+\item \label{vor:2}
+  Weiterhin sei $F \colon U \times V \to \mathbb{R}^M$ eine
+  \hyperref[sec:c-k-funktion]{$C^k$-Funktion}.
+  ($k$ kann auch $1$ sein)
+
+\item \label{vor:3}
+  Die Abbildung
+  $\qty\big(x, y) \mapsto \hyperref[sec:jacobi]{J_F^{(y)}\qty\big(x, y)}$
+  ist auf $U \times V$ \hyperref[sec:inv_matrix]{invertierbar}.
+\end{enumerate}
+
+\section{Folgerungen}
+
+Für alle $\qty\big(\overline{x}, \overline{y}) \in U \times V$
+existieren \hyperref[sec:offene_menge]{offene}
+\hyperref[sec:umgebung]{Umgebungen}
+$\tilde{U} \subseteq U$ von $\overline{x}$ und
+$\tilde{V} \subseteq V$ von $\overline{y}$, so wie eine
+\hyperref[sec:c-k-funktion]{$C^k$-Funktion}
+\[
+  f \colon \tilde{U} \times \tilde{V} \subseteq U \times V \to \tilde{V}
+\]
+mit folgenden Eigenschaften
+\begin{itemize}
+\item \label{folg:1}
+  $\forall \: \qty\big(x, y) \in \tilde{U} \times \tilde{V} \colon F(x, y)
+  = F(\overline{x}, \overline{y}) \iff y = f(x)$
+
+\item \label{folg:2}
+  $J_f(x) = - \qty(\hyperref[sec:jacobi]{J_F^{(y)}} \qty\big(x, f(x)))^{\hyperref[sec:inv_matrix]{-1}}
+  \cdot \hyperref[sec:jacobi]{J_F^{(x)}} \qty\big(x, f(x))$
+\end{itemize}
+
+\label{folg:3}
+Es gilt $\overline{y} = f(\overline{x})$ und
+$\hyperref[sec:jacobi]{J_f\qty\big(\overline{x})}
+= - \qty(\hyperref[sec:jacobi]{J_F^{(y)}} \qty\big(\overline{x}, \overline{y}))^{\hyperref[sec:inv_matrix]{-1}}
+\cdot \hyperref[sec:jacobi]{J_F^{(x)}} \qty\big(\overline{x}, \overline{y})$
+
+\chapter{Definitionen}
+
+\section{Determinante}
+\label{sec:determinante}
+
+Die \textbf{Determinante} ist eine Zahl die einer quadratischen
+Matrix zugeordnet ist.
+\begin{flalign*}
+  \det \begin{pmatrix}
+    a & b \\
+    c & d
+  \end{pmatrix} &=
+  a \cdot d - b \cdot c & \\
+  \det \begin{pmatrix}
+    a & b & c \\
+    d & e & f \\
+    g & h & i
+  \end{pmatrix} &=
+  a \cdot \det \begin{pmatrix}
+    e & f \\
+    h & i
+  \end{pmatrix} - d \cdot \det \begin{pmatrix}
+    b & c \\
+    h & i
+  \end{pmatrix} + g \cdot \det \begin{pmatrix}
+    b & c \\
+    e & f
+  \end{pmatrix}
+\end{flalign*}
+
+\section{Einheitsmatrix}
+\label{sec:einheitsmatrix}
+
+Die Einheitsmatrix ist die Matrix, deren Hauptdiagonale aus $1$-en
+besteht (die restlichen Elemente entsprechen $0$).
+\[
+  I_n = \begin{pmatrix}
+    1 & 0 & \cdots & 0 \\
+    0 & 1 & \ddots & \vdots \\
+    \vdots & \ddots & \ddots & 0 \\
+    0 & \cdots  & 0 & 1
+  \end{pmatrix}
+\]
+Dabei gilt $\hyperref[sec:determinante]{\det I_n} = 1$
+
+\section{Invertierbare Matrix}
+\label{sec:inv_matrix}
+
+Eine quadratische Matrix $A$ heißt \textbf{invertierbar}, wenn eine weitere Matrix $B$
+existiert, so dass $A \cdot B = \hyperref[sec:einheitsmatrix]{I}$.
+Voraussetzung für die \textbf{Invertierbarkeit}, ist eine
+\hyperref[sec:determinante]{Determinante} ungleich $0$.
+
+\newpage
+\section{Jacobimatrix}
+\label{sec:jacobi}
+
+Sei $U \subseteq \mathbb{R}^N$ eine Teilmenge und
+$f \colon U \to \mathbb{R}^M$
+eine im Punkt \( x \in U \)
+\hyperref[sec:partielle_ableitung]{partiell differenzierbare Funktion}.
+Dann heißt
+\[
+  J_f(x) = \begin{pmatrix}
+    \frac{\partial f_1}{\partial x_1} (x) & \ldots & \frac{\partial f_1}{\partial x_M} \\
+    \vdots & \ddots & \vdots \\
+    \frac{\partial f_N}{\partial x_1} (x) & \ldots & \frac{\partial f_N}{\partial x_M} \\
+  \end{pmatrix}
+\]
+die \textbf{Jacobimatrix} von $f$ in Punkt $x$.
+Falls $f$ im Punkt $x$ differenzierbar ist, gilt $f'(x) = J_f(x)$.
+
+Um einen Teil der Jacobimatrix darzustellen werden die entsprechenden Variablen
+über dem $J$ in Klammern geschrieben, zum Beispiel
+\[
+  J_f^{(x_m, x_n)}(x) = \begin{pmatrix}
+    \frac{\partial f_1}{\partial x_m} (x) & \frac{\partial f_1}{\partial x_n} \\
+    \vdots & \vdots \\
+    \frac{\partial f_N}{\partial x_m} (x) & \frac{\partial f_N}{\partial x_n} \\
+  \end{pmatrix}
+\]
+
+\section{$k$-mal stetig differenzierbare Funktion}
+\label{sec:c-k-funktion}
+
+Eine \textbf{$k$-mal stetig differenzierbare Funktion}, oder auch
+\textbf{$C^k$-Funktion}, ist eine Funktion die $k$-mal differenzierbar ist
+und deren $k$-te Ableitung \hyperref[sec:stetige_funktion]{stetig} ist.
+
+\section{Offene Kugel}
+\label{sec:offene_kugel}
+
+Der Ausdruck $B_M(x, r)$ bezeichnet die \textbf{offene Kugel} um den
+Punkt $x$ mit dem Radius $r$ auf der Menge $M$.
+
+\[
+  B(x, r) = \qty\Big{y \in M {\Big |} \norm{x - y} < r}
+\]
+
+\section{Offenen Menge}
+\label{sec:offene_menge}
+
+Eine Teilmenge $U \subseteq M$ heißt \textbf{offen} (in $M$), falls es für
+jedes Element $x \in U$ ein $r > 0$ gibt, so dass
+$\hyperref[sec:offene_kugel]{B(x, r)} \subseteq U$.
+(dass heißt, falls sie \hyperref[sec:umgebung]{Umgebung} jedes ihrer Elemente
+ist).
+
+\section{Partielle Ableitung}
+\label{sec:partielle_ableitung}
+
+Sei $U \subseteq \mathbb{R}^M$ und $f \colon U \to \mathbb{R}^N$.
+Die Funktion $f$ heißt in $x \in U$ nach $x_k$ ($1 \leq k \leq M$)
+partiell differenzierbar, falls sie in
+\hyperref[sec:richtungsableitung]{Richtung} des $k$-ten Einheisvektors
+($k$-te Koordinate gleich 1, der Rest 0) differenzierbar ist.
+Dann heißt $\frac{\partial f}{\partial x_k} (x)$ die
+\textbf{partielle Ableitung} von $f$ nach $x_k$ im Punkt $x$.
+
+\section{Richtungsableitung}
+\label{sec:richtungsableitung}
+
+Die Funktion $f \colon U \subseteq \mathbb{R}^M \to \mathbb{R}^N$
+heißt im Punkt $x \in U$ in Richtung $e \in \mathbb{R}^M$ differenzierbar,
+falls die Abbildung
+
+\begin{flalign*}
+  ]-r, r [ &\to \mathbb{R}^N, & \\
+  t &\mapsto f(x + t \cdot e )
+\end{flalign*}
+für $r > 0$ klein genug in $0$ differenzierbar ist.
+
+Dann heißt
+\[
+  \frac{\partial f}{\partial e}(x) = \lim_{t \to 0} \frac{f(x + t \cdot e) - f(x)}{t}
+\]
+die \textbf{Richtungsableitung} von $f$ im Punkt $x$ in Richtung $e$.
+
+\section{Stetige Funktion}
+\label{sec:stetige_funktion}
+
+Seien $\qty\big(M_1, d_1)$, $\qty\big(M_2, d_2)$ zwei metrische Räume und $f \colon M_1 \to M_2$ eine Abbildung.
+
+Die Funktion $f$ ist \textbf{stetig}, falls
+\[
+  \forall \epsilon > 0 \exists \delta > 0
+  \forall x, y \in M_1 \colon
+  d_1(x, y) < \delta \Rightarrow d_2(f(x), f(y)) < \epsilon
+\]
+
+\section{Umgebung}
+\label{sec:umgebung}
+
+Eine Teilmenge $U \subseteq M$ heißt Umgebung eines Punktes $x \in M$,
+falls es ein $r > 0$ gibt, so dass
+$\hyperref[sec:offene_kugel]{B(x, r)} \subseteq U$.
+
+\chapter{Beispiele}
+
+\section{Aufgabe 1}
+
+Sei $F \colon \mathbb{R}^3 \to \mathbb{R}$ definiert durch
+$F(x, y, z) = x^4z - 2xy^3 + yz^3 - 8$.
+Für den Punkt $\qty\big(\overline{x}, \overline{y}, \overline{z})
+= (1, 1, 2)$ ist $F\qty\big(\overline{x}, \overline{y}, \overline{z}) = 0$.
+
+\begin{enumerate}[1)]
+\item Zeigen Sie, dass es eine Umgebung
+  $\tilde{U} \times \tilde{V} \subseteq \mathbb{R}^2 \times \mathbb{R}$
+  des Punktes $\qty\big(\overline{x}, \overline{y}, \overline{z})$
+  und eine $C^1$-Funktion
+  $f \colon \tilde{U} \subseteq \mathbb{R}^2 \to \tilde{V} \subseteq \mathbb{R}$
+  gibt mit $F(x, y, f(x, y)) = 0$ für alle $(x, y) \in \tilde{U}$.
+
+  \paragraph{Lösung:} $U = \mathbb{R}^2$ und $V = \mathbb{R}$ sind offenen
+  Mengen (\hyperref[vor:1]{Voraussetzung 1}).
+  \begin{flalign*}
+    J_F &= \qty\Big(\begin{array}{>{\color{red}} c >{\color{red}} c >{\color{blue}} c}
+      \frac{\partial f}{\partial x} & \frac{\partial f}{\partial y} & \frac{\partial f}{\partial z}
+    \end{array}) & \\
+    &= \qty\Big(\begin{array}{>{\color{red}} c >{\color{red}} c >{\color{blue}} c}
+      4x^3z - 2y^3 & z^3 - 6xy^2 & x^4 + 3yz^2
+    \end{array}) &
+  \end{flalign*}
+
+  Die Abbildung $(x, y, z) \mapsto J_F(x, y, z)$ ist als Komposition stetiger
+  Funktionen ebenfalls stetig.
+
+  $\Rightarrow F$ ist eine $C^1$-Funktion (\hyperref[vor:2]{Voraussetzung 2}).
+
+  Wegen
+  $\det \colorbox{blue!40}{$J_F^{(z)} (\ldots)$}(\overline{x}, \overline{y}, \overline{z}) =
+  \overline{x}^4 + 3\overline{y} \cdot \overline{z}^2 = 13$ und
+  $(x, y, z) \mapsto J_F^{(z)}(x, y, z)$ ist stetig, folgt die
+  Existenz einer offenen Umgebung
+  $\overline{W} = \tilde{U} \times \tilde{V}$ von
+  $(\overline{x}, \overline{y}, \overline{z})$ mit
+  $\det J_F^{(z)} > 0$ für alle $x, y, z \in \overline{W}$.
+
+  $\Rightarrow J_F^{(z)}$ ist auf $\overline{W}$ invertierbar
+  (\hyperref[vor:3]{Voraussetzung 3}).
+
+  $\Rightarrow$ aus dem Satz über die implizite Funktion folgt
+  die Existenz einer $C^1$-Funktion $f \colon \tilde{U} \to \tilde{V}$
+  mit der \hyperref[folg:1]{Eigenschaft}
+  \[
+    \forall (x, y) \in \tilde{U} \colon F(x, y, f(x, y)) =
+    F\qty\big(\overline{x}, \overline{y}, \overline{z})
+    = 0
+  \]
+\newpage
+\item Geben Sie eine Formel zur Berechnung von $J_f$ an.
+  \paragraph{Lösung:} Aus der \hyperref[folg:2]{zweiten Eigenschaft von $f$}
+  folgt:
+  \begin{flalign*}
+    J_f(x, y) &= - \qty\Big(J_F^{(z)}(x, y, f(x, y)))^{-1} \cdot J_F^{(x, y)}(x, y, f(x, y)) & \\
+    &= - \qty\Big(x^4 + 3y\qty\big(f(x))^2)^{-1} \cdot \begin{pmatrix}
+      4x^3f(x) - 2 y^3 & \qty\big(f(x))^3 - 6xy^2
+    \end{pmatrix} \\
+    &= - \frac{1}{x^4 + 3y\qty\big(f(x))^2} \cdot \begin{pmatrix}
+      4x^3f(x) - 2 y^3 & \qty\big(f(x))^3 - 6xy^2
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+      \frac{4x^3f(x) - 2 y^3}{x^4 + 3y\qty\big(f(x))^2} &
+      \frac{\qty\big(f(x))^3 - 6xy^2}{x^4 + 3y\qty\big(f(x))^2}
+    \end{pmatrix} \\
+  \end{flalign*}
+
+\item Berechnen Sie $\nabla f(1, 1)$.
+
+  \paragraph{Lösung:} $\nabla f(1, 1) = \nabla f(\overline{x}, \overline{y})$.
+  Aus der \hyperref[folg:3]{dritten Eigenschaft von $f$} folgt
+  \[
+    J_f\qty\big(\overline{x}, \overline{y} )
+    = - \qty( \colorbox{blue!40}{$J_F^{(z)} \qty\big(\overline{x}, \overline{y}, \overline{z})$})^{-1}
+    \cdot \colorbox{red!40}{$J_F^{(x,y)} \qty\big(\overline{x}, \overline{y}, \overline{z})$}
+  \]
+  \begin{flalign*}
+    \nabla f(1, 1) &=  - \qty\big(13)^{-1} \cdot \begin{pmatrix}
+      6 & 2
+    \end{pmatrix} & \\
+    &= \begin{pmatrix}
+      -\frac{6}{13} & -\frac{2}{13}
+    \end{pmatrix}
+  \end{flalign*}
+\end{enumerate}
+\end{document}
