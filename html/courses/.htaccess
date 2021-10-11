@@ -2,3 +2,4 @@ Options +Indexes
 IndexOptions +FancyIndexing
 IndexStyleSheet "/tuddmatheba/dir_index.css"
 ReadmeName "/tuddmatheba/dir_footer.html"
+RedirectMatch 301 ^/tuddmatheba/courses/pr20/ https://github.com/kalehmann/TuDDMatheBA/tree/master/courses/pr20
