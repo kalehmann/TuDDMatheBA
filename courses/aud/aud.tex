@@ -116,4 +116,28 @@ Schließlich folgen noch Fragen zu der zu verwendenden Programmiersprache,
 der Eingabe der Daten, den verwendeten Datenstrukturen und der Art, in der das
 Ergebnis ausgegeben wird.
 
+\paragraph{Sprachen} werden Unterschieden in Objektsprachen (zum Beispiel
+Deutsch) und Metasprachen (zum Beispiel die Grammatik der Deutschen Sprache).
+Programmiersprachen sind Objektsprachen.
+Die Metasprachen für die Programmiersprachen sind Syntaxdiagramme
+und EBNF (Erweiterte Backus-Naur-Form).
+Auch \emph{formale Sprachen} sind Objektsprachen und lassen sich durch
+Kontextfreie Grammatik (Typ-2-Grammatik) oder Kellerautomaten beschreiben.
+
+Zur Beschreibung von formalen Sprachen wird ein Symbolvorat benötigt.
+Dieser Symbolvorat wird \emph{Alphabet} genannt.
+Ein Alphabet ist eine nichtleere, endliche Menge von Symbolen.
+
+Sei nun $\Sigma$ ein Alphabet, dann bezeichnet ein
+\emph{Wort über $\Sigma$} eine endliche Folge von Symbolen aus $\Sigma$.
+
+Ein besonderes Wort ist das Wort mit der Länge $0$, beschrieben als
+$\epsilon$.
+
+Die \emph{Menge aller Wörter} über dem Alphabet $\Sigma$ wird mit $\Sigma^*$
+beschrieben.
+
+Schließlich bezeichnet eine \emph{formale Sprache $L$ über $\Sigma$} die Menge
+von Wörtern über $\Sigma$, dass heißt $L \in P(\Sigma^*)$.
+
 \end{document}
