@@ -158,4 +158,56 @@
   \end{tabular}
 \end{center}
 
+\paragraph{4.}
+\begin{enumerate}[a)]
+\item Sei $A$ eine Menge und $P(x)$ eine Aussagenform in $x$, d. h. eine
+  logische Aussage, die für konkretes $x$ entweder wahr oder falsch ist.
+  Klären sie die Bedeutung der Ausdrücke
+  \begin{enumerate}[(i)]
+  \item $\forall x \in A \colon P(x)$
+
+    \subparagraph{Lsg.} Für jedes Element in $A$ ist die Aussage $P$ wahr.
+
+  \item $\exists x \in A \colon P(x)$
+
+    \subparagraph{Lsg.} Es existiert mindestens ein Element in $A$ für welches
+    die Aussage $P$ wahr ist.
+  \end{enumerate}
+  Drücken Sie die Aussagen
+  \begin{enumerate}[(i)]
+  \setcounter{enumii}{2}
+  \item $\neg \qty(\forall x \in A \colon P(x))$
+
+    \subparagraph{Lsg.} $\exists x \in A \colon \neg P(x)$
+
+  \item $\neg \qty(\exists x \in A \colon P(x))$
+
+    \subparagraph{Lsg.} $\forall x \in A \colon \neg P(x)$
+  \end{enumerate}
+  ohne führendes Negationszeichen aus.
+
+\newpage
+\item Interpretieren Sie nun $A$ als Menge der Teilnehmer dieses Kurses und
+  nutzen Sie
+  \begin{align*}
+    P_1(x) &= \text{``$x$ versteht den Stoff aus der Vorlesung.''} \\
+    P_2(x) &= \text{``$x$ bearbeitet die Hausaufgaben eigenständig.''}
+  \end{align*}
+  Negieren Sie die Aussage
+  \[
+    \forall x \in A \colon P_1(x) \Rightarrow P_2(x)
+  \]
+
+  \subparagraph{Lsg.} Die Aussage gibt an, dass mindestens jeder Schüler aus dem
+  Kurs, der den Stoff der Vorlesung versteht auch die Hausaufgaben eigenständig
+  bearbeitet.
+
+  Die Negation der Aussage ist, dass mindestens ein Schüler an dem Kurs
+  teilnimmt, der zwar den Stoff aus der Vorlesung versteht, die Hausaufgaben
+  allerdings nicht eigenständig bearbeitet.
+  \[
+    \exists x \in A \colon P_1(x) \land \neg P_2(x)
+  \]
+\end{enumerate}
+
 \end{document}
