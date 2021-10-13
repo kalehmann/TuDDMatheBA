@@ -1,0 +1,78 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 01\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+
+\paragraph{1. Welche der folgenden Aussagen uber Element- und Teilmengenbeziehungen sind wahr?}
+
+\begin{enumerate}[a)]
+\item $a \in \qty{a, b}$
+
+  \subparagraph{Lsg.} Diese Aussage ist wahr, das Element $a$ ist in der Menge
+  mit den Elementen $a$ und $b$ enthalten.
+
+\item $\qty{b, a, \emptyset} \subset \qty{a, b}$
+
+  \subparagraph{Lsg.} Man sagt, dass eine Menge $N$ eine Teilmenge von der Menge
+  $M$ ist, falls für jedes $n$ in $N$ gilt: $n \in M$.
+  Die Leere Menge ($\emptyset$) ist zwar eine Teilmenge von $\qty{a, b}$ -
+  allerdings kein Element aus $\qty{a, b}$.
+  Somit ist diese Aussage falsch.
+
+\item $\emptyset \in \emptyset$
+
+  \subparagraph{Lsg.} Diese Aussage ist falsch.
+  Die leere Menge ist zwar eine Teilmenge der leeren Menge, allerdings kein
+  Element der leeren Menge.
+
+\item $\emptyset \in \qty{a, b}$
+
+  \subparagraph{Lsg.} Diese Aussage ist falsch.
+  Die leere Menge ist zwar eine Teilmenge der Menge $\qty{a, b}$, allerdings kein
+  Element der Menge $\qty{a, b}$.
+
+\item $\emptyset \subset \qty{b} \in \qty\big{\qty{a}, \qty{b}}$
+
+  \subparagraph{Lsg.} Diese Aussage ist wahr.
+  Die leere Menge ist Teilmenge jeder anderen Menge und die Menge mit dem
+  Element $b$ ist auch in $\qty\big{\qty{a}, \qty{b}}$ enthalten.
+
+\item $\qty{a} \subset \qty\big{\qty{a}, \emptyset}$
+
+  \subparagraph{Lsg.} Diese Aussage ist falsch, da das Element $a$ nicht in
+  der Menge $\qty\big{\qty{a}, \emptyset}$ enthalten ist.
+\end{enumerate}
+
+\end{document}
