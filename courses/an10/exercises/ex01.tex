@@ -130,4 +130,32 @@
   \end{flalign*}
 \end{enumerate}
 
+\newpage
+\paragraph{3. Geben Sie die Wahrheitstafeln der folgenden logischen Ausdrucke
+  an, dabei seien $p$ und $q$ logische Aussagen.}
+
+\begin{center}
+  \begin{multicols}{4}
+    \begin{enumerate}[a)]
+    \item $p \Rightarrow q$
+    \item $\neg p \lor q$
+    \item $\neg (p \Rightarrow q)$
+    \item $p \land \neq q$
+    \end{enumerate}
+  \end{multicols}
+\end{center}
+
+\subparagraph{Lsg.}
+
+\begin{center}
+  \begin{tabular}{c | c | c | c | c | c}
+    $p$ & $q$ & $p \Rightarrow q$ & $\neg p \lor q$ & $\neg (p \Rightarrow q)$ & $p \land \neg q$ \\
+    \hline
+    falsch & falsch & wahr & wahr & falsch & falsch  \\
+    falsch & wahr & wahr & wahr & falsch & falsch \\
+    wahr & falsch & falsch & falsch & wahr & wahr \\
+    wahr & wahr & wahr & wahr & falsch & falsch
+  \end{tabular}
+\end{center}
+
 \end{document}
