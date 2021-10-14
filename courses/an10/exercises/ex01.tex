@@ -34,7 +34,6 @@
 \rfoot{Seite \thepage}
 
 \begin{document}
-
 \paragraph{1. Welche der folgenden Aussagen uber Element- und Teilmengenbeziehungen sind wahr?}
 
 \begin{enumerate}[a)]
@@ -208,6 +207,47 @@
   \[
     \exists x \in A \colon P_1(x) \land \neg P_2(x)
   \]
+\end{enumerate}
+
+\paragraph{5. Es seien $A$, $B$ und $C$ beliebige Aussagen.}
+\begin{enumerate}[a)]
+\item Überlegen Sie sich, dass $B$ wahr ist, falls $A$ und $A \Rightarrow B$
+  wahr sind.
+  Weisen Sie dann nach, dass die Aussagen
+  \renewcommand{\theequation}{\arabic{equation}}
+  \begin{align}
+    A &\Rightarrow \qty(B \Rightarrow A) \\
+    \qty\big(A \Rightarrow \qty(B \Rightarrow C))
+      &\Rightarrow \qty\big(\qty(A \Rightarrow B) \Rightarrow \qty(A \Rightarrow C))
+  \end{align}
+  Tautologien sind.
+
+  \emph{Hinweis:} Sie müssen keine vollständige Wahrheitswertabelle aufstellen,
+  um $(1)$ und $(2)$ nachzuweisen.
+  Überlegen Sie sich dazu, bei welchen Wahrheitswerten für $A$, $B$ bzw. $C$
+  Teilaussagen unabhängig von der Wahrheitswerten der anderen Aussagen wahr oder
+  falsch sind.
+
+  \subparagraph{Lsg.}
+  \begin{enumerate}[(1)]
+  \item Falls $A$ falsch ist, dann ist die Aussage $A \Rightarrow \ldots$ immer
+    wahr.
+    Es muss also nur der Fall, dass $A$ wahr ist betrachtet werden.
+    In diesem Fall ist auch $(B \Rightarrow A)$ unabhängig von $B$ wahr.
+
+  \item Falls $A$ falsch ist, so sind die beiden Teilaussagen unabhängig von
+    $B$ und $C$ wahr.
+    \begin{center}
+      \begin{tabular}{c | c | c | c | c | c | c}
+        $A$ & $B$ & $C$ & $A \Rightarrow (B \Rightarrow C)$ & $A \Rightarrow B$ & $A \Rightarrow C$ & $(2)$ \\
+        \hline
+        F & & & W & W & W & W \\
+        W & F & & & F & & W \\
+        W & W & F & F & W & F & W \\
+        W & W & W & W & W & W & W
+      \end{tabular}
+    \end{center}
+  \end{enumerate}
 \end{enumerate}
 
 \end{document}
