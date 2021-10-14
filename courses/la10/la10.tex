@@ -281,4 +281,158 @@ Dann heißt
     \bigcup_{i \in I} M_i &= M_1 \cup M_2 \cup \ldots \cup M_n = I
   \end{flalign*}
 \end{itemize}
+
+Eine Menge heißt \emph{endlich}, falls $n \in \mathbb{N}_0$ existiert und
+$x_1, \ldots, x_n$ mit $M = \qty{x_1, \ldots, x_n}$.
+
+Wenn $x_i \ne x_j$ ist für $i \ne j$, dann ist $n$ die Anzahl der Elemente von
+$M$, auch \emph{Kardinalität} genannt, geschrieben als $\abs{M}$, zum Beispiel:
+
+\[
+  \abs\big{\qty{1, 2, \ldots, n}} = n \qquad
+  \abs\Big{\qty\big{\emptyset, \qty{1, 2}}} = 2 \qquad
+  \abs\big{\qty{1, 2, 2}} = 2
+\]
+
+$\mathbb{N}, \mathbb{N}_0, \mathbb{Z}, \mathbb{Q}, \mathbb{R}, \mathbb{C}$ sind
+nicht endlich, das heißt \emph{unendlich}.
+
+\newpage
+\paragraph{Tupel}
+Wenn $M = \qty{x_1, \ldots, x_n}$ eine Menge ist, macht die Reihenfolge
+beziehungsweise Wiederholung von Elementen keinen Unterschied.
+Falls Reihenfolge/Wiederholung von Elementen einen Unterschied machen sollen,
+dann schreibt man ein \emph{Tupel} $\qty\big(x_1, x_2, \ldots, x_n)$.
+
+Zwei Tupel $\qty\big(x_1, \ldots, x_n)$ und $\qty\big(y_1, \ldots, y_n)$ heißen
+gleich, falls $x_i = y_i$ für alle $i \in \qty{1, \ldots, n}$ gilt, zum Beispiel
+\begin{flalign*}
+  \qty(1, 2, 2) \ne \qty(1, 2) &\text{ aber } \qty{1, 2, 2} = \qty{1, 2} & \\
+  \qty(1, 2, 3) \ne \qty(3, 2, 1) &\text{ aber} \qty{1, 2, 3} = \qty{3, 2, 1}
+\end{flalign*}
+Ein Tupel mit zwei Einträgen (das heißt der Form $\qty\big(x_1, x_2)$) heißt Paar.
+Ein Tupel $\qty\big(x_1, \ldots, x_n)$ heißt $n$-Tupel.
+
+Wenn Mengen $M_1, \ldots, M_n$ gegeben sind, dann schreibt man
+\[
+  M_1 \times M_2 \times \ldots \times M_n =
+  \qty\Big{
+    \qty\big(x_1, \ldots, x_n) {\Big |}
+    x_i \in M_i \, \forall \, i \in \qty\big{1, \ldots, n}
+  }
+\]
+Zum Beispiel
+$M_1 \times M_2 = \qty\Big{
+\qty\big(x_1, x_2) {\Big |} x_1 \in M_1 \text{ und } x_2 \in M_2)}$.
+
+Manchmal betrachtet man auch \emph{unendliche Tupel}
+$\qty\big(x_1, x_2, x_3, \ldots)$ mit einem Eintrag $x_i$ für jedes
+$i \in \mathbb{N}_0$.
+Zwei unendliche Tupel $\qty\big(x_1, x_2, x_3, \ldots)$ und
+$\qty\big(y_1, y_2, y_3, \ldots)$ sind gleich, falls
+$x_i = y_i$ für alle $i \in \mathbb{N}_0$.
+
+Die Schreibweise $i = 1, \ldots, n$ bedeutet $i \in \qty{1, \ldots, n}$.
+
+\paragraph{Russellsche Antinomie} Versuche eine Menge $M$ zu definieren als
+$M = \qty\big{x {\big |} x \notin x}$.
+
+\textbf{Frage:} Gilt $M \in M$?
+
+\textbf{Falls ja}: dann $M \notin M$ nach der Definition von $M$.
+Ein Widerspruch.
+
+\textbf{Falls nein}: dann $M \in M$ nach der Definition von $M$.
+Ein Widerspruch.
+
+\textbf{Fazit}: Es ist problematisch die Menge $M$ wie vorher zu definieren.
+
+Um Probleme dieser Art zu vermeiden wurde die \emph{axiomatische Mengenlehre}
+entwickelt.
+Probleme dieser Art treten nicht auf, wenn man Teilmengen bekannter Mengen
+bildet, zum Beispiel ist $M = \qty\big{x \in \mathbb{N} {\big |} x \notin x}$
+wohldefiniert und $M = \mathbb{N}$
+
+\section*{Aussagenlogik}
+
+Aussagen sind zum Beispiel ``\emph{Der Himmel ist blau}'' oder
+``\emph{Katzen sind schwarz}'' oder ``$1 + 2 = 3$'' oder
+``$4 = 5$''.
+Aussagen können entweder \emph{wahr} oder \emph{falsch} sein.
+
+Wenn zwei Aussagen $A$ und $B$ gegeben sind, kann man daraus weitere Aussagen
+bilden:
+\begin{itemize}
+\item ``$A$ oder $B$'' (geschrieben $A \lor B$)
+\item ``$A$ und $B$'' (geschrieben $A \land B$)
+\item ``nicht $A$'' (geschrieben $\neg A$)
+\end{itemize}
+
+Bei dem ``oder'' handelt es sich um das ``nicht-ausschließliche''
+(inklusive) oder, dass heißt $A$ oder $B$ ist auch wahr, falls
+$A$ und $B$ beide wahr sind.
+
+\newpage
+Schreibe F für ``falsch'' und W für ``wahr''.
+\begin{center}
+  \begin{tabular}{c | c | c | c | c}
+    $A$ & $B$ & $A \lor B$ & $A \land B$ & $\neg A$ \\
+    \hline
+    W & W & W & W & F \\
+    W & F & W & F & F \\
+    F & W & W & F & W \\
+    F & F & F & F & F
+  \end{tabular}
+\end{center}
+
+$\qty(\neg A) \lor B$ kürzt man ab als $A \Rightarrow B$ und man sagt dafür
+``$A$ impliziert $B$'' oder ``aus $A$ folgt $B$''.
+
+Man schreib $A \iff B$ für die Aussage
+$\qty(A \Rightarrow B) \iff \qty(B \Rightarrow A)$ und sagt ``$A$ und $B$ sind
+äquivalent'' oder ``$A$ gilt genau dann, wenn $B$ gilt'' - kurz ``$A$ gdw. $B$''.
+
+\begin{center}
+  \begin{tabular}{c | c | c | c}
+    $A$ & $B$ & $A \Rightarrow B$ & $A \iff B$ \\
+    \hline
+    W & W & W & W \\
+    W & F & F & F \\
+    F & W & W & F \\
+    F & F & F & F
+  \end{tabular}
+\end{center}
+
+\textbf{Wichtig:} Ist $A$ falsch, so ist die Aussage $A \Rightarrow B$ immer
+wahr! ``ex falso quodlibet'' (lat. aus Falschem folgt Beliebiges), zum Beispiel
+ist die Aussage $2 = 3 \Rightarrow 5 = 100$ wahr.
+Genauso ist $A \iff B$ auch dann wahr, wenn $A$ und $B$ falsch sind.
+
+\subparagraph{Tautologie} Eine Tautologie ist eine ``zusammengesetzte Aussage'',
+die unabhängig von ihren Teilaussagen immer wahr ist, zum Beispiel sind
+$\qty(\neg A) \lor A$ oder $A \land B \Rightarrow A$ oder $A \iff A$
+Tautologien.
+
+\textbf{Wichtige Tautologien:}
+\begin{enumerate}[(1)]
+\item $\neg(\neg A) \iff A$
+\item $(A \lor B) \iff (B \lor A)$
+\item $(A \land B) \iff (B \land A)$
+\item
+  \label{taut_4}
+  $\qty\big((A \Rightarrow B) \land (B \Rightarrow C))
+  \Rightarrow (A \Rightarrow C)$
+\end{enumerate}
+
+In der Praxis kann man $A \Rightarrow B$ oft zeigen, indem man Aussagen
+$A_1 = A, A_2, \ldots, A_n = B$ findet, so dass $A_i \Rightarrow A_{i + 1}$
+für alle $i = 1, \ldots, n - 1$ wahr ist.
+In dem man $\hyperref[taut_4]{(4)}$ wiederholt anwendet, weiß man dann, dass
+$A \Rightarrow B$ wahr ist.
+Man nennt dieses Verfahren einen \emph{Kettenschluss}.
+
+Man sagt, dass Aussagen $A_1, \ldots, A_n$ äquivalent sind, falls
+$A_i \iff Aj$ für alle $i, j \in \qty{1, \ldots, n}$.
+Äquivalent dazu ist, dass die Implikation $A_i \Rightarrow A_{i + 1}$ für
+alle $i = 1, \ldots, n - 1$ und $A_n \Rightarrow A_1$ wahr sind.
 \end{document}
