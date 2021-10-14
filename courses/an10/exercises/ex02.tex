@@ -1,0 +1,76 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 02\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{6. Es werden die folgenden Aussagen betrachtet:}
+\begin{enumerate}[label={(A\arabic*)}]
+\item ``Jede:r Studierende kann beim Hören jedes Musikstücks mindestens
+  eine Hausaufgabe lösen.''
+\item ``Es gibt (mindestens) eine:n Studierende:n und (mindestens) ein
+  Musikstück, sodass diese:r Studierende beim Hören dieses Stückes alle
+  Aufgaben lösen kann.''
+\end{enumerate}
+
+Drücken Sie die beiden Aussagen mit den Quantoren $\forall$ und $\exists$ aus.
+Beschreiben Sie dazu die Studierenden, Musikstücke und Hausaufgaben durch Mengen.
+Negieren Sie anschließend die beiden Aussagen.
+Dabei soll die Negation von (A1) nicht mit ``Nicht zu jedem'' beginnen,
+und die Negation von (A2) nicht mit ``Es gibt keine''.
+Formulieren Sie im Anschluss die negierten Aussagen wieder in natürlicher
+Sprache.
+
+\subparagraph{Lsg.} Sei $S$ die Menge der Schüler, $M$ die Menge der Musikstücke
+und $H$ die Menge der Hausaufgaben.
+Weiterhin beschreibt die Aussage $P(s, m, h)$, dass der Schüler $s$
+beim Hören des Musikstückes $m$ die Hausaufgabe $h$ lösen kann.
+
+\begin{enumerate}[label={(A\arabic*})]
+\item $\forall \, s \in S \colon \forall \, m \in M \colon \exists \, h \in H \colon P(s, m, h)$
+
+  \textbf{Negation}: $\exists \, s \in S \colon \exists \, m \in M \colon \forall h \in H \colon \neg P(s, m, h)$
+
+  ``Es gibt mindestens einen Schüler, für den mindestens ein Musikstück
+  existiert, bei dem der Schüler nicht in der Lage ist, irgendeine Hausaufgabe
+  aus dem Kurs zu lösen.''
+
+\item $\exists \, s \in S \colon \exists \, m \in M \colon \forall \, h \in H \colon P(s, m, h)$
+
+  \textbf{Negation}: $\forall \, s \in S \exists \, h \in H \colon \colon \forall \, m \in M \colon \neg P(s, m, h)$
+
+  ``Für alle Schüler existiert (mindestens) eine Hausaufgabe, die der Schüler
+  beim Hören von Musik (egal welches Stück) nicht lösen kann.''
+\end{enumerate}
+
+\end{document}
