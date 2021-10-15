@@ -93,4 +93,53 @@ welches noch bei keiner Wahl eingehalten wurde.
 Die zweite Aussage hingegen besagt, dass jede Partei bei jeder Wahl mindestens
 ein Wahlversprechen bricht.
 
+\newpage
+\paragraph{8. Seien $A$, $B$ und $C$ Aussagen. Sind die folgenden Aussagen Tautologien?}
+
+\begin{enumerate}[a)]
+\item $\qty\big(A \Rightarrow B) \iff \neg \qty\big(A \land \neg B)$
+
+  \subparagraph{Lsg.} durch Wahrheitstabelle
+  \begin{center}
+    \begin{tabular}{c | c | c | c | c}
+      $A$ & $B$ & $A \Rightarrow B$ & $\neg(A \land \neg B)$ & a) \\
+      \hline
+      W & W & W & W & W \\
+      W & F & F & F & W \\
+      F & W & W & W & W \\
+      F & F & W & W & W
+    \end{tabular}
+  \end{center}
+  $\Rightarrow$ ist eine Tautologie.
+
+\item $\qty\Big(\qty\big(A \land B) \Rightarrow C) \iff \qty\big(C \lor \neg B \lor \neg A)$
+
+  \subparagraph{Lsg.} Der Ausdruck $C \lor \neg B \lor \neg A$ ist genau dann
+  falsch, wenn $C = $ F und $A = B = $ W.
+  In diesem Fall ist auch $\qty\big(A \land B) \Rightarrow C$ falsch.
+
+  Angenommen $A$ und/oder $B$ wären falsch, dann sind $(A \land B) \Rightarrow C$
+  und $C \lor \neg B \lor \neg A$ unabhängig vom Wert von $C$ immer wahr.
+
+  Sei nun $A$, $B$, $C$ wahr, dann ist auch die Aussage wahr.
+
+  \begin{center}
+    \begin{tabular}{c | c | c | c | c | c}
+      $A$ & $B$ & $C$ & $(A \land B) \Rightarrow C$ & $C \lor \neg B \lor \neg A$ & b) \\
+      \hline
+      W & W & F & F & F & W \\
+      W & F &   & W & W & W \\
+      F & W &   & W & W & W \\
+      W & W & W & W & W & W
+    \end{tabular}
+  \end{center}
+  $\Rightarrow$ ist eine Tautologie.
+
+\item $\qty\big(A \iff B) \iff \neg \qty\Big(\qty\big(A \land B) \lor \neg A \lor \neg B)$
+  \subparagraph{Lsg.} Seien $A$ und $B$ wahr.
+  Dann ist die Aussage $A \iff B$ wahr.
+  Auch $(A \land B) \lor \neg A \lor \neg B$ ist dann wahr.
+  Somit ergibt sich $W \iff F$ und damit ist die Aussage keine Tautologie.
+\end{enumerate}
+
 \end{document}
