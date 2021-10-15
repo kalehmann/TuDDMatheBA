@@ -73,4 +73,24 @@ beim Hören des Musikstückes $m$ die Hausaufgabe $h$ lösen kann.
   beim Hören von Musik (egal welches Stück) nicht lösen kann.''
 \end{enumerate}
 
+\paragraph{7. Sei $A$ eine Menge von Parteien, $B$ eine Menge von Wahlversprechen
+  und $C$ die Menge der Wahlen.}
+Weiterhin ist $P(a, b, c)$ die Aussage
+\begin{center}
+  ``Partei $a$ löst das Wahlversprechen $b$ zur Wahl $c$ nicht ein.'' 
+\end{center}
+
+Diskutieren Sie den Unterschied der folgenden Aussagen:
+\renewcommand{\theequation}{\arabic{equation}}
+\begin{align}
+  \forall \, a \in A \colon \exists \, b \in B \colon \forall \, c \in C &\colon P(a, b, c) \\
+  \forall \, a \in A \colon \forall \, c \in C \colon \exists \, b \in B &\colon P(a, b, c)
+\end{align}
+
+\subparagraph{Lsg.}
+Die erste Aussage besagt, dass jede Partei mindestens ein Wahlversprechen hat,
+welches noch bei keiner Wahl eingehalten wurde.
+Die zweite Aussage hingegen besagt, dass jede Partei bei jeder Wahl mindestens
+ein Wahlversprechen bricht.
+
 \end{document}
