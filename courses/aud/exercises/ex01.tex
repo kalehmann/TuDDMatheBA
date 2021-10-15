@@ -1,0 +1,52 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 01\\Algorithmen und Datenstrukturen}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Definitionen}
+\,\\
+\begin{tabular}{l l}
+  \textbf{Syntax} & umfasst Regeln zur Kombination von Zeichen. \\
+  \textbf{Semantik} & ist die Theorie der Bedeutung von Zeichen. \\
+  \textbf{Objektsprache} & ist Sprache, die Gegenstand einer Metasprache ist. \\
+  \textbf{Metasprache} & dient zur Beschreibung der Syntax einer Objektsprache. \\
+  \textbf{Alphabet} & nichtleere, endliche Menge von Symbolen. \\
+  \textbf{Wort} & Eine endliche Folgen von Symbolen aus einem Alphabet. \\
+  \textbf{Konkatenation} & Operation der Zeichenverkettung. \\
+  \textbf{formale Sprache} & die Menge von Wörtern über einem Alphabet. \\
+  \textbf{Komplexprodukt} & Operation der Verknüpfung zweier formaler Sprachen. \\
+  \textbf{Stern $L^*$ einer formalen Sprache $L$} & die Menge von Wörter der formalen Sprache $L$. \\
+\end{tabular}
+
+\end{document}
