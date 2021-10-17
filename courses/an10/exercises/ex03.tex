@@ -1,0 +1,72 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 03\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{11. Es sei $M$ eine Menge.}
+Für Mengen $A, B \in \mathcal{P}(M)$, das heißt für $A, B \subset M$ betrachten
+wir die Relation
+\[
+  A \leq B \iff A \subset B
+\]
+Beweisen Sie, dass $\leq$ eine Ordnungsrelation auf $\mathcal{P}(M)$ ist.
+
+\subparagraph{Lsg.} Eine Relation $R \subset A \times A$ heißt
+\emph{Ordnungsrelation} auf $A$, falls für alle $a, b, c \in A$ gilt:
+\begin{enumerate}[1)]
+\item $(a, a) \in R$
+\item $(a, b), (b, a) \in R \Rightarrow a = b$
+\item $(a, b), (b, c) \in R \Rightarrow (a, c) \in \mathbb{R}$
+\end{enumerate}
+
+Sei nun $R$
+\[
+  R = \qty\Big{(a, b) \in \mathcal{P}(M) \times \mathcal{P}(M) \: {\Big |} \: a \subset b}
+\]
+\begin{enumerate}[1)]
+\item Erfüllt, da $a \subset a \: \forall \: a \in P(M)$
+\item $(a, b) \in R \Rightarrow a \subset b$ und
+  $(b, a) \in R \Rightarrow b \subset a$.
+  Aus der Vorlesung Lineare Algebra ist bekannt, dass
+  \[
+    a = b \iff a \subset b \land b \subset a
+  \]
+\item $(a, b) \in R$ bedeutet, dass jedes Element aus $a$ auch ein Element von
+  $b$ ist.
+  $(b, c) \in R$ bedeutet, dass jedes Element aus $b$ auch ein Element von $c$
+  ist.
+  $\Rightarrow$ jedes Element von $a$ ist in $b$ und somit auch in $c$ enthalten.
+\end{enumerate}
+
+\end{document}
