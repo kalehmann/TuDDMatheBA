@@ -142,4 +142,144 @@ ein Wahlversprechen bricht.
   Somit ergibt sich $W \iff F$ und damit ist die Aussage keine Tautologie.
 \end{enumerate}
 
+\newpage
+\paragraph{9. Seien $M$ eine Menge und $P$, $Q$, $R$ Teilmengen von $M$.}
+
+\begin{enumerate}[a)]
+\item Beweisen Sie das Distributivgesetz
+  \[
+    \qty\big(P \cup Q) \cap R = \qty\big(P \cap R) \cup \qty\big(Q \cap R)
+  \]
+
+  \subparagraph{Lsg.} Zwei Mengen $A$ und $B$ sind gleich, genau dann wenn
+  $A \subset B \land B \subset A$.
+
+  $x \in A \cup B \iff x \in A \lor x \in B$
+
+  $x \in A \cap B \iff x \in A \land x \in B$
+  \begin{itemize}
+  \item[``$\Rightarrow$''] Sei nun $x \in \qty\big(P \cup Q) \cap R$.
+    Das heißt $x$ ist in $R$ enthalten \textbf{und} $x$ ist in $P$ und/oder
+    $Q$ enthalten.
+    \[
+      x \in R \land \qty\big(x \in P \lor x \in Q)
+    \]
+    Anders geschrieben: $x$ ist in $R$ und $P$ enthalten \textbf{und/oder}
+    $x$ ist in $R$ und $Q$ enthalten.
+    \[
+      \qty\big(x \in R \land x \in P) \lor \qty\big(x \in R \land x \in Q)
+    \]
+    $\Rightarrow x \in \qty\big(P \cap R) \cup \qty\big(Q \cap R)$
+
+    $\Rightarrow \qty\big(P \cup Q) \cap R \subset \qty\big(P \cap R) \cup \qty\big(Q \cap R)$
+
+  \item[``$\Leftarrow$''] Sei nun $x \in \qty\big(P \cap R) \cup \qty\big(Q \cap R)$.
+    Das heißt $x$ ist in $R$ und $P$ enthalten \textbf{und/oder} $x$ ist in $R$ und
+    $Q$ enthalten.
+    \begin{align*}
+      x \in \qty\big(P \cap R) &\lor x \in \qty\big(Q \cap R) \\
+      \qty\big(x \in P \land x \in R) &\lor \qty\big(x \in Q \land x \in R)
+    \end{align*}
+    Anders geschrieben: $x$ ist in $R$ enthalten \textbf{und} $x$ ist in $P$ und/oder
+    $Q$ enthalten.
+    \[
+       x \in R \land \qty\big(x \in P \lor x \in Q)
+    \]
+    $\Rightarrow \qty\big(P \cap R) \cup \qty\big(Q \cap R) \subset \qty\big(P \cup Q) \cap R$
+  \end{itemize}
+
+\item Beweisen Sie
+  \[
+    \qty\big(P \setminus Q) \setminus R \subset P \setminus \qty\big(Q \setminus R)
+  \]
+  \subparagraph{Lsg.} Grafische Lösung
+
+  \begin{minipage}[t]{.4\textwidth}
+    \begin{tikzpicture}[remember picture]
+      \begin{scope}
+        \clip (1, 0) circle (1cm);
+        \fill[even odd rule, color=green!30]
+            (2.5, 0) circle (1cm)
+            (1, 0) circle (1cm);
+      \end{scope}
+      \begin{scope}
+        \path[clip] (2.5, 0) circle (1cm) [insert path={(2, -2) -- (0, -2) -- (0, 2) -- (2, 2)}];
+        \path[clip] (1.75, -1) circle (1cm) [insert path={(2, -2) -- (0, -2) -- (0, 2) -- (2, 2)}];
+        \fill[pattern color=blue, pattern=north west lines]
+            (1, 0) circle (1cm);
+      \end{scope}
+      \node at (0, 1.3) (label_p) {$P$};
+      \node at (3.3, 1.3) (label_q) {$Q$};
+      \node at (3.3, -1.5) (label_r) {$R$};
+      \node[black!30!green] at (0, -2) (label_pq) {$P \setminus Q$};
+      \node[blue] at (-1, -1) (label_pqr) {$\qty(P \setminus Q) \setminus R$};
+      \node[circle, draw, minimum size=2cm] at (1, 0) (set_p) {};
+      \node[circle, draw, minimum size=2cm] at (2.5, 0) (set_q) {};
+      \node[circle, draw, minimum size=2cm] at (1.75, -1) (set_r) {};
+      \draw[->] (label_p) -- (set_p.center);
+      \draw[->] (label_q) -- (set_q.center);
+      \draw[->] (label_r) -- (set_r.center);
+      \draw[->,black!40!green] (label_pq) -- (1, -0.6);
+      \draw[->,blue] (label_pqr) -- (0.3, -0.2);
+    \end{tikzpicture}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{.4\textwidth}
+    \begin{tikzpicture}
+      \fill[pattern color=blue, pattern=north west lines]
+          (1, 0) circle (1cm);
+      \begin{scope}
+        \clip (2.5, 0) circle (1cm);
+        \fill[even odd rule, color=green!30]
+            (1.75, -1) circle (1cm)
+            (2.5, 0) circle (1cm);
+      \end{scope}
+      \node at (0, 1.3) (label_p) {$P$};
+      \node at (3.3, 1.3) (label_q) {$Q$};
+      \node at (3.3, -1.5) (label_r) {$R$};
+      \node[black!30!green] at (4, -1.2) (label_qr) {$Q \setminus R$};
+      \node[blue] at (0, -2) (label_pqr) {$P \setminus \qty\big(Q \setminus R)$};
+      \node[circle, draw, minimum size=2cm] at (1, 0) (set_p) {};
+      \node[circle, draw, minimum size=2cm] at (2.5, 0) (set_q) {};
+      \node[circle, draw, minimum size=2cm] at (1.75, -1) (set_r) {};
+      \draw[->,green] (label_qr) -- (2.7, -0.2);
+      \draw[->,blue] (label_pqr) -- (0.7, -0.3);
+      \draw[->] (label_p) -- (set_p.center);
+      \draw[->] (label_q) -- (set_q.center);
+      \draw[->] (label_r) -- (set_r.center);
+    \end{tikzpicture}
+  \end{minipage}
+
+  \newpage
+  $x \in \qty(A \setminus B) \iff x \in A \land \neg(x \in B)$
+
+  Sei $x$ ein Element aus $\qty\big(P \setminus Q) \setminus R$.
+  \setcounter{equation}{0}
+  \begin{flalign}
+    x \in \qty\big(P \setminus Q) &\land \neg \qty\big(x \in R) & \\
+    \qty\big(x \in P \land \neg \qty(x \in Q)) &\land \neg \qty\big(x \in R) \\
+    x \in P &\land \qty\big(\neg \qty(x \in Q) \land \neg \qty(x \in R)) \\
+    x \in P &\land \qty\big(\neg \qty(x \in Q) \lor x \in R)) \\
+    x \in P &\land \neg \qty\big(x \in Q \land \neg \qty(x \in R)) \\
+    x \in P \setminus \qty\big(Q \setminus R)
+  \end{flalign}
+  \textbf{Anmerkung:} Es gilt $(3) \Rightarrow (4)$.
+  Damit $(3)$ wahr ist, darf $x$ kein Element in $Q$ sein.
+  Somit ist auch $(4)$ wahr.
+
+\item Zeigen Sie an einem Beispiel, dass die Inklusion echt sein kann.
+  Folgt daraus schon, dass die umgekehrte Inklusion im Allgemeinen nicht gilt?
+
+  \subparagraph{Lsg.} Ein Beispiel ist die grafische Lösung aus der Aufgabe b).
+
+  Sei $P = \qty{1, 2, 3, 4}$, $Q = \qty{3, 4, 5}$ und $R = \qty{2, 4, 6}$.
+  Dann ist $(P \setminus Q) \setminus R = \qty{1, 2} \setminus R = \qty{1}$ und
+  $P \setminus \qty\big(Q \setminus R) = P \setminus \qty{3, 5} = \qty{1, 2, 4}$.
+
+  Daraus folgt jedoch \emph{nicht}, dass die umgekehrte Inklusion nicht gilt.
+  So gilt $P \setminus \qty\big(Q \setminus R) \subset
+  \qty\big(P \setminus Q) \setminus R$ zum Beispiel für alle $P$ und $Q$
+  solange $R = \emptyset$.
+\end{enumerate}
+
 \end{document}
