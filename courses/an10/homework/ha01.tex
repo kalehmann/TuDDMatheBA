@@ -1,0 +1,121 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann (Übungsgruppe 1)\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 03\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{14. Beweisen Sie die de Morgan'schen Regeln
+  für Mengen $A, B \subset M$ und logische Ausagen $p$ und $q$}
+
+\begin{enumerate}[(a)]
+\item $\neg \qty\big(p \lor q) = \neg p \land \neg q$
+  \subparagraph{Lsg.} durch Wahrheitstabelle
+  \begin{center}
+    \begin{tabular}{c | c | c | c}
+      $p$ & $q$ & $\neg \qty\big(p \lor q)$ & $\neg p \land \neg q$ \\
+      \hline
+      W & W & F & F \\
+      W & F & F & F \\
+      F & W & F & F \\
+      F & F & W & W
+    \end{tabular}
+  \end{center}
+
+\item $\neg \qty\big(p \land q) = \neg p \lor \neg q$
+
+  \subparagraph{Lsg.} durch Wahrheitstabelle
+  \begin{center}
+    \begin{tabular}{c | c | c | c}
+      $p$ & $q$ & $\neg \qty\big(p \land q)$ & $\neg p \lor \neg q$ \\
+      \hline
+      W & W & F & F \\
+      W & F & W & W \\
+      F & W & W & W \\
+      F & F & W & W
+    \end{tabular}
+  \end{center}
+\item $\qty\big(A \cup B)^C = A^C \cap B^C$
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    x \in \qty\big(A \cup B) &\iff x \in A \lor x \in B & \\
+    x \in \qty\big(A \cup B)^C &\iff \neg \qty\big(x \in A \lor x \in B) \\
+    \overset{\text{Siehe (a)}}&\iff \neg \qty\big(x \in A) \land \neg \qty\big(x \in B) \\
+    &\iff x \in A^C \land x \in B^C \\
+    &\iff x \in \qty\big(A^C \cap B^C)
+  \end{flalign*}
+\item $\qty\big(A \cap B)^C = A^C \cup B^C$
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    x \in \qty\big(A \cap B) &\iff x \in A \land x \in B & \\
+    x \in \qty\big(A \cap B)^C &\iff \neg \qty\big(x \in A \land x \in B) \\
+    \overset{\text{Siehe (b)}}&\iff \neg \qty\big(x \in A) \lor \neg \qty\big(x \in B) \\
+    &\iff x \in A^C \lor x \in B^C \\
+    &\iff x \in \qty\big(A^C \cup B^C)
+  \end{flalign*}
+\end{enumerate}
+\newpage
+Es sei nun $\mathcal{N} \subset \mathcal{P}(M)$ ein nichtleeres Mengensystem
+(also eine Menge von Mengen).
+Beweisen Sie auch für diesen Fall die de Morgan'schen Regeln:
+\begin{enumerate}[(a)]
+\setcounter{enumi}{4}
+\item $\qty(\underset{N \in \mathcal{N}}\bigcup N)^C
+  = \underset{N \in \mathcal{N}}\bigcap N^C$
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    x \in \bigcup_{N \in \mathcal{N}}N
+    &\iff \exists N \in \mathcal{N} \colon x \in N & \\
+    x \in \qty(\bigcup_{N \in \mathcal{N}}N)^C
+    &\iff \forall N \in \mathcal{N} \colon \neg \qty\big(x \in N) \\
+    &\iff \forall N \in \mathcal{N} \colon x \in N^C \\
+    &\iff x \in \bigcap_{N \in \mathcal{N}} N^C
+  \end{flalign*}
+
+\item $\qty(\underset{N \in \mathcal{N}}\bigcap N)^C
+  = \underset{N \in \mathcal{N}}\bigcup N^C$.
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    x \in \bigcap_{N \in \mathcal{N}}N
+    &\iff \forall N \in \mathcal{N} \colon x \in N & \\
+    x \in \qty(\bigcap_{N \in \mathcal{N}}N)^C
+    &\iff \exists N \in \mathcal{N} \colon \neg \qty\big(x \in N) \\
+    &\iff \exists N \in \mathcal{N} \colon x \in N^C \\
+    &\iff x \in \bigcup_{N \in \mathcal{N}} N^C
+  \end{flalign*}
+
+\end{enumerate}
+
+\end{document}
