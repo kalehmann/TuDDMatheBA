@@ -115,7 +115,125 @@ Beweisen Sie auch für diesen Fall die de Morgan'schen Regeln:
     &\iff \exists N \in \mathcal{N} \colon x \in N^C \\
     &\iff x \in \bigcup_{N \in \mathcal{N}} N^C
   \end{flalign*}
+\end{enumerate}
 
+\newpage
+\paragraph{15. Es sei $M$ eine Menge.}
+Eine Zerlegung $\mathcal{Z} \in \mathcal{P}(M)$ von $M$ ist ein Mengensystem
+(also eine Menge von Mengen) mit folgenden Eigenschaften:
+\begin{enumerate}[(i)]
+\item Für alle $Z \in \mathcal{Z}$ gilt $Z \ne \emptyset$
+\item Für alle $Z_1, Z_2 \in \mathcal{Z}$ mit $Z_1 \ne Z_2$ gilt
+  $Z_1 \cap Z_2 = \emptyset$.
+\item $M = \underset{Z \in \mathcal{Z}}\bigcup Z$
+\end{enumerate}
+
+Beweisen Sie die folgenden Aussagen:
+\begin{enumerate}[(a)]
+\item Ist $R \subset M \times M$ eine Äquivalenzrelation auf $M$, so ist die
+  Menge der Äquivalenzklassen von $R$ eine Zerlegung von $M$.
+
+  \subparagraph{Lsg.} Seien $a, b$ zwei Äquivalenzklassen aus der Menge aller
+  Äquivalenzklassen von $R$.
+  \begin{enumerate}[(i)]
+  \item Sei $a' \in M$ und $a$ die Äquivalenzklasse von $a'$ bezüglich $R$,
+    also $[a'] = a$.
+
+    Dann ist $a = \qty{x \in M {\Big |} (a', x) \in R}$.
+    $R$ ist als Äquivalenzrelation \emph{reflexiv}, somit folgt aus
+    $a' \in M$ auch $\qty(a',a') \in R$.
+
+    $\Rightarrow a' \in a$
+
+    $\Rightarrow a \ne \emptyset$
+
+  \item Sei $a \ne b$ und $a$ die Äquivalenzklasse von $a'$ sowie $b$ die
+    Äquivalenzklasse von $b'$.
+    Angenommen es gibt ein Element $x \in a \cap b$.
+    Dann gilt nach Definition der Äquivalenzklasse
+    \[
+      (a', x), (b', x) \in R
+    \]
+    Da $R$ als Äquivalenzrelation \emph{symmetrisch} ist gilt auch
+    \[
+      (a', x), (x, b') \in R
+    \]
+    Aus der \emph{Transitivität} von $R$ folgt $(a', b') \in R$, somit
+    ist $a' \sim b'$ und $a = b$.
+    Das ist ein Widerspruch, daraus folgend kann kein $x \in a \cap b$
+    existieren.
+
+    $\Rightarrow a \cap b = \emptyset$
+
+  \item Jedes Element $x \in M$ besitzt eine Äquivalenzklasse.
+    Wie in (i) bereits gezeigt gilt immer $x \in \qty[x]$.
+    Somit existiert für jedes Element aus $M$ eine Äquivalenzklasse, welche
+    dieses Element enthält.
+    Weiterhin enthält jede Äquivalenzklasse (von Elementen aus $M$) auch nur
+    Elemente aus $M$.
+    Somit ist die Vereinigung aller Äquivalenzklassen von $R$ gleich der Menge
+    $M$.
+  \end{enumerate}
+
+\newpage
+\item Ist $\mathcal{Z} \in \mathcal{P}(M)$ eine Zerlegung von $M$, so gibt es
+  eine Äquivalenzrelation $R \subset M \times M$, für die $\mathcal{Z}$ die
+  Menge der Äquivalenzklassen von $R$ ist.
+
+  \subparagraph{Lsg.} Sei
+  \[
+    R = \qty\Big{ (a, b) \in M \times M {\Big |}
+      \exists Z \in \mathcal{Z} \colon a \in Z \land b \in Z}
+  \]
+  \begin{enumerate}[1)]
+  \item Sei $x \in M$.
+    Da die Vereinigung von $\mathcal{Z}$ gleich $M$ ist,
+    existiert ein $Z \in \mathcal{Z}$ mit $x \in Z$
+
+    $\Rightarrow (x, x) \in R$
+
+    Somit ist $R$ \emph{reflexiv}.
+
+  \item Sei $(x, y) \in R$.
+    Nach der Definition von $R$ existiert somit ein Element
+    $Z_1 \in \mathcal{Z}$ mit $x \in Z_1 \land y \in Z_1$.
+
+    $\Rightarrow$ es gilt auch $y \in Z_1 \land x \in Z_1$
+
+    $\Rightarrow$ $(y, x) \in R$
+
+    Somit ist $R$ \emph{symmetrisch}.
+
+  \item Seien $(x, y), (y, z) \in R$.
+    Nach der Definition von $R$ existiert somit ein Element
+    $Z_1 \in \mathcal{Z}$ mit $x \in Z_1 \land y \in Z_1$.
+    Weiterhin existiert ein Element $Z_2 \in \mathcal{Z}$ mit
+    $y \in Z_2 \land z \in Z_2$.
+
+    Da $\mathcal{Z}$ eine Zerlegung ist, sind zwei unterschiedliche Elemente aus
+    $\mathcal{Z}$ immer disjunkt.
+
+    Aus $y \in Z_1$ und $y \in Z_2$ folgt somit $Z_1 = Z_2$.
+
+    $\Rightarrow x, y, z \in Z_1$.
+
+    $\Rightarrow (x, z) \in R$
+
+    Somit ist $R$ \emph{transitiv}.
+  \end{enumerate}
+
+  $\Rightarrow R$ ist eine Äquivalenzrelation.
+
+  Sei nun $Z \in \mathcal{Z}$.
+  Dann ist für jedes Element $x \in Z$ nach Definition von $R$
+  \[
+    \qty[x] = \qty{y \in M {\Big |} (x, y) \in R}
+    = \qty{y \in M {\Big |} \exists Z' \in \mathcal{Z} \colon (x, y) \in Z'} = Z
+  \].
+  Somit ist ein jedes Element aus $\mathcal{Z}$ die Äquivalenzklasse all seiner
+  Elemente bezüglich $R$.
+
+  $\Rightarrow \mathcal{Z}$ ist die Menge der Äquivalenzklassen von $R$.
 \end{enumerate}
 
 \end{document}
