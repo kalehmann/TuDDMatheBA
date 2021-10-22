@@ -1,0 +1,105 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 04\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{16. Untersuchen Sie die folgenden Abbildungen auf Injektivität,
+  Surjektivität und Bijektivität:}
+
+\begin{enumerate}[(a)]
+\item $f \colon \mathbb{N} \to \mathbb{N}, n \mapsto 2n + 5$
+
+  \subparagraph{Lsg.}
+  Sei $2x + 5 = 2y + 5$.
+  Durch äquivalente Umformung erhält man
+  \begin{flalign*}
+    2x + 5 &= 2y + 5 && {\Big |} - 5 && &&\\
+    2x &= 2y &&{\Big |} :2 \\
+    x &= y
+  \end{flalign*}
+  Somit ist die Abbildung injektiv.
+
+  Sei $y \in \mathbb{N} = 3$.
+  Dann ist $f^{-1}(3) = -1$ und $-1 \notin \mathbb{N}$.
+  Somit ist $f$ weder surjektiv noch bijektiv.
+
+\item $f \colon \mathbb{N} \to \mathbb{N}, n \mapsto n \cdot n$
+
+  \subparagraph{Lsg.}
+  Seien $x,y \in \mathbb{N}$ und $x \cdot x = y \cdot y$.
+  Somit ist $x = \pm y$.
+  Da $-y \notin \mathbb{N}$ folgt $x = y$.
+  Somit ist die Abbildung injektiv.
+
+  Sei nun $x \in \mathbb{N} = 2$.
+  Es existiert kein Element $y \in \mathbb{N}$ mit $y \cdot y = 2$, da
+  $\sqrt{2} \notin \mathbb{N}$.
+  Somit ist $f$ weder surjektiv noch bijektiv.
+
+\item $f \colon \mathbb{N} \times \mathbb{N} \to \mathbb{N}$ mit
+  $(m, n) \mapsto n \cdot m$.
+
+  \subparagraph{Lsg.}
+  Seien $\qty(x, y) \in \mathbb{N} \times \mathbb{N}$ und $x \ne y$.
+  Da die Multiplikation kommutativ ist, folgt $f(x, y) = f(y, x)$.
+  Somit ist $f$ nicht injektiv.
+
+  Sei $x \in \mathbb{N}$ beliebig.
+  Da $x \cdot 1 = x$, existiert für jedes Element aus der Zielmenge
+  ein Paar $\qty(x, 1) \in \mathbb{N} \times \mathbb{N}$ mit $f(x, 1) = x$.
+  Somit ist die Abbildung $f$ surjektiv, aber nicht bijektiv.
+
+\item $f \colon \mathcal{P}\qty\big(\qty{\emptyset, \qty{\emptyset},
+    \qty{\emptyset, \qty{\emptyset}}}) \to \mathbb{N}$ mit
+  $M \mapsto \#(M)$, wobei $\#(M)$ die Anzahl der Elemente in $M$ angibt.
+
+  \subparagraph{Lsg.}
+  Die Mengen $\qty{\emptyset}$ und $\qty{\qty{\emptyset}}$ sind Elemente aus
+  $\mathcal{P}\qty\big(\qty{\emptyset, \qty{\emptyset}, \qty{\emptyset,
+      \qty{\emptyset}}})$.
+  Außerdem ist $\#(\qty{\emptyset}) = \#(\qty{\qty{\emptyset}}) = 1$.
+  Somit ist $f$ nicht injektiv.
+
+  Die Menge $\qty{\emptyset, \qty{\emptyset}, \qty{\emptyset, \qty{\emptyset}}}$
+  enthält $3$ Elemente.
+  Demzufolge umfasst auch jedes Element der Potenzmenge dieser Menge maximal $3$
+  Elemente.
+  Daraus folgend existiert kein Element
+  $x \in \mathcal{P}\qty\big(\qty{\emptyset, \qty{\emptyset}, \qty{\emptyset,
+      \qty{\emptyset}}})$ mit $f(x) = 4$ oder $f(x) = 5$.
+
+  Damit ist $f$ auch nicht surjektiv und nicht bijektiv.
+\end{enumerate}
+
+\end{document}
