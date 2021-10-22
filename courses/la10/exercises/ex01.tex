@@ -145,4 +145,75 @@ sind.
   \subparagraph{Lsg.} Diese Aussage ist falsch, denn die Vereinigung der
   leeren Menge mit $\qty{1}$ enthält genau ein Element, nämlich die $1$.
 \end{enumerate}
+
+\newpage
+\paragraph{Aufgabe 3} Sei $M$ eine Menge.
+Für jede Teilmenge $N$ von $M$ sei $\overline{N} \coloneqq M \setminus N$.
+Seien nun $A$ und $B$ Teilmengen von $M$.
+Beweisen Sie die de Morganschen Regeln
+\begin{enumerate}[(1)]
+\item $\overline{A \cap B} = \overline{A} \cup \overline{B}$
+
+  \subparagraph{Lsg.} \underline{Äquivalenzbeweis:}
+  \begin{flalign*}
+    x \in \overline{A \cap B} &\iff \neg \qty\big(x \land x \in B) & \\
+    &\iff \neg \qty\big(x \in A) \lor \neg \qty\big(x \in B) \\
+    &\iff x \in \overline{A} \lor x \in \overline{B} \\
+    &\iff x \in \qty\big(\overline{A} \cup \overline{B})
+  \end{flalign*}
+
+  \underline{Beweis durch Fallunterscheidung:} \\
+  Es gibt vier Möglichkeiten für die Beziehung, die ein Punkt $x$ zu den
+  Mengen $A$ und $B$ haben kann:
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (6,4);
+      \draw (2, 2) circle (1.6cm);
+      \draw (4, 2) circle (1.6cm);
+      \node[blue] at (5.5,0.5) {$M$};
+      \node[blue] at (1.5,2) {$A$};
+      \node[blue] at (4.5,2) {$B$};
+      \draw[fill] (2.8, 1.8) circle (0.2mm);
+      \node at (3, 2) {$x_1$};
+      \draw[fill] (1.8, 0.8) circle (0.2mm);
+      \node at (2, 1) {$x_2$};
+      \draw[fill] (3.8, 0.8) circle (0.2mm);
+      \node at (4, 1) {$x_3$};
+      \draw[fill] (0.6, 3.4) circle (0.2mm);
+      \node at (0.4, 3.6) {$x_4$};
+    \end{tikzpicture}
+
+    \begin{tabular}{c | c | c | c | c | c | c | c}
+      & $A$ & $B$ & $\overline{A}$ & $\overline{B}$ & $A \cap B$ & $\overline{A \cap B}$ & $\overline{A} \cup \overline{B}$ \\
+      \hline
+      $x_1$ & $\in$ & $\in$ & $\notin$ & $\notin$ & $\in$ & $\notin$ & $\notin$ \\
+      $x_2$ & $\in$ & $\notin$ & $\notin$ & $\in$ & $\in$ & $\in$ & $\in$ \\
+      $x_3$ & $\notin$ & $\in$ & $\in$  & $\notin$ & $\in$ & $\in$ & $\in$ \\
+      $x_4$ & $\notin$ & $\notin$ & $\in$ & $\in$ & $\notin$ & $\in$ & $\in$
+    \end{tabular}
+  \end{center}
+
+\item $\overline{A \cup B} = \overline{A} \cap \overline{B}$
+
+  \subparagraph{Lsg.} \underline{Äquivalenzbeweis:}
+  \begin{flalign*}
+    x \in \overline{A \cup B} &\iff \neg \qty\big(x \lor x \in B) & \\
+    &\iff \neg \qty\big(x \in A) \land \neg \qty\big(x \in B) \\
+    &\iff x \in \overline{A} \land x \in \overline{B} \\
+    &\iff x \in \qty\big(\overline{A} \cap \overline{B})
+  \end{flalign*}
+
+  \newpage
+  \underline{Beweis durch Fallunterscheidung:} \\
+  \begin{center}
+    \begin{tabular}{c | c | c | c | c | c | c | c}
+      & $A$ & $B$ & $\overline{A}$ & $\overline{B}$ & $A \cup B$ & $\overline{A \cup B}$ & $\overline{A} \cap \overline{B}$ \\
+      \hline
+      $x_1$ & $\in$ & $\in$ & $\notin$ & $\notin$ & $\in$ & $\notin$ & $\notin$ \\
+      $x_2$ & $\in$ & $\notin$ & $\notin$ & $\in$ & $\in$ & $\notin$ & $\notin$ \\
+      $x_3$ & $\notin$ & $\in$ & $\in$  & $\notin$ & $\in$ & $\notin$ & $\notin$ \\
+      $x_4$ & $\notin$ & $\notin$ & $\in$ & $\in$ & $\notin$ & $\in$ & $\in$
+    \end{tabular}
+  \end{center}
+\end{enumerate}
 \end{document}
