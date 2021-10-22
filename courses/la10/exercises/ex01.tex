@@ -273,4 +273,56 @@ Beweisen Sie die Distributivgesetze
     \end{tabular}
   \end{center}
 \end{enumerate}
+
+\paragraph{Aufgabe 5}
+\begin{enumerate}[(i)]
+\item Drücken Sie die folgenden Aussagen symbolisch aus.
+  \begin{itemize}
+  \item Das Quadrat jeder natürlichen Zahl ist positiv
+    \subparagraph{Lsg.} $\forall n \in \mathbb{N} \colon n^2 > 0$
+
+  \item Es gibt keine größte natürliche Zahl
+    \subparagraph{Lsg.} $\forall n \in \mathbb{N} \: \exists \: m \in \mathbb{N}
+    \colon m > n$
+  \end{itemize}
+
+\item Negieren Sie die folgenden Aussagen:
+  \begin{itemize}
+  \item $\exists x \in \mathbb{R} \colon x^2 = 1$
+    \subparagraph{Lsg.} $\forall x \in \mathbb{R} \colon x^2 \ne 1$
+
+  \item $\forall n \in \mathbb{N} \: \exists \: m \in \mathbb{N}
+    \colon n = m^2$
+    \subparagraph{Lsg.} $\exists \:n \in \mathbb{N}
+    \: \forall \: m \in \mathbb{N} \colon n \ne m^2$
+  \end{itemize}
+
+\item Zeigen Sie, dass die folgenden Aussagen Tautologien sind.
+  \begin{itemize}
+  \item $\neg\qty\big(A \land \qty(\neg A))$
+    \subparagraph{Lsg.}
+    \begin{center}
+      \begin{tabular}{c | c | c | c}
+        $A$ & $\neg A$ & $A \land \qty(\neg A)$ & $\neg \qty\big(A \land \qty(\neg A))$ \\
+        \hline
+        W & F & F & W \\
+        F & W & F & W
+      \end{tabular}
+    \end{center}
+
+  \newpage
+  \item $\qty\big(\qty(A \Rightarrow B) \land A) \Rightarrow B$
+    \subparagraph{Lsg.}
+    \begin{center}
+      \begin{tabular}{c | c | c | c | c}
+        $A$ & $B$ & $A \Rightarrow B$ & $\qty\big(A \Rightarrow B) \land A$ & $\qty\big(\qty(A \Rightarrow B) \land A) \Rightarrow B$ \\
+        \hline
+        W & W & W & W & W \\
+        W & F & F & F & W \\
+        F & W & W & F & W \\
+        F & F & W & F & W
+      \end{tabular}
+    \end{center}
+  \end{itemize}
+\end{enumerate}
 \end{document}
