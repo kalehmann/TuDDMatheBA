@@ -1,0 +1,125 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 01\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 1:} Seien
+$A \coloneqq \qty{x \in \mathbb{N} {\Big |} 10 < 2x^2 + 1 < 100}$,
+$B \coloneqq \qty{x \in \mathbb{N} {\Big |} \abs{x - 7} \leq 3}$,
+$C \coloneqq \qty{ 2z {\Big |} z \in \mathbb{Z}, z^2 \geq 4}$ und
+$D = \qty{3, 4}$.
+
+\begin{enumerate}[(a)]
+\item Berechnen Sie die Mengen
+  \begin{multicols}{3}
+    \begin{enumerate}[(i)]
+    \item $A \cup B$
+    \item $B \cap C$
+    \item $\mathcal{P}(B \cap C)$
+    \item $A \times D$
+    \item $(A \setminus B) \setminus C$
+    \item $A \setminus (B \setminus C)$
+    \end{enumerate}
+  \end{multicols}
+
+\item Für jede natürliche Zahl $n$ sei
+  $M_n \coloneqq \qty{ m {\Big |} m \in \mathbb{N}, m \leq n }$.
+  Bestimmen Sie
+  \[
+    \bigcup_{n \in \mathbb{N}}M_n \text{ und } \bigcap_{n \in \mathbb{N}} M_n
+  \]
+\end{enumerate}
+
+\subparagraph{Lsg.}
+\begin{enumerate}[(a)]
+\item \begin{flalign*}
+    A &= \qty{x \in \mathbb{N} {\Big |} 10 < 2x^2 + 1 < 100} &= &\qty{3, 4, 5, 6, 7} & \\
+    B &= \qty{x \in \mathbb{N} {\Big |} \abs{x - 7} \leq 3} &= &\qty{4, 5, 6, 7, 8, 9, 10} \\
+    C &= \qty{ 2z {\Big |} z \in \mathbb{Z}, z^2 \geq 4} &= & \qty{\ldots, -10, -8, -6, -4, 4, 6, 8, 10, \ldots} \\
+    D & &=& \qty{3, 4}
+  \end{flalign*}
+  \begin{enumerate}[(i)]
+  \item $A \cup B = \qty{3, 4, 5, 6, 7, 8, 9, 10}$
+  \item $B \cap C = \qty{4, 6, 8, 10}$
+  \item $\mathcal{P}(B \cap C) = \Big\{
+      \emptyset,
+      \qty{4}, \qty{6}, \qty{8}, \qty{10},
+      \qty{4, 6}, \qty{4, 8}, \qty{4, 10}, \qty{6, 8}, \qty{6, 10}, \qty{8, 10},$ \\
+      $\qty{4, 6, 8}, \qty{4, 6, 10}, \qty{4, 8, 10},\qty{6, 8, 10},
+      \qty{4, 6, 8, 10}
+    \Big\}$
+  \item $A \times D = \qty\Big{
+      \qty(3, 3), \qty(3, 4),
+      \qty(4, 3), \qty(4, 4),
+      \qty(5, 3), \qty(5, 4),
+      \qty(6, 3), \qty(6, 4),
+      \qty(7, 3), \qty(7, 4)
+    }$
+  \item $(A \setminus B) \setminus C = \qty{3} \setminus C = \qty{3}$
+  \item $A \setminus (B \setminus C) = A \setminus \qty{5, 7, 9} = \qty{3, 4, 6}$
+  \end{enumerate}
+
+\item \underline{Behauptung:} $\underset{n \in \mathbb{N}}\bigcup M_n
+  = \mathbb{N}$ \\
+  \underline{Beweis:}
+  \begin{itemize}
+  \item[``$\subset$'']
+    $\underset{n \in \mathbb{N}}\bigcup M_n \subset \mathbb{N}$,
+    denn alle $M_n$ enthalten nur natürliche Zahlen.
+
+  \item[``$\supset$'']
+    Sei $x \in \mathbb{N}$ beliebig, dann existiert $M_x$ mit $x \in M_x$.
+    $\Rightarrow \mathbb{N} \subset \underset{n \in \mathbb{N}}\bigcup M_n$.
+  \end{itemize}
+
+  \newpage
+  \underline{Behauptung:} $\underset{n \in \mathbb{N}}\bigcap M_n = \qty{1}$ \\
+  \underline{Beweis:}
+  \begin{itemize}
+  \item[``$\subset$'']
+    Angenommen $\underset{n \in \mathbb{N}}\bigcap M_n$ enthält ein Element,
+    welches nicht in $\qty{1}$ enthalten ist.
+    Dann ist dieses Element in allen $M_n$, somit auch in $M_1 = \qty{1}$
+    enthalten - ein Widerspruch.
+
+    $\Rightarrow \underset{n \in \mathbb{N}}\bigcap M_n \subset \qty 1$
+
+  \item[``$\supset$'']
+    Für jede Zahl $n \in \mathbb{N}$ gilt $1 \leq n$.
+    Somit ist $1$ in allen $M_n$ enthalten.
+
+    $\Rightarrow \qty{1} \subset \underset{n \in \mathbb{N}}\bigcap M_n$
+  \end{itemize}
+\end{enumerate}
+\end{document}
