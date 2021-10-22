@@ -216,4 +216,61 @@ Beweisen Sie die de Morganschen Regeln
     \end{tabular}
   \end{center}
 \end{enumerate}
+
+\paragraph{Aufgabe 4} Seine $A, B, C$ Mengen.
+Beweisen Sie die Distributivgesetze
+\begin{enumerate}[(1)]
+\item $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
+
+  \subparagraph{Lsg.} \underline{Äquivalenzbeweis:}
+  \begin{flalign*}
+    x \in \qty\Big(A \cap \qty\big(B \cup C)) &\iff x \in A \land \qty\big(x \in B \lor x \in C) & \\
+    &\iff \qty\big(x \in A \land x \in B) \lor \qty\big(x \in A \land x \in C) \\
+    &\iff x \in \qty\big(A \cap B) \lor x \in (A \cap C) \\
+    &\iff x \in \qty\Big(\qty\big(A \cap B) \cup \qty\big(A \cap C))
+  \end{flalign*}
+
+  \underline{Beweis durch Fallunterscheidung:}
+  \begin{center}
+    \begin{tabular}{c | c | c | c | c | c}
+      & $A$ & $B$ & $C$ & $A \cap (B \cup C)$ & $(A \cap B) \cup (A \cap C)$  \\
+      \hline
+      $x_1$ & $\in$ & $\in$ & $\in$ & $\in$ & $\in$ \\
+      $x_2$ & $\in$ & $\in$ & $\notin$ & $\in$ & $\in$ \\
+      $x_3$ & $\in$ & $\notin$ & $\in$ & $\in$ & $\in$ \\
+      $x_4$ & $\in$ & $\notin$ & $\notin$ & $\notin$ & $\notin$ \\
+      $x_5$ & $\notin$ & $\in$ & $\in$ & $\notin$ & $\notin$ \\
+      $x_6$ & $\notin$ & $\in$ & $\notin$ & $\notin$ & $\notin$ \\
+      $x_7$ & $\notin$ & $\notin$ & $\in$ & $\notin$ & $\notin$ \\
+      $x_8$ & $\notin$ & $\notin$ & $\notin$ & $\notin$ & $\notin$ \\
+    \end{tabular}
+  \end{center}
+
+\item $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$
+
+  \subparagraph{Lsg.} \underline{Äquivalenzbeweis:}
+  \begin{flalign*}
+    x \in \qty\Big(A \cup \qty\big(B \cap C)) &\iff x \in A \lor \qty\big(x \in B \land x \in C) & \\
+    &\iff \qty\big(x \in A \lor x \in B) \land \qty\big(x \in A \lor x \in C) \\
+    &\iff x \in \qty\big(A \cup B) \land x \in (A \cup C) \\
+    &\iff x \in \qty\Big(\qty\big(A \cup B) \cap \qty\big(A \cup C))
+  \end{flalign*}
+
+  \newpage
+  \underline{Beweis durch Fallunterscheidung:}
+  \begin{center}
+    \begin{tabular}{c | c | c | c | c | c}
+      & $A$ & $B$ & $C$ & $A \cup (B \cap C)$ & $(A \cup B) \cap (A \cup C)$  \\
+      \hline
+      $x_1$ & $\in$ & $\in$ & $\in$ & $\in$ & $\in$ \\
+      $x_2$ & $\in$ & $\in$ & $\notin$ & $\in$ & $\in$ \\
+      $x_3$ & $\in$ & $\notin$ & $\in$ & $\in$ & $\in$ \\
+      $x_4$ & $\in$ & $\notin$ & $\notin$ & $\in$ & $\in$ \\
+      $x_5$ & $\notin$ & $\in$ & $\in$ & $\in$ & $\in$ \\
+      $x_6$ & $\notin$ & $\in$ & $\notin$ & $\in$ & $\in$ \\
+      $x_7$ & $\notin$ & $\notin$ & $\in$ & $\in$ & $\in$ \\
+      $x_8$ & $\notin$ & $\notin$ & $\notin$ & $\notin$ & $\notin$ \\
+    \end{tabular}
+  \end{center}
+\end{enumerate}
 \end{document}
