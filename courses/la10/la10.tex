@@ -3,6 +3,7 @@
 \usepackage{aligned-overset}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{bm}
 \usepackage[shortlabels]{enumitem}
 \usepackage{hyperref}
@@ -19,7 +20,11 @@
 \pgfplotsset{compat = newest}
 \usetikzlibrary{intersections}
 \usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric}
 \usepgfplotslibrary{fillbetween}
+
+\newtheorem*{lemma}{Lemma}
 
 \author{Karsten Lehmann}
 \date{WiSe 2021/2022}
@@ -435,4 +440,344 @@ Man sagt, dass Aussagen $A_1, \ldots, A_n$ äquivalent sind, falls
 $A_i \iff Aj$ für alle $i, j \in \qty{1, \ldots, n}$.
 Äquivalent dazu ist, dass die Implikation $A_i \Rightarrow A_{i + 1}$ für
 alle $i = 1, \ldots, n - 1$ und $A_n \Rightarrow A_1$ wahr sind.
+
+\paragraph{Äquivalenzrelation} Sei $\sim$ eine Äquivalenzrelation auf einer
+Menge $M$, dass heißt
+\begin{itemize}
+\item $\sim$ ist eine Relation auf $M$
+\item $\forall x \in M \colon x \sim x$ (Reflexivität)
+\item $\forall x, y \in M \colon x \sim y \Rightarrow y \sim x$
+\item $\forall x, y, z \in M \colon x \sim y \land y \sim z \Rightarrow x \sim z$
+\end{itemize}
+
+Für $x \in M$ setze
+\[
+  \qty[x] \coloneqq \qty\Big{ y \in M {\Big |} x \sim y} \subset M
+\]
+und nenne $\qty[x]$ die \emph{Äquivalenzklasse} von $x$
+(in $M$ bezüglich $\sim$).
+
+Setze
+\[
+  M_{/ \sim} \coloneqq \qty\Big{\qty[x] {\Big |} x \in M}
+  \subset \mathcal{P}(M)
+\]
+
+\textbf{Beachte:} Es kann $x, y \in M$ existieren mit $x \ne y$ und
+$\qty[x] = \qty[y]$.
+
+\begin{lemma}
+  Sei $\sim$ eine Äquivalenzrelation auf $M$.
+  Dann:
+  \begin{enumerate}[(a)]
+  \item $x \in \qty[x]$
+  \item $\qty[x] = \qty[y] \iff x \sim y$
+  \item $a \sim b$ für alle $a, b \in [x]$
+  \item $M = \underset{x \in M}\bigcup [x]$
+  \item $\qty[x] = \qty[y]$ oder $\qty[x] \cap \qty[y] = \emptyset$
+  \end{enumerate}
+\end{lemma}
+
+\underline{Beweis:} Siehe das Hausaufgabenblatt 03 Analysis.
+
+\textbf{Def.} Sei $M$ eine Menge und $P \in \mathcal{P}(M)$.
+Setze $\bigcup P \coloneqq \qty\Big{ x \in M {\Big |}
+  \exists N \in P \colon x \in N}$.
+Die Menge $P$ wird eine Partition genannt, falls
+\begin{itemize}
+\item $\bigcup P = M$
+\item $\forall N_1, N_2 \in P \colon N_1 = N_2 \lor N_1 \cap N_2 = \emptyset$
+\item $\emptyset \notin P$
+\end{itemize}
+
+\underline{Beispiel:} $M = \qty{1, 2, 3, 4}$.
+Dann sind zum Beispiel die folgenden Mengen Partitionen von $M$:
+\begin{multicols}{2}
+  \begin{itemize}
+  \item $\qty\big{\qty{1, 2}, \qty{3, 4}}$
+  \item $\qty\big{\qty{1, 3, 4}, \qty{2}}$
+  \item $\qty\big{\qty{1, 2}, \qty{3}, \qty{4}}$
+  \item $\qty\big{\qty{1, 2, 3, 4}}$
+  \end{itemize}
+\end{multicols}
+
+Ist $M$ eine nichtleere Menge, so sind immer $\qty{M}$ und
+$\qty\big{\qty[x] {\big |} x \in M}$ Partitionen.
+
+Ist $\sim$ eine Äquivalenzrelation auf $M$, so ist $M_{/\sim}$
+immer eine Partition.
+
+Die leere Menge ist die einzige Partition der leeren Menge.
+
+\begin{lemma}
+  Sei $P$ eine Partition auf $M$ und
+  \[
+    R = \qty\Big{ \qty(x, y) {\Big |} \exists N \in P \colon x, y \in N}
+  \]
+  Dann ist $R$ eine Äquivalenzrelation auf $M$ und $M_{/R} = P$.
+\end{lemma}
+
+\underline{Beweis:} Siehe das Hausaufgabenblatt 03 Analysis.
+
+\paragraph{Abbildungen}:
+Seien $M, N$ Mengen.
+Eine Abbildung (oder Funktion) von $M$ nach $N$ ist eine Zuordnung
+$f \colon M \to N$, die jedem Element $m \in M$ genau ein Element
+$n \in N$ zuordnet.
+Manchmal schreibt man $m \mapsto n$ um auszudrücken, dass $n = f(m)$ gilt.
+Formal wird eine Abbildung $f \colon M \to N$ als eine Relation
+$f \subseteq M \times M$ definiert, so dass für jedes Element $m \in M$
+genau ein $n \in N$ existiert mit $\qty(m, n) \in f$.
+Dann ist $f(m)$ das eindeutige Element von $N$ mit $\qty(m, f(m)) \in f$.
+
+Von nun an sei $f \colon M \to N$ immer eine Abbildung.
+Für $T \subseteq M$ setze $f(T) = \qty\Big{f(t) {\Big |} t \in T}$.
+
+\begin{center}
+  \begin{tikzpicture}
+    \node[
+      draw,
+      ellipse,
+      minimum height = 3.5cm,
+      minimum width = 1.75cm,
+      ] at (0, 0) (M) {};
+    \node[
+      draw,
+      ellipse,
+      minimum height = 3.5cm,
+      minimum width = 1.75cm,
+    ] at (4, 0) (N) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$m_1$,
+    ] at (-0.25, 0.5) (m1) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=left:$m_2$,
+    ] at (0.3, 0.2) (m2) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$m_3$,
+    ] at (-0.25, -0.6) (m3) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$m_4$,
+    ] at (0.3, -1.2) (m4) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$n_1$,
+    ] at (3.75, 0.5) (n1) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$n_2$,
+    ] at (4.3, 0.2) (n2) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$n_3$,
+    ] at (4, -0.7) (n3) {};
+    \node[
+      circle,
+      draw,
+      inner sep=4.5mm
+    ] at (0, 0.55) (T) {};
+    \node[
+      circle,
+      draw,
+      inner sep=4.5mm
+    ] at (4, 0.55) (fT) {};
+    \node[
+      below left = 0cm of M,
+    ] {$M$};
+    \node[
+      below right = 0cm of N,
+    ] {$N$};
+    \node[
+      above left = -0.2cm  and 0.2 of T,
+    ] {$T$};
+    \node[
+      above right = -0.2cm  and 0.2 of fT,
+    ] {$f(T)$};
+    \draw[->] (m1) -- (n2);
+    \draw[->] (m2) -- (n1);
+    \draw[->] (m3) -- (n3);
+    \draw[->] (m4) -- (n3);
+  \end{tikzpicture}
+\end{center}
+
+Bild von $f = \text{Bild}(f) = f(M)$.
+
+Bild von $T$ unter $f = f(T)$.
+
+Für $x \in M$ nenne $f(x)$ das Bild von $x$ unter $f$ und $x$ ein Urbild von
+$f(x)$ unter $f$.
+
+Ist $S \subseteq N$, so nenne
+$f^{-1}(S) \coloneqq \qty\Big{x \in M {\Big |} f(x) \in S}$ das Urbild von $S$
+unter $f$.
+
+\begin{center}
+  \begin{tikzpicture}
+    \node[
+      draw,
+      ellipse,
+      minimum height = 3.5cm,
+      minimum width = 1.75cm,
+      ] at (0, 0) (M) {};
+    \node[
+      draw,
+      ellipse,
+      minimum height = 3.5cm,
+      minimum width = 1.75cm,
+    ] at (4, 0) (N) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$m_1$,
+    ] at (-0.25, 0.5) (m1) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=left:$m_2$,
+    ] at (0.3, 0.2) (m2) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=below:$m_3$,
+    ] at (0.25, 1) (m3) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$m_4$,
+    ] at (-0.25, -0.6) (m4) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$m_5$,
+    ] at (0.3, -1.2) (m5) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$n_1$,
+    ] at (3.75, 0.5) (n1) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$n_2$,
+    ] at (4.3, 0.2) (n2) {};
+    \node[
+      circle,
+      fill,
+      inner sep=1pt,
+      label=$n_3$,
+    ] at (4, -0.7) (n3) {};
+    \node[
+      circle,
+      draw,
+      inner sep=4.5mm
+    ] at (0, 0.55) (fS) {};
+    \node[
+      circle,
+      draw,
+      inner sep=4.5mm
+    ] at (4, 0.55) (S) {};
+    \node[
+      below left = 0cm of M,
+    ] {$M$};
+    \node[
+      below right = 0cm of N,
+    ] {$N$};
+    \node[
+      above left = -0.2cm  and 0.2 of fS,
+    ] {$f^{-1}(S)$};
+    \node[
+      above right = -0.2cm  and 0.2 of S,
+    ] {$S$};
+    \draw[->] (m1) -- (n1);
+    \draw[->] (m2) -- (n2);
+    \draw[->] (m3) -- (n1);
+    \draw[->] (m4) -- (n3);
+    \draw[->] (m5) -- (n3);
+  \end{tikzpicture}
+\end{center}
+
+Sind $f \colon M \to N$ und $g \colon N \to L$ Abbildungen, so ist $g \circ f$
+die Abbildung $g \circ f \colon M \to L$ mit $(g \circ f)(x) = g\qty\big(f(x))$
+für alle $x \in M$.
+
+Ist $f'$ eine weitere Abbildung, so heißen $f$ und $f'$ gleich, falls
+$f(x) = f'(x) \; \forall \; x \in M$.
+
+\newpage
+\textbf{Def,:} Eine Abbildung $f \colon M \to N$ heißt
+\begin{itemize}
+\item[\underline{surjektiv:}] falls $\text{Bild}(f) = N$, dass heißt für
+  jedes $n \in N$ existiert ein $m \in M$ mit $f(m) = n$.
+
+\item[\underline{injektiv:}] falls jedes Element von $N$ höchstens ein Urbild
+  hat, dass heißt \\
+  $\forall x, y \in M \colon f(x) = f(y) \iff x = y$.
+
+\item[\underline{bijektiv:}] falls die Abbildung injektiv und surjektiv ist.
+\end{itemize}
+
+Für $T \subseteq M$ und $f \colon M \to N$ definiert
+$\overset{\makebox[0pt]{$f$ eingeschränkt auf $T$}}{\overbrace{f_{|T}}}$
+durch $f_{|T} \colon T \to N$ mit $f_{|T}(t) = f(t)$ für alle $t \in T$ die
+Einschränkung von $f$ auf $T$.
+
+\begin{lemma}
+  Seien $M, N, L$ Mengen und $f \colon M \to N, g \colon N \to L$ Abbildungen.
+  Dann gilt
+  \begin{enumerate}[(a)]
+  \item Sind $f$ und $g$ injektiv, so ist $g \circ f$ injektiv
+  \item Sind $f$ und $g$ surjektiv, so ist $g \circ f$ surjektiv
+  \item Sind $f$ und $g$ bijektiv, so ist $g \circ f$ bijektiv
+  \end{enumerate}
+\end{lemma}
+
+\underline{Beweis:}
+\begin{enumerate}[(a)]
+\item Seien $f, g$ injektiv: Sei $x, y \in M$ mit
+  $(g \circ f)(x) = (g \circ f)(y)$.
+
+  Zu zeigen: $x = y$
+
+  Es gilt $g(f(x)) = g(f(y))$.
+  Weil $g$ injektiv ist, folgt $f(x) = f(y)$.
+  Weil $f$ injektiv ist, folgt $x = y$.
+
+\item Seien $f, g$ surjektiv und $l \in L$.
+  Weil $g$ surjektiv ist, existiert $n \in N$ mit
+  $g(n) = l$.
+  Weil $f$ surjektiv ist, existiert $m \in M$ mit
+  $f(m) = n$.
+
+  $\Rightarrow g(f(m)) = l$
+
+  $\Rightarrow (g \circ f)(m) = l$
+
+\item folgt aus (a) und (b)
+\end{enumerate}
+
 \end{document}
