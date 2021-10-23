@@ -69,4 +69,58 @@ Sei nun $R$
   $\Rightarrow$ jedes Element von $a$ ist in $b$ und somit auch in $c$ enthalten.
 \end{enumerate}
 
+\subparagraph{12. Es seien $M$ eine nichtleere Menge}, $Q \subset M \times M$ eine
+Äquivalenzrelation auf $M$ und für $x \in M$ bezeichne $\qty[x]$ die
+Äquivalenzklasse von $x$ bezüglich $Q$.
+Zeigen Sie:
+\begin{enumerate}[(a)]
+\item Für alle $x \in M$ gilt $x \in \qty[x]$
+\item Für alle $x, y \in M$ gilt
+  \[
+    (x, y) \in Q \iff [x] = [y]
+  \]
+\item Für alle $x, y \in M$ gilt entweder $\qty[x] = \qty[y]$ oder
+  $\qty[x] \cap \qty[y] = \emptyset$.
+\end{enumerate}
+
+\subparagraph{Lsg.} Die Menge $[x] = \qty\big{y \in M {\big |} (x, y) \in Q}$
+heißt \emph{Äquivalenzklasse} von $x \in M$ bezüglich $Q$.
+\begin{enumerate}[(a)]
+\item $Q$ ist eine Äquivalenzrelation.
+  Also gilt für alle $x \in M \colon (x, x) \in Q$.
+  Somit gilt auch $x \in \qty[x]$.
+
+\newpage
+\item Sei $(x, y) \in Q$.
+  \begin{itemize}
+  \item[``$\Rightarrow$'']
+    Aus der Definition der Äquivalenzklasse folgt
+    $y \in \qty[x]$.
+
+    Für jedes $a \in \qty[x]$ gilt $\qty(x, a) \in Q$.
+    Mit $(y, x) \in Q$ folgt mit der Transitivität der Äquivalenzrelation
+    $\qty(y, a) \in Q \Rightarrow a \in \qty[y] \Rightarrow \qty[x] \subset \qty[y]$
+
+    Für jedes $b \in \qty[y]$ gilt $\qty(y, b) \in Q$.
+    Mit $\qty(x, y) \in Q$ folgt mit der Transitivität der Äquivalenzrelation
+    $\qty(x, b) \in Q \Rightarrow b \in \qty[x] \Rightarrow \qty[y] \subset \qty[x]$
+
+  \item[``$\Leftarrow$''] Sei $\qty[x] = \qty[y]$.
+    Aus (a) folgt $y\in \qty[x]$.
+    Nach Definition der Äquivalenzklasse folgt $\qty(x, y) \in Q$.
+
+  \end{itemize}
+\item Sei $\qty[x] = \qty[y]$.
+  Aus (a) folgt $\qty{x, y} \subset \qty[x] \cap \qty[y]$.
+
+  Sei nun $\qty[x] \ne \qty[y]$.
+  Angenommen es existiert $a \in \qty[x] \cap \qty[y]$, dann
+  folgt $(x, a), (y, a) \in Q$.
+  Mit der Symmetrie und Transitivität der Äquivalenzrelation folgt
+  $(x, y) \in Q$.
+  Aus (b) folgt $\qty[x] = \qty[y]$ - ein Widerspruch.
+
+  $\Rightarrow \qty[x] \cap \qty[y] = \emptyset \iff \qty[x] \ne \qty[y]$
+\end{enumerate}
+
 \end{document}
