@@ -102,4 +102,52 @@
   Damit ist $f$ auch nicht surjektiv und nicht bijektiv.
 \end{enumerate}
 
+\newpage
+\paragraph{17. Beweisen Sie,} dass $\mathbb{N}$ und
+$2\mathbb{N} \coloneqq \qty\big{ 2n {\big |} n \in \mathbb{N}}$ bezüglich der
+Addition isomorph sind.
+Zeigen Sie außerdem, dass $\mathbb{N}$ und $2\mathbb{N}$ bezüglich der
+Multiplikation nicht isomorph sind.
+
+\subparagraph{Lsg.} Ein \emph{Isomorphismus} einer Struktur ist eine
+bijektive Abbildung zwischen zwei Mengen, welche die auf beiden Mengen
+vorhandene Struktur erhält.
+
+Die Struktur eines Rechenoperators $*$ zwischen zwei Mengen $M$ und $N$
+bleibt für eine Abbildung $I \colon M \to N$ erhalten, falls
+\begin{itemize}
+\item $*_M \colon M \times M \to M$ definiert ist (Operation auf der ersten Menge)
+\item $*_N \colon N \times N \to N$ definiert ist (Operation auf der zweiten Menge)
+\item $\forall x, y \in M \colon I(x \; *_M \; y) = I(x) \; *_N \; I(y)$ (Strukturerhaltung)
+\end{itemize}
+
+Für diese Abbildung heißen die Mengen \emph{isomorph} bezüglich des Operators. \\
+
+\noindent
+\underline{Gegeben:}
+\[
+  I \colon \mathbb{N} \to 2\mathbb{N}, n \mapsto 2n
+\]
+\underline{Zu zeigen:}
+\[
+  \forall a, b \in \mathbb{N} \colon I(a + b) = I(a) + I(b)
+\]
+
+Seien $a, b \in \mathbb{N}$ beliebig.
+\begin{flalign*}
+  I(a + b) \overset{\text{Def. von $I$}}&= 2(a + b) & \\
+  \overset{\text{Distributivität}}&= 2a + 2b \\
+  \overset{\text{Def. von $I$}}&= I(a) + I(b)
+\end{flalign*}
+Da $a, b$ beliebig sind $\mathbb{N}$ und $2\mathbb{N}$ für die Addition
+isomorph. \\
+
+\noindent
+Angenommen $\mathbb{N}$ und $2\mathbb{N}$ wären für die Multiplikation isomorph.
+Dann müsste für alle $a, b \in \mathbb{N}$ gelten: $I(a \cdot b) = I(a) \cdot I(b)$
+\[
+  I(a \cdot b) = 2(a \cdot b) \ne 2a \cdot 2b = I(a) \cdot I(b)
+\]
+Das ist ein Widerspruch, somit sind $N$ und $2\mathbb{N}$ für die Multiplikation
+nicht isomorph.
 \end{document}
