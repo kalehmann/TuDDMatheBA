@@ -1,0 +1,86 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann (Übungsgruppe 1)\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 04\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{19. Seien $X, Y, Z$ Mengen} und $f \colon X \to Y$ sowie
+$g \colon Y \to Z$ Abbildungen.
+Im Folgenden betrachten wir ihre Verknüpfungen $g \circ f \colon X \to Z$.
+Beweisen Sie folgende Aussagen:
+\begin{enumerate}[(a)]
+\item Sind $f$ und $g$ injektiv, so ist $g \circ f$ injektiv.
+
+  \subparagraph{Lsg.} Seien $a, b \in X$ so gewählt, dass
+  $(g \circ f)(a) = (g \circ f)(b)$.
+  Die Verknüpfung $(g \circ f)$ ist injektiv, wenn nun $x = y$ folgt.
+
+  $(g \circ f)(x) = g(f(x)) = g(f(y)) = (g \circ f)(y)$.
+  Da $g$ injektiv ist, folgt $f(x) = f(y)$.
+  Da $f$ ebenfalls injektiv ist, folgt $x = y$.
+
+  $\Rightarrow g \circ f$ ist injektiv.
+
+\item Sind $f$ und $g$ surjektiv, so ist $g \circ f$ surjektiv.
+
+  \subparagraph{Lsg.} Sei $z \in Z$.
+  Da $g$ surjektiv ist, existiert $y \in Y$ mit $g(y) = z$.
+  Da $f$ ebenfalls surjektiv ist, existiert $x \in X$
+  $f(x) = y$ und $g(f(x)) = (g \circ f)(x) = z$.
+
+  $\Rightarrow g \circ f$ ist surjektiv.
+
+\item Sind $g \circ f$ injektiv, so ist $f$ injektiv.
+
+  \subparagraph{Lsg.} Angenommen es existieren $a \ne b \in X$ mit
+  $f(a) = f(b)$.
+  Daraus folgt $g(f(a)) = (g \circ f)(a) = (g \circ f)(b) = g(f(b))$
+  - ein Widerspruch zu ``$g \circ f$ ist injektiv''.
+
+  $\Rightarrow$ es existieren keine $a \ne b \in X$ mit $f(a) = f(b)$
+
+  $\Rightarrow f$ ist injektiv.
+
+\item Sind $g \circ f$ surjektiv, so ist $g$ surjektiv.
+
+  \subparagraph{Lsg.} Da $g \circ f$ surjektiv ist, existiert für jedes
+  $z \in Z$ ein $x \in X$ mit $f(x) = y \in Y$ und $g(y) = g(f(x)) = z$.
+
+  Angenommen $g$ wäre nicht surjektiv,
+  dann existiert ein $z \in Z$ mit $\forall y \in Y \colon g(y) \ne z$ - ein
+  Widerspruch.
+
+  $\Rightarrow g$ ist surjektiv.
+\end{enumerate}
+
+\end{document}
