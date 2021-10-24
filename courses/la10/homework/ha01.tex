@@ -129,4 +129,42 @@ von $M$ ist.
   \end{flalign*}
 \end{enumerate}
 
+\paragraph{Aufgabe 9}
+\begin{enumerate}[(i)]
+\item Drücken Sie die folgenden Aussagen in Worten aus.
+  \begin{enumerate}[1)]
+  \item $\forall \: n \in \mathbb{N} \colon n \leq n^2$
+
+    \subparagraph{Lsg.} Jede natürliche Zahl $n$ ist kleiner oder gleich ihrem
+    Quadrat.
+
+  \item $\forall \: n \in \mathbb{N} \: \exists \: q \in \mathbb{Q} \colon n < q < n + 1$
+
+    \subparagraph{Lsg.} Für jede natürliche Zahl $n$ existiert (mindestens) ein
+    rationale Zahl $q$, so dass $q$ zwischen $n$ und der auf $n$ folgenden
+    natürlichen Zahl liegt.
+  \end{enumerate}
+
+\item Entscheiden Sie jeweils, ob es sich um eine Tautologie handelt.
+  \begin{enumerate}[(a)]
+  \item $\qty\big(\qty(A \Rightarrow B) \land \qty(\neg B)) \Rightarrow \neg A$
+  \item $\qty\big(\qty(A \Rightarrow B) \land \qty(\neg A)) \Rightarrow \neg B$
+  \end{enumerate}
+
+  \subparagraph{Lsg.} durch Wahrheitstabelle:
+  \begin{center}
+    \begin{tabular}{c | c | c | c | c | c | c}
+      $A$ & $B$ & $A \Rightarrow B$ &$\neg A$ & $\neg B$ &
+        $\qty\big((A \Rightarrow B) \land (\neg B)) \Rightarrow \neg A$ &
+        $\qty\big((A \Rightarrow B) \land (\neg A)) \Rightarrow \neg B$ \\
+      \hline
+      W & W & W & F & F & W & W \\
+      W & F & F & F & W & W & W \\
+      F & W & W & W & F & W & F \\
+      F & F & W & W & W & W & W
+    \end{tabular}
+  \end{center}
+  $\Rightarrow$ (a) ist eine Tautologie und (b) ist \textbf{keine} Tautologie.
+\end{enumerate}
+
 \end{document}
