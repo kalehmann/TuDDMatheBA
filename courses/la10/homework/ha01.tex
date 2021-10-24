@@ -92,4 +92,41 @@ Menge in $M$ enthalten ist.
 Somit folgt aus $x$ ist in $M$ enthalten, dass die Menge $\qty{x}$ eine Teilmenge
 von $M$ ist.
 
+\paragraph{Aufgabe 8}
+\begin{enumerate}[(i)]
+\item Geben Sie Beispiele für Mengen $A, B, C, D$ an, für welche die Gleichung
+  \[
+    \qty(A \setminus B) \cup (C \setminus D) = (A \cup C) \setminus (B \cup D)
+  \]
+  verletzt ist.
+
+  \subparagraph{Lsg.}
+  \begin{itemize}
+  \item Sei $A = D = \qty{1, 2}$ und $B = C = \qty{3, 4}$.
+    Dann ist $\qty(A \setminus B) \cup (C \setminus D) = \qty{1, 2, 3, 4}$ und
+    $(A \cup C) \setminus (B \cup D) = \emptyset$.
+
+  \item Sei $A = \qty{1, 2}$, $B = \qty{3}$, $C =  \qty{2, 3}$ und $D = \qty{1}$.
+    Dann ist $\qty(A \setminus B) \cup (C \setminus D) = \qty{1, 2, 3}$ und
+    $(A \cup C) \setminus (B \cup D) = \qty{2}$.
+  \end{itemize}
+
+\newpage
+\item Beweisen sie, dass die Inklusion
+  $\qty\big(A \cup C) \setminus \qty\big(B \cup D)
+  \subseteq \qty(A \setminus B) \cup \qty(C \setminus D)$ für alle Mengen
+  $A, B, C, D$ richtig ist.
+
+  \subparagraph{Lsg.} $x \in A \setminus B \iff x \in A \land \neg (x \in B)$
+  \begin{flalign*}
+    x \in (A \cup B) \setminus (B \cup D)
+    &\iff x \in (A \cup C) \land \neg (x \in B \cup D) & \\
+    &\iff (x \in A \lor x \in C) \land \neg (x \in B \lor x \in D) \\
+    &\iff (x \in A \land \neg (x \in B \lor x \in D)) \lor (x \in C \land \neg (x \in B \lor x \in D)) \\
+    \overset{\text{Abschwächung}}&\Rightarrow (x \in A \land \neg (x \in B)) \lor (x \in C \land \neg (x \in D)) \\
+    &\iff x \in (A \setminus B) \lor x \in (C \setminus D) \\
+    &\iff x \in (A \setminus B) \cup (C \setminus D)
+  \end{flalign*}
+\end{enumerate}
+
 \end{document}
