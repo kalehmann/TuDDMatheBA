@@ -23,7 +23,6 @@ OUTPUT_FILES = \
 	$(PDF_FILES) \
 	$(OUTPUT_DIRECTORY)/.htaccess \
 	$(OUTPUT_DIRECTORY)/courses/.htaccess \
-	$(OUTPUT_DIRECTORY)/schedules/.htaccess
 
 all: $(OUTPUT_FILES)
 
