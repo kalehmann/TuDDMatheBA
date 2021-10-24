@@ -63,4 +63,33 @@ $A \cap B = \qty{10}$, $B \cap C = \qty{8, 10}$.
   }
 \]
 
+\paragraph{Aufgabe 7} Sei $M$ eine Menge.
+Von den folgenden Aussagen beschreiben einige denselben Sachverhalt.
+Geben Sie mit kurzer Begründung an, welche das sind.
+\begin{multicols}{3}
+  \begin{enumerate}[(1)]
+  \item $\qty{x} \in M$
+  \item $\qty{x} \subseteq M$
+  \item $x \in M$
+  \item $M \setminus \qty{x} \ne \emptyset$
+  \item $\qty{x} \setminus M \ne \emptyset$
+  \item $\qty{x} \cap M \ne \emptyset$
+  \end{enumerate}
+\end{multicols}
+
+\subparagraph{Lsg.} Die Aussagen (2), (3) und (6) beschreiben denselben
+Sachverhalt.
+\[
+  \qty{x} \subseteq M \iff x \in M \iff \qty{x} \cap M \ne \emptyset
+\]
+
+Wenn $x$ in $M$ enthalten ist, dann enthält die Schnittmenge von $M$ und
+jeder Menge, die $x$ enthält mindestens das Element $x$ und ist somit nicht
+leer.
+
+Außerdem heißt eine Menge eine Teilmenge von $M$, falls jedes Element aus dieser
+Menge in $M$ enthalten ist.
+Somit folgt aus $x$ ist in $M$ enthalten, dass die Menge $\qty{x}$ eine Teilmenge
+von $M$ ist.
+
 \end{document}
