@@ -83,4 +83,141 @@ Beweisen Sie folgende Aussagen:
   $\Rightarrow g$ ist surjektiv.
 \end{enumerate}
 
+\newpage
+\paragraph{20. Beweisen Sie,} dass Addition und Multiplikation auf den
+natürlichen Zahlen kommutativ sind, dass also für alle $m, n \in \mathbb{N}$
+gilt:
+\begin{enumerate}[(a)]
+\item $m + 0 = 0 + m$ und $m + 1$ und $1 + m$
+
+  \subparagraph{Lsg.} durch vollständig Induktion nach $m$. \\
+  \begin{minipage}[t]{.45\textwidth}
+    \underline{Behauptung:} $m + 0 = 0 + m$ \\
+    \underline{Induktionsanfang:} $0 + 0 = 0 + 0$ \\
+    \underline{Induktionsschritt:}  Sei $m + 0 = 0 + m$ für
+    ein beliebiges $m \in \mathbb{N}$ wahr.
+    \begin{flalign*}
+      v(m) + 0 &\overset{\text{Def. Addition}}= v(m) = v(m + 0) \\
+      \overset{\text{Ind. Vor.}}&= v(0 + m) \\
+      &= 0 + v(m)
+    \end{flalign*}
+
+    $\Rightarrow$ Nach vollständiger Induktion ist $m + 0 = 0 + m$
+  \end{minipage}
+  \hfill
+  \vrule
+  \hfill
+  \begin{minipage}[t]{.45\textwidth}
+    \underline{Behauptung:} $m + 1 = 1 + m$ \\
+    \underline{Induktionsanfang:} $0 + 1 = 1 + 0$ wurde bereits auf der linken
+    Seite gezeigt. \\
+    \underline{Induktionsschritt:}  Sei $m + 1 = 1 + m$ für
+    ein beliebiges $m \in \mathbb{N}$ wahr.
+    \begin{flalign*}
+      v(m) + 1 \overset{v(m) = m + 1}&= (m + 1) + 1 \\
+      \overset{\text{Ind. Vor.}}&= (1 + m) + 1 \\
+      \overset{\text{Assozitivität}}&= 1 + (m + 1) \\
+      &= 1 + v(m)
+    \end{flalign*}
+
+    $\Rightarrow$ Nach vollständiger Induktion ist \\
+    $m + 1 = 1 + m$
+  \end{minipage}
+
+\item $m + n = n + m$
+
+  \subparagraph{Lsg.} durch vollständige Induktion nach $m$:
+  Sei $n \in \mathbb{N}$ beliebig.
+
+  \underline{Behauptung:} $m + n = n + m$ \\
+  \underline{Induktionsanfang:} $0 + n = n + 0$ und $1 + n = n + 1$
+  sind nach (a) wahr. \\
+  \underline{Induktionsschritt:} Sei $m + n = n + m$ für ein beliebiges
+  $m \in \mathbb{N}$ wahr.
+  \begin{flalign*}
+    v(m) + n &= (1 + m) + n \\
+    \overset{\text{(a)}}&= (m + 1) + n \\
+    \overset{\text{Assoziativität}}&= m + (1 + n) \\
+    \overset{\text{(a)}}&= m + (n + 1) \\
+    \overset{\text{Assoziativität}}&= (m + n) + 1 \\
+    \overset{\text{Ind. Vor.}}&= (n + m) + 1 \\
+    \overset{\text{Assoziativität}}&= n + (m + 1) \\
+    &= n + v(m)
+  \end{flalign*}
+
+  $\Rightarrow$ Nach vollständiger Induktion ist \\
+  $m + n = n + m$
+
+\newpage
+\item $n \cdot m = m \cdot n$
+
+  \subparagraph{Lsg.} Analog der Addition: \\
+  \begin{minipage}[t]{.45\textwidth}
+    \underline{Behauptung:} $n \cdot 0 = 0 \cdot n$ \\
+    \underline{Induktionsanfang:} $0 \cdot 0 = 0 \cdot 0$ \\
+    \underline{Induktionsschritt:}  Sei $n \cdot 0 = 0 \cdot n$ für
+    ein beliebiges $n \in \mathbb{N}$ wahr.
+    \begin{flalign*}
+      v(n) \cdot 0 &= 0 = 0 + 0 \\
+      &= n \cdot 0 + 0 \\
+      \overset{\text{Ind. Vor.}}&= 0 \cdot n + 0 \\
+      &= 0 \cdot v(n)
+    \end{flalign*}
+
+    $\Rightarrow$ Nach vollständiger Induktion ist $n \cdot 0 = 0 \cdot n$
+  \end{minipage}
+  \hfill
+  \vrule
+  \hfill
+  \begin{minipage}[t]{.45\textwidth}
+    \underline{Behauptung:} $n \cdot 1 = n = 1 \cdot n$ \\
+    \underline{Induktionsanfang:} $0 \cdot 1 = 0 = 1 \cdot 0$
+    nach der Definition der Multiplikation und der linken Seite. \\
+    \underline{Induktionsschritt:}  Sei $n \cdot 1 = n = 1 \cdot n$ für
+    ein beliebiges $n \in \mathbb{N}$ wahr.
+    \begin{flalign*}
+      1 \cdot v(n) &= 1 \cdot n + 1 \\
+      \overset{\text{Ind. Vor.}}&= v(n) \\
+      &= v(0) \cdot 0 + v(n) \\
+      &= v(n) \cdot v(0) = v(n) \cdot 1
+    \end{flalign*}
+
+    $\Rightarrow$ Nach vollständiger Induktion ist \\
+    $n \cdot 1 = n = 1 \cdot n$
+  \end{minipage}
+
+  Weiterhin ist zu zeigen, dass $v(m) \cdot n = m \cdot n + n$.
+  Sei $m \in \mathbb{N}$ beliebig:
+
+  \underline{Induktionsanfang:} $v(m) \cdot 0 = 0 = m \cdot 0 + 0$
+  Auch $v(m) \cdot 1 = v(m) = m + 1 = m \cdot 1 + 1$ ist wahr.
+
+  \underline{Induktionsschritt:} Sei $v(m) \cdot n = m \cdot n + n$ für ein
+  beliebiges $n \in \mathbb{N}$ wahr.
+  \begin{flalign*}
+    v(m) \cdot v(n) \overset{\text{Def. Multiplikation}}&= v(m) \cdot n + v(m) && \\
+    \overset{\text{Ind. Vor.}}&= m \cdot n + n + v(m) \\
+    \overset{n + (m + 1) = m + (n + 1)}&= m \cdot n + m + v(n) \\
+    \overset{\text{Def. Multiplikation}}&= m \cdot v(n) + v(n)
+  \end{flalign*}
+  $\Rightarrow$ Nach der vollständigen Induktion ist
+  $v(m) \cdot n = m \cdot n + n$. \\
+
+  Schließlich ist die Kommutativität der Multiplikation zu zeigen:
+
+  \underline{Behauptung}: $m \cdot n = n \cdot m$
+
+  \underline{Induktionsanfang:} Sei $m \in \mathbb{N}$ beliebig.
+  Wie bereits gezeigt sind $m \cdot 0 = 0 \cdot m$ und $m \cdot 1 = 1 \cdot m$
+  wahr.
+
+  \underline{Induktionsschritt:}
+  \begin{flalign*}
+    m \cdot v(n) \overset{\text{Def. Multiplikation}}&= m \cdot n + m \\
+    \overset{\text{Ind. Vor.}}&= n \cdot m + m \\
+    &= v(n) \cdot m
+  \end{flalign*}
+  $\Rightarrow$ nach der vollständigen Induktion folgt die Behauptung.
+\end{enumerate}
+
 \end{document}
