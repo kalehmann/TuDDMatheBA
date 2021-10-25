@@ -1,0 +1,99 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 02\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 1}
+\begin{enumerate}[(a)]
+\item Sei $M$ die Menge der Einwohner eines Landes.
+  Wir definieren Relationen $\sim_1$, $\sim_2$ und $\sim_3$ auf $M$ durch
+  \begin{enumerate}[1)]
+  \item $x \sim_1 y \iff x$ und $y$ haben ihren ersten Wohnsitz in der selben
+    Stadt.
+
+  \item $x \sim_2 y \iff x$ ist die Mutter von $y$.
+  \item $x \sim_3 y \iff x$ und $y$ haben einen Altersunterschied von maximal
+    $5$ Jahren.
+  \end{enumerate}
+  Entscheiden Sie für jede der Relationen, welche der Eigenschaften ``reflexiv'',
+  ``symmetrisch'' und ``transitiv'' sie hat.
+
+  \subparagraph{Lsg.}
+  \begin{enumerate}[1)]
+  \item Relation $\sim_1$ ist reflexiv, symmetrisch und transitiv.
+  \item Relation $\sim_2$ ist nicht reflexiv, nicht symmetrisch und nicht
+    transitiv.
+
+  \item Relation $\sim_3$ ist reflexiv, symmetrisch, allerdings nicht transitiv.
+  \end{enumerate}
+
+\item Sei $\sim$ eine Relation auf einer Menge $M$ und $x \in M$, so schreibe
+  $A(x)$ für die Menge aller $y \in M$ für welche $x \sim y$ \textbf{nicht} gilt.
+
+  Welche der folgenden 4 Aussagen für eine Äquivalenzrelation $\sim$ auf einer
+  Menge $M$ sind immer richtig?
+  \begin{enumerate}[(i)]
+  \item Wenn $\sim$ nur zwei Äquivalenzklassen hat, so ist $A(x)$ für jedes
+    $x \in M$ eine Äquivalenzklasse.
+
+  \item Wenn es ein $x \in M$ gibt, so dass $A(x)$ eine Äquivalenzklasse ist,
+    so hat $\sim$ nur zwei Äquivalenzklassen.
+
+  \item Für jedes $x \in M$ ist die Menge $A(x)$ eine Äquivalenzklasse von $\sim$.
+  \item Für alle $a_1, a_2, a_3 \in M$ gilt: Wenn nicht $a_1 \sim a_2$ und nicht
+    $a_2 \sim a_3$, dann gilt auch nicht $a_1 \sim a_3$.
+  \end{enumerate}
+
+  \subparagraph{Lsg.}
+  \begin{enumerate}[(i)]
+  \item Angenommen $\sim$ hat genau zwei Äquivalenzklassen $\qty[a]$ und
+    $\qty[b]$, dann gilt für jedes $x \in M$ entweder $x \sim a$ oder
+    $x \sim b$.
+    Somit ist für jedes $x \in M \colon A(x) = \qty[a]$ oder $A(x) = \qty[b]$.
+
+  \item Wenn es ein $x \in M$ gibt, für das $A(x)$ eine Äquivalenzklasse ist,
+    dann ist $M \setminus A(x) = \qty{y \in M {\big |} x \sim y}$ die zweite
+    Äquivalenzklasse.
+
+  \item Sei $M = \mathbb{N}$ und $x \sim y \iff x \mod 3 = y \mod 3$.
+    Dann sind $4, 5 \in A(3)$.
+    Da $1 = 4 \mod 3 \ne 5 \mod 3 = 2$ ist $A(3)$ keine Äquivalenzklasse von
+    $\sim$.
+  \item Sei $a_1 = a_3$ und $\neg (a_1 \sim a_2)$.
+    Es folgen aus der Reflexivität $a_1 \sim a_3$ und aus der Symmetrie
+    $\neg(a_2 \sim a_3)$.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}
