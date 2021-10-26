@@ -96,4 +96,62 @@
   \end{enumerate}
 \end{enumerate}
 
+\newpage
+\paragraph{Aufgabe 2} Geben Sie mit kurzer Begründung an, welche der folgenden
+Vorschriften eine Äquivalenzrelation auf der Menge $\mathbb{N}$ definieren.
+\begin{enumerate}[(i)]
+\item $x \sim y \iff x, y$ gerade
+\item $x \sim y \iff x - y$ gerade
+\item $x \sim y \iff x + y$ gerade
+\item $x \sim y \iff x - y$ ungerade
+\item $x \sim y \iff x + y$ ungerade
+\end{enumerate}
+
+\subparagraph{Lsg.}
+\begin{enumerate}[(i)]
+\item Sei $x = 3 \in \mathbb{N}$.
+  Dann gilt $x \sim x$ \textbf{nicht}.
+
+  $\Rightarrow$ keine Äquivalenzrelation
+
+\item Seien $x, y, z \in \mathbb{N}$ beliebig.
+  \begin{itemize}
+  \item $x - x = 0$ ist immer gerade $\Rightarrow$ reflexiv
+  \item $x - y$ ist gerade $\overset{\text{Kommutativität}}\Rightarrow y - x$
+    ist gerade $\Rightarrow$ symmetrisch
+
+  \item Sei $x \sim y$ und $y \sim z$.
+    Dann sind entweder $x, y, z$ alle gerade oder $x, y, z$ alle ungerade.
+    $\Rightarrow x + z$ ist gerade $\Rightarrow x \sim z \Rightarrow$ transitiv.
+  \end{itemize}
+
+  $\Rightarrow$ Äquivalenzrelation
+
+\item Seien $x, y, z \in \mathbb{N}$ beliebig.
+  \begin{itemize}
+  \item $x + x = 2x$ ist immer gerade $\Rightarrow$ reflexiv
+  \item $x + y$ ist gerade $\overset{\text{Kommutativität}}\Rightarrow y + x$
+    ist gerade $\Rightarrow$ symmetrisch
+
+  \item Sei $x \sim y$ und $y \sim z$.
+    Dann sind entweder $x, y, z$ alle gerade oder $x, y, z$ alle ungerade.
+    $\Rightarrow x + z$ ist gerade $\Rightarrow x \sim z \Rightarrow$ transitiv.
+  \end{itemize}
+
+  $\Rightarrow$ Äquivalenzrelation
+
+\item Sei $x = 5$, $y = 2$ und $z = 1$.
+  Dann gilt $x \sim y$ und $y \sim 1$.
+  Allerdings gilt nicht $x \sim z$ - ein Widerspruch zur Transitivität.
+
+  $\Rightarrow$ keine Äquivalenzrelation
+
+\item Sei $x = 3$.
+  Dann ist $x + x = 6$ gerade.
+  Somit gilt $x \sim x$ \textbf{nicht}.
+  Das ist ein Widerspruch zu der Reflexivität.
+
+  $\Rightarrow$ keine Äquivalenzrelation
+\end{enumerate}
+
 \end{document}
