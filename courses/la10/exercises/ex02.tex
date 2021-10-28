@@ -196,4 +196,57 @@ Geben Sie Beispiele für Relationen auf $M$ an, die
   des Vornamens von $x$ dem ersten Buchstaben des Nachnamens von $y$ gleicht.
 \end{enumerate}
 
+\newpage
+\paragraph{Aufgabe 4} Beweisen Sie
+\begin{enumerate}[a)]
+\item ``Die Relation
+$R \coloneqq \qty\big{\qty(m, n) {\big |} m, n \in \mathbb{Z},
+m \text{ teilt } n}$ ist eine reflexive und transitive Relation auf
+$\mathbb{Z}$.''
+
+\item ``Weiterhin ist
+$R_0 \coloneqq \qty\big{(m, n) {\big |} m, n \in \mathbb{N}_0,
+  m \text{ teilt } n}$ eine Ordnung auf $\mathbb{N}_0$''.
+\end{enumerate}
+
+\subparagraph{Lsg.}
+\begin{enumerate}[a)]
+\item Sei $m \in \mathbb{Z}$ beliebig.
+Es gilt $m$ teilt $m$, falls ein $z \in \mathbb{Z}$ existiert mit
+$m \cdot z = m$.
+
+$\Rightarrow R$ ist reflexiv mit $m \cdot 1 = m$. \\
+
+Seien $x, y, z \in \mathbb{Z}$ und $(x, y), (y, z) \in R$.
+
+  $\Rightarrow \exists z_1, z_2 \in \mathbb{Z} \colon y = x \cdot z_1 \land z = y \cdot z_2$
+
+  $\Rightarrow z = x \cdot z_1 \cdot z_2$
+
+  Für alle $z_1, z_2 \in \mathbb{Z}$ gilt $z_1 \cdot z_2 \in \mathbb{Z}$.
+
+  $\Rightarrow (x, z) \in R$
+
+  $\Rightarrow R$ ist \emph{transitiv}. \\
+
+  Allerdings ist $R$ nicht antisymmetrisch, da $x = -2, y = 2 \in \mathbb{Z}$
+  und $x \:|\: y$ sowie $y \:|\: x$, aber $x \ne y$.
+
+\item Eine Ordnung ist eine Relation, die reflexiv, antisymmetrisch und transitiv ist.
+  Die \emph{Reflexivität} und \emph{Transitivität} wurde schon in a) gezeigt.
+
+  \underline{Antisymmetrie:} Seien $x, y \in \mathbb{N}_0$ und $x \:|\: y$ sowie
+  $y \:|\: x$.
+  Dann existieren $z_1, z_2 \in \mathbb{Z}$ mit $x = z_1 \cdot y$ und
+  $y = z_2 \cdot x$.
+
+  $\Rightarrow y = z_1 \cdot z_2 \cdot y$
+
+  $\Rightarrow z_1 \cdot z_2 = 1 \Rightarrow z_1 = z_2 = 1$
+
+  $\Rightarrow x = y$
+
+  $\Rightarrow R_0$ ist antisymmetrisch.
+\end{enumerate}
+
 \end{document}
