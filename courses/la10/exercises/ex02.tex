@@ -154,4 +154,46 @@ Vorschriften eine Äquivalenzrelation auf der Menge $\mathbb{N}$ definieren.
   $\Rightarrow$ keine Äquivalenzrelation
 \end{enumerate}
 
+\newpage
+\paragraph{Aufgabe 3} Sei $M$ die Menge der Studenten einer Universität.
+Geben Sie Beispiele für Relationen auf $M$ an, die
+\begin{enumerate}[(1)]
+\item reflexiv, symmetrisch und transitiv sind.
+\item reflexiv sowie symmetrisch, allerdings nicht transitiv sind.
+\item nicht reflexiv, aber symmetrisch und transitiv sind.
+\item reflexiv, nicht symmetrisch und transitiv sind.
+\item nicht reflexiv, nicht symmetrisch und nicht transitiv sind.
+\end{enumerate}
+
+\subparagraph{Lsg.}
+\begin{enumerate}[(1)]
+\item
+  Seien $x, y \in M$ Studenten und $x, y$ genau dann wenn $x, y$ den selben
+  Studiengang besuchen.
+
+\item Seien $x,y \in M$ Studenten und $x \sim y$ genau dann wenn $x$ und $y$
+  den selben Vornamen haben oder $x$ und $y$ gleich alt sind.
+
+\item Seien $x,y \in M$ Studenten und $x \sim y$ genau dann wenn $1 = 2$.
+  Da aus falschen beliebiges folgt, ist diese Relation symmetrisch und transitiv.
+  Weiterhin gilt $x \sim x$ \textbf{nicht}, da $1 \ne 2$.
+
+\item Seien $x,y \in M$ Studenten und $x \sim y$ genau dann wenn die
+  Matrikelnummer von $y$ größer oder gleich der Matrikelnummer von $x$ ist.
+  \begin{itemize}
+  \item Es ist $x \sim x$, da die Matrikelnummer größer gleich sich selbst ist
+    (\emph{Reflexiv}).
+  \item Sei $x \ne y \in M$, $x \sim y$ und die Matrikelnummer von $y$ echt
+    größer der Matrikelnummer von $x$.
+    Somit gilt \textbf{nicht} $y \sim x$.
+
+    $\Rightarrow$ kein \emph{Symmetrie}.
+  \item Seien $x, y, z \in M$ Studenten.
+    Wenn $x \sim y$ und $y \sim z$ folgt auch $x \sim z$ (\emph{transitiv}).
+  \end{itemize}
+
+\item Seien $x, y$ Studenten und $x \sim y$ genau dann wenn der erste Buchstabe
+  des Vornamens von $x$ dem ersten Buchstaben des Nachnamens von $y$ gleicht.
+\end{enumerate}
+
 \end{document}
