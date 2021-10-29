@@ -249,4 +249,97 @@ Seien $x, y, z \in \mathbb{Z}$ und $(x, y), (y, z) \in R$.
   $\Rightarrow R_0$ ist antisymmetrisch.
 \end{enumerate}
 
+\paragraph{Aufgabe 5} Seien $R$ und $S$ Äquivalenzrelationen auf einer Menge $M$.
+\begin{enumerate}[(i)]
+\item Zeigen Sie, dass $R \cap S$ eine Äquivalenzrelation auf $M$ ist.
+\item Beschreiben Sie anhand eines geeigneten Beispiels, wie sich die
+  Äquivalenzklassen von $R$ bzw. $S$ durch die Durchschnittbildung verfeinern.
+\item Ist $R \cup S$ auch eine Äquivalenzrelation auf $M$?
+  Wenn ja, beweisen Sie es.
+  Wenn nein, geben Sie ein Gegenbeispiel an.
+\end{enumerate}
+
+\newpage
+\subparagraph{Lsg.}
+\begin{enumerate}[(i)]
+\item $x \in A \cap B \iff x \in A \land x \in B$.
+
+  \begin{itemize}
+  \item Sei nun $x \in M$.
+    Da $R$ und $S$ Äquivalenzrelationen sind, gilt $(x, x) \in R$ und
+    $(x, x) \in S$.
+
+    $\Rightarrow (x, x) \in R \cap S$.
+
+    $\Rightarrow R \cap S$ ist \emph{reflexiv}.
+
+  \item Seien $x, y \in M$.
+    Falls $(x, y) \in R$ und $(x, y) \in S$ folgt auch $(y, x) \in R$ und
+    $(y, x) \in S$, da $R, S$ Äquivalenzrelationen sind.
+
+    Es folgt $(x, y) \in R \cap S \Rightarrow (y, x) \in R \cap S$.
+
+    $\Rightarrow R \cap S$ ist \emph{symmetrisch}.
+
+  \item Seien $x, y, z \in M$.
+    Wenn $(x, y), (y, z) \in R \cap S$ gilt auch $(x, y), (y, z) \in R, S$ da
+    $R, S$ Äquivalenzrelationen sind.
+
+    $\Rightarrow (x, z) \in R, S$
+
+    $\Rightarrow (x, z) \in R \cap S$
+
+    $\Rightarrow R \cap S$ ist \emph{transitiv}.
+  \end{itemize}
+
+\item  Sei $M$ die Menge der Einwohner der Bundesrepublik sowie
+  \[
+    R \coloneqq \qty\big{(a, b) {\big |} a, b \in M \colon
+      a, b \text{ haben den selben Vornamen}}
+  \]
+  und
+  \[
+    S \coloneqq \qty\big{(a, b) {\big |} a, b \in M \colon
+    a, b \text{ haben den selben Nachnamen}}
+  \]
+  Relationen.
+  Dann gilt für alle Bürger $x, y, z \in M$ nach beiden Relationen
+  \begin{itemize}
+  \item[\emph{reflexiv}:] $x \sim x$.
+  \item[\emph{symmetrisch}:] Es gilt $x \sim y \Rightarrow y \sim x$,
+    da der Vergleich von Namen kommutativ ist.
+
+  \item[\emph{transitiv}:] Schließlich gilt für drei Bürger $x, y, z \in M$, dass aus
+    $(x, y), (y, z) \in R,  S \Rightarrow (x, z) \in R, S$.
+  \end{itemize}
+
+  $\Rightarrow R, S$ sind Äquivalenzrelationen. \\
+
+  Sei $a \in M$ ein Bürger mit dem Namen ``Max Mustermann''.
+  Die Äquivalenzklasse $[a]$ in $M$ enthält
+  \begin{itemize}
+  \item[\underline{unter $R$}] alle Bürger mit dem Vornamen ``Max''
+  \item[\underline{unter $S$}] alle Bürger mit dem Nachnamen ``Mustermann''
+  \end{itemize}.
+
+  Unter $R \cap S$ enthält die Äquivalenzklasse hingegen nur noch die Bürger mit
+  dem Namen ``Max Mustermann'' - also eine Teilmenge der Äquivalenzklassen von
+  $a$ unter $R$ oder $S$.
+
+\item Sei $M$ die Menge der Einwohner der Bundesrepublik und $R, S$ die
+  Äquivalenzrelationen aus (ii).
+
+  Weiterhin sind ``Max Mustermann'', ``Max Meyer'' und ``Günther Meyer''
+  Bürger.
+
+  Dann ist ``Max Mustermann'' $\sim$ ``Max Meyer'' unter $R$ und
+  ``Max Meyer'' $\sim$ ``Günther Meyer'' unter $S$.
+
+  $\Rightarrow $(``Max Mustermann'', ``Max Meyer'') und
+  (``Max Meyer'', ``Günther Meyer'') sind Elemente aus $R \cup S$.
+
+  Aber (``Max Mustermann'', ``Günther Meyer'') hingegen ist weder in $R$ noch in $S$ enthalten.
+
+  $\Rightarrow R \cup S$ ist nicht transitiv.
+\end{enumerate}
 \end{document}
