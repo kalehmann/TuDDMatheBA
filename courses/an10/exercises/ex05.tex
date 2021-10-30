@@ -173,4 +173,40 @@ erhält. \\
   $\Rightarrow I$ ist ein Isomorphismus bezüglich der Ordnung.
 \end{itemize}
 
+\paragraph{22. Seien $\overline{m}, \overline{n} \in \overline{\mathbb{Z}}$.}
+Zeigen Sie, dass
+\[
+  \overline{m} \cdot \overline{n} = 0 \iff
+  \overline{m} = 0 \text{ oder } \overline{n} = 0
+\]
+
+\subparagraph{Lsg.}
+Die Multiplikation ist definiert als
+$\overline{m} \cdot \overline{n} = \qty\big[(m, m')] \cdot
+\qty\big[(n, n')] =$ \\
+$\qty\big[(m \cdot n + m' \cdot n', m \cdot n' + m' \cdot n)]$.
+\begin{itemize}
+\item[``$\Rightarrow$''] $\overline{m} \cdot \overline{n} = 0 \Rightarrow
+  (m \cdot n + m' \cdot n', m \cdot n' + m' \cdot n) \sim (0, 0)$
+
+  $\Rightarrow m \cdot n + m' \cdot n' + 0 =  m \cdot n' + m' \cdot n + 0$
+
+  $\Rightarrow m \cdot n + m' \cdot n' = m \cdot n' + m' \cdot n$
+
+  $\Rightarrow m = m' \lor n = n'$
+
+  Es gilt $(m, m) \sim (n, n) \sim (0, 0)$
+
+\item[``$\Leftarrow$''] Sei $\overline{m} = \qty\big[(0, 0)]$ und $\overline{n}$
+  beliebig.
+  In Aufgabe 20 wurde bereits gezeigt, dass $m \cdot 0 = 0 \cdot m = 0$ gilt.
+  Dann ist $\overline{m} \cdot \overline{n} =
+  \qty\big[(0 \cdot n + 0 \cdot n', 0 \cdot n' + 0 \cdot n)]
+  = \qty\big[(0, 0)]$.
+
+  Analog ist für $\overline{n} = \qty\big[(0, 0)]$ und $\overline{m}$ beliebig
+  $\overline{m} \cdot \overline{n} =
+  \qty\big[(m \cdot 0 + m' \cdot 0, m \cdot 0 + m' \cdot 0)]
+  = \qty\big[(0, 0)]$.
+\end{itemize}
 \end{document}
