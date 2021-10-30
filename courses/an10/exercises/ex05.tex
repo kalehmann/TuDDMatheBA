@@ -1,0 +1,176 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 05\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{21. Zeigen Sie,} dass die Abbildung
+$I \colon \mathbb{Z} \to \overline{\mathbb{Z}}$ gemäß
+\[
+  I(k) \coloneqq \qty\big[\qty(k, 0)],
+  I\qty\big(\qty(-k)) \coloneqq \qty\big[\qty(0, k)],
+  k \in \mathbb{N}
+\]
+ein Isomorphismus ist und die Ordnung erhält, dass heißt für alle
+$m, k \in \mathbb{N}$ mit $m \leq k$ gilt $I(m) \leq I(k)$.
+
+\subparagraph{Lsg.} Nach Definition der Vorlesung ist
+\[
+  \overline{\mathbb{Z}} \coloneqq \qty\Big{\qty\big[\qty(n, n')]
+    \: {\Big |} \: n, n' \in \mathbb{N}}
+\]
+
+und
+
+\[
+  \qty\big[(n, n')] \coloneqq \qty\Big{(a, a') \: {\Big |} \:
+    a, a' \in \mathbb{N} \colon \qty\big((n, n'), (a, a')) \in Q}
+\]
+
+mit
+
+\[
+  Q \coloneqq \qty\Big{\qty\big((n_1, n_1'), (n_2, n_2')) \in
+    (\mathbb{N} \times \mathbb{N}) \times (\mathbb{N} \times \mathbb{N})
+  \: {\Big |} \: n_1 + n_2' = n_1' + n_2}
+\]
+
+also gilt auch kurz
+\[
+  \qty\big[(n, n')] \coloneqq \qty\Big{(a, a') \in \mathbb{N} \times \mathbb{N}
+  \: {\Big |} \: n + a' = n' + a}
+\]
+
+Ein Isomorphismus ist eine \emph{bijektive Abbildung}, welche die Struktur
+erhält. \\
+
+\underline{Zu zeigen:} ist nun, dass $I$ sowohl \emph{injektiv} als auch
+\emph{surjektiv} ist.
+\begin{itemize}
+\item[$I$ ist injektiv:] Sei $k \in \mathbb{N}$.
+  Dann ist
+  \begin{flalign*}
+    I(k) &= \qty\big[(k, 0)]
+    = \qty\big{\qty(n, n') \in \mathbb{N} \times \mathbb{N} \: {\big |} \:
+      k + n' = 0 + n} & \\
+    &= \qty\big{\qty(n, n') \in \mathbb{N} \times \mathbb{N} \: {\big |} \:
+      k = n - n'}
+  \end{flalign*}
+  \begin{flalign*}
+    I((-k)) &= \qty\big[(0, k)] = \qty\big{\qty(n, n') \in \mathbb{N} \times \mathbb{N} \: {\big |} \:
+      0 + n' = k + n} & \\
+    &= \qty\big{\qty(n, n') \in \mathbb{N} \times \mathbb{N} \: {\big |} \:
+      k = n' - n}
+  \end{flalign*}
+  Insbesondere ist $I(0) = \qty\big{(n, n') \in \mathbb{N} \times \mathbb{N}
+    \: {\big |} \: n = n'}$.
+
+  Seien $k, l \in \mathbb{N}$ beliebig.
+  Angenommen es gilt
+  \begin{itemize}
+  \item[$I(k) = I(l)$:] Dann gilt $\qty\big[(k, 0)] = \qty\big[(l, 0)]$.
+    Es folgt $\qty\big((k, 0), (l, 0)) \in Q$.
+
+    Also $k + 0 = 0 + l \Rightarrow k = l$
+
+  \item[$I(k) = I((-l))$:]  Dann gilt $\qty\big[(k, 0)] = \qty\big[(0, l)]$.
+    Es folgt $\qty\big((k, 0), (0, l)) \in Q$.
+
+    Also $k + l = 0 + 0 \overset{k, l \in \mathbb{N}}\Rightarrow k = l = 0$.
+  \item[$I((-k)) = I(l)$:] analog zu $I(k) = I((-l))$
+  \item[$I((-k)) = I((-l))$:] Dann gilt $\qty\big[(0, k)] = \qty\big[(0, l)]$.
+    Es folgt $\qty\big((0, k), (0, l)) \in Q$.
+
+    Also $0 + k = l + 0 \Rightarrow k = l$
+  \end{itemize}
+  $\Rightarrow I$ ist injektiv.
+
+\newpage
+\item[$I$ ist surjektiv:] Seien $n, n' \in \mathbb{N}$ beliebig.
+  Die Abbildung $I$ ist surjektiv, genau dann wenn ein $k \in \mathbb{N}$
+  existiert mit
+  $I(k) = \qty\big[(n, n')]$ oder $I((-k)) = \qty\big[(n, n')]$.
+
+  \begin{minipage}[t]{.45\textwidth}
+    Sei $n \geq n'$.
+    Dann ist $\qty\big((k, 0), (n, n')) \in Q$, da
+    $k + n' = 0 + n \Rightarrow k = n - n' \in \mathbb{N}$.
+
+    $I(k) = \qty\big[(n, n')]$
+  \end{minipage}
+  \hfill
+  \vrule
+  \hfill
+  \begin{minipage}[t]{.45\textwidth}
+    Sei $n < n'$.
+    Dann ist $\qty\big((0, k), (n, n')) \in Q$, da
+    $0 + n' = k + n \Rightarrow k = n' - n \in \mathbb{N}$.
+
+    $I((-k)) = \qty\big[(n, n')]$
+  \end{minipage}
+
+  $\Rightarrow$ für alle $\qty\big[(n, n')] \in \overline{\mathbb{Z}}$
+  existiert ein $k \in \mathbb{N}$ mit $I(k) = \qty\big[(n, n')]$ oder
+  $I((-k)) = \qty\big[(n, n')]$.
+
+  $\Rightarrow I$ ist surjektiv.
+
+  $\Rightarrow I$ ist bijektiv. \\
+
+  Weiter ist zu zeigen, dass $I$ ein Isomorphismus bezüglich der Ordnung ist.
+  Auf $\overline{\mathbb{Z}}$ ist die Ordnung durch die Relation
+  \[
+    R \coloneqq \qty\big{\qty\big(\qty[(m, m')], \qty[(n, n')])
+      \in \overline{\mathbb{Z}} \times \overline{\mathbb{Z}}
+      \: {\Big |} \:
+      \qty[(m, m')] \leq \qty[(n, n')]
+    }
+  \]
+  mit
+  $\qty\big[(m, m')] \leq \qty\big[(n, n')] \iff m + n' \leq_{\mathbb{N}} m' + n$
+  gegeben.
+
+  Seien $k \leq l \in \mathbb{N}$, dann
+  \begin{flalign*}
+    k &\leq_{\mathbb{N}} l &\\
+    k + 0 &\leq_{\mathbb{N}} l + 0 \\
+    k + 0 &\leq_{\mathbb{N}} 0 + l
+  \end{flalign*}
+  $\Rightarrow \qty\big[(k, 0)] \leq_{\overline{\mathbb{Z}}} \qty\big[(l, 0)]$
+
+  $\Rightarrow I(k) \leq_{\overline{\mathbb{Z}}} I(l)$
+
+  $\Rightarrow I$ ist ein Isomorphismus bezüglich der Ordnung.
+\end{itemize}
+
+\end{document}
