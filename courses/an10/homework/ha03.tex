@@ -153,4 +153,168 @@ Zeigen Sie:
 
   $\Rightarrow$ ``$\leq$'' ist Ordnung unter $\overline{\mathbb{Z}}$.
 \end{enumerate}
+
+\paragraph{25. Zeigen Sie, dass $\mathbb{Q}$ ein Körper ist.}
+
+\:\\
+\underline{Hinweis:} Es kann ohne Beweis angenommen werden, dass die
+Rechenoperationen auf $\mathbb{Q}$ wohldefiniert, dass heißt unabhängig vom
+Repräsentanten sind.
+Des Weiteren können Sie ohne Beweis die Kommutativität und Assoziativität
+für beide Rechenoperationen auf $\mathbb{Z}$, sowie die Distributivität
+annehmen.
+
+\subparagraph{Lsg.}
+Eine Menge $K$ heißt Körper, falls man auf $K$ Addition und Multiplikation hat
+mit
+\begin{enumerate}[(1)]
+\item Es gibt neutrale Elemente $0 \in K$ und $1 \in K_{\ne 0}$
+\item Addition und Multiplikation sind jeweils kommutativ und assoziativ
+\item Addition und Multiplikation sind distributiv
+\item Es gibt Inverse, dass heißt $\forall k \in K$ existiert $-k$,
+  $\forall k \in K_{\ne 0}$ existiert $k^{-1}$
+\end{enumerate}
+
+\newpage
+\subparagraph{(1) Neutrale Elemente}
+Die Addition auf $\mathbb{Q}$ ist definiert als
+\[
+  \qty[\frac{m}{m'}] + \qty[\frac{n}{n'}] = \qty[\frac{mn' + m'n}{m'n'}]
+\]
+Ein neutrales Element $0 \in \mathbb{Q}$ der Addition existiert, falls
+$\forall m \in \mathbb{Q} \colon m + 0 = 0 + m = m$.
+Sei nun $0 = \qty[\frac{0}{1}]$ und $m = \qty[\frac{m}{m'}] \in \mathbb{Q}$
+beliebig.
+Dann ist
+\[
+  \qty[\frac{m}{m'}] + \qty[\frac{0}{1}] =
+  \qty[\frac{m \cdot 1 + m' \cdot 0}{m' \cdot 1}]
+  = \qty[\frac{m}{m'}]
+  = \qty[\frac{1 \cdot m + 0}{1 \cdot m'}]
+  = \qty[\frac{1 \cdot m + 0 \cdot m'}{1 \cdot m'}]
+  = \qty[\frac{0}{1}] + \qty[\frac{m}{m'}]
+\]
+
+$\Rightarrow 0 = \qty[\frac{0}{1}]$ ist neutrales Element der Addition auf
+$\mathbb{Q}$.
+
+Die Multiplikation auf $\mathbb{Q}$ ist definiert als
+\[
+  \qty[\frac{m}{m'}] \cdot \qty[\frac{n}{n'}] = \qty[\frac{mn}{m'n'}]
+\]
+
+Ein neutrales Element $1 \in \mathbb{Q}$ der Multplikation existiert, falls
+$\forall m \in \mathbb{Q} \colon m \cdot 1 = 1 \cdot m = m$.
+Sei nun $1 = \qty[\frac{1}{1}]$ und $\qty[\frac{m}{m'}] \in \mathbb{Q}$
+beliebig.
+Dann ist
+\[
+  \qty[\frac{m}{m'}] + \qty[\frac{1}{1}] =
+  \qty[\frac{m \cdot 1}{m' \cdot 1}]
+  = \qty[\frac{m}{m'}]
+  = \qty[\frac{1 \cdot m}{1 \cdot m'}]
+  = \qty[\frac{1}{1}] + \qty[\frac{m}{m'}]
+\]
+
+$\Rightarrow 1 = \qty[\frac{1}{1}]$ ist neutrales Element der Multiplikation auf
+$\mathbb{Q}$.
+
+\subparagraph{(2) Assoziativität und Kommutativität für Addition und
+  Multiplikation}
+
+\:\\
+Seien $\qty[\frac{m}{m'}], \qty[\frac{n}{n'}], \qty[\frac{o}{o'}] \in \mathbb{Q}$ beliebig.
+Dann ist
+\begin{flalign*}
+  \qty[\frac{m}{m'}] + \qty(\qty[\frac{n}{n'}] + \qty[\frac{o}{o'}])
+  &= \qty[\frac{m}{m'}] + \qty[\frac{no' + n'o}{n'o'}] \\
+  &= \qty[\frac{mn'o' + m' \cdot \qty\big(no' + n'o)}{m'n'o'}] \\
+  &= \qty[\frac{mn'o' + m'no' + m'n'o}{m'n'o'}] \\
+  &= \qty[\frac{\qty\big(mn' + m'n) \cdot o' + m'n'o}{m'n'o'}] \\
+  &= \qty[\frac{mn' + m'n}{m'n'}] + \qty[\frac{o}{o'}] \\
+  &= \qty(\qty[\frac{m}{m'}] + \qty[\frac{n}{n'}]) + \qty[\frac{o}{o'}]
+\end{flalign*}
+$\Rightarrow$ die Addition ist assoziativ unter $\mathbb{Q}$.
+
+\newpage
+\begin{flalign*}
+  \qty[\frac{m}{m'}] \cdot \qty(\qty[\frac{n}{n'}] \cdot \qty[\frac{o}{o'}])
+  &= \qty[\frac{m}{m'}] + \qty[\frac{no}{n'o'}] \\
+  &= \qty[\frac{m \cdot \qty(no)}{m' \cdot \qty(n'o')}] \\
+  \overset{\text{Assoziativität auf $\mathbb{Z}$}}&=
+  \qty[\frac{\qty(mn) \cdot o}{\qty(m'n') \cdot o'}] \\
+  &= \qty[\frac{mn}{m'n'}] \cdot \qty[\frac{o}{o'}] \\
+  &= \qty(\qty[\frac{m}{m'}] \cdot \qty[\frac{n}{n'}]) \cdot \qty[\frac{o}{o'}]
+\end{flalign*}
+
+$\Rightarrow$ die Multiplikation ist assoziativ unter $\mathbb{Q}$.
+
+\begin{flalign*}
+  \qty[\frac{m}{m'}] + \qty[\frac{n}{n'}] \overset{\text{Def. Add.}}&=
+  \qty[\frac{mn' + m'n}{m'n'}] & \\
+  \overset{\text{Kommutativität in $\mathbb{Z}$}}&= \qty[\frac{nm' + n'm}{n'm'}] \\
+  &= \qty[\frac{n}{n'}] + \qty[\frac{m}{m'}]
+\end{flalign*}
+$\Rightarrow$ Addition ist kommutativ.
+
+\begin{flalign*}
+  \qty[\frac{m}{m'}] \cdot \qty[\frac{n}{n'}] \overset{\text{Def. Mul.}}&=
+  \qty[\frac{mn}{m'n'}] & \\
+  \overset{\text{Kommutativität in $\mathbb{Z}$}}&= \qty[\frac{nm}{n'm'}] \\
+  &= \qty[\frac{n}{n'}] \cdot \qty[\frac{m}{m'}]
+\end{flalign*}
+$\Rightarrow$ Multiplikation ist kommutativ.
+
+\subparagraph{(3) Distributivität unter $\mathbb{Q}$}
+
+\:\\
+Seien $\qty[\frac{m}{m'}], \qty[\frac{n}{n'}], \qty[\frac{o}{o'}] \in
+\mathbb{Q}$.
+Dann gilt
+\begin{flalign*}
+  \qty[\frac{m}{m'}] \cdot \qty(\qty[\frac{n}{n'}] + \qty[\frac{o}{o'}])
+  &= \qty[\frac{m}{m'}] \cdot \qty[\frac{no' + n'o}{n'o'}]
+  = \qty[\frac{m \cdot \qty\big(no' + n'o)}{m' \cdot \qty\big(n'o')}] \\
+  &= \qty[\frac{mno' + mn'o}{m'n'o'}] \\
+  &= \qty[\frac{mno'}{m'n'o'} + \frac{mn'o}{m'n'o'}]
+  = \qty[\frac{mn}{m'n'} + \frac{mo}{m'o'}] \\
+  &= \qty[\frac{mn}{m'n'}] + \qty[\frac{mo}{m'o'}] \\
+  &= \qty[\frac{m}{m'}] \cdot \qty[\frac{n}{n'}] + \qty[\frac{m}{m'}] \cdot \qty[\frac{o}{o'}]
+\end{flalign*}
+$\Rightarrow$ Addition und Multiplikation sind distributiv unter $\mathbb{Z}$.
+
+\newpage
+\subparagraph{(4) Inverse Elemente}
+
+\:\\
+Für die Addition existieren inverse Elemente, falls
+$\forall \: m \in \mathbb{Q} \: \exists \: -m \in \mathbb{Q} \colon m + (-m)
+= 0$.
+Sei nun $\qty[\frac{m}{m'}] \in \mathbb{Q}$ beliebig.
+Für jede ganze Zahl $m \in \mathbb{Z}$ existiert ein inverses Element $-m$
+bezüglich der Addition mit $m + (-m) = 0$.
+
+\[
+  \qty[\frac{m}{m'}] + \qty[\frac{(-m)}{m'}] = \qty[\frac{mm' + m'(-m)}{m'm'}]
+  = \qty[\frac{mm' - mm'}{m'm'}] = \qty[\frac{0}{m'm'}] = 0
+\]
+
+$\Rightarrow$ Für jedes Element in $\mathbb{Q}$ existiert ein inverses
+Element bezüglich der Addition.
+
+
+Für die Multiplikation existieren inverse Elemente, falls
+$\forall \: m \in \mathbb{Q} \: \exists \: m^{-1} \in \mathbb{Q}$ gilt: \\
+$m \cdot m^{-1} = 1$.
+Sei nun $m = \qty[\frac{m}{m'}] \in \mathbb{Q}_{\ne 0}$ beliebig.
+Definiere $m^{-1}$ als $\qty[\frac{m'}{m}]$.
+\[
+  m \cdot m^{-1} = \qty[\frac{m}{m'}] \cdot \qty[\frac{m'}{m}]
+  = \qty[\frac{mm'}{m'm}]
+  \sim \qty[\frac{1}{1}]
+\]
+
+$\Rightarrow$ Für jedes Element in $\mathbb{Q}_{\ne 0}$ existiert ein inverses
+Element für die Multiplikation.
+
 \end{document}
