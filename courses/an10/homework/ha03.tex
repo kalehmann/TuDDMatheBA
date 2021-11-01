@@ -1,0 +1,156 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann (Übungsgruppe 1)\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 05\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{24.} Es sei $\overline{\mathbb{Z}}$ definiert wie in der Vorlesung.
+Zeigen Sie:
+\begin{enumerate}[(a)]
+\item Die Multiplikation auf $\overline{\mathbb{Z}}$ ist unabhängig vom
+  Repräsentanten.
+
+\item Die Relation $\leq$ auf $\overline{\mathbb{Z}}$ ist unabhängig vom
+  Repräsentanten und eine Ordnungsrelation.
+\end{enumerate}
+
+\subparagraph{Lsg.}
+\begin{enumerate}[(a)]
+\item Die Multiplikation auf $\overline{\mathbb{Z}}$ ist definiert mit
+  \[
+    \overline{m} \cdot \overline{n} = \qty\big[(m, m')] \cdot
+    \qty\big[(n, n')] =
+    \qty\big[(m \cdot n + m' \cdot n', m \cdot n' + m' \cdot n)]
+  \]
+
+  Seien $(a, a') \sim (m, m')$ und $(b, b') \sim (n, n')$.
+  Dass heißt $\overline{a} = \overline{m}$ und $\overline{b} = \overline{n}$.
+  \begin{equation}
+    \tag{*}
+    a + m' = a' + m \quad b + n' = b' + n
+  \end{equation}
+  \begin{flalign*}
+    \colorbox{yellow}{an + a'n' +} &\colorbox{yellow}{mb' + m'b} +
+      \colorbox{green!30}{mn + m'n + mn' + m'n'} & \\
+    &= n \cdot (a + m') + n' \cdot (a' + m) + m \cdot (b' + n) + m'
+      \cdot (b + n')\\
+    \overset{(*)}&= n \cdot (a' + m) + n' \cdot (a + m') + m \cdot
+      (b + n') + m' \cdot (b' + n) \\
+    &= a'n + nm + n'a + n'm' + mb + mn' + m'b' + m'n \\
+    &= \colorbox{yellow}{mb + m'b' + an' + a'n} +
+      \colorbox{green!30}{mn + m'n + mn' + m'n'}
+  \end{flalign*}
+  \begin{flalign*}
+    & \colorbox{yellow}{\text{$\Rightarrow$}} \colorbox{orange!30}{an + a'n'} +
+      \colorbox{blue!20}{mb' + m'b} = \colorbox{blue!20}{mb + m'b'} +
+      \colorbox{orange!30}{an' + a'n} & \\
+    & \Rightarrow \qty\big(
+        \colorbox{orange!30}{an + a'n'},
+        \colorbox{orange!30}{an' + a'n}
+      ) \sim \qty\big(
+        \colorbox{blue!20}{mb + m'b'},
+        \colorbox{blue!20}{mb' + m'b}
+      ) \\
+    & \Rightarrow (a, a') \cdot (n, n') = (b, b') \cdot (m, m')
+  \end{flalign*}
+
+\item Es gilt $\overline{m} \leq \overline{n} \iff m + n' \leq_{\mathbb{N}} m' + n$.
+  Seien nun $(a, a') \sim (m, m')$ und $(b, b') \sim (n, n')$.
+  Angenommen $\overline{m} \leq \overline{n}$, dann
+  \begin{flalign*}
+    m + n' &\leq m' + n & \\
+    a + m' + m + n' &\leq m' + n + a' + m & \\
+    a + n' &\leq a' + n  && \Rightarrow a \leq n & \\
+    a + n' + b' + n &\leq a' + n + b + n' \\
+    a + b' &\leq a' + b && \Rightarrow a \leq b
+  \end{flalign*}
+
+  Die Relation ``$\leq$'' heißt auf $\overline{\mathbb{Z}}$ ein
+  Ordnungsrelation, falls
+  \begin{enumerate}[(1)]
+  \item $\forall \overline{a} \in \overline{\mathbb{Z}} \colon
+    \overline{a} \leq \overline{a}$
+
+  \item $\forall \; \overline{a}, \overline{b} \in \overline{\mathbb{Z}} \colon
+    \overline{a} = \overline{b} \iff \overline{a} \leq \overline{b} \land
+    \overline{b} \leq \overline{a}$
+
+  \item $\forall \overline{a}, \overline{b}, \overline{c} \in \overline{\mathbb{Z}} \colon
+    \overline{a} \leq \overline{b} \land \overline{b} \leq \overline{c}
+    \Rightarrow \overline{a} \leq \overline{b}$
+  \end{enumerate}
+
+  \newpage
+  \begin{enumerate}[(1)]
+  \item Sei $\overline{a} \in \overline{\mathbb{Z}}$ beliebig.
+    \[
+      \overline{a} \leq \overline{a} \iff a + a' \leq_{\mathbb{N}} a' + a
+    \]
+    Aus der Kommutativität der natürlichen Zahlen folgt die Annahme, somit ist
+    ``$\leq$'' unter $\overline{\mathbb{Z}}$ \emph{reflexiv}.
+
+  \item Seien $\overline{a}, \overline{b} \in \overline{\mathbb{Z}}$ beliebig.
+    \begin{itemize}
+    \item[``$\Rightarrow$''] Angenommen $\overline{a} = \overline{b}$.
+      Dann gilt $(a, a') \sim (b, b')$ und $a + b' = a' + b$.
+
+      Somit sind $a + b' \leq a' + b$ und $b + a' \leq b' +a$ wahr.
+
+      $\Rightarrow \overline{a} \leq \overline{b} \land
+      \overline{b} \leq \overline{a}$
+
+    \item[``$\Leftarrow$''] Angenommen es gilt
+      $\overline{a} \leq \overline{b} \land \overline{b} \leq \overline{a}$.
+      Dann fogt $a + b' \leq_{\mathbb{N}} a' + b$ und
+      $b + a' \leq_{\mathbb{N}} b' +a$.
+      Da ``$\leq$'' unter $\mathbb{N}$ eine Ordnungsrelation ist, folgt \\
+      $a + b' = a' + b$.
+
+      $\Rightarrow (a' a') \sim (b, b')$
+
+      $\Rightarrow \overline{a} = \overline{b}$
+    \end{itemize}
+
+  \item Seien $\overline{a}, \overline{b}, \overline{c} \in
+    \overline{\mathbb{Z}}$ und $\overline{a} \leq \overline{b}$ sowie
+    $\overline{b} \leq \overline{c}$.
+    \begin{flalign*}
+      a + b' &\leq a' + b & \\
+      a + b' + b + c' &\leq a' + b + b' + c \\
+      a + c' &\leq a' + c && \Rightarrow \overline{a} \leq \overline{c} &
+    \end{flalign*}
+  \end{enumerate}
+
+  $\Rightarrow$ ``$\leq$'' ist Ordnung unter $\overline{\mathbb{Z}}$.
+\end{enumerate}
+\end{document}
