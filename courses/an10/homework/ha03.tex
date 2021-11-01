@@ -60,28 +60,22 @@ Zeigen Sie:
     a + m' = a' + m \quad b + n' = b' + n
   \end{equation}
   \begin{flalign*}
-    \colorbox{yellow}{an + a'n' +} &\colorbox{yellow}{mb' + m'b} +
-      \colorbox{green!30}{mn + m'n + mn' + m'n'} & \\
+    \underline{an + a'n' +} &\underline{mb' + m'b} +
+      mn + m'n + mn' + m'n' & \\
     &= n \cdot (a + m') + n' \cdot (a' + m) + m \cdot (b' + n) + m'
       \cdot (b + n')\\
     \overset{(*)}&= n \cdot (a' + m) + n' \cdot (a + m') + m \cdot
       (b + n') + m' \cdot (b' + n) \\
     &= a'n + nm + n'a + n'm' + mb + mn' + m'b' + m'n \\
-    &= \colorbox{yellow}{mb + m'b' + an' + a'n} +
-      \colorbox{green!30}{mn + m'n + mn' + m'n'}
+    &= \underline{mb + m'b' + an' + a'n} +
+      mn + m'n + mn' + m'n'
   \end{flalign*}
   \begin{flalign*}
-    & \colorbox{yellow}{\text{$\Rightarrow$}} \colorbox{orange!30}{an + a'n'} +
-      \colorbox{blue!20}{mb' + m'b} = \colorbox{blue!20}{mb + m'b'} +
-      \colorbox{orange!30}{an' + a'n} & \\
-    & \Rightarrow \qty\big(
-        \colorbox{orange!30}{an + a'n'},
-        \colorbox{orange!30}{an' + a'n}
-      ) \sim \qty\big(
-        \colorbox{blue!20}{mb + m'b'},
-        \colorbox{blue!20}{mb' + m'b}
-      ) \\
-    & \Rightarrow (a, a') \cdot (n, n') = (b, b') \cdot (m, m')
+    & \Rightarrow an + a'n' + mb' + m'b = mb + m'b' + an' + a'n & \\
+    & \Rightarrow \qty\big(an + a'n', an' + a'n)
+      \sim \qty\big(mb + m'b', mb' + m'b) \\
+    & \Rightarrow (a, a') \cdot (n, n') = (b, b') \cdot (m, m') \\
+    & \Rightarrow \overline{a} \cdot \overline{n} = \overline{b} \cdot \overline{m}
   \end{flalign*}
 
 \item Es gilt $\overline{m} \leq \overline{n} \iff m + n' \leq_{\mathbb{N}} m' + n$.
