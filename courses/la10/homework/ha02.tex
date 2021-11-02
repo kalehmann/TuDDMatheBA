@@ -96,4 +96,76 @@ Falls dies der Fall ist, geben Sie die Äquivalenzklassen von $\sim$ auf $M$ an.
   \end{itemize}
 \end{enumerate}
 
+\newpage
+\paragraph{Aufgabe 7} Beweisen Sie Lemma 1.8 aus der Vorlesung:
+Sei $\mathcal{P}$ eine Partition auf $M$.
+Sei
+\[
+  R \coloneqq \qty\Big{\qty\big(x, y) \: {\Big |} \:
+    \text{Es gibt ein } N \in \mathcal{P} \text{, so dass } x, y \in N}
+\]
+Dann ist $R$ ein Äquivalenzrelation auf $M$ und die Menge der Äquivalenzklassen
+von $R$ ist $\mathcal{P}$.
+
+\subparagraph{Lsg.} $R$ heißt Äquivalenzrelation, wenn
+\begin{enumerate}[(1)]
+\item $\forall x \in M \colon \qty\big(x, x) \in R$ (\emph{Reflexivität})
+\item $\forall x, y \in M \colon \qty\big(x, y) \in R
+  \Rightarrow \qty\big(y, x) \in R$ (\emph{Transitivität})
+
+\item $\forall x, y, z \in M \colon \qty\big(x, y), \qty\big(y, z) \in R
+  \Rightarrow \qty\big(x, z) \in R$
+\end{enumerate}
+
+\begin{enumerate}[label={Zu (\arabic*)}]
+\item Da $\mathcal{P}$ eine Partition ist gilt $\bigcup P = M$.
+  Also existiert für jedes $x \in M$ eine Menge $N \in \mathcal{P}$
+  mit $x \in N$.
+
+  $\Rightarrow \qty(x, x) \in R$
+
+  $\Rightarrow R$ ist \emph{reflexiv}.
+
+\item Sei $x, y \in M$ mit $\qty\big(x, y) \in R$.
+  Nach der Definition von $R$ existiert somit eine Menge $N \in \mathcal{P}$
+  mit $x, y \in N$.
+  Da hierbei die Reihenfolge keine Rolle spielt gilt auch $y, x \in N$ und
+  $\qty\big(y, x) \in R$.
+
+  $\Rightarrow R$ ist \emph{symmetrisch}.
+
+\item Seien $x, y, z \in M$ mit $\qty\big(x, y), \qty\big(y, z) \in R$.
+
+  $\Rightarrow$ es existiert $N_1, N_2 \in \mathcal{P}$ mit $x, y \in N_1$
+  und $y, z \in N_2$.
+
+  Angenommen $N_1 \ne N_2$.
+  Da $\mathcal{P}$ eine Partition ist, gilt $N_1 = N_2 \lor N_1 \cap N_2 = \emptyset$.
+  Nun ist aber $y \in N_1$ und $y \in N_2$ - ein Widerspruch.
+
+  $\Rightarrow N_1 = N_2 \Rightarrow x, z \in N_1 \Rightarrow (x, z) \in R$.
+
+  $\Rightarrow R$ ist \emph{transitiv}.
+\end{enumerate}
+
+$\Rightarrow R$ ist eine Äquivalenzrelation auf $M$. \\
+
+\noindent
+Sei nun $N \in \mathcal{P}$ beliebig.
+Für zwei Elemente $x, y \in N$ gilt jeweils $x \sim y$.
+Sei $z \in M$ mit $z \notin N$, dann gilt $\neg (x \sim z)$.
+Somit ist $N$ eine Äquivalenzklasse in $M$ unter $R$.
+
+$\Rightarrow \mathcal{P} \subset \text{``Menge der Äquivalenzklassen von $M$''}$
+\\
+
+\noindent
+Sei nun $x \in M$ beliebig.
+Dann existiert $N \in \mathcal{P}$ mit $x \in N$.
+Weiter ist $\qty[x] = \qty\big{y \in M {\big |} x, y \in N} = N$.
+
+$\Rightarrow \text{``Menge der Äquivalenzklassen von $M$''} \subset \mathcal{P}$
+
+$\Rightarrow \mathcal{P}$ ist die Menge der Äquivalenzklassen von $M$.
+
 \end{document}
