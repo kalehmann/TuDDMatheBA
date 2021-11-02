@@ -1,0 +1,99 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 02\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 6} Untersuchen Sie jeweils, ob $\sim$ ein Äquivalenzrelation
+auf $M$ ist.
+Falls dies der Fall ist, geben Sie die Äquivalenzklassen von $\sim$ auf $M$ an.
+\begin{enumerate}[(i)]
+\item $M$ sei die Menge aller deutschen Städte; für $x, y \in M$ gilt
+  $x \sim y$ genau dann, wenn $x$ und $y$ im selben Bundesland liegen.
+
+\item $M$ sei die Menge aller deutschen Städte; für $x, y \in M$ gilt
+  $x \sim y$ genau dann, wenn $x$ oder $y$ in Sachsen liegt.
+
+\item $M = \mathbb{Z}$, für $x, y \in \mathbb{Z}$ gilt $x \sim y$, wenn
+  $xy > 0$.
+
+\item $M = \mathbb{Z} \setminus \qty{0}$; für
+  $x, y \in \mathbb{Z} \setminus \qty{0}$ gilt $x \sim y$ genau dann, wenn
+  $xy > 0$.
+\end{enumerate}
+
+\subparagraph{Lsg.}
+\begin{enumerate}[(i)]
+\item Seien $x, y, z \in M$ drei beliebige deutsche Städte.
+  Dann gilt $x \sim x$, da die Stadt $x$ im selben Bundesland wie sie selbst
+  liegt.
+  Weiterhin gilt $x \sim y \Rightarrow y \sim x$.
+  Schließlich folgt aus $x \sim y \land y \sim z$ auch $x \sim z$.
+
+  $\Rightarrow$ ``$\sim$'' ist eine Äquivalenzrelation über $M$.
+
+  $\sim$ hat auf $M$ 16 Äquivalenzklassen - jeweils die Menge der Städte für
+  jedes Bundesland.
+
+\item Sei $x \in M$ die Stadt Berlin.
+  Dann gilt $x \sim x$ nicht, da Berlin nicht in Sachsen liegt.
+  Somit ist $\sim$ über $M$ nicht reflexiv.
+
+  $\Rightarrow$ ``$\sim$'' ist keine Äquivalenzrelation über $M$
+
+\item Sei $x = 0 \in \mathbb{Z}$.
+  Dann ist $x \cdot x = 0 \Rightarrow \neg \qty\big(x \sim x)$.
+  Somit ist $\sim$ über $M$ nicht reflexiv.
+
+  $\Rightarrow$ ``$\sim$'' ist keine Äquivalenzrelation über $M$
+
+\item Seien $x, y, z \in \mathbb{Z} \setminus \qty{0}$ beliebig.
+  Da $x \ne 0$ folgt $x \cdot x > 0 \Rightarrow x \sim x \Rightarrow \sim$
+  ist auf $M$ reflexiv.
+  Weiterhin folgt aus $x \sim y$ aufgrund der Kommutativität der Multiplikation
+  der ganzen Zahlen $y \sim x$.
+
+  Angenommen $x \sim y$ und $y \sim z$.
+  Dann ist entweder $x, y, z < 0$ oder $x, y, z > 0$.
+  $\Rightarrow x \sim z$.
+
+  $\Rightarrow$ ``$\sim$'' ist eine Äquivalenzrelation über $M$.
+
+  $\sim$ hat auf $M$ zwei Äquivalenzklassen:
+  \begin{itemize}
+  \item $\qty\big{x \in \mathbb{Z} \: {\big |} \: x > 0}$
+  \item $\qty\big{x \in \mathbb{Z} \: {\big |} \: x < 0}$
+  \end{itemize}
+\end{enumerate}
+
+\end{document}
