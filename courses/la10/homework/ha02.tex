@@ -34,9 +34,10 @@
 \rfoot{Seite \thepage}
 
 \begin{document}
-\paragraph{Aufgabe 6} Untersuchen Sie jeweils, ob $\sim$ ein Äquivalenzrelation
-auf $M$ ist.
-Falls dies der Fall ist, geben Sie die Äquivalenzklassen von $\sim$ auf $M$ an.
+\paragraph{Aufgabe 6} Untersuchen Sie jeweils, ob ``$\sim$'' eine
+Äquivalenzrelation auf $M$ ist.
+Falls dies der Fall ist, geben Sie die Äquivalenzklassen von ``$\sim$'' auf
+$M$ an.
 \begin{enumerate}[(i)]
 \item $M$ sei die Menge aller deutschen Städte; für $x, y \in M$ gilt
   $x \sim y$ genau dann, wenn $x$ und $y$ im selben Bundesland liegen.
@@ -57,12 +58,13 @@ Falls dies der Fall ist, geben Sie die Äquivalenzklassen von $\sim$ auf $M$ an.
 \item Seien $x, y, z \in M$ drei beliebige deutsche Städte.
   Dann gilt $x \sim x$, da die Stadt $x$ im selben Bundesland wie sie selbst
   liegt.
-  Weiterhin gilt $x \sim y \Rightarrow y \sim x$.
+  Weiterhin gilt $x \sim y \Rightarrow y \sim x$, da die Reihenfolge der
+  Städte beim Vergleich ihres Bundeslandes keine Rolle spielt.
   Schließlich folgt aus $x \sim y \land y \sim z$ auch $x \sim z$.
 
   $\Rightarrow$ ``$\sim$'' ist eine Äquivalenzrelation über $M$.
 
-  $\sim$ hat auf $M$ 16 Äquivalenzklassen - jeweils die Menge der Städte für
+  ``$\sim$'' hat auf $M$ 16 Äquivalenzklassen - jeweils die Menge der Städte für
   jedes Bundesland.
 
 \item Sei $x \in M$ die Stadt Berlin.
@@ -73,13 +75,13 @@ Falls dies der Fall ist, geben Sie die Äquivalenzklassen von $\sim$ auf $M$ an.
 
 \item Sei $x = 0 \in \mathbb{Z}$.
   Dann ist $x \cdot x = 0 \Rightarrow \neg \qty\big(x \sim x)$.
-  Somit ist $\sim$ über $M$ nicht reflexiv.
+  Somit ist ``$\sim$'' über $M$ nicht reflexiv.
 
   $\Rightarrow$ ``$\sim$'' ist keine Äquivalenzrelation über $M$
 
 \item Seien $x, y, z \in \mathbb{Z} \setminus \qty{0}$ beliebig.
-  Da $x \ne 0$ folgt $x \cdot x > 0 \Rightarrow x \sim x \Rightarrow \sim$
-  ist auf $M$ reflexiv.
+  Da $x \ne 0$ folgt $x \cdot x > 0 \Rightarrow x \sim x \Rightarrow$
+  ``$\sim$'' ist auf $M$ reflexiv.
   Weiterhin folgt aus $x \sim y$ aufgrund der Kommutativität der Multiplikation
   der ganzen Zahlen $y \sim x$.
 
@@ -91,8 +93,11 @@ Falls dies der Fall ist, geben Sie die Äquivalenzklassen von $\sim$ auf $M$ an.
 
   $\sim$ hat auf $M$ zwei Äquivalenzklassen:
   \begin{itemize}
-  \item $\qty\big{x \in \mathbb{Z} \: {\big |} \: x > 0}$
-  \item $\qty\big{x \in \mathbb{Z} \: {\big |} \: x < 0}$
+  \item $\qty\big{x \in \mathbb{Z} \: {\big |} \: x > 0}$ (die natürlichen
+    Zahlen)
+
+  \item $\qty\big{x \in \mathbb{Z} \: {\big |} \: x < 0}$ (die ganzen Zahlen
+    kleiner als $0$)
   \end{itemize}
 \end{enumerate}
 
