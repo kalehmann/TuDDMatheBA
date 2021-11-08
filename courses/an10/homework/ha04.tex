@@ -69,4 +69,40 @@ $\qty\big(n_q \cdot 1_K)^{-1} > 0$.
   && \iff f(p) \leq f(q)
 \end{flalign*}
 
+\paragraph{29.} Es sei $K$ ein angeordneter Körper und für $n \in \mathbb{N}$
+seien $x_1, \ldots, x_n \in K$ gegeben, die alle gleiches Vorzeichen haben und
+$x_i \geq -1$ erfüllen.
+Zeigen Sie, dass dann die folgende Ungleichung gilt:
+\[
+  \prod_{i = 1}^n \qty\big(1 + x_i) \geq 1 + \sum_{i = 1}^n x_i
+\]
+
+\subparagraph{Lsg.}
+\underline{Behauptung:}
+\[
+  P(n) \colon \prod_{i = 1}^n \qty\big(1 + x_i) \geq 1 + \sum_{i = 1}^n x_i
+\]
+\underline{Induktionsanfang:}
+\begin{align*}
+  P(0) &\colon \prod_{i = 1}^0 \qty\big(1 + x_i) \geq 1 + \sum_{i = 1}^0 x_i
+       \colon && 1 \geq 0 && \\
+  P(1) &\colon \prod_{i = 1}^1 \qty\big(1 + x_i) \geq 1 + \sum_{i = 1}^1 x_i
+       \colon && 1 + x_1 \geq 1 + x_1
+\end{align*}
+\underline{Induktionsschritt:} Sei $P(n)$ für ein beliebiges $n \in \mathbb{N}$
+wahr.
+\begin{flalign*}
+  \prod_{i = 1}^n \qty\big(1 + x_i) &\geq 1 + \sum_{i = 1}^n x_i
+  && {\Big |} \cdot \qty(1 + x_{n + 1}) \geq 0 \\
+  \qty(1 + x_{n + 1}) \cdot \prod_{i = 1}^n \qty\big(1 + x_i) &\geq
+  \qty(1 + x_{n + 1}) \cdot \qty(1 + \sum_{i = 1}^n x_i) \\
+  \prod_{i = 1}^{n + 1} &\geq 1 +
+  \underset{\makebox[0pt]{$\geq 0$}}{\underbrace{x_{n + 1}  \sum_{i = 1}^n x_i}} +
+  \sum_{i = 1}^n x_i + x_{n + 1} && {\Big |} \text{ Abschätzung nach unten}\\
+  &\geq 1 +  \sum_{i = 1}^n x_i + x_{n + 1} \\
+  \prod_{i = 1}^{n + 1} &\geq 1 +  \sum_{i = 1}^{n + 1} x_i
+\end{flalign*}
+
+Nach der vollständigen Induktion folgt die Behauptung.
+
 \end{document}
