@@ -1,0 +1,72 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann (Übungsgruppe 1)\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 06\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{28.} Es sei $K$ ein angeordneter Körper und $1_K$ das neutrale Element
+der Multiplikation.
+Die Abbildung $f \colon \mathbb{Q} \to K$ sei wie in der Vorlesung definiert
+durch
+\[
+  f(q) = f\qty(\frac{m}{n}) \coloneqq \frac{m1_k}{n1_K} \coloneqq
+  \qty\big(m1_K) \cdot \qty\big(n1_K)^{-1}
+  \text{ für } q = \frac{m}{n} \in \mathbb{Q}
+\]
+
+\underline{Beweisen Sie:} Für alle $p, q \in \mathbb{Q}$ gilt
+\[
+  p \leq q \iff f(p) \leq f(q)
+\]
+
+\subparagraph{Lsg.} Seien $p$ und $q$ beliebig.
+Die Repräsentanten $\frac{m_p}{n_p}$ (von $p$) und $\frac{m_q}{n_q}$ (von $q$)
+seien so gewählt, dass $n_p \cdot 1_K > 0$ und $n_q \cdot 1_K > 0$ sind.
+Es folgt, dass $\qty\big(n_p \cdot 1_K)^{-1} > 0$ und
+$\qty\big(n_q \cdot 1_K)^{-1} > 0$.
+
+\begin{flalign*}
+  p \leq q \iff && m_p \cdot n_q &\leq m_q \cdot n_p
+  && {\Big |} \cdot \qty(1_K)^2 > 0 \\
+  && \qty(1_K)^2 \cdot m_p \cdot n_q &\leq \qty(1_K)^2 \cdot m_q \cdot n_p \\
+  && \qty(m_p1_k) \cdot \qty(n_q1_K) &\leq \qty(m_q1_K) \cdot \qty(n_p1_K)
+  && {\Big |} \cdot \qty(n_q1_K)^{-1} \\
+  && \qty(m_p1_k) \cdot \qty(n_q1_K) \cdot \qty(n_q1_K)^{-1}
+  &\leq \qty(m_q1_K) \cdot \qty(n_p1_K) \cdot \qty(n_q1_K)^{-1} \\
+  && \qty(m_p1_k) \cdot 1 &\leq \qty(m_q1_K) \cdot \qty(n_p1_K)
+  \cdot \qty(n_q1_K)^{-1} && {\Big |} \cdot \qty(n_p1_K)^{-1} \\
+  && \qty(m_p1_k) \cdot \qty(n_p1_K)^{-1} &\leq \qty(m_q1_K) \cdot \qty(n_q1_K)^{-1}
+  && \iff f(p) \leq f(q)
+\end{flalign*}
+
+\end{document}
