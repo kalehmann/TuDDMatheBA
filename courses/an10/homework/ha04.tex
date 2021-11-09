@@ -118,10 +118,10 @@ Welche der angegebenen Intervallfolgen sind Intervallschachtelungen?
 \begin{enumerate}[(a)]
 \item Ist eine Intervallschachtelung, da
   \begin{enumerate}[(1)]
-  \item $\qty[0_k, \frac{1}{n}a] \ne \emptyset$ für alle $n \in \mathbb{N}$
+  \item $\qty[0_K, \frac{1}{n}a] \ne \emptyset$ für alle $n \in \mathbb{N}$
   \item $\forall \; n \in \mathbb{N} \colon
     \frac{1}{n + 1} < \frac{1}{n}
-    \Rightarrow \qty[0_k, \frac{1}{n + 1}a] \subset \qty[0_K, \frac{1}{n}a]$
+    \Rightarrow \qty[0_K, \frac{1}{n + 1}a] \subset \qty[0_K, \frac{1}{n}a]$
 
   \item $\forall \epsilon > 0, a \in K \; \exists \; n \in \mathbb{N}
     \colon \frac{1}{n}a - 0_K< \epsilon$ mit $n > \frac{a}{\epsilon + 0_K}$
@@ -149,16 +149,19 @@ Welche der angegebenen Intervallfolgen sind Intervallschachtelungen?
     \subset \qty[\frac{n}{n + 1}a, \frac{n + 1}{n} a]$
 
   \item Sei
+    \begin{scriptsize}
     \begin{flalign*}
       \frac{n + 1}{n}a - \frac{n}{n + 1}a &< \epsilon \\
       \frac{n + 1}{n} - \frac{n}{n + 1} =
       \qty(\frac{n + 1}{n} - 1) + \qty(1 - \frac{n}{n + 1})
-      &< \frac{\epsilon}{a} && {\Big |} \; \frac{1}{n} >\frac{1}{n + 1} \\
+      &< \frac{\epsilon}{a} && {\Big |} \; \text{Abschätzung mit }
+      \frac{1}{n} >\frac{1}{n + 1} && \\
       \qty(\frac{n + 1}{n} - 1) + \qty(1 - \frac{n}{n + 1})
       < 2 \qty(\frac{n + 1}{n} - 1) &< \frac{\epsilon}{a} \\
       \frac{2n + 2}{n} &< \frac{\epsilon}{a} + 2 \\
       \frac{2a}{\epsilon} &< n
     \end{flalign*}
+    \end{scriptsize}
 
     $\forall \epsilon > 0, a \in K \; \exists \; n \in \mathbb{N}
     \colon \frac{n + 1}{n}a - \frac{n}{n + 1}a < \epsilon$ mit
