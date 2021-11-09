@@ -105,4 +105,66 @@ wahr.
 
 Nach der vollständigen Induktion folgt die Behauptung.
 
+\paragraph{30.} Es seien $K$ ein archimedisch angeordneter Körper sowie
+$a \in K$ mit $a > 0$.
+Welche der angegebenen Intervallfolgen sind Intervallschachtelungen?
+\begin{enumerate}[(a)]
+\item $\qty{\qty[0_K, \frac{1}{n}a]}_{n \in \mathbb{N}_{>0}}$
+\item $\qty{\qty[0_K, \frac{(n + 1) 1_K}{na}]}_{n \in \mathbb{N}_{>0}}$
+\item $\qty{\qty[\frac{n}{n + 1}a, \frac{n + 1}{n} a]}_{n \in \mathbb{N}_{>0}}$
+\end{enumerate}
+
+\subparagraph{Lsg.}
+\begin{enumerate}[(a)]
+\item Ist eine Intervallschachtelung, da
+  \begin{enumerate}[(1)]
+  \item $\qty[0_k, \frac{1}{n}a] \ne \emptyset$ für alle $n \in \mathbb{N}$
+  \item $\forall \; n \in \mathbb{N} \colon
+    \frac{1}{n + 1} < \frac{1}{n}
+    \Rightarrow \qty[0_k, \frac{1}{n + 1}a] \subset \qty[0_K, \frac{1}{n}a]$
+
+  \item $\forall \epsilon > 0, a \in K \; \exists \; n \in \mathbb{N}
+    \colon \frac{1}{n}a - 0_K< \epsilon$ mit $n > \frac{a}{\epsilon + 0_K}$
+    und ein solches $n$ existiert, da $K$ ein archimedisch angeordneter Körper
+    ist.
+  \end{enumerate}
+
+\newpage
+\item Sei $\epsilon \in K$ so gewählt, dass
+  $\epsilon \in \qty(0, \frac{1_K}{a} - 0_K)$.
+  Angenommen es existiert ein $n \in \mathbb{N}_{> 0}$ mit
+  $\frac{\qty(n + 1)1_K}{na} - 0_K < \epsilon$, dann wäre
+  $\frac{n + 1}{n} < 1$ - ein Widerspruch.
+
+  $\Rightarrow$ keine Intervallschachtelung.
+
+\item Ist eine Intervallschachtelung, da
+  \begin{enumerate}[(1)]
+  \item $\frac{n}{n + 1}a < \frac{n + 1}{n}a$ für alle $n \in \mathbb{N}_{> 0}$
+    $\Rightarrow \qty[\frac{n}{n + 1}a, \frac{n + 1}{n} a] \ne \emptyset$
+
+  \item $\frac{n + 1}{n + 2}a > \frac{n}{n + 1}a$ und
+    $\frac{n + 2}{n + 1}a < \frac{n + 1}{n}a$
+    $\Rightarrow \qty[\frac{n + 1}{n + 2}a, \frac{n + 2}{n + 1} a]
+    \subset \qty[\frac{n}{n + 1}a, \frac{n + 1}{n} a]$
+
+  \item Sei
+    \begin{flalign*}
+      \frac{n + 1}{n}a - \frac{n}{n + 1}a &< \epsilon \\
+      \frac{n + 1}{n} - \frac{n}{n + 1} =
+      \qty(\frac{n + 1}{n} - 1) + \qty(1 - \frac{n}{n + 1})
+      &< \frac{\epsilon}{a} && {\Big |} \; \frac{1}{n} >\frac{1}{n + 1} \\
+      \qty(\frac{n + 1}{n} - 1) + \qty(1 - \frac{n}{n + 1})
+      < 2 \qty(\frac{n + 1}{n} - 1) &< \frac{\epsilon}{a} \\
+      \frac{2n + 2}{n} &< \frac{\epsilon}{a} + 2 \\
+      \frac{2a}{\epsilon} &< n
+    \end{flalign*}
+
+    $\forall \epsilon > 0, a \in K \; \exists \; n \in \mathbb{N}
+    \colon \frac{n + 1}{n}a - \frac{n}{n + 1}a < \epsilon$ mit
+    $n > \frac{2a}{\epsilon}$.
+    Da $K$ archimedisch angeordnet ist, existiert ein solches $n$ auch.
+  \end{enumerate}
+\end{enumerate}
+
 \end{document}
