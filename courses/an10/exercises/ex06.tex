@@ -1,0 +1,132 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 06\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{26. Zeigen Sie Folgendes:}
+\begin{enumerate}[a)]
+\item Es sei $K$ ein angeordneter Körper.
+  Für $x, y \in K$ definieren wir
+  \[
+    \max\qty\big{x, y} \coloneqq
+    \begin{cases}
+      x & \text{falls } x \geq y \\
+      y & \text{falls } x < y \\
+    \end{cases}
+    \text{ und }
+    \min\qty\big{x, y} \coloneqq
+    \begin{cases}
+      x & \text{falls } x \leq y \\
+      y & \text{falls } x > y
+    \end{cases}
+  \]
+  Dann gilt
+  \begin{enumerate}[(1)]
+  \item $\max\qty\big{x, y} = \frac{1}{2} \qty\big(x + y + \abs{x - y})$
+  \item $\min\qty\big{x, y} = \frac{1}{2} \qty\big(x + y - \abs{x - y})$
+  \item $\max\qty\big{x, -x} = \abs{x}$
+  \end{enumerate}
+
+  \subparagraph{Lsg.}
+  \begin{enumerate}[(1)]
+  \item
+    \begin{minipage}[t]{.4\textwidth}
+      Sei $x \geq y$,  dann ist $x - y \geq 0$
+      $\Rightarrow \abs{x - y} = x - y$.
+
+      \begin{flalign*}
+        \max\qty\big{x, y} &= \frac{1}{2} \qty\big(x + y + \abs{x - y}) \\
+        &= \frac{1}{2} \qty\big(x + y + x - y) \\
+        &= \frac{1}{2} \cdot 2 \cdot x = x
+      \end{flalign*}
+    \end{minipage}
+    \hfill
+    \vrule
+    \hfill
+    \begin{minipage}[t]{.4\textwidth}
+      Sei $x < y$, dann ist $x - y < 0$
+      $\Rightarrow \abs{x - y} = -(x - y)$
+
+      \begin{flalign*}
+        \max\qty\big{x, y} &= \frac{1}{2} \qty\big(x + y + \abs{x - y}) \\
+        &= \frac{1}{2} \qty\big(x + y + (-(x - y))) \\
+        &= \frac{1}{2} \cdot 2 \cdot y = y
+      \end{flalign*}
+    \end{minipage}
+
+  \item
+    \begin{minipage}[t]{.4\textwidth}
+      Sei $x \leq y$,  dann ist $x - y \leq 0$
+      $\Rightarrow \abs{x - y} =  -(x - y)$.
+
+      \begin{flalign*}
+        \max\qty\big{x, y} &= \frac{1}{2} \qty\big(x + y - \abs{x - y}) \\
+        &= \frac{1}{2} \qty\big(x + y - (-(x - y))) \\
+        &= \frac{1}{2} \qty\big(x + y + x - y) \\
+        &= \frac{1}{2} \cdot 2 \cdot x = x
+      \end{flalign*}
+    \end{minipage}
+    \hfill
+    \vrule
+    \hfill
+    \begin{minipage}[t]{.4\textwidth}
+      Sei $x > y$, dann ist $x - y > 0$
+      $\Rightarrow \abs{x - y} = x - y)$
+
+      \begin{flalign*}
+        \max\qty\big{x, y} &= \frac{1}{2} \qty\big(x + y - \abs{x - y}) \\
+        &= \frac{1}{2} \qty\big(x + y - (x - y)) \\
+        &= \frac{1}{2} \cdot 2 \cdot y = y
+      \end{flalign*}
+    \end{minipage}
+
+  \item
+    \begin{minipage}[t]{.4\textwidth}
+      Sei $x < 0$,  dann ist $\max\qty\big{x, -x} = -x$
+      und $\abs{x} = -x$
+
+      $\Rightarrow \max\qty\big{x, -x} = \abs{x}$.
+    \end{minipage}
+    \hfill
+    \vrule
+    \hfill
+    \begin{minipage}[t]{.4\textwidth}
+      Sei $x \geq 0$,  dann ist $\max\qty\big{x, -x} = x$
+      und $\abs{x} = x$
+
+      $\Rightarrow \max\qty\big{x, -x} = \abs{x}$.
+    \end{minipage}
+  \end{enumerate}
+\end{enumerate}
+\end{document}
