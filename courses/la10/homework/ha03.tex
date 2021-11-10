@@ -1,0 +1,93 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 02\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 8} Seien $M, N, L$ Mengen und
+$f \colon M \to N, g \colon N \to L$ Abbildungen.
+\begin{enumerate}[(a)]
+\item Angenommen $g \circ f$ ist injektiv
+  \begin{enumerate}[label={(a\arabic*)}]
+  \item Zeigen Sie, dass $f$ injektiv ist
+
+    \subparagraph{Lsg.} Angenommen $f$ wäre nicht injektiv,
+    dann existieren $m_1 \ne m_2 \in M$ mit $f\qty(m_1) = f\qty(m_2) = n \in N$.
+    Somit ist
+    $(g \circ f)\qty(m_1) = g\qty\big(f(m_1)) = g(n) = g\qty(f(m_2))
+    = (g \circ f)(m_2)$.
+
+    Ein Widerspruch zu $g \circ f$ ist injektiv $\Rightarrow f$ muss auch injektiv sein.
+  \item Zeigen Sie, dass $g$ injektiv ist, wenn $f$ surjektiv ist.
+
+    \subparagraph{Lsg.} Angenommen $g$ wäre nicht injektiv,
+    dann existieren $n_1 \ne n_2 \in N$ mit $g\qty(n_1) = g\qty(n_2) = l \in L$.
+    Da $f$ surjektiv ist, existieren $m_1, m_2 \in M$ mit $f\qty(m_1) = n_1$
+    und $f\qty(m_2) = n_2$.
+
+    Somit ist
+    $(g \circ f)(m_1) = g(f(m_1)) = g(n_1) = l = g(n_2) = g(f(m_2))$.
+
+    Ein Widerspruch zu $g \circ f$ ist injektiv $\Rightarrow g$ muss auch injektiv sein.
+
+  \item Geben Sie ein Beispiel an, in dem $g$ nicht injektiv ist.
+
+    \subparagraph{Lsg.} Seien $f \colon \mathbb{N} \to \mathbb{Z}, n \mapsto n$
+    und $g \colon \mathbb{Z} \to \mathbb{N}, z \mapsto \abs{z}$.
+
+    Dann ist $(g \circ f)(n) = \abs{n} = n$, da $n > 0$ für alle $n \in \mathbb{N}$.
+    Somit ist $g \circ f$ injektiv, denn für $n_1 \ne n_2 \in \mathbb{N}$ gilt
+    $(g \circ f)(n_1) = n_1 \ne n_2 = (g \circ f)(n_2)$.
+
+    Allerdings ist $g$ nicht injektiv, denn für $-1, 1 \in \mathbb{Z}$ gilt
+    $g(-1) = g(1) = 1$.
+  \end{enumerate}
+
+\setcounter{enumi}{2}
+\item Geben Sie ein Beispiel an, in dem $g \circ f$ eine Bijektion ist, aber
+  weder $f$ noch $g$ bijektiv ist.
+
+  \subparagraph{Lsg.} Seien $f \colon \mathbb{N}_{> 0} \to \mathbb{N}_{> 0},
+  n \mapsto n + 1$ und $g \colon \mathbb{N}_{n \geq 0} \to \mathbb{N}_{\geq 0},
+  n \mapsto \abs{n - 1}$.
+
+  Dann ist $(g \circ f)(n) = g(f(n)) = g(n + 1) = (n + 1) - 1 = n$ eine
+  Bijektion.
+  Allerdings ist $f$ selbst nicht surjektiv, da für $1 \in \mathbb{N}_{> 0}$ kein
+  $n \in \mathbb{N}$ existiert mit $f(n) = 1$.
+
+  Weiterhin ist $g$ nicht injektiv, denn für $0, 2 \in \mathbb{N}_{\geq 0}$
+  gilt $g(0) = 1 = g(2)$.
+\end{enumerate}
+
+\end{document}
