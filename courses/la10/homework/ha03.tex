@@ -124,10 +124,19 @@ Abbildung zwischen den Mengen existiert.
   \end{cases}$.
 
   Dann ist zum Beispiel $f(-2) = 3, f(-1) = 1, f(0) = 0, f(1) = 2, f(3) = 4$.
+
   Die Abbildung $f$ ist injektiv, da für $z_1 \ne z_2 \in \mathbb{Z}$ gilt
   $f(z_1) \ne f(z_2)$.
+
   Außerdem ist $f$ surjektiv, denn für jedes $n \in \mathbb{N}$ findet sich ein
-  $z \in \mathbb{Z}$ mit $f(z) = n$.
+  $z \in \mathbb{Z}$ durch
+  \[
+    z =  \begin{cases}
+      \frac{n}{2} & \text{, falls gilt $2$ teilt $n$} \\
+      -\frac{n + 1}{2} & \text{, falls nicht gilt $2$ teilt $n$}
+    \end{cases}
+  \]
+  mit $f(z) = n$.
 
 \item Nach dem Satz von Schröder Bernstein sind die Mengen gleichmächtig,
   wenn injektive Abbildungen
