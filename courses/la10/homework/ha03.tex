@@ -42,12 +42,17 @@ $f \colon M \to N, g \colon N \to L$ Abbildungen.
   \item Zeigen Sie, dass $f$ injektiv ist
 
     \subparagraph{Lsg.} Angenommen $f$ wäre nicht injektiv,
-    dann existieren $m_1 \ne m_2 \in M$ mit $f\qty(m_1) = f\qty(m_2) = n \in N$.
+    dann existieren zwei Elemente $m_1 \ne m_2 \in M$ mit
+    $f\qty(m_1) = f\qty(m_2) = n \in N$.
     Somit ist
-    $(g \circ f)\qty(m_1) = g\qty\big(f(m_1)) = g(n) = g\qty(f(m_2))
-    = (g \circ f)(m_2)$.
+    \[
+      (g \circ f)\qty(m_1) = g\qty\big(f(m_1)) = g(n) = g\qty(f(m_2))
+      = (g \circ f)(m_2)
+    \]
 
-    Ein Widerspruch zu $g \circ f$ ist injektiv $\Rightarrow f$ muss auch injektiv sein.
+    Das ist ein Widerspruch zu der Annahme, dass $g \circ f$ injektiv ist.
+
+    $\Rightarrow f$ muss auch injektiv sein.
   \item Zeigen Sie, dass $g$ injektiv ist, wenn $f$ surjektiv ist.
 
     \subparagraph{Lsg.} Angenommen $g$ wäre nicht injektiv,
@@ -56,17 +61,24 @@ $f \colon M \to N, g \colon N \to L$ Abbildungen.
     und $f\qty(m_2) = n_2$.
 
     Somit ist
-    $(g \circ f)(m_1) = g(f(m_1)) = g(n_1) = l = g(n_2) = g(f(m_2))$.
+    \[
+      (g \circ f)(m_1) = g(f(m_1)) = g(n_1) = l = g(n_2) = g(f(m_2))
+    \]
 
-    Ein Widerspruch zu $g \circ f$ ist injektiv $\Rightarrow g$ muss auch injektiv sein.
+    Das ist ein Widerspruch zu der Annahme, dass $g \circ f$ injektiv ist.
+
+    $\Rightarrow g$ muss auch injektiv sein.
 
   \item Geben Sie ein Beispiel an, in dem $g$ nicht injektiv ist.
 
     \subparagraph{Lsg.} Seien $f \colon \mathbb{N} \to \mathbb{Z}, n \mapsto n$
     und $g \colon \mathbb{Z} \to \mathbb{N}, z \mapsto \abs{z}$.
 
-    Dann ist $(g \circ f)(n) = \abs{n} = n$, da $n > 0$ für alle $n \in \mathbb{N}$.
-    Somit ist $g \circ f$ injektiv, denn für $n_1 \ne n_2 \in \mathbb{N}$ gilt
+    Dann ist $(g \circ f)(n) = \abs{n}$.
+    Da $n \in \mathbb{N}$ gilt $n \geq 0$ und $\abs{n} = n$.
+    Somit ist $(g \circ f)(n) = n$.
+
+    Damit ist $g \circ f$ injektiv, denn für $n_1 \ne n_2 \in \mathbb{N}$ gilt
     $(g \circ f)(n_1) = n_1 \ne n_2 = (g \circ f)(n_2)$.
 
     Allerdings ist $g$ nicht injektiv, denn für $-1, 1 \in \mathbb{Z}$ gilt
@@ -81,8 +93,12 @@ $f \colon M \to N, g \colon N \to L$ Abbildungen.
   n \mapsto n + 1$ und $g \colon \mathbb{N}_{n \geq 0} \to \mathbb{N}_{\geq 0},
   n \mapsto \abs{n - 1}$.
 
-  Dann ist $(g \circ f)(n) = g(f(n)) = g(n + 1) = (n + 1) - 1 = n$ eine
-  Bijektion.
+  Dann ist
+  \[
+    (g \circ f)(n) = g(f(n)) = g(n + 1) = \abs{(n + 1) - 1} = \abs{n}
+    \overset{n \in \mathbb{N}_{> 0}}= n
+  \]
+  eine Bijektion.
   Allerdings ist $f$ selbst nicht surjektiv, da für $1 \in \mathbb{N}_{> 0}$ kein
   $n \in \mathbb{N}$ existiert mit $f(n) = 1$.
 
