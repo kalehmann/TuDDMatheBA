@@ -90,4 +90,48 @@ $f \colon M \to N, g \colon N \to L$ Abbildungen.
   gilt $g(0) = 1 = g(2)$.
 \end{enumerate}
 
+\newpage
+\paragraph{Aufgabe 9} Zeigen Sie die folgenden Aussagen.
+\begin{enumerate}[(a)]
+\item $\abs{\mathbb{Z}} = \abs{\mathbb{N}}$
+\item $\abs{\mathbb{N} \times \mathbb{N}} = \abs{\mathbb{Z} \times \mathbb{N}}$
+\end{enumerate}
+
+\subparagraph{Lsg.} Zwei Mengen heißen gleichmächtig, falls eine bijektive
+Abbildung zwischen den Mengen existiert.
+
+\begin{enumerate}[(a)]
+\item Sei $f \colon \mathbb{Z} \to \mathbb{N}$ eine Abbildung mit
+  $f(x) = \begin{cases}
+    2 \cdot (-x) - 1 & \text{, falls } x < 0 \\
+    2x & \text{, falls } x \geq 0
+  \end{cases}$.
+
+  Dann ist zum Beispiel $f(-2) = 3, f(-1) = 1, f(0) = 0, f(1) = 2, f(3) = 4$.
+  Die Abbildung $f$ ist injektiv, da für $z_1 \ne z_2 \in \mathbb{Z}$ gilt
+  $f(z_1) \ne f(z_2)$.
+  Außerdem ist $f$ surjektiv, denn für jedes $n \in \mathbb{N}$ findet sich ein
+  $z \in \mathbb{Z}$ mit $f(z) = n$.
+
+\item Nach dem Satz von Schröder Bernstein sind die Mengen gleichmächtig,
+  wenn injektive Abbildungen
+  $\mathbb{N} \times \mathbb{N} \to \mathbb{Z} \times \mathbb{N}$ und
+  $\mathbb{Z} \times \mathbb{N} \to \mathbb{N} \times \mathbb{N}$ existieren.
+  Die Abbildung
+  \[
+    \mathbb{N} \times \mathbb{N} \to \mathbb{Z} \times \mathbb{N},
+    (m, n) \mapsto (n, n)
+  \]
+  ist offensichtlich injektiv.
+  Sei $f$ die bijektive Abbildung aus Aufgabe (a), dann ist auch die Abbildung
+  \[
+    \mathbb{Z} \times \mathbb{N} \to \mathbb{N} \times \mathbb{N},
+    (z, n) \mapsto (f(z), n)
+  \]
+  injektiv.
+
+  $\Rightarrow$ nach Schröder-Bernstein ist
+  $\abs{\mathbb{N} \times \mathbb{N}} = \abs{\mathbb{Z} \times \mathbb{N}}$.
+\end{enumerate}
+
 \end{document}
