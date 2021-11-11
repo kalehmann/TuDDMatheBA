@@ -69,4 +69,81 @@ Sei nun $P(n)$ auch für ein beliebiges $n \in \mathbb{N}$ wahr.
 \end{flalign*}
 
 $\Rightarrow$ aus der vollständigen Induktion folgt die Behauptung.
+
+\newpage
+\paragraph{Aufgabe 7} Sei $M$ eine nichtleere endliche Menge.
+Sei $P_g(M)$ die Menge aller Teilmengen von $M$, deren Mächtigkeit gerade ist.
+Sei $P_u(M)$ die Menge aller Teilmengen von $M$, deren Mächtigkeit ungerade ist.
+Zeigen Sie, dass $\abs\big{P_g(M)} = \abs\big{P_u(M)}$ gilt.
+
+\subparagraph{Lsg.} Da nur die Mächtigkeit der Menge betrachtet wird, ist es
+in der folgenden Betrachtung nicht relevant, welche Art von Elementen die Menge
+$M$ enthält.
+Der Einfachheit halber werden natürliche Zahlen $1, \ldots, n$ gewählt um die
+Menge $M$ mit $\abs{M} = n$ darzustellen. \\
+
+\underline{Behauptung:}
+\[
+  A(n) = \abs\big{P_g(\qty{1, \ldots, n})} = \abs\big{P_u(\qty{1, \ldots, n})}
+\]
+
+\underline{Induktionsanfang:} Die Aussage $A(0)$ entfällt, da $M$ nichtleer ist.
+\begin{flalign*}
+  A(1) &\colon \abs\big{P_g(\qty{x_1})} = \abs\big{\qty{\emptyset}}
+  = \abs\big{\qty{\qty{x_1}}} = \abs\big{P_u(\qty{x_1})} & \\
+  A(2) &\colon \abs\big{P_g(\qty{x_1, x_2})}
+  = \abs\big{\qty{\emptyset, \qty{x_1, x_2}}}
+  = \abs{\qty{\qty{x_1}, \qty{x_2}}}
+  = \abs\big{P_u(\qty{x_1, x_2})}
+\end{flalign*}
+\underline{Induktionsschritt}: Sei nun $A(n)$ für ein beliebiges
+$n \in \mathbb{N}$ wahr.
+Die Menge aller Teilmengen von $1, \ldots, n + 1$ deren Mächtigkeit gerade ist
+setzt sich zusammen aus
+\begin{itemize}
+\item der Menge aller Teilmengen von $1, \ldots, n$ deren Mächtigkeit gerade ist -
+  $P_g\qty(\qty{1, \ldots, n})$.
+\item der Menge aller Teilmengen von $1, \ldots, n$ deren Mächtigkeit ungerade
+  ist, jeweils vereinigt mit dem Element $n + 1$ -
+  $\qty{M \cup \qty{n + 1} {\big |} M \in P_u\qty(\qty{1, \ldots, n})}$.
+\end{itemize}
+Also gilt:
+\[
+  P_g(\qty{1, \ldots, n + 1}) = P_g(\qty{1, \ldots, n}) \cup
+  \qty{M \cup \qty{n + 1} {\big |} M \in P_u({1, \ldots, n})}
+\]
+Analog gilt für die Menge aller Teilmengen von $1, \ldots, n + 1$ deren
+Mächtigkeit ungerade ist:
+\[
+  P_u(\qty{1, \ldots, n + 1}) = P_u(\qty{1, \ldots, n}) \cup
+  \qty{M \cup \qty{n + 1} {\big |} M \in P_g({1, \ldots, n})}
+\]
+Dabei gilt offensichtlich
+\begin{equation}
+  \tag{1}
+  \abs{P_g(\qty{1, \ldots, n})} =
+  \abs{\qty{M \cup \qty{n + 1} {\big |} M \in P_u({1, \ldots, n})}}
+\end{equation}
+und
+\begin{equation}
+  \tag{2}
+  \abs{P_u(\qty{1, \ldots, n})} =
+  \abs{\qty{M \cup \qty{n + 1} {\big |} M \in P_g({1, \ldots, n})}}
+\end{equation}
+
+
+\begin{flalign*}
+  A(n + 1) \colon \abs\big{P_g(\qty{1, \ldots, n + 1})}
+  &= \abs\big{P_u(\qty{1, \ldots, n + 1})} &\\
+  \substack{
+      \abs\big{P_g(\qty{1, \ldots, n})} + \\
+      \abs{\qty{M \cup \qty{ n + 1} {\big |} M \in P_u\qty(\qty{1, \ldots, n})}}
+  } &= \substack{
+      \abs\big{P_u(\qty{1, \ldots, n})} + \\
+      \abs{\qty{M \cup \qty{ n + 1} {\big |} M \in P_g\qty(\qty{1, \ldots, n})}}
+  } && {\Big |} \text{ Siehe (1) und (2)} \\
+  2 \cdot \abs{P_g(\qty{1, \ldots, n})} &= 2 \cdot \abs{P_u(\qty{1, \ldots, n})}
+\end{flalign*}
+$\Rightarrow$ nach der vollständigen Induktion folgt die Behauptung.
+
 \end{document}
