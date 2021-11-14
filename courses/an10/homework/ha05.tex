@@ -34,6 +34,44 @@
 \rfoot{Seite \thepage}
 
 \begin{document}
+\paragraph{35.} Es seien $X$ und $Y$ nichtleere und beschränkte Teilmengen von
+$\mathbb{R}$.
+Beweisen Sie
+\begin{enumerate}[(a)]
+\item Sei zusätzlich $\inf X > 0$.
+  Beweisen Sie, dass die Menge
+  $X' \coloneqq \qty\big{x \: {\big |} \: \frac{1}{x} \in X}$
+  nach oben beschränkt ist und dass
+  $\sup X' = \frac{1}{\inf X}$.
+
+  \subparagraph{Lsg.} $X$ ist eine nicht leere Teilmenge aus dem vollständigen
+  und archimedisch angeordneten Körper $\mathbb{R}$.
+  Nach Theorem 5.18 der Vorlesung existieren somit $\inf X$ und $\sup X$.
+
+  Angenommen es existiert $x' \in X'$ mit
+  $x' > \frac{1}{\inf X} \overset{\inf X > 0}> 0$, dann gilt nach Definition
+  von $X'$ auch $\frac{1}{x'} \in X$.
+  Aus Satz 5.4 der Vorlesung folgt $0 < \frac{1}{x'} < \inf X$ - ein Widerspruch.
+
+  $\Rightarrow \frac{1}{\inf X}$ ist obere Schranke von $X'$.
+
+  $\Rightarrow$ \underline{\underline{$X'$ ist nach oben beschränkt}}.
+
+  Aus $\inf X > 0$ und der Definition von $X'$ gilt für alle
+  $x' \in X'$, dass $x' > 0$.
+  Angenommen es gäbe eine obere Schranke $s \in \mathbb{R}$ von $X'$ mit
+  $0 < s < \frac{1}{\inf X}$, dann folgt $\frac{1}{s} > \inf X$.
+  Da $\inf X$ die größte untere Schranke von $X$ ist, existiert
+  $\frac{1}{x} \in X$ mit $\frac{1}{s} > \frac{1}{x} \geq \inf X$.
+  Es folgt $x \in X'$ mit $x > s$ - ein Widerspruch zu
+  ``$s$ ist obere Schranke''.
+
+  $\Rightarrow \frac{1}{\inf X}$ ist kleinste obere Schranke von $X'$
+
+  $\Rightarrow \underline{\underline{\sup X' = \frac{1}{\inf X}}}$.
+\end{enumerate}
+
+\newpage
 \paragraph{36.} Es seien $n \in \mathbb{N}_{> 0}$ und
 $x_1, \ldots, x_n \in \mathbb{R}_{> 0}$.
 Beweisen Sie:
