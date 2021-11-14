@@ -1,0 +1,84 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann (Übungsgruppe 1)\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 07\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{36.} Es seien $n \in \mathbb{N}_{> 0}$ und
+$x_1, \ldots, x_n \in \mathbb{R}_{> 0}$.
+Beweisen Sie:
+\[
+  \qty(\sum_{k = 1}^n \frac{x_k}{n})^2 \leq \sum_{k = 1}^n \frac{x_k^2}{n}
+\]
+
+\subparagraph{Lsg.} Seien $x, y \in \mathbb{R}_{> 0}$ beliebig.
+Es gilt $(x - y)^2 \geq 0$.
+Weiterhin ist \\
+$\qty\big(x - y)^2 = x^2 + y^2 - 2xy$.
+Es folgt
+\begin{equation}
+  \tag{*}
+  x^2 + y^2 \geq 2xy
+\end{equation}
+\begin{flalign*}
+  &&\qty(\sum_{k = 1}^n \frac{x_k}{n})^2 &\leq \sum_{k = 1}^n \frac{x_k^2}{n} \\
+  &&\qty(\frac{1}{n})^2 \qty(\sum_{k = 1}^n x_k)^2
+  &\leq \frac{1}{n} \sum_{k = 1}^n x_k^2 && {\Big |} \cdot n^2 \\
+  \text{\underline{Behauptung:}} &&
+  P(n) \colon \qty(\sum_{k = 1}^n x_k)^2 &\leq n \cdot \sum_{k = 1}^n x_k^2
+\end{flalign*}
+\underline{Induktionsanfang:} $P(1) \colon x_1^2 \leq x_1^2$ \\
+\underline{Induktionsschritt:} Sei $P(n)$ für ein beliebiges $n \in \mathbb{N}$
+wahr.
+\begin{flalign*}
+  P(n + 1) \colon \qty(\sum_{k = 1}^{n + 1} x_k)^2
+  &= \qty(\sum_{k = 1}^n x_k + x_{n + 1})^2 \\
+  &= \qty(\sum_{k = 1}^n x_k)^2 +
+    \qty(\sum_{k = 1}^n 2x_kx_{n + 1}) + x_{n + 1}^2 \\
+  \overset{\text{Siehe (*)}}&\leq \qty(\sum_{k = 1}^n x_k)^2 +
+    \qty(\sum_{k = 1}^n x_k^2 + x_{n + 1}^2) + x_{n + 1}^2 \\
+  \overset{\text{Induktionsvorraussetzung}}&\leq n \cdot
+    \sum_{k = 1}^n x_k^2 +
+    \qty(\sum_{k = 1}^n x_k^2 + x_{n + 1}^2) + x_{n + 1}^2 \\
+  &= n \cdot \sum_{k = 1}^n x_k^2 + \sum_{k = 1}^n x_k^2 +
+    \sum_{k = 1}^n x_{n + 1}^2 + x_{n + 1}^2 \\
+  &= \qty\big(n + 1) \cdot \sum_{k = 1}^n x_k^2 +
+    \sum_{k = 1}^{n + 1} x_{n + 1}^2
+    = \qty\big(n + 1) \cdot \sum_{k = 1}^n x_k^2 +
+    \qty\big(n + 1) \cdot x_{n + 1}^2 \\
+  &= \qty\big(n + 1) \cdot \sum_{k = 1}^{n + 1} x_k^2
+\end{flalign*}
+
+$\Rightarrow$ nach der vollständigen Induktion folgt die Behauptung.
+
+\end{document}
