@@ -97,6 +97,27 @@ Beweisen Sie
 
     $\Rightarrow S = \sup X$.
   \end{itemize}
+
+\newpage
+\item Für $X + Y \coloneqq \qty\big{ x + y {\big |} x \in X, y \in Y}$ gilt
+  $\sup(X + Y) = \sup X + \sup Y$.
+
+  \subparagraph{Lsg.} Sei $x' = \sup X$ und $y' = \sup Y$.
+  Dann gilt für jedes $x \in X \colon x \leq x'$ und für jedes
+  $y \in Y \colon y \leq y'$.
+  Somit gilt auch $x + y \leq x' + y'$.
+  Da $x, y$ beliebig sind, ist $x' + y' = \sup X + \sup Y$ eine obere Schranke
+  von $X + Y$.
+
+  Sei nun $\frac{\epsilon}{2} > 0$ beliebig.
+  Nach $(b)$ existieren $x \in X$ und $y \in Y$ mit
+  $x' - \frac{\epsilon}{2} < x$ und $y' - \frac{\epsilon}{2} < y$.
+
+  $\Rightarrow \forall \epsilon > 0 \: \colon \exists \: (x + y) \in X + Y
+  \colon x' + y' - \epsilon < x + y$
+
+  $\Rightarrow$ aus $(b)$ folgt
+  $x' + y' = \sup X + \sup Y = \sup \qty\big(X + Y)$
 \end{enumerate}
 
 \newpage
