@@ -69,6 +69,34 @@ Beweisen Sie
   $\Rightarrow \frac{1}{\inf X}$ ist kleinste obere Schranke von $X'$
 
   $\Rightarrow \underline{\underline{\sup X' = \frac{1}{\inf X}}}$.
+
+\item Wenn $S$ eine obere Schranke von $X$ ist und für jedes $\epsilon > 0$
+  ein $x \in X$ existiert mit $S - \epsilon < x$, dann gilt $S = \sup X$.
+
+  \subparagraph{Lsg.}
+  \begin{itemize}
+  \item[``$\Leftarrow$''] Angenommen $S = \sup X$ und es existiert ein
+    $\epsilon > 0$, so dass für alle $x \in X$ gilt: $S - \epsilon \geq x$.
+
+    $\Rightarrow S - \epsilon$ ist eine obere Schranke von $X$
+
+    $\Rightarrow S - \epsilon < S$ - ein Widerspruch zu $S$ ist Supremum
+    (kleinste obere Schranke).
+
+  \item[``$\Rightarrow$''] $S$ heißt Supremum von $X$, wenn $S$ die kleinste
+    obere Schranke von $X$ ist.
+    Angenommen es gäbe nun eine obere Schranke $\overline{s} \in \mathbb{R}$
+    von $X$ mit $\overline{s} < S$, dann ist $S - \overline{s} = \epsilon$ mit
+    $\epsilon > 0$.
+    Da $s$ obere Schranke ist, existiert somit ein $\epsilon > 0$, so dass
+    für alle $x \in X$ gilt $\epsilon \geq x$ - ein Widerspruch zur
+    Voraussetzung
+    $\forall \: \epsilon > 0 \: \exists \: x \in X \colon S - \epsilon < x$.
+
+    $\Rightarrow S$ ist die kleinste obere Schranke von $X$
+
+    $\Rightarrow S = \sup X$.
+  \end{itemize}
 \end{enumerate}
 
 \newpage
