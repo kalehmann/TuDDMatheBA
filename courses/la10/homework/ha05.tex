@@ -1,0 +1,200 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 05\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 6} Prüfen Sie, ob es sich um einen Körper handelt:
+\[
+  \qty\big(\mathbb{Z}, \oplus, \odot)
+  \text{ mit }
+  a \oplus b \coloneqq a + b - 1
+  \text{ und }
+  a \odot b \coloneqq a + b - ab
+\]
+\subparagraph{Lsg.}
+\underline{Ist $\qty\big(\mathbb{Z}, \oplus)$ eine Gruppe?}
+\begin{enumerate}[(i)]
+\item Für $a, b, c \in \mathbb{Z}$ gilt
+  \begin{flalign*}
+    a \oplus \qty\big(b \oplus c)
+    \overset{\text{Def. } \oplus}&= a \oplus \qty\big(b + c - 1) \\
+    \overset{\text{Def. } \oplus}&= a + \qty\big(b + c - 1) - 1 \\
+    \overset{\text{Kommutativität von $\mathbb{Z}$}}&=
+    a + \qty\big(b - 1 + c) - 1 \\
+    \overset{\text{Assoziativität von $\mathbb{Z}$}}&=
+    \qty\big(a + b - 1) + c - 1 \\
+    \overset{\text{Def. } \oplus}&= \qty\big(a \oplus b) + c - 1 \\
+    \overset{\text{Def. } \oplus}&= \qty\big(a \oplus b) \oplus c
+  \end{flalign*}
+  $\Rightarrow \qty\big(\mathbb{Z}, \oplus)$ ist \emph{assoziativ}.
+
+\item Sei $a \in \mathbb{Z}$ beliebig.
+  Dann ist
+  \begin{flalign*}
+    a \oplus 1 \overset{\text{Def.} \oplus}&= a + 1 - 1 = a + 0 \\
+    &= a \\
+    &= a + 0 = a + 1 - 1 \\
+    \overset{\text{Kommutativität von $\mathbb{Z}$}}&= 1 + a - 1 \\
+    \overset{\text{Def.} \oplus}&= 1 + a
+  \end{flalign*}
+  $\Rightarrow 1$ ist \emph{neutrales Element} in
+  $\qty\big(\mathbb{Z}, \oplus)$.
+
+\item Sei $a \in \mathbb{Z}$ beliebig.
+  Dann gilt für $2 - a$
+  \begin{flalign*}
+    a \oplus \qty\big(2 - a)
+    \overset{\text{Def.} \oplus}&= a + \qty\big(2 - a) - 1 \\
+    \overset{\text{Kommutativität in $\mathbb{Z}$}}&=
+      a + \qty\big(-a + 2) - 1 \\
+    \overset{\text{Assoziativität in $\mathbb{Z}$}}&=
+      \qty\big(a - a) + \qty\big(2 - 1) \\
+    &= 0 + 1 = 1
+  \end{flalign*}
+  $\Rightarrow$ für jedes Element $a \in \mathbb{Z}$ existiert mit
+  $\qty\big(2 - a)$ ein \emph{inverses Element} bezüglich $\oplus$.
+\end{enumerate}
+$\Rightarrow \qty\big(\mathbb{Z}, \oplus)$ ist eine \textbf{Gruppe}. \\
+Seien $a, b \in \mathbb{Z}$ beliebig.
+Dann ist
+\begin{flalign*}
+  a \oplus b \overset{\text{Def.} \oplus}&= a + b + 1 \\
+  \overset{\text{Kommutativität in $\mathbb{Z}$}}&= b + a + 1 \\
+  \overset{\text{Def. } \oplus}&= b \oplus a
+\end{flalign*}
+$\Rightarrow \qty\big(\mathbb{Z}, \oplus)$ ist eine \textbf{abelsche Gruppe}.
+
+\newpage
+\underline{Ist $\qty\big(\mathbb{Z}, \oplus, \odot)$ ein Ring?}
+\begin{enumerate}[(i)]
+\item $\qty\big(\mathbb{Z}, \oplus)$ ist eine \emph{abelsche Gruppe}.
+\item Für $a, b, c \in \mathbb{Z}$ gilt
+  \begin{flalign*}
+    a \odot \qty\big(b \odot c) \overset{\text{Def. } \odot}&=
+      a \odot \qty\big(b + c - bc) \\
+    \overset{\text{Def. } \odot}&=
+      a + \qty\big(b + c - bc) - a \cdot \qty\big(b + c - bc) \\
+    \overset{\text{Distributivität von $\mathbb{Z}$}}&=
+      a + \qty\big(b + c - bc) - ab - ac + abc \\
+    \overset{
+      \substack{
+        \text{Assoziativität/} \\
+        \text{Kommutativität}
+      } \text{ von } \mathbb{Z}
+    }&= \qty\big(a + b - ab) + c - ac - bc + abc \\
+    \overset{\text{Distributivität von } \mathbb{Z}}&=
+      \qty\big(a + b - ab) + c - \qty\big(a + b - ab) \cdot c \\
+    \overset{\text{Def. } \odot}&= \qty\big(a + b - ab) \odot c \\
+    \overset{\text{Def. } \odot}&= \qty\big(a \odot b) \odot c
+  \end{flalign*}
+  $\Rightarrow \qty\big(\mathbb{Z}, \oplus, \odot)$ ist \emph{assoziativ}
+  bezüglich der Multiplikation.
+
+\item Für jedes $a \in \mathbb{Z}$ gilt
+  \begin{flalign*}
+    a \odot 0 \overset{\text{Def. } \oplus}&= a + 0 - a \cdot 0
+    = a + 0 - 0 \\
+    &= a \\
+    &= 0 + a - 0
+    = 0 + a - 0 \cdot a \\
+    \overset{\text{Def. } \oplus}&= a \odot 0
+  \end{flalign*}
+  $\Rightarrow 0$ ist \emph{neutrales Element} bezüglich $\odot$ in
+  $\mathbb{Z}$.
+
+\item Für $a, b, c \in \mathbb{Z}$ gilt
+  \begin{flalign*}
+    a \odot \qty\big(b \oplus c) \overset{\text{Def. } \oplus}&=
+      a \odot \qty\big(b + c - 1) \\
+    \overset{\text{Def. } \odot}&=
+      a + \qty\big(b + c - 1) - a \cdot \qty\big(b + c - 1) \\
+    \overset{\text{Distributivität in } \mathbb{Z}}&=
+      a + \qty\big(b + c - 1) - ab - ac + a \\
+    \overset{
+      \substack{
+        \text{Assoziativität/} \\
+        \text{Kommutativität}
+      } \text{ von } \mathbb{Z}
+    }&= \qty\big(a + b - ab) + \qty\big(a + c - ac) - 1 \\
+    \overset{\text{Def. } \oplus}&=
+      \qty\big(a + b - ab) \oplus \qty\big(a + c - ac) \\
+    \overset{\text{Def. } \odot}&= \qty\big(a \odot b) \oplus \qty\big(a \odot c) \\
+  \end{flalign*}
+  und
+  \begin{flalign*}
+    \qty\big(b \oplus c) \odot a \overset{\text{Def. } \oplus}&=
+      \qty\big(b + c - 1) \odot a \\
+    \overset{\text{Def. } \odot}&=
+      \qty\big(b + c - 1) + a - \qty\big(b + c - 1) \cdot a \\
+    \overset{\text{Distributivität in } \mathbb{Z}}&=
+      \qty\big(b + c - 1) + a - ba - ca + a \\
+    \overset{
+      \substack{
+        \text{Assoziativität/} \\
+        \text{Kommutativität}
+      } \text{ von } \mathbb{Z}
+    }&= \qty\big(b + a - ba) + \qty\big(c + a - ca) - 1 \\
+    \overset{\text{Def. } \oplus}&=
+      \qty\big(b + a - ba) \oplus \qty\big(c + a - ca) \\
+    \overset{\text{Def. } \odot}&= \qty\big(b \odot a) \oplus \qty\big(c \odot a)
+  \end{flalign*}
+  $\Rightarrow \qty\big(\mathbb{Z}, \oplus, \odot)$ ist \emph{distributiv}.
+\end{enumerate}
+$\Rightarrow \qty\big(\mathbb{Z}, \oplus, \odot)$ ist ein \textbf{Ring}. \\
+
+Für $a, b \in \mathbb{Z}$ gilt
+\begin{flalign*}
+  a \cdot b \overset{\text{Def. } \odot}&= a + b - ab \\
+  \overset{\text{Kommutativität in } \mathbb{Z}}&= b + a - ba \\
+  \overset{\text{Def. } \odot}&= b \odot a
+\end{flalign*}
+$\Rightarrow \qty\big(\mathbb{Z}, \oplus, \odot)$ ist ein
+\textbf{kommutativer Ring}. \\
+
+\underline{Ist $\qty\big(\mathbb{Z}, \oplus, \odot)$ ein Körper?}
+\begin{enumerate}[(i)]
+\item $\qty\big(\mathbb{Z}, \oplus, \odot)$ ist ein \emph{kommutativer Ring}.
+\item Sei $a = 3$.
+  Dann gilt
+  \[
+    a \odot b = 1_{\qty\big(\mathbb{Z}, \oplus, \odot)} = 0
+  \]
+  für $b = \frac{3}{2} \notin \mathbb{Z}$.
+
+  $\Rightarrow$ es existiert nicht für jedes Element außer
+  $0_{\qty\big(\mathbb{Z}, \oplus, \odot)}$ ein inverses Element
+  der Multiplikation.
+\end{enumerate}
+$\Rightarrow \qty\big(\mathbb{Z}, \oplus, \odot)$ ist \textbf{kein Körper}.
+\end{document}
