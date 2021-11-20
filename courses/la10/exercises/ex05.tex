@@ -196,7 +196,8 @@ Sei $D_6 \coloneqq \qty\big{\text{id}, r_1, r_2, r_3, s_1, s_2, s_3}$.
 
 \paragraph{Aufgabe 5} Sei $K \coloneqq \mathbb{R} \times \mathbb{R}$.
 \begin{enumerate}[(1)]
-\item Für $\qty\big(a, b), \qty\big(a', b') \in K$ sei
+\item \label{sec:5_1}
+  Für $\qty\big(a, b), \qty\big(a', b') \in K$ sei
   \[
     \qty\big(a, b) + \qty\big(a', b') \coloneqq \qty\big(a + a', b + b')
   \]
@@ -359,5 +360,97 @@ Sei $D_6 \coloneqq \qty\big{\text{id}, r_1, r_2, r_3, s_1, s_2, s_3}$.
   Somit ist $i^2 = i \circ i =
   \qty\big(0 \cdot 0 - 1 \cdot 1, 1 \cdot 0 + 0 \cdot 1) = \qty\big(-1, 0)$.
 
+
+\item Definieren Sie nun $\qty\big(a, b) \cdot \qty\big(a', b') =
+  \qty\big(aa', bb')$.
+  Beweisen Sie, dass $\qty\big(K, +, \cdot)$ ein Ring ist.
+  Handelt es sich um einen Körper?
+  Handelt es sich um einen Integritätsring?
+
+  \subparagraph{Lsg.} Aus \hyperref[sec:5_1]{(1)} ist bereits bekannt, dass
+  $\qty\big(K, +)$ eine abelsche Gruppe ist.
+  Weiter gilt für $\qty\big(a, a'), \qty\big(b, b'), \qty\big(c, c') \in K$:
+  \begin{flalign*}
+    \qty\Big(\qty\big(a, a') \cdot \qty\big(b, b')) \cdot \qty\big(c, c')
+    &= \qty\big(ab, a'b') \cdot \qty\big(c, c') \\
+    &= \qty\big(abc, a'b'c') \\
+    &= \qty\big(a, a') \cdot \qty\big(bc, b'c') \\
+    &= \qty\big(a, a') \cdot \qty\Big(\qty\big(b, b') \cdot \qty\big(c, c'))
+  \end{flalign*}
+  $\Rightarrow \qty\big(K, +, \cdot)$ ist assoziativ bezüglich der
+  Multiplikation.
+
+  Zusätzlich ist $\qty\big(1, 1) \in K$.
+  Es gilt für $\qty\big(a, a') \in K$:
+  \[
+    \qty\big(a, a') \cdot \qty\big(1, 1)
+    = \qty\big(a \cdot 1, a' \cdot 1)
+    = \qty\big(a, a')
+    = \qty\big(1 \cdot a, 1 \cdot a')
+    = \qty\big(1, 1) \cdot \qty\big(a, a')
+  \]
+  $\Rightarrow \qty\big(1, 1)$ ist neutrales Element der Multiplikation.
+
+  \newpage
+  Für $\qty\big(a, a'), \qty\big(b, b'), \qty\big(c, c') \in K$ gilt:
+  \begin{flalign*}
+    \qty\big(a, a') \cdot \qty\Big(\qty\big(b, b') + \qty\big(c, c'))
+    &= \qty\big(a, a') \cdot \qty\big(b + c, b' + c') \\
+    &= \qty\Big(a \cdot \qty\big(b + c), a' \cdot \qty\big(b' + c')) \\
+    \overset{\text{Distributivität in $\mathbb{R}$}}&=
+      \qty\big(ab + ac, a'b' + a'c') \\
+    &= \qty\big(ab, a'b') + \qty\big(ac, a'c') \\
+    &= \qty\big(a, a') \cdot \qty\big(b, b')
+      + \qty\big(a, a') \cdot \qty\big(c, c')
+  \end{flalign*}
+  und
+  \begin{flalign*}
+    \qty\Big(\qty\big(b, b') + \qty\big(c, c')) \cdot \qty\big(a, a')
+    &= \qty\big(b + c, b' + c') \cdot \qty\big(a, a') \\
+    &= \qty\Big(\qty\big(b + c) \cdot a, \qty\big(b' + c') \cdot a') \\
+    \overset{\text{Distributivität in $\mathbb{R}$}}&=
+      \qty\big(ba + ca, b'a' + c'a') \\
+    &= \qty\big(ba, b'a') + \qty\big(ca, c'a') \\
+    &= \qty\big(b, b') \cdot \qty\big(a, a') +
+      \qty\big(c, c') \cdot \qty\big(a, a')
+  \end{flalign*}
+  $\Rightarrow \qty\big(K, +, \cdot)$ ist distributiv.
+
+  $\Rightarrow \qty\big(K, +, \cdot)$ ist ein \textbf{Ring}.
+
+  Für $\qty\big(a, a'), \qty\big(b, b') \in K$ gilt
+  \[
+    \qty\big(a, a') \cdot \qty\big(b, b')
+    = \qty\big(ab, a'b')
+    \overset{\text{Kommutativität in $\mathbb{R}$}}= \qty\big(ba, b'a')
+    = \qty\big(b, b') \cdot \qty\big(a, a')
+  \]
+  $\Rightarrow \qty\big(K, +, \cdot)$ ist ein \textbf{kommutativer Ring}. \\
+
+  Sei nun $\qty\big(a, 0) \ne \qty\big(0, 0) \in K$ beliebig.
+  Angenommen es gäbe ein inverses Element $\qty\big(b, b') \in K$, dann
+  würde gelten
+  \[
+    \qty\big(a, 0) \cdot \qty\big(b, b') = \qty\big(1, 1)
+  \]
+  Ein solches Element kann nicht existieren, da kein $b'$ mit
+  $0 \cdot b' = 1$ existiert.
+
+  $\Rightarrow$ nicht jedes Element verschieden von $\qty\big(0, 0)$ in
+  $\qty\big(K, +, \cdot)$ ist invertierbar.
+
+  $\Rightarrow \qty\big(K, +, \cdot)$ ist \textbf{kein Körper}. \\
+
+  Offensichtlich sind $\qty\big(1, 0) \ne \qty\big(0, 0) \in K$
+  und $\qty\big(0, 1) \ne \qty\big(0, 0) \in K$.
+  Der Ring $\qty\big(K, +, \cdot)$ heißt Integritätsring, falls
+  \[
+    a \cdot b = 0 \Rightarrow a = 0 \lor b = 0
+  \]
+
+  Nun ist $\qty\big(1, 0) \cdot \qty\big(0, 1) = \qty\big(1 \cdot 0, 0 \cdot 1)
+  = \qty\big(0, 0)$ ein Widerspruch.
+
+  $\Rightarrow \qty\big(K, +, \cdot)$ ist kein Integritätsring.
 \end{enumerate}
 \end{document}
