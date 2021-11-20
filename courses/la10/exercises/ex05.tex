@@ -192,6 +192,165 @@ Sei $D_6 \coloneqq \qty\big{\text{id}, r_1, r_2, r_3, s_1, s_2, s_3}$.
     Es existiert für jedes Element ein Inverses, nämlich
     ``id'' für ``id'', $r_2$ für $r_1$ und $r_1$ für $r_2$.
   \end{enumerate}
+\end{enumerate}
 
+\paragraph{Aufgabe 5} Sei $K \coloneqq \mathbb{R} \times \mathbb{R}$.
+\begin{enumerate}[(1)]
+\item Für $\qty\big(a, b), \qty\big(a', b') \in K$ sei
+  \[
+    \qty\big(a, b) + \qty\big(a', b') \coloneqq \qty\big(a + a', b + b')
+  \]
+  \[
+    \qty\big(a, b) \circ \qty\big(a', b') \coloneqq
+    \qty\big(aa' - bb', ab' + a'b)
+  \]
+  Zeigen Sie, dass $\qty\big(K, +, \circ)$ ein Körper ist.
+
+  \subparagraph{Lsg.} Für $\qty\big(K, +)$ gilt
+  \begin{enumerate}[(i)]
+  \item Für $\qty\big(a, a'), \qty\big(b, b'), \qty\big(c, c') \in K$ ist
+    \begin{flalign*}
+      \qty\big(a, a') + \qty\Big(\qty\big(b, b') + \qty\big(c, c'))
+      &= \qty\big(a, a') + \qty\big(b + c, b' + c') & \\
+      &= \qty\big(a + b + c, a' + b' + c') \\
+      &= \qty\Big(\qty\big(a + b, a' + b')) + \qty\big(c, c') \\
+      &= \qty\Big(\qty\big(a, a') + \qty\big(b, b')) + \qty\big(c, c')
+    \end{flalign*}
+    $\Rightarrow \qty\big(K, +)$ ist assoziativ.
+
+  \item Für jedes $\qty\big(a, a') \in K$ gilt
+    \[
+      \qty\big(a, a') + \qty\big(0, 0)
+      = \qty\big(a + 0, a' + 0) = \qty\big(a, a')
+      = \qty\big(0 + a, 0 + a')
+      = \qty\big(0, 0) + \qty\big(a, a')
+    \]
+    $\Rightarrow \qty\big(0, 0)$ ist neutrales Element von $\qty\big(K, +)$
+
+  \item Seien $a, a' \in \mathbb{R}$ beliebig.
+    Da $\mathbb{R}$ ein Körper ist, existieren $-a, -a' \in \mathbb{R}$
+    mit $a + (-a) = 0$ und $a' + \qty\big(-a') = 0$.
+    Somit existiert für jedes $\qty\big(a, a') \in K$ auch
+    $\qty\big(-a, -a') \in K$ mit
+    $\qty\big(a, a') + \qty\big(-a, -a') = \qty\big(0, 0)$.
+  \end{enumerate}
+
+  $\Rightarrow \qty\big(K, +)$ ist eine \textbf{Gruppe}.
+
+  Weiterhin ist für $\qty\big(a, a'), \qty\big(b, b') \in K$
+  \begin{flalign*}
+    \qty\big(a, a') + \qty\big(b, b') &= \qty\big(a + b, a' + b') & \\
+    \overset{\text{Kommutativität in $\mathbb{R}$}}&= \qty\big(b + a, b' + a') \\
+    &= \qty\big(b, b') + \qty\big(a, a')
+  \end{flalign*}
+  $\Rightarrow \qty\big(K, +)$ ist eine \textbf{abelsche Gruppe}.
+
+  Für $\qty\big(K, +, \circ)$ gilt
+  \begin{enumerate}[(i)]
+  \item $\qty\big(K, +)$ ist eine abelsche Gruppe (siehe oben).
+  \item Für $\qty\big(a, a'), \qty\big(b, b'), \qty\big(c, c') \in K$ gilt:
+    \begin{flalign*}
+      \qty\Big(\qty\big(a, a') \circ \qty\big(b, b')) \circ \qty\big(c, c')
+      &= \qty\big(ab - a'b', ab' + ba') \circ \qty\big(c, c') & \\
+      &= \qty\Big(
+        \qty\big(ab - a'b') \cdot c - \qty\big(ab' + ba') \cdot c',
+        \qty\big(ab - a'b') \cdot c' + \qty\big(ab' + ba') \cdot c
+      ) \\
+      &= \qty\Big(
+        abc - a'b'c - ab'c' - ba'c',
+        abc' - a'b'c' + ab'c + ba'c
+      ) \\
+      &= \qty\Big(
+        a \cdot \qty\big(bc - b'c') - a' \cdot \qty\big(b'c + bc'),
+        a \cdot \qty\big(bc' + b'c) + a' \cdot \qty\big(bc - b'c')
+      ) \\
+      &= \qty\big(a, a') \circ \qty\big(bc - b'c', bc' + cb') \\
+      &= \qty\big(a, a') \circ \qty\Big(\qty\big(b, b') \circ \qty\big(c, c'))
+    \end{flalign*}
+
+    $\Rightarrow \qty\big(K, +, \circ)$ ist assoziativ bezüglich der
+    Multiplikation.
+
+  \item Sei $1_K = \qty\big(1, 0)$.
+    Dann ist $1_k \ne 0_K = \qty\big(0, 0)$.
+    Weiterhin gilt für jedes Element $\qty\big(a, a') \in K$:
+    \begin{flalign*}
+      \qty\big(a, a') \circ \qty\big(1, 0)
+      &= \qty\big(a \cdot 1 - a' \cdot 0, a \cdot 0 + 1 \cdot a') \\
+      &= \qty\big(a, a') \\
+      &= \qty\big(1 \cdot a - 0 \cdot a', 1 \cdot a' + a \cdot 0) \\
+      &= \qty\big(1, 0) \circ \qty\big(a, a')
+    \end{flalign*}
+    $\Rightarrow \qty\big(K, +, \circ)$ besitzt mit $\qty\big(1, 0)$ ein
+    neutrales Element der Multiplikation.
+
+  \item Seien $\qty\big(a, a'), \qty\big(b, b'), \qty\big(c, c') \in K$
+    beliebig, dann
+    \begin{flalign*}
+      \qty\big(a, a') \circ \qty\Big(\qty\big(b, b') + \qty\big(c, c'))
+      &= \qty\big(a, a') \circ \qty\big(b + c, b' + c') \\
+      &= \qty\Big(
+        a \cdot \qty\big(b + c) - a' \cdot \qty\big(b' + c'),
+        a \cdot \qty\big(b' + c') + a' \cdot \qty\big(b + c)
+      ) \\
+      &= \qty\big(ab + ac - a'b' - a'c', ab' + ac' + a'b + a'c) \\
+      &= \qty\big(ab - a'b', ab' + a'b) + \qty\big(ac - a'c', ac' + a'c) \\
+      &= \qty\big(a, a') \circ \qty\big(b, b') +
+        \qty\big(a, a') \circ \qty\big(c, c')
+    \end{flalign*}
+    und
+    \begin{flalign*}
+      \qty\Big(\qty\big(b, b') + \qty\big(c, c')) \circ \qty\big(a, a')
+      &= \qty\big(b + c, b' + c') \circ \qty\big(a, a') \\
+      &= \qty\Big(
+        \qty\big(b + c) \cdot a - \qty\big(b' + c') \cdot a',
+        \qty\big(b + c) \cdot a' + a \cdot \qty\big(b' + c')
+      ) \\
+      &= \qty\big(
+        ba + ca - b'a' - c'a',
+        ba' +ca' + ab' + ac'
+      ) \\
+      &= \qty\big(ba - b'a', ba' + ab') + \qty\big(ca - c'a', ca' + ac') \\
+      &= \qty\big(b, b') \circ \qty\big(a, a') +
+        \qty\big(c, c') \circ \qty\big(a, a')
+    \end{flalign*}
+    $\Rightarrow \qty\big(K, +, \circ)$ ist distributiv.
+  \end{enumerate}
+  $\Rightarrow \qty\big(K, +, \circ)$ ist ein \textbf{Ring}.
+  \newpage
+  Außerdem gilt für $\qty\big(a, a'), \qty\big(b, b') \in K$ noch
+  \begin{flalign*}
+    \qty\big(a, a') \cdot \qty\big(b, b')
+    &= \qty\big(ab - a'b', ab' + ba') \\
+    \overset{\text{Kommutativität in $\mathbb{R}$}}&=
+    \qty\big(ba - b'a', ba' + ab') \\
+    &= \qty\big(b, b') \circ \qty\big(a, a')
+  \end{flalign*}
+  $\Rightarrow \qty\big(K, +, \circ)$ ist assoziativ bezüglich der
+  Multiplikation. \\
+
+  Sei nun $\qty\big(a, a') \ne \qty\big(0, 0) \in K$ beliebig.
+  Dann ist
+  $\qty(\frac{a}{a^2 + \qty(a')^2}, -\frac{a'}{a^2 + \qty(a')^2}) \in K$.
+  \begin{flalign*}
+    \qty\big(a, a') \circ
+      \qty(\frac{a}{a^2 + \qty(a')^2}, -\frac{a'}{a^2 + \qty(a')^2})
+    &= \qty(
+      a \cdot \frac{a}{a^2 + \qty(a')^2} - a' \cdot \frac{-a'}{a^2 + \qty(a')^2},
+      a \cdot \frac{-a'}{a^2 + \qty(a')^2} + \frac{a}{a^2 + \qty(a')^2} \cdot a'
+      ) \\
+    &= \qty(
+      \frac{a^2}{a^2 + \qty(a')^2} - \frac{\qty(a')^2}{a^2 + \qty(a')^2},
+      \frac{aa'}{a^2 + \qty(a')^2} - \frac{a'a}{a^2 + \qty(a')^2}
+    ) \\
+    &= \qty(
+      \frac{a^2 + \qty(a')^2}{a^2 + \qty(a')^2},
+      \frac{0}{a^2 + \qty(a')^2}
+    ) \\
+    &= \qty\big(1, 0)
+  \end{flalign*}
+  $\Rightarrow$ für jedes Element $a \ne 0 \in K$ existiert ein multiplikatives
+  Inverses. \\
+  $\Rightarrow \qty\big(K, +, \circ)$ ist ein \textbf{Körper}.
 \end{enumerate}
 \end{document}
