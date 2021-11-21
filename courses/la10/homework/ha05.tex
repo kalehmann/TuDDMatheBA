@@ -33,6 +33,8 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
+\newcommand\Sym{\text{Sym}}
+
 \begin{document}
 \paragraph{Aufgabe 6} Prüfen Sie, ob es sich um einen Körper handelt:
 \[
@@ -197,4 +199,43 @@ $\Rightarrow \qty\big(\mathbb{Z}, \oplus, \odot)$ ist ein
   der Multiplikation.
 \end{enumerate}
 $\Rightarrow \qty\big(\mathbb{Z}, \oplus, \odot)$ ist \textbf{kein Körper}.
+
+\newpage
+\paragraph{Aufgabe 7} Seien $X, Y$ Mengen und $a \colon X \to Y$ eine Bijektion.
+Zeigen Sie:
+\begin{enumerate}[(a)]
+\item Für $\pi \in \Sym(X)$ gilt
+  $\hat\pi \coloneqq a \circ \pi \circ a^{-1} \in \Sym(Y)$.
+
+\item Die Abbildung $\phi \colon \Sym(X) \to \Sym(Y)$,
+  $\pi \mapsto \hat\pi$ ist eine Bijektion.
+
+\item Für $\pi_1, \pi_2 \in \Sym(X)$ gilt
+  \[
+    \phi\qty\big(\pi_1 \circ \pi_2)
+    = \phi\qty\big(\pi_1) \circ \phi\qty\big(\pi_2)
+  \]
+\end{enumerate}
+
+\subparagraph{Lsg.} $\Sym(M)$ bezeichnet die Menge der bijektiven Abbildungen
+von $M$ nach $M$ und wird die \emph{symmetrische Gruppe} auf $M$ genannt.
+\begin{enumerate}[(a)]
+\item Die Abbildung $a \colon X \to Y$ ist bijektiv.
+  Nach Lemma 1.12 (b) der Vorlesung (\emph{``Ist $f \colon X \to Y$ bijektiv,
+    so existiert eine eindeutig Abbildung $f^{-1} \colon Y \to X$ mit
+    $f \circ f^{-1} = \text{id}_Y$ und $f^{-1} \circ f = \text{id}_{X}$.
+    Diese Abbildung $f^{-1}$ ist auch eine Bijektion.''})
+  ist $a^{-1} \colon Y \to X$ ebenfalls eine Bijektion.
+
+  Somit liegen drei bijektive Abbildungen vor.
+  Durch wiederholtes Anwenden von Lemma 1.10 (c) der Vorlesung
+  (\emph{``Seien $M, N, L$ Mengen und $f \colon M \to N$ sowie
+    $g \colon N \to L$ bijektive Abbildungen, dann ist $g \circ f$
+    bijektiv''}) folgt die Bijektivität von $a \circ \pi \circ a^{-1}$.
+
+  $\Rightarrow a \circ \pi \circ a^{-1}$ ist eine bijektive Abbildung von $Y$
+  nach $Y$.
+
+  $\Rightarrow \hat\pi = a \circ \pi \circ a^{-1} \in \Sym(Y)$
+\end{enumerate}
 \end{document}
