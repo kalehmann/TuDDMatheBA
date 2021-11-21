@@ -221,7 +221,8 @@ Zeigen Sie:
 von $M$ nach $M$ und wird die \emph{symmetrische Gruppe} auf $M$ genannt.
 \begin{enumerate}[(a)]
 \item Die Abbildung $a \colon X \to Y$ ist bijektiv.
-  Nach Lemma 1.12 (b) der Vorlesung (\emph{``Ist $f \colon X \to Y$ bijektiv,
+  Nach Lemma 1.12 (b) der Vorlesung \label{lemma:1.12b}
+  (\emph{``Ist $f \colon X \to Y$ bijektiv,
     so existiert eine eindeutig Abbildung $f^{-1} \colon Y \to X$ mit
     $f \circ f^{-1} = \text{id}_Y$ und $f^{-1} \circ f = \text{id}_{X}$.
     Diese Abbildung $f^{-1}$ ist auch eine Bijektion.''})
@@ -229,6 +230,7 @@ von $M$ nach $M$ und wird die \emph{symmetrische Gruppe} auf $M$ genannt.
 
   Somit liegen drei bijektive Abbildungen vor.
   Durch wiederholtes Anwenden von Lemma 1.10 (c) der Vorlesung
+  \label{lemma:1.10c}
   (\emph{``Seien $M, N, L$ Mengen und $f \colon M \to N$ sowie
     $g \colon N \to L$ bijektive Abbildungen, dann ist $g \circ f$
     bijektiv''}) folgt die Bijektivität von $a \circ \pi \circ a^{-1}$.
@@ -237,5 +239,52 @@ von $M$ nach $M$ und wird die \emph{symmetrische Gruppe} auf $M$ genannt.
   nach $Y$.
 
   $\Rightarrow \hat\pi = a \circ \pi \circ a^{-1} \in \Sym(Y)$
+
+\item $\phi \colon \Sym(X) \to \Sym(Y), \pi \mapsto a \circ \pi \circ a^{-1}$.
+  Seien nun $\pi_1 \ne \pi_2 \in \Sym(X)$.
+  Zwei Abbildungen $f \colon M \to N$ und $g \colon M \to N$ sind gleich, wenn
+  für jedes $m \in M$ gilt $f(m) = g(m)$.
+  Angenommen es gilt $\phi\qty\big(\pi_1) = \phi\qty\big(\pi_2)$, dann:
+  \begin{flalign*}
+    \phi\qty\big(\pi_1)\qty\big(y) &=
+    \phi\qty\big(\pi_2)\qty\big(y)
+    & \overset{\text{Def. } \phi}& \iff  &&\\
+    \qty\big(a \circ \pi_1 \circ a^{-1})\qty\big(y) &=
+    \qty\big(a \circ \pi_2 \circ a^{-1})\qty\big(y)
+    & \overset{\text{Def. } \circ}& \iff \\
+    a\qty\Big(\qty\big(\pi_1 \circ a^{-1})\qty\big(y)) &=
+    a\qty\Big(\qty\big(\pi_2 \circ a^{-1})\qty\big(y))
+    & \overset{\text{$a$ ist bijektiv}}&\iff \\
+    \qty\big(\pi_1 \circ a^{-1})\qty\big(y) &=
+    \qty\big(\pi_2 \circ a^{-1})\qty\big(y)
+    & \overset{\text{Def. } \circ}&\iff \\
+    \pi_1\qty\Big(a^{-1}\qty\big(y)) &=
+    \pi_2\qty\Big(a^{-1}\qty\big(y))
+  \end{flalign*}
+  $\Rightarrow \pi_1 = \pi_2$ - ein Widerspruch zur Voraussetzung
+  $\pi_1 \ne \pi_2$.
+
+  $\Rightarrow \phi\qty\big(\pi_1) \ne \phi\qty\big(\pi_2)$
+
+  $\Rightarrow \phi$ ist \textbf{injektiv}.
+
+  Sei nun $\pi^* \in \Sym(Y)$ beliebig.
+  Dann ist $a^{-1} \circ \pi^* \circ a \colon X \to X$ nach
+  \hyperref[lemma:1.10c]{Lemma 1.10 (c) der Vorlesung} eine Bijektion.
+  \begin{flalign*}
+    \phi\qty\big(a^{-1} \circ \pi^* \circ a) \overset{\text{Def,} \phi}&=
+    \qty\Big(a \circ \qty\big(a^{-1} \circ \pi^* \circ a) \circ a^{-1}) \\
+    \overset{\text{Komposition ist assoziativ}}&=
+    \qty\big(a \circ a^{-1}) \circ \pi^* \circ \qty\big(a \circ a^{-1}) \\
+    \overset{\hyperref[lemma:1.12b]{\text{Lemma 1.12 (b)}}}&=
+    \text{id}_Y \circ \pi^* \circ \text{id}_Y \\
+    &= \pi^*
+  \end{flalign*}
+  $\Rightarrow$ für jedes $\pi^* \in \Sym(Y)$ existiert ein $\pi \in \Sym(X)$
+  mit $\phi\qty\big(\pi) = \pi^*$.
+
+  $\Rightarrow \phi$ ist \textbf{surjektiv}.
+
+  $\Rightarrow \phi$ ist \textbf{injektiv}.
 \end{enumerate}
 \end{document}
