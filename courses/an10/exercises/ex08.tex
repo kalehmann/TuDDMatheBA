@@ -166,4 +166,42 @@ $\mathbb{R} \setminus M$ offen ist.
   \cup \qty\big{0}$ ist abgeschlossen.
 \end{enumerate}
 
+Entscheiden Sie des Weiteren, welche der folgenden Teilmengen von $\mathbb{R}^2$
+offen und welche abgeschlossen sind.
+\begin{multicols}{3}
+  \begin{enumerate}[(a)]
+  \item $\qty\big(0, 1)^2$
+  \item $\qty\big[0, 1] \times \qty\big{0}$
+  \item $\qty\big[0, 1]^2$
+  \item $\overset{\infty}{\underset{n = 1}\bigcup} \qty\big(n, n + 1)^2$
+  \item $\qty\big(0, 1) \times \qty{0}$
+  \item $\mathbb{R}^2 \setminus \qty\big(0, 1)^2$
+  \end{enumerate}
+\end{multicols}
+Bestimmen Sie außerdem das Innere, die Randpunkte und die
+Häufungspunkte der jeweiligen Mengen.
+
+\subparagraph{Lsg.} \:\\
+
+\begin{tabular}{l|c|c|c|c|c}
+  & Offen? & Abgeschlossen? & Inneres & Randpunkte & Häufungspunkte \\
+  \hline
+  (a) & Ja & Nein & $\qty\big(0, 1)^2$ &
+    $\qty\big[0, 1]^2 \setminus \qty\big(0, 1)^2$ & $\qty\big[0, 1]^2$ \\
+  (b) & Nein & Ja & $\emptyset$ & $\qty\big[0, 1] \times \qty\big{0}$ &
+    $\emptyset$ \\
+  (c) & Nein & Ja & $\qty\big(0, 1)^2$ &
+    $\qty\big[0, 1]^2 \setminus \qty\big(0, 1)^2$ & $\qty\big[0, 1]^2$ \\
+  (d) & Ja & Nein &
+    $\overset{\infty}{\underset{n = 1}\bigcup} \qty\big(n, n + 1)^2$ &
+    $\overset{\infty}{\underset{n = 1}\bigcup} \qty\big[n, n + 1]^2
+      \setminus \overset{\infty}{\underset{n = 1}\bigcup} \qty\big(n, n + 1)^2$ &
+    $\overset{\infty}{\underset{n = 1}\bigcup} \qty\big[n, n + 1]^2$\\
+  (e) & Nein & Nein & $\emptyset$ &
+    $\qty\big[0, 1] \times \qty\big{0}$ & $\emptyset$ \\
+  (f) & Nein & Ja & $\mathbb{R}^2 \setminus \qty\big[0, 1]^2$ &
+    $\qty\big[0, 1]^2 \setminus \qty\big(0, 1)^2$ &
+    $\mathbb{R}^2 \setminus \qty\big(0, 1)^2$
+\end{tabular}
+
 \end{document}
