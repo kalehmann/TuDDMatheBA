@@ -1,0 +1,169 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 08\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{37. Entscheiden Sie,} welche der folgenden Teilmengen von
+$\mathbb{R}$ offen und welche abgeschlossen sind.
+\begin{multicols}{3}
+  \begin{enumerate}[(a)]
+  \item $\emptyset$
+  \item $\mathbb{R}$
+  \item $\qty\big(0, 1) \cup \qty\big[2, 3]$
+  \item $\qty\big(0, 1) \cup {\big [}1, 3{\big )}$
+  \item $\qty{\frac{1}{n} \: \middle | \: n \in \mathbb{N}_{> 0}}$
+  \item $\qty{\frac{1}{n} \: \middle | \: n \in \mathbb{N}_{> 0}}
+    \cup \qty\big{0}$
+  \end{enumerate}
+\end{multicols}
+
+\subparagraph{Lsg.} Eine Menge $M \subseteq \mathbb{R}$ heißt offen, falls
+für jedes Element $x \in M$ ein $r > 0$ existiert, so dass die Kugel um $x$
+mit dem Radius $r$ ein Teilmenge von $M$ ist
+($B_r\qty\big(x) \subseteq M$).
+Dabei ist $B_r\qty\big(x)$ definiert als
+$\qty\big{y \in M {\big |} d(x, y) < r}$ und für $\mathbb{R}$ ist die
+Standardmetrik definiert als $d\qty\big(x, y) = \abs{x - y}$.
+
+Weiterhin heißt eine Menge $M$ abgeschlossen, falls deren Komplement
+$\mathbb{R} \setminus M$ offen ist.
+
+\begin{enumerate}[(a)]
+\item die leere Menge ist offen, da sie kein Element besitzt für welches die
+  Bedingung für eine offene Menge nicht gilt.
+
+  Allerdings ist $\mathbb{R} \setminus \emptyset = \mathbb{R}$ ebenfalls offen,
+  da für alle $x \in \mathbb{R}$ ist zum Beispiel \\
+  $B_1\qty\big(x) \subset \mathbb{R}$.
+
+  $\Rightarrow \emptyset$ ist offen und abgeschlossen zugleich.
+
+\item $\mathbb{R}$ ist wie schon in (a) gezeigt offen.
+  Allerdings ist wie ebenfalls schon in (a) gezeigt auch das Komplement
+  $\mathbb{R} \setminus \mathbb{R} = \emptyset$ offen.
+
+  $\Rightarrow \mathbb{R}$ ist offen und abgeschlossen zugleich.
+
+\item Sei $x = 3$.
+  Dann gilt für jedes $r > 0$, dass $x + \frac{r}{2} \in B_r(x)$, da
+  $d(x, x + \frac{r}{2}) = \abs{x - x + \frac{r}{2}} = \frac{r}{2} < r$.
+  Allerdings ist $x + \frac{r}{2} \notin \qty\big(0, 1) \cup \qty\big[2, 3]$.
+
+  $\Rightarrow B_r\qty\big(x) \nsubseteq \qty\big(0, 1) \cup \qty\big[2, 3]$
+
+  $\Rightarrow \qty\big(0, 1) \cup \qty\big[2, 3]$ ist nicht offen.
+
+  Das Komplement von $\qty\big(0, 1) \cup \qty\big[2, 3]$ ist
+  $\mathbb{R} \setminus \qty\big(0, 1) \cup \qty\big[2, 3] =
+  {\big (}-\infty, 0{\big ]} \cup {\big [}1, 2 {\big )} \cup
+  \qty\big(3, \infty)$
+
+  Sei nun $x = 0$.
+  Dann gilt für jedes $r > 0$, dass $\frac{r}{2} \in B_r(x)$.
+  Allerdings ist $\frac{r}{2} \notin {\big (}-\infty, 0{\big ]} \cup
+  {\big [}1, 2 {\big )} \cup \qty\big(3, \infty)$.
+
+  $\Rightarrow$ das Komplement von $\qty\big(0, 1) \cup \qty\big[2, 3]$ ist
+  nicht offen.
+
+  $\Rightarrow \qty\big(0, 1) \cup \qty\big[2, 3]$ ist weder offen noch
+  abgeschlossen.
+
+\item $\qty\big(0, 1) \cup {\big [}1, 3 {\big )} = \qty\big(0, 3)$.
+  Sei nun $x \in \qty\big(0, 3)$ beliebig und
+  $r = \min\qty{\frac{x}{2}, \frac{3 - x}{2}}$.
+  Dann ist $r > 0$ und \\
+  \begin{minipage}[t]{.4\textwidth}
+    Fall 1: $x < \frac{3}{2}$
+    \begin{flalign*}
+      B_{\sfrac{x}{2}}\qty\big(x) &=
+      \qty{y \in \mathbb{R} \middle | \abs{x - y} < \frac{x}{2}} \\
+      &= \qty(\frac{x}{2}, \frac{3x}{2}) \subset \qty\big(0, 3)
+    \end{flalign*}
+  \end{minipage}
+  \hfill
+  \vrule
+  \hfill
+  \begin{minipage}[t]{.4\textwidth}
+    Fall 2: $x \geq \frac{3}{2}$
+    \begin{flalign*}
+      B_{\frac{3 - x}{2}} \qty\big(x) &=
+      \qty{y \in \mathbb{R} \middle | \abs{x - y} < \frac{3 - x}{2}} \\
+      &= \qty(\frac{3x - 3}{2}, \frac{x + 3}{2}) \subset \qty\big(0, 3)
+    \end{flalign*}
+  \end{minipage}
+  $\Rightarrow \qty\big(0, 3)$ ist offen.
+
+  Das Komplement $\mathbb{R} \setminus \qty\big(0, 3) =
+  {\big (} -\infty, 0 {\big ]} \cup {\big [} 3, \infty {\big )}$ ist nicht
+  offen (da zum Beispiel für $x = 3$ kein $r > 0$ mit $B_r\qty(x) \subseteq
+  {\big (} -\infty, 0 {\big ]} \cup {\big [} 3, \infty {\big )}$ existiert).
+
+  $\Rightarrow \qty\big(0, 3)$ ist nicht abgeschlossen.
+
+\item $\qty{\frac{1}{n} \: \middle | \: n \in \mathbb{N}_{>0}}$ ist nicht offen,
+  da $B_r\qty\big(x)$ für $x = 1$ und jedes $r > 0$ Elemente zwischen
+  $1$ und dem nächste Element $\frac{1}{2}$ enthält.
+
+  In dem Komplement
+  $\mathbb{R} \setminus \qty{\frac{1}{n} \: \middle | \: n \in \mathbb{N}_{>0}}$
+  ist auch die $0$ enthalten.
+  Nun findet sich für jedes $r > 0$ ein $n \in \mathbb{N}_{> 0}$ mit
+  $\frac{1}{n} \in B_r\qty\big(0)$.
+
+  $\Rightarrow B_r\qty\big(0)$ ist für jedes $r > 0$ nicht in dem
+  Komplement von $\qty{\frac{1}{n} \: \middle | \: n \in \mathbb{N}_{>0}}$
+  enthalten.
+
+  $\Rightarrow \qty{\frac{1}{n} \: \middle | \: n \in \mathbb{N}_{>0}}$ ist
+  nicht abgeschlossen.
+
+\item $\qty{\frac{1}{n} \: \middle | \: n \in \mathbb{N}_{>0}} \cup \qty\big{0}$
+  ist nicht offen (siehe (f)).
+
+  Das Komplement von
+  $\qty{\frac{1}{n} \: \middle | \: n \in \mathbb{N}_{>0}} \cup \qty\big{0}$
+  hat die Form
+  \[
+    \qty\big(1, \infty) \cup \qty(1, \frac{1}{2}) \cup
+    \qty(\frac{1}{2}, \frac{1}{3}) \cup \ldots
+    \cup \qty(-\infty, 0)
+  \]
+  - ist also als Vereinigung offener Intervalle ebenfalls offen.
+
+  $\Rightarrow \qty{\frac{1}{n} \: \middle | \: n \in \mathbb{N}_{>0}}
+  \cup \qty\big{0}$ ist abgeschlossen.
+\end{enumerate}
+
+\end{document}
