@@ -286,5 +286,23 @@ von $M$ nach $M$ und wird die \emph{symmetrische Gruppe} auf $M$ genannt.
   $\Rightarrow \phi$ ist \textbf{surjektiv}.
 
   $\Rightarrow \phi$ ist \textbf{injektiv}.
+
+\item Lemma 1.11 der Vorlesung \label{lemma:1.11} lautet (\emph{``Sei
+    $f \colon M \to N$ eine Abbildung, dann gilt
+    $f \circ \text{id}_M = \text{id}_N \circ f = f$''}).
+  \begin{flalign*}
+    \phi\qty\big(\pi_1 \circ \pi_2) \overset{\text{Def. } \phi}&=
+      a \circ \qty\big(\pi_1 \circ \pi_2) \circ a^{-1} \\
+    \overset{\text{Lemma 1.11}}&=
+      a \circ \qty\big(\pi_1 \circ \text{id}_X \circ \pi_2) \circ a^{-1} \\
+    \overset{\hyperref[lemma:1.12b]{\text{Lemma 1.12 (b)}}}&=
+      a \circ \qty\Big(
+        \pi_1 \circ \qty\big(a^{-1} \circ a) \circ \pi_2
+      ) \circ a^{-1} \\
+    \overset{\text{Assoziativität der Komposition}}&=
+      \qty\big(a \circ \pi_1 \circ a^{-1}) \circ
+      \qty\big(a \circ \pi_2 \circ a^{-1}) \\
+    \overset{\text{Def. } \phi}&= \phi\qty\big(\pi_1) \circ \phi\qty\big(\pi_2)
+  \end{flalign*}
 \end{enumerate}
 \end{document}
