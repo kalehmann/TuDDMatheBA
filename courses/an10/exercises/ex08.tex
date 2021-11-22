@@ -204,4 +204,42 @@ Häufungspunkte der jeweiligen Mengen.
     $\mathbb{R}^2 \setminus \qty\big(0, 1)^2$
 \end{tabular}
 
+\newpage
+\paragraph{38. Sei $X$ ein Vektorraum über $\mathbb{R}$.}
+Seien $\norm{\cdot}_1$ und $\norm{\cdot}_2$ zwei äquivalente Normen auf $X$.
+Zeigen Sie für eine Teilmenge $M \subset X$:
+\[
+  M \text{ ist offen in } \qty\big(X, \norm{\cdot}_1) \iff
+  M \text{ ist offen in } \qty\big(X, \norm{\cdot}_2)
+\]
+
+\subparagraph{Lsg.} Die Normen $\norm{\cdot}_1$ und $\norm{\cdot}_2$
+heißen äquivalent, falls
+\[
+  \exists \: \alpha, \beta > 0 \: \forall \: x \in X \colon
+  \alpha\norm{x}_1 \leq \norm{x}_2 \leq \beta\norm{x}_1
+\]
+Sei $B_{\norm{\cdot}_1}\qty\big(x, r)$ die offene Kugel um $x$ mit dem
+Radius $r$ bezüglich der Norm $\norm{\cdot}_1$ und
+$B_{\norm{\cdot}_2}\qty\big(x, r)$ die offene Kugel um $x$ mit dem Radius $r$
+bezüglich der Norm $\norm{\cdot}_2$.
+
+
+\begin{itemize}
+\item[``$\Rightarrow$''] $M$ ist offen in $\qty\big(X, \norm{\cdot}_1)$,
+  dass heißt für jedes Element $x \in M$ existiert ein $r > 0$, so dass
+  $B_{\norm{\cdot}_1}\qty\big(x, r) =
+  \qty{y \in M \: {\Big |} \: \norm{x - y}_1 < r} \subseteq M$.
+  Nach Voraussetzung existiert ein $\beta > 0$ mit
+  $\norm{x - y}_2 \leq \beta \norm{x - y}_1$.
+  Daraus folgt $\frac{1}{\beta} \norm{x - y}_2 \leq \norm{x - y}_1 < r$.
+  Also existiert für jedes $x \in M$ ein $\beta, r > 0$ mit
+  $B_{\norm{\cdot}_2}\qty(x, \frac{r}{\beta}) \subseteq
+  B_{\norm{\cdot}_1}\qty\big(x, r) \subseteq M$
+
+  $\Rightarrow M$ ist offen in $\qty\big(X, \norm{\cdot}_2)$
+
+\item[``$\Leftarrow$''] geht analog.
+\end{itemize}
+
 \end{document}
