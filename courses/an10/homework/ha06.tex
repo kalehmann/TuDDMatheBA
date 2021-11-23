@@ -1,0 +1,63 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann (Übungsgruppe 1)\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 08\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{40. Beweisen Sie die folgenden Aussagen:}
+\begin{enumerate}[(a)]
+\item Es sei $M$ eine beliebige nicht-leere Menge und
+  $f, g \colon M \to \mathbb{R}$ nach oben beschränkte Funktionen.
+  Zeigen sie die Ungleichung
+  \[
+    \sup\qty{f(x) + g(x) \: {\Big |} \: x \in M}
+    \leq
+    \sup\qty{f(x) \: {\Big |} \: x \in M} +
+    \sup\qty{g(x) \: {\Big |} \: x \in M}
+  \]
+
+  \subparagraph{Lsg.} Das Supremum ist als obere Schranke einer Menge größer
+  oder gleich jedem Element der Menge.
+  Sei nun $F \coloneqq \qty{f(x) \: {\Big |} \: x \in M}$ und
+  $G \coloneqq \qty{g(x) \: {\Big |} \: x \in M}$.
+  Dann $\sup F \geq f(x) \: \forall \: x \in M$ und
+  $\sup G \geq g(x) \: \forall \: x \in M$.
+  \begin{flalign*}
+    \sup\qty{f(x) + g(x) \: {\Big |} \: x \in M}
+    &\leq \sup\qty{\sup F + g(x) \: {\Big |} \: x \in M} \\
+    &\leq \sup\qty{\sup F + \sup G \: {\Big |} \: x \in M} = \sup F + \sup G \\
+    \overset{\text{Def. } F \text{ und } G}&=
+    \sup\qty{f(x) \: {\Big |} \: x \in M} +  \sup\qty{g(x) \: {\Big |} \: x \in M}
+  \end{flalign*}
+\end{enumerate}
+\end{document}
