@@ -68,6 +68,41 @@ Skizzieren Sie
 \item für $p \in \qty\big{1, 2, \infty}$ die abgeschlossene Kugel vom Radius
   $r = 1$ um den Punkt $x = \qty\big(1, 1)$ bezüglich der $p$-Norm.
 
+  \subparagraph{Lsg.}
+  \begin{itemize}
+  \item {\color{black!30!orange} $B_1\qty\big[(1, 1)]$ bezüglich der $1$-Norm.}
+  \item {\color{black!30!green} $B_1\qty\big[(1, 1)]$ bezüglich der $2$-Norm.}
+  \item {\color{black!30!blue!80} $B_1\qty\big[(1, 1)]$ bezüglich der $\infty$-Norm.}
+  \end{itemize}
+  \begin{tikzpicture}
+    \begin{axis}[
+        xmax = 2.2,
+        xmin = -0.2,
+        ymax = 2.2,
+        ymin = -0.2]
+      \draw[
+        blue!20,
+        fill = blue!10,
+        very thick,
+      ] (0,0) -- (0,2) -- (2,2) -- (2,0) -- cycle;
+      \draw[
+        green,
+        fill = green!20,
+        very thick,
+      ] (1, 1) circle (1);
+      \draw[
+        orange,
+        fill = orange!20,
+        very thick,
+      ] (0, 1) -- (1, 0) -- (2, 1) -- (1, 2) -- cycle;
+      \draw[
+        black,
+        fill,
+      ] (1, 1) circle (0.02);
+      \node[black] at (1.2, 0.8) {$\qty\big(1, 1)$};
+    \end{axis}
+  \end{tikzpicture}
+
 \item die abgeschlossene Kugel vom Radius $r_1 = \frac{1}{2}$ und $r_2 = 2$
   um den Punkt $x = \qty\big(0, 0)$ bezüglich der diskreten Metrik im
   $\mathbb{R}^2$.
