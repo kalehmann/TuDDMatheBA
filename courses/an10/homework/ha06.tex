@@ -60,4 +60,35 @@
     \sup\qty{f(x) \: {\Big |} \: x \in M} +  \sup\qty{g(x) \: {\Big |} \: x \in M}
   \end{flalign*}
 \end{enumerate}
+
+\paragraph{42. Sei $X \coloneqq \mathbb{R}^2$.}
+Skizzieren Sie
+
+\begin{enumerate}[(a)]
+\item für $p \in \qty\big{1, 2, \infty}$ die abgeschlossene Kugel vom Radius
+  $r = 1$ um den Punkt $x = \qty\big(1, 1)$ bezüglich der $p$-Norm.
+
+\item die abgeschlossene Kugel vom Radius $r_1 = \frac{1}{2}$ und $r_2 = 2$
+  um den Punkt $x = \qty\big(0, 0)$ bezüglich der diskreten Metrik im
+  $\mathbb{R}^2$.
+
+  \subparagraph{Lsg.} Die diskrete Metrik ist definiert als
+  $d\qty\big(x, y) \coloneqq \begin{cases}
+    0 & x = y \\
+    1 & x \ne y
+  \end{cases}$.
+  Somit ist
+  \[
+    B_{\frac{1}{2}}\qty\big((0, 0))
+    = \qty{y \in \mathbb{R}^2 \: {\Big |} \: d\qty\big(x, y) < \frac{1}{2}}
+    = \qty\big{\qty(0, 0)}
+  \]
+  und
+  \[
+    B_2\qty\big((0, 0))
+    = \qty{y \in \mathbb{R}^2 \: {\Big |} \: d\qty\big(x, y) < 2}
+    = \mathbb{R}^2
+  \]
+\end{enumerate}
+
 \end{document}
