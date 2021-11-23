@@ -73,6 +73,16 @@
 
   Für $x \in \mathbb{R}^n$ ist $\abs{x}_p =
   \qty(\overset{n}{\underset{i = 1}{\sum}} \abs{x_i}^p)^{\frac{1}{p}}$.
+
+  Nach Beispiel 8.9 der Vorlesung ist
+  \begin{flalign*}
+    1 \cdot \norm{x}_{\infty} &\leq \norm{x}_p \leq \sqrt[p]{n} \norm{x}_{\infty} && \text{und} &&\\
+    1 \cdot \norm{x}_{\infty} &\leq \norm{x}_q \leq \sqrt[q]{n} \norm{x}_{\infty} \\
+    \Rightarrow \frac{1}{\sqrt[q]{n}} \norm{x}_q &\leq \norm{x}_{\infty} \\
+    \Rightarrow \sqrt[p]{n} \norm{x}_{\infty} &\leq \sqrt[p]{n}\norm{x}_{q} \\
+    \Rightarrow \frac{1}{\sqrt[q]{n}} \norm{x}_q &\leq \norm{x}_{\infty} \leq \norm{x}_p \leq \sqrt[p]{n} \norm{x}_{\infty} \leq \sqrt[p]{n}\norm{x}_{q} \\
+    \Rightarrow \frac{1}{\sqrt[q]{n}} \norm{x}_q &\leq \norm{x}_p \leq \sqrt[p]{n}\norm{x}_{q}
+  \end{flalign*}
 \end{enumerate}
 
 \newpage
