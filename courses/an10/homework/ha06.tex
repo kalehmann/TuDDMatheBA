@@ -184,4 +184,38 @@ Skizzieren Sie
   \]
 \end{enumerate}
 
+\newpage
+\paragraph{43. Untersuchen Sie, ob die Folgen} konvergent sind und berechnen Sie
+gegebenenfalls deren Grenzwert:
+\begin{enumerate}[(a)]
+\item $\qty{\frac{1}{n^2}}_{n \in \mathbb{N}_{> 0}}$
+  \subparagraph{Lsg.} Nach Beispiel 9.2 der Vorlesung ist
+  $\lim_{n \to \infty} \frac{1}{n} = 0$.
+  Weiter gilt nach Folgerung 9.15 der Vorlesung für zwei
+  Folgen $\qty\big{a_n}, \qty\big{b_n}$ mit $a_n \to a, b_n \to b$,
+  dass $a_nb_n \to ab$.
+
+  \[
+    \Rightarrow \lim_{n \to \infty} \frac{1}{n^2}
+    = \lim_{n \to \infty} \qty(\frac{1}{n} \cdot \frac{1}{n})
+    = \lim_{n \to \infty} \frac{1}{n} \cdot \lim_{n \to \infty} \frac{1}{n}
+    = 0
+  \]
+\item $\qty{\binom{2n}{n}}_{n \in \mathbb{N}}$
+
+  \subparagraph{Lsg.}
+  \[
+    \binom{2n}{n} = \frac{\qty\big(2n)!}{n!\qty\big(2n - n)!}
+    = \frac{\qty\big(2n)!}{\qty\big(n!)^2}
+    = \frac{\prod_{k = 1}^{n}\qty(n + k) \prod_{k = 1}^n k}{\prod_{k = 1}^n k \cdot \prod_{k = 1}^n k}
+    = \frac{\prod_{k = 1}^{n}\qty(n + k)}{\prod_{k = 1}^n k}
+    < n
+  \]
+  $\Rightarrow$ für jedes $\epsilon > 0$ und $x \in \mathbb{R}$ findet sich ein
+  $n_0 \in \mathbb{N}$, so dass für alle $n > n_0$ gilt:
+  $d\qty(\binom{2n}{n}, x) > \epsilon$.
+
+  $\Rightarrow \binom{2n}{n}$ divergiert.
+\end{enumerate}
+
 \end{document}
