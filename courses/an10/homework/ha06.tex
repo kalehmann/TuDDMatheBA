@@ -59,8 +59,66 @@
     \overset{\text{Def. } F \text{ und } G}&=
     \sup\qty{f(x) \: {\Big |} \: x \in M} +  \sup\qty{g(x) \: {\Big |} \: x \in M}
   \end{flalign*}
+
+\item Wir betrachten für $p, q \in \mathbb{R}$ mit $p, q \geq 1$ die Normen
+  $\abs{\cdot}_p$ und $\abs{\cdot}_q$ auf dem $\mathbb{R}^n$.
+  Zeigen Sie, dass diese Normen äquivalent sind.
+
+  \subparagraph{Lsg.} Zwei Normen $\norm{\cdot}_1$ und $\norm{\cdot}_2$ auf
+  $X$ heißen äquivalent, falls
+  \[
+    \exists \: \alpha, \beta > 0 \: \forall \: x \in X \colon
+    \alpha \norm{x}_1 \leq \norm{x}_2 \leq \beta \norm{x}_2
+  \]
+
+  Für $x \in \mathbb{R}^n$ ist $\abs{x}_p =
+  \qty(\overset{n}{\underset{i = 1}{\sum}} \abs{x_i}^p)^{\frac{1}{p}}$.
 \end{enumerate}
 
+\newpage
+\paragraph{41. Es sei $X \coloneqq \mathbb{R}_{> 0}$} und
+$d \colon X \times X \to \mathbb{R}$ gegeben durch
+\[
+  d\qty\big(x, y) \coloneqq \abs{\frac{1}{x} - \frac{1}{y}}
+  \qquad \qty\big(x, y \in X)
+\]
+Zeigen sie, dass $d$ eine Metrik auf $X$ ist.
+
+\subparagraph{Lsg.} Eine Abbildung $d \colon X \times X \to \mathbb{R}$
+heißt Metrik auf $X$, falls für alle $x, y, z \in X$ gilt
+\begin{enumerate}[(a)]
+\item $d\qty\big(x, y) = 0 \iff x = y$
+
+  Es gilt $\abs{a} = 0 \iff a = 0$ und
+  $\frac{1}{a} - \frac{1}{b} = 0 \iff a = b$.
+\item $d\qty\big(x, y) = d\qty\big(y, x)$
+
+  Nach Satz 5.5 der Vorlesung ist $\abs{a} = \abs{-a}$, also
+  \[
+    d\qty\big(x, y) = \abs{\frac{1}{x} - \frac{1}{y}}
+    = \abs{-\qty(\frac{1}{x} - \frac{1}{y})}
+    = \abs{\frac{1}{y} - \frac{1}{x}}
+    = d\qty\big(y, x)
+  \]
+\item $d\qty\big(x, z) \leq d\qty\big(x, y) + d\qty\big(y, z)$
+
+  \begin{flalign*}
+    d\qty\big(x, z) \overset{\text{Def. } d}= \abs{\frac{1}{x} - \frac{1}{y}}
+    &= \abs{\frac{1}{x} + 0 - \frac{1}{y}} \\
+    &= \abs{\frac{1}{x} + \qty(\frac{1}{y} - \frac{1}{y}) - \frac{1}{z}} \\
+    \overset{\text{Kommutativität}}&= \abs{\frac{1}{x} + \qty(-\frac{1}{y} +
+      \frac{1}{y}) - \frac{1}{z}} \\
+    \overset{\text{Assoziativität}}&= \abs{\qty(\frac{1}{x} + -\frac{1}{y}) +
+      \qty(\frac{1}{y} - \frac{1}{z})} \\
+    \overset{\text{Satz 5.5, $\bigtriangleup$-ungleichung}}&\leq
+    \abs{\frac{1}{x} - \frac{1}{y}} + \abs{\frac{1}{y} - \frac{1}{z}} \\
+    \overset{\text{Def. } d}&= d\qty\big(x, y) + d\qty\big(x, z)
+  \end{flalign*}
+\end{enumerate}
+
+
+
+\newpage
 \paragraph{42. Sei $X \coloneqq \mathbb{R}^2$.}
 Skizzieren Sie
 
