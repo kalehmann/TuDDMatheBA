@@ -1,0 +1,174 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 09\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{41. Sei $\qty\big{a_n}_{n \in \mathbb{N}}$ eine Folge in
+  $\mathbb{R}$, $a \in \mathbb{R}$.}
+Beweisen Sie die Äquivalenz folgender Aussagen:
+\begin{enumerate}[(i)]
+\item $\qty\big{a_n}_{n \in \mathbb{N}}$ konvergiert gegen $a$.
+\item $\qty\big{a_n}_{n \in \mathbb{N}}$ ist beschränkt und hat $a$ als einzigen
+  Häufungswert.
+\item jede Teilfolge von $\qty\big{a_n}_{n \in \mathbb{N}}$ hat eine Teilfolge,
+  die gegen $a$ konvergiert.
+\end{enumerate}
+
+\subparagraph{Lsg.}
+\begin{itemize}
+\item[``(i) $\Rightarrow$ (ii)''] Sei $\qty\big{a_n}_{n \in \mathbb{N}}$ eine
+  konvergente Folge in $\mathbb{R}$, nach Satz 9.7 der Vorlesung
+  (\emph{``Sei $\qty\big(X, d)$ ein metrischer Raum, dann ist jede konvergente
+    Folge $\qty\big{x_n}$ beschränkt''}) gilt:
+  \underline{$\qty\big{a_n}$ ist beschränkt}.
+
+  Weiterhin ist nach Folgerung 9.1 der Vorlesung (\emph{``Für jede Folge
+    $\qty\big{x_n}$ gilt $x = \underset{n \to \infty}\lim x_n \iff$ jede Kugel
+    $B_{\epsilon}\qty\big(x)$ enthält fast alle $x_n$''}) gilt:
+  \underline{$a$ ist ein Häufungswert von $\qty\big{a_n}$}.
+
+  Angenommen $b \ne a$ wäre nun ein weiterer Häufungswert von $\qty\big{a_n}$
+  und $\epsilon = \frac{d\qty\big(a, b)}{3}$.
+  Da $\qty\big{a_n}$ gegen $a$ konvergiert, existiert $n_0 \in \mathbb{N}$
+  so, dass für alle $n > n_0$ gilt $d\qty\big(x_n, a) < \epsilon$.
+  Angenommen es gelte nun für ein $m > n_0$, dass
+  $d\qty\big(x_m, b) < \epsilon$, dann
+  \begin{flalign*}
+    d\qty\big(a, b) < d\qty\big(x_m, a) + d\qty\big(x_m, b) &< 2\epsilon \\
+    d\qty\big(a, b) < \frac{2}{3}d\qty\big(a, b)
+  \end{flalign*}
+  $\Rightarrow$ ein Widerspruch, dass heißt es existiert für jedes
+  $\epsilon > 0$ ein $n_0 \in \mathbb{N}$, so dass alle $x_n$ mit $n > n_0$
+  nicht in der Umgebung von $b$ liegen.
+
+  $\Rightarrow$ es liegen nur endlich viele $x_n$ in Umgebung von $b$
+
+  $\Rightarrow$ \underline{$a$ ist einziger Häufungswert von $\qty\big{a_n}$}.
+
+\item[``(ii) $\Rightarrow$ (i)''] $\qty\big{a_n}_{n \in \mathbb{N}}$ ist
+  beschränkt und hat $a$ als einzigen Häufungswert.
+
+  Angenommen $\qty\big{a_n}$ würde nicht gegen $a$ konvergieren, dann existiert
+  für alle $\epsilon > 0$ und jedes $n_0 \in \mathbb{N}$ ein $k > n_0$, so dass
+  $\abs\big{a_k - a } > \epsilon$.
+  Sei nun $\qty\big{a_k}$ die Folge dieser Elemente für ein beliebiges
+  $\epsilon$.
+  Dann ist $\qty\big{a_k}$ als Teilfolge der beschränkten Folge $\qty\big{a_n}$
+  ebenfalls beschränkt.
+  Nach Theorem 9.29 (\emph{``Bolzano-Weierstraß  - jede beschränkte Folge in
+    $\mathbb{R}$ hat mindestens eine konvergente Teilfolge.''}) besitzt
+  $\qty\big{a_k}$ eine konvergente Teilfolge $\qty\big{a_{k_l}}_l$ mit
+  $a_{k_l} \overset{l \to \infty}\longrightarrow b$.
+
+  Es folgt aus Satz 9.12 der Vorlesung (\emph{``$\gamma$ ist Häufungswert der
+    Folge $\qty\big{x_n} \iff$ es gibt eine Teilfolge $\qty\big{x_{n_k}}_k$ mit
+    $x_{n_k} \overset{k \to \infty}\longrightarrow \gamma$''}), dass
+  $b$ ein Häufungswert von $\qty\big{a_k}$ und $\qty\big{a_n}$ ist.
+  Per Definition von $\qty\big{a_k}$ liegt kein Element der Folge in
+  der Umgebung $B_{\frac{\epsilon}{2}}(a)$, es folgt $b \ne a$
+
+  $\Rightarrow$ Widerspruch zu $a$ ist einziger Häufungswert.
+
+  $\Rightarrow$ \underline{$\qty\big{a_n}$ konvergiert gegen $a$}.
+
+\item[``(ii) $\Rightarrow$ (iii)''] Sei $\qty\big{a_{n_k}}_{k \in \mathbb{N}}$
+  eine beliebige Teilfolge von $\qty\big{a_n}$.
+  Als Teilfolge einer beschränkten Folge ist $\qty\big{a_{n_k}}$ beschränkt.
+
+  Nach Bolzano-Weierstraß hat $\qty\big{a_{n_k}}$ eine konvergente Teilfolge.
+  Diese wird im folgenden als $\qty\big{b_n}$ mit
+  $b_n \overset{n \to \infty}\longrightarrow b$ bezeichnet.
+
+  Angenommen $b \ne a$.
+  Nach Satz 9.19 der Vorlesung ist $b$ als Grenzwert der Teilfolge
+  $\qty\big{b_n}$ ein Häufungswert von $\qty\big{a_n}$.
+
+  $\Rightarrow$ Widerspruch zu der Voraussetzung ``$a$ ist einziger
+  Häufungswert''
+
+  $\Rightarrow b = a$
+
+  $\Rightarrow$ \underline{jede beliebige Teilfolge von $\qty\big{a_n}$ besitzt
+    mindestens eine Teilfolge, die gegen $a$ konvergiert.}
+
+\item[``(iii) $\Rightarrow$ (ii)''] Jede Teilfolge einer Teilfolge von
+  $\qty\big{a_n}_{n \in \mathbb{N}}$ ist auch eine Teilfolge von
+  $\qty\big{a_n}_{n \in \mathbb{N}}$.
+  Nach Voraussetzung existiert somit eine Teilfolge von
+  $\qty\big{a_n}_{n \in \mathbb{N}}$, die gegen $a$ konvergiert.
+  Aus Satz 9.12 der Vorlesung folgt, dass $a$ ein Häufungswert von
+  $\qty\big{a_n}_{n \in \mathbb{N}}$ ist.
+
+  Angenommen $\qty\big{a_n}$ hätte nun einen weiteren Häufungswert $b \ne a$,
+  dann existiert eine Teilfolge $\qty\big{a_{n_k}}_{k \in \mathbb{N}}$ mit
+  $a_{n_k} \overset{k \to \infty}\longrightarrow b$.
+
+  Da jede Folge eine Teilfolge von sich selbst ist, müsste
+  $\qty\big{a_{n_k}}_{k \in \mathbb{N}}$ als Teilfolge einer Teilfolge
+  von $\qty\big{a_n}_{n \in \mathbb{N}}$ somit gleichzeitig gegen
+  $a \ne b$ konvergieren - ein Widerspruch zur Eindeutigkeit des
+  Grenzwertes.
+
+  $\Rightarrow$ \underline{$\qty\big{a_n}_{n \in \mathbb{N}}$ hat $a$ als
+    einzigen Häufungswert}.
+
+  Angenommen $\qty\big{a_n}_{n \in \mathbb{N}}$ wäre nicht beschränkt.
+  Sei dann $\qty\big{a_{n_k}}_{k \in \mathbb{N}}$ als Teilfolge so gewählt,
+  dass $a_{n_1} = a_1$ und $d\qty\big(a_{n_{k + 1}}, a) > d\qty\big(a_{n_k}, a)$.
+  Angenommen es existiert für ein $a_{n_k}$ kein Nachfolger, dann wären $a_{n_k}$
+  und $-\qty\big(a_{n_k})$ Schranken von $\qty\big{a_n}$ - ein Widerspruch zur
+  Annahme ``$\qty\big{a_n}_{n \in \mathbb{N}}$ ist unbeschränkt''.
+
+  Sei nun $r = \frac{d\qty\big(a_1, a)}{2}$.
+  Dann enthält $B_r\qty\big(a)$ per Definition von
+  $\qty\big{a_{n_k}}_{k \in \mathbb{N}}$ kein Element aus
+  der Folge.
+
+  $\Rightarrow$ kein Element aus $\qty\big{a_{n_k}}_{k \in \mathbb{N}}$ liegt
+  in der Umgebung von $a$
+
+  $\Rightarrow$ kein Element einer Teilfolge von
+  $\qty\big{a_{n_k}}_{k \in \mathbb{N}}$ liegt in der Umgebung von $a$
+
+  $\Rightarrow$ keine Teilfolge von $\qty\big{a_{n_k}}_{k \in \mathbb{N}}$
+  konvergiert gegen $a$.
+
+  $\Rightarrow$ Widerspruch zur Annahme \emph{``jede Teilfolge von
+    $\qty\big{a_n}_{n \in \mathbb{N}}$ hat eine Teilfolge, die gegen $a$
+    konvergiert.''}
+
+  $\Rightarrow$ \underline{$\qty\big{a_n}_{n \in \mathbb{N}}$ ist beschränkt.}
+\end{itemize}
+
+\end{document}
