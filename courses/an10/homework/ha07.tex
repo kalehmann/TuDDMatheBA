@@ -93,4 +93,60 @@ Beweisen oder widerlegen Sie:
   $\Rightarrow$ die Aussage ist falsch.
 \end{enumerate}
 
+\newpage
+\paragraph{48. Es seien $\qty\big{a_n}_{n \in \mathbb{N}}$ und
+  $\qty\big{b_n}_{n \in \mathbb{N}}$ Folgen in $\mathbb{R}$.}
+Beweisen Sie:
+\begin{enumerate}[(a)]
+\item Es gelte $a_n \to a$ und $b_n \to b$.
+  Dann folgt $a_n + b_n \to a + b$.
+
+  \subparagraph{Lsg.} Sei $\epsilon > 0$ beliebig.
+  Dann ist $\delta = \frac{\epsilon}{2} > 0$.
+  Da die beiden Folgen nach der Voraussetzung konvergieren,
+  existieren $n_0, n_1 \in \mathbb{N}$, so dass für alle
+  $m \in \mathbb{N}_{> n_0}$ und $n \in \mathbb{N}_{> n_1}$ gilt
+  $d\qty\big(a_m, a) < \delta$ und $d\qty\big(b_n, b) < \delta$.
+
+  Sei nun $n_2 = \max\qty\big{n_0, n_1}$.
+  Dann gilt für alle $n \in \mathbb{N}_{> n_2}$
+  \begin{flalign*}
+    d\qty\big(a_n, a) &< \delta && \text{und} && \\
+    d\qty\big(b_n, b) &< \delta \\
+    \Rightarrow d\qty\big(a_n, a) + d\qty\big(b_n, b) &< 2\delta \\
+    \abs\big{a_n - a} + \abs\big{b_n - b} &< 2\delta \\
+    \abs\big{a_n + b_n - \qty\big(a + b)}
+    \overset{\bigtriangleup\text{-Ungl.}}< \abs\big{a_n - a} + \abs\big{b_n - b}
+    &< 2\delta \\
+    d\qty\big(a_n + b_n, a + b) &< 2\delta \overset{\text{Def.} \delta}= \epsilon
+  \end{flalign*}
+  $\Rightarrow a_n + b_n \overset{n \to \infty}\longrightarrow a + b$
+
+\item Ist $\qty\big{a_n}_{n \in \mathbb{N}}$ eine Nullfolge und
+  $\qty\big{b_n}_{n \in \mathbb{N}}$ beschränkt, so gilt
+  $a_nb_n \to 0$.
+
+  \subparagraph{Lsg.} Da $\qty\big{b_n}_{n \in \mathbb{N}}$ beschränkt ist,
+  existiert ein $M \in \mathbb{R}_{> 0}$, so dass für alle
+  $n \in \mathbb{N}$ gilt $\abs{b_n} < M$.
+  \begin{flalign*}
+    \Rightarrow \abs{b_n} \cdot \abs{a_n} &< M \cdot \abs{a_n} & \\
+    \abs{b_n \cdot a_n} &< \abs{M \cdot a_n} \\
+    d\qty\big(b_n \cdot a_n, 0) &< d\qty\big(M \cdot a_n, 0)
+  \end{flalign*}
+
+  Sei nun $\epsilon > 0$ beliebig und $\delta > 0$ so gewählt, dass
+  $\delta = \frac{\epsilon}{M}$.
+  Da $a$ eine Nullfolge ist, existiert ein $n_0 \in \mathbb{N}$, so dass
+  für alle $n \in \mathbb{N}_{> n_0}$ gilt:
+  \begin{flalign*}
+    d\qty\big(a_n, 0) &< \delta = \frac{\epsilon}{M}
+    && {\Big |} \; \cdot M && \\
+    M \cdot d\qty\big(a_n, 0) &< \epsilon \\
+    \abs\big{M \cdot a_n - M \cdot 0} &< \epsilon \\
+    d\qty\big(a_nb_n, 0) < d\qty\big(M \cdot a_n, 0) &< \epsilon
+  \end{flalign*}
+
+  $\Rightarrow a_nb_n \overset{n \to \infty}\longrightarrow 0$
+\end{enumerate}
 \end{document}
