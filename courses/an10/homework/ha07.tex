@@ -1,0 +1,96 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann (Übungsgruppe 1)\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 09\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{47. Es seien $\qty\big{a_n}_{n \in \mathbb{N}}$ und
+  $\qty\big{b_n}_{n \in \mathbb{N}}$ Folgen in $\mathbb{R}$.}
+Beweisen oder widerlegen Sie:
+\begin{enumerate}[(a)]
+\item Ist $a$ Häufungspunkt der Menge $\qty\big{a_n}_{n \in \mathbb{N}}$,
+  so ist $a$ Häufungswert der Folge $\qty\big{a_n}_{n \in \mathbb{N}}$.
+
+  \subparagraph{Lsg.} Die Menge $\qty\big{a_n}_{n \in \mathbb{N}}$ ist definiert
+  als $\qty\big{a_n {\big |} n \in \mathbb{N}}$.
+  Dass heißt jedes Element der Menge ist ein Glied der Folge
+  $\qty\big{a_n}_{n \in \mathbb{N}}$.
+
+  Nun ist $a$ Häufungspunkt der Menge
+  $\qty\big{a_n {\big |} n \in \mathbb{N}}$, genau dann wenn
+  für jedes $\epsilon > 0$ die offene Kugel $B_{\epsilon}\qty\big(a)$
+  unendlich viele Elemente aus $\qty\big{a_n {\big |} n \in \mathbb{N}}$
+  enthält.
+
+  $\Rightarrow$ unendlich viele Glieder der Folge
+  $\qty\big{a_n}_{n \in \mathbb{N}}$ liegen in der Umgebung von $a$
+
+  $\Rightarrow a$ ist Häufungswert der Folge.
+
+\item Hat $\qty\big{a_n}_{n \in \mathbb{N}}$ nur endlich viele Häufungswerte,
+  so ist $\qty\big{a_n}_{n \in \mathbb{N}}$ beschränkt.
+
+  \subparagraph{Lsg.} Sei $a_n \coloneqq n$.
+  Sei nun $\gamma \in \mathbb{R}$ beliebig und $\epsilon = \frac{1}{3}$.
+  Dann enthält $B_{\epsilon}\qty\big(\gamma)$ maximal ein $a_n$.
+
+  $\Rightarrow \gamma$ ist kein Häufungswert von $\qty\big{a_n}_{n \in \mathbb{N}}$
+
+  $\Rightarrow$ da $\gamma$ beliebig ist, entspricht die Menge der Häufungswerte
+  von $\qty\big{a_n}_{n \in \mathbb{N}}$ gleich der leeren Menge.
+
+  Weiterhin findet sich für jedes $x \in \mathbb{R}$ ein $n \in \mathbb{N}$ mit
+  $n > x$.
+
+  $\Rightarrow \qty\big{a_n}_{n \in \mathbb{N}}$ ist nicht beschränkt.
+
+  $\Rightarrow$ die Aussage ist falsch.
+
+\item Sind $\qty\big{a_n}_{n \i}$ und $\qty\big{b_n}_{n \in \mathbb{N}}$
+  beschränkt, so gilt
+  \[
+    \limsup_{n \to \infty} \qty\big(a_n + b_n) =
+    \limsup_{n \to \infty} a_n + \limsup_{n \to \infty} b_n
+  \]
+
+  \subparagraph{Lsg.} Sei $a_n \coloneqq \qty\big(-1)^n$ und
+  $b_n \coloneqq -\qty\Big(\qty\big(-1)^n)$.
+  Dann ist $\underset{n \to \infty}{\limsup} \; a_n = 1 =
+  \underset{n \to \infty}{\limsup} \; b_n$.
+  Allerdings ist $a_n + b_n = 0$ und
+  $\underset{n \to \infty}{\limsup} \; a_n + b_n = 0$.
+
+  $\Rightarrow$ die Aussage ist falsch.
+\end{enumerate}
+
+\end{document}
