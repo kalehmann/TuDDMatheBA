@@ -149,4 +149,65 @@ Beweisen Sie:
 
   $\Rightarrow a_nb_n \overset{n \to \infty}\longrightarrow 0$
 \end{enumerate}
+
+\newpage
+\subparagraph{49. Untersuchen Sie,} ob die Folgen konvergent sind und berechnen
+Sie gegebenenfalls deren Grenzwert:
+\begin{enumerate}[(a)]
+\item $\qty\Big{\sqrt{n^2 + 10} - n}_{n \in \mathbb{N}}$
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    \sqrt{n^2 + 10} - n &= \qty\Big(\sqrt{n^2 + 10} - n) \cdot 1 & \\
+    &= \qty\Big(\sqrt{n^2 + 10} - n) \frac{\sqrt{n^2 + 10} + n}{\sqrt{n^2 + 10} + n} \\
+    &= \frac{\qty\Big(\sqrt{n^2 + 10} - n) \cdot \qty\Big(\sqrt{n^2 + 10} - n)}{\sqrt{n^2 + 10} - n} \\
+    &= \frac{\qty\Big(\sqrt{n^2 + 10})^2 - n^2}{\sqrt{n^2 + 10} + n} \\
+    &= \frac{n^2 + 10 - n^2}{\sqrt{n^2 + 10} + n} \\
+    &= \frac{10}{\sqrt{n^2 \cdot \qty(1 + \frac{10}{n^2})} + n} \\
+    &= \frac{10}{\sqrt{n^2} \cdot \sqrt{1 + \frac{10}{n^2}} + n} \\
+    &= \frac{10}{n \cdot \qty(\sqrt{1 + \frac{10}{n^2}} + 1)}
+    \overset{n \to \infty}\longrightarrow 0
+  \end{flalign*}
+\item $\qty{\frac{n!}{n^n}}_{n \in \mathbb{N}}$
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    \frac{n!}{n^n} &= \frac{1}{n} \cdot
+    \underset{\leq 1}{\underbrace{\frac{2}{n}}} \cdot
+    \underset{\leq 1}{\underbrace{\frac{3}{n}}} \cdot
+    \underset{\leq 1}{\underbrace{\frac{4}{n}}} \cdot
+    \ldots \cdot \underset{\leq 1}{\underbrace{\frac{n}{n}}} \\
+    0 < \frac{n!}{n^n} &\leq \frac{1}{n} \overset{n \to \infty}\longrightarrow 0
+  \end{flalign*}
+
+\newpage
+\item $\qty{\frac{1 + 2^k + \ldots + n^k}{n^{k + 1}}}_{n \in \mathbb{N}}$,
+  wobei $k \in \mathbb{N}$ eine feste natürliche Zahl ist.
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    \frac{1 + 2^k + \ldots + n^k}{n^{k + 1}}
+    = \frac{\sum_{i = 1}^n i^k}{n^{k + 1}}
+  \end{flalign*}
+  Sei nun $\qty\big{a_n} \coloneqq \sum_{i = 1}^n i^k$ und
+  $\qty\big{b_n} \coloneqq n^{k + 1}$.
+  Dann ist $\qty\big{b_n}$ offensichtlich streng monoton wachsend.
+
+  Nach dem Satz von Stolz (Satz 9.34 der Vorlesung) ist
+  $\underset{n \to \infty}\lim\frac{a_n}{b_n} = \underset{n \to \infty}\lim
+  \frac{a_{n + 1} - a_n}{b_{n + 1} - b_n}$.
+  Also
+  \begin{flalign*}
+    \lim_{n \to \infty} \frac{\sum_{i = 1}^n i^k}{n^{k + 1}}
+    &= \lim_{n \to \infty} \frac{\sum_{i = 1}^{n + 1} i^k - \sum_{i = 1}^n i^k}
+      {\qty\big(n + 1)^{k + 1} - n^{k + 1}} \\
+    &= \lim_{n \to \infty}\frac{\qty\big(n + 1)^k}
+      {\qty\big(n + 1)^{k + 1} - n^{k + 1}} \\
+    &= \lim_{n \to \infty}\frac{n^{k} + \qty\big(k + 1)n^{k-1} + \ldots + 1}
+      {n^{k + 1} + \qty\big(k + 1)n^k + \ldots + 1 - n^{k + 1}} \\
+    &= \lim_{n \to \infty}\frac{n^{k} + \qty\big(k + 1)n^{k-1} + \ldots + 1}
+      {\qty\big(k + 1)n^k + \ldots + 1} \\
+    &= \frac{1}{k + 1}
+  \end{flalign*}
+\end{enumerate}
 \end{document}
