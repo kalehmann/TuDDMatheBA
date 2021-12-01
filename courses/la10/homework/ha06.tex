@@ -1,0 +1,85 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 06\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\ggT{\text{ggT}}
+
+\begin{document}
+\paragraph{Aufgabe 7}
+\begin{enumerate}[(a)]
+\item Seien $m$ und $n$ natürliche Zahlen mit $m > n$.
+  Seien außerdem $k$ und $r$ natürliche Zahlen mit $m = kn + r$ und
+  $r \in \qty\big{0, 1, \ldots, n - 1}$.
+  Zeigen Sie, dass $\ggT\qty\big(M, n) = \ggT\qty\big(n, r)$
+
+  \subparagraph{Lsg.} Man sagt $a | b$ oder $a$ teilt $b$, falls ein $z$
+  in $\mathbb{Z}$ existiert mit $z \cdot a = b$.
+  Weiter ist $\ggT\qty\big(n, r)$ das größte $l \in \mathbb{N}$ mit $l$ teilt $n$ und
+  $l$ teilt $r$.
+
+  $\Rightarrow \exists \: z_1, z_2 \in \mathbb{Z} \: \colon \:
+  n = z_1 \cdot \ggT\qty\big(n, r)$ und $r = z_2 \cdot \ggT\qty\big(n, r)$.
+
+  Nach der Aufgabenstellung sind $m, r \geq 0$ und $\ggT\qty\big(n, r)$ ist nach
+  Definition größer als $0$.
+
+  $\Rightarrow z_1, z_2 \in \mathbb{N}$
+  \begin{flalign*}
+    \Rightarrow m &= k \cdot z_1 \cdot \ggT\qty\big(n, r) +
+    z_2 \cdot \ggT\qty\big(n, r) & \\
+    &= \ggT\qty\big(n, r) \cdot \underset{\in \mathbb{N}}{\underbrace{\qty\big(z_1 \cdot k + z_2)}}
+  \end{flalign*}
+  $\Rightarrow \ggT\qty\big(n, r)$ teilt $m$.
+
+  Sei nun $l \in \mathbb{N}$ mit $\ggT\qty\big(n, r) < l < n$ und
+  $l$ teilt $m$, sowie $l$ teilt $n$.
+  Dann existieren $y_1, y_2 \in \mathbb{Z}$ mit $m = y_1 \cdot l$ und
+  $n = y_2 \cdot l$.
+  \begin{flalign*}
+    \Rightarrow& &y_1 \cdot l &= k \cdot y_2 \cdot l + r && && && && && \\
+    &&y_1 \cdot l -  k \cdot y_2 \cdot l &= r \\
+    &&\underset{\in \mathbb{Z}}{\underbrace{\qty\big(y_1 - k \cdot y_2)}} \cdot l
+    &= r
+  \end{flalign*}
+  $\Rightarrow l$ teilt $r$
+
+  $\Rightarrow$ Widerspruch ($l$ wäre größer als der \emph{größte} gemeinsame
+  Teiler von $r$ und $n$)
+
+  $\Rightarrow$ es gibt keinen größeren Teiler von $m$ und $n$ als
+  $\ggT\qty\big(n, r)$.
+
+  $\Rightarrow$ \underline{$\ggT\qty\big(m, n) = \ggT\qty\big(n, r)$}
+\end{enumerate}
+\end{document}
