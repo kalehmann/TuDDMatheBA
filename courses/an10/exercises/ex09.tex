@@ -171,4 +171,104 @@ Beweisen Sie die Äquivalenz folgender Aussagen:
   $\Rightarrow$ \underline{$\qty\big{a_n}_{n \in \mathbb{N}}$ ist beschränkt.}
 \end{itemize}
 
+\newpage
+\paragraph{45. Untersuchen Sie, ob die Folgen} konvergent sind und berechnen
+Sie gegebenenfalls deren Grenzwert.
+
+\begin{enumerate}[(a)]
+\item $\qty{\frac{4n^2 + 1}{9n^2 - n + 3}}_{n \in \mathbb{N}}$
+
+  \subparagraph{Lsg.}
+  \[
+    \frac{4n^2 + 1}{9n^2 - n + 3} =
+    \frac{n^2 \cdot \qty(4 + \frac{1}{n^2})}
+    {n^2 \cdot \qty(9 - \frac{1}{n} + \frac{3}{n^2})}
+    = \frac{4 + \frac{1}{n^2}}{9 - \frac{1}{n} + \frac{3}{n^2}}
+    \overset{n \to \infty}\longrightarrow \frac{4}{9}
+  \]
+
+\item $\qty{\frac{1 - \qty(1 - \sfrac{1}{n})^5}
+    {1 - \qty(1 - \sfrac{1}{n})^2}}_{n \in \mathbb{N}_{> 0}}$
+
+  \subparagraph{Lsg.}
+
+  \[
+    \begin{array}{ccccccccccc}
+        &   &   &   &    & 1  \\
+        &   &   &   & 1  &   & 1  \\
+        &   &   & 1 &    & 2 &    & 1 \\
+        &   & 1 &   & 3  &   & 3  &   & 1 \\
+        & 1 &   & 4 &    & 6 &    & 4 &   & 1 \\
+      \colorbox{yellow}{1} &&
+      \colorbox{blue!30}{5} &&
+      \colorbox{red!40}{10} &&
+      \colorbox{green!50}{10} &&
+      \colorbox{orange!50}{5} &&
+      \colorbox{pink}{1}
+    \end{array}
+  \]
+
+  \begin{flalign*}
+    \frac{1 - \qty(1 - \frac{1}{n})^5}{1 - \qty(1 - \frac{1}{n})^2}
+    &= \frac{1 - \qty(
+        \colorbox{yellow}{1} - \frac{\colorbox{blue!30}{5}}{n} +
+        \frac{\colorbox{red!40}{10}}{n^2} - \frac{\colorbox{green!50}{10}}{n^3} +
+        \frac{\colorbox{orange!50}{5}}{n^4} - \frac{\colorbox{pink}{1}}{n^5}
+      )}{1 - \qty(1 - \frac{2}{n} + \frac{1}{n^2})} \\
+    &= \frac{\frac{1}{n} \cdot \qty(
+        5 - \frac{10}{n} + \frac{10}{n^2} - \frac{5}{n^3}+ \frac{1}{n^4}
+      )}{\frac{1}{n} \cdot \qty(2 - \frac{1}{n})} \\
+    &= \frac{
+      5 - \frac{10}{n} + \frac{10}{n^2} - \frac{5}{n^3} + \frac{1}{n^4}
+    }{2 - \frac{1}{n}} \\
+    \overset{n \to \infty}&\longrightarrow \frac{5}{2}
+  \end{flalign*}
+
+\item $\qty{\frac{
+      2 + \sfrac{1}{n}
+    }{\sfrac{\qty(1 + \sfrac{1}{n})}{n}}}_{n \in \mathbb{N}_{> 0}}$
+
+  \subparagraph{Lsg.}
+  \[
+    \frac{
+      2 + \sfrac{1}{n}
+    }{\sfrac{\qty(1 + \sfrac{1}{n})}{n}}
+    = \frac{1 + 2n}{1 + \frac{1}{n}}
+    \overset{n \to \infty}\longrightarrow \infty
+  \]
+
+\newpage
+\item $\qty{\sqrt[3]{n^3 + n^2} - n}_{n \in \mathbb{N}}$
+  \begin{small}
+    \subparagraph{Lsg.}
+    \begin{flalign*}
+      \sqrt[3]{n^3 + n^2} - n
+      &= \qty\Big(\sqrt[3]{n^3 + n^2} - n) \cdot 1 \\
+      &= \qty\Big(\sqrt[3]{n^3 + n^2} - n) \cdot
+        \frac{\qty\Big(\sqrt[3]{n^3 + n^2})^2 + n \cdot \sqrt[3]{n^3 + n^2} + n^2}
+        {\qty\Big(\sqrt[3]{n^3 + n^2})^2 + n \cdot \sqrt[3]{n^3 + n^2} + n^2} \\
+      &= \frac{
+          n^3 + n^2 + n \cdot \qty\Big(\sqrt[3]{n^3 + n^2})^2 +
+          n^2 \cdot \sqrt[3]{n^3 + n^2} - n \cdot \qty\Big(\sqrt[3]{n^3 + n^2})^2 -
+          n^2 \cdot \sqrt[3]{n^3 + n^2} - n^2
+        }{\qty\Big(\sqrt[3]{n^3 + n^2})^2 + n \cdot \sqrt[3]{n^3 + n^2} + n^2} \\
+      &= \frac{n^2}{\qty\Big(\sqrt[3]{n^3 + n^2})^2 + n \cdot \sqrt[3]{n^3 + n^2} + n^2} \\
+      &= \frac{n^2}{\qty\Big(\sqrt[3]{n^3 \cdot \qty(1 + \frac{1}{n})})^2 + n \cdot \sqrt[3]{n^3 \cdot \qty(1 + \frac{1}{n})} + n^2} \\
+      &= \frac{n^2}{\qty\Big(\sqrt[3]{n^3} \cdot \sqrt[3]{1 + \frac{1}{n}})^2 + n \cdot \sqrt[3]{n} \cdot \sqrt[3]{1 + \frac{1}{n}} + n^2} \\
+      &= \frac{n^2}{n^2 \cdot \qty\Big(\sqrt[3]{1 + \frac{1}{n}})^2 + n^2 \cdot \sqrt[3]{1 + \frac{1}{n}} + n^2} \\
+      \overset{n \to \infty}&\longrightarrow \frac{1}{3}
+    \end{flalign*}
+  \end{small}
+
+\item $\qty{n - \frac{in^2}{1 + in}}_{n \in \mathbb{N}}$
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    n - \frac{in^2}{1 + in} &= n - \frac{in^2}{n \cdot \qty(\frac{1}{n} + i)} \\
+    &= n - \frac{in}{\frac{1}{n} + i} \\
+    &= \frac{1 + in}{\frac{1}{n} + i} - \frac{in}{\frac{1}{n} + i} \\
+    &= \frac{1}{\frac{1}{n} + i} = \frac{1 \cdot n}{1 + in} = -\frac{in}{n - i} \\
+    \overset{n \to \infty}&\longrightarrow -i
+  \end{flalign*}
+\end{enumerate}
 \end{document}
