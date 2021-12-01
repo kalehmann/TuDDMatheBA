@@ -136,13 +136,40 @@
 
   Das multiplikative Inverse von $1026$ in $\mathbb{Z}_{/ 1055}$ ist $291$.
 \end{enumerate}
-
+\newpage
 \paragraph{Aufgabe 8} Sei $\qty\big(R, +, \cdot)$ ein Ring.
 \begin{enumerate}[(i)]
 \item Beweisen Sie Lemma 2.36 (a): Für jedes $z \in \mathbb{Z}$ und jedes
   $a \in R$ gilt $za = \qty\big(z1_R)a$
 
-\newpage
+  \subparagraph{Lsg.} \underline{Behauptung:}
+  $P(z) \colon z \cdot a = \qty\big(z \cdot 1_R) \cdot a$.
+
+  \underline{Induktionsanfang:}
+  $P(0) \colon 0 \cdot a \overset{\text{Not. 2.11}}= 0_R =
+  0_R \cdot a = \qty\big(0 \cdot 1_R) \cdot a$ und \\
+  $P(1) \colon 1 \cdot a = 0_R + a = a = 1_R \cdot a =
+  \qty\big(1 \cdot 1_R) \cdot a$
+
+  \underline{Induktionsschritt:} Sei nun $P(z)$ für ein beliebiges
+  $z \in \mathbb{N}$ wahr.
+  Dann ist
+  \begin{flalign*}
+    \qty\big(z + 1) \cdot a \overset{\text{Not. 2.11}}&= z \cdot a + a
+    \overset{\text{Siehe }P(1)}= z \cdot a + 1 \cdot a &\\
+    \overset{P(z) \text{ und } P(1)}&= \qty(z \cdot 1_R) \cdot a +
+      \qty(1 \cdot 1_R) \cdot a \\
+    \overset{\text{Distributivität im Ring}}&= \qty(z \cdot 1_R + 1 \cdot 1_R) \cdot a \\
+    \overset{\text{Lemma 2.12 (b)}}&= \qty(\qty\big(z + 1) \cdot 1_R) \cdot a
+  \end{flalign*}
+  Aus der vollständigen Induktion folgt die Behauptung für $z \in \mathbb{N}$.
+
+  Sei nun $z \in \mathbb{Z}_{< 0}$ beliebig.
+  Dann ist $(-z) \in \mathbb{N}$ und es gilt $(-z) \cdot a = \qty\big((-z)1_R)a$.
+  Aus Lemma 2.12 (a)  und Lemma 2.22 (a) folgt $-(za) = -\qty(\qty\big(z1_R) a)$.
+
+  $\Rightarrow za = \qty\big(z1_R)a$ für alle $z \in \mathbb{Z}$.
+
 \item Beweisen Sie Lemma 2.40: Wenn $R$ endlich ist, so ist $\Char(R) \ne 0$.
   Insbesondere ist die Charakteristik eine endlichen Körpers immer eine
   Primzahl.
