@@ -34,6 +34,7 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
+\newcommand\Char{\text{char}}
 \newcommand\ggT{\text{ggT}}
 
 \begin{document}
@@ -134,5 +135,43 @@
   (b) ist $\qty[1026]$ in $\mathbb{Z}_{/ 1055}$ invertierbar.
 
   Das multiplikative Inverse von $1026$ in $\mathbb{Z}_{/ 1055}$ ist $291$.
+\end{enumerate}
+
+\paragraph{Aufgabe 8} Sei $\qty\big(R, +, \cdot)$ ein Ring.
+\begin{enumerate}[(i)]
+\item Beweisen Sie Lemma 2.36 (a): Für jedes $z \in \mathbb{Z}$ und jedes
+  $a \in R$ gilt $za = \qty\big(z1_R)a$
+
+\newpage
+\item Beweisen Sie Lemma 2.40: Wenn $R$ endlich ist, so ist $\Char(R) \ne 0$.
+  Insbesondere ist die Charakteristik eine endlichen Körpers immer eine
+  Primzahl.
+
+  \subparagraph{Lsg,} Sei $R$ endlich.
+  Angenommen $\Char(R) = 0$, dann ist $n \cdot 1_R \ne 0_R$ für alle
+  $n \in \mathbb{N}$.
+  Da $R$ endlich ist, ist auch $\qty\big{n \cdot 1_R {\big |} n \in \mathbb{N}}$
+  endlich.
+  Folglich existieren $m > n \in \mathbb{N}$ mit
+  \begin{align*}
+    m \cdot 1_R &= n \cdot 1_R && {\Big |} + \qty(-\qty\big(n \cdot 1_R)) \\
+    m \cdot 1_R + \qty(-\qty\big(n \cdot 1_R)) &= n \cdot 1_R + \qty(-\qty\big(n \cdot 1_R)) \\
+    m \cdot 1_R + \qty(-\qty\big(n \cdot 1_R)) &= 0_R && \overset{\text{Lemma 2.12 (a)}}\iff \\
+    m \cdot 1_R + \qty\big(- n) \cdot 1_R &= 0_R && \overset{\text{Lemma 2.12 (b)}}\iff \\
+    \underset{\in \mathbb{N}}{\underbrace{\qty\big(m - n)}} \cdot 1_R &= 0
+  \end{align*}
+
+  $\Rightarrow$ Widerspruch zu $n \cdot 1_R \ne 0_R$ für alle $n \in \mathbb{N}$.
+
+  $\Rightarrow$ \underline{$\Char(R) \ne 0$}.
+
+  Sei nun $\qty\big(R, +, \cdot)$ ein endlicher Körper.
+  Dann ist $\qty\big(R, +, \cdot)$ ein endlicher Ring.
+
+  $\Rightarrow \Char(R) \ne 0$
+
+  Aus Lemma 2.39 (a) der Vorlesung (\emph{``Sei $R$ ein Ring mit
+    $n \coloneqq \Char(R) \ne 0$. Falls $R$ ein Körper ist, so ist $n$ eine
+    Primzahl''}) folgt der zweite Teil der Behauptung.
 \end{enumerate}
 \end{document}
