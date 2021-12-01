@@ -14,6 +14,7 @@
 \usepackage{titling}
 \usepackage{fancyhdr}
 \usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{pgfplots}
 
 \pgfplotsset{compat = newest}
@@ -81,5 +82,46 @@
   $\ggT\qty\big(n, r)$.
 
   $\Rightarrow$ \underline{$\ggT\qty\big(m, n) = \ggT\qty\big(n, r)$}
+
+\item Nutzen Sie (a), um $\ggT\qty\big(1055, 1026)$ zu berechnen.
+  Finden Sie außerdem $s, t \in \mathbb{Z}$ mit
+  $\ggT\qty\big(1055, 1026) = s \cdot 1055 + t \cdot 1026$.
+
+  \subparagraph{Lsg.} Es ist $1055 = k \cdot 1026 + r$ mit $k = 1$ und
+  $r = 29$.
+
+  Nach (a) ist $\ggT\qty\big(1055, 1026) = \ggT\qty\big(1026, 29)$.
+  Da $29$ eine Primzahl ist, kommen als Teiler $1$ und $29$ in Frage.
+  $1026 / 29 = 35$ Rest $11$.
+
+  $\Rightarrow \ggT\qty\big(1026, 29) = 1 = \ggT\qty\big(1055, 1026)$.
+
+  \newpage
+  Nach dem erweiterten euklidischen Algorithmus:
+  \begin{flalign*}
+    \colorbox{PineGreen!30}{1055} &= 1 \cdot \colorbox{Apricot!50}{1026} + \colorbox{YellowGreen!50}{29} \\
+    \colorbox{Apricot!50}{1026} &= 35 \cdot \colorbox{YellowGreen!50}{29} + \colorbox{Salmon!50}{11} \\
+    \colorbox{YellowGreen!50}{29} &= 2 \cdot \colorbox{Salmon!50}{11} + \colorbox{Cyan!30}{7} \\
+    \colorbox{Salmon!50}{11} &= 1 \cdot \colorbox{Cyan!30}{7} + \colorbox{Orchid!30}{4} \\
+    \colorbox{Cyan!30}{7} &= 1 \cdot \colorbox{Orchid!30}{4} + \colorbox{SeaGreen!30}{3} \\
+    \colorbox{Orchid!30}{4} &= 1 \cdot \colorbox{SeaGreen!30}{3} + 1 \\
+    \colorbox{SeaGreen!30}{3} &= 3 \cdot \underline{1} + 0
+  \end{flalign*}
+  ... und rückwärts
+  \begin{flalign*}
+    \underline{1} &= \colorbox{Orchid!30}{4} - \colorbox{SeaGreen!30}{3} \\
+    &= \colorbox{Orchid!30}{4} - \qty\big(\colorbox{Cyan!30}{7} - \colorbox{Orchid!30}{4})
+    = 2 \cdot \colorbox{Orchid!30}{4} - \colorbox{Cyan!30}{7} \\
+    &= 2 \cdot \qty\big(\colorbox{Salmon!50}{11} - \colorbox{Cyan!30}{7}) - \colorbox{Cyan!30}{7}
+    = 2 \cdot \colorbox{Salmon!50}{11} - 3 \cdot \colorbox{Cyan!30}{7} \\
+    &= 2 \cdot \colorbox{Salmon!50}{11} - 3 \cdot \qty\big(\colorbox{YellowGreen!50}{29} - 2 \cdot \colorbox{Salmon!50}{11})
+    = 8 \cdot \colorbox{Salmon!50}{11} - 3 \cdot \colorbox{YellowGreen!50}{29} \\
+    &= 8 \cdot \qty\big(\colorbox{Apricot!50}{1026} - 35 \cdot \colorbox{YellowGreen!50}{29}) - 3 \cdot \colorbox{YellowGreen!50}{29}
+    = 8 \cdot \colorbox{Apricot!50}{1026} - 283 \cdot \colorbox{YellowGreen!50}{29} \\
+    &= 8 \cdot \colorbox{Apricot!50}{1026} - 283 \cdot \qty\big(\colorbox{PineGreen!30}{1055} -  \colorbox{Apricot!50}{1026}) \\
+    &= 291 \cdot  \colorbox{Apricot!50}{1026} - 283 \cdot \colorbox{PineGreen!30}{1055}
+  \end{flalign*}
+  $\Rightarrow \ggT\qty\big(1055, 1026) = s \cdot 1055 + t \cdot 1026$ mit
+  $s = -283$ und $t = 291$
 \end{enumerate}
 \end{document}
