@@ -1,0 +1,97 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 10\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\diam{\text{diam}}
+
+\begin{document}
+\paragraph{50. Sei $\qty\big(X, d)$ ein metrischer Raum und $M \subset X$
+  nicht leer und beschränkt.}
+Zeigen Sie, dass
+\[
+  \diam\qty\big(M) = \diam\qty\big(\overline{M})
+\]
+
+\subparagraph{Lsg.} $\diam\qty\big(M)$ ist definiert als
+$\sup \qty\big{d\qty\big(x, y) {\big |} x, y \in M}$ und
+$\overline{M}$ (oder $\text{cl}M$) ist definiert als $M \cup \partial M$.
+Es gilt
+\[
+  \diam\qty\big(M) = \diam\qty\big(\overline{M}) \iff
+  \diam\qty\big(M) \leq \diam\qty\big(\overline{M}) \land
+  \diam\qty\big(M) \geq \diam\qty\big(\overline{M})
+\]
+\begin{itemize}
+\item[``$\leq$''] Angenommen $\diam\qty\big(M) > \diam\qty\big(\overline{M})$,
+  dann existieren zwei Elemente $x, y \in M$ mit $d\qty\big(x, y) >
+  \sup\qty\big{d\qty\big(a, b) {\big |} a, b \in \overline{M}}$.
+
+  $\Rightarrow$ Widerspruch, da $x, y$ dann auch in der Vereinigung
+  $M \cup \partial M$ - was $\overline{M}$ entspricht - enthalten sein
+  müssen.
+
+  $\Rightarrow$ \underline{$\diam\qty\big(M) \leq \diam\qty\big(\overline{M})$}
+
+\item[``$\geq$''] Seien $x, y \in \overline{M}$ und $\epsilon > 0$ beliebig.
+  Dann existieren $a, b \in M$ mit $d\qty\big(x, a) < \frac{\epsilon}{2}$
+  und $d\qty\big(y, b) < \frac{\epsilon}{2}$.
+  (Anderenfalls hätten $x$ oder $y$ eine Umgebung ohne Punkte von $M$,
+  $\Rightarrow x$ oder $y$ sind äußere Punkte von $M$, \Lightning\,
+  zu $x, y$ sind Randpunkte von $M$)
+
+  \begin{flalign*}
+    d\qty\big(x, y) \overset{\bigtriangleup\text{-Ungl}}
+    &\leq d\qty\big(x, a) + d\qty\big(b, y) & \\
+    \overset{d\qty\big(a, b) > 0}&\leq
+    d\qty\big(x, a) + d\qty\big(b, y) + d\qty\big(a, b) \\
+    &\leq d\qty\big(x, a) + d\qty\big(b, y) +
+    \underset{= \diam(M)}{\underbrace{\sup\qty\big{d\qty\big(a, b) {\big |} a, b \in M}}} \\
+    d\qty\big(x, y)
+    \overset{d\qty\big(x, a) = d\qty\big(y, b) = \frac{\epsilon}{2}}&\leq
+    \epsilon + \diam\qty\big(M)
+  \end{flalign*}
+  Da $x, y \in \partial M$  beliebig gewählt sind, folgt
+  \[
+    \underset{= \diam\qty\big(x, y)}
+    {\underbrace{\sup\qty\big{d\qty\big(x, y)} {\big |} x, y \in M}}
+    \leq \diam\qty\big(M) + \epsilon
+  \]
+  Da außerdem $\epsilon$ beliebig gewählt ist, folgt
+  \underline{$\diam\qty\big(\overline{M}) \leq \diam\qty\big(M)$}.
+\end{itemize}
+
+$\Rightarrow \diam\qty\big(M) = \diam\qty\big(\overline{M})$
+
+\end{document}
