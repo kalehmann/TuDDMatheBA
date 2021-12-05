@@ -140,6 +140,41 @@ Entscheiden Sie, ob die folgenden Teilmengen von $\mathbb{R}^2$ kompakt sind.
   $\Rightarrow \qty\big{n}_{n \in \mathbb{N}_{> 0}}$ konvergiert in $X$ nicht.
 
   $\Rightarrow$ \underline{$\qty\big(X, d)$ ist nicht vollständig}
+
+\item Im folgenden betrachten wir die Abbildung
+  $p \colon X \times X \to \mathbb{R}$, welche für $x, y \in X$ durch
+  \[
+    p\qty\big(x, y) \coloneqq \abs\big{x - y} + \abs{\frac{1}{x} - \frac{1}{y}}
+  \]
+  definiert ist.
+  Zeigen Sie, dass $p$ eine Metrik auf $X$ ist.
+
+  \subparagraph{Lsg.} Für $p$ gilt
+  \begin{enumerate}[(i)]
+  \item $p\qty\big(x, y) = 0 \iff x = y$
+  \item $p\qty\big(x, y) = p\qty\big(y, x)$, da
+    \[
+      \abs{x - y} = \abs{-1 \cdot \qty\big(y - x)} =
+      \abs{-1} \cdot \abs{y - x} = \abs{y - x}
+    \]
+    und $\abs{\frac{1}{x} - \frac{1}{y}} = \abs{\frac{1}{y} - \frac{1}{x}}$
+    (siehe Aufgabe 41 von Blatt 08)
+  \item Seien $d\qty\big{x, y} = \abs{\frac{1}{x} - \frac{1}{y}}$ und
+    $e\qty\big(x, y)$ die von der Betragsnorm induzierte Metrik.
+    Dann ist $p\qty\big(x, y) = e\qty\big(x, y) + d\qty\big(x, y)$.
+    Es gilt
+    \begin{flalign*}
+      p\qty\big(x, z) &= e\qty\big(x, z) + d\qty\big(x, z) & \\
+      \overset{\bigtriangleup \text{-Ungl.}}&\leq
+      e\qty\big(x, y) + e\qty\big(y, z) + d\qty\big(x, z) \\
+      \overset{\bigtriangleup \text{-Ungl.}}&\leq
+      e\qty\big(x, y) + e\qty\big(y, z) + d\qty\big(x, y) + d\qty\big(x, y) \\
+      &= e\qty\big(x, y) + d\qty\big(x, y) + e\qty\big(y, z) + d\qty\big(x, y) \\
+      &= p\qty\big(x, y) + p\qty\big(y, z)
+    \end{flalign*}
+  \end{enumerate}
+
+  $\Rightarrow$ \underline{$p$ ist eine Metrik auf $X$}.
 \end{enumerate}
 
 \end{document}
