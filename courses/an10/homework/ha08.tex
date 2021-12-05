@@ -1,0 +1,111 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann (Übungsgruppe 1)\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 10\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{53. Sei $\mathbb{R}^2$ mit der euklidischen Metrik versehen.}
+Entscheiden Sie, ob die folgenden Teilmengen von $\mathbb{R}^2$ kompakt sind.
+\begin{enumerate}[(a)]
+\item $\qty\big{\qty\big(n, n) \,{\big |}\, n \in \mathbb{N}}$
+
+  \subparagraph{Lsg.} Sei
+  $M \coloneqq \qty\big{\qty\big(n, n) \,{\big |}\, n \in \mathbb{N}}$
+  und $\mathcal{U} \coloneqq
+  \qty{B_{\frac{1}{3}}\qty\big(\qty(n, n)) \,\middle|\, n \in \mathbb{N}}$.
+  Dann besteht $\mathcal{U}$ aus offenen Teilmengen von $\mathbb{R}^2$ und
+  für jedes Element $m \in M$ findet sich ein $U \in \mathcal{U}$ mit
+  $m \in U$, somit ist $\mathcal{U}$ eine offen Überdeckung von $M$.
+
+  Sei nun $\tilde{\mathcal{U}}$ eine beliebige endliche Teilmenge von $U$.
+  Dann umfasst jedes Element $P \in \tilde{\mathcal{U}}$ genau ein Element
+  $m \in M$ (, denn
+  $d\qty\big((n, n), (n + 1, n + 1)) = \sqrt{2} > \frac{1}{3}$).
+
+  $\Rightarrow \tilde{\mathcal{P}}$ enthält nur endlich viele Elemente aus $M$
+
+  $\Rightarrow M \not\subset \bigcup \tilde{\mathcal{U}}$
+
+  $\Rightarrow$ die offene Überdeckung $U$ enthält keine endliche
+  Überdeckung von $M$.
+
+  $\Rightarrow$ \underline{$M$ ist nicht kompakt}.
+
+\item $\qty{\qty(\frac{1}{n}, \frac{1}{n}) \,\middle |\, n \in \mathbb{N}_{> 0}}$
+
+  \subparagraph{Lsg.} Sei $\qty\big{x_n}$ eine Folge in $\mathbb{R}^2$ mit
+  $x_n \coloneqq \qty(\frac{1}{n}, \frac{1}{n})$.
+  Dann gilt $x_n \overset{n \to \infty}\longrightarrow \qty\big(0, 0)$.
+  Nach Satz 10.1 (1) der Vorlesung (\emph{``Sei $\qty\big{x_n}$ eine Folge im
+    metrischen Raum $\qty\big(X, d)$, dann gilt
+    $x_n \to x \Rightarrow \qty\big{x_n}$ ist Cauchy-Folge.''}).
+  ist $\qty\big{x_n}$ ein Cauchy-Folge.
+
+  Nun ist jedes Folgenglied von $\qty\big{x_n}$ in
+  $\qty{\qty(\frac{1}{n}, \frac{1}{n}) \,\middle |\, n \in \mathbb{N}_{> 0}}$
+  enthalten, allerdings ist $\qty\big(0, 0)$ nicht in der Menge enthalten.
+
+  $\Rightarrow \qty\big{x_n}$ (und jede Teilfolge von $\qty\big{x_n}$)
+  konvergiert gegen einen Wert außerhalb der Menge.
+
+  $\Rightarrow
+  \qty{\qty(\frac{1}{n}, \frac{1}{n}) \,\middle |\, n \in \mathbb{N}_{> 0}}$
+  ist nicht folgenkompakt.
+
+  Nach Theorem 11.1 der Vorlesung (\emph{``Sei $\qty\big(X, d)$ metrischer Raum
+    und $M \subset X$, dann folgt $M$ kompakt $\iff M$ folgenkompakt''})
+  ist $\qty{\qty(\frac{1}{n}, \frac{1}{n}) \,\middle |\, n \in \mathbb{N}_{> 0}}$
+  \underline{nicht kompakt}.
+
+\item $\qty\big{x \in \mathbb{R}^2 \,{\big |}\, \abs{x}_2 \leq 1}$
+
+  \subparagraph{Lsg.} Sei $M \coloneqq
+  \qty\big{x \in \mathbb{R}^2 \,{\big |}\, \abs{x}_2 \leq 1}$ und
+  $x \in \mathbb{R}^2 \setminus M$ beliebig.
+  Nun gilt $\abs{x}_2 > 1$, anderenfalls wäre $x \in M$.
+  Es sei nun $\epsilon = \frac{d\qty\big(1, x)}{2}$, dann ist
+  $B_{\epsilon}\qty\big(x) \subset \mathbb{R}^2 \setminus M$.
+
+  $\Rightarrow \mathbb{R}^2 \setminus M$ ist offen
+
+  $\Rightarrow M$ ist abgeschlossen.
+
+  Außerdem ist $M$ abgeschlossen (vgl. Aufgabe 42 auf Blatt 08).
+
+  Nach Theorem 11.3 der Vorlesung (\emph{``Satz von Heine-Borel: Sei
+    $X = \mathbb{R}^n$ mit beliebiger Norm und $M \subset X$.
+    Dann gilt $M$ ist kompakt $\iff M$ ist abgeschlossen und beschränkt.''})
+  folgt, dass \underline{$M$ kompakt ist}.
+\end{enumerate}
+
+\end{document}
