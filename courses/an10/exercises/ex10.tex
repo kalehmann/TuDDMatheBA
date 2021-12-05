@@ -129,5 +129,35 @@ Dann ist
   \]
 
 \item Falls $X$ vollständig ist, so gilt auch die Umkehrung von $\qty\big(a)$.
+
+  \subparagraph{Lsg.} Nach Folgerung 10.5 der Vorlesung konvergiert eine Folge
+  $\qty\big{x_n}$ in einem vollständigen metrischen Raum genau dann, wenn
+  $\qty\big{x_n}$ ein Cauchy-Folge ist.
+  Sei nun $\qty\big{s_n}$ die Folge der Partialsummen von $\qty\big{x_k}$.
+
+  Angenommen es existiert nun für jedes $\epsilon > 0$ ein $N \in \mathbb{N}$,
+  so dass für alle $n \geq l \geq N$ gilt
+  \[
+    \norm{\sum_{k = l}^n x_k} < \epsilon
+  \]
+  Dann ist
+  \begin{flalign*}
+    \norm{\sum_{k = l}^n x_k} = \norm{\sum_{k = 0}^n - \sum_{k = 0}^{l - 1}}
+    = \norm\big{s_n - s_{l - 1}} &< \epsilon & \\
+   d\qty\big(s_n, s_{l - 1}) &< \epsilon
+ \end{flalign*}
+ Sei nun $m = l - 1$, es folgt für alle $n > m \geq N$, dass
+ $d\qty\big(s_n, s_m) < \epsilon$.
+ Da die Metrik symmetrisch ist, gilt auch für alle $m > n \geq N$, dass
+ $d\qty\big(s_n, s_m) < \epsilon$.
+
+ Für den Sonderfall $m = n$ gilt $d\qty\big{s_n, s_m} = 0 < \epsilon$.
+
+ $\Rightarrow \qty\big{s_n}$ ist Cauchy-Folge.
+
+ $\Rightarrow$ da $X$ vollständig ist konvergiert $\qty\big{s_n}$.
+
+ $\Rightarrow$ \underline{die unendliche Reihe $\sum_{k = 0}^{\infty} x_k$ ist
+   konvergent}
 \end{enumerate}
 \end{document}
