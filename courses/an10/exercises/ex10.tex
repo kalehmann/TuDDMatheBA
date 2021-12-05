@@ -94,4 +94,40 @@ Es gilt
 
 $\Rightarrow \diam\qty\big(M) = \diam\qty\big(\overline{M})$
 
+\newpage
+\paragraph{51. Sei $X$ ein normierter Raum,} $\qty\big{x_k}$ eine Folge in $X$.
+Dann ist
+\begin{enumerate}[(a)]
+\item Ist $\underset{k = 1}{\overset{\infty}{\sum}} x_k$ konvergent, so gibt
+  es zu jedem $\epsilon > 0$ ein $N \in \mathbb{N}$, sodass für alle
+  $n \geq m \geq N$
+  \[
+    \norm{\sum_{k = m}^n x_k} < \epsilon
+  \]
+
+  \subparagraph{Lsg.} $\underset{k = 1}{\overset{\infty}{\sum}} x_k$ ist
+  konvergent, somit konvergiert die Folge der Partialsummen.
+  Nach Satz 10.1 (1) der Verlesung (\emph{``$x_n \to x \Rightarrow \qty\big{x_n}$
+    ist Cauchy-Folge''}), ist die Folge der Partialsummen somit eine
+  Cauchy-Folge.
+
+  $\Rightarrow$ für jedes $\epsilon > 0$ existiert $N \in \mathbb{N}$, so dass
+  für $m, n > N$ gilt: $d\qty\big(s_n, s_m) < \epsilon$.
+
+  Seien nun $l, n$ so gewählt, dass $n \geq l > N$.
+  Es folgt
+  \begin{flalign*}
+    d\qty\big(s_n, s_l) &< \epsilon & \\
+    \norm{s_n - s_l} &< \epsilon \\
+    \norm{\sum_{k = 0}^n x_k - \sum_{k = 0}^l} &< \epsilon \\
+    \norm{\sum_{k = l + 1}^n} &< \epsilon
+  \end{flalign*}
+  Sei nun $m = l - 1$, weil $l > N$ folgt $m \geq N$.
+  Da $n \geq l > N$ beliebig folgt
+  \[
+    \norm{\sum_{k = m}^n x_k} < \epsilon
+  \]
+
+\item Falls $X$ vollständig ist, so gilt auch die Umkehrung von $\qty\big(a)$.
+\end{enumerate}
 \end{document}
