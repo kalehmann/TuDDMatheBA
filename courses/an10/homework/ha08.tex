@@ -108,4 +108,28 @@ Entscheiden Sie, ob die folgenden Teilmengen von $\mathbb{R}^2$ kompakt sind.
   folgt, dass \underline{$M$ kompakt ist}.
 \end{enumerate}
 
+\newpage
+\paragraph{54. Sei $X \coloneqq \qty\big(0, \infty) \subset \mathbb{R}$}.
+\begin{enumerate}[(a)]
+\item Laut Aufgabe 41 ist die Abbildung
+  $d \colon X \times X \to \big[0, \infty \big)$, welche für $x, y \in X$
+  durch
+  \[
+    d\qty\big(x, y) \coloneqq \abs{\frac{1}{x} - \frac{1}{y}}
+  \]
+  definiert ist, eine Metrik auf $X$.
+  Zeigen Sie, dass die Folge $\qty\big{n}_{n \in \mathbb{N}_{> 0}}$ eine
+  Cauchy-Folge bezüglich der Metrik $d$ ist.
+
+  \subparagraph{Lsg.} Sei $\epsilon > 0$ beliebig.
+  Dann findet sich ein $N \in \mathbb{N}$ mit $\frac{1}{N} < \epsilon$.
+  Somit gilt für $m, n > N$, dass
+  \[
+    \abs{\frac{1}{m} - \frac{1}{n}} < \frac{1}{N} < \epsilon
+  \]
+
+  $\Rightarrow$ \underline{$\qty\big{n}_{n \in \mathbb{N}_{> 0}}$ ist eine
+  Cauchy-Folge}
+\end{enumerate}
+
 \end{document}
