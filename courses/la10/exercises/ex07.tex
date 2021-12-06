@@ -1,0 +1,88 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 07\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\ccg[1]{\cellcolor{green}{#1}}
+
+\begin{document}
+\paragraph{Aufgabe 2} In den folgenden beiden Teilaufgaben, also in (a) und (b),
+geht es um Unterräume des Vektorraumes $\mathbb{R}^n$ für gegebene natürliche
+Zahlen $n$.
+Dabei ist $\mathbb{R}^n$ mit der üblichen Addition und der üblichen
+Skalarmultiplikation versehen.
+
+\begin{enumerate}[(a)]
+\item Sei $V \coloneqq \qty{\binom{x}{y} \in \mathbb{R}^2 \,\middle|\,
+    x \geq 0, y \geq 0}$.
+  Gilt dann
+  \begin{enumerate}[label={(a\arabic*)}]
+  \item Wenn $u, v \in V$, dann ist auch $u + v \in V$?
+  \item Wenn $u \in V$ und $\lambda \in \mathbb{R}$, dann ist auch
+    $\lambda u \in V$?
+
+  \item $V$ ist ein Unterraum von $\mathbb{R}^2$
+  \end{enumerate}
+
+  \subparagraph{Lsg.} Seien $x_1, x_2, y_1, y_2 \in \mathbb{R}_{\geq 0}$
+  beliebig und $u = \binom{x_1}{y_1}, v = \binom{x_2}{y_2}$.
+  \begin{enumerate}[label={(a\arabic*)}]
+  \item $u + v = \binom{x_1 + x_2}{y_1 + y_2}$.
+    Aus $a, b \geq 0 \Rightarrow a + b \geq 0$ folgt, dass $x_1 + x_2 \geq 0$
+    und $y_1 + y_2 \geq 0$.
+
+    $\Rightarrow$ \underline{$u + v$ ist in $V$}
+
+  \item Sei $a \in \mathbb{R} > 0$, dann ist $-1 \cdot a < 0$.
+    Angenommen $x_1, y_1 > 0$, dann gilt
+    $\binom{-1 \cdot x_1}{-1 \cdot y_1} \notin V$.
+
+    $\Rightarrow$ \underline{die Aussage (a2) gilt für $u \ne \binom{0}{0}$ und
+      $\lambda = -1$ nicht}.
+
+  \item Eine Teilmenge $W \subset \mathbb{R}^2$ wird Unterraum von
+    $\mathbb{R}^2$ genannt, falls
+    \begin{enumerate}[(i)]
+    \item $0_{\mathbb{R}^2} \in W$
+    \item Für $u, v \in W$ gilt $u + v \in W$
+    \item Für $\lambda \in \mathbb{R}$ und alle $u \in W$ gilt
+      $\lambda \cdot u \in W$
+    \end{enumerate}
+    Wie in (a2) gezeigt gilt (iii) nicht.
+
+    $\Rightarrow$ \underline{$V$ ist kein Unterraum von $\mathbb{R}^2$}
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}
