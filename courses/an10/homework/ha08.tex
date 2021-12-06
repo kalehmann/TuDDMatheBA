@@ -175,6 +175,23 @@ Entscheiden Sie, ob die folgenden Teilmengen von $\mathbb{R}^2$ kompakt sind.
   \end{enumerate}
 
   $\Rightarrow$ \underline{$p$ ist eine Metrik auf $X$}.
+
+\item Ist $\qty\big{n}_{n \in \mathbb{N}_{> 0}}$ eine Cauchy-Folge bezüglich $p$?
+
+  \subparagraph{Lsg.} Sei $n \in \mathbb{N}$ beliebig.
+  Dann ist
+  \begin{flalign*}
+    p\qty\big(n, n + 1) &= \abs\big{n - n + 1} +
+      \abs{\frac{1}{n} - \frac{1}{n + 1}} &\\
+    &= 1 + \underset{\geq 0}{\underbrace{\abs{\frac{1}{n} - \frac{1}{n + 1}}}}
+  \end{flalign*}
+
+  Da $n$ beliebig gewählt ist, existiert für $\epsilon \in \big(0, 1\big]$ kein
+  $N \in \mathbb{N}$, sodass für alle $m, n > N$ gilt
+  $p\qty\big(m, n) < \epsilon$ (Siehe den Sonderfall $m = n + 1$).
+
+  $\Rightarrow$ \underline{$\qty\big{n}_{n \in \mathbb{N}_{> 0}}$ ist keine
+  Cauchy-Folge bezüglich $p$}.
 \end{enumerate}
 
 \end{document}
