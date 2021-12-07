@@ -44,8 +44,8 @@ Zeigen Sie:
 \begin{enumerate}[(a)]
 \item $A \cap B$ ist eine Untergruppe von $G$
 
-  \subparagraph{Lsg.} Eine Teilmenge $A$ von $G$ heißt Untergruppe von $G$,
-  falls
+  \subparagraph{Lsg.} Sei $\qty\big(G, *)$ eine Gruppe, dann heißt eine
+  Teilmenge $A$ von $G$ heißt Untergruppe von $G$, falls
   \begin{enumerate}[(1)]
   \item $1_G \in A$
   \item Für $a, b \in A$ gilt $a * b \in A$
@@ -67,6 +67,28 @@ Zeigen Sie:
 
 \item $A \cup B$ ist eine Untergruppe von $G$ genau dann, wenn
   $A \subseteq B$ oder $B \subseteq A$ ist.
+
+  \subparagraph{Lsg.}
+  \begin{itemize}
+  \item[``$\Rightarrow$''] Sei $A \cup B$ eine Untergruppe von $G$.
+    Angenommen $A \not\subset B$ und $B \not\subset A$, dann existieren
+    $a \in A$ und $b \in B$ mit $a \notin B$ und $b \notin A$.
+    Wären nun $a * b \in A$, dann wäre auch $\qty\big(a * b) * a^{-1} = b \in A$
+    - Widerspruch.
+    Analog dazu wäre für $a * b \in B$ auch $\qty\big(a * b) * b^{-1} = a \in B$
+    - ebenfalls ein Widerspruch.
+
+    $\Rightarrow a * b \not \in A \cup B$
+
+    $\Rightarrow$ Widerspruch zu $A \cup B$ ist Untergruppe.
+
+  \item[``$\Rightarrow$''] Sei $A \subseteq B$, dann ist $A \cup B = B$,
+    da $B$ nach Voraussetzung eine Untergruppe von $G$ ist folgt die
+    Behauptung.
+    Sei $B \subseteq A$, dann ist $A \cup B = A$,
+    da $A$ nach Voraussetzung eine Untergruppe von $G$ ist folgt die
+    Behauptung.
+  \end{itemize}
 
 \item Zeigen Sie, dass (b) auch für Unterräume von Vektorräumen gilt.
   Zeigen Sie also folgendes: Sind $V$ ein Vektorraum über einem Körper $K$
