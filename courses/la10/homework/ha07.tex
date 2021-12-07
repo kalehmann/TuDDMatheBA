@@ -1,0 +1,77 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 07\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\Char{\text{char}}
+\newcommand\ggT{\text{ggT}}
+
+\begin{document}
+\paragraph{Aufgabe 6}
+Sei $G$ eine Gruppe und seien $A$ und $B$ Untergruppen von $G$.
+Zeigen Sie:
+\begin{enumerate}[(a)]
+\item $A \cap B$ ist eine Untergruppe von $G$
+
+  \subparagraph{Lsg.} Eine Teilmenge $A$ von $G$ heißt Untergruppe von $G$,
+  falls
+  \begin{enumerate}[(1)]
+  \item $1_G \in A$
+  \item Für $a, b \in A$ gilt $a * b \in A$
+  \item Für $a \in A$ gilt $a^{-1} \in A$
+  \end{enumerate}
+
+  \emph{Zu (1):} Da $A$ und $B$ Untergruppen von $G$ sind, folgt $1_G \in A$ und
+  $1_G \in B$, schließlich $1_G \in A \cap B$.
+
+  \emph{Zu (2):} Seien nun $a, b \in A \cap B$ beliebig gewählt.
+  Dann gilt $a, b \in A$ und $a, b \in B$.
+  Da $A, B$ Untergruppen von $G$ sind, folgt $a + b \in A$ und $a + b \in B$.
+  Es folgt $a + b \in A \cap B$.
+
+  \emph{Zu (3):} Sei $a \in A \cap B$ beliebig.
+  Es gilt $a \in A$ und $a \in B$.
+  Da $A, B$ Untergruppen von $G$ sind, folgt $a^{-1} \in A$ und $a^{-1} \in B$.
+  Es folgt $a^{-1} \in A \cap B$.
+
+\item $A \cup B$ ist eine Untergruppe von $G$ genau dann, wenn
+  $A \subseteq B$ oder $B \subseteq A$ ist.
+
+\item Zeigen Sie, dass (b) auch für Unterräume von Vektorräumen gilt.
+  Zeigen Sie also folgendes: Sind $V$ ein Vektorraum über einem Körper $K$
+  und sind $U$ und $W$ Unterräume von $V$, so ist $U \cup W$ genau dann ein
+  Unterraum von $V$, wenn $U \subseteq W$ oder $W \subseteq U$ gilt.
+\end{enumerate}
+
+\end{document}
