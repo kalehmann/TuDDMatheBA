@@ -82,18 +82,66 @@ Zeigen Sie:
 
     $\Rightarrow$ Widerspruch zu $A \cup B$ ist Untergruppe.
 
-  \item[``$\Rightarrow$''] Sei $A \subseteq B$, dann ist $A \cup B = B$,
+    $\Rightarrow A \subset B \lor B \subset A$
+
+  \item[``$\Leftarrow$''] Sei $A \subseteq B$, dann ist $A \cup B = B$,
     da $B$ nach Voraussetzung eine Untergruppe von $G$ ist folgt die
-    Behauptung.
+    Behauptung. \\
     Sei $B \subseteq A$, dann ist $A \cup B = A$,
     da $A$ nach Voraussetzung eine Untergruppe von $G$ ist folgt die
     Behauptung.
   \end{itemize}
 
+\newpage
 \item Zeigen Sie, dass (b) auch für Unterräume von Vektorräumen gilt.
   Zeigen Sie also folgendes: Sind $V$ ein Vektorraum über einem Körper $K$
   und sind $U$ und $W$ Unterräume von $V$, so ist $U \cup W$ genau dann ein
   Unterraum von $V$, wenn $U \subseteq W$ oder $W \subseteq U$ gilt.
+
+  \subparagraph{Lsg.} Seien $K$ ein Körper und $V$ ein Vektorraum über diesen
+  Körper.
+  Dann heißt eine Teilmenge $W \subseteq K$ Unterraum von $V$, falls
+  \begin{enumerate}[(1)]
+  \item $0_V \in W$
+  \item Für $v, w \in W$ gilt $v + w \in W$
+  \item Für $\lambda \in K, w \in W$ gilt $\lambda \cdot w \in W$
+  \end{enumerate}
+
+  \begin{itemize}
+  \item[``$\Rightarrow$''] Sei $U \cup W$ ein Unterraum von $V$.
+    Angenommen $U \not\subset W$ und $W \not\subset U$, dann existieren
+    $u \in U, w \in W$ mit $u \notin W, w \notin U$.
+    Weil $U \cup W$ ein Unterraum ist, gilt $w + u \in W$ oder $w + u \in U$.
+
+    \begin{minipage}{0.4\textwidth}
+      Sei $w + u \in W$, da $W$ ein Unterraum ist, ist auch
+      $-\qty\big(1_K) \cdot w \in W$.
+
+      $\Rightarrow w + u + -\qty\big(1_K) \cdot w = u \in W$
+
+      $\Rightarrow$ Widerspruch zu $u \notin W$
+    \end{minipage}
+    \hfill
+    \vrule
+    \hfill
+    \begin{minipage}{0.4\textwidth}
+      $w + u \in U$, da $U$ ein Unterraum ist, ist auch
+      $-\qty\big(1_K) \cdot u \in U$.
+
+      $\Rightarrow w + u + -\qty\big(1_K) \cdot u = w \in W$
+
+      $\Rightarrow$ Widerspruch zu $w \notin U$
+    \end{minipage}
+
+    $\Rightarrow w + u \notin U \cup W$
+
+    $\Rightarrow$ Widerspruch zur Vorraussetzung $U \cup W$ ist Unterraum.
+
+  \item[``$\Leftarrow$''] Sei $U \subseteq W$, dann ist $U \cup W = W$,
+    da $W$ nach Voraussetzung ein Unterraum von $V$ ist folgt die Behauptung. \\
+    Sei $W \subseteq U$, dann ist $U \cup W = U$,
+    da $U$ nach Voraussetzung ein Unterraum von $V$ ist folgt die Behauptung.
+  \end{itemize}
 \end{enumerate}
 
 \end{document}
