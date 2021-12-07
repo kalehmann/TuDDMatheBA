@@ -263,5 +263,33 @@ $a\qty\big(x) = b\qty\big(x)$ für alle $x \in X$.
   \end{enumerate}
   $\Rightarrow$ \underline{$V$ ist mit $+$ und $\cdot$ ein Vektorraum über
     $\mathbb{R}$}
+
+\item Die Menge $U$ erfüllt die folgenden Eigenschaften:
+  \begin{enumerate}[(i)]
+  \item  $0_V = e \colon X \to \mathbb{R}, x \mapsto 0$ und
+    $\abs{e\qty\big(X)}$ ist endlich, da
+    $\qty\big{e(x) \,{\big |}\, x \in X} = \qty{0}$.
+
+    $\Rightarrow$ \underline{$0_V \in U$}
+
+  \item Seien $u, v \in U$ beliebig gewählt.
+    Dann sind $\abs{u\qty\big(X)}$ und $\abs{v\qty\big(X)}$ endlich.
+
+    $\Rightarrow \abs{\qty\big{u(x) + v(x) \,{\big |}\, x \in X}}$ ist
+    auch endlich.
+
+    $\Rightarrow$ \underline{$u + v \in U$}
+
+  \item Sei $\lambda \in \mathbb{R}$ und $u \in U$ beliebig.
+    Dann ist $\abs{u\qty\big(X)}$ endlich.
+
+    Weiterhin ist
+    \[
+      \abs{\qty\big{\lambda \cdot u(x) \,{\big |}\, x \in X}} \leq
+      \abs{\qty\big{u(x) \,{\big |}\, x \in X}}
+    \]
+    $\Rightarrow$ \underline{$\lambda \cdot u \in U$}
+  \end{enumerate}
+  $\Rightarrow$ \underline{$U$ ist ein Unterraum von $V$}
 \end{enumerate}
 \end{document}
