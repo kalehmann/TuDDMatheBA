@@ -191,7 +191,48 @@ Entscheiden Sie, ob die folgenden Teilmengen von $\mathbb{R}^2$ kompakt sind.
   $p\qty\big(m, n) < \epsilon$ (Siehe den Sonderfall $m = n + 1$).
 
   $\Rightarrow$ \underline{$\qty\big{n}_{n \in \mathbb{N}_{> 0}}$ ist keine
-  Cauchy-Folge bezüglich $p$}.
+    Cauchy-Folge bezüglich $p$}.
+
+\item Beweisen Sie, dass $\qty\big(X, p)$ vollständig ist.
+
+  \subparagraph{Lsg.} Sei $\qty\big{x_n}$ eine beliebige Cauchy-Folge in
+  $\qty\big{X, p}$, dann gilt
+  \[
+    \forall \, \epsilon > 0 \, \exists \, N \in \mathbb{N} \, \forall \, m, n > N
+    \colon \abs{x_n - x_m} + \abs{\frac{1}{x_n} - \frac{1}{x_m}} < \epsilon
+  \]
+
+  Somit folgt
+  \[
+    \forall \, \epsilon > 0 \, \exists \, N \in \mathbb{N} \, \forall \, m, n > N
+    \colon \abs{x_n - x_m} < \frac{\epsilon}{2}
+  \]
+  Da $X \subset \mathbb{R}$ ist $\qty\big{x_n}$ in
+  $\qty\big(\mathbb{R}, \abs{\cdot})$ eine Cauchy-Folge und somit konvergent
+  gegen ein $\lambda \in \mathbb{R}$.
+
+  \newpage
+  Außerdem folgt
+  \[
+    \forall \, \epsilon > 0 \, \exists \, N \in \mathbb{N} \, \forall \, m, n > N
+    \colon \abs{\frac{1}{x_n} - \frac{1}{x_m}} < \frac{\epsilon}{2}
+  \]
+  Somit ist auch $\qty{\frac{1}{x_n}}$ eine Cauchy-Folge in
+  $\qty\big(\mathbb{R}, \abs{\cdot})$.
+
+  Es folgt, dass $\frac{1}{x_n}$ in $\qty\big(\mathbb{R}, \abs{\cdot})$
+  konvergent ist und gegen $\frac{1}{\lambda}$ mit $\lambda \ne 0$ konvergiert.
+  Da $\qty\big{x_n}$ eine Folge in $X$ ist und somit jedes Folgenglied $x_n > 0$
+  folgt auch $\lambda > 0$.
+
+  $\Rightarrow \lambda \in X$
+
+  $\Rightarrow \qty\big{x_n}$ konvergiert in $\qty\big{X, p}$
+
+  $\Rightarrow$ da $\qty\big{x_n}$ beliebig gewählt ist,  konvergiert jede
+  Cauchy-Folge in $\qty\big{X, p}$
+
+  $\Rightarrow$ \underline{$\qty\big{X, p}$ ist vollständig}
 \end{enumerate}
 
 \end{document}
