@@ -34,8 +34,7 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
-\newcommand\Char{\text{char}}
-\newcommand\ggT{\text{ggT}}
+\newcommand\Abb{\text{Abb}}
 
 \begin{document}
 \paragraph{Aufgabe 6}
@@ -144,4 +143,125 @@ Zeigen Sie:
   \end{itemize}
 \end{enumerate}
 
+\paragraph{Aufgabe 7}
+Seien $X$ eine nichtleere Menge und $V \coloneqq \Abb\qty\big(X, \mathbb{R})
+= \qty\Big{ f \colon X \to \mathbb{R}}$.
+Definiere
+\begin{flalign*}
+  + \colon V \times V &\rightarrow V & \\
+  \qty\big(f, g) &\mapsto f + g \colon X \to \mathbb{R}
+\end{flalign*}
+mit $\qty\big(f + g)\qty\big(x) \coloneqq f\qty\big(x) + g\qty\big(x)$ und
+\begin{flalign*}
+  \cdot \colon \mathbb{R} \times V &\rightarrow V & \\
+  \qty\big(\lambda, g) &\mapsto \lambda \cdot g \colon X \to \mathbb{R}
+\end{flalign*}
+mit $\qty\big(\lambda \cdot g)\qty\big(x) \coloneqq \lambda g\qty\big(x)$.
+\begin{enumerate}[(a)]
+\item Zeigen Sie, dass $V$ mit den Operationen $+$ und $\cdot$ ein Vektorraum
+  über $\mathbb{R}$ ist.
+\item Sei $U \coloneqq \qty\Big{f \in V \,{\Big |}\,
+    \abs\big{f\qty\big(X)} \text{ ist endlich} }$.
+  Zeigen Sie, dass $U$ ein Unterraum von $V$ ist.
+\end{enumerate}
+
+\newpage
+\subparagraph{Lsg.} Zwei Abbildungen $a, b \in V$ sind gleich genau dann wenn
+$a\qty\big(x) = b\qty\big(x)$ für alle $x \in X$.
+\begin{enumerate}[(a)]
+\item $V$ erfüllt zusammen mit $+$ und $\cdot$ die folgenden Eigenschaften:
+  \begin{enumerate}[(i)]
+  \item Seien $a, b, c \in V$ und $x \in X$ beliebig gewählt.
+    Dann ist
+    \begin{flalign*}
+      \qty\big((a + b) + c)\qty\big(x) &= (a + b)(x) + c(x) & \\
+      &= a(x) + b(x) + c(x) \\
+      &= a(x) + (b + c)(x) \\
+      &= \qty\big(a + (b + c))\qty\big(x)
+    \end{flalign*}
+    $\Rightarrow$ \underline{$\qty\big(a + b) + c = a + \qty\big(b + c)$}
+
+    Sei $e \in V$ mit $e \colon X \to \mathbb{R}, x \mapsto 0$.
+    Dann ist
+    \[
+      \qty\big(a + e)\qty\big(x) = a(x) + e(x) = a(x) + 0 = a(x)
+      = 0 + a(x) = e(x) + a(x) = \qty\big(e + a)\qty\big(x)
+    \]
+    $\Rightarrow$ \underline{$e + a = a + e = a$}
+
+    Für die Abbildung $a$ lässt sich eine Abbildung
+    $a^{-1} \colon X \to \mathbb{R}$ mit $x \mapsto -1 \cdot a(x)$
+    konstruieren.
+    \begin{flalign*}
+      \qty\big(a + a^{-1})\qty\big(x) &= a(x) + a^{-1}(x) &\\
+      &= a(x) + \qty\big(-1 \cdot a(x)) \\
+      &= a(x) - a(x) = 0 \\
+      &= e(x)
+    \end{flalign*}
+    $\Rightarrow$ \underline{$a + a^{-1} = e$}
+
+    $\Rightarrow$ \underline{$\qty\big(V, +)$ ist eine Gruppe.}
+
+    Weiter ist
+    \begin{flalign*}
+      \qty\big(a + b)\qty\big(x) &= a(x) + b(x) &\\
+      \overset{\text{Kommutativität in }\mathbb{R}}&= b(x) + a(x) \\
+      &= \qty\big(b + a)\qty\big(x)
+    \end{flalign*}
+    $\Rightarrow$ \underline{$a + b = b + a$}
+
+    $\Rightarrow$ \underline{$\qty\big(V, +)$ ist eine abelsche Gruppe.}
+
+  \item Seien $a \in V$ und $\lambda, \mu \in \mathbb{R}$ sowie $x \in X$
+    beliebig gewählt.
+    Dann ist
+    \begin{flalign*}
+      \qty\big((\lambda\mu)a)\qty\big(x) &= \qty\big(\lambda\mu)a\qty\big(x) &\\
+      \overset{\text{Assoziativität in }\mathbb{R}}&=
+      \lambda \qty\big(\mu a(x)) \\
+      &= \lambda \qty\big(\mu a)\qty\big(x)
+    \end{flalign*}
+    $\Rightarrow$ \underline{$\qty\big(\lambda\mu)a = \lambda\qty\big(\mu a)$}
+
+  \newpage
+  \item Seien $a, b \in V$ und $\lambda, \mu \in \mathbb{R}$ sowie $x \in X$
+    beliebig gewählt.
+    Dann gilt
+    \begin{flalign*}
+      \qty\big(\lambda(a + b))\qty\big(x) &=
+      \lambda\qty\big(a + b)\qty\big(x) &\\
+      &= \lambda\qty\big(a(x) + b(x)) \\
+      \overset{\text{Distributivität in }\mathbb{R}}&=
+      \qty\big(\lambda \cdot a(x)) + \qty\big(\lambda \cdot b(x)) \\
+      &= \qty\big(\lambda \cdot a)\qty\big(x) +
+      \qty\big(\lambda \cdot b)\qty\big(x) \\
+      &= \qty\big(\lambda \cdot a + \lambda \cdot b)\qty\big(x)
+    \end{flalign*}
+    $\Rightarrow$ \underline{$\lambda \cdot \qty\big(a + b) =
+      \lambda \cdot a + \lambda \cdot b$}
+
+    Außerdem gilt
+    \begin{flalign*}
+      \qty\big((\lambda + \mu) \cdot a)\qty\big(x) &=
+      \qty\big(\lambda + \mu) \cdot a\qty\big(x) &\\
+      \overset{\text{Distributivität in }\mathbb{R}}&=
+      \qty\big(\lambda \cdot a(x)) + \qty\big(\mu \cdot a(x)) \\
+      &= \qty\big(\lambda \cdot a)\qty\big(x) + \qty\big(\mu \cdot a)\qty\big(x)
+    \end{flalign*}
+    $\Rightarrow$ \underline{$\qty\big(\lambda + \mu) \cdot a =
+      \lambda \cdot a + \mu \cdot a$}
+
+  \item Sei $a \in V, x \in X$ beliebig gewählt.
+    Dann ist
+    \begin{flalign*}
+      \qty\big(1_{\mathbb{R}} \cdot a)\qty\big(x) &=
+      1_{\mathbb{R}} \cdot a\qty\big(x) &\\
+      \overset{\text{$1$ ist neut. Elem. der Multiplikation in } \mathbb{R}}&=
+      a\qty\big(x)
+    \end{flalign*}
+    $\Rightarrow$ \underline{$1_{\mathbb{R}} \cdot a = a$}
+  \end{enumerate}
+  $\Rightarrow$ \underline{$V$ ist mit $+$ und $\cdot$ ein Vektorraum über
+    $\mathbb{R}$}
+\end{enumerate}
 \end{document}
