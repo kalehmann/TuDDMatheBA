@@ -1,0 +1,86 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{pdflscape}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 11\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\diam{\text{diam}}
+
+\begin{document}
+\begin{landscape}
+\paragraph{55. Bestimmen Sie die Partialsummen der folgenden Reihen} und
+entscheiden Sie über die Folge der Partialsummen ob die Reihen konvergieren
+oder divergieren.
+\begin{enumerate}[a)]
+\item $\underset{n = 1}{\overset{\infty}{\sum}}
+  \frac{1}{\qty\big(3n - 1)\qty\big(3n + 2)}$
+
+  \subparagraph{Lsg.} Die Folge $\qty\big{s_m}_{m \in \mathbb{N}}$ der
+  Partialsummen ist:
+  \begin{small}
+    \begin{flalign*}
+      s_m &\coloneqq \sum_{n = 1}^m \frac{1}{\qty\big(3n - 1)\qty\big(3n + 2)}
+      = \sum_{n = 1}^m \frac{1}{\qty\big(3n - 1)\qty\big(3(n + 1) - 1)} &\\
+      &= \frac{1}{3} \sum_{n = 1}^m \frac{
+        \qty\Big(3\qty\big(n + 1) - 1) - \qty\Big(3n - 1)
+      }{
+        \qty\big(3n - 1)\qty\big(3(n + 1) - 1)
+      } \\
+      &= \frac{1}{3} \sum_{n = 1}^m \frac{1}{3n - 1} -
+        \frac{1}{3\qty\big(n + 1) - 1}  \\
+      &= \frac{1}{3} \cdot \qty(\frac{1}{3 - 1} +
+        \underset{0}{\underbrace{
+          \qty(-\frac{1}{3 \cdot 2 - 1} + \frac{1}{3 \cdot 2 - 1})
+        }} +
+        \underset{0}{\underbrace{
+          \qty(-\frac{1}{3 \cdot 3 - 1} + \frac{1}{3 \cdot 3 - 1})
+        }}  +
+        \ldots +
+        \underset{0}{\underbrace{
+          \qty(-\frac{1}{3 \cdot n} + \frac{1}{3 \cdot n - 1})
+        }} -
+        \frac{1}{3 \cdot \qty\big(n + 1) - 1}
+      ) \\
+      &= \frac{1}{3} \cdot \qty(
+        \frac{1}{2} - \frac{1}{3 \cdot \qty\big(n + 1) - 1}
+      ) \\
+      &= \frac{1}{6} - \frac{1}{3\qty\big(3n + 2)}
+    \end{flalign*}
+  \end{small}
+  $\Rightarrow s_m \overset{m \to \infty}\longrightarrow \frac{1}{6}$, somit
+  konvergiert die Reihe.
+\end{enumerate}
+\end{landscape}
+
+\end{document}
