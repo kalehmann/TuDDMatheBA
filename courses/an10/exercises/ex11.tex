@@ -102,4 +102,64 @@ oder divergieren.
   $\Rightarrow s_m \overset{m \to \infty}\longrightarrow -\frac{7}{16}$,
   die Reihe konvergiert.
 \end{enumerate}
+
+\paragraph{56. Es sei $\qty\big{a_n}_{n \in \mathbb{N}}$ definiert durch
+  $a_n \coloneqq \frac{\qty\big(-1)^n}{\sqrt{n + 1}}$ für alle
+  $n \in \mathbb{N}$.}
+Zeigen Sie, dass die Reihe $\underset{n = 0}{\overset{\infty}{\sum}} a_n$
+konvergiert, aber das Cauchy-Produkt
+\[
+  \sum_{n = 0}^{\infty}\sum_{k = 0}^n a_k a_{n - k}
+\]
+der Reihe mit sich selbst nicht konvergiert.
+Was geht schief?
+
+\subparagraph{Lsg.} Es ist $\displaystyle a_n \coloneqq \qty\big(-1)^n \cdot
+\frac{n \cdot \frac{1}{n}}{n \cdot \sqrt{\frac{1}{n} + \frac{1}{n^2}}}
+= \qty\big(-1)^n \cdot \frac{\frac{1}{n}}{\sqrt{\frac{1}{n} + \frac{1}{n^2}}}$
+und $\frac{\frac{1}{n}}{\sqrt{\frac{1}{n} + \frac{1}{n^2}}}
+\overset{n \to \infty}\longrightarrow \frac{0}{\sqrt{1}} = 0$.
+
+$\Rightarrow$ \underline{die Reihe}
+$\underset{n = 0}{\overset{\infty}{\sum}} a_n$
+\underline{konvergiert nach dem Leibnitzkriterium für alternierende Reihen in
+  $\mathbb{R}$}.
+
+\newpage
+\begin{flalign*}
+  \sum_{n = 0}^{\infty}\sum_{k = 0}^n a_k a_{n - k} &=
+  \sum_{n = 0}^{\infty}\sum_{k = 0}^n \frac{\qty\big(-1)^k}{\sqrt{k + 1}} \cdot
+  \frac{\qty\big(-1)^{n - k}}{\sqrt{n - k + 1}} & \\
+  &= \sum_{n = 0}^{\infty}\sum_{k = 0}^n
+  \frac{\qty\big(-1)^{n}}{\sqrt{k + 1} \cdot \sqrt{n - k + 1}} \\
+   &= \sum_{n = 0}^{\infty}\sum_{k = 0}^n
+  \frac{\qty\big(-1)^{n}}{\sqrt{\qty\big(k + 1) \cdot \qty\big(n - k + 1)}}
+\end{flalign*}
+
+Nach Satz 7.1 der Vorlesung ist das geometrische Mittel stets kleiner oder
+gleich dem arithmetischem Mittel für $n \in \mathbb{N}$ und
+$x_1, \ldots, x_n \in \mathbb{R}_{>  0}$:
+\begin{equation}
+  \tag{*}
+  \sqrt[n]{x_1 \cdot \ldots \cdot x_n} \leq \frac{1}{2} \cdot
+  \qty\Big(x_1 + \ldots + x_n)
+\end{equation}
+Es folgt
+\begin{flalign*}
+  \abs{\frac{\qty\big(-1)^n}{\sqrt{\qty\big(k + 1) \cdot \qty\big(n - k + 1)}}}
+  &\geq \frac{1}{\frac{1}{2}\qty\Big(\qty\big(k + 1) + \qty\big(n - k + 1))} &\\
+  &= \frac{2}{\qty\big(k + 1) + \qty\big(n - k + 1)} \\
+  &= \frac{2}{n + 2}
+  &\geq \frac{1}{n + 2}
+\end{flalign*}
+Aus Beispiel 12.4 der Vorlesung ist bereits bekannt, dass
+$\displaystyle \sum_{k = 1}^{\infty}\frac{1}{k}$ gegen $\infty$ divergiert.
+Folglich divergiert auch
+$\displaystyle \sum_{k = 3}^{\infty}\frac{1}{k} =
+\sum_{n = 1}^{\infty}\frac{1}{n + 2}$.
+
+$\Rightarrow$ \underline{Nach dem Majorantenkriterium divergiert die Reihe}
+$\displaystyle \sum_{n = 0}^{\infty}\sum_{k = 0}^{n}a_ka_{n - k}$
+\underline{ gegen $\infty$.}
+
 \end{document}
