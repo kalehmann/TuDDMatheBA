@@ -1,0 +1,123 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann (Übungsgruppe 1)\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 11\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{58. Untersuchen Sie die folgenden Reihen auf Konvergenz:}
+\begin{enumerate}[(a)]
+\item $\displaystyle \sum_{n = 1}^{\infty} \qty\big(-1)^nn$
+
+  \subparagraph{Lsg.}Sei $\qty\big{x_n}_{n \in \mathbb{N}}$ eine Reihe mit
+  $x_n \coloneqq \qty\big(-1)^nn$.
+  Angenommen $\sum_n x_n$ konvergiert, dann folgt aus Folgerung 12.2 der
+  Vorlesung (\emph{``Sei $X$ ein normierter Raum und $\qty\big{x_k}$ eine Folge
+    in $X$, dann folgt aus der Konvergenz von $\sum_k x_k$, dass
+    $x_k \overset{k \to \infty}\longrightarrow 0$''}), dass
+  $\displaystyle \lim_{n \to \infty} x_n = 0$, allerdings gilt für alle
+  $n \in \mathbb{N}$, dass $d\qty\big(x_n, 0) > \frac{1}{2}$, ein Widerspruch
+  zur Konvergenz.
+
+  $\Rightarrow$ \underline{Die Reihe }
+  $\displaystyle \sum_{n = 1}^{\infty} \qty\big(-1)^n n$
+  \underline{ divergiert.}
+
+\item $\displaystyle \sum_{n = 1}^{\infty} \qty\Big(\sqrt[n]{n} - 1)^n$
+
+  \subparagraph{Lsg.} Aus Satz 5.20 (4) der Vorlesung (\emph{``Für alle
+    $a, \epsilon \in \mathbb{R}_{> 0}$ existiert ein $n_0 \in \mathbb{N}$, so
+    dass $\abs{\sqrt[n]{a} - 1} < \epsilon$ für alle $n > n_0$.''}) folgt, dass
+  für jedes $q \in \qty\big(0, 1)$ ein $k_0 \in \mathbb{N}$ existiert, so dass
+  für alle $k > k_0$ gilt:
+  \begin{flalign*}
+    \sqrt[k]{\norm{\qty\big(\sqrt[k]{k} - 1)^k}} &=
+    \sqrt[k]{\abs{\qty\big(\sqrt[k]{k} - 1)^k}} &\\
+    \overset{\sqrt[k]{k} > 1}&= \sqrt[k]{\qty\big(\sqrt[k]{k} - 1)^k}
+    = \sqrt[k]{k} - 1 \\
+    &\leq \abs{\sqrt[k]{k} - 1} < q
+  \end{flalign*}
+
+  $\Rightarrow$ \underline{Nach dem Quotientenkriterium konvergiert die Reihe }
+  $\displaystyle \sum_{n = 1}^{\infty} \qty\Big(\sqrt[n]{n} - 1)^n$
+  \underline{ absolut.}
+
+\newpage
+\item $\displaystyle \sum_{n = 1}^{\infty} \frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}}$
+
+  \subparagraph{Lsg.} Es ist
+  \begin{flalign*}
+    \abs{\frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}}}
+    \overset{\text{Def. Wurzel}}&=
+    \frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}} &\\
+    &< \frac{1}{\sqrt{n^4} \cdot \sqrt{n + \frac{1}{n^2} - \frac{1}{n^4}}} &\\
+    &= \frac{1}{
+      n^2 \cdot \underset{> 1}{\underbrace{
+          \sqrt{n + \frac{1}{n^2} - \frac{1}{n^4}}
+        }}
+    } \\
+    &< \frac{1}{n^2}
+  \end{flalign*}
+  und $\displaystyle \sum_{n = 1}^{\infty} \frac{1}{n^2}$ konvergiert nach Beispiel 12.6 der Vorlesung.
+
+  $\Rightarrow \displaystyle \norm{\frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}}}
+  \leq \frac{1}{n^2}$
+
+  $\Rightarrow$ \underline{Nach dem Majorantenkriterium konvergiert die Reihe }
+  $\displaystyle \norm{\frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}}}$
+  \underline{ absolut.}
+
+\newpage
+\item $\displaystyle \sum_{n = 1}^{\infty} \frac{1}{7^n} \binom{3n}{n}$
+
+  \subparagraph{Lsg.} Es ist
+  \begin{flalign*}
+    \frac{\frac{\qty\big(3(n + 1))!}{7^{n + 1}\qty\big(n + 1)!\qty\big(3(n + 1) - (n + 1))!}}{\frac{\qty\big(3n)!}{7^nn!\qty\big(3n - n)!}}
+    &= \frac{\qty\big(3(n + 1))!}{7^{n + 1}\qty\big(n + 1)!\qty\big(3(n + 1) - (n + 1))!}
+    \cdot \frac{7^nn!\qty\big(3n - n)!}{\qty\big(3n)!} \\
+    &= \frac{\qty\big(3(n + 1))!}{7\qty\big(n + 1)!\qty\big(3(n + 1) - (n + 1))!}
+    \cdot \frac{n!\qty\big(3n - n)!}{\qty\big(3n)!} \\
+    &= \frac{\qty\big(3(n + 1))!}{7\qty\big(n + 1)!\qty\big(2(n + 1))!}
+    \cdot \frac{n!\qty\big(2n)!}{\qty\big(3n)!} \\
+    &= \frac{\qty\big(3n + 3) \cdot \qty\big(3n + 2) \cdot \qty\big(3n + 1) \cdot \qty\big(3n)!}{7\qty\big(n + 1)!\qty\big(2n + 2) \cdot \qty\big(2n + 1) \cdot \qty\big(2n)!}
+    \cdot \frac{n!\qty\big(2n)!}{\qty\big(3n)!} \\
+    &= \frac{\qty\big(3n + 3) \cdot \qty\big(3n + 2) \cdot \qty\big(3n + 1)}{7\qty\big(n + 1)\qty\big(2n + 2) \cdot \qty\big(2n + 1)} \\
+    &= \frac{3 \cdot \qty\big(3n + 2) \cdot \qty\big(3n + 1)}{7\qty\big(2n + 2) \cdot \qty\big(2n + 1)} \\
+    &= \frac{27n^2 + 27n + 6}{28n^2 + 42n + 14} \\
+    &= \frac{27}{28} \cdot \underset{> 1}{\underbrace{\frac{n^2 + n +\frac{2}{9}}{n^2 + \frac{3}{2}n + \frac{1}{2}}}}
+  \end{flalign*}
+
+  $\Rightarrow$ \underline{Die Reihe } $\sum_k \qty\big{x_k}$
+  \underline{ konvergiert nach dem Quotientenkriterium absolut mit }
+  $\frac{\norm{x_k + 1}}{\norm{x_k}} \leq \frac{27}{28} < 1$.
+\end{enumerate}
+\end{document}
