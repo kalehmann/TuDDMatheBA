@@ -120,4 +120,28 @@
   \underline{ konvergiert nach dem Quotientenkriterium absolut mit }
   $\frac{\norm{x_k + 1}}{\norm{x_k}} \leq \frac{27}{28} < 1$.
 \end{enumerate}
+
+\newpage
+\paragraph{59. Sei $q \in \mathbb{R}, \abs{q} < 1$.}
+Zeigen Sie
+\[
+  \sum_{n = 0}^{\infty} \qty\big(n + 1)q^n = \qty(\sum_{k = 0}^{\infty} q^k)^2
+\]
+
+\subparagraph{Lsg.} Nach Beispiel 12.3 der Vorlesung ist
+$\displaystyle \sum_{k = 0}^{\infty} q^k = \frac{1}{1 - q}$ mit
+$\abs{q} < 1$.
+Weiter ist $\sqrt[n]{\norm{q^n}} = \norm{q} < 1 \, \forall \, n \in \mathbb{N}$.
+
+$\Rightarrow$ \underline{Die Reihe} $\displaystyle \sum_{k = 0}^{\infty} q^k$
+\underline{konvergiert nach dem Wurzelkriterium absolut.}
+
+\begin{flalign*}
+  \qty(\sum_{k = 0}^{\infty} q^k)^2
+  &= \sum_{k = 0}^{\infty} q^k \cdot \sum_{n = 0}^{\infty} q^n \\
+  &= \sum_{n = 0}^{\infty}\sum_{k = 0}^n q^k \cdot q^{n - k} \\
+  &= \sum_{n = 0}^{\infty}\sum_{k = 0}^n q^{k + n - k} \\
+  &= \sum_{n = 0}^{\infty}\sum_{k = 0}^n q^n \\
+  &= \sum_{n = 0}^{\infty} \qty\big(1 + n) q^n
+\end{flalign*}
 \end{document}
