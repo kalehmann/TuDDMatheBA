@@ -144,4 +144,84 @@ $\Rightarrow$ \underline{Die Reihe} $\displaystyle \sum_{k = 0}^{\infty} q^k$
   &= \sum_{n = 0}^{\infty}\sum_{k = 0}^n q^n \\
   &= \sum_{n = 0}^{\infty} \qty\big(1 + n) q^n
 \end{flalign*}
+
+\paragraph{60. Überprüfen Sie,} ob man mit dem Quotientenkriterium die
+Konvergenz oder Divergenz der Reihe $\displaystyle \sum_{n = 0}^{\infty} a_n$
+mit
+\[
+  a_{2k} \coloneqq \qty(\frac{1}{2})^{2k}
+  \text{ und }
+  a_{2k + 1} \coloneqq \qty(\frac{1}{3})^{2k + 1}
+  \text{ für } k \in \mathbb{N}
+\]
+sicherstellen kann.
+Gelingt dies mit dem Wurzelkriterium?
+
+\subparagraph{Lsg.} Sei $n \in \mathbb{N}$ beliebig.
+
+\begin{minipage}{0.4\textwidth}
+  Angenommen $2$ teilt $n$, dann ist
+  \begin{flalign*}
+    \frac{\norm{a_{n + 1}}}{\norm{a_n}} &=
+    \frac{\norm{\qty(\frac{1}{3})^{n + 1}}}{\norm{\qty(\frac{1}{2})^n}}
+    = \frac{\norm{\frac{1}{3^{n + 1}}}}{\norm{\frac{1}{2^n}}} & \\
+    &= \norm{\frac{2^n}{3^{n + 1}}}
+    = \norm{\qty(\frac{2}{3})^n \cdot \frac{1}{3}} < 1
+  \end{flalign*}
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}{0.4\textwidth}
+  Angenommen $2$ teilt $n$ nicht, dann ist
+  \begin{flalign*}
+    \frac{\norm{a_{n + 1}}}{\norm{a_n}} &=
+    \frac{\norm{\qty(\frac{1}{2})^n}}{\norm{\qty(\frac{1}{3})^{n + 1}}}
+    = \frac{\norm{\frac{1}{2^n}}}{\norm{\frac{1}{3^{n + 1}}}} & \\
+    &= \norm{\frac{3^{n + 1}}{2^n}}
+    = \norm{\qty(\frac{3}{2})^n \cdot 3} > 1
+  \end{flalign*}
+\end{minipage}
+
+In der Vorlesung wurde das Quotientenkriterium in zwei Formen eingeführt:
+\begin{enumerate}[(1)]
+\item Wenn für fast $n \in \mathbb{N}$ gilt, dass
+  $\frac{\norm{a_{n + 1}}}{\norm{a_n}} \leq q < 1$, dann konvergiert
+  $\sum_n a_n$ absolut.
+
+\item Wenn für fast $n \in \mathbb{N}$ gilt, dass
+  $\frac{\norm{a_{n + 1}}}{\norm{a_n}} \geq 1$, dann divergiert
+  $\sum_n \norm{a_n}$.
+\end{enumerate}
+Die Folge fällt in keine der beiden Formen, somit lässt sich mit dem
+Quotientenkriterium keine Aussage über die Konvergenz der Reihe treffen.
+
+\begin{minipage}{0.4\textwidth}
+  Angenommen $2$ teilt $n$, dann ist
+  \begin{flalign*}
+    \sqrt[n]{\norm{a_{n}}} &=
+    \sqrt[n]{\norm{\qty(\frac{1}{2})^n}} &\\
+    &= \sqrt[n]{\norm{\frac{1}{2^n}}} \\
+    &= \sqrt[n]{\frac{1}{\abs{2^n}}} = \frac{1}{2}
+  \end{flalign*}
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}{0.4\textwidth}
+  Angenommen $2$ teilt $n$ nicht, dann ist
+  \begin{flalign*}
+    \sqrt[n]{\norm{a_n}}
+    &= \sqrt[n]{\norm{\qty(\frac{1}{3})^n}} & \\
+    &= \sqrt[n]{\frac{1}{\abs{3^n}}} & \\
+    &= \frac{1}{3}
+  \end{flalign*}
+\end{minipage}
+
+$\Rightarrow \sqrt[n]{\norm{a_n}} \leq \frac{1}{2} < 1 \, \forall \,
+n \in \mathbb{N}$
+
+$\Rightarrow$ \underline{Die Reihe }
+$\displaystyle \sum_n \norm{a_n}$
+\underline{ konvergiert nach dem Wurzelkriteriem absolut}.
 \end{document}
