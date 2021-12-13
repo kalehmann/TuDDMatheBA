@@ -71,26 +71,23 @@
   $\displaystyle \sum_{n = 1}^{\infty} \qty\Big(\sqrt[n]{n} - 1)^n$
   \underline{ absolut.}
 
-\newpage
 \item $\displaystyle \sum_{n = 1}^{\infty} \frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}}$
 
   \subparagraph{Lsg.} Es ist
   \begin{flalign*}
-    \abs{\frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}}}
-    \overset{\text{Def. Wurzel}}&=
-    \frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}} &\\
-    &< \frac{1}{\sqrt{n^4} \cdot \sqrt{n + \frac{1}{n^2} - \frac{1}{n^4}}} &\\
-    &= \frac{1}{
-      n^2 \cdot \underset{> 1}{\underbrace{
+    \norm{\frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}}}
+    < \norm\Bigg{
+      \frac{1}{\sqrt{n^4} \cdot \sqrt{n + \frac{1}{n^2} - \frac{1}{n^4}}}
+    }
+    = \norm\Bigg{\frac{1}{
+      n^2 \cdot \underset{> 1}{\underbrace{\textstyle
           \sqrt{n + \frac{1}{n^2} - \frac{1}{n^4}}
         }}
-    } \\
-    &< \frac{1}{n^2}
+    }}
+    < \frac{1}{n^2}
   \end{flalign*}
-  und $\displaystyle \sum_{n = 1}^{\infty} \frac{1}{n^2}$ konvergiert nach Beispiel 12.6 der Vorlesung.
 
-  $\Rightarrow \displaystyle \norm{\frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}}}
-  \leq \frac{1}{n^2}$
+  und $\displaystyle \sum_{n = 1}^{\infty} \frac{1}{n^2}$ konvergiert nach Beispiel 12.6 der Vorlesung.
 
   $\Rightarrow$ \underline{Nach dem Majorantenkriterium konvergiert die Reihe }
   $\displaystyle \norm{\frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}}}$
