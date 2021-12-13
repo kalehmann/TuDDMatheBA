@@ -1,0 +1,115 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 07\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\ccg[1]{\cellcolor{green}{#1}}
+
+\begin{document}
+\paragraph{Aufgabe 2}
+\begin{enumerate}[(a)]
+\item Prüfen Sie, ob die Vektoren
+  \[
+    \begin{pmatrix}1 \\ 1 \\ 0\end{pmatrix},
+    \begin{pmatrix}2 \\ 0 \\ 2\end{pmatrix},
+    \begin{pmatrix}0 \\ 2 \\ 3\end{pmatrix}
+  \]
+  linear unabhängig im $\mathbb{R}$-Vektorraum
+  $\mathbb{R}^3$ sind.
+
+  \subparagraph{Lsg.} Vektoren $v_1, \ldots, v_n \in V$ heißen linear abhängig,
+  falls $k_1, \ldots, k_n \in K$ existieren, sodass
+  $k_1 \cdot v_1 + \ldots + k_n \cdot v_n = 0_V$ mit $k_j \ne 0$ für mindestens
+  ein $j \in \qty[1, n]$.
+  Die Vektoren $v_1, \ldots, v_n$ heißen \emph{linear unabhängig}, falls sie
+  nicht linear abhängig sind.
+
+  Angenommen $x, y, z \in R$ seien so gewählt, dass
+  \[
+    x \cdot \begin{pmatrix}1 \\ 1 \\ 0\end{pmatrix} +
+    y \cdot \begin{pmatrix}2 \\ 0 \\ 2\end{pmatrix} +
+    z \cdot \begin{pmatrix}0 \\ 2 \\ 3\end{pmatrix} =
+    \begin{pmatrix}0 \\ 0 \\ 0\end{pmatrix}
+  \]
+  Dann ist die erweiterte Koeffizientenmatrix
+  \begin{flalign*}
+    \qty(
+      \begin{array}{ccc|c}
+        1 & 2 & 0 & 0 \\
+        1 & 0 & 2 & 0 \\
+        0 & 2 & 3 & 0
+      \end{array}
+    ) &= \qty(
+      \begin{array}{ccc|c}
+        1 & 2 & 0 & 0 \\
+        0 & -2 & 2 & 0 \\
+        0 & 2 & 3 & 0
+      \end{array}
+    ) \\
+    &= \qty(
+      \begin{array}{ccc|c}
+        1 & 2 & 0 & 0 \\
+        0 & -2 & 2 & 0 \\
+        0 & 0 & 5 & 0
+      \end{array}
+    ) \\
+    &= \qty(
+      \begin{array}{ccc|c}
+        1 & 2 & 0  & 0 \\
+        0 & 1 & -1 & 0 \\
+        0 & 0 & 1  & 0
+      \end{array}
+    ) \\
+    &= \qty(
+      \begin{array}{ccc|c}
+        1 & 2 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0
+      \end{array}
+    ) \\
+    &= \qty(
+      \begin{array}{ccc|c}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0
+      \end{array}
+    )
+  \end{flalign*}
+
+  $\Rightarrow$ die erweiterte Koeffizientenmatrix hat eine eindeutige Lösung
+  mit $x = y = z = 0$
+
+  $\Rightarrow$ \underline{die Vektoren sind linear unabhängig}
+\end{enumerate}
+\end{document}
