@@ -87,7 +87,8 @@
     < \frac{1}{n^2}
   \end{flalign*}
 
-  und $\displaystyle \sum_{n = 1}^{\infty} \frac{1}{n^2}$ konvergiert nach Beispiel 12.6 der Vorlesung.
+  und $\displaystyle \sum_{n = 1}^{\infty} \frac{1}{n^2}$ konvergiert nach
+  Beispiel 12.6 der Vorlesung.
 
   $\Rightarrow$ \underline{Nach dem Majorantenkriterium konvergiert die Reihe }
   $\displaystyle \norm{\frac{\sqrt{n + 1}}{\sqrt{n^5 + n^2 - 1}}}$
@@ -96,21 +97,69 @@
 \newpage
 \item $\displaystyle \sum_{n = 1}^{\infty} \frac{1}{7^n} \binom{3n}{n}$
 
-  \subparagraph{Lsg.} Es ist
+  \subparagraph{Lsg.} Es ist $\binom{3n}{n} =
+  \frac{\qty\big(3n)!}{n!\qty\big(3n - n)!} =
+  \frac{\qty\big(3n)!}{n!\qty\big(2n)!}$.
+  Weiter ist $\frac{\qty\big(3n)!}{n!\qty\big(2n)!}$ als Produkt und Quotient
+  positiver Zahlen ebenfalls positiv, somit gilt
+  $\norm{\frac{\qty\big(3n)!}{n!\qty\big(2n)!}}
+  = \abs{\frac{\qty\big(3n)!}{n!\qty\big(2n)!}}
+  = \frac{\qty\big(3n)!}{n!\qty\big(2n)!}$.
+  Sei nun $a_n \coloneqq \frac{1}{7^n} \binom{3n}{n}$, dann ist
   \begin{flalign*}
-    \frac{\frac{\qty\big(3(n + 1))!}{7^{n + 1}\qty\big(n + 1)!\qty\big(3(n + 1) - (n + 1))!}}{\frac{\qty\big(3n)!}{7^nn!\qty\big(3n - n)!}}
-    &= \frac{\qty\big(3(n + 1))!}{7^{n + 1}\qty\big(n + 1)!\qty\big(3(n + 1) - (n + 1))!}
-    \cdot \frac{7^nn!\qty\big(3n - n)!}{\qty\big(3n)!} \\
-    &= \frac{\qty\big(3(n + 1))!}{7\qty\big(n + 1)!\qty\big(3(n + 1) - (n + 1))!}
-    \cdot \frac{n!\qty\big(3n - n)!}{\qty\big(3n)!} \\
+    \frac{\norm{a_{n + 1}}}{\norm{a_n}}
+    &= \frac{
+      \norm{
+        \frac{
+          \qty\big(3(n + 1))!
+        }{
+          7^{n + 1}\qty\big(n + 1)!\qty\big(2(n + 1))!
+        }
+      }
+    }{\norm{\frac{\qty\big(3n)!}{7^nn!\qty\big(2n)!}}} \\
+    &= \frac{
+      \frac{
+        \qty\big(3(n + 1))!
+      }{
+        7^{n + 1}\qty\big(n + 1)!\qty\big(2(n + 1))!
+      }
+    }{\frac{\qty\big(3n)!}{7^nn!\qty\big(2n)!}} \\
+    &= \frac{\qty\big(3(n + 1))!}{7^{n + 1}\qty\big(n + 1)!\qty\big(2(n + 1))!}
+    \cdot \frac{7^nn!\qty\big(2n)!}{\qty\big(3n)!} \\
     &= \frac{\qty\big(3(n + 1))!}{7\qty\big(n + 1)!\qty\big(2(n + 1))!}
     \cdot \frac{n!\qty\big(2n)!}{\qty\big(3n)!} \\
-    &= \frac{\qty\big(3n + 3) \cdot \qty\big(3n + 2) \cdot \qty\big(3n + 1) \cdot \qty\big(3n)!}{7\qty\big(n + 1)!\qty\big(2n + 2) \cdot \qty\big(2n + 1) \cdot \qty\big(2n)!}
-    \cdot \frac{n!\qty\big(2n)!}{\qty\big(3n)!} \\
-    &= \frac{\qty\big(3n + 3) \cdot \qty\big(3n + 2) \cdot \qty\big(3n + 1)}{7\qty\big(n + 1)\qty\big(2n + 2) \cdot \qty\big(2n + 1)} \\
-    &= \frac{3 \cdot \qty\big(3n + 2) \cdot \qty\big(3n + 1)}{7\qty\big(2n + 2) \cdot \qty\big(2n + 1)} \\
+    &= \frac{
+      \qty\big(3n + 3) \cdot
+      \qty\big(3n + 2) \cdot
+      \qty\big(3n + 1) \cdot
+      \qty\big(3n)!
+    }{
+      7 \cdot
+      \qty\big(n + 1) \cdot
+      n! \cdot
+      \qty\big(2n + 2) \cdot
+      \qty\big(2n + 1) \cdot
+      \qty\big(2n)!
+    } \cdot \frac{n!\qty\big(2n)!}{\qty\big(3n)!} \\
+    &= \frac{
+      \qty\big(3n + 3) \cdot \qty\big(3n + 2) \cdot \qty\big(3n + 1)
+    }{
+      7 \cdot \qty\big(n + 1) \cdot \qty\big(2n + 2) \cdot \qty\big(2n + 1)
+    } \\
+     &= \frac{
+      3 \cdot \qty\big(n + 1) \cdot \qty\big(3n + 2) \cdot \qty\big(3n + 1)
+    }{
+      7 \cdot \qty\big(n + 1) \cdot \qty\big(2n + 2) \cdot \qty\big(2n + 1)
+    } \\
+    &= \frac{
+      3 \cdot \qty\big(3n + 2) \cdot \qty\big(3n + 1)
+    }{
+      7 \cdot \qty\big(2n + 2) \cdot \qty\big(2n + 1)
+    } \\
     &= \frac{27n^2 + 27n + 6}{28n^2 + 42n + 14} \\
-    &= \frac{27}{28} \cdot \underset{> 1}{\underbrace{\frac{n^2 + n +\frac{2}{9}}{n^2 + \frac{3}{2}n + \frac{1}{2}}}}
+    &= \frac{27}{28} \cdot \underset{< 1}{\underbrace{
+        \qty(\frac{n^2 + n +\frac{2}{9}}{n^2 + \frac{3}{2}n + \frac{1}{2}})
+      }}
   \end{flalign*}
 
   $\Rightarrow$ \underline{Die Reihe } $\sum_k \qty\big{x_k}$
