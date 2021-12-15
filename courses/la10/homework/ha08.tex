@@ -34,6 +34,7 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
+\newcommand\Abb{\text{Abb}}
 \newcommand\hull[1]{\left\langle #1 \right\rangle}
 
 \begin{document}
@@ -123,5 +124,125 @@ dann ist
 \]
 Somit sind die Vektoren in $K^3$ linear abhängig.
 
+\paragraph{Aufgabe 7} Seien $X$ eine nichtleere Menge und sei $K$ ein Körper.
+Sei $V \coloneqq \Abb\qty\big(X, K) = \qty\big{f \colon X \to K}$.
+Definiere
+\begin{flalign*}
+  + \colon &V \times V \to V \\
+  &\qty\big(f, g) \mapsto f + g \colon X \to K
+\end{flalign*}
+mit $\qty\big(f + g)\qty\big(x) \coloneqq f\qty\big(x) + g\qty\big(x)$
+und
+\begin{flalign*}
+  \cdot &\colon K \times V \to V \\
+  &\qty\big(\lambda, g) \mapsto \lambda \cdot g \colon X \to K
+\end{flalign*}
+mit $\qty\big(\lambda \cdot g)\qty\big(x) \coloneqq \lambda \cdot g\qty\big(x)$.
+Im Folgenden darf ohne Beweis angenommen werden, dass $V$ mit $+$ und $\cdot$
+ein Vektorraum über $K$ ist (gezeigt in Aufgabe 7 (a) auf dem Blatt 7).
 
+Für $a \in X$ sei
+\[
+  \delta_a \colon X \to K, x \mapsto \delta_{ax} \coloneqq
+  \begin{cases}
+    1 & \text{falls } x = a \\
+    0 & \text{falls } x \ne a
+  \end{cases}
+\]
+\newpage
+\begin{enumerate}[(a)]
+\item Zeigen Sie: Sind $a_1, \ldots, a_n \in X$ paarweise verschieden, so sind
+  $\delta_{a_1}, \ldots, \delta_{a_n} \in V$ linear unabhängig.
+
+  \subparagraph{Lsg.} Angenommen $\delta_{a_1}, \ldots, \delta_{a_n} \in V$
+  wären linear abhängig, dann existieren $\lambda_1, \ldots \lambda_n \in K$
+  mit $\lambda_1 \cdot \delta_{a_1} + \ldots + \lambda_n \cdot \delta_{a_n} = 0$
+  und $\lambda_j \ne 0_K$ für mindestens ein $j \leq n$.
+
+  Sei nun $i \ne 0_K \leq n$, dann ist
+  \[
+    \lambda_1 \cdot \delta_{a_1} + \ldots +
+    \lambda_{i - 1} \cdot \delta_{a_{i - 1}} +
+    \lambda_{i + 1} \cdot \delta_{a_{i + 1}} +
+    \ldots
+    \lambda_n \cdot \delta_{a_n} =
+    -\lambda_i \cdot \delta_{a_i}
+  \]
+  Folglich ist
+  \[
+    \qty\Big(\lambda_1 \cdot \delta_{a_1} + \ldots +
+    \lambda_{i - 1} \cdot \delta_{a_{i - 1}} +
+    \lambda_{i + 1} \cdot \delta_{a_{i + 1}} +
+    \ldots
+    \lambda_n \cdot \delta_{a_n})\qty\Big(a_i) =
+    -\lambda_i \cdot \qty\Big(\delta_{a_i})\qty\Big(a_i) = -\lambda_i
+  \]
+  Wären nun alle
+  $\delta_{a_1}, \ldots, \delta_{a_{i - 1}}, \delta_{a_{i + 1}}, \delta_{a_n}$
+  von $\delta_{a_i}$ verschieden, so wäre
+  \[
+    \qty\Big(\lambda_1 \cdot \delta_{a_1} + \ldots +
+    \lambda_{i - 1} \cdot \delta_{a_{i - 1}} +
+    \lambda_{i + 1} \cdot \delta_{a_{i + 1}} +
+    \ldots
+    \lambda_n \cdot \delta_{a_n})\qty\Big(a_i) = 0_K
+  \]
+  ein Widerspruch zu $\lambda_i \ne 0_K$.
+  $\Rightarrow$ es existieren $j \ne i \leq n$ mit $a_i = a_j$,
+  ein Widerspruch zu $a_1, \ldots, a_n$ sind paarweise verschieden.
+
+\item Folgern Sie aus (a), dass die Menge
+  $\qty\big{\delta_a \, {\big |} \, a \in X}$ linear unabhängig ist.
+
+  \subparagraph{Lsg.} Angenommen  $\qty\big{\delta_a \, {\big |} \, a \in X}$
+  wäre linear abhängig, dann existieren zwei Elemente $a_1 \ne a_2 \in X$, so dass
+  $\delta_{a_1}, \delta_{a_2}$ linear abhängig sind - ein Widerspruch zu
+  Teilaufgabe (a).
+
+\item Folgern Sie aus (b), dass $V$ nicht endlich-dimensional ist, wenn
+  $X$ unendlich ist.
+
+  \subparagraph{Lsg.} Da $X$ unendlich ist, folgt aus (b) die Existenz einer
+  unendlichen, linear unabhängigen Teilmenge
+  $\qty\big{\delta_a \, {\big |} \, a \in X} \subseteq V$.
+  Angenommen $V$ wäre nun endlich-dimensional, dann wäre dies ein Widerspruch
+  zu Korollar 3.48 der Vorlesung (\emph{``Angenommen $V$ ist endlich-dimensional,
+    dann ist auch jede linear unabhängige Teilmenge von $V$ endlich.''})
+
+\item Sei nun angenommen, dass $X$ endlich ist und sei
+  $U \coloneqq \qty\big{\delta_a \,{\big |}\, a \in X}$.
+  Zeigen Sie, dass $V = \hull{U}$.
+  Begründen Sie, dass $U$ eine Basis von $V$ ist und geben Sie die
+  Dimension von $V$ an.
+
+  \subparagraph{Lsg.} Sei $f \colon X \to K$ ein beliebige Abbildung.
+  Dann gilt für jedes $x \in X$, dass
+  \[
+    f\qty\big(x) = \lambda = \lambda \cdot 1 = \lambda \cdot \delta_x\qty\big(x)
+  \]
+  mit $\lambda \in K$.
+  Weiter gilt nach der Definition von $\delta$, dass für
+  $x \ne y \in X, \lambda \in K$ gilt  $\lambda \cdot \delta_y\qty\big(x) = 0$.
+  Folglich lässt sich $f$ auch durch
+  \[
+    \lambda_{x_1} \cdot \delta_{x_1} + \ldots + \lambda_{x_n} \cdot \delta_{x_n}
+  \]
+  mit $\qty\big{x_1, \ldots, x_n} = X$ und $\lambda_{x_i} = f\qty\big(x_i)$ darstellen.
+
+  $\Rightarrow$ $f$ ist eine Linearkombination von Elementen aus $U$.
+
+  Da $f$ beliebig gewählt ist, lässt sich jede Abbildung $g \in V$ als
+  Linearkombination von Elementen aus $U$ darstellen.
+
+  $\Rightarrow$ $\hull{U} = V$
+
+  Nach Teilaufgabe (b) ist $U$ linearunabhängig.
+
+  $\Rightarrow$ \underline{$U$ ist eine Basis von $V$}
+
+  Da $X$ endlich ist, ist auch die Basis $U$ endlich.
+
+  $\Rightarrow$ \underline{$X$ ist endlich-dimensional mit
+    $\dim\qty\big(X) = \abs{U}$}
+\end{enumerate}
 \end{document}
