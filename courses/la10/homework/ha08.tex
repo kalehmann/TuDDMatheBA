@@ -34,9 +34,74 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
-\newcommand\Abb{\text{Abb}}
+\newcommand\hull[1]{\left\langle #1 \right\rangle}
 
 \begin{document}
+\paragraph{Aufgabe 5} Sei
+\[
+  W \coloneqq \qty{
+    \begin{pmatrix}x_1 \\ x_2 \\ x_3 \\ x_4\end{pmatrix}
+    \, \middle| \,
+    x_1 - 3x_2 = 0, x_3 - 2x_4 = 0
+  } \subseteq \mathbb{R}^4
+\]
+\begin{enumerate}[(a)]
+\item Finden Sie Vektoren $v_1, v_2 \in \mathbb{R}^4$ mit $\hull{v_1, v_2} = W$.
+  \subparagraph{Lsg.}
+  \[
+    v_1 = \begin{pmatrix}3 \\ 1 \\ 0 \\ 0\end{pmatrix},
+    v_2 = \begin{pmatrix}0 \\ 0 \\ 2 \\ 1\end{pmatrix}
+  \]
+\item Ist $W$ ein Unterraum von $\mathbb{R}^4$?
+  Falls ja, bestimmen Sie eine Basis von $W$ und geben Sie die Dimension von
+  $W$ an.
+
+  \subparagraph{Lsg.} Es gilt
+  \begin{enumerate}[(1)]
+  \item Es ist
+    $0_{\mathbb{R}^4} = \begin{pmatrix}0 \\ 0 \\ 0 \\ 0\end{pmatrix} \in W$,
+    da $0 - 3 \cdot 0 = 0$ und $0 - 2 \cdot 0 = 0$.
+
+  \item Seien $u = \begin{pmatrix}u_1 \\ u_2 \\ u_3 \\ u_4\end{pmatrix},
+    v = \begin{pmatrix}v_1 \\ v_2 \\ v_3 \\ v_4\end{pmatrix} \in W$ beliebig.
+    Dann ist bereits $v_1 - 3 \cdot v_2 = 0$ und $u_1 - 3 \cdot u_2 = 0$, sowie
+    $v_3 - 2 \cdot v_4 = 0$ und $u_3 - 2 \cdot u_4 = 0$.
+
+    Folglich sind
+    \begin{flalign*}
+      \qty\big(v_1 - 3 \cdot v_2) + \qty\big(u_1 - 3 \cdot u_2)
+      &= \qty\big(v_1 - 3 \cdot v_2 + u_1 - 3 \cdot u_2) & \\
+      &= \qty\big(v_1 + u_1 - 3 \cdot v_2 - 3 \cdot u_2) \\
+      &= \qty\big(v_1 + u_1) - 3 \cdot \qty\big(v_2 + u_2) = 0
+    \end{flalign*}
+    und
+    \begin{flalign*}
+      \qty\big(v_3 - 2 \cdot v_4) + \qty\big(u_3 - 2 \cdot u_4)
+      &= \qty\big(v_3 - 2 \cdot v_4 + u_3 - 2 \cdot u_4) & \\
+      &= \qty\big(v_3 + u_3 - 2 \cdot v_4 - 2 \cdot u_4) \\
+      &= \qty\big(v_3 + u_3) - 2 \cdot \qty\big(v_4 + u_4) = 0
+    \end{flalign*}
+
+    $\Rightarrow$ \underline{$u + v \in W$}
+
+  \item Sei $u = \begin{pmatrix}u_1 \\ u_2 \\ u_3 \\ u_4\end{pmatrix} \in W$
+    und $\lambda \in \mathbb{R}$ beliebig.
+    Dann ist $u_1 - 3 \cdot u_2 = 0$ und $u_3 - 2 \cdot u_4 = 0$.
+    Folglich sind auch $\lambda \cdot u_1 - 3 \cdot \lambda \cdot u_2 = 0$
+    und $\lambda \cdot u_3 - 2 \cdot \lambda \cdot u_4 = 0$.
+
+    $\Rightarrow$ \underline{$\lambda \cdot U \in W$}
+  \end{enumerate}
+
+  $\Rightarrow$ \underline{$W$ ist ein Unterraum von $\mathbb{R}^4$}.
+
+  Die Vektoren $v_1, v_2$ aus Teilaufgabe (a) sind offensichtlich linear
+  unabhängig und spannen $W$ auf, folglich ist ist $\qty\big{v_1, v_2}$
+  eine Basis von $W$.
+
+  Weiter ist $\dim\qty\big(W) = 2$.
+\end{enumerate}
+
 \paragraph{Aufgabe 6} Geben Sie einen Körper $K$ an, so dass die Vektoren
 \[
   \begin{pmatrix}1_K \\ 1_K \\ 0_K \end{pmatrix},
