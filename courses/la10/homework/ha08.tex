@@ -1,0 +1,62 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 07\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\Abb{\text{Abb}}
+
+\begin{document}
+\paragraph{Aufgabe 6} Geben Sie einen Körper $K$ an, so dass die Vektoren
+\[
+  \begin{pmatrix}1_K \\ 1_K \\ 0_K \end{pmatrix},
+  \begin{pmatrix}1_K \\ 0_K \\ 1_K \end{pmatrix},
+  \begin{pmatrix}0_K \\ 1_K \\ 1_K \end{pmatrix},
+\]
+linear abhängig in $K^3$ sind.
+Begründen Sie Ihre Antwort.
+
+\subparagraph{Lsg.} Sei $K = \mathbb{Z}_{/2}$, dann ist
+$1_k + 1_k = 0_k$, $0_k + 1_k = 1_k + 0_k = 1_k$ und $0_k + 0_k$.
+Seien nun $k_1 = k_2 = k_3$ das neutrale Element der Multiplikation,
+dann ist
+\[
+  k_1 \cdot \begin{pmatrix}1_K \\ 1_K \\ 0_K \end{pmatrix} +
+  k_2 \cdot \begin{pmatrix}1_K \\ 0_K \\ 1_K \end{pmatrix} +
+  k_3 \cdot \begin{pmatrix}0_K \\ 1_K \\ 1_K \end{pmatrix} =
+  \begin{pmatrix}0_k \\ 0_k \\ 0_k\end{pmatrix}
+\]
+Somit sind die Vektoren in $K^3$ linear abhängig.
+
+
+\end{document}
