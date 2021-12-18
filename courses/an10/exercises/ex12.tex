@@ -1,0 +1,88 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{pdflscape}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 12\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\diam{\text{diam}}
+
+\begin{document}
+\paragraph{61. Sei $M \subset \mathbb{R}$} und $f \colon M \to \mathbb{R}$
+eine streng monoton wachsende Funktion.
+Zeigen Sie, dass die Umkehrfunktion $f^{-1} \colon \mathcal{R}\qty\big(f) \to M$
+existiert und streng monoton ist.
+
+\subparagraph{Lsg.} Eine Funktion $f \colon M \to \mathbb{R}$ heißt streng
+monoton wachsend, falls für alle $x < y \in M$ gilt, dass
+$f\qty\big(x) < f\qty\big(y)$.
+Damit eine Funktion $f$ eine Umkehrfunktion besitzt muss die Funktion $f$
+bijektiv sein.
+Angenommen $f$ wäre nicht bijektiv, dann ist $f$ nicht injektiv und/oder nicht
+surjektiv.
+
+\begin{itemize}
+\item Angenommen $f$ wäre nicht injektiv, dann existiert $x \ne y$ mit
+  $f\qty\big(x) = f\qty\big(y)$.
+
+  Aus $x \ne y$ folgt $x > y$ oder $x < y$.
+  Da $f$ streng monoton wachsend folgt $f\qty\big(x) < f\qty\big(y)$
+  oder $f\qty\big(x) > f\qty\big(y)$ - ein Widerspruch zu
+  $f\qty\big(x) = f\qty\big(y)$.
+
+  $\Rightarrow$ \underline{$f$ ist injektiv.}
+
+\item Angenommen $f$ wäre nicht surjektiv, dann existiert ein
+  $y \in \mathcal{P}\qty\big(f)$, so dass für alle $x \in M$ gilt:
+  $f\qty\big(x) \ne y$.
+
+  $\Rightarrow$ Widerspruch zur Definition von $\mathcal{R}\qty\big(f)$
+  (des Wertebereiches).
+
+  $\Rightarrow$ \underline{$f$ ist surjektiv.}
+\end{itemize}
+$\Rightarrow$ $f$ ist bijektiv. \\
+$\Rightarrow$ \underline{Die Umkehrfunktion von $f$ existiert.} \\
+Angenommen $f^{-1}$ wäre nicht streng monoton, dann existieren
+$x < y < z\in \mathcal{R}\qty\big(f)$, so dass
+$f^{-1}\qty\big(x) \leq f^{-1}\qty\big(y)$ und
+$f^{-1}\qty\big(z) \leq f^{-1}\qty\big(y)$.
+Seien nun $a = f^{-1}\qty\big(x), b = f^{-1}\qty\big(y)$ und
+$c = f^{-1}\qty\big(z)$. \\
+Dann ist $a \leq b$ und $c \leq b$, aber
+$f\qty\big(a) < f\qty\big(b) <f\qty\big(c)$ - ein Widerspruch zu
+``$f$ ist streng monoton wachsend''.
+
+$\Rightarrow$ \underline{$f^{-1}$ ist streng monoton.}
+
+\end{document}
