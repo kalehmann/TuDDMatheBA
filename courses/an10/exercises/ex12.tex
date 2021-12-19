@@ -16,6 +16,7 @@
 \usepackage{titling}
 \usepackage{fancyhdr}
 \usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{pgfplots}
 
 \pgfplotsset{compat = newest}
@@ -84,5 +85,47 @@ $f\qty\big(a) < f\qty\big(b) <f\qty\big(c)$ - ein Widerspruch zu
 ``$f$ ist streng monoton wachsend''.
 
 $\Rightarrow$ \underline{$f^{-1}$ ist streng monoton.}
+
+\paragraph{63. Vereinfache den folgenden Ausdruck mittels Polynomdivison über
+  $\mathbb{R}$ soweit wie möglich:}
+\[
+  \frac{x^4 - 3x^3 - 14x^2 + 48x - 32}
+  {\qty\big(x - 1)\qty\big(x - 2)\qty\big(x - 3)}
+\]
+
+\subparagraph{Lsg.} Zuerst wird der Nenner ausmultipliziert:
+$\qty\big(x - 1) \cdot \qty\big(x - 2) \cdot \qty\big(x - 3) =
+x^3 - 6x^2 + 11x - 6$.
+
+\[
+  \begin{array}{cccccccc}
+    \colorbox{Cyan!30}{$x^4$} & - 3x^3 & - 14x^2 & + 48x & - 32 &:&
+      \colorbox{Cyan!30}{$x^3$} - 6x^2 + 11x - 6
+      &= \colorbox{Cyan!30}{$x$} + \colorbox{Lavender!50}{$3$} +
+      \frac{-7x^2 + 21x - 14}{\qty\big(x - 1)\qty\big(x - 2)\qty\big(x - 3)} \\
+    - \big(x^4 & -6x^3 & + 11x^2 & - 6x \big) \\
+    \cline{1 - 4}
+    & \colorbox{Lavender!50}{$3x^3$} & -25x^2 & +54x & - 32  &:&
+      \colorbox{Lavender!50}{$x^3$} - 6x^2 + 11x - 6 \\
+    & -\big(3x^3 & -18x^2 & + 33x & -18 \big) \\
+    \cline{2 - 5}
+    & & -7x^2 & + 21x & -14
+  \end{array}
+\]
+und
+\begin{flalign*}
+  x + 3 + \frac{-7x^2 + 21x - 14}{\qty\big(x - 1)\qty\big(x - 2)\qty\big(x - 3)}
+  &= x + 3 - 7 \cdot \frac{
+    x^2 - 3x + 2
+  }{
+    \qty\big(x - 1)\qty\big(x - 2)\qty\big(x - 3)
+  } \\
+  &= x + 3 - 7 \cdot \frac{
+    \qty\big(x - 1) \cdot \qty\big(x - 2)
+  }{
+    \qty\big(x - 1)\qty\big(x - 2)\qty\big(x - 3)
+  } \\
+  &= x + 3 - \frac{7}{x - 3}
+\end{flalign*}
 
 \end{document}
