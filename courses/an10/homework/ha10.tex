@@ -71,6 +71,44 @@
     &= \frac{1}{n!} \cdot \qty(\frac{n + 1}{n} - \frac{n}{n}) \\
     &= \frac{1}{n \cdot n!}
   \end{flalign*}
+
+\item Bestimmen Sie mit Hilfe von Teilaufgabe (a) ein Zahl $N \in \mathbb{N}$,
+  für die $\abs\big{e - s_N} \leq 0.5 \cdot 10^{-4}$ gilt und geben Sie den Wert
+  von $s_N$ an.
+
+  \subparagraph{Lsg.} $0.5 \cdot 10^{-4} = \frac{1}{2} \cdot \frac{1}{10^4} =
+  \frac{1}{20000}$.
+  Nun ist
+  \[
+    \overset{= 5040}{
+      \overbrace{
+        \underset{= 720}{
+          \underbrace{
+            \overset{= 120}{
+              \overbrace{
+                \underset{= 24}{
+                  \underbrace{
+                    \overset{= 6}{
+                      \overbrace{
+                        1 \; \cdot \; 2 \; \cdot \; 3 \;
+                      }
+                    } \cdot \; 4 \;
+                  }
+                } \cdot \; 5 \;
+              }
+            } \cdot \; 6 \;
+          }
+        } \cdot \; 7
+      }
+    }
+  \]
+  Somit ist $0.5 \cdot 10^{-4} < \frac{1}{7 \cdot 7!} = \frac{1}{7 \cdot 5040}
+  = \frac{1}{35280}$ und
+  \[
+    s_7 = \frac{1}{1} + \frac{1}{1} + \frac{1}{2} + \frac{1}{6} + \frac{1}{24}
+    + \frac{1}{120} + \frac{1}{720} + \frac{1}{5040}
+    = \frac{685}{252} \approx 2.7183
+  \]
 \end{enumerate}
 
 \end{document}
