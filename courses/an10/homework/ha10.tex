@@ -1,0 +1,76 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann (Übungsgruppe 1)\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 12\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{64. Sei $s_n \coloneqq \sum_{k = 0}^n \frac{1}{k!}$ und sei
+  $e = \underset{n \to \infty}\lim s_n$ die Eulersche Zahl.}
+\begin{enumerate}[(a)]
+\item Zeigen Sie $\abs\big{e - s_n} \leq \frac{1}{n \cdot n!}$ für alle
+  $n \in \mathbb{N}_{> 0}$.
+
+  \subparagraph{Lsg.} Es gilt $\qty\big(n + k)! > n! \cdot \qty\big(n + 1)^k$, da
+  \[
+    \qty\big(n + k)! =
+    \underset{\geq \qty\big(n + 1)^k}{
+      \underbrace{
+        \qty\big(n + k) \cdot \qty\big(n + k - 1) \cdot
+        \ldots \cdot \qty\big(n + 1)
+      }
+    } \cdot
+    \underset{= n!}{\underbrace{n \cdot \qty\big(n - 1) \cdot \ldots \cdot 1}}
+  \]
+  \begin{flalign*}
+    \abs\big{e - s_n}
+    &= \abs{
+      \sum_{k = 0}^{\infty} \frac{1}{k!} - \sum_{k = 0}^n \frac{1}{k!}
+    }
+    = \abs\Bigg{
+      \sum_{k = n + 1}^{\infty} \frac{1}{k!} +
+      \underset{= 0}{
+        \underbrace{\sum_{k = 0}^n \frac{1}{k!} - \sum_{k = 0}^n \frac{1}{k!}}
+     }
+      } \\
+    &= \abs{\sum_{k = n + 1}^{\infty} \frac{1}{k!}}
+    = \abs{\sum_{k = 1}^{\infty} \frac{1}{(n + k)!}}
+    = \sum_{k = 1}^{\infty} \frac{1}{(n + k)!} \\
+    &\leq \sum_{k = 1}^{\infty} \frac{1}{n! \cdot \qty\big(n + 1)^k} \\
+    &= \frac{1}{n!} \cdot \sum_{k = 1}^{\infty} \qty(\frac{1}{n + 1})^k \\
+    &= \frac{1}{n!} \cdot \qty(\frac{1}{1 - \frac{1}{n + 1}} - 1) \\
+    &= \frac{1}{n!} \cdot \qty(\frac{n + 1}{n} - \frac{n}{n}) \\
+    &= \frac{1}{n \cdot n!}
+  \end{flalign*}
+\end{enumerate}
+
+\end{document}
