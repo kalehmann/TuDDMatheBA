@@ -10,6 +10,7 @@
 \usepackage{multicol}
 \usepackage{mathtools}
 \usepackage{physics}
+\usepackage{pdflscape}
 \usepackage{tabularx}
 \usepackage{titling}
 \usepackage{fancyhdr}
@@ -169,6 +170,72 @@
 \end{enumerate}
 
 \newpage
+\begin{landscape}
+\paragraph{65. (a) Beweisen sie für $z, w \in \mathbb{C}$ die Formeln}
+\begin{itemize}
+\item $\sin\qty\big(z + w) = \sin z \cos w + \sin w \cos z$
+\item $\cos\qty\big(z + w) = \cos z \cos w - \sin z \sin w$
+\end{itemize}
+
+\subparagraph{Lsg.} Für die erste Formel gilt
+\begin{flalign*}
+  \sin z \cos w + \sin w \cos z
+  &= \frac{e^{iz} - e^{-iz}}{2i} \frac{e^{iw} + e^{-iw}}{2} +
+  \frac{e^{iw} - e^{-iw}}{2i} \frac{e^{iz} + e^{-iz}}{2} \\
+  &= \frac{
+    \colorbox{green!50}{$e^{i\qty\big(z + w)}$} +
+    \colorbox{blue!20}{$e^{i\qty\big(z - w)}$} -
+    \colorbox{orange!30}{$e^{i\qty\big(-z + w)}$} -
+    \colorbox{violet!25}{$e^{-i\qty\big(z + w)}$}
+  }{4i} +
+  \frac{
+    \colorbox{green!50}{$e^{i\qty\big(w + z)}$} +
+    \colorbox{orange!30}{$e^{i\qty\big(w - z)}$} -
+    \colorbox{blue!20}{$e^{i\qty\big(- w + z)}$} -
+    \colorbox{violet!25}{$e^{-i\qty\big(w + z)}$}
+  }{4i} \\
+  &= \frac{2 \cdot e^{i\qty\big(z + w)} - 2 \cdot e^{-i\qty\big(w + z)}}{4i} \\
+  &= \frac{e^{i\qty\big(z + w)} - e^{-i\qty\big(w + z)}}{2i} \\
+  &= \sin\qty\big(w + z)
+\end{flalign*}
+Es ist $\cos z + i\sin z = \frac{e^{iz} + e^{-iz}}{2} +
+i \cdot \frac{e^{iz} - e^{-iz}}{2i} =
+\frac{e^{iz} + e^{-iz} + e^{iz} - e^{-iz}}{2} = e^{iz}$
+(Eulersche Formel).
+
+Nun ist
+\begin{flalign*}
+  \cos\qty\big(z + w) + i \sin\qty\big(z + w) &=
+  e^{i\qty\big(z + w)} = e^{iz} \cdot e^{iw} \\
+  &= \qty\Big(\cos z + i \sin z) \qty\Big(\cos w + i \sin w) \\
+  &= \cos z \cos w - \sin z \sin w +
+  i \qty\Big(\underset{\sin\qty\big(w + z)}{
+    \underbrace{\sin z \cos w + \sin w \cos z
+    }})
+\end{flalign*}
+$\Rightarrow \cos\qty\big(w + z) = \cos z \cos w - \sin z \sin w$
+\end{landscape}
+\newpage
+
+\begin{enumerate}[(a)]
+\setcounter{enumi}{1}
+\item Beweisen Sie außerdem für $x \in \mathbb{R}$ die Formel
+  \[
+    \cos^3\qty\big(x) = \frac{1}{4} \cos\qty\big(3x) +
+    \frac{3}{4}\cos\qty\big(x)
+  \]
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    \qty(\frac{e^{ix} + e^{-ix}}{2})^3
+    &= \frac{e^{i3x} + 3e^{ix} + 3e^{-ix} + e^{-i3x}}{8} \\
+    &= \frac{1}{4} \cdot \underbrace{\frac{e^{i3x} + e^{-i3x}}{2}}
+    + \frac{3}{4} \cdot \underbrace{\frac{e^{ix} + e^{-ix}}{2}} \\
+    &= \frac{1}{4} \cdot \quad \cos\qty\big(3x) \quad + \quad
+    \frac{3}{4} \cdot \cos\qty\big(x)
+  \end{flalign*}
+\end{enumerate}
+
 \paragraph{66. Vereinfache den folgenden Ausdruck mittels Polynomdivison über
   $\mathbb{R}$ soweit wie möglich:}
 \[
