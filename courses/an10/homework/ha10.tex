@@ -109,6 +109,57 @@
     + \frac{1}{120} + \frac{1}{720} + \frac{1}{5040}
     = \frac{685}{252} \approx 2.7183
   \]
+
+\newpage
+\item Zeigen Sie, dass die Eulersche Zahl $e$ irrational ist.
+
+  \subparagraph{Lsg.} Alle Glieder der Reihe $\sum_{k = 0}^{\infty} \frac{1}{k!}$
+  sind positiv und
+  $\sum_{k = 0}^{1} \frac{1}{k!} = \frac{1}{1} + \frac{1}{1} = 2$.
+
+  $\Rightarrow \sum_{k = 0}^{\infty} \frac{1}{k!} \geq 2$
+
+  Weiterhin ist
+  \[
+    \sum_{k = 0}^{\infty} =
+    \qty(\frac{1}{1} + \frac{1}{1} + \sum_{k = 2}^{\infty} \frac{1}{k!})
+    \leq
+    \qty(1 + \sum_{k = 1}^{\infty}\qty(\frac{1}{2})^k)
+    = \qty(1 + \frac{1}{1 - \frac{1}{2}} - 1) = 3
+  \]
+
+  $\Rightarrow \sum_{k = 0}^{\infty} \frac{1}{k!} \leq 3$
+
+  Angenommen $e$ wäre rational, dann existieren $p, q \in \mathbb{N}$, so dass
+  $\frac{p}{q} = e$.
+  Da $2 \leq e \leq 3$ und $e \ne 2$ als auch $e \ne 3$ folgt $p > 2, q > 1$.
+
+  Da $s_q$ eine endliche Summe von positiven rationalen Zahlen ist und
+  aufgrund der rekursiven Definition der Fakultät für $n \leq q$ der Ausdruch
+  $n!$ ein Teiler von $q!$ ist, existiert ein $m \in \mathbb{N}$ mit
+  $\frac{m}{q!} = s_q$.
+
+  Weiterhin ist $s_q \leq e$, ansonsten Widerspruch zu
+  $\lim_{n \to \infty} s_n = e$ als Summe positiver Glieder.
+
+  Folglich ist
+  \begin{flalign*}
+    \abs\big{e - s_q}
+    \overset{e > s_q}&= e - s_q \\
+    &= \frac{p\qty\big(q - 1)!}{q\qty\big(q - 1)!} - s_q \\
+    &= \frac{p\qty\big(q - 1)!}{q!} - \frac{m}{q!} \\
+    &= \frac{p\qty\big(q - 1)! - m}{q!} \\
+    &= \frac{q \cdot \qty\Big(p \cdot \qty\big(q - 1)! - m)}{qq!} \\
+    \overset{\text{(a)}}&\leq \frac{1}{qq!}
+  \end{flalign*}
+
+  $\Rightarrow 1 \geq q \cdot \qty\Big(p\qty \big(q - 1)! - m)
+  \overset{q > 1} > p\qty\big(q - 1)! - m
+  \overset{m \in \mathbb{N}}> p \qty\big(q - 1)
+  \overset{p > 2}> 2\cdot \qty\big(q - 1)
+  \overset{q > 1}> 2$, ein Widerspruch.
+
+  $\Rightarrow$ \underline{$e$ ist irrational}
 \end{enumerate}
 
 \end{document}
