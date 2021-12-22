@@ -1,0 +1,261 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 09\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\Abb{\text{Abb}}
+\newcommand\hull[1]{\left\langle #1 \right\rangle}
+
+\begin{document}
+\paragraph{Aufgabe 6} Lösen Sie das lineare Gleichungssystem indem Sie die
+folgenden Schritte ausführen:
+\begin{itemize}
+\item Bilden Sie die erweiterte Koeffizientenmatrix des Gleichungssystems und
+  bringen Sie diese durch elementare Zeilenumformungen in reduzierte
+  Stufenform.
+
+\item Bestimmen Sie die Lösungsmenge dess Gleichungssystems.
+\end{itemize}
+Seien $L_{\mathbb{Q}}$ die Lösungsmenge über $\mathbb{Q}$ und
+$L_{\mathbb{R}}$ die Lösungsmenge über $\mathbb{R}$.
+Was ist die Beziehung zwischen $L_{\mathbb{Q}}$ und $L_{\mathbb{R}}$?
+Geben Sie auch $L_{\mathbb{Z}/19}$ - also die Lösungsmenge über
+$\mathbb{Z}/19$ - an.
+\begin{flalign*}
+  x_1 - 2 x_2 + 4 x_3 + 5 x_4 &= 0 \\
+  x_1 + 4 x_2 + 2 x_4 &= 0 \\
+  x_1 + 5 x_2 + 7 x_3 + x_4 &= 1 \\
+  x_1 + 6 x_2 + 3 x_3 + 13 x_4 &= 4
+\end{flalign*}
+
+\subparagraph{Lsg.}
+\begin{flalign*}
+  \qty(\begin{array}{cccc|c}
+    1 & -2 & 4 &  5 & 0 \\
+    1 &  4 & 0 &  2 & 0 \\
+    1 &  5 & 7 &  1 & 1 \\
+    1 &  6 & 3 & 13 & 4
+  \end{array})
+  \overset{\substack{
+      R_2 - R_3 \\
+      R_3 - R_1 \\
+      R_4 - R_3
+  }}&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    1 & -2 &  4 &  5 &  0 \\
+    0 & -1 & -7 &  1 & -1 \\
+    0 &  7 &  3 & -4 &  1 \\
+    0 &  1 & -4 & 12 &  3
+  \end{array}) \\
+  \overset{\substack{
+      R_3 + 7\cdot R_2 \\
+      R_4 + R_2
+  }}&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    1 & -2 &   4 &  5 &  0 \\
+    0 & -1 &  -7 &  1 & -1 \\
+    0 &  0 & -46 &  3 & -6 \\
+    0 &  0 & -11 & 13 &  2
+  \end{array}) \\
+  \overset{\substack{
+      \qty\big(46 \cdot R_4 - 11 \cdot R_3) / 565
+  }}&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    1 & -2 &   4 & 5 &   0 \\
+    0 & -1 &  -7 & 1 &  -1 \\
+    0 &  0 & -46 & 3 &  -6 \\
+    0 &  0 &   0 & 1 & \frac{158}{565}
+  \end{array}) \\
+  \overset{\substack{
+      R_1 - 5 \cdot R_4 \\
+      -1 \cdot R_2 + R_4 \\
+      \qty(-1 \cdot R_3 + 3 \cdot R_4) / 46
+  }}&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    1 & -2 & 4 & 0 & -\frac{790}{565} \\
+    0 &  1 & 7 & 0 &  \frac{723}{565} \\
+    0 &  0 & 1 & 0 &   \frac{84}{565} \\
+    0 &  0 & 0 & 1 &  \frac{158}{565}
+  \end{array}) \\
+  \overset{\substack{
+      R_1 - 4 \cdot R_3 \\
+       R_2 - 7 \cdot R_4
+  }}&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    1 & -2 & 0 & 0 & -\frac{1126}{565} \\
+    0 &  1 & 0 & 0 &  \frac{135}{565} \\
+    0 &  0 & 1 & 0 &   \frac{84}{565} \\
+    0 &  0 & 0 & 1 &  \frac{158}{565}
+  \end{array}) \\
+  \overset{\substack{
+       R_1 + 2 \cdot R_2
+  }}&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    1 & 0 & 0 & 0 & -\frac{856}{565} \\
+    0 & 1 & 0 & 0 &  \frac{135}{565} \\
+    0 & 0 & 1 & 0 &   \frac{84}{565} \\
+    0 & 0 & 0 & 1 &  \frac{158}{565}
+  \end{array}) \\
+\end{flalign*}
+Somit ist
+\[
+  L = \qty{\begin{pmatrix}
+    -\frac{856}{565} \\
+    \frac{135}{565} \\
+    \frac{84}{565} \\
+    \frac{158}{565}
+    \end{pmatrix}}
+\]
+Weiter ist in dem Fall $L_{\mathbb{Q}} = L_{\mathbb{R}}$.
+Generell gilt $L_{\mathbb{Q}} \subseteq L_{\mathbb{R}}$, so kann
+$L_{\mathbb{R}}$ irrationale Elemente enthalten, die nicht in
+$L_{\mathbb{Q}}$ vorkommen.
+\newpage
+Es ist $-2_{\mathbb{R}} = 17_{\mathbb{Z}/19}$, da
+$2_{\mathbb{Z}/19} + 17_{\mathbb{Z}/19} = 0_{\mathbb{Z}/19}$.
+\begin{flalign*}
+  \qty(\begin{array}{cccc|c}
+    1 & 17 & 4 &  5 & 0 \\
+    1 &  4 & 0 &  2 & 0 \\
+    1 &  5 & 7 &  1 & 1 \\
+    1 &  6 & 3 & 13 & 4
+  \end{array})
+  \overset{
+    \substack{
+      R_2 + 18 \cdot R_1 \\
+      R_3 + 18 \cdot R_1 \\
+      R_4 + 18 \cdot R_1
+    }
+  }&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    1 & 17 &  4 &  5 & 0 \\
+    0 &  6 & 15 & 16 & 0 \\
+    0 &  7 &  3 & 15 & 1 \\
+    0 &  8 & 18 &  8 & 4
+  \end{array}) \\
+  \overset{
+    \substack{
+      R_3 + 2 \cdot R_2 \\
+      R_4 + 5 \cdot R_1
+    }
+  }&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    1 & 17 &  4 &  5 & 0 \\
+    0 &  6 & 15 & 16 & 0 \\
+    0 &  0 & 14 &  9 & 1 \\
+    0 &  0 & 17 & 12 & 4
+  \end{array}) \\
+  \overset{
+    \substack{
+      2 \cdot R_4 + 3 \cdot R_3 \\
+    }
+  }&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    1 & 17 &  4 &  5 & 0 \\
+    0 &  6 & 15 & 16 & 0 \\
+    0 &  0 & 14 &  9 & 1 \\
+    0 &  0 &  0 & 13 & 11
+  \end{array}) \\
+  \overset{
+    \substack{
+       5 \cdot R_1 + R_4 \\
+      R_2 + 9 \cdot R_4 \\
+      7 \cdot R_3 + R_4 \\
+    }
+  }&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    5 & 9 &  1 &  0 & 11 \\
+    0 & 6 & 15 &  0 &  4 \\
+    0 & 0 &  3 &  0 & 18 \\
+    0 & 0 &  0 & 13 & 11
+  \end{array}) \\
+  \overset{
+    \substack{
+      R_1 + 6 \cdot R_3 \\
+      3 \cdot R_2 + 4 \cdot R_3 \\
+    }
+  }&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    5 &  9 & 0 &  0 &  5 \\
+    0 & 18 & 0 &  0 &  8 \\
+    0 &  0 & 3 &  0 & 18 \\
+    0 &  0 & 0 & 13 & 11
+  \end{array}) \\
+  \overset{
+    \substack{
+      R_1 + 9 \cdot R_2 \\
+    }
+  }&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    5 &  0 & 0 &  0 &  1 \\
+    0 & 18 & 0 &  0 &  8 \\
+    0 &  0 & 3 &  0 & 18 \\
+    0 &  0 & 0 & 13 & 11
+  \end{array}) \\
+  \overset{
+    \substack{
+      4 \cdot R_1 \\
+      18 \cdot R_2 \\
+      13 \cdot R_3 \\
+      3 \cdot R_4 \\
+    }
+  }&\longrightarrow
+  \qty(\begin{array}{cccc|c}
+    1 & 0 & 0 & 0 &  4 \\
+    0 & 1 & 0 & 0 & 11 \\
+    0 & 0 & 1 & 0 &  6 \\
+    0 & 0 & 0 & 1 & 14
+  \end{array})
+\end{flalign*}
+Somit ist
+\[
+  L_{\mathbb{Z}/19} + \qty{\begin{pmatrix}
+      4 \\
+      11 \\
+      6 \\
+      14
+    \end{pmatrix}}
+\]
+Probe:
+\begin{flalign*}
+  1 \cdot 4 + 17 \cdot 11 + 4 \cdot 6 + 5 \cdot 14
+  &= 4 + 16 + 5 + 13 &= 0 && && \\
+  1 \cdot 4 + 4 \cdot 11 + 2 \cdot 14
+  &= 4 + 6 + 9  &= 0\\
+  1 \cdot 4 + 5 \cdot 11 + 7 \cdot 6 + 1 \cdot 14
+  &= 4 + 17 + 4 + 14 &= 1 \\
+  1 \cdot 4 + 6 \cdot 11 + 3 \cdot 6 + 13 \cdot 14
+  &= 4 + 9 + 18 + 11 &= 4
+\end{flalign*}
+\end{document}
