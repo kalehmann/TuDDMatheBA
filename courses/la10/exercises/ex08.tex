@@ -111,5 +111,32 @@
   mit $x = y = z = 0$
 
   $\Rightarrow$ \underline{die Vektoren sind linear unabhängig}
+\newpage
+\item Bestimmen Sie, für welche $b, c \in \mathbb{R}$ die Vektoren
+  \[
+    v_1 =\begin{pmatrix}1 \\ b\end{pmatrix},
+    v_2 = \begin{pmatrix}c \\ 1\end{pmatrix}
+  \]
+  linear unabhängig im $\mathbb{R}$-Vektorraum $\mathbb{R}^2$ sind.
+
+  \subparagraph{Lsg.} Die Vektoren sind linear unabhängig, falls gilt
+  \[
+    \lambda_1 \cdot v_! + \lambda_2 \cdot v_2 = 0_{\mathbb{R}^2}
+    \iff \lambda_1 = \lambda_2 = 0
+  \]
+  \begin{flalign*}
+    \lambda_1 \cdot 1 + \lambda_2 \cdot c &= 0 \\
+    \lambda_1 \cdot b + \lambda_2 \cdot 1 &= 0
+    && {\Big |}  - \lambda_1 \cdot b && \\
+    \lambda_2 &= - \lambda_1 \cdot b \\
+    \lambda_1 + \qty\big(-\lambda_1 \cdot b) \cdot c &= 0 \\
+    \lambda_1 - \lambda_1 \cdot b \cdot c &= 0 \\
+    \lambda_1 \cdot \qty\big(1 - b \cdot c) &= 0
+  \end{flalign*}
+  Falls $\lambda_1 \ne 0$, dann muss $b \cdot c = 1$ sein um die Gleichung zu
+  erfüllen.
+
+  $\Rightarrow$ \underline{$v_1, v_2$ sind linear unabhängig, falls
+    $b \ne \frac{1}{c}$}
 \end{enumerate}
 \end{document}
