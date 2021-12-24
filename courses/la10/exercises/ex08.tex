@@ -16,6 +16,7 @@
 \usepackage{fancyhdr}
 \usepackage{xfrac}
 \usepackage{pgfplots}
+\usepackage{tikz-3dplot}
 
 \pgfplotsset{compat = newest}
 \usetikzlibrary{intersections}
@@ -298,5 +299,69 @@ anstelle von $\qty[k]$.
   $\begin{pmatrix} 1 \\ 0 \\ 2\end{pmatrix}$
   \underline{ist nicht in $\hull{a, b, c}$ enthalten}
 
+\item Geben Sie alle Elemente des Vektorraums $\qty\big(\mathbb{Z}/2)^3$ an.
+  Visualisieren Sie den Vektorraum durch einen Würfel.
+
+  \subparagraph{Lsg.} Die Elemente sind
+  \[
+    \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix},
+    \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix},
+    \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix},
+    \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix},
+    \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix},
+    \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix},
+    \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix},
+    \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+  \]
+
+  \tdplotsetmaincoords{70}{110}
+  \begin{center}
+    \begin{tikzpicture}[scale=3,tdplot_main_coords]
+      \node[
+        circle, fill, inner sep=2pt,
+        label=above right:$\begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}$
+      ] (a) at (0,0,0) {};
+      \node[
+        circle, fill, inner sep=2pt,
+        label=above:$\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$
+      ] (b) at (0,0,1) {};
+      \node[
+        circle, fill, inner sep=2pt,
+        label=below right:$\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$
+      ] (c) at (0,1,0) {};
+      \node[
+        circle, fill, inner sep=2pt,
+        label=above right:$\begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}$
+      ] (d) at (0,1,1) {};
+      \node[
+        circle, fill, inner sep=2pt,
+        label=below left:$\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$
+      ] (e) at (1,0,0) {};
+      \node[
+        circle, fill, inner sep=2pt,
+        label=above left:$\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}$
+      ] (f) at (1,0,1) {};
+      \node[
+        circle, fill, inner sep=2pt,
+        label=below:$\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$
+      ] (h) at (1,1,0) {};
+      \node[
+        circle, fill, inner sep=2pt,
+        label=below right:$\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$
+      ] (i) at (1,1,1) {};
+      \draw [dashed] (a) -- (b);
+      \draw [dashed] (a) -- (c);
+      \draw [dashed] (a) -- (e);
+      \draw (b) -- (d);
+      \draw (b) -- (f);
+      \draw (c) -- (d);
+      \draw (c) -- (h);
+      \draw (d) -- (i);
+      \draw (e) -- (f);
+      \draw (e) -- (h);
+      \draw (f) -- (i);
+      \draw (h) -- (i);
+    \end{tikzpicture}
+  \end{center}
 \end{enumerate}
 \end{document}
