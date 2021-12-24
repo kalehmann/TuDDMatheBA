@@ -402,4 +402,86 @@ anstelle von $\qty[k]$.
 
   $\Rightarrow$ \underline{$\dim \hull{v, w} = \abs{\qty\big{v, w}} = 2$}.
 \end{enumerate}
+
+\paragraph{Aufgabe 4} Sei $V$ ein Vektorraum über einen Körper $K$.
+Entscheiden Sie für jede Aussage, ob sie wahr oder falsch ist.
+Beweisen Sie die wahren Aussagen und verwenden Sie dabei nur die Definitionen
+der in der jeweiligen Aussage befindlichen Begriffe.
+Widerlegen Sie die falschen Aussagen durch ein Gegenbeispiel.
+\begin{enumerate}[(a)]
+\item Sei $n \geq 2$.
+  Dann sind $v_1, \ldots, v_n \in V$ genau dann linear abhängig, wenn mindestens
+  ein Vektor $v_i$ Linearkombination der anderen ist.
+
+  \subparagraph{Lsg.}
+  \begin{itemize}
+  \item[``$\Rightarrow$''] Seien $v_1, \ldots, v_n$ linear abhängig, dass heißt
+    es existieren $k_1, \ldots, k_n \in K$ mit $k_i \ne 0, 1 \leq i \leq n$
+    mit $k_1 \cdot v_1 + \ldots + k_n \cdot v_n = 0_V$.
+
+    Folglich ist
+    $v_i = -\frac{k_1}{k_i} \cdot v_1 - \ldots - \frac{k_n}{k_i} \cdot v_n$
+    eine Linearkombination.
+
+  \item[``$\Leftarrow$''] Sei $v_i$ eine Linearkombination der anderen Vektoren,
+    dann existieren Elemente $k_1, \ldots, k_n \in K$, so dass
+    \[
+      v_i = k_1 \cdot v_1 + \ldots + k_{i - 1} \cdot v_{i - 1} +
+      k_{i + 1} \cdot v_{i + 1} + \ldots + k_n \cdot v_n
+    \]
+    Angenommen $v_i = 0_V$, dann sind die Vektoren nach Bemerkung 3.32 (b) der
+    Vorlesung (\emph{``Seien $v_1, \ldots, v_n$ gegeben, falls $v_i = 0_V$ für
+      ein $i \in \qty\big[1, n]$, dann sind $v_1, \ldots, v_n$ linear
+      abhängig.''}) bereits linear abhängig.
+    Anderenfalls muss mindestens ein $k_i \ne 0$ sein und es folgt
+    \[
+      0_v = k_1 \cdot v_1 + \ldots + k_{i - 1} \cdot v_{i - 1} - v_i +
+      k_{i + 1} \cdot v_{i + 1} + \ldots + k_n \cdot v_n
+    \]
+    $\Rightarrow$ die Vektoren sind linear abhängig.
+  \end{itemize}
+
+\item Ist $U \subseteq W \subseteq V$ linear abhängig, so ist auch $W$ linear
+  abhängig.
+
+  \subparagraph{Lsg.} Seien $u_1, \ldots, u_n$ linear abhängig, dass heißt
+  es existieren $k_1, \ldots, k_n \in K$ mit $k_i \ne 0, 1 \leq i \leq n$
+  mit $k_1 \cdot u_1 + \ldots + k_n \cdot u_n = 0_V$ und sei
+  $U = \qty\big{u_1, \ldots, u_n}$.
+
+  Da $U$ eine Teilmenge von $W$ ist, sind  die Vektoren
+  $u_1, \ldots, u_n$ in $W$ enthalten.
+  Insbesondere ist $u_i \in W$.
+  Sei nun $W \setminus U = \qty\big{v_1, \ldots, v_w}$, dann ist
+  \[
+    k_1 \cdot u_1 + \ldots + k_i \cdot u_i + k_n \cdot u_n + 0 \cdot v_1 +
+    \ldots + 0 \cdot v_m = 0_v
+  \]
+  mit $k_i \ne 0$.
+
+  $\Rightarrow$ \underline{$W$ ist linear abhängig.}
+
+\item Ist $U \subseteq W \subseteq V$ und ist $W$ linear abhängig, so ist auch
+  $U$ linear abhängig.
+
+  \subparagraph{Lsg.} durch Gegenbeispiel.
+  Sei $V = \mathbb{R}^2$ und $W = \qty(\begin{pmatrix} 0 \\ 1 \end{pmatrix},
+  \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix})$.
+  Dann ist $W$ linear abhängig, da $\begin{pmatrix} 0 \\ 1 \end{pmatrix} +
+  \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$.
+
+  Sei nun $U = \qty(\begin{pmatrix} 0 \\ 1 \end{pmatrix},
+  \begin{pmatrix} 1 \\ 0 \end{pmatrix})$.
+  Dann ist $U$ linear unabhängig.
+
+\item Sind $v, w \in V$ linear unabhängig, so sind auch $v - w$ und $v + w$
+  linear unabhängig.
+
+  \subparagraph{Lsg.} Sei $V = \qty\big(\mathbb{Z}/2)^2$ über $\mathbb{R}$.
+  Dann sind $v = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ und
+  $w = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$
+  linear unbahängig.
+  Allerdings ist $v - w = v + w = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, ein
+  Widerspruch zu $v - w$ und $v + w$ sind linear unabhängig.
+\end{enumerate}
 \end{document}
