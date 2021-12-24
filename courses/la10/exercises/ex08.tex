@@ -363,5 +363,43 @@ anstelle von $\qty[k]$.
       \draw (h) -- (i);
     \end{tikzpicture}
   \end{center}
+
+\newpage
+\item Gegeben seien folgende Vektoren aus $\qty\big(\mathbb{Z}/2)^3$:
+  \[
+    v \coloneqq \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix},
+    w \coloneqq \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+  \]
+  Geben Sie alle Vektoren aus $\hull{v, w}$ an.
+  Welche Dimension hat der Vektorraum $\hull{v, w}$?
+
+  \subparagraph{Lsg.} $\hull{v, w}$ enthält die folgenden Vektoren:
+  \begin{flalign*}
+    0 \cdot v + 0 \cdot w &= \begin{pmatrix}
+      0 \\
+      0 \\
+      0
+    \end{pmatrix} \\
+    0 \cdot v + 1 \cdot w &= \begin{pmatrix}
+      1 \\
+      1 \\
+      1
+    \end{pmatrix} \\
+    1 \cdot v + 0 \cdot w &= \begin{pmatrix}
+      0 \\
+      1 \\
+      1
+    \end{pmatrix} \\
+    1 \cdot v + 1 \cdot w &= \begin{pmatrix}
+      1 \\
+      0 \\
+      0
+    \end{pmatrix}
+  \end{flalign*}
+
+  Die Vektoren $v$ und $w$ sind nicht linear abhängig, daher ist
+  $\qty\big{v, w}$ eine Basis von $\hull{v, w}$.
+
+  $\Rightarrow$ \underline{$\dim \hull{v, w} = \abs{\qty\big{v, w}} = 2$}.
 \end{enumerate}
 \end{document}
