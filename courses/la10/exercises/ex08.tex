@@ -34,7 +34,7 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
-\newcommand\ccg[1]{\cellcolor{green}{#1}}
+\newcommand\hull[1]{\left\langle #1 \right\rangle}
 
 \begin{document}
 \paragraph{Aufgabe 2}
@@ -138,5 +138,66 @@
 
   $\Rightarrow$ \underline{$v_1, v_2$ sind linear unabhängig, falls
     $b \ne \frac{1}{c}$}
+
+\item Finden sie einen Vektor $v \in \mathbb{R}^3$, so dass
+  \[
+    \hull{v} = \qty{
+      \begin{pmatrix}
+        x \\
+        y \\
+        z
+      \end{pmatrix}
+      \, \middle | \,
+      x - 2y = 0, z - x = 0
+    }
+  \]
+  Folgern Sie, dass die obige Menge ein Unterraum von $\mathbb{R}^3$ ist und
+  finden Sie eine Basis dieses Unterraums.
+  Geben Sie seine Dimension an.
+
+  \subparagraph{Lsg.} Sei $v = \begin{pmatrix} x_v \\ y_v \\ z_v\end{pmatrix}
+  = \begin{pmatrix} 2 \\ 1 \\ 2\end{pmatrix}$, dann  ist $x_v - 2 \cdot y_v = 0$
+  und $z_v - x_v = 0$.
+  Offensichtlich ist auch $\lambda \cdot x_v - 2 \cdot \lambda \cdot y_v = 0$
+  und $\lambda \cdot z_v - \lambda \cdot x_v = 0$ für alle
+  $\lambda \in \mathbb{R}$.
+
+  \begin{flalign*}
+    \Rightarrow &\hull{v} = \qty{
+      \begin{pmatrix}
+        x \\
+        y \\
+        z
+      \end{pmatrix}
+      \, \middle | \,
+      x - 2y = 0, z - x = 0
+    } &
+  \end{flalign*}
+
+  Es ist $0 - 2 \cdot 0 = 0$ und $0 - 0 = 0$, folglich ist
+  $0_{\mathbb{R}^3} \in \hull{v}$.
+
+  Seien nun $u, w \in \hull{v}$ beliebig.
+  Dann gilt $u_x - 2 \cdot u_y = 0$ und $w_x - 2 \cdot w_y = 0$,
+  folglich gilt auch
+  $\qty\big(u_x + w_x)- 2 \cdot \qty\big(u_y + w_y) = 0$.
+  Ebenso gilt $u_z - u_x = 0$ und $w_z - w_x = 0$, folglich auch
+  $\qty\big(u_z + w_z) - \qty\big(u_x + w_x) = 0$.
+  Somit ist auch $u + w \in \hull{v}$.
+
+  Seien nun $w \in \hull{v}, \lambda \in \mathbb{R}$ beliebig, dann ist
+  $x_w - 2 \cdot y_w = 0$, folglich ist auch
+  $\lambda \cdot x_w - 2 \cdot \lambda \cdot y_w = 0$.
+  Ebenso ist $z_w - x_w = 0$, folglich ist auch
+  $\lambda \cdot z_w - \lambda \cdot x_w = 0$.
+
+  $\Rightarrow$ \underline{$\hull{v}$ ist ein Unterraum}
+
+  Weiter ist
+  $v = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix} \ne 0_{\mathbb{R}^3}$,
+  somit ist $\qty\big{v}$ linear unabhängig.
+
+  $\Rightarrow$ \underline{$\qty\big{v}$ ist eine Basis von $\hull{v}$ und
+    $\dim \hull{v} = 1$}
 \end{enumerate}
 \end{document}
