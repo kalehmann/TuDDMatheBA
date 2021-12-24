@@ -200,4 +200,103 @@
   $\Rightarrow$ \underline{$\qty\big{v}$ ist eine Basis von $\hull{v}$ und
     $\dim \hull{v} = 1$}
 \end{enumerate}
+
+\paragraph{Aufgabe 3}
+Wir erinnern uns daran, dass $\mathbb{Z}/p$ für jede Primzahl $p$ ein Körper ist.
+In dieser Aufgabe betrachten wir Vektorräume über $\mathbb{Z}/p$ für gegebene
+Primzahlen $p$.
+Im Folgenden schreiben wir $0, 1, \ldots, p - 1$ für die korrespondierenden
+Elemente von $\mathbb{Z}/p$, d.h. für $0 \leq k \leq p - 1$ schreiben wir $k$
+anstelle von $\qty[k]$.
+\begin{enumerate}[(a)]
+\item Gegeben seien die folgenden Vektoren in $\qty\big(\mathbb{Z}/5)^3$:
+  \[
+    a \coloneqq \begin{pmatrix}
+      1 \\
+      3 \\
+      2
+    \end{pmatrix},
+    b \coloneqq \begin{pmatrix}
+      0 \\
+      1 \\
+      3
+    \end{pmatrix},
+    c \coloneqq \begin{pmatrix}
+      1 \\
+      1 \\
+      1
+    \end{pmatrix}
+  \]
+  Sind $a, b, c$ linear unabhängig?
+  Ist der Vektor $\begin{pmatrix} 1 \\ 0 \\ 2\end{pmatrix}$ in $\hull{a, b, c}$
+  enthalten?
+
+  \subparagraph{Lsg.} mittels Gleichnugssystem:
+  \begin{flalign*}
+    \qty(\begin{array}{ccc|c}
+      1 & 0 & 1 & 0 \\
+      3 & 1 & 1 & 0 \\
+      2 & 3 & 1 & 0
+    \end{array}) \overset{\substack{
+        R_2 + 2 \cdot R_1 \\
+        R_3 + 3 \cdot R_1
+    }}&\longrightarrow \qty(\begin{array}{ccc|c}
+      1 & 0 & 1 & 0 \\
+      0 & 1 & 3 & 0 \\
+      0 & 3 & 4 & 0
+    \end{array}) \\
+    \overset{\substack{
+        R_3 + 2 \cdot R_2 \\
+    }}&\longrightarrow \qty(\begin{array}{ccc|c}
+      1 & 0 & 1 & 0 \\
+      0 & 1 & 3 & 0 \\
+      0 & 0 & 0 & 0
+    \end{array})
+  \end{flalign*}
+  $\Rightarrow$ es gibt mehr als eine Lösung für
+  $\lambda_1 \cdot a + \lambda_2 \cdot b + \lambda_3 \cdot c = 0$.
+
+  $\Rightarrow$ \underline{die Vektoren sind linear abhängig.}
+
+  So lässt sich $c$ als Linearkombination aus $a$ und $b$ darstellen mit
+  \[
+    \begin{pmatrix} 1 \\ 3 \\ 2 \end{pmatrix} +
+    3 \cdot \begin{pmatrix} 0 \\ 1 \\ 3 \end{pmatrix}
+    = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+  \]
+
+  \newpage
+  Ob der Vektor $\begin{pmatrix} 1 \\ 0 \\ 2\end{pmatrix}$ in $\hull{a, b, c}$
+  enthalten ist lässt sich mittels eines Gleichungssystems prüfen:
+
+  \begin{flalign*}
+    \qty(\begin{array}{ccc|c}
+      1 & 0 & 1 & 1 \\
+      3 & 1 & 1 & 0 \\
+      2 & 3 & 1 & 2
+    \end{array}) \overset{\substack{
+        R_2 + 2 \cdot R_1 \\
+        R_3 + 3 \cdot R_1
+    }}&\longrightarrow \qty(\begin{array}{ccc|c}
+      1 & 0 & 1 & 0 \\
+      0 & 1 & 3 & 2 \\
+      0 & 3 & 4 & 0
+    \end{array}) \\
+    \overset{\substack{
+        R_3 + 2 \cdot R_2 \\
+    }}&\longrightarrow \qty(\begin{array}{ccc|c}
+      1 & 0 & 1 & 0 \\
+      0 & 1 & 3 & 2 \\
+      0 & 0 & 0 & 4
+    \end{array})
+  \end{flalign*}
+  Die dritte Reihe ist nun mit
+  $\lambda_1 \cdot 0 + \lambda _2 \cdot 0 + \lambda_3 \cdot 0 + 4$
+  nicht lösbar.
+
+  $\Rightarrow$ \underline{Der Vektor}
+  $\begin{pmatrix} 1 \\ 0 \\ 2\end{pmatrix}$
+  \underline{ist nicht in $\hull{a, b, c}$ enthalten}
+
+\end{enumerate}
 \end{document}
