@@ -212,4 +212,51 @@ Körper $K$ und sei $n \coloneqq \dim_K\qty\big(V)$.
     = \qty{\begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}}$
   \end{itemize}
 \end{enumerate}
+
+\paragraph{Aufgabe 4}
+Seien $V$ ein Vektorraum über einem Körper $K$ und seien $v_i, i \in I$ Elemente
+aus $V$ (für eine Indexmenge $I$).
+Sei
+\[
+  \phi \colon \mathcal{P}\qty\big(I) \to \mathcal{P}\qty\big(V),
+  J \mapsto \hull{v_j \,\middle|\, j \in J}
+\]
+\begin{enumerate}[(a)]
+\item Man zeige, dass die folgenden Aussagen äquivalent sind:
+  \begin{enumerate}[(i)]
+  \item Die Vektoren $v_i$ für $i \in I$ sind linear unabhängig.
+  \item $\phi$ ist injektiv.
+  \end{enumerate}
+
+  \subparagraph{Lsg.}
+  \begin{itemize}
+  \item[``$\Rightarrow$''] Seien $v_i, i \in I$ linear unabhängig.
+    Angenommen $\phi$ ist nicht injektiv, dann existieren Teilmengen
+    $J \subseteq I$ und $K \subseteq I$ mit $J \ne K$ und
+    $\phi\qty\big(J) = \phi\qty\big(K)$, dass heißt
+    \[
+      \hull{v_j \, \middle| \, j \in J} = \hull{v_k \, \middle| \, k \in K}
+    \]
+    Aus $v_i, i \in I$ linear unabhängig und $J \subseteq I$ folgt
+    $v_j, j \in J$ ist linear unabhängig.
+    Folglich ist $\qty\big{v_j {\big |} j \in J}$ eine Basis von
+    $\hull{v_k \, \middle| \, k \in K}$.
+
+    $\Rightarrow$ die Elemente $v_k, k \in K$ lassen sich als Linearkombinationen
+    von $v_j, j \in J$ darstellen - ein Widerspruch zu $J \ne K \subseteq I$ und
+    $v_i, i \in I$ sind linear unabhängig.
+
+  \item[``$\Leftarrow$''] Angenommen $v_i, i \in I$ wären linear abhängig,
+    dann existiert (mindestens) ein $j \in I$, so dass $v_j$ als
+    Linearkombination der übrigen $v_i$ darstellbar ist.
+
+    Sei nun $K = I \setminus \qty\big{j}$.
+    Dann ist
+    $\hull{v_k \, \middle | \, k \in K} = \hull{v_i \, \middle | \, i \in I}$
+
+    $\Rightarrow$ $\phi\qty\big(K) = \phi\qty\big(I)$, ein Widerspruch
+    zu $\phi$ ist injektiv.
+  \end{itemize}
+\end{enumerate}
+
 \end{document}
