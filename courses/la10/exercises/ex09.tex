@@ -107,4 +107,109 @@ und
     Sei $W$ ein Untervektorraum von $V$ mit $\dim\qty\big(W) = \dim\qty\big(V)$.
     Dann gilt $W = V$''}) folgt $U + W = \mathbb{R}^3$.
 \end{enumerate}
+
+\paragraph{Aufgabe 3} Sei $V$ ein endlich-dimensionaler Vektorraum über einem
+Körper $K$ und sei $n \coloneqq \dim_K\qty\big(V)$.
+\begin{enumerate}[(a)]
+\item Beweisen Sie, dass für jedes $k \in \mathbb{N}$ mit $k \leq n$ ein
+  Unterraum $U_K$ von $V$ mit $\dim_k\qty\big(U_K) = k$ existiert.
+
+  \subparagraph{Lsg.} Nach Korollar 3.46 der Vorlesung (\emph{``Falls $V$ ein
+    endlich-dimensionaler Vektorraum ist, so existiert eine Basis von $V$ mit
+    nur endlich vielen Elementen''}) besitzt $V$ mindestens eine Basis.
+
+  Sei nun $X$ eine Basis von $V$.
+  Dann ist $X$ als Basis linear unabhängig und
+  $\abs\big{X} = \dim_K\qty\big(V) = n$.
+  Für jedes $k \in \mathbb{N}$ mit $k \leq n$ existiert
+  eine Teilmenge $Y \subseteq X$ mit $\abs{Y} = k$.
+
+  $Y$ ist als Teilmenge der linear unabhängigen Menge $X$ ebenfalls linear
+  unabhängig.
+  Weiterhin ist $Y$ die Basis von $U_k = \hull{Y}$ und $U_k$ ist nach Lemma 3.24
+  der Vorlesung (\emph{``Die Menge $\hull{X}$ ist der kleinste Unterraum von
+    $V$, der $X$ enthält.''}) ein Unterraum von $V$.
+  Da $Y$ genau $k$-Elemente hat, ist $U_k$ $k$-dimensional.
+
+\item Geben Sie alle Unterräume von $\qty\big(\mathbb{F}_2)^3$, wobei
+  $\mathbb{F}_2 = \mathbb{Z}/2$ sei, nach der Dimension geordnet an.
+
+  \subparagraph{Lsg.} Der Raum $\qty\big(\mathbb{F}_2)^3$ hat folgende
+  Unterräume:
+  \begin{itemize}
+  \item[$3$-dimensional:] $\qty\big(\mathbb{F}_2)^3$
+  \item[$2$-dimensional:]
+    \[
+      \left\langle
+        \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix},
+        \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+      \right\rangle,
+      \left\langle
+        \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix},
+        \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+      \right\rangle,
+      \left\langle
+        \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+      \right\rangle,
+    \]
+    \[
+      \left\langle
+        \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix},
+        \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}
+      \right\rangle,
+      \left\langle
+        \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}
+      \right\rangle,
+      \left\langle
+        \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
+      \right\rangle,
+      \left\langle
+        \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
+      \right\rangle
+    \]
+
+  \newpage
+  \item[$1$-dimensional:]
+    \[
+      \qty{
+        \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}
+      },
+      \qty{
+        \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+      },
+      \qty{
+        \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
+      },
+      \qty{
+        \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+      },
+    \]
+    \[
+      \qty{
+        \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}
+      },
+      \qty{
+        \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}
+      },
+      \qty{
+        \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+      }
+    \]
+
+  \item[$0$-dimensional:]
+    $\hull{\emptyset} = \qty{0_{\qty\big(\mathbb{F}_2)^3}}
+    = \qty{\begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}}$
+  \end{itemize}
+\end{enumerate}
 \end{document}
