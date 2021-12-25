@@ -1,0 +1,110 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 09\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\hull[1]{\left\langle #1 \right\rangle}
+
+\begin{document}
+\paragraph{Aufgabe 2} Seien
+\[
+  W \coloneqq \qty{
+    \begin{pmatrix} x \\ y \\ z \end{pmatrix} \in \mathbb{R}^3
+    \, \middle | \,
+    x + y - 5z = 0
+  }
+\]
+und
+\[
+  U \coloneqq \hull{e_1, e_2} \text{ mit }
+  e_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+  \text{ und }
+  e_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+\]
+\begin{enumerate}[(a)]
+\item Finden Sie Vektoren $w_1, w_2 \in \mathbb{R}^3$ mit $W = \hull{w_1, w_2}$.
+  Folgern Sie, dass $W$ ein Unterraum von $\mathbb{R}^3$ ist.
+  Bestimmen Sie eine Basis von $W$ und geben Sie $\dim_{\mathbb{R}}\qty\big(W)$ an.
+
+  \subparagraph{Lsg.} Seien $W_1 = \begin{pmatrix} 5 \\ 0 \\ 1 \end{pmatrix}$
+  und $w_2 = \begin{pmatrix} 0 \\ 5 \\ 1 \end{pmatrix}$.
+  Aus Lemma 3.24 der Vorlesung (\emph{``Die Menge $\hull{X}$ ist der kleinste
+    Untervektorraum von $V$, der $X$ enthält, dass heißt $X$ ist ein Unter-
+    vektorraum.''}) folgt, dass $\hull{w_1, w_2}$ ein Unterraum ist.
+  Aus $w_1$ und $w_2$ sind linear unabhängig folgt, dass $\qty\big{w_1, w_2}$
+  eine Basis von $\hull{w_1, w_2} = W$ ist.
+
+  $\Rightarrow$ $\dim_{\mathbb{R}}\qty\big(W) = \abs{\qty\big{w_1, w_2}} = 2$
+
+\item Geben Sie $\dim_{\mathbb{R}}\qty\big(U)$ an.
+
+  \subparagraph{Lsg.} Offensichtlich ist
+  \[
+    k_1 \cdot \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} +
+    k_2 \cdot \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} = 0
+    \iff k_1  = k_2 = 0
+  \]
+  $\Rightarrow$ $e_1$ und $e_2$ sind linear unabhängig.
+
+  Da $U$ von $e_1$ und $e_2$ aufgespannt wird, ist $\qty\big{e_1, e_2}$ eine
+  Basis von $U$.
+
+  $\Rightarrow \dim_{\mathbb{R}}\qty\big(U) = \abs{\qty\big{e_1, e_2}} = 2$
+
+\item Beschreiben Sie $W \cap U$.
+  Bestimmen Sie eine Basis von $W \cap U$ und geben Sie
+  $\dim_{\mathbb{R}}\qty\big(W \cap U)$ an.
+
+  \subparagraph{Lsg.} $W \cap U = \qty{\begin{pmatrix} x \\ y \\ 0 \end{pmatrix}
+    \in \mathbb{R}^3 \, \middle | \, x + y = 0}$.
+  Es ist $\qty{\begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}}$ eine Basis von
+  $W \cap U$.
+
+  $\Rightarrow$ \underline{$\dim_{\mathbb{R}}\qty\big(W \cap U) = 2$}
+
+\newpage
+\item Beweisen Sie mithilfe der Dimensionsformel (Lemma 3.60), dass
+  $W + U = \mathbb{R}^3$ gilt.
+
+  \subparagraph{Lsg.} Nach Lemma 3.60 der Vorlesung (\emph{``Sei $V$
+    endlich-dimensional und seien $W_1$ und $W_2$ beides Untervektorräume von
+    $V$.
+    Dann gilt $\dim\qty\big(W_1 + W_2) = \dim\qty\big(W_1) + \dim\qty\big(W_2)
+    - \dim\qty\big(W_1 \cap W_2)$''}) folgt $\dim\;ty\big(U + W) = 3$.
+  Aus Korollar 3.59 der Vorlesung (\emph{``Sei $V$ endlich-dimensional.
+    Sei $W$ ein Untervektorraum von $V$ mit $\dim\qty\big(W) = \dim\qty\big(V)$.
+    Dann gilt $W = V$''}) folgt $U + W = \mathbb{R}^3$.
+\end{enumerate}
+\end{document}
