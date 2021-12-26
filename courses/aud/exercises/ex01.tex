@@ -34,8 +34,8 @@
 \rfoot{Seite \thepage}
 
 \begin{document}
-\paragraph{Definitionen}
-\,\\
+\paragraph{Aufgabe 1} Finden Sie die Definitionen der folgenden Begriffe:
+
 \begin{tabular}{l l}
   \textbf{Syntax} & umfasst Regeln zur Kombination von Zeichen. \\
   \textbf{Semantik} & ist die Theorie der Bedeutung von Zeichen. \\
@@ -49,4 +49,28 @@
   \textbf{Stern $L^*$ einer formalen Sprache $L$} & die Menge von Wörter der formalen Sprache $L$. \\
 \end{tabular}
 
+\paragraph{Aufgabe 2} Sei $\Sigma = \qty\big{1, 2, a, b}$.
+Geben Sie einige Wörter über $\Sigma$ an.
+Setzen Sie diese Wörter in Beziehung zu $\Sigma^*$ und geben Sie einige Elemente
+von $\mathcal{P}\qty\big(\Sigma^*)$ an.
+
+\subparagraph{Lsg.} Es sind zum Beispiel \emph{aa12}, \emph{ab12} und \emph{1a}
+Wörter über $\Sigma$.
+Für diese Wörter gilt \emph{aa12} $\in \Sigma^*$, \emph{ab12} $\in \Sigma^*$ und
+\emph{1a} $\in \Sigma^*$.
+Elemente aus $\mathcal{P}\qty\big(\Sigma^*)$ sind zum Beispiel
+$\qty\big{\emph{1a}, \emph{1122}}$ oder $\qty\big{\epsilon}$.
+
+\paragraph{Aufgabe 3} Gegeben seien die Sprachen $L_1 = \qty\big{a}$,
+$L_2 = \qty\big{b}$, $L_3 = \qty\big{a, ba}$.
+Ermitteln Sie das Ergebnis der folgenden Ausdrücke''
+\begin{enumerate}[(a)]
+\item $L_1 \cdot L_2 \cdot L_3 = \qty\big{aba, abba}$
+\item $L_1^* = \qty\big{\epsilon, a, aa, \ldots}$
+\item $L_3^* = \qty\big{\epsilon, a, ba, aa, aba, baa, baba, \ldots}$
+\item $L_2^* \cdot L_1 = \qty\big{a, ba, bba, \ldots}$
+\item $\mathcal{P}\qty\big(L_1^*)
+  = \qty\big{\emptyset, \qty{\epsilon}, \qty{a}, \qty{\epsilon, a}, \qty{aa},
+      \qty{\epsilon, a, aa}, \ldots, L_1^*}$
+\end{enumerate}
 \end{document}
