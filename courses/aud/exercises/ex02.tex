@@ -20,6 +20,7 @@
 \usetikzlibrary{intersections}
 \usetikzlibrary{patterns}
 \usetikzlibrary{positioning}
+\usetikzlibrary{shapes.misc}
 \usepgfplotslibrary{fillbetween}
 
 \author{Karsten Lehmann}
@@ -272,11 +273,152 @@ gegeben, $S$ ist das Startdiagramm: \\
   \begin{tikzpicture}
     \node at (0, 0) {C};
     \node[circle, draw] (c) at (2, -1) {c};
-    \node[circle, draw, right = 0.5 of c] (d1) {d};
+    \node[draw, rectangle, right = 0.5 of c] (C) {C};
+    \node[circle, draw, right = 0.5 of C] (d1) {d};
     \node[circle, draw, right = 0.5 of d1] (d2) {d};
-    \draw (0, -1) -- (c) -- (d1) -- (d2) -- ++(2, 0);
+    \draw (0, -1) -- (c) -- (C) -- (d1) -- (d2) -- ++(2, 0);
     \draw (1, -1) .. controls ++(0.4,0) and ++(-0.8,0) .. ++(.8, -1.05)
-      -- ++(3, 0) .. controls ++(0.8,0) and ++(-0.4,0) .. ++(.8, 1.05);
+      -- ++(4, 0) .. controls ++(0.8,0) and ++(-0.4,0) .. ++(.8, 1.05);
+  \end{tikzpicture}
+\end{enumerate}
+
+\paragraph{Aufgabe 2} Gegeben Sei die EBNF-Definition
+$\varepsilon = \qty\big(V, \Sigma, A, R)$ mit $V = \qty\big{A, B, C}$,
+$\Sigma = \qty\big{a, b, c, d}$ und
+\[
+  R = \qty\big{
+    A \Coloneqq BC,
+    B \Coloneqq \hat{(}aBc \,\hat{|}\, \hat{\{}b\hat{\}}\hat{)},
+    C \Coloneqq d \hat{[} C \hat{]} c
+  }
+\]
+\begin{enumerate}[(a)]
+\item Übersetzen Sie $\varepsilon$ gemäß der Übersetzungsvorschrift \emph{trans}
+  aus der Vorlesung in ein System von Syntaxdiagrammen und geben Sie das
+  Startdiagramm an.
+
+  \subparagraph{Lsg.} Das Startdiagramm ist \emph{A}: \\
+  \begin{tikzpicture}
+    \node at (0, 0) {A};
+    \node[draw, rounded rectangle] (A1) at (2, -1) {$\emph{trans}(BC)$};
+    \draw (0, -1) -- (A1) -- ++(2, 0);
+    \node[draw, rounded rectangle] (A2_1) at (2, -2) {$\emph{trans}(B)$};
+    \node[draw, rounded rectangle] (A2_2) at (4, -2) {$\emph{trans}(C)$};
+    \draw (0, -2) -- (A2_1) -- (A2_2) -- ++(2, 0);
+    \node[draw, rectangle] (A3_1) at (1, -3) {B};
+    \node[draw, rectangle, right = 0.5 of A3_1] (A3_2) {C};
+    \draw (0, -3) -- (A3_1) -- (A3_2) -- ++(1, 0);
+  \end{tikzpicture}
+
+  \begin{tikzpicture}
+    \node at (0, 0) {B};
+    \node[draw, rounded rectangle] (B1) at (2, -1) {$\emph{trans}(\hat{(}aBc \,\hat{|}\, \hat{\{}b\hat{\}}\hat{)})$};
+    \draw (0, -1) -- (B1) -- ++(2, 0);
+
+    \node[draw, rounded rectangle] (B2_1) at (2.5, -2) {$\emph{trans}(aBc)$};
+    \node[draw, rounded rectangle] (B2_2) at (2.5, -3) {$\emph{trans}(\hat{\{}b\hat{\}})$};
+    \draw (0, -2) -- (B2_1) -- ++(2.5, 0);
+    \draw (0.75, -2) .. controls ++(0.5,0) and ++(-1.8,0) .. (B2_2)
+      .. controls ++(1.8,0) and ++(-0.5,0) .. ++(1.8, 1);
+
+    \node[draw, rounded rectangle] (B3_1) at (2.5, -4) {$\emph{trans}(a)$};
+    \node[draw, right = 0.5 of B3_1, rounded rectangle] (B3_2) {$\emph{trans}(B)$};
+    \node[draw, right = 0.5 of B3_2, rounded rectangle] (B3_3) {$\emph{trans}(c)$};
+    \node[below = 1.35 of B3_2, draw, rounded rectangle] (B3_4) {$\emph{trans}(b)$};
+    \draw (0, -4) -- (B3_1) -- (B3_2) -- (B3_3) -- ++(2.5, 0);
+    \draw (0.75, -4) .. controls ++(0.8,0) and ++(-0.8,0) .. ++(0.8, -1) -- ++(6.5, 0)
+      .. controls ++(0.8,0) and ++(-0.8,0) .. ++(0.8, 1);
+    \draw (3.5, -5) .. controls ++(-0.4,0) and ++(0,0.4) .. ++(-0.5, -0.5)
+      .. controls ++(0, -0.4) and ++(-0.4, 0) .. ++(+0.5, -0.5) -- (B3_4);
+    \draw (6, -5) .. controls ++(0.4,0) and ++(0,0.4) .. ++(0.5, -0.5)
+      .. controls ++(0, -0.4) and ++(0.4, 0) .. ++(-0.5, -0.5) -- (B3_4);
+
+    \node[circle, draw] (B4_1) at (1.5, -7) {a};
+    \node[draw, right = 0.5 of B4_1, rectangle] (B4_2) {B};
+    \node[circle, draw, right = 0.5 of B4_2] (B4_3) {c};
+    \node[below = 0.8 of B4_2, circle, draw] (B4_4) {b};
+    \draw (0, -7) -- (B4_1) -- (B4_2) -- (B4_3) -- ++(1.5, 0);
+    \draw (0.5, -7) .. controls ++(0.8,0) and ++(-0.8,0) .. ++(0.8, -.7) -- ++(2.5, 0)
+      .. controls ++(0.8,0) and ++(-0.8,0) .. ++(0.8, .7);
+    \draw (2, -7.7) .. controls ++(-0.4,0) and ++(0,0.4) .. ++(-0.5, -0.35)
+      .. controls ++(0, -0.4) and ++(-0.4, 0) .. ++(+0.5, -0.35) -- (B4_4);
+    \draw (3.2, -7.7) .. controls ++(0.4,0) and ++(0,0.4) .. ++(0.5, -0.35)
+      .. controls ++(0, -0.4) and ++(0.4, 0) .. ++(-0.5, -0.35) -- (B4_4);
+  \end{tikzpicture}
+
+  \begin{tikzpicture}
+    \node at (0, 0) {C};
+    \node[draw, rounded rectangle] (C1) at (2, -1) {$\emph{trans}(d\hat{[}C\hat{]}c)$};
+    \draw (0, -1) -- (C1) -- ++(2, 0);
+    \node[draw, rounded rectangle] (C2_1) at (2, -2) {$\emph{trans}(d)$};
+    \node[draw, rounded rectangle] (C2_2) at (4.5, -2) {$\emph{trans}(\hat{[}C\hat{]})$};
+    \node[draw, rounded rectangle] (C2_3) at (7, -2) {$\emph{trans}(c)$};
+    \draw (0, -2) -- (C2_1) -- (C2_2) -- (C2_3) -- ++(2, 0);
+    \node[circle, draw] (d1) at (1, -3) {d};
+    \node[draw, rounded rectangle] (C3) at (3, -3) {$\emph{trans}(C)$};
+    \node[circle, draw, right = of C3] (c1) {c};
+    \draw (0, -3) -- (d1) -- (C3) -- (c1) -- ++(1, 0);
+    \draw (1.5, -3) .. controls ++(0.4,0) and ++(-0.8,0) .. ++(.8, -1.05)
+      -- ++(1.5, 0) .. controls ++(0.8,0) and ++(-0.4,0) .. ++(.8, 1.05);
+    \node[circle, draw] (d2) at (1, -5) {d};
+    \node[draw, rectangle, right = of d2] (C4) {C};
+    \node[circle, draw, right = of C4] (c2) {c};
+    \draw (0, -5) -- (d2) -- (C4) -- (c2) -- ++(1, 0);
+    \draw (1.5, -5) .. controls ++(0.4,0) and ++(-0.8,0) .. ++(.8, -1.05)
+      -- ++(0.5, 0) .. controls ++(0.8,0) and ++(-0.4,0) .. ++(.8, 1.05);
+  \end{tikzpicture}
+
+\item Welche Sprache beschreibt $\varepsilon$?
+  Geben Sie diese Sprache in Mengenschreibweise an.
+
+  \subparagraph{Lsg.} Das Terminalsymbol \emph{b} kann gar nicht oder beliebig
+  oft durchlaufen werden.
+  Weiter werden in dem Syntaxdiagramm \emph{B} die beiden Terminalsymbole
+  \emph{a} und \emph{c} sowie in dem syntaxdiagramm \emph{C} die beiden
+  Terminalsymbole \emph{d} und \emph{c} jeweils gleich oft und mindestens einmal
+  durchlaufen.
+
+  Somit beschreibt $\varepsilon$ die Sprache
+  $L = \qty\big{a^ib^nc^id^kc^k \,{\big |}\, i, k \geq 1, n \geq 0}$
+
+\newpage
+\item Gegeben sei die Sprache
+  $L = \qty\big{a^{n + l}cb^n\qty(cd)^l {\big |} n, l \in \mathbb{N}, n \geq 1}$.
+  Geben Sie eine EBNF-Definition $\varepsilon'$ für die Sprache $L$ an.
+
+  \subparagraph{Lsg.} Es ist $\varepsilon' = \qty\big(V, \Sigma, A, R)$ mit
+  $V=\qty\big{A, B}$, $\Sigma = \qty\big{a, b, c, d}$ und
+  \[
+    R = \qty\big{
+      A \Coloneqq \hat{\big (}B \,\hat{\big |}\, aAcd\hat{\big )},
+      B \Coloneqq a\hat{(} B \,\hat{|}\, c \hat{)}b
+    }
+  \]
+
+  Oder alternativ als System von Syntaxdiagrammen mit dem Startdiagramm A:
+
+  \begin{tikzpicture}
+    \node at (0, 0) {A};
+    \node[circle, draw] at (2, -1) (a) {a};
+    \node[draw, rectangle, right = 0.5 of a] (A) {A};
+    \node[circle, draw, right = 0.5 of A] (c) {c};
+    \node[circle, draw, right = 0.5 of c] (d) {d};
+    \node[above = 0.5 of a, draw, rectangle] (B) {B};
+    \draw (0, -1) -- (a) -- (A) -- (c) -- (d) -- ++(2, 0);
+    \draw (0.5, -1) .. controls ++(0.5, 0) and ++(-0.5, 0) .. ++(0.5, 1.1) -- (B);
+    \draw (B) -- ++(4, 0) .. controls ++(0.5, 0) and ++(-0.5, 0) .. (6.5, -1);
+  \end{tikzpicture}
+
+  \begin{tikzpicture}
+    \node at (0, 0) {B};
+    \node[circle, draw] at (1, -1) (a) {a};
+    \node[circle, draw, right = of a] (c) {c};
+    \node[circle, draw, right = of c] (b) {b};
+    \node[above = 0.5 of c, draw, rectangle] (B) {B};
+
+    \draw (0, -1) -- (a) -- (c) -- (b) -- ++(1, 0);
+    \draw (1.5, -1) .. controls ++(0.5, 0) and ++(-0.5, 0) .. ++(0.5, 1.07) -- (B);
+    \draw (B) -- +(0.5, 0) .. controls ++(0.5, 0) and ++(-0.5, 0) .. ++(1, -1.07);
   \end{tikzpicture}
 \end{enumerate}
 \end{document}
