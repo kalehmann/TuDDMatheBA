@@ -204,9 +204,10 @@
       \end{pmatrix}
       \overset{f}&\longrightarrow
       \begin{pmatrix}
-        \qty\big{a} \cdot \qty\big{aaaa, aba, aa, bb, b, \varepsilon} \cdot \qty\big{a} \cup
-        \qty\big{bbb, bb, b, \varepsilon} \\
-        \qty\big{b} \cdot \qty\big{bbb, bb, b, \varepsilon} \cup \qty\big{\varepsilon}
+        \qty\big{a} \cdot \qty\big{aaaa, aba, aa, bb, b, \varepsilon}
+        \cdot \qty\big{a} \cup \qty\big{bbb, bb, b, \varepsilon} \\
+        \qty\big{b} \cdot \qty\big{bbb, bb, b, \varepsilon}
+        \cup \qty\big{\varepsilon}
       \end{pmatrix} \\
       &= \begin{pmatrix}
         \qty\big{aaaaaa, aabaa, aaaa, abba, aba, aa, bbb, bb, b, \varepsilon} \\
@@ -222,4 +223,46 @@
     \,{\big |}\, m,n \geq 0}$
 \end{enumerate}
 
+\newpage
+\paragraph{Aufgabe 2}
+Sei $\varepsilon = \qty\big(V, \Sigma, S, R)$ eine EBNF-Definition mit
+$V = \qty\big{S}, \Sigma = \qty\big{a, b}$ und
+$R = \qty\big{
+  S \Coloneqq \hat{\big (} aSa \,\hat{\big |}\, \hat{[}b\hat{]}\hat{\big )}
+}$.
+Weiterhin sei $p \colon V \to \mathcal{P}\qty\big(\Sigma^*)$, sodass
+\[
+  p\qty\big(S) = \qty\big{
+    a^nwa^n \,{\big |}\, n \geq 0, w \in \qty\big{\varepsilon, b}
+  }
+\]
+Zeigen Sie, dass ${\big \llbracket}
+\hat{\big (} aSa \,\hat{\big |}\, \hat{[}b\hat{]}\hat{\big )}
+{\big \rrbracket}\qty\big(p) = p\qty\big(S)$ gilt.
+
+\subparagraph{Lsg.} Es ist
+\begin{flalign*}
+  {\big \llbracket}
+    \hat{\big (} aSa \,\hat{\big |}\, \hat{[}b\hat{]}\hat{\big )}
+  {\big \rrbracket}\qty\big(p) &=
+  \llbracket aSa \rrbracket\qty\big(p) \cup
+  \llbracket \hat{[}b\hat{]} \rrbracket\qty\big(p) \\
+  &= \qty\big{a} \cdot p\qty\big(S) \cdot \qty\big{a} \cup
+  \qty\big{b} \cup \qty\big{\varepsilon} \\
+  &= \qty\big{a} \cdot \qty\big{
+    a^nwa^n \,{\big |}\, n \geq 0, w \in \qty\big{\varepsilon, b}
+  } \cdot \qty\big{a} \cup
+  \qty\big{b, \varepsilon} \\
+  &= \qty\big{
+    a^{n+1}wa^{n+1} \,{\big |}\, n \geq 0, w \in \qty\big{\varepsilon, b}
+  } \cup \qty\big{b, \varepsilon} \\
+  &= \qty\big{
+    a^nwa^n \,{\big |}\, n \geq 1, w \in \qty\big{\varepsilon, b}
+  } \cup \qty\big{
+    a^0wa^0 \,{\big |}\, w \in \qty\big{\varepsilon, b}
+  } \\
+  &= \qty\big{
+    a^nwa^n \,{\big |}\, n \geq 0, w \in \qty\big{\varepsilon, b}
+  } = p\qty\big(S) \\
+\end{flalign*}
 \end{document}
