@@ -1,0 +1,225 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{stmaryrd}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.misc}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 03\\Algorithmen und Datenstrukturen}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 1}
+\begin{enumerate}[(a)]
+\item Sei $\Sigma = \qty\big{a, b, c}$.
+  Geben Sie die Mengen $V$ und $R$ einer EBNF-Definition
+  $\varepsilon = \qty\big(V, \Sigma, S, R)$ an, so dass
+  $W\qty\big(\varepsilon, S) = \qty\big{a^kb^lc^{2k}c^m \,{\big |}\,
+    k \geq 1, l \geq m \geq 0}$ gilt.
+
+  \subparagraph{Lsg.} $W\qty\big(\varepsilon, S) = \qty\big{a^kb^lc^{2k}c^m
+    \,{\big |}\, k \geq 1, l \geq m \geq 0}$ ist äquivalent zu \\
+  $W\qty\big(\varepsilon, S) = \qty\big{a^kb^lc^mc^{2k} \,{\big |}\,
+    k \geq 1, l \geq m \geq 0}$.
+  Somit ist
+  \[
+    R = \qty{
+      S \Coloneqq a\hat{\Big(} S\,\hat{\Big|}\, \hat{\big\{} b \hat{[}c\hat{]}\hat{\big\}}\hat{\Big)}cc
+    }, V = \qty\big{ S }
+  \]
+
+  Alternativ als Syntaxdiagramm \\
+  \begin{tikzpicture}
+    \node at (0, 0) {S};
+    \node[circle, draw] (a) at (1, -1) {a};
+    \node[draw, rectangle, right = 1.5 of a] (S) {S};
+    \node[circle, draw, right = 2.5 of S] (c1) {c};
+    \node[circle, draw, right = 0.5 of c1] (c2) {c};
+    \node[below = 1.5 of S, circle, draw] (b) {b};
+    \node[circle, draw, right = 0.5 of b] (c3) {c};
+    \draw (0,-1) -- (a) -- (S) -- (c1) -- (c2) -- ++(1, 0);
+    \draw (1.5,-1) .. controls ++(0.5,0) and ++(-0.5,0) .. ++(0.5,-1)
+      -- ++(3, 0) .. controls ++(0.5,0) and ++(-0.5,0) .. ++(0.5,1);
+    \draw (2.5, -2) .. controls ++(-0.3,0) and ++(0,0.3) .. ++(-0.3,-0.3)
+      -- ++(0,-0.55) .. controls ++(0,-0.3) and ++(-0.3,0) .. ++(0.3,-0.3)
+      -- (b) -- (c3) -- ++(0.5,0)
+      .. controls ++(0.3,0) and ++(0,0.3) .. ++(0.3,0.3) -- ++(0,0.55)
+      .. controls ++(0,-0.3) and ++(0.3,0) .. ++(-0.3,0.27);
+    \draw (3.6, -3.12) .. controls ++(0.5,0) and ++(-0.5,0) .. ++(0.5,0.7)
+      -- ++(0.25,0) .. controls ++(0.5,0) and ++(-0.5,0) .. ++(0.5,-0.7);
+    \end{tikzpicture}
+
+\item Sei $\Sigma' = \qty\big{a, b}$ und
+  $\varepsilon' = \qty\big(V', \Sigma', X, R')$ eine EBNF-Definition mit
+  $V' = \qty\big{X, Y}$ sowie
+  \[
+    R' = \qty\big{
+      X \Coloneqq \hat{(}aXa \,\hat{|}\, Y \hat{)},
+      Y \Coloneqq \hat{[}bY\hat{]}
+    }
+  \]
+  \begin{enumerate}[(1)]
+  \item Geben Sie die für die Fixpunktsemantik von $\varepsilon'$ zu iterierende
+    Funktion $f$ an.
+  \item Dokumentieren Sie vier Iterationsschritte der Fixpunktsemantik von
+    $\varepsilon'$.
+  \end{enumerate}
+
+  \subparagraph{Lsg.} Es bezeichnet \\
+  \begin{tabular}{cl}
+    $\Sigma$
+      & die Menge an Terminalsymbolen / ein Alphabet \\
+    $\Sigma^*$
+      & die Menge aller Wörter (endlichen Folgen von Symbolen aus $\Sigma$) \\
+    $V$
+      & die Menge der syntaktischen Variablen der EBNF-Definition \\
+    $R$
+      & die Menge der EBNF-Regeln \\
+    $T\qty\big(\Sigma, V)$
+      & die Menge an EBNF-Termen über $V$ und $\Sigma$ \\
+    $\mathcal{P}\qty\big(\Sigma^*)$
+      & die Potenzmenge (Menge aller Teilmengen) von $\Sigma^*$ \\
+    $\varepsilon$
+      & das leere Wort / die Kombination von Terminalsymbolen mit der Länge 0.
+  \end{tabular}
+  \begin{enumerate}[(1)]
+  \item Gesucht wird eine Funktion, die zwei Funktionen
+    \[
+      \llbracket\cdot\rrbracket \colon
+      T\qty\big(\Sigma, V) \to \qty\Big(
+        \qty\big(V \to \mathcal{P}\qty\big(\Sigma^*)) \to
+        \mathcal{P}\qty\big(\Sigma^*)
+      )
+    \]
+    - also Funktionen, die einen EBNF-Term auf eine Funktion, die eine
+    Abbildung einer syntaktischen Variable auf eine Teilmenge von
+    $\mathcal{P}\qty\big(\Sigma^*)$ nach einer Teilmenge von
+    $\mathcal{P}\qty\big(\Sigma^*)$ abbildet - zusammenfasst.
+
+    Sei nun $p \colon V \to \mathcal{P}\qty\big(\Sigma^*)$ eine beliebige
+    Funktion.
+    \begin{flalign*}
+      \llbracket \hat{(}aXa \,\hat{|}\, Y \hat{)} \rrbracket\qty\big(p) &=
+      \llbracket aXa \rrbracket\qty\big(p) \cup
+      \llbracket Y \rrbracket\qty\big(p) \\
+      &= \qty\big{a} \cdot p\qty\big(X) \cdot \qty\big{a} \cup p\qty\big(Y) \\
+      \llbracket \hat{[}bY\hat{]} \rrbracket\qty\big(p)
+      &= \llbracket bY \rrbracket\qty\big(p) \cup \qty\big{\varepsilon} \\
+      &= \qty\big{b} \cdot p\qty\big(Y) \cup \qty\big{\varepsilon}
+    \end{flalign*}
+
+    Nun ist
+    \[
+      f\qty\big(p) = \begin{pmatrix}
+        \llbracket \hat{(}aXa \,\hat{|}\, Y \hat{)} \rrbracket\qty\big(p) \\
+        \llbracket bY \rrbracket\qty\big(p)
+      \end{pmatrix} = \begin{pmatrix}
+        \qty\big{a} \cdot p\qty\big(X) \cdot \qty\big{a} \cup p\qty\big(Y) \\
+        \qty\big{b} \cdot p\qty\big(Y) \cup \qty\big{\varepsilon}
+      \end{pmatrix}
+    \]
+
+  \item
+    \begin{flalign*}
+      \begin{pmatrix} \emptyset \\ \emptyset \end{pmatrix}
+      \overset{f}&\longrightarrow
+      \begin{pmatrix}
+        \qty\big{a} \cdot \emptyset \cdot \qty\big{a} \cup \emptyset \\
+        \qty\big{b} \cdot \emptyset \cup \qty\big{\varepsilon}
+      \end{pmatrix} = \begin{pmatrix}
+        \emptyset \\
+        \qty\big{\varepsilon}
+      \end{pmatrix} \\
+      \begin{pmatrix}
+        \emptyset \\
+        \qty\big{\varepsilon}
+      \end{pmatrix}
+      \overset{f}&\longrightarrow
+      \begin{pmatrix}
+        \qty\big{a} \cdot \emptyset \cdot \qty\big{a} \cup
+        \qty\big{\varepsilon} \\
+        \qty\big{b} \cdot \qty\big{\varepsilon} \cup \qty\big{\varepsilon}
+      \end{pmatrix} = \begin{pmatrix}
+        \qty\big{\varepsilon} \\
+        \qty\big{b, \varepsilon}
+      \end{pmatrix} \\
+      \begin{pmatrix}
+        \qty\big{\varepsilon} \\
+        \qty\big{b, \varepsilon}
+      \end{pmatrix}
+      \overset{f}&\longrightarrow
+      \begin{pmatrix}
+        \qty\big{a} \cdot \qty\big{\varepsilon} \cdot \qty\big{a} \cup
+        \qty\big{b, \varepsilon} \\
+        \qty\big{b} \cdot \qty\big{b, \varepsilon} \cup \qty\big{\varepsilon}
+      \end{pmatrix} = \begin{pmatrix}
+        \qty\big{aa, b, \varepsilon} \\
+        \qty\big{bb, b, \varepsilon}
+      \end{pmatrix} \\
+      \begin{pmatrix}
+        \qty\big{aa, b, \varepsilon} \\
+        \qty\big{bb, b, \varepsilon}
+      \end{pmatrix}
+      \overset{f}&\longrightarrow
+      \begin{pmatrix}
+        \qty\big{a} \cdot \qty\big{aa, b, \varepsilon} \cdot \qty\big{a} \cup
+        \qty\big{bb, b, \varepsilon} \\
+        \qty\big{b} \cdot \qty\big{bb, b, \varepsilon} \cup \qty\big{\varepsilon}
+      \end{pmatrix} \\
+      &= \begin{pmatrix}
+        \qty\big{aaaa, aba, aa, bb, b, \varepsilon} \\
+        \qty\big{bbb, bb, b, \varepsilon}
+      \end{pmatrix} \\
+      \begin{pmatrix}
+        \qty\big{aaaa, aba, aa, bb, b, \varepsilon} \\
+        \qty\big{bbb, bb, b, \varepsilon}
+      \end{pmatrix}
+      \overset{f}&\longrightarrow
+      \begin{pmatrix}
+        \qty\big{a} \cdot \qty\big{aaaa, aba, aa, bb, b, \varepsilon} \cdot \qty\big{a} \cup
+        \qty\big{bbb, bb, b, \varepsilon} \\
+        \qty\big{b} \cdot \qty\big{bbb, bb, b, \varepsilon} \cup \qty\big{\varepsilon}
+      \end{pmatrix} \\
+      &= \begin{pmatrix}
+        \qty\big{aaaaaa, aabaa, aaaa, abba, aba, aa, bbb, bb, b, \varepsilon} \\
+        \qty\big{bbbb, bbb, bb, b, \varepsilon}
+      \end{pmatrix}
+    \end{flalign*}
+  \end{enumerate}
+
+\item Geben Sie die Sprache $W\qty\big(\varepsilon', X)$ an, die durch die
+  EBNF-Definition $\varepsilon'$ beschrieben wird.
+
+  \subparagraph{Lsg.} $W\qty\big(\varepsilon', X) = \qty\big{a^mb^na^m
+    \,{\big |}\, m,n \geq 0}$
+\end{enumerate}
+
+\end{document}
