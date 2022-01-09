@@ -1,0 +1,67 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{pdflscape}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann (Übungsgruppe 1)\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 13\\Analysis - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{69. Im Folgenden sollen Sie ein Additionstheorem für die Tangensfunktion beweisen}
+\begin{enumerate}[(a)]
+\item Seien $x, y \in \mathbb{R} \setminus \qty{k\pi + \frac{\pi}{2}
+    \,\middle|\, k \in \mathbb{Z}}$.
+  Bestimmen Sie $y$ in Abhängigkeit von $x$, sodass die Gleichung
+  \[
+    \tan\qty\big(x)\tan\qty\big(y) = 1
+  \]
+  gilt.
+  Welche Bedingung erfüllt $x + y$.
+
+  \subparagraph{Lsg.} Es ist $\tan x = \frac{\sin x}{\cos x}$ für
+  $x \in \mathbb{R} \setminus \qty{\frac{\pi}{2} + k\pi
+    \,\middle|\, k \in \mathbb{Z}}$ und
+  $\cos\qty\big(x + y) = \cos x \cos y - \sin x \sin y$.
+  \begin{flalign*}
+    \tan\qty\big(x)\tan\qty\big(y) &= 1 &&\iff \\
+    \frac{\sin x}{\cos x} \cdot \frac{\sin y}{\cos y} &= 1
+    &&{\Big |} \cdot \frac{\cos y}{\sin y} \\
+    \frac{\sin x}{\cos x} &= \frac{\cos y}{\sin y} \\
+    \sin x \sin y &= \cos x \cos y \\
+    0 &= \cos x \cos y - \sin x \sin y \\
+    0 &= \cos\qty\big(x + y) &\overset{\text{Satz 13.20}}&\iff \\
+    x + y &= \frac{pi}{2} + k\pi, k \in \mathbb{Z}
+  \end{flalign*}
+
+  $\Rightarrow$ \underline{$y = \frac{pi}{2} + k\pi - x$, $k \in \mathbb{Z}$}.
+\end{enumerate}
+\end{document}
