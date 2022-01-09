@@ -63,5 +63,26 @@
   \end{flalign*}
 
   $\Rightarrow$ \underline{$y = \frac{pi}{2} + k\pi - x$, $k \in \mathbb{Z}$}.
+
+\item Es seien $x, y \in \mathbb{R} \setminus \qty{k\pi + \frac{\pi}{2}
+    \,\middle|\, k \in Z}$.
+  Beweisen Sie, dass
+  \[
+    \tan\qty\big(x + y) = \frac{\tan\qty\big(x) + \tan\qty\big(y)}
+    {1 - \tan\qty\big(x)\tan\qty\big(y)}
+  \]
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    \frac{\sin\qty\big(x + y)}{\cos\qty\big(x + y)}
+    &= \frac{\frac{
+        \sin x}{\cos x} + \frac{\sin y}{\cos y}
+    }{
+      1 - \frac{\sin x}{\cos x}\frac{\sin y}{\cos y}
+    } && {\Big |}\, \cdot \cos x \cos y\\
+    &= \frac{\sin x \cos y + \sin y \cos x}{\cos x \cos y - \sin x \sin y} \\
+    \overset{\text{Satz 13.15 (4)}}&=
+    \frac{\sin\qty\big(x + y)}{\cos\qty\big(x + y)}
+  \end{flalign*}
 \end{enumerate}
 \end{document}
