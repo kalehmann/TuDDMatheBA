@@ -100,7 +100,8 @@
   $z_2 = \abs{z_2} \cdot e^{\xi_2 \cdot i}$.
 
   Nun ist $z_1 \cdot z_2 = \abs{z_1} e^{i \xi_1} \cdot \abs{z_2} e^{i \xi_2}
-  = \abs{z_1 z_2} e^{i\qty\big(\xi_1 + \xi_2)}$.
+  = \abs{z_1 z_2} e^{i\qty\big(\xi_1 + \xi_2)}$, dass heißt die Beträge werden
+  multipliziert und $\xi_1, \xi_2$ addiert.
 
   \begin{tikzpicture}[scale=1.5]
     \begin{axis}[
@@ -161,8 +162,10 @@
   $\xi = \frac{\pi}{6}$.
 
   $\Rightarrow \sqrt{3} + i = 2 e^{i \frac{\pi}{6}}$
+
   $\Rightarrow \qty\big(\sqrt{3} + i)^{2022}
   = 2^{2022} e^{i \cdot 2022 \cdot \frac{\pi}{6}}
+  = 2^{2022} e^{i \cdot 168 \cdot 2\pi + i \cdot \pi}
   \overset{\text{Satz 13.19 (1)}}= 2^{2022} e^{i \pi}$
 
   \begin{tikzpicture}[scale=1]
