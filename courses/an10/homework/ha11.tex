@@ -118,18 +118,32 @@
     ]
       \node[circle, fill, label=right:{$z_1$}, inner sep=2pt] at (0.5,1) {};
       \node at (0.2, 0.1) {\tiny $\xi_1$};
-      \node[black!70!green, circle, fill, label=above:{$z_2$}, inner sep=2pt] at (-0.4,0.4) {};
+      \node[
+        black!70!green,
+        circle,
+        fill,
+        label=above:{$z_2$},
+        inner sep=2pt
+      ] at (-0.4,0.4) {};
       \node[black!70!green] at (-0.07, 0.2) {\tiny $\xi_2$};
-      \node[black!50!red, circle, fill, label=below:{$z_1 \cdot z_2$}, inner sep=2pt] at (-1.74,-0.57) {};
+      \node[
+        black!50!red,
+        circle,
+        fill,
+        label=below:{$z_1 \cdot z_2$},
+        inner sep=2pt
+      ] at (-1.74,-0.57) {};
       \node[black!50!red] at (-1.3, 0.5) {\tiny $\xi_1 + \xi_2$};
 
       \draw (0,0) -- (0.5,1) node[right, pos=.5] {\tiny $\abs{z_1}$};
       \draw (0.3,0) arc (0:64:0.3);
 
-      \draw[black!70!green] (0,0) -- (-0.4,0.4) node[below left = -3pt, black!70!green, pos=.5] {\tiny $\abs{z_2}$};
+      \draw[black!70!green] (0,0) -- (-0.4,0.4)
+        node[below left = -3pt, black!70!green, pos=.5] {\tiny $\abs{z_2}$};
       \draw[black!70!green] (0.35,0) arc (0:135:0.35);
 
-      \draw[black!50!red] (0,0) -- (-1.74,-0.57) node[below=4pt, black!50!red, pos=.5] {\small $\abs{z_1 + z_2}$};
+      \draw[black!50!red] (0,0) -- (-1.74,-0.57)
+        node[below=4pt, black!50!red, pos=.5] {\small $\abs{z_1 + z_2}$};
       \draw[black!50!red] (1,0) arc (0:198:1);
     \end{axis}
   \end{tikzpicture}
@@ -165,7 +179,12 @@
       ymax=1.1,
       yticklabels={,,},
     ]
-      \node[circle, fill, label=below right:{$\qty\big(\sqrt{3} + i)^{2022}$}, inner sep=2pt] at (-1,0) {};
+      \node[
+        circle,
+        fill,
+        label=below right:{$\qty\big(\sqrt{3} + i)^{2022}$},
+        inner sep=2pt
+      ] at (-1,0) {};
       \node at (-0.3, 0.2) {\small $\pi$};
       \draw (0.5,0) arc (0:180:0.5);
     \end{axis}
@@ -186,15 +205,21 @@
   w \in \qty{\sqrt[n]{\abs{z}}e^i\qty(\frac{\xi}{n} + \frac{2k\pi}{n})}$'')
   folgt
   \begin{enumerate}[label={$w_{\arabic*} =$}]
-  \item $2 \cdot e^{i -\frac{\pi}{6} + \frac{2 \cdot 1 \pi}{3}} = 2 \cdot e^{i \frac{3\pi}{6}} = 2 \cdot e^{i \frac{\pi}{2}}$ 
-  \item $2 \cdot e^{i -\frac{\pi}{6} + \frac{2 \cdot 2 \pi}{3}} = 2 \cdot e^{i \frac{7\pi}{6}}$
-  \item $2 \cdot e^{i -\frac{\pi}{6} + \frac{2 \cdot 3 \pi}{3}} = 2 \cdot e^{i \frac{11\pi}{6}}$
+  \item $2 \cdot e^{i -\frac{\pi}{6} + \frac{2 \cdot 1 \pi}{3}}
+    = 2 \cdot e^{i \frac{3\pi}{6}} = 2 \cdot e^{i \frac{\pi}{2}}$
+
+  \item $2 \cdot e^{i -\frac{\pi}{6} + \frac{2 \cdot 2 \pi}{3}}
+    = 2 \cdot e^{i \frac{7\pi}{6}}$
+
+  \item $2 \cdot e^{i -\frac{\pi}{6} + \frac{2 \cdot 3 \pi}{3}}
+    = 2 \cdot e^{i \frac{11\pi}{6}}$
   \end{enumerate}
 
 \item Es seien $n \in \mathbb{N}$ und $\varphi \in \mathbb{R}$.
   Beweisen Sie die Formel
   \[
-    \qty\big(\cos \varphi + i \sin \varphi)^n = \cos\qty\big(n\varphi) + i \sin\qty\big(n\varphi)
+    \qty\big(\cos \varphi + i \sin \varphi)^n =
+    \cos\qty\big(n\varphi) + i \sin\qty\big(n\varphi)
   \]
 
   \subparagraph{Lsg.} Nach Satz 13.21 (2) der Vorlesung gilt für
@@ -222,14 +247,16 @@
   \begin{flalign*}
     \cosh^2\qty\big(z) - \sinh^2\qty\big(z)
     &= \qty(\frac{e^z + e^{-z}}{2})^2 - \qty(\frac{e^z - e^{-z}}{2})^2 \\
-    &= \frac{e^{2z} + 2 \cdot e^{z - z} + e^{-2z}}{4} - \frac{e^{2z} - 2e^{z - z} + e^{-2z}}{4} \\
+    &= \frac{e^{2z} + 2 \cdot e^{z - z} + e^{-2z}}{4} -
+      \frac{e^{2z} - 2e^{z - z} + e^{-2z}}{4} \\
     &= \frac{4e^0}{4} = 1
   \end{flalign*}
 
 \item Es seien $z, w \in \mathbb{C}$.
   Dann gilt
   \[
-    \sinh\qty\big(z + w) = \sinh\qty\big(z)\cosh\qty\big(w) + \sinh\qty\big(w)\cosh\qty\big(z)
+    \sinh\qty\big(z + w) =
+    \sinh\qty\big(z)\cosh\qty\big(w) + \sinh\qty\big(w)\cosh\qty\big(z)
   \]
 
   \subparagraph{Lsg.} Nach Satz 13.22 (1) der Vorlesung ist
@@ -241,8 +268,10 @@
     \overset{\text{13.15 (4)}}&= -i \qty\Big(
       \sin\qty\big(-iz)\cos\qty\big(-iw) + \sin\qty\big(-iw)\cos\qty\big(-iz)
     ) \\
-    &= -i \sin\qty\big(-iz)\cos\qty\big(-iw) - i \sin\qty\big(-iw)\cos\qty\big(-iz) \\
-    \overset{\text{Satz 13.22 (1)}}&= \sinh\qty\big(z)\cosh\qty\big(w) + \sinh\qty\big(w)\cosh\qty\big(z)
+    &= -i \sin\qty\big(-iz)\cos\qty\big(-iw) -
+      i \sin\qty\big(-iw)\cos\qty\big(-iz) \\
+    \overset{\text{Satz 13.22 (1)}}&=
+      \sinh\qty\big(z)\cosh\qty\big(w) + \sinh\qty\big(w)\cosh\qty\big(z)
   \end{flalign*}
 
 \item Es sei $x \in \mathbb{R}$.
