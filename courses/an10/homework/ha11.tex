@@ -206,4 +206,25 @@
   e^{i\varphi} \cdot e^{i\varphi} \cdot \ldots \cdot e^{i\varphi}
   = e^{in\varphi} = \cos\qty\big(n\varphi) + i\sin\qty\big(n\varphi)$
 \end{enumerate}
+
+\newpage
+\paragraph{71. Beweisen Sie die folgenden Gleichungen und Ungleichungen:}
+
+\begin{enumerate}[(a)]
+\item Es sei $z \in \mathbb{C}$.
+  Dann gilt
+  \[
+    \cosh^2\qty\big(z) - \sinh^2\qty\big(z) = 1
+  \]
+
+  \subparagraph{Lsg.} Es ist $\sinh z = \frac{e^z - e^{-z}}{2}$ und
+  $\cosh z = \frac{e^z + e^{-z}}{2}$
+  \begin{flalign*}
+    \cosh^2\qty\big(z) - \sinh^2\qty\big(z)
+    &= \qty(\frac{e^z + e^{-z}}{2})^2 - \qty(\frac{e^z - e^{-z}}{2})^2 \\
+    &= \frac{e^{2z} + 2 \cdot e^{z - z} + e^{-2z}}{4} - \frac{e^{2z} - 2e^{z - z} + e^{-2z}}{4} \\
+    &= \frac{4e^0}{4} = 1
+  \end{flalign*}
+\end{enumerate}
+
 \end{document}
