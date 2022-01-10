@@ -133,5 +133,46 @@
       \draw[black!50!red] (1,0) arc (0:198:1);
     \end{axis}
   \end{tikzpicture}
+
+\item Bestimmen Sie Real- und Imaginärteil der komplexen Zahl
+  $\qty\big(\sqrt{3} + i)^{2022}$.
+
+  \subparagraph{Lsg.} Es ist $\abs{\sqrt{3} + i} = \sqrt{\sqrt{3}^2 + 1^2}
+  = \sqrt{4} = 2$.
+
+  Nun wird ein $\xi$ mit
+  $\sqrt{3} + i = 2 \cdot \qty\Big(\frac{\sqrt{3}}{2} + \frac{i}{2})
+  = 2 \cdot \qty\big(\cos \xi + i \sin \xi)$.
+  Aus der Tabelle zu Sinus und Cosinus im Skript (nach Satz 13.20) folgt
+  $\xi = \frac{\pi}{6}$.
+
+  $\Rightarrow \sqrt{3} + i = 2 e^{i \frac{\pi}{6}}$
+  $\Rightarrow \qty\big(\sqrt{3} + i)^{2022}
+  = 2^{2022} e^{i \cdot 2022 \cdot \frac{\pi}{6}}
+  \overset{\text{Satz 13.19 (1)}}= 2^{2022} e^{i \pi}$
+
+  \begin{tikzpicture}[scale=1]
+    \begin{axis}[
+      axis x line=center,
+      axis y line=center,
+      grid=both,
+      xlabel={Re},
+      xmin=-1.1,
+      xmax=1.1,
+      xticklabels={,,},
+      ylabel={Im},
+      ymin=-1.1,
+      ymax=1.1,
+      yticklabels={,,},
+    ]
+      \node[circle, fill, label=below right:{$\qty\big(\sqrt{3} + i)^{2022}$}, inner sep=2pt] at (-1,0) {};
+      \node at (-0.3, 0.2) {\small $\pi$};
+      \draw (0.5,0) arc (0:180:0.5);
+    \end{axis}
+  \end{tikzpicture}
+
+  $\Rightarrow \Re \qty\big(\sqrt{3} + i)^{2022} = - 2^{2022}$
+
+  $\Rightarrow \Im \qty\big(\sqrt{3} + i)^{2022} = 0$
 \end{enumerate}
 \end{document}
