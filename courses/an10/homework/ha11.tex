@@ -244,6 +244,28 @@
     &= -i \sin\qty\big(-iz)\cos\qty\big(-iw) - i \sin\qty\big(-iw)\cos\qty\big(-iz) \\
     \overset{\text{Satz 13.22 (1)}}&= \sinh\qty\big(z)\cosh\qty\big(w) + \sinh\qty\big(w)\cosh\qty\big(z)
   \end{flalign*}
+
+\item Es sei $x \in \mathbb{R}$.
+  Dann gilt
+  \[
+    \sinh\qty\big(x) < \frac{e^x}{2} < \cosh\qty\big(x)
+  \]
+
+  \subparagraph{Lsg.} Es ist $\sinh z = \frac{e^z - e^{-z}}{2}$ und
+  $\cosh z = \frac{e^z + e^{-z}}{2}$.
+  Weiterhin wurde in Aufgabe 64 (c) bereits gezeigt, dass $e$ eine positive
+  reelle Zahl ist.
+  Nach Satz 5.20 (2) der Vorlesung folgt $0 < e^r$ für jedes beliebige
+  $r \in \mathbb{R}$ (auch $r = -x$).
+  Aus Satz 5.4 (3) der Vorlesung folgt $-e^{-x} < 0$.
+
+  Kombiniert man diese beiden Folgerungen kommt man mittels äquivalenter
+  Umformungen auf den gesuchten Ausdruck:
+  \begin{flalign*}
+    -e^{-x} < 0 &< e^{-x} && {\Big |} + e^{x} && \\
+    e^x - e^{-x} < e^x &< e^x + e^{-x} && {\Big |} :2 \\
+    \frac{e^x - e^{-x}}{2} < \frac{e^x}{2} &< \frac{e^x + e^{-x}}{2}
+  \end{flalign*}
 \end{enumerate}
 
 \end{document}
