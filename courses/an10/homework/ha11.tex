@@ -190,5 +190,20 @@
   \item $2 \cdot e^{i -\frac{\pi}{6} + \frac{2 \cdot 2 \pi}{3}} = 2 \cdot e^{i \frac{7\pi}{6}}$
   \item $2 \cdot e^{i -\frac{\pi}{6} + \frac{2 \cdot 3 \pi}{3}} = 2 \cdot e^{i \frac{11\pi}{6}}$
   \end{enumerate}
+
+\item Es seien $n \in \mathbb{N}$ und $\varphi \in \mathbb{R}$.
+  Beweisen Sie die Formel
+  \[
+    \qty\big(\cos \varphi + i \sin \varphi)^n = \cos\qty\big(n\varphi) + i \sin\qty\big(n\varphi)
+  \]
+
+  \subparagraph{Lsg.} Nach Satz 13.21 (2) der Vorlesung gilt für
+  $z \in \mathbb{C}$ und $\xi \in \big[0, 2\pi \big)$, dass
+  $\abs{z} \cdot e^{i\xi} = \abs{z}\qty\big{\cos\xi + i\sin\xi}$.
+  Es folgt $e^{i\xi} = \cos\xi + i\sin\xi$.
+
+  $\Rightarrow \qty\big(\cos \varphi + i \sin \varphi)^n =
+  e^{i\varphi} \cdot e^{i\varphi} \cdot \ldots \cdot e^{i\varphi}
+  = e^{in\varphi} = \cos\qty\big(n\varphi) + i\sin\qty\big(n\varphi)$
 \end{enumerate}
 \end{document}
