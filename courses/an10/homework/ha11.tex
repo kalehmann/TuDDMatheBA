@@ -225,6 +225,25 @@
     &= \frac{e^{2z} + 2 \cdot e^{z - z} + e^{-2z}}{4} - \frac{e^{2z} - 2e^{z - z} + e^{-2z}}{4} \\
     &= \frac{4e^0}{4} = 1
   \end{flalign*}
+
+\item Es seien $z, w \in \mathbb{C}$.
+  Dann gilt
+  \[
+    \sinh\qty\big(z + w) = \sinh\qty\big(z)\cosh\qty\big(w) + \sinh\qty\big(w)\cosh\qty\big(z)
+  \]
+
+  \subparagraph{Lsg.} Nach Satz 13.22 (1) der Vorlesung ist
+  $\sinh z = -i\sin\qty\big(iz)$ und $\cosh\qty\big(z) = \cos\qty\big(iz)$.
+
+  Somit ist
+  \begin{flalign*}
+    \sinh\qty\big(z + w) &= -i \sin\qty\big(-iz - iw) \\
+    \overset{\text{13.15 (4)}}&= -i \qty\Big(
+      \sin\qty\big(-iz)\cos\qty\big(-iw) + \sin\qty\big(-iw)\cos\qty\big(-iz)
+    ) \\
+    &= -i \sin\qty\big(-iz)\cos\qty\big(-iw) - i \sin\qty\big(-iw)\cos\qty\big(-iz) \\
+    \overset{\text{Satz 13.22 (1)}}&= \sinh\qty\big(z)\cosh\qty\big(w) + \sinh\qty\big(w)\cosh\qty\big(z)
+  \end{flalign*}
 \end{enumerate}
 
 \end{document}
