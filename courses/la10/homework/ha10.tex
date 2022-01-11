@@ -1,0 +1,67 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 10\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\Abb{\text{Abb}}
+\newcommand\hull[1]{\left\langle #1 \right\rangle}
+
+\begin{document}
+\paragraph{Aufgabe 6} Gegeben sind die folgenden Matrizen mit Einträgen aus
+dem Körper $\mathbb{Z}/3$.
+\[
+  A \coloneqq \begin{pmatrix} 2 & 2 \end{pmatrix},
+  B \coloneqq \begin{pmatrix} 2 & 0 \\ 1 & 2 \end{pmatrix}
+\]
+Welche der Produkte $AA$, $AB$, $BA$, $BB$ sind definiert?
+Berechnen Sie alle definierten Produkte.
+Geben Sie dabei alle Matrixeinträge in der Form $k$ mit $0 \leq k \leq 2$ an.
+
+\subparagraph{Lsg.} Das Produkt $AB$ zweier Matrizen $A$ und $B$ ist definiert,
+wenn die Zahl der Spalten von $A$ mit der Zahl der Zeilen von $B$ übereinstimmt.
+Somit sind die Produkte
+\[
+  AB = \begin{pmatrix}
+    2 \cdot 2 + 2 \cdot 1 & 2 \cdot 0 + 2 \cdot 2
+  \end{pmatrix} = \begin{pmatrix} 0 & 1 \end{pmatrix}
+\]
+und
+\[
+  BB = \begin{pmatrix}
+    2 \cdot 2 + 0 \cdot 1 & 2 \cdot 0 + 0 \cdot 2 \\
+    1 \cdot 2 + 2 \cdot 1 & 1 \cdot 0 + 2 \cdot 2
+  \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}
+\]
+
+\end{document}
