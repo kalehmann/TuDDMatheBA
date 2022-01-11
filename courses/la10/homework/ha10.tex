@@ -184,4 +184,86 @@ Dann ist
 
 $\Rightarrow$ \underline{$\qty\big{H, \cdot}$ ist eine abelsche Gruppe.}
 
+\paragraph{Aufgabe 8}
+\begin{enumerate}[(1)]
+\item Zeigen Sie, dass die Abbildung
+  \[
+    \varphi \colon \mathbb{R}^2 \to \mathbb{R}^2,
+    \begin{pmatrix}
+      x \\
+      y
+    \end{pmatrix}
+    \mapsto
+    \begin{pmatrix}
+      x + y \\
+      y
+    \end{pmatrix}
+  \]
+  ein Automorphismus ist.
+
+  \subparagraph{Lsg.} Eine Abbildung $\varphi$ zwischen zwei Vektorräumen
+  $U, W$ über einem Körper $K$ heißt Automorphismus, falls $U = W$ und
+  $\varphi$ bijektiv ist.
+  Der erste Teil ist offensichtlich, bleibt also noch zu zeigen, dass
+  $\varphi$ bijektiv ist.
+
+  Angenommen $\varphi$ wäre nicht injektiv, dann existieren
+  $\begin{pmatrix} x_1 \\ y_1 \end{pmatrix} \ne
+  \begin{pmatrix} x_2 \\ y_2 \end{pmatrix} \in \mathbb{R}^2$
+  mit $\begin{pmatrix} x_1 + y_1 \\ y_1 \end{pmatrix} =
+  \begin{pmatrix} x_2 + y_2 \\ y_2 \end{pmatrix}$.
+  Offensichtlich gilt somit $y_1 = y_2$.
+  Durch Substitution von $y_2$ und äquivalente Umformung wird aus
+  $x_1 + y_1 = x_2 + y_2$ der Term $x_1 = x_2$, ein Widerspruch zu
+  $\begin{pmatrix} x_1 \\ y_1 \end{pmatrix} \ne
+  \begin{pmatrix} x_2 \\ y_2 \end{pmatrix}$.
+
+  $\Rightarrow$ \underline{$\varphi$ ist injektiv.}
+
+  Sei nun $\begin{pmatrix} x \\ y \end{pmatrix} \in \mathbb{R}^2$ beliebig
+  gewählt.
+  Dann ist $\begin{pmatrix} x - y \\ y \end{pmatrix}$ ebenfalls ein Element
+  aus $\mathbb{R}^2$ und es gilt
+  \[
+    \varphi\qty(\begin{pmatrix} x - y \\ y \end{pmatrix}) =
+    \begin{pmatrix} x \\ y \end{pmatrix}
+  \]
+  $\Rightarrow$ \underline{$\varphi$ ist surjektiv.}
+
+  $\Rightarrow$ \underline{$\varphi$ ist bijektiv und ein automorphismus.}
+
+\newpage
+\item Ist die Abbildung
+  \[
+    \psi \colon \mathbb{R}^2 \to \mathbb{R}^2,
+    \begin{pmatrix}
+      x \\
+      y
+    \end{pmatrix}
+    \mapsto
+    \begin{pmatrix}
+      xy \\
+      y
+    \end{pmatrix}
+  \]
+  ebenfalls linear?
+
+  \subparagraph{Lsg.} Eine Abbildung zwischen zwei Vektorräumen
+  $U$ und $W$ über einem Körper $K$ heißt linear, falls
+  \begin{enumerate}[(i)]
+  \item für alle  $u, v \in U$ gilt
+    $\psi\qty\big(u) + \psi\qty\big(v) = \psi\qty\big(u + v)$
+
+  \item für alle $\lambda \in K$ und alle $u \in U$ gilt
+    $\psi\qty\big(\lambda u) = \lambda \psi\qty\big(u)$.
+  \end{enumerate}
+
+  Sei nun $u = \begin{pmatrix} 2 \\ 2 \end{pmatrix} \in \mathbb{R}^2$.
+  Dann ist $\psi\qty\big(2 \cdot u) = \begin{pmatrix} 16 \\ 4 \end{pmatrix}$
+  und $2 \cdot \psi\qty\big(u) = \begin{pmatrix} 8 \\ 4 \end{pmatrix}$,
+  ein Widerspruch zu (ii).
+
+  $\Rightarrow$ \underline{$\psi$ ist nicht linear.}
+\end{enumerate}
+
 \end{document}
