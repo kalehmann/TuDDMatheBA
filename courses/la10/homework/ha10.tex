@@ -64,4 +64,124 @@ und
   \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}
 \]
 
+\paragraph{Aufgabe 7} Sei $K$ ein Körper und sei
+\[
+  H \coloneqq \qty{
+    \begin{pmatrix}
+      1_k & a \\
+      0_K & 1_K
+    \end{pmatrix}
+    \,\middle|\,
+    a \in K
+  }
+\]
+Zeigen Sie, dass $H$ zusammen mit der üblichen Multiplikation von Matrizen eine
+abelsche Gruppe ist.
+
+\subparagraph{Lsg.} Eine Menge $H$ mit einer binären Operation
+$\cdot \colon H \times H \to H$ heißt Gruppe, falls gilt
+\begin{enumerate}[(1)]
+\item $\qty\big(A \cdot B) \cdot C = A \cdot \qty\big(B \cdot C)$ für alle
+  $A, B, C \in H$
+\item Es existiert ein neutrales Element  $I \in H$, sodass
+  $A \cdot I = I \cdot A = A$ für jedes Element $A \in H$
+\item Für jedes Element $A \in H$ existiert ein Element $A^{-1} \in H$, so dass
+  $A \cdot A^{-1} = I = A^{-1} \cdot A$
+\end{enumerate}
+Aus Lemma 5.4 der Vorlesung folgt (1).
+Weiter folgt aus Lemma 5.6 der Vorlesung (\emph{``Für alle Matrizen
+  $A \in \mathcal{M}_{m \times n}\qty\big(K)$ gilt $AI_n = A = I_mA$''}),
+dass $A \cdot I_2 = A = I_2 \cdot A$.
+Da $I_2 = \begin{pmatrix} 1_k & 0_k \\ 0_k & 1_K \end{pmatrix} \in H$ folgt (2).
+
+Sei nun $a \in K$ beliebig.
+Da $K$ ein Körper ist, existiert auch ein Element $-a \in K$ und dann ist
+\[
+  \begin{pmatrix}
+    1_k & a \\
+    0_k & 1_k
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    1_k & -a \\
+    0_k & 1_k
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1_k \cdot 1_k + a \cdot 0_k & 1_k \cdot -a + a \cdot 1_k \\
+    0_k \cdot 1_k + 1_K \cdot 0_k & 0_k \cdot -a + 1_K \cdot 1_k\\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1_k & 0_k \\
+    0_k & 1_K \\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1_k & -a \\
+    0_k & 1_k
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    1_k & a \\
+    0_k & 1_k
+  \end{pmatrix}
+\]
+
+$\Rightarrow$ zu jeder Matrix $A \in H$ existiert eine inverse Matrix $A^{-1}$
+mit $A \cdot A^{-1} = A^{-1} \cdot A = I_2$
+
+$\Rightarrow$ Jede Matrix $A \in H$ ist invertierbar $\Rightarrow$ (3).
+
+$\Rightarrow$ \underline{$\qty\big(H, \cdot)$ ist eine Gruppe.}
+
+\newpage
+Eine Gruppe heißt abelsche Gruppe, wenn für $A, B \in H$ zusätzlich gilt
+$A \cdot B = B \cdot A$.
+Seien nun $a, b \in K$ beliebig.
+Dann ist
+\begin{flalign*}
+  \begin{pmatrix}
+    1_k & a \\
+    0_k & 1_k
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    1_k & b \\
+    0_k & 1_k
+  \end{pmatrix}
+  &=
+  \begin{pmatrix}
+    1_k \cdot 1_k + a \cdot 0_k & 1_k \cdot b + a \cdot 1_k \\
+    0_k \cdot 1_k + 1_K \cdot 0_k & 0_k \cdot b + 1_K \cdot 1_k\\
+  \end{pmatrix} \\
+  &=
+  \begin{pmatrix}
+    1_k & b + a  \\
+    0_k & 1_k \\
+  \end{pmatrix} \\
+  \overset{\text{Kommutativität in $K$}}&=
+  \begin{pmatrix}
+    1_k & a + b \\
+    0_k & 1_k \\
+  \end{pmatrix} \\
+    &=
+  \begin{pmatrix}
+    1_k \cdot 1_k + b \cdot 0_k & 1_k \cdot a + b \cdot 1_k \\
+    0_k \cdot 1_k + 1_K \cdot 0_k & 0_k \cdot a + 1_K \cdot 1_k\\
+  \end{pmatrix} \\
+  &=
+    \begin{pmatrix}
+    1_k & b \\
+    0_k & 1_k
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    1_k & a \\
+    0_k & 1_k
+  \end{pmatrix}
+\end{flalign*}
+
+$\Rightarrow$ \underline{$\qty\big{H, \cdot}$ ist eine abelsche Gruppe.}
+
 \end{document}
