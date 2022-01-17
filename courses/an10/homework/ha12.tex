@@ -135,23 +135,25 @@ Beweisen oder widerlegen Sie die folgenden Aussagen:
   Nun ist $\displaystyle \cos\qty\big(x) =
   \sum_{k = 0}^{\infty} \qty\big(-1)^k \frac{x^{2k}}{2k!} =
   1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} \pm \ldots$
+  Somit ist
 
-  Somit ist $\displaystyle \underset{x \ne 0}{\lim_{x \to 0}}
+  $\displaystyle \underset{x \ne 0}{\lim_{x \to 0}}
   \frac{\cos\qty\big(x)}{x} = \underset{x \ne 0}{\lim_{x \to 0}}
   \frac{\abs{1 + x \cdot \qty(-\frac{x}{2!} + \frac{x^3}{4!} - \ldots)}}{x}
-  = \underset{x \ne 0}{\lim_{x \to 0}} \frac{1}{\abs{x}}$
+  = \underset{x \ne 0}{\lim_{x \to 0}} \frac{1}{\abs{x}} -
+  \underset{x \ne 0}{\lim_{x \to 0}} \frac{\abs{x}}{2!} +
+  \underset{x \ne 0}{\lim_{x \to 0}} \frac{\abs{x^3}}{4!} - \ldots$
+  $\displaystyle = \underset{x \ne 0}{\lim_{x \to 0}} \frac{1}{\abs{x}} +
+  0 + 0 + \ldots$
   und nach Beispiel 14.6 der Vorlesung ist
   $\lim_{x \to 0} \frac{1}{\abs{x}} = \infty$.
 
   $\Rightarrow$ \underline{die Beziehung gilt nicht.}
 
 \item Es sei $x_0 \in \mathbb{R}$.
-  Beweisen Sie, dass für $x \in \mathbb{R}$ mit $x \to x_0$ die Beziehung
-  \[
-    \qty\big(x - x_0)^2 \cdot o\qty\big(\qty\big(x - x_0)) =
-    o\qty\Big(\qty\big(x - x_0)^3)
-  \]
-  gilt.
+  Beweisen Sie, dass für $x \in \mathbb{R}$ mit $x \to x_0$ die Beziehung \\
+  $\qty\big(x - x_0)^2 \cdot o\qty\big(\qty\big(x - x_0)) =
+    o\qty\Big(\qty\big(x - x_0)^3)$ gilt.
   \subparagraph{Lsg.} Es ist
   $\displaystyle \underset{x \ne x_0}{\lim_{x \to x_0}}
   \frac{\qty\big(x - x_0)^2}{\qty\big(x - x_0)^2} = 1$
