@@ -144,5 +144,30 @@ Beweisen oder widerlegen Sie die folgenden Aussagen:
   $\lim_{x \to 0} \frac{1}{\abs{x}} = \infty$.
 
   $\Rightarrow$ \underline{die Beziehung gilt nicht.}
+
+\item Es sei $x_0 \in \mathbb{R}$.
+  Beweisen Sie, dass für $x \in \mathbb{R}$ mit $x \to x_0$ die Beziehung
+  \[
+    \qty\big(x - x_0)^2 \cdot o\qty\big(\qty\big(x - x_0)) =
+    o\qty\Big(\qty\big(x - x_0)^3)
+  \]
+  gilt.
+  \subparagraph{Lsg.} Es ist
+  $\displaystyle \underset{x \ne x_0}{\lim_{x \to x_0}}
+  \frac{\qty\big(x - x_0)^2}{\qty\big(x - x_0)^2} = 1$
+  und per Definition von ``klein $o$'' außerdem
+  $\displaystyle \underset{x \ne x_0}{\lim_{x \to x_0}}
+  \frac{\abs{o\qty\big(x - x_0)}}{x - x_0} = 0$.
+  Aus Satz 14.4 (1) der Vorlesung folgt
+  $\displaystyle \underset{x \ne x_0}{\lim_{x \to x_0}}
+  \qty(\frac{\qty\big(x - x_0)^2}{\qty\big(x - x_0)^2} \cdot
+  \frac{\abs{o\qty\big(x - x_0)}}{x - x_0}) =
+  \underset{x \ne x_0}{\lim_{x \to x_0}}
+  \frac{\abs{\qty\big(x - x_0)^2 \cdot o\qty\big(x - x_0)}}{\qty\big(x - x_0)^3}
+  = 0$.
+
+  $\Rightarrow$ \underline{
+    $\qty\big(x - x_0)^2 \cdot o\qty\big(\qty\big(x - x_0))$ ist ``klein $o$''
+    von $o\qty\Big(\qty\big(x - x_0)^3)$}
 \end{enumerate}
 \end{document}
