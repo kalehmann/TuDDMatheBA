@@ -124,4 +124,25 @@ Beweisen oder widerlegen Sie die folgenden Aussagen:
   $\Rightarrow \displaystyle \lim_{x \to x_0}\qty\big(f\qty\big(x) +
   g\qty\big(x)) = \infty$
 \end{enumerate}
+
+\paragraph{88.}
+\begin{enumerate}[(a)]
+\item Untersuchen Sie, ob für $x \in \mathbb{R}$ mit $x \to 0$ die Beziehung
+  $\cos\qty\big(x) = o\qty\big(x)$ gilt.
+  \subparagraph{Lsg.} Man schreibt $f\qty\big(x) = o\qty\big(x)$ für $x \to x_0$,
+  wenn $\displaystyle \underset{x \ne x_0}{\lim_{x \to x_0}}
+  \frac{\norm{f\qty\big(x)}}{x} = 0$.
+  Nun ist $\displaystyle \cos\qty\big(x) =
+  \sum_{k = 0}^{\infty} \qty\big(-1)^k \frac{x^{2k}}{2k!} =
+  1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} \pm \ldots$
+
+  Somit ist $\displaystyle \underset{x \ne 0}{\lim_{x \to 0}}
+  \frac{\cos\qty\big(x)}{x} = \underset{x \ne 0}{\lim_{x \to 0}}
+  \frac{\abs{1 + x \cdot \qty(-\frac{x}{2!} + \frac{x^3}{4!} - \ldots)}}{x}
+  = \underset{x \ne 0}{\lim_{x \to 0}} \frac{1}{\abs{x}}$
+  und nach Beispiel 14.6 der Vorlesung ist
+  $\lim_{x \to 0} \frac{1}{\abs{x}} = \infty$.
+
+  $\Rightarrow$ \underline{die Beziehung gilt nicht.}
+\end{enumerate}
 \end{document}
