@@ -41,10 +41,7 @@ Beweisen oder widerlegen Sie die folgenden Aussagen:
 \begin{enumerate}[(a)]
 \item Für $n \in \mathbb{N}$ seien $f_n \colon \qty\big(0, 1) \to \mathbb{R}$
   definiert durch $f_n\qty\big(x) \coloneqq x^n$.
-  Dann gilt
-  \[
-    f_n \to 0 \text{ gleichmäßig.}
-  \]
+  Dann gilt $f_n \to 0$ gleichmäßig.
   \subparagraph{Lsg.} Eine Folge von Funktionen $\qty\big{f_n}$ konvergiert
   \emph{gleichmäßig} gegen eine Funktion $f \colon X \to Y$ auf $M \subseteq X$,
   falls
@@ -58,7 +55,6 @@ Beweisen oder widerlegen Sie die folgenden Aussagen:
   (\emph{``Für $r > 0$ gilt $a < b \iff a^r < b^r$''}) folgt
   $x^{\frac{1}{n}} < 1^{\frac{1}{n}} = 1$ für $x \in \qty\big(0, 1)$
   - insbesondere ist $\qty(\frac{1}{2})^{\frac{1}{n}} \in \qty\big(0, 1)$.
-
   Somit ist nun $d\qty(f_n\qty(\frac{1}{2}), 0) =
   \abs{\qty(\qty(\frac{1}{2})^{\frac{1}{n}})^n - 0} = \frac{1}{2} > \epsilon$,
   ein Widerspruch.
@@ -66,10 +62,7 @@ Beweisen oder widerlegen Sie die folgenden Aussagen:
 \item Für $n \in \mathbb{N}$ seien
   $g_n \colon \qty(0, \frac{1}{2}) \to \mathbb{R}$ definiert durch
   $g_n\qty\big(x) \coloneqq x^n$.
-  Dann gilt
-  \[
-    g_n \to 0 \text{ gleichmäßig.}
-  \]
+  Dann gilt $g_n \to 0$ gleichmäßig.
   \subparagraph{Lsg.} Aus Beispiel 9.10 der Vorlesung folgt
   $\displaystyle \lim_{n \to \infty} \qty(\frac{1}{2})^n = 0$, dass
   heißt
@@ -88,4 +81,29 @@ Beweisen oder widerlegen Sie die folgenden Aussagen:
   \]
 \end{enumerate}
 
+\paragraph{87. Beweisen Sie die folgenden Aussagen}
+\begin{enumerate}[(a)]
+\item Sei $f \colon \mathbb{R} \to \mathbb{R}, x_0 \in \mathbb{R}, f(x) > 0$
+  für alle $x \in \mathbb{R} \setminus \qty\big{x_0}$, dann gilt
+  \[
+    \underset{x \ne x_0}{\lim_{x \to x_0}} f\qty\big(x) = 0 \iff
+    \underset{x \ne x_0}{\lim_{x \to x_0}} \frac{1}{f\qty\big(x)} = \infty
+  \]
+  \begin{small}
+  \subparagraph{Lsg.} Es ist
+  \begin{flalign*}
+    \underset{x \ne x_0}{\lim_{x \to x_0}} f\qty\big(x) = 0
+    \overset{\epsilon-\delta-\text{Krit.}}&\iff
+    \forall\,\epsilon > 0 \,\exists\, \delta > 0 \colon
+    \abs\big{x - x_0} < \delta \Rightarrow f\qty\big(x) < \epsilon \\
+    \overset{\text{Satz 5.4 (6)}}&\iff
+    \forall\,\epsilon > 0 \,\exists\, \delta > 0 \colon
+    \abs\big{x - x_0} < \delta \Rightarrow \frac{1}{f\qty\big(x)} > \frac{1}{\epsilon} \\
+    &\iff
+    \forall\,L > 0 \,\exists\, \delta > 0 \colon
+    \abs\big{x - x_0} < \delta \Rightarrow \frac{1}{f\qty\big(x)} > L \\
+    &\iff \underset{x \ne x_0}{\lim_{x \to x_0}} \frac{1}{f\qty\big(x)} = \infty
+  \end{flalign*}
+  \end{small}
+\end{enumerate}
 \end{document}
