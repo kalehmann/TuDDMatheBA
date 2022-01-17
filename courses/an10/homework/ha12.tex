@@ -103,6 +103,25 @@ Beweisen oder widerlegen Sie die folgenden Aussagen:
     \abs\big{x - x_0} < \delta \Rightarrow \frac{1}{f\qty\big(x)} > L \\
     &\iff \underset{x \ne x_0}{\lim_{x \to x_0}} \frac{1}{f\qty\big(x)} = \infty
   \end{flalign*}
-  \end{small}
+\end{small}
+
+\item Sei $D \subset \mathbb{R}, x_0 \in \mathbb{R}$ ein Häufungspunkt von $D$,
+  $x_0 \notin D$.
+  Seien $c \in \mathbb{R}$ und $f, g \colon D \to \mathbb{R}$ mit
+  $\displaystyle \lim_{x \to x_0} f\qty\big(x) = \infty$ und $g\qty\big(x) > c$
+  für alle $x \in D$.
+  Dann gilt
+  $\displaystyle \lim_{x \to x_0}\qty\Big(f\qty\big(x) + g\qty\big(x)) = \infty$.
+
+  \subparagraph{Lsg.} Sei $h \colon D \to \mathbb{R}, x \mapsto c$ eine Funktion.
+  Dann ist $\displaystyle \lim_{x \to x_0} h(x) = c$.
+  Nach Satz 14.4 (1) der Vorlesung folgt
+  $\displaystyle \lim_{x \to x_0}\qty\big(f\qty\big(x) + h\qty\big(x)) = \infty$.
+  Da $h\qty\big(x) > g\qty\big(x)$ für alle $x \in D$ folgt weiter, dass
+  $f\qty\big(x) + g\qty\big(x) \geq f\qty\big(x) + h\qty\big(x)$ für alle
+  $x \in D$.
+
+  $\Rightarrow \displaystyle \lim_{x \to x_0}\qty\big(f\qty\big(x) +
+  g\qty\big(x)) = \infty$
 \end{enumerate}
 \end{document}
