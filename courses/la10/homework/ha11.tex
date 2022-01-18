@@ -1,0 +1,92 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{WiSe 2021/2022}
+\title{Hausaufgaben Blatt 11\\Lineare Algebra - Grundlegende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\Bild{\text{Bild}}
+\newcommand\Kern{\text{Kern}}
+\newcommand\hull[1]{\left\langle #1 \right\rangle}
+
+\begin{document}
+\paragraph{Aufgabe 6} Sei
+\[
+  f \colon \mathbb{R}^4 \to \mathbb{R}^2,
+  \begin{pmatrix} x \\ y \\ z \\ t \end{pmatrix} \mapsto
+  \begin{pmatrix} 3x - 2y + z \\ 2y - t \end{pmatrix}
+\]
+Es lässt sich leicht nachprüfen, dass $f$ linear ist.
+Sie dürfen dies ohne Beweis verwenden.
+Sei außerdem
+\[
+  W \coloneqq \qty{
+    \begin{pmatrix} x \\ y \\ z \\ t \end{pmatrix} \in \mathbb{R}^4
+    \,\middle|\, 2x - y - t = 0
+  }
+\]
+\begin{enumerate}[(a)]
+\item Berechnen Sie $\Kern\qty\big(f)$, $\Bild\qty\big(g)$ sowie die Dimensionen
+  von $\Kern\qty\big(f)$ und $\Bild\qty\big(f)$.
+  \subparagraph{Lsg.} Sei $\varphi \colon V \to W$ eine lineare Abbildung.
+  Dann ist $\Kern\qty\big(\varphi) =
+  \qty\big{v \in V \,{\big |}\, \varphi\qty\big(v) = 0_W}$.
+
+  $f\qty(\begin{pmatrix} x \\ y \\ z \\ t\end{pmatrix}) =
+  \begin{pmatrix} 0 \\ 0 \end{pmatrix}$, wenn $2y = t$ und
+  $3x - 2y + z = 0$.
+  Substituiert man nun $2y$ mit $t$, dann erhält man
+  \[
+    \Kern\qty\big(f) = \qty{
+      \begin{pmatrix}
+        x \\
+        y \\
+        z \\
+        \frac{y}{2}
+      \end{pmatrix} \,\middle|\,
+      x, y, z \in \mathbb{R}, 3x - 2y + z = 0
+    } \text{ mit } \dim\qty\big(\Kern(f)) = 3
+  \]
+  Weiter ist $\Bild\qty\big(\varphi)$ definiert als
+  $\qty\big{\varphi\qty\big(v) \,{\big|}\, v \in V}$.
+  Nun ist $\qty{
+    f\qty(\begin{pmatrix} 0 \\ 0 \\ 1 \\ 0\end{pmatrix}),
+    f\qty(\begin{pmatrix} 0 \\ 0 \\ 0 \\ -1\end{pmatrix})
+  } = \qty{
+    \begin{pmatrix} 1 \\ 0 \end{pmatrix},
+    \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+  } = \varepsilon_2$ (die Standardbasis von $\mathbb{R}^2$).
+  Da das Bild einer linearen Abbildung nach Lemma 6.18 der Vorlesung
+  ein Unterraum ist, folgt $\Bild\qty\big(f) = \hull{\varepsilon_2} = \mathbb{R}^2$.
+  Da die Basis 2 Elemente hat, folgt weiter $\dim\qty\big(\Bild(f)) = 2$.
+\end{enumerate}
+\end{document}
