@@ -141,4 +141,62 @@ Sei außerdem
     2 & -1 & 0 & -1
   \end{pmatrix}$.
 \end{enumerate}
+
+\paragraph{Aufgabe 7} Gegeben ist die Abbildung
+\[
+  \varphi \colon \mathbb{R}^3 \to \mathbb{R}^4,
+  \begin{pmatrix} x \\ y \\ z \end{pmatrix} \mapsto
+  \begin{pmatrix} x - z \\ y - z \\ 0 \\ x - y \end{pmatrix}
+\]
+Es lässt sich leicht zeigen, dass $\varphi$ eine lineare Abbildung ist.
+Die dürfen Sie ohne Beweis verwenden.
+Nutzen Sie Lemma 6.21 um zu überprüfen, ob $\varphi$ sogar ein Monomorphismus ist.
+
+\subparagraph{Lsg.} Lemma 6.21 der Vorlesung besagt \emph{``Seien $U$ und $V$
+  Vektorräume über einem Körper $K$ und sei $\varphi \colon U \to V$ eine lineare
+  Abbildung.
+  Es ist $\varphi$ genau dann ein Monomorphismus, wenn
+  $\Kern\qty\big(\varphi) = \qty\big{0_U}$ gilt.}
+
+Nun ist $\varphi\qty(
+  \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+) = \begin{pmatrix} 1 - 1 \\ 1 - 1 \\ 0 \\ 1 - 1 \end{pmatrix}
+= \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \end{pmatrix}$, also ist
+$\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \in \Kern\qty\big(\varphi)$.
+
+$\Rightarrow$ \underline{$\varphi$ ist kein Monomorphismus.}
+
+\newpage
+\paragraph{Aufgabe 8} Sei $K$ ein Körper und $n \in \mathbb{N}$.
+Nach Beispiel 3.3 ist $\mathcal{M}_{n \times n}\qty\big(K)$ ein
+Vektorraum über $K$.
+Sei
+\[
+  T \colon \mathcal{M}_{n \times n} \qty\big(K) \to
+  \mathcal{M}_{n \times n} \qty\big(K), A \mapsto A^t - A
+\]
+\begin{enumerate}[(i)]
+\item Zeigen Sie, dass $T$ linear ist.
+  \subparagraph{Lsg.} Die Abbildung $T$ heißt linear, falls
+  \begin{enumerate}[(1)]
+  \item Für alle $A, B \in \mathcal{M}_{n \times n} \qty\big(K)$ gilt
+    $T\qty\big(A + B) = T\qty\big(A) + T\qty\big(B)$
+
+    Nun ist nach Beispiel 6.10 der Vorlesung $\qty\big(A + B)^t = A^t + B^t$.
+    Also ist $T\qty\big(A + B) = \qty\big(A + B)^t - \qty\big(A + B)
+    = A^t + B^t - A - B = \qty\big(A^t - A) + \qty\big(B^t - B)
+    = T\qty\big(A) + T\qty\big(B)$
+
+  \item Für alle $\lambda \in K$ und $A \in \mathcal{M}_{n \times n} \qty\big(K)$
+    gilt $\lambda T\qty\big(A) = T\qty\big(\lambda A)$.
+
+    Nach Beispiel 6.10 der Vorlesung ist $\qty\big(\lambda A)^t = \lambda A^t$.
+    Also ist \\
+    $\lambda T\qty\big(A) = \lambda \cdot \qty\big(A^t - A)
+    = \qty\big(\lambda A^t) - \qty\big(\lambda A)
+    = \qty\big(\lambda A)^t - \qty\big(\lambda A) = T\qty\big(\lambda A)$.
+  \end{enumerate}
+
+  $\Rightarrow$ \underline{$T$ ist linear.}
+\end{enumerate}
 \end{document}
