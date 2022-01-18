@@ -36,6 +36,7 @@
 
 \newcommand\Bild{\text{Bild}}
 \newcommand\Kern{\text{Kern}}
+\newcommand\Mat{\text{Mat}}
 \newcommand\hull[1]{\left\langle #1 \right\rangle}
 
 \begin{document}
@@ -115,5 +116,29 @@ Sei außerdem
 
   $\Rightarrow$ \underline{Es gibt keine lineare Abbildung $g$ mit
     $\Kern\qty\big(g) = W$, so dass $g$ nicht surjektiv ist.}
+
+\item Sei $\mathcal{E}$ die Standardbasis von $\mathbb{R}$,
+  $\mathcal{E}_2$ die Standardbasis von $\mathbb{R}^2$ und $\mathcal{E}_4$ die
+  Standardbasis von $\mathbb{R}^4$.
+  Berechnen Sie $\Mat\qty\big(f, \mathcal{E}_4, \mathcal{E}_2)$ sowie
+  $\Mat\qty\big(g, \mathcal{E}_4, \mathcal{E})$.
+
+  \subparagraph{Lsg.} $\Mat\qty\big(f, \mathcal{E}_4, \mathcal{E}_2)$ ist die
+  Matrix mit
+  \[
+    \Mat\qty\big(f, \mathcal{E}_4, \mathcal{E}_2) \cdot
+    \begin{pmatrix} x \\ y \\ z \\ t \end{pmatrix} =
+    \begin{pmatrix} 3x - 2y + z \\ 2y - t \end{pmatrix}
+  \]
+  Somit ist $\Mat\qty\big(f, \mathcal{E}_4, \mathcal{E}_2) =
+  \begin{pmatrix}
+    3 & -2 & 1 & 0 \\
+    0 & 2 & 0 & -1
+  \end{pmatrix}$
+  und
+  $\Mat\qty\big(g, \mathcal{E}_4, \mathcal{E}) =
+  \begin{pmatrix}
+    2 & -1 & 0 & -1
+  \end{pmatrix}$.
 \end{enumerate}
 \end{document}
