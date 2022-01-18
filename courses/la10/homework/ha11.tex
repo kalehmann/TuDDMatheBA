@@ -88,5 +88,32 @@ Sei außerdem
   Da das Bild einer linearen Abbildung nach Lemma 6.18 der Vorlesung
   ein Unterraum ist, folgt $\Bild\qty\big(f) = \hull{\varepsilon_2} = \mathbb{R}^2$.
   Da die Basis 2 Elemente hat, folgt weiter $\dim\qty\big(\Bild(f)) = 2$.
+
+\item Finden Sie eine lineare Abbildung $g \colon \mathbb{R}^4 \to \mathbb{R}$,
+  so dass $\Kern\qty\big(g) = W$.
+  Gibt es eine Abbildung $g$ mit dieser Eigenschaft, so dass $g$ nicht
+  surjektiv ist?
+  \subparagraph{Lsg.} Sei
+  \[
+    g\qty(\begin{pmatrix} x \\ y \\ z \\ t \end{pmatrix}) = 2x - y - t
+  \]
+
+  Da $\Bild\qty\big(g)$ ein Unterraum von $\mathbb{R}$ ist,
+  gilt für alle $w \in \Bild\qty\big(g), \lambda \in \mathbb{R}$, dass
+  $\lambda \cdot w \in \Bild\qty\big(g)$.
+  Angenommen $g$ wäre nicht surjektiv, dann existiert ein Element
+  $x \in \mathbb{R}$, so dass $x \notin \Bild\qty\big(g)$ und
+  $\lambda \cdot w \ne x$ für alle
+  $\lambda \in \mathbb{R}, w \in \Bild\qty\big(g)$.
+
+  $\Rightarrow \Bild\qty\big(g) = \qty\big{0}$
+
+  $\Rightarrow g(v) = 0$, somit wäre auch
+  $g\qty(\begin{pmatrix} 1 \\ 0 \\ 0 \\ 0\end{pmatrix}) = 0$, aber
+  $\begin{pmatrix} 1 \\ 0 \\ 0 \\ 0\end{pmatrix} \notin W$, ein Widerspruch zu
+  $\Kern\qty\big(g) = W$.
+
+  $\Rightarrow$ \underline{Es gibt keine lineare Abbildung $g$ mit
+    $\Kern\qty\big(g) = W$, so dass $g$ nicht surjektiv ist.}
 \end{enumerate}
 \end{document}
