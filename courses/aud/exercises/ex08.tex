@@ -1,0 +1,69 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{stmaryrd}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.misc}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 08\\Algorithmen und Datenstrukturen}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 1}
+\begin{enumerate}[a)]
+\item Geben Sie zu dem Pattern \textbf{aabaaacaab} die mit Hilfe des
+  KMP-Algorithmus (Knuth-Morris-Pratt) berechnete Verschiebetabelle an.
+
+  \subparagraph{Lsg.}
+  \begin{tabular}{c|cccccccccc}
+    Position & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+    \hline
+    Pattern & a & a & b & a & a & a & c & a & a & b \\
+    \hline
+    Tabelle & -1 & -1 & 1 & -1 & -1 & 2 & 2 & -1 & -1 & 1
+  \end{tabular}
+
+\item Mit Hilfe des KMP-Algorithmus ist die folgende Verschiebetabelle berechnet
+  worden.
+  Vervollständigen Sie das aus den Symbolen a, b und c bestehende Pattern.
+
+  \subparagraph{Lsg.}
+  \begin{tabular}{c|cccccc}
+    Position & 0 & 1 & 2 & 3 & 4 & 5 \\
+    \hline
+    Pattern & \textbf{c} & \textbf{b} & c & c & b & \textbf{a}  \\
+    \hline
+    Tabelle & -1 & 0 & -1 & 1 & 0 & 2
+  \end{tabular}
+\end{enumerate}
+
+\end{document}
