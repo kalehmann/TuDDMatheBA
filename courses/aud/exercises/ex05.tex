@@ -1,0 +1,200 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{stmaryrd}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.misc}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 05\\Algorithmen und Datenstrukturen}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 2}
+\begin{enumerate}[(a)]
+\item Das folgende C-Programm ist gegeben:
+  \begin{lstlisting}[language=C, showstringspaces=false]
+#include<stdio.h>
+
+void swoop(int a, int b)
+{
+        /* label 1 */
+        a = b;
+        b = a;
+        /* label 2 */
+}
+
+int main()
+{
+        int x = 3, y = 6;
+        /* label 3 */
+        swoop(x, y); /*$1*/
+        /* label 4 */
+        printf("x = %d, y = %d", x, y);
+        return 0;
+}
+  \end{lstlisting}
+  Geben Sie ein Speicherbelegungsprotokoll für dieses Programm an.
+
+  \subparagraph{Lsg.}\,\:
+
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    HP & RM & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+    \hline
+    label3 & - & $\substack{x \\ 3}$ & $\substack{y \\ 6}$ & & & & & & & & & \\
+    \hline
+    label1 & \$1 & & & $\substack{a \\ 3}$ & $\substack{b \\ 6}$ & & & & & & & \\
+    \hline
+    label2 & \$1 & & & $\substack{a \\ 6}$ & $\substack{b \\ 6}$ & & & & & & & \\
+    \hline
+    label4 & - & $\substack{x \\ 3}$ & $\substack{y \\ 6}$ & & & & & & & & & \\
+    \hline
+  \end{tabular}
+
+\newpage
+\item Schreiben Sie eine C-Funktion \textbf{swap} mit zwei Parametern, welche die
+  Werte der aktuellen Parameter vertauscht.
+
+  \subparagraph{Lsg.}
+  \begin{lstlisting}[language=C, showstringspaces=false]
+void swap(int *a, int *b)
+{
+        int tmp = *a;
+        *a = *b;
+        *b = tmp;
+}
+  \end{lstlisting}
+\end{enumerate}
+
+\newpage
+\paragraph{Aufgabe 3}
+Gegeben sei das folgende C-Programm:
+\begin{lstlisting}[language=C, numbers=left, showstringspaces=false]
+#include<stdio.h>
+int a;
+
+void g(int a, int *b);
+
+void f(int *i, int j) {
+        /* label1 */
+        if (*i + j < a) {
+                *i = *i + 1;
+                f(i, j); /*$1*/
+        }
+        /* label2 */
+}
+
+void g(int a, int *b) {
+        int i = 2;
+        /*label3*/
+        while (a != 1) {
+                f(&i, a); /*$2*/
+                a = a / 2;
+                *b = *b + 1;
+                /*label4*/
+        }
+}
+
+int main() {
+        int x = 0;
+        scanf("%i", &a);
+        /*label5*/
+        g(a, &x); /*$3*/
+        /*label6*/
+        return 0;
+}
+\end{lstlisting}
+\newpage
+\begin{enumerate}[a)]
+\item Geben Sie den Gültigkeitsbereich jedes Objektes an.
+  Nutzen Sie dazu die Zeilennummern.
+
+  \subparagraph{Lsg.} \;\\
+  \begin{tabular}{c|c}
+    \hline
+    a & Z. 2 - 14, 25 - 33 \\
+    g & Z. 4 - 33 \\
+    f & Z. 6 - 33 \\
+    i (f) & Z. 6 - 13 \\
+    j (f) & Z. 6 - 13 \\
+    a (g) & Z. 15 - 24 \\
+    b (g) & Z. 15 - 24 \\
+    i (g) & Z. 16 - 24 \\
+    main & Z. 26 - 33 \\
+    x (main) & Z. 27 - 33 \\
+  \end{tabular}
+
+\item Führen Sie das folgende Speicherbelegungsprotokoll weiter bis das Programm
+  endet.
+  Dokumentieren Sie jeweils die aktuelle Situation beim Passieren der Marken
+  \emph{/*label1*/} bis \emph{/*label6*/}.
+  Geben Sie jeweils den Rücksprungmarkenkeller und die \textbf{sichtbaren}
+  Variablen mit ihrer Wertbelegung an.
+  Die Inhalte von Speicherzellen nicht sichtbarer Variablen müssen Sie nur bei
+  Änderung eintragen.
+  Die bereits festgelegten Rücksprungmarken sind \emph{/*\$1*/} bis
+  \emph{/*\$3*/}.
+
+  \subparagraph{Lsg.} \:\\
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    HP & RM & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+    \hline
+    label5 & - & $\substack{a \\ 7}$ & $\substack{x \\ 0}$ & & & & & & & & & \\
+    \hline
+    label3 & \$3 & & & $\substack{a \\ 7}$ & $\substack{b \\ 2}$ & $\substack{i \\ 2}$ & & & & & & \\
+    \hline
+    label1 & \$2\$3 & $\substack{a \\ 7}$ & & & & & $\substack{i \\ 5}$ & $\substack{j \\ 7}$ & & & & \\
+    \hline
+    label2 & \$2\$3 & $\substack{a \\ 7}$ & & & & & $\substack{i \\ 5}$ & $\substack{j \\ 7}$ & & & & \\
+    \hline
+    label4 & \$3 & & $\substack{x (main) \\ 1}$ & $\substack{a \\ 3}$ & $\substack{b \\ 2}$ & $\substack{i \\ 2}$ & & & & & & \\
+    \hline
+    label1 & \$2\$3 & $\substack{a \\ 7}$ & & & & & $\substack{i \\ 5}$ & $\substack{j \\ 3}$ & & & & \\
+    \hline
+    label1 & \$1\$2\$3 & $\substack{a \\ 7}$ & & & & $\substack{i (g) \\ 3}$ & & & $\substack{i \\ 5}$ & $\substack{j \\ 3}$ & & \\
+    \hline
+    label1 & \$1\$1\$2\$3 & $\substack{a \\ 7}$ & & & & $\substack{i (g) \\ 4}$ & & & & & $\substack{i \\ 5}$ & $\substack{j \\ 3}$ \\
+    \hline
+    label2 & \$1\$1\$2\$3& $\substack{a \\ 7}$ & & & & & & & & & $\substack{i \\ 5}$ & $\substack{j \\ 3}$ \\
+    \hline
+    label2 & \$1\$2\$3 & $\substack{a \\ 7}$ & & & & & & & $\substack{i \\ 5}$ & $\substack{j \\ 3}$ & & \\
+    \hline
+    label2 & \$2\$3 & $\substack{a \\ 7}$ & & & & & $\substack{i \\ 5}$ & $\substack{j \\ 3}$ & & & & \\
+    \hline
+    label4 & \$3 & & $\substack{x (main) \\ 2}$ & $\substack{a \\ 1}$ & $\substack{b \\ 2}$ & $\substack{i \\ 4}$ & & & & & & \\
+    \hline
+    label6 & - & $\substack{a \\ 7}$ & $\substack{x \\ 2}$ & & & & & & & & & \\
+    \hline
+  \end{tabular}
+\end{enumerate}
+\end{document}
