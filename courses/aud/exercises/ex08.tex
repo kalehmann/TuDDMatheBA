@@ -66,4 +66,61 @@
   \end{tabular}
 \end{enumerate}
 
+\paragraph{Aufgabe 2}
+Gegeben seien die Wörter $w$ = espen und $v$ = beispiele.
+\begin{enumerate}[a)]
+\item Berechnen Sie die Levenshtein-Distanz $d\qty\big(v, w)$.
+  Geben Sie dazu die Berechnungsmatrix an.
+  Tragen Sie alle Zelleneinträge zusammen mit den dazugehörigen Pfeilen ein.
+
+  \subparagraph{Lsg.} \:\\
+  \begin{tabular}{c|ccccccccccccccccccc}
+    $d\qty\big(w, v)$
+      & & & b & & e & & i & & s & & p & & i & & e & & l & & e \\
+    \hline
+      & 0 & \color{blue} $\rightarrow$ & 1 & $\rightarrow$ & 2 & $\rightarrow$ & 3 & $\rightarrow$ & 4 & $\rightarrow$ & 5 & $\rightarrow$ & 6 & $\rightarrow$ & 7 & $\rightarrow$ & 8 & $\rightarrow$ & 9 \\
+      & $\downarrow$ & $\searrow$ & & \color{blue} $\searrow$ & & & & & & & & & & $\searrow$ & & & & $\searrow$ \\
+    e & 1 & & 1 & & 1 & \color{blue} $\rightarrow$ & 2 & $\rightarrow$ & 3 & $\rightarrow$ & 4 & $\rightarrow$ & 5 & $\rightarrow$ & 6 & $\rightarrow$ & 7 & $\rightarrow$ & 8 \\
+      & $\downarrow$ & $\searrow$ & $\downarrow$ & $\searrow$ & & $\searrow$ & & \color{blue} $\searrow$ \\
+    s & 2 & & 2 & & 2 &  & 2 & & 2 & $\rightarrow$ & 3 & $\rightarrow$ & 4 & $\rightarrow$ & 5 & $\rightarrow$ & 6 & $\rightarrow$ & 7 \\
+      & $\downarrow$ & $\searrow$ & $\downarrow$ & & $\downarrow$ & $\searrow$ & & $\searrow$ & $\downarrow$ & \color{blue} $\searrow$ \\
+    p & 3 & & 3 & & 3 & & 3 & $\rightarrow$ & 3 & & 2 & \color{blue} $\rightarrow$ & 3 & $\rightarrow$ & 4 & $\rightarrow$ & 5 & $\rightarrow$ & 6 \\
+      & $\downarrow$ & $\searrow$ & $\downarrow$ & $\searrow$ & & $\searrow$ & $\downarrow$ & $\searrow$ & $\downarrow$ & & $\downarrow$ & $\searrow$ & & \color{blue} $\searrow$ & & & & $\searrow$ \\
+    e & 4 & & 4 & & 3 & & 4 & & 4 & & 3 & & 3 & & 3 &\color{red} $\rightarrow$ & \colorbox{green!30}{4} & $\rightarrow$ & 5 \\
+      & $\downarrow$ & $\searrow$ & $\downarrow$ & & $\downarrow$ & $\searrow$ & & $\searrow$ & $\downarrow$ & & $\downarrow$ & $\searrow$ & $\downarrow$ & $\searrow$ & $\downarrow$ & \color{red} $\searrow$ & & \color{red} $\searrow$ \\
+    n & 5 & & 5 & & 4 & & 4 & $\rightarrow$ & 5 & & 4 & & 4 & & 4 & & 4 & \color{red} $\rightarrow$ & \colorbox{yellow}{5} \\
+  \end{tabular}
+
+  Die Levenshtein-Distanz beträgt \colorbox{yellow}{5}.
+
+\item Geben Sie die Levenshtein-Distanz $d\qty\big(\text{espe, beispiel})$ an.
+  Beachten Sie, dass espe und beispiel Präfixe von espen, bzw. beispiele sind.
+
+  \subparagraph{Lsg.} Die Levenshtein-Distanz beträgt \colorbox{green!30}{4}.
+
+\newpage
+\item Geben Sie zwei Alignments zwischen \emph{espen} und \emph{beispiele} an,
+  die zu den minimalen Kosten führen.
+  Dabei sollen die Alignments die jeweils angewendeten Editieroperation enthalten.
+
+  \subparagraph{Lsg.} \:\\
+  \begin{tabular}{ccccccccc}
+    b & e & i & s & p & i & e & l & e\\
+    $\mid$ & $\mid$ & $\mid$ & $\mid$ & $\mid$ & $\mid$ & $\mid$ & $\mid$ & $\mid$ \\
+    * & e & * & s & p & * & e & n & *\\
+    d &   & d &   &   & d &   & s & d
+  \end{tabular}
+
+  \begin{tabular}{ccccccccc}
+    b & e & i & s & p & i & e & l & e\\
+    $\mid$ & $\mid$ & $\mid$ & $\mid$ & $\mid$ & $\mid$ & $\mid$ & $\mid$ & $\mid$ \\
+    * & e & * & s & p & * & e & * & n\\
+    d &   & d &   &   & d &   & d & s
+  \end{tabular}
+
+\item Wie viele Alignments enthält die in Aufgabe a) angegebene Berechnungsmatrix?
+
+  \subparagraph{Lsg.} Es gibt 2 Alignments.
+\end{enumerate}
+
 \end{document}
