@@ -1,0 +1,203 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{stmaryrd}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.misc}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{WiSe 2021/2022}
+\title{Übungsblatt 08\\Algorithmen und Datenstrukturen}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 1}
+Fügen Sie in die folgenden AVL-Bäume den jeweils angegebenen Schlüssel ein und
+stellen Sie die AVL-Eigenschaft her.
+Dokumentieren Sie dabei die ausgeführten Operationen unter Nutzung der folgenden
+Abkürzungen:
+\begin{itemize}
+\item $i\qty\big(x)$ - \emph{Einfügen} des Knotens mit dem Schlüsselwert $x$
+\item $L\qty\big(x)$ - \emph{Linksrotation} um den Knoten mit dem Schlüsselwert $x$
+\item $R\qty\big(x)$ - \emph{Rechtsrotation} um den Knoten mit dem Schlüsselwert $x$
+\end{itemize}
+\begin{enumerate}[(a)]
+\item \;\\
+  \begin{tikzpicture}
+    \node at (0, 0) (2a) {2};
+    \node[below left = 0.2 of 2a] (1a) {1};
+    \node[below right = 0.2 of 2a] (3a) {3};
+    \node[below right = 0.2 of 3a] (4a) {4};
+    \node[right = 0.6 of 3a] {$\substack{i\qty\big(5) \\ \longrightarrow}$};
+    \draw (2a) -- (1a);
+    \draw (2a) -- (3a) -- (4a);
+
+    \node at (3.5, 0) (2b) {2};
+    \node[below left = 0.2 of 2b] (1b) {1};
+    \node[below right = 0.2 of 2b, label = {[label distance=0]30:{\tiny 2}}] (3b) {3};
+    \node[below right = 0.2 of 3b, label = {[label distance=0]30:{\tiny 1}}] (4b) {4};
+    \node[below right = 0.2 of 4b] (5b) {5};
+    \node[right = of 3b] {$\substack{L\qty\big(3) \\ \longrightarrow}$};
+    \draw (2b) -- (1b);
+    \draw (2b) -- (3b) -- (4b) -- (5b);
+
+    \node[label = {[label distance=0]30:{\tiny 1}}] at (7.5, 0) (2c) {2};
+    \node[below left = 0.2 of 2c] (1c) {1};
+    \node[below right = 0.2 of 2c, label = {[label distance=0]30:{\tiny 0}}] (4c) {4};
+    \node[below left = 0.2 of 4c] (3c) {3};
+    \node[below right = 0.2 of 4c] (5c) {5};
+    \draw (2c) -- (1c);
+    \draw (2c) -- (4c) -- (3c);
+    \draw (4c) -- (5c);
+  \end{tikzpicture}
+
+\item \;\\
+  \begin{tikzpicture}
+    \node at (0, 0) (4a) {4};
+    \node[below left = 0.2 of 4a] (2a) {2};
+    \node[below right = 0.2 of 4a] (5a) {5};
+    \node[below right = 0.2 of 2a] (3a) {3};
+    \node[right = 0.3 of 5a] {$\substack{i\qty\big(1) \\ \longrightarrow}$};
+    \draw (4a) -- (2a) -- (3a);
+    \draw (4a) -- (5a);
+
+    \node[label = {[label distance=-5]120:{\tiny -1}}] at (3.5, 0) (4b) {4};
+    \node[below left = 0.2 of 4b, label = {[label distance=-5]120:{\tiny 0}}] (2b) {2};
+    \node[below right = 0.2 of 4b, label = {[label distance=-5]30:{\tiny 0}}] (5b) {5};
+    \node[below left = 0.2 of 2b] (1b) {1};
+    \node[below right = 0.2 of 2b] (3b) {3};
+    \draw (4b) -- (2b) -- (1b);
+    \draw (2b) -- (3b);
+    \draw (4b) -- (5b);
+  \end{tikzpicture}
+
+\item \;\\
+  \begin{tikzpicture}
+    \node at (0, 0) (8a) {8};
+    \node[below left = 0.2 and 0.5 of 8a] (5a) {5};
+    \node[below left = 0.2 of 5a] (3a) {3};
+    \node[below right = 0.2 of 5a] (7a) {7};
+    \node[below left = 0.2 and -0.2 of 3a] (2a) {2};
+    \node[below right = 0.2 and -0.2 of 3a] (4a) {4};
+    \node[below left = 0.2 and -0.2 of 7a] (6a) {6};
+    \node[below right = 0.2 and 0.5 of 8a] (10a) {10};
+    \node[below left = 0.2 of 10a] (9a) {9};
+    \node[below right = 0.2 of 10a] (11a) {11};
+    \node[right = 0.7 of 10a] {$\substack{i\qty\big(1) \\ \longrightarrow}$};
+    \draw (8a) -- (5a) -- (3a) -- (2a);
+    \draw (5a) -- (7a) -- (6a);
+    \draw (3a) -- (4a);
+    \draw (8a) -- (10a) -- (11a);
+    \draw (10a) -- (9a);
+
+    \node[label = {[label distance=-5]120:{\tiny -2}}] at (5, 0) (8a) {8};
+    \node[below left = 0.2 and 0.5 of 8a, label = {[label distance=-5]120:{\tiny -1}}] (5a) {5};
+    \node[below left = 0.2 of 5a, label = {[label distance=-5]120:{\tiny -1}}] (3a) {3};
+    \node[below right = 0.2 of 5a] (7a) {7};
+    \node[below left = 0.2 and -0.2 of 3a] (2a) {2};
+    \node[below left = 0.2 and -0.2 of 2a] (1a) {1};
+    \node[below right = 0.2 and -0.2 of 3a] (4a) {4};
+    \node[below left = 0.2 and -0.2 of 7a] (6a) {6};
+    \node[below right = 0.2 and 0.5 of 8a] (10a) {10};
+    \node[below left = 0.2 of 10a] (9a) {9};
+    \node[below right = 0.2 of 10a] (11a) {11};
+    \node[right = 0.7 of 10a] {$\substack{R\qty\big(8) \\ \longrightarrow}$};
+    \draw (8a) -- (5a) -- (3a) -- (2a) -- (1a);
+    \draw (5a) -- (7a) -- (6a);
+    \draw (3a) -- (4a);
+    \draw (8a) -- (10a) -- (11a);
+    \draw (10a) -- (9a);
+
+    \node[label = {[label distance=-5]120:{\tiny 0}}] at (10, 0) (5b) {5};
+    \node[below left = 0.2 and 0.5 of 5b, label = {[label distance=-5]120:{\tiny -1}}] (3b) {3};
+    \node[below right = 0.2 and 0.5 of 5b, label = {[label distance=-5]30:{\tiny 0}}] (8b) {8};
+    \node[below left = 0.2 of 8b] (7b) {7};
+    \node[below left = 0.2 and -0.2 of 3b] (2b) {2};
+    \node[below left = 0.2 and -0.2 of 2b] (1b) {1};
+    \node[below right = 0.2 and -0.2 of 3b] (4b) {4};
+    \node[below left = 0.2 and -0.2 of 7b] (6b) {6};
+    \node[below right = 0.2 of 8b] (10b) {10};
+    \node[below left = 0.2 and 0 of 10b] (9b) {9};
+    \node[below right = 0.2 and 0 of 10b] (11b) {11};
+    \draw (8b) -- (5b) -- (3b) -- (2b) -- (1b);
+    \draw (8b) -- (7b) -- (6b);
+    \draw (3b) -- (4b);
+    \draw (8b) -- (10b) -- (11b);
+    \draw (10b) -- (9b);
+  \end{tikzpicture}
+
+\item \;\\
+  \begin{tikzpicture}
+    \node at (0, 0) (5a) {5};
+    \node[below left = 0.2 of 5a] (2a) {2};
+    \node[below right = 0.2 of 5a] (6a) {6};
+    \node[below left = 0.2 of 2a] (1a) {1};
+    \node[below right = 0.2 of 2a] (4a) {4};
+    \node[right = 0 of 6a] {$\substack{i\qty\big(3) \\ \longrightarrow}$};
+    \draw (5a) -- (2a) -- (1a);
+    \draw (2a) -- (4a);
+    \draw (5a) -- (6a);
+
+    \node[label = {[label distance=-5]120:{\tiny -2}}] at (3, 0) (5b) {5};
+    \node[below left = 0.2 of 5b, label = {[label distance=-5]120:{\tiny 1}}] (2b) {2};
+    \node[below right = 0.2 of 5b] (6b) {6};
+    \node[below left = 0.2 of 2b] (1b) {1};
+    \node[below right = 0.2 of 2b, label = {[label distance=-5]30:{\tiny 1}}] (4b) {4};
+    \node[below left = 0.2 of 4b] (3b) {3};
+    \node[right = 0 of 6b] {$\substack{L\qty\big(2) \\ \longrightarrow}$};
+    \draw (5b) -- (2b) -- (1b);
+    \draw (2b) -- (4b) -- (3b);
+    \draw (5b) -- (6b);
+
+    \node[label = {[label distance=-5]120:{\tiny -2}}] at (6.5, 0) (5c) {5};
+    \node[below left = 0.2 of 5c, label = {[label distance=-5]120:{\tiny -2}}] (4c) {4};
+    \node[below left = 0.2 of 4c, label = {[label distance=-5]120:{\tiny 0}}] (2c) {2};
+    \node[below right = 0.2 of 5c] (6c) {6};
+    \node[below left = 0.2 of 2c] (1c) {1};
+    \node[below right = 0.2 of 2c] (3c) {3};
+    \node[right = 0 of 6c] {$\substack{R\qty\big(5) \\ \longrightarrow}$};
+    \draw (5c) -- (4c) -- (2c);
+    \draw (2c) -- (1c);
+    \draw (2c) -- (3c);
+    \draw (5c) -- (6c);
+
+    \node[label = {[label distance=-5]120:{\tiny 0}}] at (10, 0) (4d) {4};
+    \node[below left = 0.2 of 4d, label = {[label distance=-5]120:{\tiny 0}}] (2d) {2};
+    \node[below right = 0.2 of 4d, label = {[label distance=-5]30:{\tiny 1}}] (5d) {5};
+    \node[below right = 0.2 of 5d] (6d) {6};
+    \node[below left = 0.2 of 2d] (1d) {1};
+    \node[below right = 0.2 of 2d] (3d) {3};
+    \draw (4d) -- (2d) -- (1d);
+    \draw (2d) -- (3d);
+    \draw (4d) -- (5d) -- (6d);
+  \end{tikzpicture}
+\end{enumerate}
+
+\end{document}
