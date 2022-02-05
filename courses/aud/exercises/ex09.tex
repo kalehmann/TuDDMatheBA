@@ -200,4 +200,66 @@ Abkürzungen:
   \end{tikzpicture}
 \end{enumerate}
 
+\newpage
+\paragraph{Aufgabe 2}
+Gegeben ist die Typdefinition für Binärbäume:
+\begin{lstlisting}[language=C]
+  typedef struct node *tree;
+  struct node { int key; tree left, right; };
+\end{lstlisting}
+\begin{enumerate}[a)]
+\item Schreiben Sie eine C-Funktion \textbf{bfs}, welche für einen beliebigen
+  Binärbaum \emph{t} einen Binärbaum \emph{s} zurückgibt, sodass \emph{s} aus
+  \emph{t} hervorgeht, indem der Balancefaktor jedes Knotens dem Schlüsselwert
+  dieses Knotens zugewiesen wird.
+  Der Baum \emph{t} soll dabei nicht verändert werden.
+
+  \begin{lstlisting}[language=C]
+int max(int i, int j)
+{
+        return (i > j) ? i : j;
+}
+
+unsigned int height(tree t)
+{
+        if (NULL == t) {
+                return 0;
+        }
+
+        return max(heigt(t->right), heigt(t->left)) + 1;
+}
+
+tree bfs(tree t)
+{
+        tree s = NULL;
+        if (NULL == t || NULL == (s = malloc(sizeof(struct node)))) {
+                return NULL;
+        }
+
+        s->key = height(t);
+        s->left = bfs(t->left);
+        s->right = bfs(t->right);
+
+        return s;
+}
+  \end{lstlisting}
+
+\newpage
+\item Schreiben Sie eine Funktion \textbf{lRot}, die an der Wurzel eines
+  übergebenen Baumes eine einfach Linksrotation (im Sinne der AVL-Bäume)
+  durchführt.
+  Sie können davon ausgehen, dass der Wurzelknoten einen rechten Kindknoten hat.
+
+  \begin{lstlisting}[language=C]
+tree lRot(tree t)
+{
+        tree tmp = t->right->left, root = t->right;
+        root->left = t;
+        t->right = tmp;
+
+        return root;
+}
+  \end{lstlisting}
+\end{enumerate}
+
 \end{document}
