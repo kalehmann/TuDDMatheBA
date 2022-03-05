@@ -4,7 +4,7 @@ on: "push"  # yamllint disable-line rule:truthy
 jobs:
         build-site:
                 runs-on: "ubuntu-latest"
-                name: "PHPUnit tests"
+                name: "Build the site"
                 steps:
                         - uses: "actions/checkout@v2"
                         - name: "Build the site"
