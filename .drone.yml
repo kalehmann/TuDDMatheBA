@@ -1,11 +1,11 @@
 ---
-kind: "pipeline"
-type: "docker"
-name: "publish"
+kind: 'pipeline'
+name: 'publish'
+type: 'docker'
 
 steps:
-    - name: "Pull existing documents"
-      image: "registry.kalehmann.de/lftp:latest"
+    - name: 'Pull existing documents'
+      image: 'registry.kalehmann.de/lftp:latest'
       commands:
           - 'lftp -e "
                set ftp:ssl-force true;
@@ -20,8 +20,8 @@ steps:
               from_secret: 'ftp_password'
           SERVER:
               from_secret: 'ftp_server'
-    - name: "Build the website"
-      image: "registry.kalehmann.de/tuddmatheba:latest"
+    - name: 'Build the website'
+      image: 'registry.kalehmann.de/tuddmatheba:latest'
       commands:
           - 'git restore-mtime'
           - 'make'
@@ -30,8 +30,8 @@ steps:
               - 'master'
       depends_on:
           - 'Pull existing documents'
-    - name: "Deploy the website"
-      image: "registry.kalehmann.de/lftp:latest"
+    - name: 'Deploy the website'
+      image: 'registry.kalehmann.de/lftp:latest'
       commands:
           - 'lftp -e "
                set ftp:ssl-force true;
@@ -53,5 +53,5 @@ steps:
               - 'master'
 
 image_pull_secrets:
-        - "dockerconfigjson"
+        - 'dockerconfigjson'
 ...
