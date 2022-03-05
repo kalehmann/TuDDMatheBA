@@ -1,0 +1,12 @@
+---
+name: "Build the site"
+author: "Karsten Lehmann <mail@kalehmann.de>"
+description: "Render the latex files and html"
+runs:
+        using: "docker"
+        image: "../../../Dockerfile"
+        entrypoint: "/bin/sh"
+        args:
+                - "-c"
+                - "git-restore-mtime; make"
+...
