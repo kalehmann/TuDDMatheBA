@@ -6,7 +6,6 @@ RUN apt-get update \
         ca-certificates \
         git-restore-mtime \
 	latexmk \
-        lftp \
 	make \
         texlive \
 	texlive-fonts-extra \
