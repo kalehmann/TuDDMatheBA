@@ -4,7 +4,7 @@ name: "publish"
 
 steps:
     - name: "Pull existing documents"
-      image: "registry.kalehmann.de/tuddmatheba:latest"
+      image: "registry.kalehmann.de/lftp:latest"
       commands:
           - 'lftp -e "
                set ftp:ssl-force true;
@@ -30,7 +30,7 @@ steps:
       depends_on:
           - 'Pull existing documents'
     - name: "Deploy the website"
-      image: "registry.kalehmann.de/tuddmatheba:latest"
+      image: "registry.kalehmann.de/lftp:latest"
       commands:
           - 'lftp -e "
                set ftp:ssl-force true;
