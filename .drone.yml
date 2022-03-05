@@ -11,7 +11,10 @@ steps:
                set ftp:ssl-force true;
                set ssl:verify-certificate yes;
                open -u $${USER},$${PASSWORD} $${SERVER};
-               mirror --delete public_html/kalehmann-de/tuddmatheba $(pwd)/_site;
+               mirror
+                   --delete
+                   public_html/kalehmann-de/tuddmatheba
+                   $(pwd)/_site;
                exit;"'
       environment:
           USER:
@@ -37,7 +40,11 @@ steps:
                set ftp:ssl-force true;
                set ssl:verify-certificate yes;
                open -u $${USER},$${PASSWORD} $${SERVER};
-               mirror --reverse --delete $(pwd)/_site public_html/kalehmann-de/tuddmatheba;
+               mirror
+                   --reverse
+                   --delete
+                   $(pwd)/_site
+                   public_html/kalehmann-de/tuddmatheba;
                exit;"'
       environment:
           USER:
@@ -53,5 +60,5 @@ steps:
               - 'master'
 
 image_pull_secrets:
-        - 'dockerconfigjson'
+    - 'dockerconfigjson'
 ...
