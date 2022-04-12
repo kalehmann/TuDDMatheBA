@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
   <title>TuDDMatheBa</title>
 </head>
@@ -29,7 +30,7 @@
       * {
           display: block;
           font-family: Monospace;
-	  padding: .5em 0;
+          padding: .5em 0;
           text-decoration: none;
       }
 
@@ -58,13 +59,13 @@
           background-color: #1c1c1c;
           color: #cccccc;
           font-size: 1.4em;
-	  margin: auto;
-	  max-width: 60rem;
-	  padding: 2rem;
+          margin: auto;
+          max-width: 60rem;
+          padding: 2rem;
       }
 
       ul {
-	  padding: 0;
+          padding: 0;
       }
 
       style {
@@ -96,17 +97,17 @@
       }
       
       h1::after {
-        content: '</h1>';
+          content: '</h1>';
       }
       h1::before {
           content: '<h1>';
       }
 
       h2::after {
-        content: '</h2>';
+          content: '</h2>';
       }
       h2::before {
-        content: '<h2>';
+          content: '<h2>';
       }
 
       head::after {
@@ -120,14 +121,15 @@
           content: '</html>';
       } 
       html::before {
-          content: '<html>';
+          content: "<!DOCTYPE html>" '\A' "<html>";
+          white-space: pre;
       }
 
       li::after {
-	content: '</li>';
+          content: '</li>';
       }
       li::before {
-	content: '<li>';
+          content: '<li>';
       }
 
       p::after {
@@ -138,10 +140,10 @@
       }
 
       strong::after {
-	  content: '</strong>';
+          content: '</strong>';
       }
       strong::before {
-	  content: '<strong>';
+          content: '<strong>';
       }
 
       style::after {
@@ -162,14 +164,14 @@
           content: '</title>';
       }
       title::before {
-        content: '<title>';
+          content: '<title>';
       }
 
       ul::after {
-	content: '</ul>';
+          content: '</ul>';
       }
       ul::before {
-	content: '<ul>';
+          content: '<ul>';
       }
     </style>
   </details>
