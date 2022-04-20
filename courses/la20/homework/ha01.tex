@@ -22,6 +22,8 @@
 \usetikzlibrary{patterns}
 \usepgfplotslibrary{fillbetween}
 
+\newcommand{\sgn}{\text{sgn}}
+
 \author{Karsten Lehmann\\Mat. Nr 4935758}
 \date{SoSe 2022}
 \title{Hausaufgaben Blatt 01\\Lineare Algebra - Weiterführende Konzepte}
@@ -68,4 +70,73 @@ $f$ bereits, dass er unitär ist.
 
 $\Rightarrow$ jeder Isomorphismus von $K$-Algebren ist unitär.
 
+\paragraph{Aufgabe 7} In dieser Aufgabe beweisen Sie Lemma 8.34.
+Seien $R$ ein kommutativer Ring und $k, l \in \mathbb{N}$.
+\begin{enumerate}[(i)]
+\item Seien $A \in \mathcal{M}_{k \times k}\qty\big(R)$,
+  $C \in \mathcal{M}_{l \times l}\qty\big(R)$ und
+  $B \in \mathcal{M}_{l \times k}\qty\big(R)$.
+  Sei außerdem $n \coloneqq k + l$.
+  Nehmen wir an, eine Matrix $D \in \mathcal{M}_{n \times n}\qty\big(R)$
+  ist in Blockform gegeben als
+  \[
+    D = \begin{pmatrix}
+      A & \textbf{0} \\
+      B & C \\
+    \end{pmatrix}
+  \]
+  Zeigen Sie, dass $\det\qty\big(D) = \det\qty\big(A)\det\qty\big(C)$ gilt.
+
+  \subparagraph{Lsg.} Sei $d_{i, j}$ der $i$-te Eintrag aus der $j$-ten Spalte
+  von $D$.
+  Dann ist $d_{i, j} = 0$, falls $k < i \leq n$ und $1 \leq j \leq k$.
+  Generell ist
+  \begin{flalign*}
+    \det\qty\big(D) &= \sum_{\sigma \in S_n} \sgn\qty\big(\sigma)
+    d_{\sigma(1), 1} \ldots d_{\sigma(n), n} & \\
+    &= \sum_{\sigma \in S_n} \sgn\qty\big(\sigma)
+    d_{\sigma(1), 1} \ldots d_{\sigma(k), k}d_{\sigma(k + 1), k + 1} \ldots d_{\sigma(n), n}
+  \end{flalign*}
+  Nun interessieren nur Elemente dieser Summe, welche ungleich $0$ sind.
+  Damit ein Produkt aus dieser Summe ungleich $0$ sein kann, muss
+  $\sigma\qty\big(j) \leq k$ gelten für $j \leq k$.
+  (anderenfalls wäre $d_{\sigma(j), j} = 0$).
+  Da für $a, b \in 1 .. n$ und $\sigma \in S_n$ gilt $\sigma(a) \ne \sigma(b)$
+  folgt auch $\sigma\qty\big(j) > k$ gelten für $j > k$.
+  Somit ergibt sich
+  \begin{flalign*}
+    \det\qty\big(D) &= \sum_{\rho \in S_k, \tau \in \text{Sym}(\qty{k + 1, n})}
+    \sgn\qty\big(\rho) \cdot \sgn\qty\big(\tau)
+    d_{\rho(1), 1} \ldots d_{\rho(k), k}
+    d_{\tau(k + 1), k + 1} \ldots d_{\tau(n), n} \\
+    &= \qty(
+      \sum_{\rho \in S_k} \sgn\qty\big(\rho) d_{\rho(1), 1} \ldots d_{\rho(k), k}
+    ) \cdot \qty(
+      \sum_{\tau \in \text{Sym}(\qty{k + 1, n})}
+      \sgn\qty\big(\tau) d_{\tau(k + 1), k + 1} \ldots d_{\tau(n), n}
+    ) \\
+    &= \det\qty\big(A) \cdot \det\qty\big(C)
+  \end{flalign*}
+
+\item Seien $A \in \mathcal{M}_{k \times k}\qty\big(R)$,
+  $C \in \mathcal{M}_{l \times l}\qty\big(R)$ und
+  $B \in \mathcal{M}_{k \times l}\qty\big(R)$.
+  Sei außerdem $n \coloneqq k + l$.
+  Nehmen wir an, eine Matrix $D \in \mathcal{M}_{n \times n}\qty\big(R)$
+  ist in Blockform gegeben als
+  \[
+    D = \begin{pmatrix}
+      A & B \\
+      \textbf{0} & C \\
+    \end{pmatrix}
+  \]
+  Zeigen Sie, dass $\det\qty\big(D) = \det\qty\big(A)\det\qty\big(C)$ gilt.
+
+  \subparagraph{Lsg.} Nach Satz 8.26 der Vorlesung gilt für eine $n \times n$
+  Matrix $A$, dass $\det\qty\big(A) = \det\qty\big(A^t)$.
+  Nun ist $D^t = \begin{pmatrix}A^t & 0 \\ B^t & C^t\end{pmatrix}$ und
+  nach (i) $\det\qty\big(D^t) = \det\qty\big(A^t)\det\qty\big(C^t)$.
+
+  Aus erneuter Anwendung von Satz 8.26 folgt die Behauptung.
+\end{enumerate}
 \end{document}
