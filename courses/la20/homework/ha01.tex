@@ -1,0 +1,71 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{SoSe 2022}
+\title{Hausaufgaben Blatt 01\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 6} Beweisen Sie Lemma 7.50: Sei $K$ ein Körper.
+Seien $A$ und $B$ beides $K$-Algebren und $\varphi \colon A \to B$ ein
+surjektiver $K$-Algebrahomomorphismus.
+Dann ist $\varphi$ unitär.
+Insbesondere ist jeder Isomorphismus von $K$-Algebren schon unitär.
+
+\subparagraph{Lsg.} $\varphi \colon A \to B$ ist ein $K$-Algebrahomomorphismus
+wenn $\varphi$ eine lineare Abbildung zwischen $A$ und $B$ ist, sowie für alle
+$a, b \in A$ gilt $\varphi\qty\big(ab) = \varphi\qty\big(a)\varphi\qty\big(b)$.
+Der $K$-Algebrahomomorphismus $\varphi$ heißt unitär, wenn
+$\varphi\qty\big(1_A) = 1_B$ gilt.
+Weiter heißt der $K$-Algebrahomomorphismus $\varphi$ surjektiv, wenn für jedes
+Element $b \in B$ ein Element $a \in A$ existiert mit
+$\varphi\qty\big(a) = b$ existiert. \\
+
+Sei nun $b \in B$ beliebig gewählt.
+Da $\varphi$ surjektiv ist, existiert ein $a \in A$ mit
+$\varphi\qty\big(a) = b$.
+Nun ist auch $\varphi\qty\big(1_A)\varphi\qty\big(a) = \varphi\qty\big(1_A)b$.
+Aus der Definition des $K$-Algebrahomomorphismus folgt
+$\varphi\qty\big(1_A)\varphi\qty\big(a) = \varphi\qty\big(1_A \cdot a)
+= \varphi\qty\big(a) = b$.
+Also ist $\varphi\qty\big(1_A) \cdot b = b$ für jedes beliebige $b \in B$.
+
+$\Rightarrow \varphi\qty\big(1_A) = 1_B$.
+
+Ein $K$-Algebrahomomorphismus $f \colon A \to B$ heißt Isomorphismus
+von $K$-Algebren, wenn $f$ bijektiv - also injektiv und surjektiv ist.
+Wie eben gezeigt folgt aus der Surjektivität eines $K$-Algebrahomomorphismus
+$f$ bereits, dass er unitär ist.
+
+$\Rightarrow$ jeder Isomorphismus von $K$-Algebren ist unitär.
+
+\end{document}
