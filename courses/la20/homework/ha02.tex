@@ -22,7 +22,7 @@
 \usetikzlibrary{patterns}
 \usepgfplotslibrary{fillbetween}
 
-\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Kern}{\text{Kern}}
 
 \author{Karsten Lehmann\\Mat. Nr 4935758}
 \date{SoSe 2022}
@@ -37,6 +37,79 @@
 \rfoot{Seite \thepage}
 
 \begin{document}
+\paragraph{Aufgabe 6} Seien $G$ und $H$ Gruppen und sei $\varphi \colon G \to H$
+ein Gruppenhomomorphismus.
+Wir definieren
+\[
+  \Kern\qty\big(\varphi) \coloneqq
+  \qty{ g \in G \:{\big |}\: \varphi\qty\big(g) = 1_H}
+\]
+\begin{enumerate}[(i)]
+\item Zeigen Sie, dass $\Kern\qty\big(\varphi)$ eine Untergruppe von $G$ ist.
+
+  \subparagraph{Lsg.} Eine Abbildung $\sigma \colon G \to H$ heißt
+  Gruppenhomomorphismus, falls für alle $g \in G, h \in H$ gilt
+  $\sigma\qty\big(gh) = \sigma\qty\big(g)\sigma\qty\big(h)$.
+
+  Nun ist gilt für ein beliebiges $g \in G$, dass
+  $\varphi\qty\big(g) = \varphi\qty\big(1_G \cdot g)
+  = \varphi\qty\big(1_G) \cdot \varphi\qty\big(g)$.
+
+  $\Rightarrow \varphi\qty\big(1_G) = 1_H$, somit ist $\Kern\qty\big(\varphi)$
+  nicht leer.
+
+  Seien nun $e, g \in \Kern\qty\big(\varphi)$ beliebig.
+  Dann ist $\varphi\qty\big(e) = 1_H = \varphi\qty\big(1_G)
+  = \varphi\qty\big(e \cdot e^{-1})
+  = \varphi\qty\big(e) \cdot \varphi\qty\big(e^{-1})
+  = 1_H \cdot \varphi\qty\big(e^{-1}) = \varphi\qty\big(e^{-1})$.
+
+  $\Rightarrow e^{-1} \in \Kern\qty\big(\varphi)$.
+
+  Weiter ist $\varphi\qty\big(g \cdot e^{-1})
+  = \varphi\qty\big(g) \cdot \varphi\qty\big(e^{-1}) = 1_H \cdot 1_H = 1_H$.
+
+  $\Rightarrow g \cdot e^{-1} \in \Kern\qty\big(\varphi)$
+
+  Nach Lemma 2.9 der Vorlesung (``\emph{Sei $\qty\big(G, \cdot)$ eine Gruppe
+    und $\emptyset \ne U \subseteq G$.
+    Dann ist $U$ eine Untergruppe genau dann wenn $g \cdot h^{-1} \in U$
+    für alle $g, h \in U$}'') folgt die Behauptung.
+
+\item Sei $K$ ein Körper und $n \in \mathbb{N}$.
+  Nach Aufgabe 5 auf Übungsblatt 1 ist
+  \[
+    GL_n\qty\big(K) \coloneqq \qty{
+      A \in \mathcal{M}_{n \times n}\qty\big(K)
+      \:{\big |}\:
+      \det\qty\big(A) \ne 0
+    }
+  \]
+  zusammen mit der üblichen Multiplikation von Matrizen eine Gruppe.
+  Zeigen Sie unter Verwendung von $(i)$ und Aufgabe 5 auf Übungsblatt 1, dass
+  \[
+    SL_n\qty\big(K) \coloneqq \qty{
+      A \in GL_n\qty\big(K)
+      \:{\big |}\:
+      \det\qty\big(A) = 1
+    }
+  \]
+  eine Untergruppe von $GL_n\qty\big(K)$ ist.
+
+  \subparagraph{Lsg.} Sei $\phi \colon  GL_n(K) \to K \setminus \qty\big{0},
+  A \mapsto \det\qty\big(A)$ eine Abbildung.
+  In Aufgabe 5 (ii) auf dem 1. Übungsblatt wurde bereits gezeigt, dass
+  $\phi$ ein Gruppenhomomorphismus ist.
+
+  Offensichtlich ist $SL_n\qty\big(K) = \qty{
+      A \in GL_n\qty\big(K)
+      \:{\big |}\:
+      \phi\qty\big(A) = 1_K
+    } = \Kern\qty\big(\phi)$.
+    Aus (i) folgt nun die Behauptung.
+\end{enumerate}
+
+\newpage
 \paragraph{Aufgabe 7} Weisen Sie Eigenschaft (iii) aus dem Beweis von Satz
 9.11 nach.
 
