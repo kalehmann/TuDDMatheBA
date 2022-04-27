@@ -26,7 +26,7 @@
 
 \author{Karsten Lehmann\\Mat. Nr 4935758}
 \date{SoSe 2022}
-\title{Hausaufgaben Blatt 01\\Lineare Algebra - Weiterführende Konzepte}
+\title{Hausaufgaben Blatt 02\\Lineare Algebra - Weiterführende Konzepte}
 
 \setlength{\headheight}{26pt}
 \pagestyle{fancy}
@@ -151,4 +151,38 @@ Dann ist $f \cdot \qty\big(g + h) = \qty\big(p_0, p_1, \ldots)$ mit
 Somit ist $f \cdot \qty\big(g + h) = \qty\big(p_0, p_1, \ldots) =
 \qty\big(r_0 + s_0, r_1 + s_1, \ldots) = \qty\big(r_0, r_1, \ldots) +
 \qty\big(s_0, s_1, \ldots) = r + s = f \cdot g + f \cdot h$.
+
+\newpage
+\paragraph{Aufgabe 8} Beweisen Sie Lemma 9.13:
+Seien $K$ ein Körper und $A$ eine $K$-Algebra.
+Sei $a \in A$ fest gewählt.
+Dann ist die Abbildung
+\[
+  \Phi_a \colon K\qty[X] \to A, f \mapsto f(a)
+\]
+ein unitärer $K$-Algebra-Homomorphismus.
+
+\subparagraph{Lsg.} $\Phi_a$ ist ein $K$-Algebra-Homomorphismus, falls für
+$g, h \in K\qty[X]$ gilt, dass
+$\Phi\qty\big(g \cdot h) = \Phi\qty\big(g)\Phi\qty\big(h)$.
+Nun ist
+\begin{flalign*}
+  \Phi_a\qty\big(g) \cdot \Phi_a\qty\big(h)
+  &= \qty(\sum_{m \in \mathbb{N}_0} g_ma^m)
+    \cdot \qty(\sum_{n \in \mathbb{N}_0} h_na^n) &\\
+  &= \sum_{m \in \mathbb{N}_0}
+    \qty(g_ma^m \cdot \sum_{n \in \mathbb{N}_0} h_na^n) \\
+  &= \sum_{m \in \mathbb{N}_0}
+    \qty(\sum_{n \in \mathbb{N}_0} g_mh_na^{m + n}) \\
+  &= \sum_{k \in \mathbb{N}_0} \qty(\sum_{\substack{m, n \in \mathbb{N}_0 \\ m + n = k}}
+  g_mh_na^k) \\
+  &= \Phi_a\qty\big(g \cdot h)
+\end{flalign*}
+Weiter wird $\Phi_a$ unitär genannt, falls $\Phi_a\qty(1_{K\qty[X]}) = 1_A$.
+Nun ist $1_{K\qty[X]} = 1_A \cdot X^0 + 0 \cdot X^1 + 0 \cdot X^2 + \ldots$
+
+$\Rightarrow \Phi_a\qty(1_{K\qty[X]}) = 1_A \cdot a^0 + 0 \cdot a^1 + \ldots
+= 1_A$
+
+$\Rightarrow \Phi_a$ ist ein unitärer $K$-Algebra-Homomorphismus.
 \end{document}
