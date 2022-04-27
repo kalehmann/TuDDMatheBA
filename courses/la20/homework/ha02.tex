@@ -1,0 +1,81 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\newcommand{\sgn}{\text{sgn}}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{SoSe 2022}
+\title{Hausaufgaben Blatt 01\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 7} Weisen Sie Eigenschaft (iii) aus dem Beweis von Satz
+9.11 nach.
+
+\subparagraph{Lsg.} In der Vorlesung wurde die Multiplikation zweier Elemente
+$f = \qty\big(a_0, a_1, a_2, \ldots)$ und $g = \qty\big(b_0, b_1, b_2, \ldots)$
+aus $K\qty[X]$ durch $f \cdot g = \qty\big(p_0, p_1, p_2, \ldots)$ mit
+\[
+  p_k = \sum_{\substack{i, k \in \mathbb{N}_0 \\ i + j = k}} a_i \cdot b_j
+\]
+für alle $k \in \mathbb{N}_0$ definiert.
+
+Satz 9.11 der Vorlesung besagt nun ``\emph{$K\qty[X]$ zusammen mit der
+  Vektorraum-Addition und der eben definierten Multiplikation bildet
+  einen kommunitativen Ring mit
+  $1_{K\qty[X]} = \qty\big(1_K, 0_K, 0_K, \ldots) = 1_KX^0$.
+  Tatsächlich ist $K\qty[X]$ sogar eine $K$-Algebra.}''
+
+Nach Punkt (iii) des Beweises aus der Vorlesung gilt für
+$f = \qty\big(a_0, a_1, a_2, \ldots)$,  $g = \qty\big(b_0, b_1, b_2, \ldots)$
+und $h = \qty\big(c_0, c_1, c_2, \ldots)$ aus $K\qty[X]$
+\[
+  f\qty\big(g + h) = f \cdot g + f \cdot h
+\]
+
+Sei $f \cdot g = r$ mit $r = \qty\big(r_0, r_1, \ldots)$ und
+$f \cdot h = s$ mit $s = \qty\big(s_0, s_1, \ldots)$
+Es ist $g + h = \qty\big(b_0 + c_0, b_1 + c_1, \ldots)$.
+Dann ist $f \cdot \qty\big(g + h) = \qty\big(p_0, p_1, \ldots)$ mit
+\begin{flalign*}
+  p_k &= \sum_{\substack{i, k \in \mathbb{N}_0 \\ i + j = k}} a_i \cdot (b_j + c_j) \\
+  \overset{\text{Distributivität in $K$}}&=
+  \sum_{\substack{i, k \in \mathbb{N}_0 \\ i + j = k}} a_i \cdot b_j + a_i \cdot c_j \\
+  &= \underset{r_k}{
+    \underbrace{\sum_{\substack{i, k \in \mathbb{N}_0 \\ i + j = k}} a_i \cdot b_j}
+  } + \underset{s_k}{
+    \underbrace{\sum_{\substack{i, k \in \mathbb{N}_0 \\ i + j = k}} a_i \cdot c_j}
+  }
+\end{flalign*}
+Somit ist $f \cdot \qty\big(g + h) = \qty\big(p_0, p_1, \ldots) =
+\qty\big(r_0 + s_0, r_1 + s_1, \ldots) = \qty\big(r_0, r_1, \ldots) +
+\qty\big(s_0, s_1, \ldots) = r + s = f \cdot g + f \cdot h$.
+\end{document}
