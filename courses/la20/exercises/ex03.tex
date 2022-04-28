@@ -1,0 +1,295 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 03\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\Grad{\text{Grad}}
+\newcommand\Kern{\text{Kern}}
+
+\begin{document}
+
+\paragraph{Aufgabe 2} Seien $K$ ein Körper, $\lambda \in K$ und
+\[
+  A \coloneqq \begin{pmatrix}
+    X & a & X + a \\
+    X^2 & a & X^2 + a \\
+    X^3 & a & X^3 + a \\
+  \end{pmatrix}
+  \in \mathcal{M}_{3 \times 3}\qty\big(K\qty[X])
+\]
+\begin{enumerate}[(i)]
+\item Berechnen Sie $\det A$ mittels elementarer Zeilen- oder
+  Spaltenumformungen.
+\item Entscheiden Sie, ob $A$ invertierbar ist.
+\end{enumerate}
+
+\subparagraph{Lsg.}
+\begin{enumerate}[(i)]
+\item
+  \begin{flalign*}
+    \det \begin{pmatrix}
+      X & a & X + a \\
+      X^2 & a & X^2 + a \\
+      X^3 & a & X^3 + a \\
+    \end{pmatrix} \overset{S. 3 - S.2}&\leadsto \det \begin{pmatrix}
+      X & a & X \\
+      X^2 & a & X^2 \\
+      X^3 & a & X^3 \\
+    \end{pmatrix} \\
+    \overset{S. 3 - S.1}&\leadsto \det \begin{pmatrix}
+      X & a & 0 \\
+      X^2 & a & 0 \\
+      X^3 & a & 0 \\
+    \end{pmatrix} \\
+  \end{flalign*}
+  Aus Korollar 8.23 der Vorlesung (``\emph{Falls
+    $A \in \mathcal{M}_{n \times n}\qty\big(R)$ einen Null-Spalte hat, dann
+    gilt $\det\qty\big(A) = 0$}'') folgt $\det\qty\big(A) = 0_K$.
+
+\item Nach Satz 8.40 der Vorlesung ist ``\emph{$A$ ist invertierbar}''
+  $\iff$ ``\emph{$\det\qty\big(A)$ ist invertierbar in $K$}''.
+  Nun ist $0_K$ in $K$ nicht invertierbar.
+
+  $\Rightarrow A$ ist nicht invertierbar.
+\end{enumerate}
+
+\paragraph{Aufgabe 3} Seien
+$f \coloneqq 4X^5 + 2X^4 + X^3 + 2X^2 + 5 \in \mathbb{R}\qty[X]$ und
+$g \coloneqq 2X^3 + 3X^2 + X + 2 \in \mathbb{R}\qty[X]$.
+Bestimmen Sie Polynome $p, q \in \mathbb{R}\qty[X]$ mit
+$f = pg + q$, wobei entweder $q = 0$ oder $\Grad\qty\big(q) < \Grad\qty\big(g)$.
+
+\subparagraph{Lsg.} Es ist $n = \Grad\qty\big(f) = 5$ und
+$m = \Grad\qty\big(g) = 3$.
+Schreib man die beiden Polynome in der Form
+$f = \sum_{n \geq i \in \mathbb{N}_0} a^iX^i$ und
+$g = \sum_{m \geq i \in \mathbb{N}_0} b^iX^i$,
+so ist $a_n = 4$ und $b_m = 2$.
+
+Nun sei $b = \frac{a_n}{b_m} = \frac{4}{2} = 2$ und
+\begin{flalign*}
+  \tilde f &= f - bX^{n - m}g & \\
+  &= 4X^5 + 2X^4 + X^3 + 2X^2 + 5 - 2X^2
+  \qty\Big(2X^3 + 3X^2 + X + 2) \\
+  &= 4X^5 + 2X^4 + X^3 + 2X^2 + 5 - \qty\Big(4X^5 + 6X^4 + 2X^3 + 4X^2) \\
+  &= -4X^4 - X^3 - 2X^2 + 5
+\end{flalign*}
+
+Jetzt ist $f = 2X^2 \cdot g + \tilde f$, allerdings ist
+$4 = \Grad\qty\big(\tilde f) \nless \Grad\qty\big(g) = 3$.
+
+Schreib nun
+$\tilde f = \sum_{\Grad(\tilde f) \geq i \in \mathbb{N}_0} {\tilde a}^iX^i$
+und setze ${\tilde b} = \frac{{\tilde a}_{\Grad(\tilde f)}}{b_m}
+= \frac{-4}{2} = -2$, außerdem setze
+\begin{flalign*}
+  {\tilde{\tilde f}} &= \tilde f - {\tilde b}X^{\Grad(\tilde f) - m}g & \\
+  &= -4X^4 - X^3 - 2X^2 + 5 - \qty(-2X
+  \qty\Big(2X^3 + 3X^2 + X + 2)) \\
+  &= -4X^4 - X^3 - 2X^2 + 5 - \qty\Big(-4X^4 - 6X^3 - 2X^2 - 4X) \\
+  &= 5X^3 + 4X + 5
+\end{flalign*}
+
+Jetzt ist $f = 2X^2 \cdot g + \tilde f
+= 2X^2 \cdot g - 2X \cdot g + {\tilde{\tilde f}}
+= \qty(2X^2 - 2X) \cdot g + {\tilde{\tilde f}}$, allerdings ist noch immer
+$3 = \Grad\qty\big(\tilde{\tilde f}) \nless \Grad\qty\big(g) = 3$.
+
+Schreib schließlich
+$\tilde {\tilde f} = \sum_{\Grad(\tilde {\tilde f}) \geq i \in \mathbb{N}_0} \tilde {\tilde a}^iX^i$
+und setze $\tilde {\tilde b} = \frac{\tilde {\tilde a}_{\Grad(\tilde {\tilde f})}}{b_m}
+= \frac{5}{2}$, außerdem setze
+\begin{flalign*}
+  \tilde {\tilde{\tilde f}} &= \tilde {\tilde f} -
+  \tilde \tilde {\tilde b}X^{\Grad(\tilde {\tilde f}) - m}g & \\
+  &= 5X^3 + 4X + 5 - \frac{5}{2}
+  \qty\Big(2X^3 + 3X^2 + X + 2) \\
+  &= 5X^3 + 4X + 5 - \qty\Big(5X^3 + \frac{15}{2}X^2  + \frac{5}{2}X + 5) \\
+  &= -\frac{15}{2}X^2 + \frac{3}{2}X
+\end{flalign*}
+
+Jetzt ist $f = \qty(2X^2 - 2X) \cdot g + {\tilde{\tilde f}}
+= \qty(2X^2 - 2X) \cdot g + \frac{5}{2} \cdot g + \tilde {\tilde{\tilde f}}
+= \qty(2X^2 - 2X + \frac{5}{2}) \cdot g + \tilde {\tilde{\tilde f}}$.
+
+Somit lässt sich $f$ darstellen als $f = p \cdot g + q$ mit
+$p = \qty(2X^2 - 2X + \frac{5}{2})$ und $q = -\frac{15}{2}X^2 + \frac{3}{2}X$
+dabei ist $2 = \Grad\qty\big(q) < \Grad\qty\big(g) = 3$.
+
+\paragraph{Aufgabe 4} Seien $K$ ein Körper und
+$V \coloneqq \qty{f \in K\qty[X] \:{\big |}\: f\qty\big(1) = 0}$.
+\begin{enumerate}[(i)]
+\item Zeigen Sie, dass $V$ ein Unterraum von $K\qty[X]$ ist.
+
+  \subparagraph{Lsg.} Sei $\Phi_{1_K} \colon K\qty[X] \to K,
+  f \mapsto f\qty\big(1_K)$ eine Abbildung.
+  Nach Lemma 9.13 der Vorlesung (``Sei $A$ eine $K$-Algebra und sei $a \in A$
+  fest gewählt.
+  Dann ist die Abbildung $\Phi_a \colon K\qty[X] \to A, f \mapsto f\qty\big(a)$
+  ein unitaler $K$-Algebra Homomorphismus'') ist $\Phi_{1_K}$ ein
+  $K$-Algebra-Homomorphismus.
+
+  Nach Definition 7.49 der Vorlesung ist $\Phi_{1_K}$ als
+  $K$-Algebra-Homomorphismus eine lineare Abbildung und nach
+  Definition 6.17 der Vorlesung ist der Kern der Abbildung $\Phi_{1_K}$
+  definiert als
+  \[
+    \Kern\qty\big(\Phi_{1_K}) = \qty{
+      f \in K\qty[X] \:{\big |}\: \Phi_{1_K}(f) = 0
+    }
+  \]
+  Somit ist $\Kern\qty\big(\Phi_{1_K}) = V$.
+  Aus Lemma 6.18 der Vorlesung (``Falls $\varphi \colon V \to W$ eine
+  lineare Abbildung ist, dann ist $\Kern\qty\big(\varphi)$ ein Unterraum
+  von $V$'') folgt die Behauptung.
+
+\item Für $n \in \mathbb{N}$ sei
+  \[
+    U_n \coloneqq \qty{
+      f \in K\qty[X] \:{\big |}\: f = 0 \text{ oder } f \ne 0
+      \text { und } \Grad\qty\big(f) \leq n
+    }
+  \]
+  Bestimmen Sie $U_1 \cap V$.
+
+  \subparagraph{Lsg.} $U_1 \cap V = \qty{0_{K\qty[X]}} \cup
+  \qty{a_0X^0 + a_1X^1 \in K\qty[X] \:{\big |}\: a_0 + a_1 = 0_K}$
+
+\item Finden Sie für jede natürliche Zahl $f_n$ ein Polynom
+  $f_n \in V$ mit $\Grad\qty\big(f_n) = n$.
+
+  \subparagraph{Lsg.} Sei $f_n = -1 \cdot X^0 + 1 \cdot X^n$
+
+\item Zeigen Sie, dass
+  ${\big\langle} f_1, \ldots, f_n {\big\rangle} = U_n \cap V$
+  für jede natürliche Zahl $n$ gilt.
+
+  \subparagraph{Lsg.} Sei $n \in \mathbb{N}, g \in U_n \cap V$ beliebig.
+  Nach Definition von $U_n$ ist $\Grad\qty\big(g) \leq n$ und nach Definition
+  von $V$ ist $g(1) = 0$.
+  Nun hat $g$ die Form $\sum_{m \in \mathbb{N}_0}a_mX^m$ mit $a_m = 0$ für
+  $m > n$.
+
+  Da $g\qty\big(1) = 0$ folgt $\sum_{m \in \mathbb{N}_0}a_m = 0$ und
+  $a_0 + \sum_{m \in \mathbb{N}}a_m = 0$.
+
+  $\Rightarrow a_0 = -\sum_{m \in \mathbb{N}_0}a_m$.
+
+  Somit ist $g$ darstellbar als $\sum_{m \in \mathbb{N}_{\leq n}} a_mf_n$.
+
+  $\Rightarrow$ jedes $g \in U_n \cap V$ ist als Linearkombination von
+  $f_1, \ldots, f_n$ darstellbar.
+
+  $\Rightarrow f_1, \ldots, f_n$ spannt $U_n \cap V$ auf.
+
+\item ${\big\langle} f_1, f_2, \ldots{\big\rangle}$ ist eine Basis von $V$.
+
+  \subparagraph{Lsg.}
+  Ähnlich zu (iv) lässt sich zeigen, dass jedes Element aus $V$ als
+  Linearkombination von $f_1, f_2, \ldots$ darstellbar ist.
+\end{enumerate}
+
+\paragraph{Aufgabe 5}
+\begin{enumerate}[(i)]
+\item Beweisen Sie Lemma 9.27 (iii) $\Rightarrow$ (i).
+
+  \subparagraph{Lsg.} Seien $f, g \in K\qty[X]$ zwei von Null verschiedene
+  Polynome.
+  Es ist zu zeigen, dass \emph{Es existieren $s, t \in K\qty[X]$, sodass
+    $fs + gt = 1_{K\qty[X]}$} $\Rightarrow$ \emph{$f$ und $g$ sind teilerfremd}
+
+  Die beiden von Null verschiedenen Polynome $f, g \in K\qty[X]$ werden
+  teilerfremd genannt, falls für alle $h \in K\qty[X]$ mit $h \:{\big |}\: f$
+  und $h \:{\big |}\: g$ schon $h \in K$ folgt.
+
+  Sei nun (iii) gegeben, dass heißt es existieren $s, t \in K\qty[X]$ mit
+  $fs + gt = 1_{K\qty[X]}$.
+  Angenommen es existiert nun ein $h \in K\qty[X]$ mit $h \:{\big |}\: f$
+  und $h \:{\big |}\: g$.
+  Seien nun $a, b \in K\qty[X]$ so gewählt, dass $f = a \cdot h$ und
+  $g = b \cdot h$.
+  Dann ist $a \cdot h \cdot s + b \cdot h \cdot = 1_{K\qty[X]}$ und
+  $h \cdot \qty\big(a \cdot s + b \cdot t) = 1_{K\qty[X]}$.
+
+  $\Rightarrow h^{-1} = \qty\big(a \cdot s + b \cdot t)$
+
+  $\Rightarrow h$ ist invertierbar.
+
+  Nach Lemma 9.16 der Vorlesung (``Sei $f \in K\qty[X]$.
+  Dann ist $f$ genau dann invertierbar, wenn
+  $f \in K \setminus \qty\big{0_K}$ gilt.'') folgt
+  $h \in \setminus \qty\big{0_K}$.
+
+  $\Rightarrow f$ und $g$ sind teilerfremd.
+
+\item Beweisen Sie Lemma 9.22 (ii).
+
+  \subparagraph{Lsg.} Es ist zu beweisen, dass falls $R$ ein kommutativer Ring
+  ist, gilt: ``\emph{Falls $I$ und $J$ Ideale von $R$ sind, so ist $I + J$ auch
+    ein Ideal von $R$}''.
+
+  Eine Teilmenge $I \subseteq R$ wird Ideal von $R$ genannt, falls
+  \begin{enumerate}[(i)]
+  \item $0_R \in I$
+  \item $I + I \subseteq I$
+  \item $RI \subseteq I$
+  \end{enumerate}
+  Dabei ist für $I, J \subseteq R$ definiert:
+  \[
+    IJ = \qty{ab \:{\big |}\: a \in I, b \in J},
+    I + J = \qty{a + b \:{\big |}\: a \in I, b \in J}
+  \]
+
+  Da $I$ und $J$ bereits Ideale von $R$ sind, gilt $0_R \in I$ und $0_R \in J$.
+  Gemäß der Definition von $I + J$ folgt auch $0_R \in I + J$.
+
+  Weiter ist die eben definierte Addition offensichtlich kommutativ
+  (, d.h. $I + J = J + I$), deswegen folgt
+  \[
+    I + J + I + J =
+    \underset{\subseteq I}{\underbrace{I + I}} +
+    \underset{\subseteq J}{\underbrace{J + J}}
+  \]
+  $\Rightarrow I + J + I + J \subseteq I + J$
+
+  Schließlich ist $R\qty\big(I + J) = RI + RJ$ mit
+  $RI \subseteq I$ und $RJ \subseteq J$.
+
+  $\Rightarrow R\qty\big(I + J) \subseteq I + J$.
+
+  $\Rightarrow I + J$ ist ein Ideal von $R$.
+\end{enumerate}
+
+\end{document}
