@@ -1,0 +1,161 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\newcommand{\sgn}{\text{sgn}}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{SoSe 2022}
+\title{Hausaufgaben Blatt 02\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 6}
+\begin{enumerate}[(i)]
+\item Sei
+  \[
+    A \coloneqq \begin{pmatrix}
+      0 & 0 & 3X & 2 \\
+      X + 2 & X - 5 & 5X & X \\
+      0 & X & 2 & 1 \\
+      0 & 0 & 1 & 0 \\
+    \end{pmatrix} \in
+    \mathcal{M}_{4 \times 4}\qty\big(\mathbb{R}\qty[X])
+  \]
+  Bestimmen Sie $\det\qty\big(A)$.
+  Ist $A$ invertierbar?
+  Ist $\det\qty\big(A)$ irreduzibel?
+
+  \subparagraph{Lsg.} Aus den Bemerkungen 8.25 und 8.29 der Vorlesung geht
+  hervor, dass
+  \begin{flalign*}
+    \det \begin{pmatrix}
+      0 & 0 & 3X & 2 \\
+      X + 2 & X - 5 & 5X & X \\
+      0 & X & 2 & 1 \\
+      0 & 0 & 1 & 0 \\
+    \end{pmatrix} &= -\det \begin{pmatrix}
+      X + 2 & X - 5 & 5X & X \\
+      0 & 0 & 3X & 2 \\
+      0 & X & 2 & 1 \\
+      0 & 0 & 1 & 0 \\
+    \end{pmatrix} &\\
+    &= \det \begin{pmatrix}
+      X + 2 & X - 5 & 5X & X \\
+      0 & X & 2 & 1 \\
+      0 & 0 & 3X & 2 \\
+      0 & 0 & 1 & 0 \\
+    \end{pmatrix} \\
+    &= -\det \begin{pmatrix}
+      X + 2 & X - 5 & X & 5X \\
+      0 & X & 1 & 2 \\
+      0 & 0 & 2 & 3X \\
+      0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+  \end{flalign*}
+  Aus Lemma 8.24 der Vorlesung (\emph{``Falls eine Matrix
+    $A \in \mathcal{M}_{n \times n}\qty\big(R)$ eine obere Dreiecksmatrix ist,
+    dann gilt $\det A = a_{11}a_{22}\ldots a_{nn}$''}) folgt nun
+  \[
+    \det A = -\qty\big(X + 2) \cdot X \cdot 2 \cdot 1 = -2X^2 - 4X
+  \]
+  Da die Determinante $-2X^2 - 4X$ als Polynom mit Grad 2 nicht invertierbar ist,
+  ist auch $A$ nicht invertierbar.
+
+  Nach Korollar 9.38 der Vorlesung (\emph{``Sei $f \in K\qty[X]$.
+    Falls $f$ Grad 2 oder 3 hat, so ist $f$ genau dann nicht irreduzibel,
+    wenn $f$ eine Nullstelle in $K$ besitzt''}) ist $\det\qty\big(A)$
+  nicht irreduzibel mit $\qty\Big(-2X^2 - 4X)(0) = 0$.
+
+\item Beweisen Sie Lemma 10.12: Seien $K$ ein Körper, $n \in \mathbb{N}$ und
+  $B = \qty\big(b_{ij}) \in \mathcal{M}_{n \times n}\qty\big(K\qty[X])$.
+  Für $\lambda \in K$ sei
+  $B\qty\big(\lambda) \in \mathcal{M}_{n \times n}\qty\big(K)$ die Matrix, deren
+  $\qty\big(i, j)$-Eintrag $b_{ij}\qty\big(\lambda)$ ist.
+  Für $f = \det\qty\big(B) \in K\qty[X]$ gilt dann
+  \[
+    f\qty\big(\lambda) = \det\qty\big(B\qty(\lambda))
+  \]
+
+  \subparagraph{Lsg.} Es ist
+  $f\qty\big(\lambda) = \qty\Big(\det\qty\big(B))\qty\big(\lambda)$ und nach
+  der Definition der Determinante ist
+  $\qty\Big(\det\qty\big(B))\qty\big(\lambda) =
+  \qty\Big(
+    \sum_{\sigma \in S_n}
+    \sgn\qty\big(\sigma)
+    b_{\sigma(1)1} \ldots b_{\sigma(n)n}
+  )\big(\lambda)$.
+
+  Nun ist die Abbildung
+  $\Phi_{\lambda} \colon K\qty[X] \to K, a \mapsto a\qty\big(\lambda)$
+  nach Lemma 9.13 der Vorlesung (\emph{``Sei $A$ eine $K$-Algebra und sei
+    $a \in A$ fest gewählt.
+    Dann ist die Abbildung
+    $\Phi_a \colon K\qty[X] \to A, f \mapsto f\qty\big(a)$
+    ein unitaler $K$-Algebra Homomorphismus.''})
+  ein unitaler $K$-Algebra Homomorphismus.
+
+  Aus der Definition eines  $K$-Algebra Homomorphismus und der linearen
+  Abbildung folgt
+  \[
+    \qty\Big(
+      \sum_{\sigma \in S_n}
+      \sgn\qty\big(\sigma)
+      b_{\sigma(1)1} \ldots b_{\sigma(n)n}
+    )\big(\lambda) =
+    \sum_{\sigma \in S_n}
+    \sgn\qty\big(\sigma)
+    b_{\sigma(1)1}\qty\big(\lambda) \ldots b_{\sigma(n)n}\qty\big(\lambda)
+    = \det\qty\big(B(\lambda))
+  \]
+
+\item Nutzen Sie (i) und (ii), um die Determinante der Matrix
+  \[
+    B \coloneqq \begin{pmatrix}
+      0 & 0 & 4 & 2 \\
+      \frac{10}{3} & -\frac{11}{3} & \frac{20}{3} & \frac{4}{3} \\
+      0 & \frac{4}{3} & 2 & 1 \\
+      0 & 0 & 1 & 0 \\
+    \end{pmatrix} \mathcal{M}_{4 \times 4}\qty\big(\mathbb{R})
+  \]
+  zu finden.
+
+  \subparagraph{Lsg.} Offensichtlich ist $B = A\qty(\frac{4}{3})$.
+  Aus (ii) folgt nun
+  $\det\qty\big(B) = \qty\Big(\det\qty\big(A))\qty(\frac{4}{3})$.
+
+  Mit dem Ergebnis aus (i):
+  \[
+    \det\qty\big(B) = -2\qty(\frac{4}{3})^2 - 4\frac{4}{3}
+    = -\frac{80}{9}
+  \]
+\end{enumerate}
+\end{document}
