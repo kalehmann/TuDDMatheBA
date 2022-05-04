@@ -184,4 +184,63 @@ dass $b + c \in R$ und $a \cdot b + a \cdot c = a \cdot \qty\big(b + c) \in aR$.
 \noindent
 (3) Folgt aus der multiplikativen Abgeschlossenheit des Ringes $R$.
 
+\paragraph{Aufgabe 8} Zeigen Sie, dass $\mathbb{Z}$ ein Hauptidealring ist.
+
+\subparagraph{Lsg.} Sei $I$ ein Ideal von $\mathbb{Z}$, jedoch kein Hauptideal
+von $\mathbb{Z}$.
+Nun ist $I \ne \qty{0}$, da $\qty{0} = 0\mathbb{Z}$.
+\noindent
+Also besitzt $I$ Elemente, welche von $0$ verschieden sind. \\
+
+\noindent
+Angenommen $I$ besäße nur Elemente kleiner oder gleich $0$, dann ist
+$\mathbb{Z}I \subsetneq I$, da $0 < -1 \cdot i \in I, i \ne 0$.
+Ein Widerspruch zu ``$I$ ist ein Ideal von $\mathbb{Z}$''
+
+\noindent
+$\Rightarrow I$ muss Elemente größer $0$ besitzen,
+$I \cap \mathbb{N} \ne \emptyset$. \\
+
+\noindent
+Sei nun $m$ das kleinste Element aus $I$ mit $m \in I \cap \mathbb{N}$.
+Da $I$ nach Annahme kein Hauptideal von $\mathbb{Z}$ ist, gilt
+$I \ne m\mathbb{Z}$.
+$I$ ist jedoch nach Annahme ein Ideal von $\mathbb{Z}$, somit gilt
+$\mathbb{Z}I \subseteq I$, insbesondere gilt $\mathbb{Z}m \subseteq I$
+(und da $\mathbb{Z}$ ein Körper ist auch $m\mathbb{Z} \subseteq I$).
+\noindent
+Folglich muss $I \subsetneq m\mathbb{Z}$ gelten, das heißt
+es existiert ein $i \in I$, so dass
+kein $z \in \mathbb{Z}$ existiert mit $i = m \cdot z$. \\
+
+\noindent
+Nach Lemma 1.29 der Vorlesung (\emph{``Sei $n \in \mathbb{N}$.
+  Dann gilt für alle $z \in \mathbb{Z}$, dass ein
+  $k \in \mathbb{Z}$ und ein $r \in \qty{0, 1, \ldots, n - 1}$
+  existieren, sodass $z = kn + r$''})
+lässt sich $i$ darstellen als $i = m \cdot z + r$ mit
+$r \in \qty{0, 1, \ldots, m - 1}$ und $r = i - m \cdot z$.
+
+Dabei ist nach Definition (iii) des Ideals bereits $m \cdot z \in I$.
+Folglich ist auch $-1 \cdot m \cdot z \in I$.
+Schließlich ist auch die Summe zweier Elemente aus $I$ in $I$ enthalten,
+das heißt $r \in I$.
+Da $m$ nach Voraussetzung die kleinste natürliche Zahl aus $I$ ist und
+$r \in \qty{0, 1, \ldots, m - 1}$ folgt $r = 0$.
+
+\noindent
+$\Rightarrow i = m \cdot z + 0$
+
+\noindent
+$\Rightarrow I \subseteq m\mathbb{Z}$
+
+\noindent
+$\Rightarrow I = m\mathbb{Z}$
+
+\noindent
+Ein Widerspruch zur Annahme ``$I$ ist kein Hauptideal von $\mathbb{Z}$''
+
+\noindent
+$\Rightarrow \mathbb{Z}$ ist ein Hauptidealring.
+
 \end{document}
