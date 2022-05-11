@@ -1,0 +1,113 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\newcommand{\sgn}{\text{sgn}}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{SoSe 2022}
+\title{Hausaufgaben Blatt 04\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 5} Seien $K$ ein Körper, $\lambda \in K$, $n \in \mathbb{N}$
+und $A, B \in \mathcal{M}_{n \times n}\qty\big(K)$.
+Beweisen Sie die richtigen Aussagen und widerlegen Sie die falschen Aussagen mit
+einem Gegenbeispiel.
+
+\begin{enumerate}[(i)]
+\item Wenn $\lambda$ ein Eigenwert von $A$ ist und $A$ invertierbar ist, dann ist
+  $\lambda \ne 0$ und es ist $\lambda^{-1}$ ein Eigenwert von $A^{-1}$.
+
+  \subparagraph{Lsg.} Sei
+  $A = I_1 = \begin{pmatrix}1\end{pmatrix} \in \mathcal{M}_{1 \times 1}\qty\big(K)$.
+  Dann ist $A$ invertierbar mit $A^{-1} = \begin{pmatrix}1\end{pmatrix}$.
+  Weiter ist $1_K$ ein Eigenwert von $A$, da $I_1 \cdot v = v = 1_K \cdot v$
+  für $v \in K^1$.
+  Nun ist $-1_K$ aber kein Eigenwert von $A^{-1}$, da $I_1 \cdot v = -1_K \cdot v$
+  keine Lösung außer $v = 0_K$ besitzt.
+
+  $\Rightarrow$ die Aussage ist falsch.
+
+\item Ist $A^2 = I_n$ und ist $\lambda$ ein Eigenwert von $A$, so ist
+  $\lambda = 1$ oder $\lambda = -1$.
+
+  \subparagraph{Lsg.} Sei $\lambda$ ein Eigenwert von $A$.
+  Dann existiert ein $v \in K^n$ mit $A \cdot v = \lambda \cdot v$.
+  Multipliziert man beide Seiten der Gleichung erneut mit $A$, so
+  erhält man $I_n \cdot v = \lambda^2 \cdot v$.
+
+  $\Rightarrow \sqrt{\lambda} = 1, \lambda = 1 \lor \lambda = -1$,
+  die Aussage ist wahr.
+
+\item $A$ und $A^t$ haben dieselben Eigenwerte.
+
+  \subparagraph{Lsg.} Es $A^t + B^t = \qty\big(A + B)^t$.
+  Weiter ist $I_n^t = I_n$ und auch $\qty\big(X \cdot I_n)^t = X \cdot I_n$.
+
+  $\Rightarrow X \cdot I_n - A^t = \qty\big(X \cdot I_n - A)^t$
+
+  Nun ist $\det\qty\big(X \cdot I_n - A) = \det\qty\big(X \cdot I_n - A)$
+
+  $\Rightarrow A$ und $A^t$ haben das selbe charakteristische Polynom und
+  somit auch die selben Eigenwerte.
+
+\item Ist $\lambda$ ein Eigenwert von $AB$, so ist $\lambda$ ein Eigenwert von
+  $A$ oder $B$.
+
+  \subparagraph{Lsg.} Sei $A = B = \begin{pmatrix}2 & 0 \\0 & 2\end{pmatrix}$.
+  Dann ist $AB = \begin{pmatrix}4 & 0\\0 & 4\end{pmatrix}$.
+  Da
+  \[
+    \begin{pmatrix}
+      2 & 0 \\
+      0 & 2 \\
+    \end{pmatrix} \cdot \begin{pmatrix}
+      1 \\
+      1 \\
+    \end{pmatrix} = 4 \cdot \begin{pmatrix}
+      1 \\
+      1 \\
+    \end{pmatrix}
+  \]
+  ist $4$ ein Eigenwert von $AB$.
+  Nun besitzt aber
+  \[
+    \begin{pmatrix}
+      4 & 0 \\
+      0 & 4 \\
+    \end{pmatrix} \cdot v = 4 \cdot v
+  \]
+  keine Lösung außer $v = 0_{K^2}$ und somit ist $4$ kein Eigenwert von $A$ oder
+  $B$.
+
+  $\Rightarrow$ die Aussage ist falsch.
+\end{enumerate}
+\end{document}
