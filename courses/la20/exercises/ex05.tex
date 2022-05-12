@@ -1,0 +1,253 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 05\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\Grad{\text{Grad}}
+\newcommand\Kern{\text{Kern}}
+
+\begin{document}
+
+\paragraph{Aufgabe 2} Entscheiden Sie für jede der folgenden Matrizen
+$X \in \qty\big{A, B, C}$, ob $X$ diagonalisierbar ist.
+Falls $X$ diagonalisierbar ist, dann finden Sie eine Basis von $K^2$
+(wobei $K$ der jeweils zugrundeliegende Körper sei), die aus Eigenvektoren
+von $X$ besteht und eine invertierbare Matrix
+$S \in \mathcal{M}_{2 \times 2}\qty\big(K)$, sodass $S^{-1}XS$ eine
+Diagonalmatrix ist.
+
+\begin{enumerate}[(a)]
+\item $A \coloneqq \begin{pmatrix}
+    5 & 4 \\
+    -3 & -2 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(\mathbb{R})$
+
+  \subparagraph{Lsg.} Das charakteristische Polynom der Matrix ist
+  \begin{flalign*}
+    \det\qty(XI_n - A) &= \det\qty(
+      \begin{pmatrix}
+        X & 0 \\
+        0 & X \\
+      \end{pmatrix} - \begin{pmatrix}
+        5 & 4 \\
+        -3 & -2 \\
+      \end{pmatrix}
+    ) & \\
+    &= \det\begin{pmatrix}
+      X - 5 & -4 \\
+      3 & X + 2 \\
+    \end{pmatrix} \\
+    &= X^2 - 3X + 2 = \qty\big(X - 1)\qty\big(X - 2)
+  \end{flalign*}
+  Nach Satz 10.41 (a) der Vorlesung (\emph{``Wenn das charakteristische
+    Polynom von $A$ komplett in verschiedene Linearfaktoren zerfällt, so ist
+    $A$ diagonalisierbar''}), ist die Matrix $A$ diagonalisierbar.
+
+  Seien nun $B_{\lambda_1} = 1 \cdot I_n - A = \begin{pmatrix}
+    -4 & -4 \\
+    3 & 3 \\
+  \end{pmatrix}$ und
+  $B_{\lambda_2} = 2 \cdot I_n - A = \begin{pmatrix}
+    -3 & -4 \\
+    3 & 4 \\
+  \end{pmatrix}$.
+  Nach Anwendung des Gauß-Verfahrens bleiben übrig:
+  \[
+    \begin{pmatrix}
+      -4 & -4 \\
+      3 & 3 \\
+    \end{pmatrix}
+    \overset{
+      \substack{
+        Z.1 + \frac{4}{3} \cdot Z.2 \\
+        Z.2 / 3
+      }
+    }\leadsto
+    \begin{pmatrix}
+      0 & 0 \\
+      1 & 1 \\
+    \end{pmatrix}
+  \]
+  und
+  \[
+    \begin{pmatrix}
+      -3 & -4 \\
+      3 & 4 \\
+    \end{pmatrix}
+    \overset{Z.1 + Z.2}
+    \leadsto
+    \begin{pmatrix}
+      0 & 0 \\
+      3 & 4 \\
+    \end{pmatrix}
+  \]
+
+  Nun ist $V_{\lambda_1} = \qty{
+    \begin{pmatrix}x\\y\end{pmatrix} \in \mathbb{R}^2
+    \:{\Big |}\:
+    x - y = 0
+  } = \qty{
+    \begin{pmatrix}1\\-1\end{pmatrix} \cdot x
+    \:{\Big |}\:
+    x \in \mathbb{R}
+  }$ und
+
+  $V_{\lambda_2} = \qty{
+    \begin{pmatrix}x\\y\end{pmatrix} \in \mathbb{R}^2
+    \:{\Big |}\:
+    3 \cdot x - 4 \cdot y = 0
+  } = \qty{
+    \begin{pmatrix}4\\-3\end{pmatrix} \cdot x
+    \:{\Big |}\:
+    x \in \mathbb{R}
+  }$.
+
+  Jetzt bilden $\qty{
+    \begin{pmatrix}1\\-1\end{pmatrix},
+    \begin{pmatrix}4\\-3\end{pmatrix}
+  }$ ein Basis in $\mathbb{R}^2$ und
+  $S = \begin{pmatrix}
+    1 & 4 \\
+    -1 & -3 \\
+  \end{pmatrix}$ ist nach Satz 7.38 der Vorlesung (\emph{``Es sind äquivalent:
+    $A$ ist invertierbar und die Spalten von $A$ bilden eine Basis von $K^n$''})
+  invertierbar mit $S^{-1} = \begin{pmatrix}
+    -3 & -4 \\
+    1 & 1 \\
+  \end{pmatrix}$
+
+  Schließlich ist
+  \[
+    S^{-1} \cdot A \cdot S =
+    \begin{pmatrix}
+      -3 & -4 \\
+      1 & 1 \\
+    \end{pmatrix} \cdot \begin{pmatrix}
+      5 & 4 \\
+      -3 & -2 \\
+    \end{pmatrix} \cdot \begin{pmatrix}
+      1 & 4 \\
+      -1 & -3 \\
+    \end{pmatrix} = \begin{pmatrix}
+      1 & 0 \\
+      0 & 2 \\
+    \end{pmatrix}
+  \]
+  ein Diagonalmatrix, deren Diagonaleneinträge die Eigenwerte von $A$ sind.
+
+\newpage
+\item $B \coloneqq \begin{pmatrix}
+    0 & 1 \\
+    -1 & -1 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(\mathbb{F}_3)$, wobei
+  $\mathbb{F}_3 \coloneqq \mathbb{Z}/3$
+
+  \subparagraph{Lsg.} Das charakteristische Polynom der Matrix ist
+  \begin{flalign*}
+    \det\qty(XI_n - A) &= \det\qty(
+      \begin{pmatrix}
+        X & 0 \\
+        0 & X \\
+      \end{pmatrix} - \begin{pmatrix}
+        0 & 1 \\
+        -1 & -1 \\
+      \end{pmatrix}
+    ) & \\
+    &= \det\begin{pmatrix}
+      X & 2 \\
+      1 & X + 1 \\
+    \end{pmatrix} \\
+    &= X^2 + X + 1 = \qty\big(X - 1)\qty\big(X - 1)
+  \end{flalign*}
+  Nun ist $\lambda = 1$ ein Eigenwert von $B$.
+  Sei nun $C_\lambda = 1 \cdot I_n - B = \begin{pmatrix}
+    1 & 2 \\
+    1 & 2 \\
+  \end{pmatrix}$.
+  Nach Anwendung des Gauß-Verfahrens bleiben übrig:
+  \[
+    \begin{pmatrix}
+      1 & 2 \\
+      1 & 2 \\
+    \end{pmatrix}
+    \overset{Z.1 + 2 \cdot Z.2}\leadsto
+    \begin{pmatrix}
+      0 & 0 \\
+      1 & 2 \\
+    \end{pmatrix}
+  \]
+  Daher ist $V_{\lambda} = \qty{
+    \begin{pmatrix}x\\y\end{pmatrix} \in \mathbb{R}^2
+    \:{\Big |}\:
+    x -2 \cdot y = 0
+  } = \qty{
+    \begin{pmatrix}1\\1\end{pmatrix} \cdot x
+    \:{\Big |}\:
+    x \in \mathbb{F}_3
+  }$.
+
+  Allerdings bilden Elemente aus $V_\lambda$ keine Basis von $\mathbb{F}_3$,
+  daher ist $A$ nach Korollar 10.38 der Vorlesung (\emph{``Es sind äquivalent:
+    $A$ ist diagonalisierbar und $K^n$ besitzt eine Basis aus Eigenvektoren von
+    $A$''}) nicht diagonalisierbar.
+
+\item $C \coloneqq \begin{pmatrix}
+    0 & 1 \\
+    -1 & -1 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(\mathbb{F}_5)$, wobei
+  $\mathbb{F}_5 \coloneqq \mathbb{Z}/5$
+
+  Das charakteristische Polynom der Matrix ist
+  \begin{flalign*}
+    \det\qty(XI_n - C) &= \det\qty(
+      \begin{pmatrix}
+        X & 0 \\
+        0 & X \\
+      \end{pmatrix} - \begin{pmatrix}
+        0 & 1 \\
+        -1 & -1 \\
+      \end{pmatrix}
+    ) & \\
+    &= \det\begin{pmatrix}
+      X & 4 \\
+      1 & X + 1 \\
+    \end{pmatrix} \\
+    &= X^2 + X + 1
+  \end{flalign*}
+  Dieses Polynom hat keine Nullstellen auf $\mathbb{F}_5$, daher ist die Matrix
+  $C$ nicht diagonalisierbar.
+\end{enumerate}
+
+\end{document}
