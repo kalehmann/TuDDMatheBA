@@ -250,4 +250,77 @@ Diagonalmatrix ist.
   $C$ nicht diagonalisierbar.
 \end{enumerate}
 
+\newpage
+\paragraph{Aufgabe 3} Seien $v_1 \coloneqq \begin{pmatrix}1\\1\end{pmatrix} \in
+\mathbb{R}^2$ und $v_2 \coloneqq \begin{pmatrix}2\\0\end{pmatrix} \in
+\mathbb{R}^2$.
+Seien weiterhin $\lambda_1 \coloneqq 2$ und $\lambda_2 \coloneqq -4$.
+Finden Sie eine Matrix $A$, sodass $v_i$ für $i \in \qty\big{1, 2}$ ein
+Eigenvektor von $A$ mit Eigenwert $\lambda_i$ ist.
+
+\subparagraph{Lsg.} Es ist $D = \begin{pmatrix}
+  2 & 0 \\
+  0 & -4 \\
+\end{pmatrix}$ die Diagonalmatrix mit den Eigenwerten von $A$ als
+Diagonaleneinträge.
+Weiter sind $v_1, v_2$ linear unabhängig in $\mathbb{R}^2$.
+Damit ist $S = \begin{pmatrix}
+  1 & 2 \\
+  1 & 0 \\
+\end{pmatrix}$ nach Satz 7.38 der Vorlesung (\emph{``Es sind äquivalent:
+  $A$ ist invertierbar und die Spalten von $A$ bilden eine Basis von $K^n$''})
+invertierbar.
+Aus dem Gauß-Jacobi Verfahren folgt:
+
+\begin{flalign*}
+  \qty(
+  \begin{array}{cc|cc}
+    1 & 2 & 1 & 0 \\
+    1 & 0 & 0 & 1 \\
+  \end{array})
+  \overset{Z.2 + Z.1}&\leadsto
+  \qty(
+  \begin{array}{cc|cc}
+    1 & 2 & 1 & 0 \\
+    2 & 2 & 1 & 1 \\
+  \end{array}) & \\
+  \overset{-1 \cdot Z.1 + Z.2}&\leadsto
+  \qty(
+  \begin{array}{cc|cc}
+    1 & 0 & 0 & 1 \\
+    2 & 2 & 1 & 1 \\
+  \end{array}) \\
+  \overset{Z.2 - 2 \cdot Z.1}&\leadsto
+  \qty(
+  \begin{array}{cc|cc}
+    1 & 0 & 0 & 1 \\
+    0 & 2 & 1 & -1 \\
+  \end{array}) \\
+  \overset{\frac{1}{2} \cdot Z.2}&\leadsto
+  \qty(
+  \begin{array}{cc|cc}
+    1 & 0 & 0 & 1 \\
+    0 & 1 & \frac{1}{2} & -\frac{1}{2} \\
+  \end{array})
+\end{flalign*}
+$S^{-1} = \frac{1}{2} \cdot \begin{pmatrix}
+  0 & 2 \\
+  1 & -1 \\
+\end{pmatrix}$.
+Schließlich ist
+\[
+  A = SDS^{-1} = \begin{pmatrix}
+    1 & 2 \\
+    1 & 0 \\
+  \end{pmatrix} \cdot \begin{pmatrix}
+    2 & 0 \\
+    0 & -4 \\
+  \end{pmatrix} \cdot \frac{1}{2} \cdot \begin{pmatrix}
+    0 & 2 \\
+    1 & -1 \\
+  \end{pmatrix} = \begin{pmatrix}
+    -4 & 6 \\
+    0 & 2 \\
+  \end{pmatrix}
+\]
 \end{document}
