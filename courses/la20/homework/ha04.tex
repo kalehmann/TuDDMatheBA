@@ -22,6 +22,7 @@
 \usetikzlibrary{patterns}
 \usepgfplotslibrary{fillbetween}
 
+\newcommand{\Grad}{\text{Grad}}
 \newcommand{\Spur}{\text{Spur}}
 
 \author{Karsten Lehmann\\Mat. Nr 4935758}
@@ -299,4 +300,39 @@ einem Gegenbeispiel.
     x \in \mathbb{R}
   }$ mit $\begin{pmatrix}0\\1\end{pmatrix}$ als Basis.
 \end{enumerate}
+
+\newpage
+\paragraph{Aufgabe 7} Seien $K$ ein Körper, $n \in \mathbb{N}$
+und $A \in \mathcal{M}_{n \times n}\qty\big(K[X])$.
+Sei $a_{ij}$ der $\qty\big(i, j)$-te Eintrag von $A$.
+Angenommen es gilt $\Grad\qty\big(a_{ij}) \in \qty\big{0, 1}$ für alle
+$i, j \in \qty\big{1, 2, \ldots, n}$.
+Setze
+\[
+  m \coloneqq \abs{\qty\big{
+      \qty\big(i, j) \:\colon\: i, j \in \qty\big{1, 2, \ldots, n}
+    } \text{ und } \Grad\qty\big(a_{ij}) = 1}
+\]
+Zeigen Sie, dass $\Grad\qty\big(\det\qty\big(A)) \leq m$.
+
+\subparagraph{Lsg.}
+Es gilt nach Voraussetzung
+$\Grad\qty\big(a_{ij}) \in \qty\big{0, 1}$, dementsprechend lassen sich alle
+Elemente $\qty\big(a_{ij})$ in der Form $b_1 \cdot X + b_0$ mit $b_0, b_1 \in K$
+beschreiben.
+
+Die Determinante von $A$ ist definiert als
+\[
+  \det A = \sum_{\sigma \in S_n}
+  \text{sgn}\qty\big(\sigma) a_{\sigma(1)1} \ldots a_{\sigma(n)n}
+\]
+Bei der Addition von Polynomen ist der Grad der Summe nie größer als das
+Maximum der Grade der einzelnen Summanden.
+Die einzelnen Produkte der Determinante bestehen jeweils aus $n$ Faktoren mit
+einem Grad $\leq 1$.
+Nach dem Gradsatz für Polynome ist der Grad eines Produktes von Polynomen kleiner
+oder gleich der Summe der Grade der einzelnen Faktoren.
+
+Dementsprechend ist der Grad der Determinante von $A$ kleiner oder gleich der
+Mächtigkeit der Menge von Elementen in $A$ mit dem Grad 1.
 \end{document}
