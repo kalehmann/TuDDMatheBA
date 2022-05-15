@@ -209,7 +209,7 @@ Diagonalmatrix ist.
     \end{pmatrix}
   \]
   Daher ist $V_{\lambda} = \qty{
-    \begin{pmatrix}x\\y\end{pmatrix} \in \mathbb{R}^2
+    \begin{pmatrix}x\\y\end{pmatrix} \in \mathbb{F}_3^2
     \:{\Big |}\:
     x -2 \cdot y = 0
   } = \qty{
@@ -323,4 +323,255 @@ Schließlich ist
     0 & 2 \\
   \end{pmatrix}
 \]
+
+\paragraph{Aufgabe 4} Seien $K$ ein Körper, $r \in \mathbb{N}$ und
+$V_1, \ldots, V_r$ Vektorräume über $K$.
+Dann heißt
+\[
+  \bigoplus_{i = 1}^r V_i \coloneqq \qty{
+    \qty(v_1, \ldots, v_r) \:{\Big |}\:
+    v_i \in V_i \text{ für alle $1 \leq i \leq r$}
+  }
+\]
+zusammen mit der durch
+\[
+  \qty\big(v_1, \ldots, v_r) + \qty\big(w_1, \ldots, w_r) \coloneqq
+  \qty\big(v_1 + w_1, \ldots, v_r + w_r)
+\]
+für alle $\qty\big(v_1, \ldots, v_r), \qty\big(w_1, \ldots, w_r) \in
+\oplus_{i = 1}^r V_i$ definierten Addition und der durch
+\[
+  \lambda \cdot \qty\big(v_1, \ldots, v_r) \coloneqq
+  \qty\big(\lambda \cdot v_1, \ldots, \lambda \cdot v_r)
+\]
+für alle $\lambda \in K$ und alle
+$\qty\big(v_1, \ldots, v_r) \in \oplus_{i = 1}^r V_i$ definierten
+Skalarmultiplikation die \emph{externe direkte Summe} der Vektorräume
+$V_1, \ldots, V_r$.
+
+\noindent
+Für $v_1 \in V_1$ und $v_r \in V_r$ seien
+$\overline{v_1} \coloneqq \qty\big(v_1, 0_{V_2}, \ldots, 0_{V_r})$
+und
+$\overline{v_r} \coloneqq \qty\big(0_{V_1}, 0_{V_2}, \ldots, v_r)$.
+
+\noindent
+Für $1 < i < r$ und $v_i \in V_i$ sei $\overline{v_i} \coloneqq \qty\big(
+  0_{V_1}, \ldots, 0_{V_{i - 1}}, v_1, 0_{V_{i + 1}}, \ldots, 0_{v_r}
+)$ und für $1 \leq i \leq r$ sei $\overline{V_i} \coloneqq \qty\big{
+  \overline{v_i} \:{\big |}\: v_i \in V_i
+}$.
+\newpage
+\begin{enumerate}[(i)]
+\item Zeigen Sie, dass $\oplus_{i = 1}^r V_i$ ein Vektorraum über $K$ ist.
+
+  \subparagraph{Lsg.} $\oplus_{i = 1}^r V_i$ ist ein Vektorraum über $K$, falls
+  folgenden Eigenschaften erfüllt sind:
+  \begin{enumerate}[(1)]
+  \item $\oplus_{i = 1}^r V_i$ ist zusammen mit der oben definierten Addition
+    eine abelsche Gruppe.
+    Das heißt für beliebige $a, b, c \in \oplus_{i = 1}^r V_i$ gilt:
+    \begin{itemize}
+    \item $a + (b + c) = (a + b) + c$.
+      Für die einzelnen Elemente gilt dabei
+      $a_i + (b_i + c_i) = (a_i + b_i) + c_i$, da $a_i, b_i, c_i \in V_i$
+      und $V_i$ ein Vektorraum ist. $\checkmark$
+    \item $a + b = b + a$.
+      Auf die einzelnen Komponenten bezogen gilt $a_i + b_i = b_i + a_i$,
+      da $a_i, b_i, c_i \in V_i$ und $V_i$ ein Vektorraum ist. $\checkmark$
+    \item Es existiert ein neutrales Element $0 \in \oplus_{i = 1}^r V_i$,
+      so dass gilt $a + 0 = 0 + a = a$.
+      Sei $0 = \qty\big(0_{V_1}, \ldots, 0_{V_r})$.
+      $\checkmark$
+    \item Es existiert $-a \in \oplus_{i = 1}^r V_i$, so dass $a + (-a) = 0$.
+      Sei $-a = \qty\big(-a_0, \ldots, -a_r)$.
+      $\checkmark$
+    \end{itemize}
+  \item Die Skalarmultiplikation ist assoziativ, dass heißt für
+    $\lambda, \mu \in K$ und $a \in \oplus_{i = 1}^r V_i$ gilt
+    \[
+      \lambda \cdot \qty\big(\mu \cdot a)
+      = \qty\big(\lambda \cdot \mu) \cdot a
+    \]
+    Für die einzelnen Komponenten gilt dabei wieder
+    $\lambda \cdot \qty\big(\mu \cdot a_i) =
+    \qty\big(\lambda \cdot \mu) \cdot a_i$, da $a_i \in V_i$
+    und $V_i$ nach Voraussetzung ein Vektorraum über $K$ ist.
+    $\checkmark$
+  \item Es gilt das Distributivgesetz für Vektoren und Skalare.
+    Für $a, b \in \oplus_{i = 1}^r V_i$ und $\lambda, \mu \in K$ gilt
+    \[
+      \lambda \cdot a + b = \lambda \cdot a + \lambda \cdot b
+    \]
+    und
+    \[
+      (\lambda + \mu) \cdot a = \lambda \cdot a + \mu \cdot a
+    \]
+    Beide Gleichungen lassen sich wieder durch die Betrachtung der einzelnen
+    Komponenten zeigen. $\checkmark$
+  \item Für alle $a \in \oplus_{i = 1}^r V_i$ gilt $a \cdot 1_K = a$.
+    Nun gilt wieder für jeden Komponenten $a_i \cdot 1_K = a_i$.
+    $\checkmark$
+  \end{enumerate}
+
+\item Sei $1 \leq i \leq r$.
+  Zeigen Sie, dass $\overline{V_i}$ ein Unterraum von $\oplus_{i = 1}^r V_i$ ist
+  und dass $V_i \cong \overline{V_i}$.
+
+  \subparagraph{Lsg.} Es ist leicht zu erkennen, dass
+  $\overline{V_i} \ne \emptyset$ und
+  $\overline{V_i} \subseteq \oplus_{i = 1}^r V_i$ gilt.
+
+  Seine nun $a, b \in \overline{V_i}$ und $\lambda \in K$ beliebig.
+  Dann ist
+  $a = \qty\big(
+    0_{V_1}, \ldots, 0_{V_{i - 1}}, a_i, 0_{V_{i + 1}}, \ldots, 0_{V_r}
+  )$,
+  $b = \qty\big(
+    0_{V_1}, \ldots, 0_{V_{i - 1}}, b_i, 0_{V_{i + 1}}, \ldots, 0_{V_r}
+  )$,
+  und
+  \begin{flalign*}
+    \qty\big(
+      0_{V_1},
+      \ldots,
+      0_{V_{i - 1}},
+      a_i,
+      0_{V_{i + 1}},
+      \ldots,
+      0_{V_r}
+    )
+    &+ \lambda \cdot
+    \qty\big(
+      0_{V_1},
+      \ldots,
+      0_{V_{i - 1}},
+      b_i,
+      0_{V_{i + 1}},
+      \ldots,
+      0_{V_r}
+    ) \\
+    &= \qty\big(
+      0_{V_1},
+      \ldots,
+      0_{V_{i - 1}},
+      a_i + \lambda \cdot b,
+      0_{V_{i + 1}},
+      \ldots,
+      0_{V_r}
+    )
+  \end{flalign*}
+  Nun ist $a_i + \lambda \cdot b_i \in V_i$ und damit
+  $\qty\big(
+    0_{V_1},
+    \ldots,
+    0_{V_{i - 1}},
+    a_i + \lambda \cdot b,
+    0_{V_{i + 1}},
+    \ldots,
+    0_{V_r}
+  ) \in \overline{V_i}$.
+  Nach Lemma 3.17 der Vorlesung (Untervektorraumkriterium) folgt die Behauptung.
+
+  Sei weiter
+  $\gamma_i \colon V_i \to \overline{V_i},
+  v_i \mapsto \qty\big(0, 0, \ldots, v_i, \ldots, 0)$.
+  Dann gilt $\gamma_i(a + \lambda \cdot b) = \gamma_i(a) + \lambda \cdot i(b)$
+  für $a, b \in V_i, \lambda \in K$.
+  Aus Lemma 6.2 der Vorlesung (\emph{``Seien $V$ und $W$ zwei Vektorräume über
+    demselben Körper $K$ und sei $\varphi \colon V \to W$ eine Abbildung.
+    Dann sind äquivalent: Die Funktion $\varphi$ ist eine lineare Abbildung und
+    Es gilt $\varphi(v_1 + \lambda v_2) = \varphi(v_1) + \lambda\varphi(v_2)$
+    für alle $v_1, v_2 \in V$ und $\lambda \in K$''})
+  folgt, dass $\gamma_i$ eine lineare Abbildung ist.
+
+  Weiter ist $\Kern(\gamma_i) = \qty\big{0_{V_i}}$, damit folgt aus Lemma 6.21 der
+  Vorlesung (\emph{``Es ist $\varphi$ genau dann ein Monomorphismus. wenn
+    $\Kern\qty\big(\varphi) = \qty\big{0_V}$ gilt.''}) die Injektivität von
+  $\gamma_i$.
+
+  Sei nun $v \in \overline{V_i}$ beliebig.
+  Per Definition von $\overline{V_i}$ hat $v$ die Form
+  $\qty\big(0_{V_1}, 0_{V_2}, \ldots, v_i, \ldots, 0_{V_r})$
+  und $\gamma_i(v_i) = v$.
+
+  $\Rightarrow \gamma_i$ ist surjektiv
+
+  $\Rightarrow \gamma_i$ ist ein Isomorphismus.
+
+  $\Rightarrow V_i \cong \overline{V_i}$
+
+\item Zeigen Sie, dass $\oplus_{i = 1}^r V_i$ die interne direkte Summe der
+  Unterräume $\overline{V_1}, \ldots, \overline{V_r}$ ist.
+
+\item Sei nun $V$ ein Vektorraum über $K$ und seien $V_1, \ldots, V_r$
+  Unterräume von $V$, sodass $V$ die innere direkte Summe $V_1, \ldots, V_r$
+  ist.
+  Zeigen Sie, dass ein Isomorphismus $\varphi \colon V \to \oplus_{i = 1}^r V_i$
+  existiert, sodass $\varphi\qty\big(V_i) = \overline{V_i}$ für alle
+  $1 \leq i \leq r$.
+
+  \subparagraph{Lsg.} Sei $\varphi \colon V \to \oplus_{i = 1}^r V_i,
+  \sum_{i = 1}^r v_i \mapsto \qty\big(v_1, \ldots, v_r)$ und seien
+  $v, w \in V$ sowie $\lambda \in K$ beliebig.
+  Dann ist $v + \lambda \cdot w = \sum_{i = 1}^r v_i + \lambda \cdot w_i$ und
+  $\varphi\qty\big(v + \lambda \cdot w) = \qty\big(
+    v_1 + \lambda \cdot w_1,
+    v_2 + \lambda \cdot w_2,
+    \ldots,
+    v_r + \lambda \cdot w_r,
+    )$.
+    Weiter ist
+    \begin{flalign*}
+      \varphi\qty\big(v) + \lambda \cdot \varphi\qty\big(w)
+      &= \qty\big(
+        v_1,
+        v_2,
+        \ldots,
+        v_r
+      ) + \lambda \cdot \qty\big(
+        w_1,
+        w_2,
+        \ldots,
+        w_r
+      ) & \\
+      &= \qty\big(
+        v_1,
+        v_2,
+        \ldots,
+        v_r
+      ) + \qty\big(
+        \lambda \cdot w_1,
+        \lambda \cdot w_2,
+        \ldots,
+        \lambda \cdot w_r
+      ) \\
+      &= \qty\big(
+        v_1 + \lambda \cdot w_1,
+        v_1 + \lambda \cdot w_2,
+        \ldots,
+        v_1 + \lambda \cdot w_r
+      )
+    \end{flalign*}
+    Aus Lemma 6.2 der Vorlesung folgt $\varphi$ ist eine lineare Abbildung.
+    Offensichtlich ist $\Kern\qty\big(\varphi) = \qty\big{0_V}$.
+
+    $\Rightarrow \varphi$ ist nach Lemma 6.21 ein Monomorphismus.
+
+    Nun ist $\dim\qty\big(V) = \dim\qty(\oplus_{i = 1}^r V_i)$, aus Korollar
+    6.25 der Vorlesung  (\emph{``Seien $V$ und $W$ zwei endlich-dimensionale
+      Vektorräume über demselben Körper $K$ mit $\dim\qty(V) = \dim\qty(W)$.
+      Sei $\varphi \colon V \to W$ eine lineare Abbildung.
+      Dann sind äquivalent: $\varphi$ ist ein Monomorphismus und $\varphi$
+      ist ein Isomorphismus''}) folgt die Behauptung.
+
+  \item Erläutern Sie unter Verwendung von (iii) und (iv), warum man sagen
+    könnte, dass interne und externe direkte Summen von Vektorräumen
+    ``das Gleiche'' sind.
+
+    \subparagraph{Lsg.} Ja, eigentlich schon.
+    Allerdings werden bei der internen direkten Summe Summen betrachtet
+    und bei der externen direkten Summe Tupel.
+    Dennoch sind die beiden zueinander isomorph.
+\end{enumerate}
 \end{document}
