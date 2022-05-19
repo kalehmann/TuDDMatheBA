@@ -324,4 +324,53 @@
     \end{pmatrix}.
   \]
 \end{enumerate}
+
+\paragraph{Aufgabe 6} Seien $K$ ein Körper, $n \in \mathbb{N}$ und
+$v_1, \ldots, v_n$ eine Basis von $K^n$.
+Seien außerdem $\lambda_1, \ldots, \lambda_n \in K$.
+Bemerkung 10.39 (ii) der Vorlesung gibt Ihnen ein Rezept, um eine Matrix
+$A \in \mathcal{M}_{n \times n}\qty\big(K)$ so zu konstruieren, dass $v_i$
+ein Eigenvektor von $A$ mit Eigenwert $\lambda_i$ ist für jedes
+$i \in \qty\big{1, \ldots, n}$.
+Ist die Matrix $A$ eindeutig?
+
+\noindent
+Genauer: Wenn $A, A' \in \mathcal{M}_{n \times n}\qty\big(K)$ Matrizen sind,
+sodass $v_i$ für jedes $i \in \qty\big(1, \ldots, n)$ ein Eigenvektor von
+$A$ und $A'$ mit Eigenwert $\lambda_i$ ist, gilt dann $A = A'$?
+
+\noindent
+Geben Sie entweder einen Beweis an oder ein Beispiel, in dem $A \ne A'$ gilt.
+
+\subparagraph{Lsg.} Seien $A, A' \in \mathcal{M}_{n \times n}\qty\big(K)$ zwei
+Matrizen, sodass $A \cdot v_i = A' \cdot v_i = \lambda_i \cdot v_i$ für
+$i \in \qty\big{1, \ldots, n}$.
+Per Voraussetzung sind $v_1, \ldots, v_n$ eine Basis von $K^n$, es folgt aus
+Korollar 10.38 der Vorlesung (\emph{``Es sind äquivalent: $A$ ist
+  diagonalisierbar und $K^n$ besitzt eine Basis aus Eigenvektoren von $A$''})
+sind $A$ und $A'$ diagonalisierbar.
+Sei nun $D$ die Matrix, deren Diagonaleneinträge die Eigenwerte von $A$ sind,
+also
+\[
+  D = \begin{pmatrix}
+    \lambda_1 & 0 & \ldots & 0 \\
+    0 & \lambda_2 & \ldots & 0 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & \ldots & \lambda_n \\
+  \end{pmatrix}
+\]
+und $S$ die Matrix deren Spaltenvektoren die Eigenvektoren von $A$
+sind.
+Nach Satz 10.37 der Vorlesung (\emph{``Wenn $A$ und $S$ beides $n \times n$
+  Matrizen mit Einträgen in $K$ sind und $S$ invertierbar ist, dann ist
+  $S^{-1} \cdot A \cdot S = D$ genau dann diagonal wenn die Spalten von $S$
+  Eigenwerte von $A$ sind, deren zugehörigen Eigenwerte die Diagonaleneinträge
+  von $D$ sind.''})
+ist dann $S^{-1} \cdot A \cdot S = D$.
+Da $A'$ per Annahme die selben Eigenvektoren und Eigenwerte besitzt gilt
+außerdem $S^{-1} \cdot A' \cdot S = D$.
+Somit folgt $S^{-1} \cdot A \cdot S = D = S^{-1} \cdot A' \cdot S$ und $A = A'$.
+
+\noindent
+$\Rightarrow$ die Matrix $A$ ist eindeutig.
 \end{document}
