@@ -1,0 +1,108 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 06\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\Grad{\text{Grad}}
+\newcommand\Kern{\text{Kern}}
+
+\begin{document}
+\paragraph{Aufgabe 2} Für jede der folgenden Matrizen $X \in \qty\big{A, B, C}$
+haben Sie in der letzten Übung entschieden, ob $X$ diagonalisierbar ist.
+\begin{itemize}
+\item In welchen Fällen ließe sich diese Frage nur anhand des charakteristischen
+  Polynoms und unter Verwendung von Satz 10.41 der Vorlesung (\emph{``Sei
+    $A \in \mathcal{M}_{n \times n}\qty\big(K)$ (a) Wenn
+    das charakteristische Polynom komplett in verschiedene Linearfaktoren
+    zerfällt, so ist $A$ diagonalisierbar.
+    (b) Wenn $A$ diagonalisierbar ist, so zerfällt das charakteristische
+    Polynom von $A$ in Linearfaktoren, aber die Linearfaktoren müssen nicht
+    notwendigerweise verschieden sein.''})
+\item Geben Sie die algebraische Vielfachheit jedes Eigenwertes an.
+  Geben Sie jeweils an, ob sich die geometrische Vielfachheit des jeweiligen
+  Eigenwertes nur mit Kenntnis seiner algebraischen Vielfachheit und des
+  charakteristischen Polynoms finden ließe.
+\end{itemize}
+\begin{enumerate}[(i)]
+\item $A \coloneqq \begin{pmatrix}
+    5 & 4 \\
+    -3 & -2 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2} \qty\big(\mathbb{R})$,
+  $f_a = X^2 - 3X + 2 = \qty\big(X - 1)\qty\big(X - 2)$
+
+  \subparagraph{Lsg.} Das charakteristische Polynom von $A$ zerfällt komplett
+  in verschiedene Linearfaktoren, dementsprechend ist die Matrix $A$
+  diagonalisierbar.
+
+  Weiter ist $m_{\text{alg}}\qty\big(A, 1) = 1$ und
+  $m_{\text{alg}}\qty\big(A, 2) = 1$.
+  Da anhand des charakteristischen Polynoms zu sehen ist, dass die Matrix
+  $A$ diagonalisierbar ist, folgt aus Satz 10.48 (b) der Vorlesung
+  (\emph{``Falls $A$ diagonalisierbar ist, dann sind alle geometrischen
+    Vielfachheiten gleich den entsprechenden algebraischen Vielfachheiten''}),
+  dass $m_{\text{geom}}\qty\big(A, 1) = 1$ und
+  $m_{\text{geom}}\qty\big(A, 2) = 1$.
+
+\item $B \coloneqq \begin{pmatrix}
+    0 & 1 \\
+    -1 & -1 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2} \qty\big(\mathbb{F}_3)$,
+  wobei $\mathbb{F}_3 = \mathbb{Z}/3$,
+  $f_a = X^2 + X + 1 = \qty\big(X - 1)^2$
+
+  \subparagraph{Lsg.} Das charakteristische Polynom von $B$ zerfällt komplett in
+  Linearfaktoren, allerdings sind diese nicht verschieden.
+  Somit lässt sich mit Satz 10.41 der Vorlesung keine Aussage darüber treffen,
+  ob die Matrix $B$ diagonalisierbar ist.
+
+  Weiter ist $m_{\text{alg}}\qty\big(A, 1) = 2$.
+  Da anhand des charakteristischen Polynoms nicht erkennbar ist, ob
+  die Matrix diagonalisierbar ist, lässt sich nur mit Kenntnis der
+  algebraischen Vielfachheit und des charakteristischen Polynoms keine
+  Aussage über die geometrische Vielfachheit von dem Eigenwert $1$ treffen.
+
+\item $C \coloneqq \begin{pmatrix}
+    0 & 1 \\
+    -1 & -1 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2} \qty\big(\mathbb{F}_5)$,
+  wobei $\mathbb{F}_5 = \mathbb{Z}/5$,
+  $f_a = X^2 + X + 1$.
+
+  \subparagraph{Lsg.} Das charakteristische Polynom von $C$ zerfällt in
+  $\mathbb{F}_5$ nicht in Linearfaktoren.
+  Dementsprechend ist $C$ nicht diagonalisierbar und es existieren keine
+  Eigenwerte.
+\end{enumerate}
+\end{document}
