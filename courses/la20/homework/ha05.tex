@@ -9,6 +9,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 \usepackage{mathtools}
+\usepackage{pdflscape}
 \usepackage{physics}
 \usepackage{tabularx}
 \usepackage{titling}
@@ -373,4 +374,150 @@ Somit folgt $S^{-1} \cdot A \cdot S = D = S^{-1} \cdot A' \cdot S$ und $A = A'$.
 
 \noindent
 $\Rightarrow$ die Matrix $A$ ist eindeutig.
+
+\paragraph{Aufgabe 7} Seien $K$ ein Körper, $n \geq 2$ eine natürliche Zahl,
+$A \in \mathcal{M}_{n \times n}\qty\big(K)$ und $B \coloneqq XI_n - A$.
+Wie üblich bezeichne $f_A$ das charakteristische Polynom von $A$.
+\begin{enumerate}[(i)]
+\item Für $i, j \in \qty\big{1, 2, \ldots, n}$ bezeichnen wir mit
+  $B^{\qty(i, j)}$ die Matrix, die aus $B$ hervorgeht indem wir die $i$-te
+  Zeile und die $j$-te Spalte aus $B$ herausstreichen.
+
+  Zeigen Sie: Wenn $i, j \in \qty\big{1, 2, \ldots, n}$ und $i \ne j$, so gilt
+  $\Grad\qty\big(\det\qty\big(B^{(i, j)})) \leq n - 2$.
+
+  \subparagraph{Lsg.} Für $i, j \in \qty\big{1, \ldots, n}$ gilt
+  $\Grad\qty\big(a_{i, j}) \in \qty\big{-\infty, 0}$.
+  Sei $C = X \cdot I_n$, für $i, j \in \qty\big{1, \ldots, n}$ gilt dann
+  $c_{i, j} = \begin{cases}
+    X & i = j \\
+    0 & i \ne j
+  \end{cases}$ und $\Grad\qty\big(c_{i, j}) = \begin{cases}
+    1 & i = j \\
+    -\infty & i \ne j
+  \end{cases}$.
+
+  Für $B$ folgt aus Lemma 9.7 der Vorlesung
+  \begin{flalign*}
+    \Grad\qty\big(b_{ij}) &=
+    \begin{cases}
+      \max\qty\big{\Grad(X), \Grad(a_{ij})} & i = j \\
+      \max\qty\big{\Grad\qty(0) ,\Grad\qty(a_{ij})} & i \ne j
+    \end{cases} \\
+    &= \begin{cases}
+      1 & i = j \\
+      \Grad\qty(a_{ij}) & i \ne j
+    \end{cases}
+  \end{flalign*}
+  $\Rightarrow \Grad\qty\big(b_{ij}) \in \qty\big{-\infty, 0, 1}$.
+
+  Seien nun $i, j \in \qty\big{1, \ldots, n}$ beliebig mit $i \ne j$.
+  Dann enthält $B^{\qty(i, j)}$ insbesondere die Einträge $b_{ii}$ und
+  $b_{jj}$ nicht mehr.
+  Die Einträge von $B^{\qty(i, j)}$ sind nun $n - 2$ Polynome vom Grad $1$ auf
+  der Hauptdiagonalen und Polynomen vom Grad $-\infty$ oder $0$ als restliche
+  Einträge.
+
+  Nach Aufgabe 7 des vorherigen Übungsblattes folgt die Behauptung.
+\end{enumerate}
+\newpage
+
+\begin{landscape}
+\begin{enumerate}[(i)]
+\setcounter{enumi}{1}
+\item Zeigen Sie mittels vollständiger Induktion, dass
+  \[
+    f_A = X^n - \Spur\qty\big(A)X^{n - 1} + g
+  \]
+  für ein $g \in K\qty[X]$ mit $\Grad\qty\big(g) \leq n - 2$.
+
+  \subparagraph{Lsg.} \textbf{Induktionsbehauptung}:
+  \[
+    P\qty\big(n) \colon f_A = X^n - \Spur\qty\big(A)X^{n - 1} + g,
+    g \in K\qty[X], \Grad\qty\big(g) \leq n - 2
+  \]
+  \textbf{Induktionsanfang}:
+  \begin{flalign*}
+    P\qty\big(2) \colon f_A &= \det\qty\big(XI_n - A) \\
+    &= \det\qty(\begin{pmatrix}
+      X & 0 \\
+      0 & X \\
+    \end{pmatrix} - \begin{pmatrix}
+      a_{11} & a_{12} \\
+      a_{21} & a_{22} \\
+    \end{pmatrix}) \\
+    &= \det\qty(\begin{pmatrix}
+      X - a_{11} & -a_{12} \\
+      -a_{21} & X - a_{22} \\
+    \end{pmatrix}) \\
+    &= \qty\big(X - a_{11}) \cdot \qty\big(X - a_{22}) -
+      a_{12} \cdot a_{21} \\
+    &= X^2 - \underset{= \Spur\qty(A)}{\underbrace{a_{12} + a_{22}}} X -
+      a_{12} \cdot a_{21}
+  \end{flalign*}
+  mit $g = - a_{12} \cdot a_{21}$ und $\Grad\qty\big(g) = 0$
+
+  \textbf{Induktionsschritt}: Angenommen die Induktionsbehauptung gilt für ein
+  beliebiges $n \geq 2$.
+  Sei weiter $A \in \mathcal{M}_{n + 1 \times n + 1}\qty\big(K)$ beliebig.
+  Dann hat der $\qty\big(1, 1)$-Minor
+  von $XI_n - A$ nach der Induktionsvoraussetzung die Form
+  $X^n - \Spur\qty\big(A^{\qty(1, 1)})X^{n - 1} + g$ mit
+  $\Grad\qty\big(g) \leq n - 2$.
+
+  Entwickelt man die Determinante von $XI_n - A$ nun nach der 1. Spalte erhält
+  man
+  \begin{flalign*}
+    f_A &= \qty\big(X - a_{11}) \cdot \det\qty\big(XI_n - A^{\qty(1, 1)})
+    + \sum_{i = 2}^{n + 1} \qty\Big(\qty\big(-1)^{i + 1} \cdot \qty\big(-a_{i1})
+    \cdot \det\qty\big(XI_n - A^{\qty(i1)})) \\
+    \overset{
+      \substack{
+        \text{Induktions-}\\
+        \text{voraussetzung}
+      }
+    }&= \qty\big(X - a_{11}) \cdot \qty\big(X^n -
+    \Spur\qty\big(A^{1, 1})X^{n - 1} + g)
+    + \sum_{i = 2}^{n + 1} \qty\Big(\qty\big(-1)^{i + 1} \cdot \qty\big(-a_{i1})
+    \cdot \det\qty\big(XI_n - A^{\qty(i1)})) \\
+    &= X^{n + 1} - a_{11} \cdot X^n - \Spur\qty\big(A^{1, 1})X^n +
+    \qty\big(X - a_{11}) \cdot g
+    + \sum_{i = 2}^{n + 1} \qty\Big(\qty\big(-1)^{i + 1} \cdot \qty\big(-a_{i1})
+    \cdot \det\qty\big(XI_n - A^{\qty(i1)})) \\
+    &= X^{n + 1} - \Spur\qty\big(A)X^n +
+    \underset{= g'}{
+      \underbrace{\qty\big(X - a_{11}) \cdot g
+        + \sum_{i = 2}^{n + 1} \qty\Big(\qty\big(-1)^{i + 1} \cdot \qty\big(-a_{i1})
+        \cdot \underset{\Grad \leq n - 1 \text{ nach (i)}}{
+          \underbrace{\det\qty\big(XI_n - A^{\qty(i1)})}}
+        )
+      }
+    }\\
+  \end{flalign*}
+  Nach dem Gradsatz ist der Grad von $g'$ als Summe von Polynomen mit Grad $\leq n - 1$
+  ebenfalls kleiner oder gleich $n - 1$.
+  Aus dem Satz über die vollständige Induktion folgt die Behauptung.
+\end{enumerate}
+\end{landscape}
+\newpage
+\begin{enumerate}[(i)]
+\setcounter{enumi}{2}
+\item Seien $a_0, a_1, \ldots, a_{n - 1} \in K$ mit
+  \[
+    f_A = X^n + a_{n - 1} X^{n - 1} + \ldots + a_1X + a_0
+  \]
+  Zeigen Sie, dass $a_0 = \qty\big(-1)^n \det\qty\big(A)$ gilt.
+
+  \subparagraph{Lsg.} $a_0$ ist der einzige Summand des charakteristischen
+  Polynoms, welcher unabhängig von $X$ ist.
+  Dementsprechend ist $\det\qty\big(0I_n - A) = \det\qty\big(-A) = a_0$.
+  Nun erhält man $-A$ aus $A$ durch Multiplikation aller Spalten von $A$
+  mit $-1$.
+  Aus $n$-facher Anwendung von Satz 8.21 (c) der Vorlesung
+  (\emph{``Falls $A'$ aus $A$ durch die
+    Multiplikation der $i$-ten Spalte von $A$ mit $\lambda$ hervorgeht,
+    für ein $\lambda \in \mathbb{R}$, dann ist
+    $\det A' = \lambda \cdot \det A$''})
+  folgt $a_0 = \qty\big(-1)^n \det\qty\big(A)$.
+\end{enumerate}
 \end{document}
