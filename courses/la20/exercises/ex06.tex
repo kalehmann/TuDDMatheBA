@@ -105,4 +105,58 @@ haben Sie in der letzten Übung entschieden, ob $X$ diagonalisierbar ist.
   Dementsprechend ist $C$ nicht diagonalisierbar und es existieren keine
   Eigenwerte.
 \end{enumerate}
+
+\paragraph{Aufgabe 3} Entscheiden Sie jeweils, ob sich anhand des
+charakteristischen Polynoms ermitteln lässt, ob $A$ diagonalisierbar ist.
+Wenn dies nicht der Fall ist, dann geben Sie zwei Matrizen $B$ und $C$ an,
+sodass $f_A = f_B = f_C$, wobei $B$ diagonalisierbar ist, während $C$ nicht
+diagonalisierbar ist.
+
+\begin{enumerate}[(i)]
+\item $A \in \mathcal{M}_{3 \times 3} \qty\big(\mathbb{R})$ und
+  $f_A = \qty\big(X - 1)\qty\big(X + 1)\qty\big(X + 4)$.
+
+  \subparagraph{Lsg.} Das charakteristische Polynom von $A$ zerfällt komplett in
+  verschiedene Linearfaktoren, somit ist $A$ diagonalisierbar.
+
+\item $A \in \mathcal{M}_{2 \times 2} \qty\big(\mathbb{F}_2)$ und
+  $f_A = X^2 + 1$.
+
+  \subparagraph{Lsg.} Das charakteristische Polynom von $A$ zerfällt in
+  $\mathbb{F}_3$ nicht in Linearfaktoren und hat auch keine Nullstellen
+  in $\mathbb{F}_3$.
+  Somit ist $A$ in $\mathbb{F}_3$ nicht diagonalisierbar.
+
+\item $A \in \mathcal{M}_{2 \times 2} \qty\big(\mathbb{R})$ und
+  $f_A = \qty\big(X - 1)^2$.
+
+  \subparagraph{Lsg.} Das charakteristische Polynom von $A$ zerfällt komplett in
+  Linearfaktoren, allerdings sind diese nicht verschieden.
+  Somit lässt sich mit Satz 10.41 der Vorlesung keine Aussage darüber treffen,
+  ob die Matrix $A$ diagonalisierbar ist.
+
+  Sei nun $B = \begin{pmatrix}
+    1 & 0 \\
+    0 & 1 \\
+  \end{pmatrix}$, dann ist $B$ offensichtlich diagonalisierbar mit $S = B$
+  und $S^{-1} \cdot B \cdot S = I_2$.
+
+  Weiter sei $C = \begin{pmatrix}
+    1 & 1 \\
+    0 & 1
+  \end{pmatrix}$.
+  Dann ist $1 \cdot I_2 - C = \begin{pmatrix}
+    0 & -1 \\
+    0 & 0 \\
+  \end{pmatrix}$ und $V_1 = \qty{\begin{pmatrix}x\\0\end{pmatrix}
+    \:{\Big |}\: x \in \mathbb{R}}$ mit $\begin{pmatrix}x\\0\end{pmatrix}$
+  als Basis, allerdings ist $\qty{\begin{pmatrix}x\\0\end{pmatrix}}$ keine
+  Basis von $\mathbb{R}^2$ und somit ist $C$ nicht diagonalisierbar.
+
+\item $A \in \mathcal{M}_{4 \times 4} \qty\big(\mathbb{F}_7)$ und
+  $f_A = \qty\big(X - 1)\qty\big(X - 2)\qty\big(X - 3)\qty\big(X - 5)$.
+
+  \subparagraph{Lsg.} Das charakteristische Polynom von $A$ zerfällt komplett in
+  verschiedene Linearfaktoren, somit ist $A$ diagonalisierbar.
+\end{enumerate}
 \end{document}
