@@ -159,4 +159,136 @@ diagonalisierbar ist.
   \subparagraph{Lsg.} Das charakteristische Polynom von $A$ zerfällt komplett in
   verschiedene Linearfaktoren, somit ist $A$ diagonalisierbar.
 \end{enumerate}
+
+\newpage
+\paragraph{Aufgabe 4} Seien
+\[
+  A \coloneqq \begin{pmatrix}
+    1 & -2 & 0 \\
+    5 & 8 & 0 \\
+    4 & 4 & 3 \\
+  \end{pmatrix}
+\]
+und
+\[
+  \varphi \colon \mathbb{R}^3 \to \mathbb{R}^3, x \mapsto Ax
+\]
+\begin{enumerate}[(i)]
+\item Bestimmen Sie das charakteristische Polynom von $\varphi$.
+
+  \subparagraph{Lsg.} Mit Entwicklung der Determinante nach der 3. Spalte
+  erhält man
+  \begin{flalign*}
+    \det\qty\big(XI_3 - A) &= \det\qty(\begin{pmatrix}
+      X & 0 & 0 \\
+      0 & X & 0 \\
+      0 & 0 & X \\
+    \end{pmatrix} - \begin{pmatrix}
+      1 & -2 & 0 \\
+      5 & 8 & 0 \\
+      4 & 4 & 3 \\
+    \end{pmatrix}) \\
+    &= \det \begin{pmatrix}
+      X - 1 & 2 & 0 \\
+      -5 & X - 8 & 0 \\
+      -4 & -4 & X - 3 \\
+    \end{pmatrix} \\
+    &= \qty\big(X - 3) \cdot \det \begin{pmatrix}
+      X - 1 & 2 \\
+      -5 & X - 8 \\
+    \end{pmatrix} \\
+    &= \qty\big(X - 3) \cdot \qty\big(X^2 - 9X + 18) \\
+    &= \qty\big(X - 3)^2 \cdot\ \qty\big(X - 6)
+  \end{flalign*}
+
+\item Bestimmen Sie die Eigenwerte von $\varphi$
+
+  \subparagraph{Lsg.} $\lambda_{1|2} = 3$ und $\lambda_3 = 6$.
+
+\item Bestimmen Sie die Eigenräume von $\varphi$.
+
+  \subparagraph{Lsg.} Sei $B_{\lambda_{1|2}} = 3 \cdot I_3 - A = \begin{pmatrix}
+    2 & 2 & 0 \\
+    -5 & -5 & 0 \\
+    -4 & -4 & 0 \\
+  \end{pmatrix}$ und
+
+  $B_{\lambda_3} = 6 \cdot I_3 - A = \begin{pmatrix}
+    5 & 2 & 0 \\
+    -5 & -2 & 0 \\
+    -4 & -4 & 3 \\
+  \end{pmatrix}$.
+
+  Nach Anwendung des Gauß-Verfahrens bleiben übrig
+  \[
+    \begin{pmatrix}
+      2 & 2 & 0 \\
+      -5 & -5 & 0 \\
+      -4 & -4 & 0 \\
+    \end{pmatrix} \overset{
+      \substack{
+        Z.2 = Z.2 + \frac{5}{2} \cdot Z.1 \\
+        Z.3 = Z.3 + 2 \cdot Z.1
+      }
+    }\leadsto \begin{pmatrix}
+      2 & 2 & 0 \\
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+    \end{pmatrix}
+  \]
+  und
+  \begin{flalign*}
+    \begin{pmatrix}
+      5 & 2 & 0 \\
+      -5 & -2 & 0 \\
+      -4 & -4 & 3 \\
+    \end{pmatrix} \overset{
+      \substack{
+        Z.2 = Z.2 + Z.1 \\
+        Z.3 = \frac{1}{3} \cdot \qty\big(5 \cdot Z.3 + 4 \cdot Z.1)
+      }
+    }\leadsto \begin{pmatrix}
+      5 & 2 & 0 \\
+      0 & 0 & 0 \\
+      0 & -4 & 5 \\
+    \end{pmatrix}
+  \end{flalign*}
+
+  Daher ist $V_{\lambda_{1|2}} = \qty{
+    \begin{pmatrix}x\\-x\\0\end{pmatrix} +
+    \begin{pmatrix}0\\0\\y\end{pmatrix}
+    \:{\Big |}\: x, y \in \mathbb{R}}$ und
+  \[
+    V_{\lambda_3} = \qty{\begin{pmatrix}x\\y\\z\end{pmatrix}
+      \:{\Big |}\: x, y, z \in \mathbb{R}, x = \frac{-2}{5}y, z = \frac{4}{5}y}
+    = \qty{\begin{pmatrix}-2\\5\\4\end{pmatrix} \cdot x
+      \:{\Big |}\: x,  \in \mathbb{R}}
+  \]
+
+\item Beweisen oder widerlegen Sie, dass $\varphi$ diagonalisierbar ist und
+  geben Sie gegebenenfalls eine Basis $\mathcal{B}$ von $\mathbb{R}^3$ an, sodass
+  $\text{Mat}\qty\big(\varphi, \mathcal{B})$ eine Diagonalmatrix ist.
+
+  \subparagraph{Lsg.} Es ist $m_{\text{alg}}\qty\big(\varphi, 3) =
+  m_{\text{geom}}\qty\big(\varphi, 3) = 2$ und
+  $m_{\text{alg}}\qty\big(\varphi, 6) =
+  m_{\text{geom}}\qty\big(\varphi, 6) = 1$.
+  Aus Satz 10.48 (b) der Vorlesung
+  (\emph{``Falls $A$ diagonalisierbar ist, dann sind alle geometrischen
+    Vielfachheiten gleich den entsprechenden algebraischen Vielfachheiten''})
+  folgt, dass $\varphi$ diagonalisierbar ist.
+
+  Sei nun $\mathcal{B} = \qty{
+    \begin{pmatrix}1\\-1\\0\end{pmatrix},
+    \begin{pmatrix}0\\0\\1\end{pmatrix},
+    \begin{pmatrix}-2\\5\\4\end{pmatrix}
+  }$ eine Basis von $\mathbb{R}^3$, aus Bemerkung 10.34 der Vorlesung folgt
+  \[
+    \text{Mat}\qty\big(\varphi, \mathcal{B}) = \begin{pmatrix}
+      3 & 0 & 0 \\
+      0 & 3 & 0 \\
+      0 & 0 & 6 \\
+    \end{pmatrix}
+  \]
+\end{enumerate}
 \end{document}
