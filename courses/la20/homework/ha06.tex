@@ -1,0 +1,110 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\newcommand{\Grad}{\text{Grad}}
+\newcommand{\Spur}{\text{Spur}}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{SoSe 2022}
+\title{Hausaufgaben Blatt 06\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 5} Begründen Sie jeweils an, ob sich nur anhand des
+charakteristischen Polynoms und unter Verwendung der Sätze 10.40 und 10.41
+der Vorlesung entscheiden ließe, ob die jeweilige Matrix bzw. lineare
+Abbildung diagonalisierbar ist.
+Falls dies nicht möglich ist, so geben Sie eine zweite Matrix bzw. eine zweite
+lineare Abbildung an, die dasselbe charakteristische Polynom hat, sich aber
+bezüglich Diagonalisierbarkeit anders verhält als die gegebene Matrix bzw. die
+gegebene Abbildung.
+
+\begin{enumerate}[(i)]
+\item $B \coloneqq \begin{pmatrix}
+    0 & 1 \\
+    -1 & -1 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(F)_7$, wobei
+  $\mathbb{F}_7 = \mathbb{Z}/7$,
+  $f_B = X^2 + X + 1 = \qty\big(X - 2)\qty\big(X - 4)$.
+
+  \subparagraph{Lsg.} Das charakteristische Polynom von $B$ zerfällt komplett in
+  verschiedene Linearfaktoren und somit ist $B$ nach Satz 10.41 (a) der Vorlesung
+  (\emph{``Sei $A \in \mathcal{M}_{n \times n}\qty\big(K)$.
+    Wenn das charakteristische Polynom von $A$ komplett in verschiedene
+    Linearfaktoren zerfällt, so ist $A$ diagonalisierbar''}) diagonalisierbar.
+
+\item $C \coloneqq \begin{pmatrix}
+    0 & 1 \\
+    1 & 0 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(F)_2$, wobei
+  $\mathbb{F}_2 = \mathbb{Z}/2$,
+  $f_C = X^2 + 1 = \qty\big(X - 2)\qty\big(X - 4)$.
+
+  \subparagraph{Lsg.} Es ist $X^2 + 1 = \qty\big(X - 1)\qty\big(X - 1)$ in
+  $\mathbb{F}_2$.
+  Somit zerfällt das charakteristische Polynom der Matrix $C$ zwar komplett
+  in Linearfaktoren, jedoch sind diese nicht verschieden.
+  Mit Satz 10.41 der Vorlesung lässt sich keine Aussage darüber treffen, ob
+  die Matrix $C$ diagonalisierbar ist.
+
+  Nach Anwendung den Gauß-Verfahrens auf $1 \cdot I_n - C$ folgt
+  \[
+    \begin{pmatrix}
+      1 & -1 \\
+      -1 & 1 \\
+    \end{pmatrix}
+    \leadsto
+    \begin{pmatrix}
+      1 & -1 \\
+    \end{pmatrix}    
+  \]
+  Also ist $V_1 = \qty{
+    \begin{pmatrix}0\\0\end{pmatrix},
+    \begin{pmatrix}1\\1\end{pmatrix}
+  }$ und $m_{\text{geom}}\qty\big(C, 1) = 1 \ne
+  m_{\text{alg}}\qty\big(C, 1) = 2$.
+
+  $\Rightarrow$ Die Matrix $C$ ist in $\mathbb{F}_2$ nicht diagonalisierbar.
+
+  Eine diagonalisierbare Matrix mit dem selben charakteristischen Polynom
+  wäre $C' = I_2$ mit $S = S^{-1} = I_2$, $D = I_2$ und $S^{-!}C'S = D$.
+
+\item $\varphi \colon \mathbb{R}^2 \to \mathbb{R}^2,
+  \begin{pmatrix}x\\y\end{pmatrix} \mapsto \begin{pmatrix}x\\x+2y\end{pmatrix}$,
+  $f_{\varphi} = \qty\big(X - 1)\qty\big(X - 2)$
+
+  \subparagraph{Lsg.} Das charakteristische Polynom von $\varphi$ zerfällt komplett in
+  verschiedene Linearfaktoren und somit ist $\varphi$ nach Satz 10.40 (a) der Vorlesung
+  (\emph{``Sei $\varphi$ ein Endomorphismus von $V$.
+    Wenn das charakteristische Polynom von $\varphi$ komplett in verschiedene
+    Linearfaktoren zerfällt, so ist $\varphi$ diagonalisierbar''}) diagonalisierbar.
+\end{enumerate}
+\end{document}
