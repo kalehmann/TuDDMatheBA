@@ -22,6 +22,7 @@
 \usetikzlibrary{patterns}
 \usepgfplotslibrary{fillbetween}
 
+\newcommand{\End}{\text{End}}
 \newcommand{\Grad}{\text{Grad}}
 \newcommand{\Spur}{\text{Spur}}
 
@@ -107,4 +108,43 @@ gegebene Abbildung.
     Wenn das charakteristische Polynom von $\varphi$ komplett in verschiedene
     Linearfaktoren zerfällt, so ist $\varphi$ diagonalisierbar''}) diagonalisierbar.
 \end{enumerate}
+
+\newpage
+\paragraph{Aufgabe 6} Seien $K$ ein Körper, $n \in \mathbb{N}$, $V$ ein
+$n$-dimensionaler Vektorraum über $K$ und $\varphi \in \End\qty\big(V)$.
+Zeigen Sie, dass $\varphi$ genau dann diagonalisierbar ist, wenn
+$f_{\varphi}$ in Linearfaktoren zerfällt und die geometrische Vielfachheit eines
+jeden Eigenwertes von $\varphi$ mit seiner algebraischen Vielfachheit
+übereinstimmmt.
+
+\subparagraph{Lsg.}
+\begin{itemize}
+\item[``$\Rightarrow$''] Siehe Satz 10.48 (b) der Vorlesung.
+\item[``$\Leftarrow$''] Sei $l \in \mathbb{N}, l \leq n$ und
+  $\lambda_1, \ldots, \lambda_l$ die Eigenwerte von $\varphi$.
+  Angenommen für $i \in \qty\big{1, \ldots, l}$ sei
+  $m_{\text{alg}}\qty\big(\varphi, \lambda_i)
+  = m_{\text{geom}}\qty\big(\varphi, \lambda_i)$.
+
+  Da das charakteristische Polynom von $\varphi$ komplett in Linearfaktoren
+  zerfällt, ist $f_{\varphi}$ in der Form
+  $\qty\big(X - \lambda_1)^{m_1} \cdot \qty\big(X - \lambda_2)^{m_2} \cdot \ldots
+  \cdot \qty\big(X - \lambda_l)^{m_l}$ darstellbar, wobei
+  $m_i = m_{\text{alg}}\qty\big(\varphi, \lambda_i)$.
+  Es folgt $\sum_{i = 0}^l m_i = \Grad\qty\big(f_{\varphi}) = \dim\qty\big(V)$.
+
+  Per Definition der geometrischen Vielfachheit gilt für
+  $i \in \qty\big{1, \ldots, l}$, dass
+  $m_i = \dim\qty\big(V_{\lambda_i}^{\varphi})$.
+
+  $\Rightarrow \sum_{i = 1}^l \dim\qty(V_{\lambda_i}^{\varphi}) =
+  \dim\qty\big(V)$
+
+  Aus Satz 10.35 der Vorlesung (\emph{``Sei $\varphi \in |End\qty\big(V)$ und
+    $\lambda_1, \ldots, \lambda_r$ die paarweise verschiedenen Eigenwerte von
+    $\varphi$.
+    Dann sind äquivalent: $\varphi$ ist diagonalisierbar und
+    $\dim\qty\big(V) = \sum_{i = 1}^r \dim\qty(V_{\lambda_i}^{\varphi})$''})
+  folgt die Behauptung.
+\end{itemize}
 \end{document}
