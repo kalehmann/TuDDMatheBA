@@ -36,7 +36,8 @@
 \rfoot{Seite \thepage}
 
 \newcommand\End{\text{End}}
-\newcommand\Kern{\text{Kern}}
+\newcommand\id{\text{id}}
+\newcommand\Mat{\text{Mat}}
 
 \begin{document}
 \paragraph{Aufgabe 2} Bestimmen Sie das Minimalpolynom der folgenden Matrizen.
@@ -116,5 +117,73 @@ Entscheiden Sie jeweils, ob $\varphi$ diagonalisierbar ist.
   \subparagraph{Lsg.} Nach Satz 10.40 (a) der Vorlesung ist $\varphi$
   diagonalisierbar.
 \end{enumerate}
+\newpage
+\paragraph{Aufgabe 4} Seien $K$ ein Körper, $V$ ein endlich-dimensionaler
+Vektorraum über $K$ und $\varphi \in \End\qty\big(V)$ mit
+\[
+  2 \varphi^3 - 3 \varphi^2 - 3 \varphi = -2 \id_V
+\]
+\begin{enumerate}[(i)]
+\item Bestimmen Sie die Eigenwerte von $\varphi$ für $K = \mathbb{R}$
+  und $K = \mathbb{Z} / 3$.
 
+  \subparagraph{Lsg.} Sei $K = \mathbb{R}$.
+  Dann ist $2 \varphi^3 - 3 \varphi^2 - 3 \varphi + 2 \id_V = 0$.
+  Sei nun
+  \[
+    f \in K\qty[X], f = X^3 - \frac{3}{2}X^2 - \frac{3}{2}X + 1 =
+    \qty\big(X - 2)\qty\big(X + 1)\qty(X - \frac{1}{2})
+  \]
+  Dann ist $f\qty\big(\varphi) = 0$ und $m_{\varphi} = f_{\varphi} = f$.
+  Die Eigenwerte von $\varphi$ sind $\lambda_1 = 2, \lambda_2 = -1$,
+  $\lambda_3 = \frac{1}{2}$.
+
+  Sei $K = \mathbb{Z}/3$.
+  Dann ist $2 \varphi^3 + 2 \id_V = 0$.
+  Sei nun
+  \[
+    f \in K\qty[X], f = X^3 + 1 =
+    \qty\big(X + 1)^3
+  \]
+  Die Eigenwerte von $\varphi$ sind $\lambda_{1|2|3} = -1$.
+
+\item Beweisen oder widerlegen Sie für $K = \mathbb{R}$ und
+  $K = \mathbb{Z}/3$, dass $\varphi$ diagonalisierbar ist.
+
+  \subparagraph{Lsg.} Sei $K = \mathbb{R}$.
+  Dann zerfällt das charakteristische Polynom von $\varphi$ komplett in
+  verschiedene Linearfaktoren.
+  Nach Satz 10.40 der Vorlesung ist $\varphi$ diagonalisierbar.
+
+  Sei nun $K = \mathbb{Z}/3$.
+  Dann lässt sich keine Aussage über die Diagonalisierbarkeit von $\varphi$
+  treffen.
+  Sei zum Beispiel $\mathcal{B}$ die Standardbasis in $\qty\big(\mathbb{Z}/3)^3$
+  und
+  \[
+    \Mat\qty\big(\varphi, \mathcal{B}) = \begin{pmatrix}
+      -1 & 0 & 0 \\
+      0 & -1 & 0 \\
+      0 & 0 & -1 \\
+    \end{pmatrix}
+  \]
+  Dann ist $\varphi$ diagonalisierbar und das charakteristische Polynom
+  $f_{\varphi} = \qty\big(X + 1)^3$.
+  Wäre hingegen
+  \[
+    \Mat\qty\big(\varphi, \mathcal{B}) = \begin{pmatrix}
+      -1 & 1 & 0 \\
+      0 & -1 & 1 \\
+      0 & 0 & -1 \\
+    \end{pmatrix}
+  \]
+  so ist das charakteristisceh Polynom ebenfalls
+  $f_{\varphi} = \qty\big(X + 1)^3$, allerdings ist auch
+  $V_{\lambda_{1|2|3}} = \qty{
+    \begin{pmatrix}1\\0\\0\end{pmatrix} \cdot x
+    \:\middle|\:
+    x \in \mathbb{Z}/3
+  }$ und $\varphi$ nicht diagonalisierbar.
+
+\end{enumerate}
 \end{document}
