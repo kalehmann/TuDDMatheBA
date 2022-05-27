@@ -1,0 +1,93 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 06\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\Grad{\text{Grad}}
+\newcommand\Kern{\text{Kern}}
+
+\begin{document}
+\paragraph{Aufgabe 2} Bestimmen Sie das Minimalpolynom der folgenden Matrizen.
+\begin{enumerate}[(a)]
+\item $A \coloneqq \begin{pmatrix}
+    5 & 4 \\
+    -3 & -2 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(\mathbb{R}),
+  f_A = \qty\big(X - 1)\qty\big(X - 2)$.
+
+  \subparagraph{Lsg.} Nach Beispiel 11.16 der Vorlesung (\emph{``
+    Wenn $f_A$ komplett in paarweise verschiedene Linearfaktoren zerfällt, so
+    gilt $m_A = f_A$
+  ''}) folgt $m_A = \qty\big(X - 1)\qty\big(X - 2)$.
+
+\item $B \coloneqq \begin{pmatrix}
+    0 & 1 \\
+    -1 & -1 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(\mathbb{F}_3),
+  f_B = \qty\big(X - 1)^2$, $B$ ist nicht diagonalisierbar.
+
+  \subparagraph{Lsg.} Es gilt
+  \[
+    \qty\big(B - 1 \cdot I_2)^2 =
+    \qty(\begin{pmatrix}
+      0 & 1 \\
+      -1 & -1 \\
+    \end{pmatrix} - \begin{pmatrix}
+      1 & 0 \\
+      0 & 1 \\
+    \end{pmatrix})^2
+    = \begin{pmatrix}
+      -1 & 1 \\
+      -1 & -2 \\
+    \end{pmatrix}^2
+    = 0
+  \]
+  Daraus folgt, dass $m_B$ ein Teiler von $\qty\big(X - 1)^2$ ist.
+  Da $\qty\big(B - 1 \cdot I_2) = \begin{pmatrix}
+    -1 & 1 \\
+    -1 & -2 \\
+  \end{pmatrix}$ folgt $m_B = \qty\big(X - 1)^2$.
+
+\item $C \coloneqq \begin{pmatrix}
+    0 & 1 \\
+    -1 & -1 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(\mathbb{F}_5),
+  f_C = X^2 + X + 1$, $f_C$ hat keine Nullstellen in $\mathbb{F}_5$.
+
+  \subparagraph{Lsg.} Nach dem Satz von Cayley-Hamilton teilt
+  $m_C$ das Polynom $f_C$.
+  Es folgt $m_C = f_C$.
+\end{enumerate}
+\end{document}
