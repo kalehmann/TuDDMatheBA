@@ -35,7 +35,7 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
-\newcommand\Grad{\text{Grad}}
+\newcommand\End{\text{End}}
 \newcommand\Kern{\text{Kern}}
 
 \begin{document}
@@ -90,4 +90,31 @@
   $m_C$ das Polynom $f_C$.
   Es folgt $m_C = f_C$.
 \end{enumerate}
+
+\paragraph{Aufgabe 3} Sei $V$ ein endlich-dimensionaler Vektorraum über
+$\mathbb{C}$ und $\varphi \in \End\qty\big(V)$.
+Entscheiden Sie jeweils, ob $\varphi$ diagonalisierbar ist.
+
+\begin{enumerate}[(i)]
+\item $f_{\varphi} = \qty\big(X - 1)\qty\big(X + 2i)\qty\big(X - 3 - 5i)$
+
+  \subparagraph{Lsg.} Nach Satz 10.40 (a) der Vorlesung (\emph{``Sei $\varphi$
+    ein Endomorphismus von $V$.
+    Wenn das charakteristische Polynom von $A$ komplett in verschiedene
+    Linearfaktoren zerfällt, so ist $A$ diagonalisierbar.''}) ist
+  $\varphi$ diagonalisierbar.
+
+\item $m_{\varphi} = \qty\big(X - 3i)\qty\big(X + 2 + 4i)\qty\big(X + 1)^2$.
+
+  \subparagraph{Lsg.} Nach Satz 11.26 der Vorlesung (\emph{``Ein Endomorphismus
+    $\varphi \in \End\qty\big(V)$ ist genau dann diagonalisierbar, wenn
+    $m_{\varphi}$ vollständig in paarweise verschiedene Linearfaktoren
+    zerfällt''}) ist $\varphi$ nicht diagonalisierbar.
+
+\item $f_{\varphi} = \qty\big(X - 1)\qty\big(X + 3i)$
+
+  \subparagraph{Lsg.} Nach Satz 10.40 (a) der Vorlesung ist $\varphi$
+  diagonalisierbar.
+\end{enumerate}
+
 \end{document}
