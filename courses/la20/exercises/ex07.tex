@@ -186,4 +186,160 @@ Vektorraum über $K$ und $\varphi \in \End\qty\big(V)$ mit
   }$ und $\varphi$ nicht diagonalisierbar.
 
 \end{enumerate}
+
+\newpage
+\paragraph{Aufgabe 5} Sei $V$ ein Vektorraum über einem Körper $K$.
+Sind $\mathcal{B}_1 = \qty\big(v_1, \ldots, v_s)$ und
+$\mathcal{B}_2 = \qty\big(v_{s + 1}, \ldots, v_r)$ Tupel von Elementen aus $V$,
+so schreiben wir $\mathcal{B}_1 \circ \mathcal{B}_2$ für das Tupel
+$\qty\big(v_1, \ldots, v_r)$.
+Ähnlich definieren wir $\mathcal{B}_1 \circ \ldots \circ \mathcal{B}_k$ wenn
+$k > 2$ und $\mathcal{B}_1, \ldots, \mathcal{B}_k$ Tuple von Elementen aus $V$
+sind.
+Genauer Für $k > 2$ definieren wir
+$\mathcal{B}_1 \circ \ldots \circ \mathcal{B}_k$ rekursiv durch
+\[
+  \mathcal{B}_1 \circ \ldots \circ \mathcal{B}_k \coloneqq \qty\big(
+    \mathcal{B}_1 \circ \ldots \circ \mathcal{B}_{k - 1}
+  ) \circ \mathcal{B}_k
+\]
+Sei angenommen, dass $V$ endlich-dimensional ist und sei
+$\varphi \in \End\qty\big(V)$.
+In dieser Aufgabe studieren wir den Fall, dass wir $V$ als interne direkte
+Summe $\varphi$-invarianter Unterräume schreiben können.
+Wir werden sehen, dass sich dann eine Basis $\mathcal{B}$ von $V$ finden lässt,
+sodass $\Mat\qty\big(\varphi, \mathcal{B})$ eine schönen Form hat.
+\begin{enumerate}[(i)]
+\item Seien $V_1$ und $V_2$ zwei $\varphi$-invariante Unterräume von $V$,
+  sodass $v = V_1 \oplus V_2$.
+  Seien $\mathcal{B}_1$ bzw. $\mathcal{B}_2$ geordnete Basen von $V_1$ bzw.
+  $V_2$.
+  Seien $A_1 \coloneqq \Mat\qty\big(\varphi_{V_1}, \mathcal{B}_1)$ und
+  $A_2 \coloneqq \Mat\qty\big(\varphi_{V_2}, \mathcal{B}_2)$.
+  Schreiben Sie $\Mat\qty\big(\varphi, \mathcal{B}_1 \circ \mathcal{B}_2)$ und
+  $\Mat\qty\big(\varphi, \mathcal{B}_2 \circ \mathcal{B}_1)$ als
+  Blockdiagonalmatrizen, in denen $A_1$ und $A_2$ als Blöcke vorkommen.
+
+  \subparagraph{Lsg.}
+  Da $V_1$ und $V_2$ jeweils $\varphi$-invariant sind (für alle $v \in V_1$,
+  $u \in V_2$ gilt ${\varphi_{V_1}\qty\big(v) \in V_1}$ und
+  $\varphi_{V_2}\qty\big(u) \in V_2$) lassen sich
+  $\varphi_{V_1}\qty\big(v)$ für $v \in V_1$ eindeutig als Linearkombination der
+  Elemente von $\mathcal{B}_1$ und $\varphi_{V_2}\qty\big(u)$ für $u \in V_2$
+  eindeutig als Linearkombination der Elemente aus $\mathcal{B}_2$ darstellen.
+
+  Sei $a_{ij}$ das $i$-te Element der $j$-ten Spalte von
+  $A_1$.
+  Ebenso sei $b_{ij}$ das $i$-te Element der $j$-ten Spalte von $A_2$.
+
+  Dann ist für jedes $v_j, j \in \mathbb{N}, j \leq s$ jeweils
+  $\varphi_{V_1}\qty\big(v_j) = \sum_{i = 1}^s a_{ij}v_i$.
+  Durch die Erweiterung der Basis auf $\mathcal{B}_1 \circ \mathcal{B}_2$
+  ändert sich an der eindeutigen Linearkombination von Elementen aus
+  $\mathcal{B}_1$ nichts,
+  $\varphi\qty\big(v_j) = \sum_{i = 1}^r \begin{cases}
+    a_{ij}v_i & i \leq s \\
+    0 \cdot v_i & i > s\\
+  \end{cases}$.
+
+  Außerdem gilt für jedes $v_j, j \in \mathbb{N}, s + 1 \leq j \leq r$, dass
+  $\varphi\qty\big(v_j) = \sum_{i = 1}^s \begin{cases}
+    b_{i - sj}v_i & i > s \\
+    0 \cdot v_i & i \leq s
+  \end{cases}$.
+
+  Schließlich ist
+  $\Mat\qty\big(\varphi, \mathcal{B}_1 \circ \mathcal{B}_2) = \begin{pmatrix}
+    A_1 & \textbf{0} \\
+    \textbf{0} & A_2 \\
+  \end{pmatrix}$.
+
+  Sei nun $B = \Mat\qty\big(\varphi, \mathcal{B}_2 \circ \mathcal{B}_1)$.
+  Dann gilt für $1 \leq j \leq r - s$, dass
+  $\varphi\qty\big(v_j) = \sum_{i = 1}^r \begin{cases}
+    b_{ij}v_i & i \leq r - s \\
+    0 \cdot v_i & i > r - s
+  \end{cases}$ und für $r - s leq j \leq r$, dass
+  $\varphi\qty\big(v_j) = \sum_{i = 1}^r \begin{cases}
+    a_{i + s - rj}v_i & i > r - s \\
+    0 \cdot v_i & i \leq r - s
+  \end{cases}$.
+  Somit ist $\Mat\qty\big(\varphi, \mathcal{B}_2 \circ \mathcal{B}_1) =
+  \begin{pmatrix}
+    A_2 & \textbf{0} \\
+    \textbf{0} & A_1 \\
+  \end{pmatrix}$.
+
+\newpage
+\item Sei nun allgemeiner $r > 2$ und $V = \bigoplus_{i = 1}^r V_i$ mit
+  $\varphi$-invarianten Unterräumen $V_1, \ldots, V_r$.
+  Für $1 \leq i \leq r$ sei $\mathcal{B}_i$ eine geordnete Basis von $V_i$
+  und $A_i \coloneqq \Mat\qty\big(\varphi_{V_i}, \mathcal{B}_i)$.
+  Sei außerdem $\sigma$ ein Element der symmetrischen Gruppe $S_r$.
+  Schreiben Sie
+  $\Mat\qty\big(\varphi, \mathcal{B}_1 \circ \ldots \circ \mathcal{B}_r)$,
+  $\Mat\qty\big(\varphi, \mathcal{B}_r \circ \ldots \circ \mathcal{B}_1)$ und
+  $\Mat\qty\big(
+    \varphi,
+    \mathcal{B}_{\sigma(1)} \circ \ldots \circ \mathcal{B}_{\sigma(r)}
+  )$ als Blockmatrizen, in denen $A_1, \ldots, A_r$ als Blöcke vorkommen.
+
+  \subparagraph{Lsg.} Sei $\varsigma \in S_r$ beliebig.
+
+  \textbf{Induktionsbehauptung}:
+  \[
+    P(n) \colon \Mat\qty\big(
+      \varphi,
+      \mathcal{B}_{\varsigma(1)} \circ \ldots \circ \mathcal{B}_{\varsigma(n)}
+    ) = \begin{pmatrix}
+      \Mat\qty\big(\varphi_{V_{\varsigma(1)}}, \mathcal{B}_{\varsigma(1)}) & \ldots & 0 \\
+      \vdots & \ddots & \vdots \\
+      0 & \ldots & \Mat\qty\big(\varphi_{V_{\varsigma(n)}}, \mathcal{B}_{\varsigma(n)}) \\
+    \end{pmatrix}
+  \]
+  \textbf{Induktionsanfang}: $P(2)$ wurde bereits in der Teilaufgabe (i) gezeigt.
+
+  \textbf{Induktionsschritt}: Sei $P(n)$ für ein beliebiges $n \geq 2$ wahr.
+  Dann ist
+  $\mathcal{B}_{\varsigma(1)} \circ \ldots \circ \mathcal{B}_{\varsigma(n + 1)}$
+  per Definition gleich $\qty\big(
+    \mathcal{B}_{\varsigma(1)} \circ \ldots \circ \mathcal{B}_{\varsigma(n)}
+  ) \circ \mathcal{B}_{\varsigma(n)}$.
+  Sei nun $A \coloneqq \Mat\qty\big(
+    \varphi,
+    \mathcal{B}_{\varsigma(1)} \circ \ldots \circ \mathcal{B}_{\varsigma(n)}
+  )$.
+  Dann ist per dem Induktionsanfang $\Mat\qty\big(
+    \varphi,
+    \mathcal{B}_{\varsigma(1)} \circ \ldots \circ \mathcal{B}_{\varsigma(n + 1)}
+  ) = \begin{pmatrix}
+    A & \textbf{0} \\
+    \textbf{0} & \Mat\qty\big(\varphi_{V_\varsigma(n + 1)}, \mathcal{B}_{\varsigma(n + 1)}) \\
+  \end{pmatrix}$.
+  Aus dem Satz über die vollständige Induktion folgt nun die Behauptung.
+  \[
+    \Mat\qty\big(\varphi, \mathcal{B}_1 \circ \ldots \circ \mathcal{B}_r)
+    = \begin{pmatrix}
+      A_1 & \ldots & \textbf{0} \\
+      \vdots & \ddots & \vdots \\
+      \textbf{0} & \ldots & A_r \\
+    \end{pmatrix}
+  \]
+  \[
+    \Mat\qty\big(\varphi, \mathcal{B}_r \circ \ldots \circ \mathcal{B}_1)
+    = \begin{pmatrix}
+      A_r & \ldots & \textbf{0} \\
+      \vdots & \ddots & \vdots \\
+      \textbf{0} & \ldots & A_1 \\
+    \end{pmatrix}
+  \]
+  \[
+    \Mat\qty\big(\varphi, \mathcal{B}_{\sigma(1)} \circ \ldots \circ \mathcal{B}_{\sigma(r)})
+    = \begin{pmatrix}
+      A_{\sigma(1)} & \ldots & \textbf{0} \\
+      \vdots & \ddots & \vdots \\
+      \textbf{0} & \ldots & A_{\sigma(r)}\\
+    \end{pmatrix}
+  \]
+\end{enumerate}
 \end{document}
