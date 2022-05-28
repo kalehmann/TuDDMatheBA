@@ -1,0 +1,130 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\newcommand{\End}{\text{End}}
+\newcommand{\Grad}{\text{Grad}}
+\newcommand{\Mat}{\text{Mat}}
+\newcommand{\Spur}{\text{Spur}}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{SoSe 2022}
+\title{Hausaufgaben Blatt 07\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 6}
+\begin{enumerate}[(a)]
+\item Bestimmen Sie die Minimalpolynome der folgenden Matrizen
+  bzw. linearen Abbildungen.
+  \begin{enumerate}[(i)]
+  \item $B \coloneqq \begin{pmatrix}
+      0 & 1 \\
+      -1 & -1 \\
+    \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(\mathbb{F}_7)$,
+    wobei $\mathbb{F}_7 = \mathbb{Z}/7$,
+    $f_B = \qty\big(X - 2)\qty\big(X - 4)$.
+
+    \subparagraph{Lsg.} Aus dem charakteristischen Polynom der Matrix $B$ lassen
+    sich die Eigenwerte $\lambda_1 = 2$ und $\lambda_2 = 4$ ablesen.
+    Nach Satz 11.14 der Vorlesung (\emph{``Ebenso sind die Eigenwerte der Matrix
+      $A$ genau die Nullstellen des Minimalpolynoms''}) und dem Satz von
+    Cayley-Hamilton (\emph{``$m_A$ teilt $f_A$''}) folgt
+    $m_B = \qty\big(X - 2)\qty\big(X - 4)$.
+
+  \item $C \coloneqq \begin{pmatrix}
+      0 & 1 \\
+      1 & 0 \\
+    \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(\mathbb{F}_2)$,
+    wobei $\mathbb{F}_2 = \mathbb{Z}/2$,
+    $f_C = X^2 + 1$, $C$ ist nicht diagonalisierbar.
+
+    \subparagraph{Lsg.} Es ist $f_C = X^2 + 1 = \qty\big(X + 1)\qty\big(X + 1)$.
+    Aus Satz 11.14 der Vorlesung und dem Satz von Cayley-Hamilton folgt
+    $m_C = X + 1$ oder $m_c = \qty\big(X + 1)^2$.
+
+    Durch Einsetzen von $C$ in die beiden Kandidaten für $m_c$ erhält man
+    \[
+      \begin{pmatrix}
+        0 & 1 \\
+        1 & 0 \\
+      \end{pmatrix} + \begin{pmatrix}
+        1 & 0 \\
+        0 & 1 \\
+      \end{pmatrix} = \begin{pmatrix}
+        1 & 1 \\
+        1 & 1 \\
+      \end{pmatrix}
+    \]
+    und
+    \[
+      \qty(\begin{pmatrix}
+        0 & 1 \\
+        1 & 0 \\
+      \end{pmatrix} + \begin{pmatrix}
+        1 & 0 \\
+        0 & 1 \\
+      \end{pmatrix})^2 = \begin{pmatrix}
+        0 & 0 \\
+        0 & 0 \\
+      \end{pmatrix}
+    \]
+    $\Rightarrow m_C = \qty\big(X + 1)^2$
+
+  \item $\varphi \colon \mathbb{R}^2 \to \mathbb{R}^2,
+    \begin{pmatrix}x\\y\end{pmatrix} \mapsto
+    \begin{pmatrix}x\\x + 2y\end{pmatrix}$,
+    $f_{\varphi} = \qty\big(X - 1)\qty\big(X - 2)$
+
+    \subparagraph{Lsg.} Nach Satz 11.14 der Vorlesung und dem Satz von
+    Cayley-Hamilton ist $m_{\varphi} = \qty\big(X - 1)\qty\big(X - 2)$.
+  \end{enumerate}
+
+\item Sei $V$ ein endlich-dimensionaler Vektorraum über $\mathcal{C}$ und
+  $\varphi \in \End\qty\big(V)$.
+  Entscheiden Sie jeweils, ob $\varphi$ diagonalisierbar ist.
+  \begin{enumerate}[(i)]
+  \item $m_{\varphi} = \qty\big(X + 2)\qty\big(X + 3i + 7)\qty\big(X - 5i)^2$
+    \subparagraph{Lsg.} Das Minimalpolynom $m_{\varphi}$ zerfällt vollständig in
+    Linearfaktoren, allerdings sind diese nicht paarweise verschieden -
+    $\qty\big(X - 5i)$ kommt zwei mal vor.
+    Nach Satz 11.26 der Vorlesung (\emph{``Ein Endomorphismus
+      $\varphi \in \End\qty\big(V)$ ist genau dann diagonalisierbar, wenn
+      $m_{\varphi}$ vollständig in paarweise verschiedene Linearfaktoren
+      zerfällt.''}) ist $\varphi$ somit nicht diagonalisierbar.
+
+\newpage
+  \item $m_{\varphi} = \qty\big(X - 2)\qty\big(X + 3i + 1)\qty\big(X + 7i)$
+    \subparagraph{Lsg.} Das Minimalpolynom zerfällt vollständig in paarweise
+    verschiedene Linearfaktoren, nach Satz 11.26 der Vorlesung ist
+    $\varphi$ diagonalisierbar.
+  \end{enumerate}
+\end{enumerate}
+\end{document}
