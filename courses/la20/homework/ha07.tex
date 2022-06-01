@@ -173,4 +173,154 @@ Per Bemerkung 11.9 der Vorlesung folgt $m_{\varphi} = m_A$.
   $\Mat\qty\big(\varphi, \mathcal{B}_V) = A$.
 \end{itemize}
 
+\paragraph{Aufgabe 8} Sei $K$ ein Körper und
+$V \coloneqq \mathcal{M}_{2 \times 2}\qty\big(K)$.
+Für $A \in V$ sei
+\[
+  \varphi_A \colon V \to V, X \mapsto AX
+\]
+\begin{enumerate}[(i)]
+\item Zeigen Sie, dass $\varphi_A$ für $A \in V$ linear ist.
+
+  \subparagraph{Lsg.} Per Beispiel 3.3 der Vorlesung ist $V$ ein Vektorraum über
+  $K$.
+  Seien $\lambda \in K, v, w \in V$ beliebig und $u \coloneqq \lambda \cdot w$.
+  Per Definition der Skalarmultiplikation in einem Vektorraum ist $u \in V$.
+  Nach Lemma 5.5 der Vorlesung ist die Matrixmultiplikation distributiv, dass
+  heißt es gilt $A \cdot \qty\big(v + u) = A \cdot v + A \cdot u$.
+  Substituiert man $u$ wieder durch $\lambda \cdot w$ und wendet die Definition
+  von $\varphi_A$ an, folgt
+  \[
+    \varphi_A\qty\big(v + \lambda \cdot u) =
+    \varphi_A\qty\big(v) + \lambda \cdot \varphi_A\qty\big(u)
+  \]
+  Aus Lemma 6.2 der Vorlesung folgt die Behauptung.
+
+\item Sei
+  \[
+    \mathcal{E} \coloneqq \qty(
+      \begin{pmatrix}
+        1 & 0 \\
+        0 & 0 \\
+      \end{pmatrix}, \begin{pmatrix}
+        0 & 1 \\
+        0 & 0 \\
+      \end{pmatrix}, \begin{pmatrix}
+        0 & 0 \\
+        1 & 0 \\
+      \end{pmatrix}, \begin{pmatrix}
+        0 & 0 \\
+        0 & 1 \\
+      \end{pmatrix}
+    )
+  \]
+  Bestimmen Sie $\Mat\qty\big(\varphi_A, \mathcal{E})$ für
+  $A = \begin{pmatrix}a&b\\c&d\end{pmatrix} \in V$.
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    \varphi_A\begin{pmatrix}
+      1 & 0 \\
+      0 & 0 \\
+    \end{pmatrix} &= a \cdot \begin{pmatrix}
+      1 & 0 \\
+      0 & 0 \\
+    \end{pmatrix} + 0 \cdot \begin{pmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{pmatrix} + c \cdot \begin{pmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{pmatrix} + 0 \cdot \begin{pmatrix}
+      0 & 0 \\
+      0 & 1 \\
+    \end{pmatrix} \\
+    \varphi_A\begin{pmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{pmatrix} &= 0 \cdot \begin{pmatrix}
+      1 & 0 \\
+      0 & 0 \\
+    \end{pmatrix} + a \cdot \begin{pmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{pmatrix} + 0 \cdot \begin{pmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{pmatrix} + c \cdot \begin{pmatrix}
+      0 & 0 \\
+      0 & 1 \\
+    \end{pmatrix} \\
+    \varphi_A\begin{pmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{pmatrix} &= b \cdot \begin{pmatrix}
+      1 & 0 \\
+      0 & 0 \\
+    \end{pmatrix} + 0 \cdot \begin{pmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{pmatrix} + d \cdot \begin{pmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{pmatrix} + 0 \cdot \begin{pmatrix}
+      0 & 0 \\
+      0 & 1 \\
+    \end{pmatrix} \\
+    \varphi_A\begin{pmatrix}
+      0 & 0 \\
+      0 & 1 \\
+    \end{pmatrix} &= 0 \cdot \begin{pmatrix}
+      1 & 0 \\
+      0 & 0 \\
+    \end{pmatrix} + b \cdot \begin{pmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{pmatrix} + 0 \cdot \begin{pmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{pmatrix} + d \cdot \begin{pmatrix}
+      0 & 0 \\
+      0 & 1 \\
+    \end{pmatrix}
+  \end{flalign*}
+  \[
+    \Mat\qty\big(\varphi_A, \mathcal{E}) = \begin{pmatrix}
+      a & 0 & c & 0 \\
+      0 & a & 0 & c \\
+      b & 0 & d & 0 \\
+      0 & b & 0 & d \\
+    \end{pmatrix}
+  \]
+
+\item Zeigen Sie: Für $A \in V$ gilt $f_{\varphi_A} = \qty\big(f_A)^2$.
+  \subparagraph{Lsg.} Es ist allgemein
+  \[
+    \det\qty(
+    \begin{pmatrix}
+      X & 0 \\
+      0 & X \\
+    \end{pmatrix} - \begin{pmatrix}
+      a_{11} & a_{12} \\
+      a_{21} & a_{22} \\
+    \end{pmatrix}
+    ) = \qty\big(X - a_{11})\qty\big(X - a_{22}) + a_{12} \cdot a_{21}
+  \]
+  und
+  \begin{flalign*}
+    \det\qty\big(X \cdot I_4 - \Mat\qty\big(\varphi_A, \mathcal{E}))
+    &= \qty\big(X - a_{11})\qty\big(X - a_{11})
+      \qty\big(X - a_{22})\qty\big(X - a_{22}) + a_{12}^2 \cdot a_{21}^2\\
+    &= \qty\Big(\qty\big(X - a_{11})\qty\big(X - a_{22}) + a_{12} \cdot a_{21})^2
+  \end{flalign*}
+\item Zeigen Sie, dass $\varphi_A$ genau dann diagonalisierbar ist, wenn $A$
+  diagonalisierbar ist.
+
+  \subparagraph{Lsg.} Sei $f \in K\qty[X]$ beliebig.
+  Dann gilt $f\qty(\varphi_A) = 0_{V,V} \iff f\qty\big(A) = 0$.
+  Es folgt $m_A = m_{\varphi_A}$.
+  Da sich die Diagonalisierbarkeit einer Matrix oder eines Endomorphismuses
+  allein aus dessen Minimalpolynom ablesen lässt folgt die Behauptung.
+\end{enumerate}
+
 \end{document}
