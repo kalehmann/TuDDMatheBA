@@ -127,4 +127,50 @@
     $\varphi$ diagonalisierbar.
   \end{enumerate}
 \end{enumerate}
+
+\paragraph{Aufgabe 7} Sei $K$ ein Körper.
+Beweisen Sie die folgenden Aussagen.
+\begin{enumerate}[(i)]
+\item Sei $V \ne \qty\big{0_V}$ ein endlich-dimensionaler Vektorraum über $K$
+  und sei $\lambda \in K \setminus \qty\big{0_K}$.
+  Sei außerdem $\varphi \in \End\qty\big(V)$.
+  Dann gilt $m_{\varphi} = X - \lambda$ genau dann, wenn
+  $\varphi = \lambda \cdot \text{id}_V$.
+\item Sei $n \in \mathbb{N}$ und $A \in \mathcal{M}_{n \times n}\qty\big(K)$.
+  Sei außerdem  $\lambda \in K \setminus \qty\big{0_K}$.
+  Dann gilt $m_A = X - \lambda$ genau dann, wenn $A = \lambda \cdot I_n$.
+\end{enumerate}
+
+\subparagraph{Lsg.} Sei $\mathcal{B}_V$ eine beliebige Basis von $V$.
+Für $\varphi = \lambda \cdot \text{id}_V$ ist offensichtlich
+$\Mat\qty\big(\varphi, \mathcal{B}_V) = \lambda \cdot I_n$.
+Per Bemerkung 11.9 der Vorlesung folgt $m_{\varphi} = m_A$.
+\begin{itemize}
+\item[``$\Rightarrow$'']
+  Sei $m_A = m_{\varphi} = X - \lambda$.
+  Dann gilt für die Abbildung $\varphi$ des Minimalpolynoms bzw. deren
+  Darstellungsmatrix, dass $m_{\varphi}\qty\big(\varphi) = 0_{V,V}$ bzw.
+  $m_A\qty\big(A) = \textbf{0}$.
+  Nun lässt sich $X - \lambda \cdot \text{id}_V = 0_{V,V}$ nach
+  $X = \lambda \cdot \text{id}_V$ und $X - \lambda \cdot I_n = \textbf{0}$ nach
+  $X = \lambda \cdot I_n$ umstellen.
+
+  Es folgt $\varphi = \lambda \cdot \text{id}_V$ und $A = \lambda \cdot I_n$.
+\item[``$\Leftarrow$'']
+  Per Bemerkung 11.10 der Vorlesung (\emph{``Ist $V \ne \qty\big{0_V}$, so ist
+    immer $\Grad\qty\big(m_{}\varphi) \geq 1$.''}) gilt
+  $\Grad\qty\big(m_{\varphi}) \geq 1$.
+  Für $m_{\varphi} = X - \lambda$ ist nun $m_{\varphi}$ normiert, es gilt
+  offensichtlich $m_{\varphi}\qty\big(\varphi) = 0_{V, V}$ und vom Grad 1.
+  Per Bemerkung 11.10 der Vorlesung (\emph{``Ist $V \ne \qty\big{0_V}$, so ist
+    immer $\Grad\qty\big(m_{}\varphi) \geq 1$.''}) kann auch kein Polynom
+  von kleinerem Grad existieren, welches die eben genannten Eigenschaften
+  erfüllt.
+
+  Es folgt, dass $m_{\varphi} = X - \lambda$ das Minimalpolynom von
+  $\varphi = \lambda \cdot \text{id}_v$ ist.
+  Dann $m_A = m_{\varphi}$ gilt ebenso $m_A$ ist das Minimalpolynom von
+  $\Mat\qty\big(\varphi, \mathcal{B}_V) = A$.
+\end{itemize}
+
 \end{document}
