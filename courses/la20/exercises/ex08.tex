@@ -212,4 +212,20 @@ $f_A = \prod_{i = 1}^n \qty\big(
 Da $A$ als Diagonalmatrix diagonalisierbar ist, folgt nach Satz 11.26 der Vorlesung,
 dass für $m_{\text{alg}}\qty\big(A, \lambda_{j_i}) = 1$ für $1 \in 1, \ldots, n$
 und somit $m_A = \prod_{i = 1}^r \qty\big(X - \lambda_{j_i})$.
+
+\paragraph{Aufgabe 5} Wo steckt der Fehler in folgendem ``Beweis'' des Satzes von
+Cayley-Hamilton?
+\emph{Satz: Seien $K$ ein Körper, $n$ eine natürliche Zahl und
+  $A \in \mathcal{M}_{n \times n}\qty\big(K)$.
+  Dann gilt $f_A\qty\big(A) = 0$.}
+
+\noindent
+``Beweis'': Es gilt $f_A(A) = \det\qty\big(X \cdot I_n - A)\qty\big(A)
+= \det\qty\big(A \cdot I_n - A) = \det\qty\big(A - A) = \det\qty\big(0) = 0$
+
+\subparagraph{Lsg.} Der Schritt $\det\qty\big(X \cdot I_n - A)\qty\big(A)
+= \det\qty\big(A \cdot I_n - A)$ ist falsch.
+Man kann $A$ in ein Element aus $K\qty[X]$ einsetzen.
+Allerdings ist $X \cdot I_n - A$ ein Element aus
+$\mathcal{M}_{n \times n}\qty\big(K\qty[X])$.
 \end{document}
