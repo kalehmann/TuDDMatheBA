@@ -1,0 +1,163 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 08\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\End{\text{End}}
+\newcommand\id{\text{id}}
+\newcommand\Mat{\text{Mat}}
+
+\begin{document}
+\paragraph{Aufgabe 2} Sei
+\[
+  A \coloneqq \begin{pmatrix}
+    3 & 2 & -2 \\
+    0 & 3 & -5 \\
+    0 & 5 & -7 \\
+  \end{pmatrix}
+\]
+\begin{enumerate}[(i)]
+\item Berechnen Sie $f_A$ als Produkt von Linearfaktoren.
+  Folgern Sie, dass $A$ genau die Eigenwerte $3$ und $-2$ hat.
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    \det\qty\big(X \cdot I_3 - A) &=
+    \det\begin{pmatrix}
+      X - 3 & -2 & 2 \\
+      0 & X - 3 & 5 \\
+      0 & -5 & X + 7 \\
+    \end{pmatrix} \\
+    &= \qty\big(X - 3) \cdot \det\begin{pmatrix}
+      X - 3 & 5 \\
+      -5 & X + 7 \\
+    \end{pmatrix} \\
+    &= \qty\big(X - 3) \cdot \qty\Big(\qty\big(X - 3)\qty\big(X + 7) + 25) \\
+    &= \qty\big(X - 3) \cdot \qty\big(X^2 + 4X + 4) \\
+    &= \qty\big(X - 3) \cdot \qty\big(X + 2)^2
+  \end{flalign*}
+  Aus Satz 10.13 der Vorlesung (\emph{``Die Eigenwerte einer Matrix
+    $A \in \mathcal{M}_{n \times n}\qty\big(K)$ sind die Nullstellen des
+    zugehörigen charakteristischen Polynoms $f_A$''}) folgt
+  $\lambda_1 = 3$ und $\lambda_2 = -2$.
+
+\item Finden Sie eine Basis des Eigenraums $V_{-2}^A$.
+  Nutzen Sie dies, um die geometrische Vielfachheit des Eigenwerts $-2$
+  anzugeben.
+
+  \subparagraph{Lsg.} $\qty\big(-2 \cdot I_3 - A) =
+  \begin{pmatrix}
+    -5 & -2 & 2 \\
+    0 & -5 & 5 \\
+    0 & -5 & 5 \\
+  \end{pmatrix}$ und
+  \[
+    \begin{pmatrix}
+      -5 & -2 & 2 \\
+      0 & -5 & 5 \\
+      0 & -5 & 5 \\
+    \end{pmatrix} \leadsto \begin{pmatrix}
+      1 & 0 & 0 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix}
+  \]
+  Daraus folgt $V_{-2}^A = \qty{
+    \begin{pmatrix}0\\1\\1\end{pmatrix} \cdot x,
+    \: \middle| \:
+    x \in \mathbb{R}
+  }$ und $m_{\text{geom}}\qty\big(A, -2) = 1$.
+
+\item Geben Sie die algebraischen Vielfachheiten der Eigenwerte $3$ und $-2$ an.
+  \subparagraph{Lsg.} $m_{\text{alg}}\qty\big(A, 3) = 1$ und
+  $m_{\text{alg}}\qty\big(A, -2) = 2$.
+
+\newpage
+\item Geben Sie die geometrische Vielfachheit des Eigenwertes $3$ an, ohne
+  $V_3^A$ zu bestimmen.
+  \subparagraph{Lsg.} Nach Bemerkung 10.45 der Vorlesung gilt für jeden Eigenwert
+  $\lambda$ von $A$, dass $m_{\text{geom}}\qty\big(A, \lambda) \geq 1$.
+  Aus Satz 10.48 (a) der Vorlesung (\emph{``Für jeden Eigenwert $\lambda$ von
+    $\varphi$ gilt $m_{\text{geom}}\qty\big(\varphi, \lambda) \leq
+    m_{\text{alg}}\qty\big(\varphi, \lambda)$''}) folgt direkt
+  $m_{\text{geom}}\qty\big(A, 3) = 1$.
+
+\item Begründen Sie, ob $A$ diagonalisierbar ist.
+
+  \subparagraph{Lsg.} Nach Satz 10.48 (b) der Vorlesung (\emph{``Falls $\varphi$
+    diagonalisierbar ist, dann sind alle geometrischen Vielfachheiten gleich den
+    entsprechenden algebraischen Vielfachheiten''}) und
+  $2 = m_{\text{alg}}\qty\big(A, -2) \ne m_{\text{geom}}\qty\big(A, -2) = 1$
+  folgt, dass $A$ nicht diagonalisierbar ist.
+
+\item Nutzen Sie (i) und (v) um das Minimalpolynom $m_A$ zu finden.
+  \subparagraph{Lsg.} Aus dem Satz 11.14 der Vorlesung (\emph{``Die Eigenwerte
+    der Matrix $A$ sind genau die Nullstellen des Minimalpolynoms''}) und dem
+  Satz von Cayley-Hamilton folgt $m_A = \qty\big(X - 3)\qty\big(X + 2)$ oder
+  $m_A = \qty\big(X - 3)\qty\big(X + 2)^2$.
+  Da $A$ nicht diagonalisierbar ist folgt mit Satz 11.26 der Vorlesung (\emph{``
+    Es ist $A \in \mathcal{M}_{n \times n}\qty\big(K)$ genau dann
+    diagonalisierbar, wenn $m_A$ vollständig in paarweise verschiedene
+    Linearfaktoren zerfällt.''}) folgt $m_A = \qty\big(X - 3)\qty\big(X + 2)^2$.
+
+\item Nutzen Sie (i) und den Satz von Cayley-Hamilton um zu zeigen, dass $A$
+  invertierbar ist und um $A^{-1}$ als Linearkombination von Potenzen von $A$ zu
+  schreiben.
+  Schreiben Sie außerdem $A^3$ und $A^4$ als Linearkomibnation von $I_3$, $A$ und
+  $A^3$.
+  \subparagraph{Lsg.} $A$ ist invertierbar, wenn
+  $A^{-1} \in \mathcal{M}_{3 \times 3}\qty\big(K)$ existiert mit
+  $A \cdot A^{-1} = I_3$.
+
+  Nun ist nach (i) und dem Satz von Cayley-Hamilton
+  $\qty\big(A - 3)\qty\big(A + 2)^2 = 0$ oder $A^3 + A^2 - 8A - 12I = 0$
+  oder $A \cdot \frac{1}{12}\qty\big(A^2 + A - 8) = I$.
+
+  $\Rightarrow A^{-1} = \frac{1}{12}\qty\big(A^2 + A - 8)$.
+
+  Ebenso lässt sich das charakteristische Polynom nach $A^3$ umstellen:
+  $A^3 = -A^2 + 8A + 12I$.
+
+  Schließlich ist
+  \begin{flalign*}
+    A^4 &= A\qty\big(A^3) \\
+    &= A \cdot \qty\big(-A^2 + 8A + 12I) \\
+    &= -A^3 + 8A^2 + 12A \\
+    \overset{\text{Subst. von $A^3$}}&= -\qty\big(-A^2 + 8A + 12I)
+     + 8A^2 + 12A \\
+    &= 9A^2 + 4A - 12I
+  \end{flalign*}
+\end{enumerate}
+\end{document}
