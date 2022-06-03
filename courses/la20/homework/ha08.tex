@@ -1,0 +1,73 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\newcommand{\End}{\text{End}}
+\newcommand{\Grad}{\text{Grad}}
+\newcommand{\Mat}{\text{Mat}}
+\newcommand{\Spur}{\text{Spur}}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{SoSe 2022}
+\title{Hausaufgaben Blatt 08\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 6} Seien $K$ ein Körper, $\lambda \in K, n \in \mathbb{N}$ und
+$A \in \mathcal{M}_{n \times n}\qty\big(K)$.
+Beweisen Sie die folgenden Aussagen:
+\begin{enumerate}[(i)]
+\item Wenn $\lambda$ der einzige Eigenwert von $A$ ist und außerdem $A$
+  diagonalisierbar ist, dann gilt $A = \lambda \cdot I_n$.
+
+  \subparagraph{Lsg.} Da $A$ diagonalisierbar ist, zerfällt $m_A$ vollständig in
+  verschiedene Linearfaktoren.
+  Außerdem sind die Eigenwerte von $A$ gleich den Nullstellen von $m_A$.
+  Es folgt $m_A = \qty\big(X - \lambda)$.
+
+  Nach Cayley-Hamilton gilt schließlich $A - \lambda \cdot I_n = 0$, es folgt
+  $A = \lambda \cdot I_n$.
+
+\item Wenn $f_A$ irreduzibel ist, dann gilt $f_A = m_A$.
+
+  \subparagraph{Lsg.} Nach Cayley-Hamilton gilt $m_A \mid f_A$,
+  dass heißt es existiert ein $g \in K\qty[X]$ mit
+  $f_A = g \cdot m_A$.
+  Da $f_A$ irreduzibel ist, folgt $g \in K \setminus \qty\big{0_K}$ oder
+  $m_A \in K \setminus \qty\big{0_K}$.
+  Da $f_A$ und $m_A$ per Definition normiert sind gilt somit $g = 1_K$ oder
+  $m_A = 1_K$.
+
+  Nun ist $\qty\big(1_K)\qty\big(A) = 1_K \ne 0$, ein Widerspruch zu
+  Cayley-Hamilton.
+  Es folgt $m_A \ne 1_K$ und $g = 1_K$, sowie $f_A = 1_K \cdot m_A = m_A$.
+\end{enumerate}
+
+\end{document}
