@@ -160,4 +160,29 @@
     &= 9A^2 + 4A - 12I
   \end{flalign*}
 \end{enumerate}
+
+\newpage
+\paragraph{Aufgabe 3} Seien $K$ ein Körper, $n \in \mathbb{N}$ und
+$A \in \mathcal{M}_{n \times n}\qty\big(K)$.
+Seien außerdem $r \in \mathbb{N}$ und $f_1, \ldots, f_r \in X\qty[X]$
+normiert und irreduzibel, sodass $f_A = f_1 \cdot \ldots \cdot f_r$.
+Erklären Sie, wie das Minimalpolynom $m_A$ aussehen kann.
+\subparagraph{Lsg.} Es gilt nach Cayley-Hamilton, dass $m_A \mid f_A$.
+Daraus folgt $\exists \: g \in K\qty[X] \colon d \cdot m_A = f_A$.
+\[
+  \overset{\text{Primzerlegung}}{
+    \underset{\text{in }K\qty[X]}\Rightarrow
+  } \prod_{i = 1}^r f_i = \underset{g}{\underbrace{\qty(
+    \prod_{i = 1}^s g_i
+  )}}\underset{m_A}{\underbrace{\qty(
+    \prod_{i = 1}^t h_i
+  )}}
+\]
+mit $s, t \in \mathbb{N}, s + t = r$ und $g_i, h_i$ irreduzibel und normiert.
+Aus der Eindeutigkeit der Primzerlegung folgt
+$\forall i \in \qty\big{1, \ldots, t} \: \exists \: i \in \qty\big{1, \ldots, r}
+\colon h_i = f_j$.
+
+Kurz gesagt: $m_A$ besteht aus einem Teil (oder allen) irreduziblen, normierten
+Polynomen $f_i$.
 \end{document}
