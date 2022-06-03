@@ -35,7 +35,7 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
-\newcommand\End{\text{End}}
+\newcommand\diag{\text{diag}}
 \newcommand\id{\text{id}}
 \newcommand\Mat{\text{Mat}}
 
@@ -185,4 +185,31 @@ $\forall i \in \qty\big{1, \ldots, t} \: \exists \: i \in \qty\big{1, \ldots, r}
 
 Kurz gesagt: $m_A$ besteht aus einem Teil (oder allen) irreduziblen, normierten
 Polynomen $f_i$.
+
+\paragraph{Aufgabe 4} Seien $K$ ein Körper, $n \in \mathbb{N}$ und
+$A \in \mathcal{M}_{n \times n}$ eine Diagonalmatrix mit Diagonaleneinträgen
+$\lambda_1, \ldots, \lambda_n$.
+Beachten Sie, dass die Diagonaleneinträge $\lambda_1, \ldots, \lambda_n$ nicht
+paarweise verschieden seien müssen.
+Seien nun $\lambda_{j_1}, \ldots, \lambda_{j_r}$ die paarweise verschiedenen
+Diagonaleneinträge.
+Zeigen sie, dass
+\[
+  f_A = \prod_{i = 1}^n \qty\big(X - \lambda_i) \text{ und }
+  m_A = \prod_{i = 1}^r \qty\big(X - \lambda_{j_i})
+\]
+
+\subparagraph{Lsg.} Es ist $A = \diag\qty\big(\lambda_1, \ldots, \lambda_n)$
+und $f_A = \det\qty\big(\diag\qty\big(
+  X - \lambda_1, \ldots, X - \lambda_n
+))$.
+Nach Lemma 8.24 der Vorlesung ist nun
+$f_A = \prod_{i = 1}^n \qty\big(X - \lambda_i)$.
+Betrachtet man nur die paarweise verschiedenen Diagonaleneinträge folgt
+$f_A = \prod_{i = 1}^n \qty\big(
+  X - \lambda_{j_i}
+)^{m_{\text{alg}}\qty(A, \lambda_{j_i})}$.
+Da $A$ als Diagonalmatrix diagonalisierbar ist, folgt nach Satz 11.26 der Vorlesung,
+dass für $m_{\text{alg}}\qty\big(A, \lambda_{j_i}) = 1$ für $1 \in 1, \ldots, n$
+und somit $m_A = \prod_{i = 1}^r \qty\big(X - \lambda_{j_i})$.
 \end{document}
