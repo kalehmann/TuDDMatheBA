@@ -90,4 +90,123 @@ $\Rightarrow$ alle Nullstellen von
 $\qty\big(X + 1)\qty\big(X - 1)\qty\big(X - 3)$ sind mögliche Eigenwerte.
 
 Mögliche Eigenwerte von $A$ sind nun $-1$, $1$ und $3$
+
+\newpage
+\paragraph{Aufgabe 8} Sei
+\[
+  A \coloneqq \begin{pmatrix}
+    2 & 0 & 0 \\
+    5 & -1 & -1 \\
+    2 & 1 & -1 \\
+  \end{pmatrix} \in \mathcal{M}_{3 \times 3}\qty\big(\mathbb{F}_7)
+\]
+wobei $\mathbb{F}_7 = \mathbb{Z}/7$.
+\begin{enumerate}[(i)]
+\item Berechnen Sie $f_A$ und schreiben Sie $f_A$ als Produkt zweier
+  irreduzibler Polynome.
+
+  \subparagraph{Lsg.} Es ist
+  \begin{flalign*}
+    \det\qty\big(X \cdot I_n - A) &= \det\begin{pmatrix}
+      X - 2 & 0 & 0 \\
+      -5 & X + 1 & 1 \\
+      -2 & -1 & X + 1 \\
+    \end{pmatrix} \\
+    &= \qty\big(X - 2) \cdot \det\begin{pmatrix}
+      X + 1 & 1 \\
+      -1 & X + 1 \\
+    \end{pmatrix} \\
+    &= \qty\big(X - 2) \cdot \qty\big(X + 1)^2 + 1 \\
+    &= \qty\big(X - 2) \cdot \qty\big(X^2 + 2X + 2)
+  \end{flalign*}
+  Nun hat $X^2 + 2X + 2$ keine Nullstelle in $\mathbb{F}_7$.
+  Dabei ist $X - 2$ nach Beispiel 9.29 der Vorlesung irreduzibel
+  und $X^2 + 2X + 2$ nach Korollar 9.38 der Vorlesung irreduzibel.
+
+\item Begründen Sie anhand ihrer Lösung zu (i), dass $2$ der einzige
+  Eigenwert von $A$ ist.
+
+  \subparagraph{Lsg.} Nach Satz 10.13 der Vorlesung sind die Eigenwerte einer
+  Matrix $A \in \mathcal{M}_{n \times n}\qty\big(K)$ genau die Nullstellen des
+  charakteristischen Polynoms $f_A$.
+  Wie in (i) bereits gesehen ist $2$ die einzige Nullstelle von $f_A$.
+
+\item Begründen Sie, ob $A$ diagonalisierbar ist.
+
+  \subparagraph{Lsg.} Nach Satz 10.40 (b)der Vorlesung zerfällt das
+  charakteristische Polynom einer diagonalisierbaren Matrix komplett in
+  Linearfaktoren.
+  $f_A$ zerfällt nicht komplett in Linearfaktoren.
+
+  $\Rightarrow A$ ist nicht diagonalisierbar.
+
+\item Finden Sie die algebraische und die geometrische Vielfachheit des
+  Eigenwerts $2$.
+
+  \subparagraph{Lsg.} $m_{\text{alg}}\qty\big(A, 2) = 1$.
+  Weiter ist $\qty\big(2 \cdot I_n - A) = \begin{pmatrix}
+    0 & 0 & 0 \\
+    -5 & 3 & 1 \\
+    -2 & -1 & 3 \\
+  \end{pmatrix}$ und
+  \[
+    \begin{pmatrix}
+      0 & 0 & 0 \\
+      -5 & 3 & 1 \\
+      -2 & -1 & 3 \\
+    \end{pmatrix} \leadsto \begin{pmatrix}
+      2 & 3 & 1 \\
+      5 & 6 & 3 \\
+      0 & 0 & 0 \\
+    \end{pmatrix} \overset{
+      \substack{
+        Z.2 = 6 \cdot Z.2 - Z.1 \\
+        Z.1 = 4 \cdot Z.1 !!
+      }
+    }\leadsto \begin{pmatrix}
+      1 & 5 & 4 \\
+      0 & 5 & 3 \\
+      0 & 0 & 0 \\
+    \end{pmatrix} \overset{
+      \substack{
+        Z.1 = Z.1 - Z.2 \\
+        Z.2 = 3 \cdot Z.1
+      }
+    }\leadsto \begin{pmatrix}
+      1 & 0 & 1 \\
+      0 & 1 & 2 \\
+      0 & 0 & 0 \\
+    \end{pmatrix}
+  \]
+
+  Es folgt $V_2^A = \qty{
+    \begin{pmatrix}x\\y\\z\end{pmatrix}
+    \:\middle|\:
+    x,y,z \in \mathbb{F}_7, x + z = 0 \land y + 2z = 0
+  } = \qty{
+    \begin{pmatrix}-1\\5\\1\end{pmatrix} \cdot x
+    \:\middle|\:
+    x \in \mathbb{F}_7
+  }$ und $\dim\qty\big(V_2^A) = 1$.
+
+  $\Rightarrow m_{\text{geom}}\qty\big(2, A) = 1$.
+
+\item Finden Sie das Minimalpolynom $m_A$ von $A$.
+  Verwenden Sie in ihrer Argumentation Satz 9.35.
+
+  \subparagraph{Lsg.} Das Minimalpolynom ist das eindeutige normierte Polynom
+  von minimalem Grad, sodass $m_A\qty\big(A) = 0$.
+  Weiter teilt $m_A$ nach Cayley-Hamilton $f_A$.
+
+  Nach Satz 9.35 der Vorlesung (\emph{``Jedes von Null verschiedene Polynom
+    $f \in K\qty[X]$ kann als Produkt $f = a \cdot f_1 \cdot \ldots \cdot f_n$
+    geschrieben werden für ein $a \in K$, ein $n \in \mathbb{N}_0$ und normiert
+    irreduzible Polynome $f_1, \ldots, f_n \in K\qty[X]$.
+    Dabei sind $a, n$ und $f_1, \ldots, f_n$ bis auf die Reihenfolge eindeutig.
+    ''}) ist die Zerlegung von $f_A$ in
+  $f_A = 1 \qty\big(X - 2) \cdot \qty\big(X^2 + 2X + 2)$ eindeutig, d.h. $f_A$
+  hat genau zwei Teiler, $\qty\big(X - 2)$ und $\qty\big(X^2 + 2X + 2)$.
+  Da $\qty\big(X - 2)\qty\big(A) \ne 0$ und
+  $\qty\big(X^2 + 2X + 2)\qty\big(A) \ne 0$ folgt $m_A = f_A$.
+\end{enumerate}
 \end{document}
