@@ -1,0 +1,82 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 08\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\End{\text{End}}
+\newcommand\id{\text{id}}
+\newcommand\Mat{\text{Mat}}
+
+\begin{document}
+\paragraph{Aufgabe 2} Seien $K$ ein Körper, $V \ne \qty\big{0_V}$ ein
+endlich-dimensionaler Vektorraum über $K$, $\varphi \in \End\qty\big(V)$
+und $U$ ein $\varphi$-invarianter Unterraum von $V$ mit
+$\qty\big{0_V} \ne U \ne V$.
+Zeigen Sie: Wenn $\varphi$ diagonalisierbar ist, dann sind auch $\varphi_U$ und
+$\varphi_{V/U}$ diagonalisierbar.
+
+\subparagraph{Lsg.} Angenommen $\varphi$ ist diagonalisierbar, dann zerfällt
+$m_{\varphi}$ nach Satz 11.26 der Vorlesung (\emph{``Ein Endomorphismus
+  $\varphi \in \End\qty\big(V)$ ist genau dann diagonalisierbar, wenn
+  $m_{\varphi}$ vollständig in paarweise verschiedene Linearfaktoren
+  zerfällt''}) vollständig in paarweise verschiedene Linearfaktoren.
+Weiter ist $m_{\varphi}$ per Definition 11.6 der Vorlesung normiert.
+Schließlich ist $m_{\varphi}$ nach Satz 9.35 der Vorlesung in der Form
+$m_{\varphi} = a \cdot f_1 \cdot f_2 \cdot \ldots \cdot f_n$ darstellbar mit
+$a = 1_K$ und $f_1, \ldots, f_n \in K\qty[X]$ normiert und irreduzibel.
+Linearfaktoren der Form $\qty\big(X - \lambda_i)$ sind normiert und irreduzibel.
+Es folgt
+$m_{\varphi} = \qty\big(X - \lambda_1)
+\cdot \ldots \cdot \qty\big(X - \lambda_n)$
+ist die eindeutige Darstellung von $m_{\varphi}$ als Produkt irreduzibler
+Polynome mit $\lambda_1, \ldots, \lambda_n$ als Eigenwerte von $\varphi$.
+
+Nach Korollar 11.22 der Vorlesung (\emph{``Sei $\varphi \in \End\qty\big(V)$ und
+  $U$ ein $\varphi$-invarianter Unterraum von $V$.
+  Dann teilt das Minimalpolynom $m_{\varphi_U}$ von $\varphi_U$ das
+  Minimalpolynom $m_{\varphi}$ von $\varphi$''}) folgt $m_{\varphi_U}$ hat die
+Form $\qty\big(X - \lambda_1) \cdot \ldots \cdot \qty\big(X - \lambda_m)$ mit
+$m \leq n$ und $\lambda_1, \ldots, \lambda_m \in \qty\big{
+  \lambda_1, \ldots, \lambda_n
+}$.
+Damit zerfällt auch $m_{\varphi_U}$ vollständig in paarweise verschiedene
+Linearfaktoren und aus Satz 11.26 der Vorlesung folgt $m_{\varphi_U}$ ist
+diagonalisierbar.
+
+Die Abbildung $\varphi_{V \setminus U}$ ist nach Lemma 12.9 der Vorlesung ein
+Endomorphismus.
+Es folgt $V \setminus U$ ist $\varphi$-invariant.
+Die Behauptung folgt analog dem Beweis für $U$.
+\end{document}
