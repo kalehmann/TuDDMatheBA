@@ -1,0 +1,165 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\newcommand{\End}{\text{End}}
+\newcommand{\Grad}{\text{Grad}}
+\newcommand{\Mat}{\text{Mat}}
+\newcommand{\Spur}{\text{Spur}}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{SoSe 2022}
+\title{Hausaufgaben Blatt 09\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 6} Sei $\mathbb{F}_2 = \mathbb{Z} / 2$.
+Seien außerdem
+\[
+  A \coloneqq \begin{pmatrix}
+    0 & 1 \\
+    1 & 0 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(\mathbb{F}_2)
+  \text{ und }
+  B \coloneqq \begin{pmatrix}
+    1 & 1 \\
+    0 & 1 \\
+  \end{pmatrix} \in \mathcal{M}_{2 \times 2}\qty\big(\mathbb{F}_2)
+\]
+Weiterhin seien $V \coloneqq \qty\big(\mathbb{F}_2)^2$ und
+$\varphi \colon V \to V, x \mapsto Ax \text{ und }
+  \psi \colon V \to V, x \mapsto Bx$.
+\begin{enumerate}[(i)]
+\item Bestimmen Sie alle $\varphi$-zyklischen Unterräume von $V$.
+  Ist $V$ selbst $\varphi$-zyklisch?
+
+  \subparagraph{Lsg.} Der Vektorraum $V$ umfasst die 4 Elemente
+  $
+    V \coloneqq \qty{
+      \begin{pmatrix}0\\0\end{pmatrix},
+      \begin{pmatrix}1\\0\end{pmatrix},
+      \begin{pmatrix}0\\1\end{pmatrix},
+      \begin{pmatrix}1\\1\end{pmatrix}
+    }
+  $
+  und die Unterräume
+  \[
+    U_1 = \left\langle \begin{pmatrix}0\\0\end{pmatrix} \right\rangle =
+    \qty{\begin{pmatrix}0\\0\end{pmatrix}},
+    U_2 = \left\langle \begin{pmatrix}1\\0\end{pmatrix} \right\rangle =
+    \qty{\begin{pmatrix}0\\0\end{pmatrix}, \begin{pmatrix}1\\0\end{pmatrix}},
+    U_3 = \left\langle \begin{pmatrix}0\\1\end{pmatrix} \right\rangle =
+    \qty{\begin{pmatrix}0\\0\end{pmatrix}, \begin{pmatrix}0\\1\end{pmatrix}},
+  \]
+  \[
+    U_4 = \left\langle \begin{pmatrix}1\\1\end{pmatrix} \right\rangle =
+    \qty{\begin{pmatrix}0\\0\end{pmatrix}, \begin{pmatrix}1\\1\end{pmatrix}},
+    U_5 = \left\langle
+      \begin{pmatrix}1\\0\end{pmatrix},
+      \begin{pmatrix}0\\1\end{pmatrix}
+    \right\rangle = \qty{
+      \begin{pmatrix}0\\0\end{pmatrix},
+      \begin{pmatrix}1\\0\end{pmatrix},
+      \begin{pmatrix}0\\1\end{pmatrix},
+      \begin{pmatrix}1\\1\end{pmatrix}
+    } = V
+  \]
+  Nun ist
+  \begin{multicols}{2}
+  \begin{itemize}
+  \item $\psi\qty(
+      \begin{pmatrix}0\\0\end{pmatrix}
+    ) = \begin{pmatrix}0\\0\end{pmatrix}$
+
+  \item $\psi\qty(
+      \begin{pmatrix}1\\0\end{pmatrix}
+    ) = \begin{pmatrix}0\\1\end{pmatrix}$
+
+  \item $\psi\qty(
+      \begin{pmatrix}0\\1\end{pmatrix}
+    ) = \begin{pmatrix}1\\0\end{pmatrix}$
+
+  \item$\psi\qty(
+      \begin{pmatrix}1\\1\end{pmatrix}
+    ) = \begin{pmatrix}1\\1\end{pmatrix}$
+  \end{itemize}
+  \end{multicols}
+  Folglich sind $U_1$ mit $\left\langle
+    \varphi^i\qty(\begin{pmatrix}0\\0\end{pmatrix})
+  \right\rangle_{i \in \mathbb{N}_0} = U_1$,
+  $U_4$ mit $\left\langle
+    \varphi^i\qty(\begin{pmatrix}1\\1\end{pmatrix})
+  \right\rangle_{i \in \mathbb{N}_0} = U_3$
+  und $V$ mit $\left\langle
+    \varphi^i\qty(\begin{pmatrix}1\\0\end{pmatrix})
+  \right\rangle_{i \in \mathbb{N}_0} = V$ die $\varphi$-zyklischen
+  Unterräume von $V$.
+
+\item Bestimmen Sie alle $\psi$-zyklischen Unterräume von $V$.
+  Ist $V$ selbst $\psi$-zyklisch?
+
+  \subparagraph{Lsg.} Es ist
+  \begin{multicols}{2}
+  \begin{itemize}
+  \item $\psi\qty(
+      \begin{pmatrix}0\\0\end{pmatrix}
+    ) = \begin{pmatrix}0\\0\end{pmatrix}$
+
+  \item $\psi\qty(
+      \begin{pmatrix}1\\0\end{pmatrix}
+    ) = \begin{pmatrix}1\\0\end{pmatrix}$
+
+  \item $\psi\qty(
+      \begin{pmatrix}0\\1\end{pmatrix}
+    ) = \begin{pmatrix}1\\1\end{pmatrix}$
+
+  \item$\psi\qty(
+      \begin{pmatrix}1\\1\end{pmatrix}
+    ) = \begin{pmatrix}0\\1\end{pmatrix}$
+  \end{itemize}
+  \end{multicols}
+  Folglich sind $U_1$ mit $\left\langle
+    \varphi^i\qty(\begin{pmatrix}0\\0\end{pmatrix})
+  \right\rangle_{i \in \mathbb{N}_0} = U_1$,
+  $U_2$ mit $\left\langle
+    \varphi^i\qty(\begin{pmatrix}1\\0\end{pmatrix})
+  \right\rangle_{i \in \mathbb{N}_0} = U_2$,
+  und $V$ mit $\left\langle
+    \varphi^i\qty(\begin{pmatrix}0\\1\end{pmatrix})
+  \right\rangle_{i \in \mathbb{N}_0} = V$ die $\psi$-zyklischen
+  Unterräume von $V$.
+
+\item Geben Sie ein $\alpha \in \End\qty\big(V)$ an, sodass $V$ nicht
+  $\alpha$-zyklisch ist.
+
+  \subparagraph{Lsg.} Sei $\alpha = 0_{V, V}$, dann ist für $v \in V$ immer
+  $\left\langle \alpha^i\qty\big(v) \right\rangle_{i \in \mathbb{N}_0} = 0_V$.
+\end{enumerate}
+\end{document}
