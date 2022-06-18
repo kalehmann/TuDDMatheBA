@@ -2,6 +2,7 @@
 
 \usepackage{aligned-overset}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{bm}
 \usepackage[shortlabels]{enumitem}
@@ -25,7 +26,7 @@
 
 \author{Karsten Lehmann}
 \date{SoSe 2022}
-\title{Übungsblatt 08\\Lineare Algebra - Weiterführende Konzepte}
+\title{Übungsblatt 09\\Lineare Algebra - Weiterführende Konzepte}
 
 \setlength{\headheight}{26pt}
 \pagestyle{fancy}
@@ -35,9 +36,12 @@
 \lfoot{\thedate}
 \rfoot{Seite \thepage}
 
+\newcommand\Bild{\text{Bild}}
 \newcommand\End{\text{End}}
-\newcommand\id{\text{id}}
+\newcommand\Kern{\text{Kern}}
 \newcommand\Mat{\text{Mat}}
+\newcommand\Sym{\text{Sym}}
+\renewcommand\proofname{\textup{\textbf{Beweis:}}}
 
 \begin{document}
 \paragraph{Aufgabe 2} Seien $K$ ein Körper, $V \ne \qty\big{0_V}$ ein
@@ -75,8 +79,267 @@ Damit zerfällt auch $m_{\varphi_U}$ vollständig in paarweise verschiedene
 Linearfaktoren und aus Satz 11.26 der Vorlesung folgt $m_{\varphi_U}$ ist
 diagonalisierbar.
 
-Die Abbildung $\varphi_{V \setminus U}$ ist nach Lemma 12.9 der Vorlesung ein
-Endomorphismus.
-Es folgt $V \setminus U$ ist $\varphi$-invariant.
-Die Behauptung folgt analog dem Beweis für $U$.
+Nach Lemma 12.12 der Vorlesung (\emph{``Für alle $f \in K\qty[X]$ gilt
+  $f\qty\big(\varphi_{V / U}) = f\qty\big(\varphi)_{V / U}$''}) folgt
+$m_{\varphi}\qty\big(\varphi_{V / U}) = m_{\varphi}\qty\big(\varphi)_{V / U}
+= 0_{V / U, V / U}$.
+Also folgt $m_{\varphi_{V / U}} | m_{\varphi}$.
+Somit zerfällt $m_{\varphi_{V / U}}$ ebenfalls vollständig in Linearfaktoren und
+es folgt die Behauptung.
+
+
+\paragraph{Aufgabe 3} Seien $K$ ein Körper, $\lambda_1, \lambda_2 \in K$ mit
+$\lambda_1 \ne \lambda_2$ und
+\[
+  A \coloneqq \begin{pmatrix}
+    \lambda_1 & & & \\
+    & \lambda_1 & & \\
+    & & \lambda_2 & \\
+    & & & \lambda_2 \\
+  \end{pmatrix} \in \mathcal{M}_{4 \times 4}\qty\big(K)
+\]
+Weiterhin sei
+\[
+  \varphi \colon K^4 \to K^4, x \mapsto Ax
+\]
+Bestimmen Sie alle $\varphi$-invarianten Unterräume von $K^4$.
+
+\subparagraph{Lsg.} Offensichtlich ist $\varphi$ diagonalisierbar.
+Aus Aufgabe folgt nun, das für jeden $\varphi$-invarianten Unterraum $U$ von
+$V$ die Abbildung $\varphi_U$ ebenfalls diagonalisierbar ist.
+
+\noindent
+$\Rightarrow$ es existiert ein Basis von $U$ aus Eigenvektoren von $\varphi_U$.
+
+\noindent
+Weiter ist die Menge der Eigenwerte von $\varphi_U$ eine Teilmenge der Eigenwerte
+von $\varphi$.
+
+\noindent
+$\Rightarrow$ für jeden $\varphi$-invarianten Unterraum von $V$ existiert eine
+Basis aus Eigenvektoren zu den Eigenwerten $\lambda_1$ und $\lambda_2$.
+\newpage
+Nun ist $V_{\lambda_1}^{\varphi} = \qty{
+  \begin{pmatrix}x\\0\\0\\0\end{pmatrix} + \begin{pmatrix}0\\y\\0\\0\end{pmatrix}
+  \:\middle|\: x, y \in K
+}$ und $V_{\lambda_2}^{\varphi} = \qty{
+  \begin{pmatrix}0\\0\\x\\0\end{pmatrix} + \begin{pmatrix}0\\0\\0\\y\end{pmatrix}
+  \:\middle|\: x, y \in K
+}$.
+Somit sind alle $\varphi$-invarianten Unterräume von $V$:
+\[
+  \qty\big{0_V},
+  \left\langle\begin{pmatrix}1\\0\\0\\0\end{pmatrix}\right\rangle,
+  \left\langle\begin{pmatrix}0\\1\\0\\0\end{pmatrix}\right\rangle,
+  \left\langle\begin{pmatrix}0\\0\\1\\0\end{pmatrix}\right\rangle,
+  \left\langle\begin{pmatrix}0\\0\\0\\1\end{pmatrix}\right\rangle,
+\]
+\[
+  \left\langle
+    \begin{pmatrix}1\\0\\0\\0\end{pmatrix},
+    \begin{pmatrix}0\\1\\0\\0\end{pmatrix}
+  \right\rangle,
+  \left\langle
+    \begin{pmatrix}1\\0\\0\\0\end{pmatrix},
+    \begin{pmatrix}0\\0\\1\\0\end{pmatrix}
+  \right\rangle,
+  \left\langle
+    \begin{pmatrix}1\\0\\0\\0\end{pmatrix},
+    \begin{pmatrix}0\\0\\0\\1\end{pmatrix}
+  \right\rangle,
+  \left\langle
+    \begin{pmatrix}0\\1\\0\\0\end{pmatrix},
+    \begin{pmatrix}0\\0\\1\\0\end{pmatrix}
+  \right\rangle,
+  \left\langle
+    \begin{pmatrix}0\\1\\0\\0\end{pmatrix},
+    \begin{pmatrix}0\\0\\0\\1\end{pmatrix}
+  \right\rangle,
+  \left\langle
+    \begin{pmatrix}0\\0\\1\\0\end{pmatrix},
+    \begin{pmatrix}0\\0\\0\\1\end{pmatrix}
+  \right\rangle,
+\]
+\[
+  \left\langle
+    \begin{pmatrix}1\\0\\0\\0\end{pmatrix},
+    \begin{pmatrix}0\\1\\0\\0\end{pmatrix}
+    \begin{pmatrix}0\\0\\1\\0\end{pmatrix}
+  \right\rangle,
+  \left\langle
+    \begin{pmatrix}1\\0\\0\\0\end{pmatrix},
+    \begin{pmatrix}0\\1\\0\\0\end{pmatrix}
+    \begin{pmatrix}0\\0\\0\\1\end{pmatrix}
+  \right\rangle,
+  \left\langle
+    \begin{pmatrix}1\\0\\0\\0\end{pmatrix},
+    \begin{pmatrix}0\\0\\1\\0\end{pmatrix}
+    \begin{pmatrix}0\\0\\0\\1\end{pmatrix}
+  \right\rangle,
+  \left\langle
+    \begin{pmatrix}0\\1\\0\\0\end{pmatrix}
+    \begin{pmatrix}0\\0\\1\\0\end{pmatrix}
+    \begin{pmatrix}0\\0\\0\\1\end{pmatrix},
+  \right\rangle,
+  V
+\]
+
+\paragraph{Aufgabe 4} Sei $V$ ein Vektorraum über einem Körper mit Basis
+$\mathcal{B}_V = \qty\big{v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9}$.
+Sei
+\[
+  \sigma = \qty\big(1234)\qty\big(56)\qty\big(789) \in \Sym(9)
+\]
+Sei außerdem $\varphi \colon V \to V$ linear mit
+$\varphi\qty\big(V_i) \mapsto v_{\sigma(i)}$ für $1 \leq i \leq 9$.
+
+\begin{enumerate}[(i)]
+\item Zeigen Sie, dass die Unterräume
+  $\left\langle v_1, v_2, v_3, v_4\right\rangle$,
+  $\left\langle v_5, v_6\right\rangle$ und
+  $\left\langle v_7, v_8, v_9\right\rangle$ alle $\varphi$-zyklisch sind.
+  Gibt es weitere $\varphi$-zyklische Unterräume von $V$?
+  Wenn ja, geben Sie einen an.
+  Wenn nein, warum nicht?
+
+  \subparagraph{Lsg.} Es ist $\varphi\qty\big(v_1) = v_2$,
+  $\varphi^2\qty\big(v_1) = v_3$, $\varphi^3\qty\big(v_1) = v_4$ und wieder
+  $\varphi^4\qty\big(v_1) = v_1$
+  Es folgt
+  \[
+    \big\langle
+      \varphi^0\qty\big(v_1),
+      \varphi^1\qty\big(v_2),
+      \varphi^2\qty\big(v_3),
+      \varphi^3\qty\big(v_4),
+      \ldots
+    \big\rangle = \left\langle v_1, v_2, v_3, v_4\right\rangle
+  \]
+  Ebenso ist $\varphi\qty\big(v_5) = v_6$ und
+  $\varphi^2\qty\big(v_5) = v_5$.
+  Es folgt wieder
+  \[
+    \big\langle
+      \varphi^0\qty\big(v_5),
+      \varphi^1\qty\big(v_6),
+      \ldots
+    \big\rangle = \left\langle v_5, v_6\right\rangle
+  \]
+  Schließlich ist $\varphi\qty\big(v_7) = v_8$, $\varphi^2\qty\big(v_7) = v_9$
+  und $\varphi^3\qty\big(v_7) = v_7$.
+  Es folgt wieder
+  \[
+    \big\langle
+      \varphi^0\qty\big(v_7),
+      \varphi^1\qty\big(v_8),
+      \varphi^2\qty\big(v_9),
+      \ldots
+    \big\rangle = \left\langle v_7, v_8, v_9 \right\rangle
+  \]
+
+  Weiter ist auch $\varphi\qty\big(v_5 + v_6) = v_6 + v_5$ und
+  $\varphi^2\qty\big(v_5 + v_6) = v_5 + v_6$.
+  Damit ist $\big\langle v_5 + v_6 \big\rangle$ ein weiterer
+  $\varphi$-zyklischer Unterraum.
+
+\newpage
+\item Ist $V$ selbst $\varphi$-zyklisch?
+  Wenn ja, beweisen Sie es.
+  Wenn nein, warum nicht?
+
+  \subparagraph{Lsg.} \textbf{Lemma:} Seien $K$ ein Körper, $V$ ein Vektorraum
+  über $K$, $\varphi \in \End\qty\big(V)$, $\lambda$ ein Eigenwert von
+  $\varphi$ und $\dim\qty\big(V_{\lambda}^{\varphi}) \geq 2$.
+  Dann ist $V$ nicht $\varphi$-zyklisch.
+
+  \noindent
+  \begin{proof}
+  Seien $v_1, v_2$ linear unabhängige Eigenvektoren des
+  Eigenwertes $\lambda$ von $\varphi$.
+  Sei $\mathcal{B} = \qty\big(v_1, v_2, w_1, \ldots, w_n)$ eine Basis von $V$.
+  Angenommen $V = \left\langle
+    \varphi^i\qty\big(v)
+  \right\rangle_{i \in \mathbb{N}_0}$.
+  Schreibe $\qty\big[V]_{\mathcal{B}} = \begin{pmatrix}
+    x \\
+    y \\
+    a_1^{(1)} \\
+    \vdots \\
+    a_n^{(1)}
+  \end{pmatrix}$.
+  Sei $\begin{pmatrix}\alpha\\\beta\end{pmatrix} \in K^2$ zu
+  $\begin{pmatrix}x\\y\end{pmatrix}$ linear unabhängig.
+  Dann ist $\qty\big[\varphi^j(v)]_{\mathcal{B}} = \begin{pmatrix}
+    \lambda^j x \\
+    \lambda^j y \\
+    a_1^{(j)} \\
+    \vdots \\
+    a_n^{(j)}
+  \end{pmatrix}$.
+  Damit ist $\begin{pmatrix}\alpha\\\beta\\\vdots\end{pmatrix}$ kein Element
+  von $\left\langle \varphi^i(v) \right\rangle$, da
+  $\begin{pmatrix}\alpha\\\beta\end{pmatrix}$ zu
+  $\begin{pmatrix}x\\y\end{pmatrix}$ linear unabhängig ist.
+  Damit ist $\alpha \cdot v_1 + \beta \cdot v_2 \in V \setminus
+  \left\langle \varphi^i(v) \right\rangle$ und $V$ nicht $\varphi$-zyklisch.
+  \end{proof}
+
+  Nun sind $\mu = v_1 + v_2 + v_3 + v_4$ und $\rho = v_5 + v_6$
+  Eigenvektoren von $\varphi$ mit dem Eigenwert $1$, da
+  $\varphi\qty\big(\mu) = \mu$ und $\varphi\qty\big(\rho) = \rho$.
+
+  Es folgt $\dim\qty\big(V_{1}^{\varphi}) \geq 2$ und aus dem oben gezeigten
+  Lemma, dass $V$ nicht $\varphi$-zyklisch ist.
+
+\item Zeigen Sie, dass
+  $U \coloneqq \left\langle v_1, v_2, v_3, v_4, v_5 + v_6 \right\langle$ ein
+  $\varphi$-invarianter Unterraum von $V$ ist und dass
+  $\left\langle v_5 + U \right\rangle$ ein $\varphi_{V / U}$-invarianter
+  Unterraum von $V / U$ ist.
+
+  \subparagraph{Lsg.} Nach Anwendung von $\varphi$ auf jedes Basiselement $v$ von
+  $U$ liegt $\varphi\qty\big(v) \in U$.
+  $\Rightarrow U$ ist $\varphi$-invariant.
+
+  Nach Definition von $\varphi_{V / U}$ ist
+  \[
+    \varphi_{V / U}\qty\big(v_5 + U) = \varphi\qty\big(v_5) + U = v_5 + U
+    = v_6 - v_5 - v_6 + U = -v_5 + U = -\qty\big(v_5 + U) \in
+    \left\langle v_5 + U \right\rangle
+  \]
+
+\item Geben Sie eine Basis von $V / U$ an.
+
+  \subparagraph{Lsg.} $V / U = \left\langle
+    v_5 + U, v_7 + U, v_8 + U, v_9 + U
+  \right\rangle$.
+  $v_7, v_8, v_9$ sind in $V$ linear unabhängig und tauchen in $U$ nicht auf.
+  Außerdem sind $v_7 + U, v_8 + U, v_9 + U$ linear unabhängig.
+  Es folgt
+  \[
+    0 + U = \lambda \cdot v_7 + U + \mu \cdot v_8 + U + \gamma \cdot v_9 + U
+    \iff \lambda \cdot v_7 + \mu \cdot v_8 + \gamma \cdot v_9 \in U
+    \iff \lambda = \mu = \gamma = 0
+  \]
+  Außerdem
+  \[
+    \lambda \cdot v_5 + U + \mu \cdot v_7 + U = 0 + U \Rightarrow
+    \lambda \cdot v_5 + \mu \cdot v_7 + U = U \Rightarrow
+    \lambda \cdot v_5 + \mu \cdot v_7 \in U
+    \underset{v_7 \notin U}\Rightarrow \mu = 0
+    \underset{v_5 \notin U}\Rightarrow \lambda = 0
+  \]
+  Also sind $v_5 + U$ und $v_7 + U$ in $V/U$ linear unabhängig.
+  Analog für $v_8 + U$ und $v_9 + U$.
+
+  Sei nun $f \colon V \to V / U, v \mapsto v + U$.
+  Nach der Dimensionsformel ist
+  $\dim\qty\big(V / U) = \dim\qty\big(V) - \dim\qty\big(U)$.
+  Nun ist $\dim\qty\big(V) = 9$ und $\dim\qty\big(U) = 5$.
+
+  Aus $\dim\qty\big(\left\langle
+    v_5 + U, v_7 + U, v_8 + U, v_9 + U
+  \right\rangle) = 4$ folgt, dass $\qty\big(v_5 + U, v_7 + U, v_8 + U, v_9 + U)$
+  eine Basis von $V / U$ ist
+\end{enumerate}
 \end{document}
