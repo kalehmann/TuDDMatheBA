@@ -342,4 +342,52 @@ $\varphi\qty\big(V_i) \mapsto v_{\sigma(i)}$ für $1 \leq i \leq 9$.
   \right\rangle) = 4$ folgt, dass $\qty\big(v_5 + U, v_7 + U, v_8 + U, v_9 + U)$
   eine Basis von $V / U$ ist
 \end{enumerate}
+
+\paragraph{Aufgabe 5}
+\begin{enumerate}[(i)]
+\item Seien $K$ ein Körper und $V, W$ endlich-dimensionale Vektorräume über $K$.
+  Sei $\varphi \colon V \to W$ linear.
+  Seien $n \in \mathbb{N}, 1 \leq s \leq n$ und $v_1, \ldots, v_n \in V$, sodass
+  $v_1, \ldots, v_s$ eine Basis von $\Kern\qty\big(\varphi)$ und
+  $\varphi\qty\big(v_{s + 1}), \ldots, \varphi\qty\big(v_n)$ eine Basis von
+  $\Bild\qty\big(\varphi)$ ist.
+  Zeigen Sie, dass $v_1, \ldots, v_n$ eine Basis von $V$ ist.
+
+  \subparagraph{Lsg.} Sei $\sum_{i = 1}^n \lambda_i v_i = 0$.
+  Es folgt $\varphi\qty\big(\sum_{i = 1}^n \lambda_i v_i) = 0 =
+  \sum_{i = 1}^n \lambda_i \varphi\qty\big( v_i)$.
+  Da $v_1, \ldots, v_s$ eine Basis von $\Kern\qty\big(\varphi)$ sind, folgt
+  weiter $\sum_{i = 1}^s \lambda_i \varphi\qty\big( v_i) = 0$ und
+  $\sum_{i = s + 1}^n \lambda_i \varphi\qty\big( v_i) = 0$.
+
+  Da $\varphi\qty\big(v_{s + 1}), \ldots, \varphi\qty\big(v_n)$ eine Basis von
+  $\Bild\qty\big(\varphi)$ ist, folgt $v_{s + 1}, \ldots, v_n$ sind linear
+  unabhängig.
+  $v_1, \ldots, v_s$ sind als Basis ebenfalls linear unabhängig.
+
+  $\Rightarrow \lambda_1 = \ldots = \lambda_n = 0$.
+
+  $\Rightarrow v_1, \ldots, v_n$ sind linear unabhängig.
+
+  Nun ist $\dim\qty\big(\Kern(\varphi)) + \dim\qty\big(\Bild(\varphi)) =
+  \dim\qty\big(V) = \dim\qty\big(\langle v_1, \ldots, v_n\rangle)$.
+
+  $\Rightarrow v_1, \ldots, v_n$ ist eine Basis von $V$.
+
+\item Sei nun $U$ ein Unterraum von $V$.
+  Angenommen $v_1, \ldots, v_s$ ist eine Basis von $U$ und
+  $v_{s + 1} + U, \ldots, v_n + U$ ist eine Basis von $V / U$.
+  Zeigen Sie unter Verwendung von (i), dass $v_1, \ldots, v_n$ eine
+  Basis von $V$ ist.
+
+  \subparagraph{Lsg.} Sei $\varphi \colon V \to V / U, v \mapsto v + U$ der
+  natürliche Epimorphismus von $V$ nach $V / U$.
+  Dann ist $\varphi\qty\big(v_1) = \ldots = \varphi\qty\big(v_s) = 0 + U$
+  und für $i \in s + 1, \ldots, n \colon \varphi\qty\big(v_i) \ne U + 0$
+  Es folgen $\Kern\qty\big(\varphi) = \langle v_1, \ldots, v_s \rangle$ und
+  $\Bild\qty\big(\varphi) = \langle
+  v_{s + 1} + U, \ldots, v_n + U
+  \rangle$.
+  Aus (i) folgt die Behauptung.
+\end{enumerate}
 \end{document}
