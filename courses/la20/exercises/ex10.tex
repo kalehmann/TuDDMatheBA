@@ -1,0 +1,101 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 10\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\Bild{\text{Bild}}
+\newcommand\End{\text{End}}
+\newcommand\id{\text{id}}
+\newcommand\Kern{\text{Kern}}
+\newcommand\Mat{\text{Mat}}
+\newcommand\Sym{\text{Sym}}
+\renewcommand\proofname{\textup{\textbf{Beweis:}}}
+
+\begin{document}
+\paragraph{Aufgabe 2} Seien $n \geq 2$ eine natürliche Zahl, $K$ ein Körper,
+$V$ ein $n$-dimensionaler Vektorraum über $K$ und
+$\qty\big(v_1, v_2, \ldots, v_n)$ eine Basis von $V$.
+Seien weiterhin $\sigma \in \Sym\qty\big(n)$ und
+$\varphi \colon V \to V$ linear mit
+\[
+  \varphi\qty\big(v_i) = v_{\sigma(i)}
+\]
+für alle $1 \geq i \geq n$.
+\begin{enumerate}[(i)]
+\item Beweisen Sie, dass $V$ genau dann $\varphi$-zyklisch ist, wenn
+  $\sigma$ ein $n$-Zyklus ist.
+  \begin{itemize}
+  \item[``$\Rightarrow$''] Angenommen $\sigma$ ist kein $n$-Zyklus, dann ist
+    $\sigma = \id$ oder $\sigma$ ein Produkt paarweise elementfremder Zyklen ist.
+    Das $V$ für $\sigma = \id$ nicht $\varphi$-zyklisch ist, ist offensichtlich.
+    Sei nun $\rho, \mu$ zwei disjunkte Faktoren von $\sigma$ der Form
+    $\rho = \qty\big(a_1\ldots a_m), \mu = \qty\big(b_1\ldots b_l) l + m \leq n$.
+    Dann ist
+    $\varphi\qty\big(v_{a_1} + \ldots + v_{a_m}) = v_{a_1} + \ldots + v_{a_m}$ und
+    $\varphi\qty\big(v_{b_1} + \ldots + v_{b_l}) = v_{b_1} + \ldots + v_{b_l}$.
+    Nach Lemma 13.5 (c) der Vorlesung (\emph{``Sei $V$ $\varphi$-zyklisch und
+      $\lambda$ ein Eigenwert von $\varphi$.
+      Dann hat der Eigenraum $V_{\lambda}^{\varphi}$ die Dimension 1''}) wäre
+    $\dim\qty\big(V_{1}^{\varphi}) = 1$, allerdings ist $\left\langle
+      v_{a_1} + \ldots + v_{a_m}, v_{b_1} + \ldots + v_{b_l}
+    \right\rangle \subseteq V_{1}^{\varphi}$.
+    Ein Widerspruch.
+  \item[``$\Leftarrow$''] Wenn $\sigma$ ein $n$-Zyklus ist (nach Notation 8.1
+    der Vorlesung $\sigma = \qty\big(a_1\ldots a_n)$, mit
+    $\sigma\qty\big(a_i) = a_{i + 1}$ für $i \in 1, \ldots, n - 1$ und
+    $\sigma\qty\big(a_n) = a_1$), dann ist
+    $\qty\big{\varphi^i\qty\big(v_{a_1}) \:\big|\: i \in \mathbb{N}_0} =
+    \qty\big{v_{a_1}, \ldots, v_{a_n}}$.
+    Es folgt $\left\langle
+      \varphi^i\qty\big(v_1) \:\big|\: i \in \mathbb{N}_0
+    \right\rangle = V$.
+  \end{itemize}
+
+\item Nutzen Sie (i), um Aufgabe 4 (ii) von Übungsblatt erneut zu beantworten.
+
+  \subparagraph{Lsg.} Aufgabe 4 (ii) von Übungsblatt 9 war \emph{``Sei $V$ ein
+    Vektorraum über einem Körper $K$ mit Basis $\mathcal{B}_V = \qty\big(
+      v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9
+    )$ und $\sigma = \qty\big(1\:2\:3\:4)\qty\big(5\:6)\qty\big(7\:8\:9)$.
+    Sei außerdem $\varphi \colon V \to V, \varphi\qty\big(v_i) = v_{\sigma(i)}$.
+    Ist $V$ selbst $\varphi$-zyklisch?''}.
+  Angenommen $V$ wäre nun $\varphi$-zyklisch, dann wäre $\sigma$ nach (i) ein
+  $n$-Zyklus.
+  Nun ist $\sigma$ offensichtlich kein $n$-Zyklus, ein Widerspruch.
+
+  $\Rightarrow V$ ist nicht $\varphi$-zyklisch.
+\end{enumerate}
+\end{document}
