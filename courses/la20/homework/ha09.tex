@@ -162,4 +162,112 @@ $\varphi \colon V \to V, x \mapsto Ax \text{ und }
   \subparagraph{Lsg.} Sei $\alpha = 0_{V, V}$, dann ist für $v \in V$ immer
   $\left\langle \alpha^i\qty\big(v) \right\rangle_{i \in \mathbb{N}_0} = 0_V$.
 \end{enumerate}
+\newpage
+\paragraph{Aufgabe 7} Seien $K$ ein Körper, $V$ ein endlich-dimensionaler
+Vektorraum über $K$ und $\varphi \in \End\qty\big(V)$.
+Angenommen, es existiert ein $0_V \ne v \in V$ mit $V = \left\langle
+  \varphi^i\qty\big(v) \:{\big |}\: i \in \mathbb{N}_0
+\right\rangle$.
+Schreibe
+\[
+  m_{\varphi} = X^r + a_{r - i}X^{r - 1} + \ldots + a_0 \in K\qty[X]
+\]
+mit $r \in \mathbb{N}_0$ und $a_0, \ldots, a_{r - 1} \in K$.
+\begin{enumerate}[(a)]
+\item Zeigen Sie, dass $r \geq 1$.
+
+  \subparagraph{Lsg.} Aus der Annahme, dass ein Element $v \in V$ mit
+  $v \ne 0_V$ existiert folgt $V \ne \qty\big{0_V}$.
+  Aus Bemerkung 11.10 der Vorlesung (\emph{``Ist $V \ne \qty\big{0_V}$, so ist
+    immer $\Grad\qty\big(m_{\varphi}) \geq 1$''}) folgt die Behauptung.
+
+\item Zeigen Sie, dass $\mathcal{B} = \qty\big(
+    v, \varphi(v), \ldots, \varphi^{r - 1}(v)
+  )$ eine Basis von $V$ ist.
+  Gehen Sie dazu in den folgenden Schritten vor:
+  \begin{enumerate}[(i)]
+  \item Sei $g \in K\qty[X]$ mit $\qty\big(g(\varphi))(v) = 0_V$.
+    Zeigen Sie, dass $g\qty\big(\varphi) = 0_{V, V}$.
+
+    \subparagraph{Lsg.} Es ist
+    \[
+      \qty(\varphi^i \circ g\qty\big(\varphi))(v) =
+      \varphi^i\qty(\qty(g\qty\big(\varphi))(v)) = \varphi^i\qty\big(0_V) = 0_V
+    \]
+    Im Beweis zu Lemma 11.19 (c,d) der Vorlesung wurde
+    bereits gezeigt, dass
+    $f\qty\big(\varphi) \circ \varphi^i = \varphi^i \circ f\qty\big(\varphi)$
+    für $f \in K\qty[X]$.
+    Somit folgt $ \qty(g\qty\big(\varphi) \circ \varphi^i)(v) = 0_V$,
+    $i \in \mathbb{N}_0$.
+    Nach Lemma 6.22 der Vorlesung reicht es eine Lineare Abbildung auf einer
+    Basis zu definieren, $\left\langle
+      \varphi^i\qty\big(v) \:{\big |}\: i \in \mathbb{N}_0
+    \right\rangle$ spannt $V$ auf, somit schließt
+    $\qty\big{\varphi^i(v) \:\big |\: i \in \mathbb{N}_0}$ eine Basis von $V$ ein
+    und es folgt die Behauptung.
+
+  \item Zeigen Sie, dass $v, \varphi(v), \ldots, \varphi^{r - 1}(v)$ linear
+    unabhängig ist.
+    Nehmen Sie hierzu an, dass $k_0, \ldots, k_{r - 1}$ Elemente von $K$ sind,
+    sodass $\sum_{i = 0}^{r - 1} k_i\varphi^i(v) = 0_V$.
+    Wenden Sie (i) auf $g = \sum_{i = 0}^{r - 1} k_iX^i$ an, um zu folgern, dass
+    $g = 0_{K\qty[X]}$.
+
+    \subparagraph{Lsg.} Es ist $g \in K\qty[X]$ und
+    $g\qty\big(\varphi) = \sum_{i = 0}^{r - 1} k_i\varphi^i$.
+    Per Annahme ist außerdem $\qty\big(g(\varphi))(v) = 0_V$.
+    Aus (i) folgt $g\qty\big(\varphi) = 0_{V, V;}$.
+    Da $V$ nicht leer ist, folgt $\varphi \ne 0_{V, V}$ und
+    $g = 0_{K\qty[X]}$
+    Somit gilt
+    $\sum_{i = 0}^{r - 1} k_i\varphi^i(v) = 0_V \Rightarrow
+    k_0 = \ldots = k_{r - 1} = 0$.
+
+    $\Rightarrow$ $v, \varphi(v), \ldots, \varphi^{r - 1}(v)$ sind linear
+    unabhängig.
+
+  \item Zeigen Sie, dass
+    $\left\langle v, \varphi(v), \ldots, \varphi^{r - 1}(v)\right\rangle = V$.
+    Nehmen Sie dazu an, dass
+    $\left\langle v, \varphi(v), \ldots, \varphi^{r - 1}(v)\right\rangle \ne V$.
+    Wegen $V = \left\langle
+      \varphi^i\qty\big(v) \:{\big |}\: i \in \mathbb{N}_0
+    \right\rangle$ existiert ein $m \in \mathbb{N}_0$ mit
+    $\varphi^m(v) \notin
+    \left\langle v, \varphi(v), \ldots, \varphi^{r - 1}(v)\right\rangle$ und wir
+    wählen ein kleinstmögliches solches $m$.
+    Dann gilt $m \geq r \geq 1$, $\varphi^{m - 1}(v) \in \left\langle
+      v, \varphi(v), \ldots, \varphi^{r - 1}(v)
+    \right\rangle$.
+    Zeigen Sie, dass $\varphi^r(v) \in \left\langle
+      v, \varphi(v), \ldots, \varphi^{r - 1}(v)
+    \right\rangle$ und nutzen Sie dies, um einen Widerspruch zu
+    $\varphi^m(v) \notin \left\langle
+      v, \varphi(v), \ldots, \varphi^{r - 1}(v)
+    \right\rangle$ zu erhalten.
+
+    \subparagraph{Lsg.}
+  \end{enumerate}
+
+\newpage
+\item Geben Sie (mit Begründung) die Matrix $\Mat\qty\big(\varphi, \mathcal{B})$
+  an.
+
+  \subparagraph{Lsg.} Es ist $m_{\varphi}\qty\big(\varphi) = 0_{V, V}$.
+  Somit ist $m_{\varphi}\qty\big(\varphi)(v) = 0$.
+  \[
+    0 = \varphi^r(v) + a_{r - 1}\varphi^{r - 1}(v) + \ldots + a_0 \cdot v
+  \]
+  $\Rightarrow \varphi\qty\big(\varphi^{r - 1}(v)) = -a_{r - 1}\varphi^{r - 1}(v) - \ldots - a_0 \cdot v$.
+  Wenn man $\varphi$ nun auf die anderen Basiselemente anwendet erhält man
+  jeweils das nächste Basis-Element.
+  $\Rightarrow \Mat\qty\big(\varphi, \mathcal{B}) = \begin{pmatrix}
+    0 & 0 & \ldots & 0 & -a_0 \\
+    1 & 0 & \ldots & 0 & -a_1 \\
+    \vdots & \vdots & \vdots & \vdots & \vdots \\
+    0 & 0 & \ldots & 0 & -a_{r - 2} \\
+    0 & 0 & \ldots & 1 & -a_{r - 1}
+  \end{pmatrix}$.
+\end{enumerate}
 \end{document}
