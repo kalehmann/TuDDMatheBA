@@ -1,0 +1,90 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\newcommand{\Bild }{\text{Bild}}
+\newcommand{\End}{\text{End}}
+\newcommand{\Grad}{\text{Grad}}
+\newcommand{\Mat}{\text{Mat}}
+\newcommand{\Spur}{\text{Spur}}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{SoSe 2022}
+\title{Hausaufgaben Blatt 10\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 5}
+\begin{enumerate}[(i)]
+\item Beweisen Sie Lemma 13.4 (a)
+
+  \subparagraph{Lsg.} Lemma 13.4 (a) der Vorlesung besagt (\emph{``Sei $U$ ein
+    $\varphi$-zyklischer Unterraum von $V$.
+    Dann gilt: Ist $W$ ein $\varphi$-invarianter Unterraum von $U$, so ist $U/W$
+    ein $\varphi_{U/W}$-zyklischer Unterraum''}).
+  Nach Lemma 12.9 der Vorlesung ist $\varphi_{U/W}$ ein Endomorphismus auf $U / W$.
+  Seien nun $u \in U$ so gewählt, dass $\left\langle
+    \varphi^i\qty\big(u) \:\big|\: i \in \mathbb{N}_0
+  \right\rangle = U$ und $\rho \colon U \to U / W$ der natürliche Homomorphismus.
+  Dann ist nach Lemma 6.11 (c) der Vorlesung $\left\langle
+    \rho\qty\big(\varphi^i\qty\big(u)) \:\big|\: i \in \mathbb{N}_0
+  \right\rangle = U / W = \left\langle
+    \varphi^i\qty\big(u) + W \:\big|\: i \in \mathbb{N}_0
+  \right\rangle = \left\langle
+    \varphi_{U / W}^i\qty\big(u + W) \:\big|\: i \in \mathbb{N}_0
+  \right\rangle$.
+
+\item Beweisen Sie Lemma 13.4 (b)
+
+  \subparagraph{Lsg.}  Lemma 13.4 (a) der Vorlesung besagt (\emph{``Sei $U$ ein
+    $\varphi$-zyklischer Unterraum von $V$.
+    Dann gilt: Ist $\psi \in \End\qty\big(V)$ mit
+    $\varphi \circ \psi = \psi \circ \varphi$, so ist $\psi\qty\big(U)$ wieder
+    $\varphi$-zyklisch''}).
+  Sei nun $u \in U$ so gewählt, dass $\left\langle
+    \varphi^i\qty\big(u) \:\big|\: i \in \mathbb{N}_0
+  \right\rangle = U$.
+  Nun ist
+  \begin{flalign*}
+    \psi\qty\big(U) &= \left\langle
+      \psi\qty\big(\varphi^i(u)) \:\big|\: i \in \mathbb{N}_0
+    \right\rangle \\
+    &= \left\langle
+      \qty\big(\psi \circ \varphi^i(u)) \:\big|\: i \in \mathbb{N}_0
+    \right\rangle \\
+    &= \left\langle
+      \qty\big(\varphi^i \circ \psi(u)) \:\big|\: i \in \mathbb{N}_0
+    \right\rangle \\
+    &= \left\langle
+      \varphi^i\qty\big(\psi(u)) \:\big|\: i \in \mathbb{N}_0
+    \right\rangle
+  \end{flalign*}
+\end{enumerate}
+\end{document}
