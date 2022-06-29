@@ -87,4 +87,35 @@
     \right\rangle
   \end{flalign*}
 \end{enumerate}
+
+\paragraph{Aufgabe 6} Finden Sie ein Beispiel für einen endlich-dimensionalen
+Vektorraum $\qty\big{0_V}$ über einem Körper $K$ und einen Endomorphismus
+$\varphi$ von $V$, sodass $V$ zwar $\varphi$-zyklisch, aber nicht
+$\varphi$-unzerlegbar ist.
+
+\subparagraph{Lsg.} Sei $K = \mathbb{Z}/3$ und $V = \qty\big(\mathbb{Z}/3)^2$.
+Sei weiter $\varphi \colon V \to V$ so gewählt, dass $v \mapsto A \cdot v$ mit
+\[
+  A = \begin{pmatrix}
+    1 & 0 \\
+    0 & -1 \\
+  \end{pmatrix}
+\]
+Dann ist $V$ ein $\varphi$-zyklischer Raum mit
+\[
+  \left\langle
+    \begin{pmatrix}1\\1\end{pmatrix},
+    \varphi\qty(\begin{pmatrix}1\\1\end{pmatrix})
+  \right\rangle = V
+\]
+Die nach Lemma 11.19 (b) $\varphi$-invarianten Eigenräume von $\varphi$ sind
+\[
+  V_1^{\varphi} = \left\langle
+    \begin{pmatrix}1\\0\end{pmatrix}
+  \right\rangle \text{ und } V_{-1}^{\varphi} = \left\langle
+    \begin{pmatrix}0\\1\end{pmatrix}
+  \right\rangle
+\]
+Schließlich ist $V$ nicht $\varphi$-unzerlegbar, da
+$V = V_1^{\varphi} \oplus V_{-1}^{\varphi}$.
 \end{document}
