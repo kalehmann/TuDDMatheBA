@@ -1,0 +1,113 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 11\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\newcommand\Bild{\text{Bild}}
+\newcommand\End{\text{End}}
+\newcommand\id{\text{id}}
+\newcommand\Kern{\text{Kern}}
+\newcommand\Mat{\text{Mat}}
+\newcommand\Sym{\text{Sym}}
+\renewcommand\proofname{\textup{\textbf{Beweis:}}}
+
+\begin{document}
+\paragraph{Aufgabe 2} Sei $V$ ein 5-dimensionaler $\mathbb{R}$-Vektorraum und
+$\varphi \in \End(V)$ mit $f_{\varphi} = \qty\big(X^2 - X + 1)^2\qty\big(X - 2)$.
+Bestimmen Sie alle möglichen allgemeinen Normalformen von $\varphi$.
+
+\subparagraph{Lsg.} Mit den gegebenen Informationen lässt sich das Minimalpolynom
+$m_{\varphi}$ nicht eindeutig bestimmen.
+Nach Bemerkung 11.17 der Vorlesung kommt in einem Vektorraum über $\mathbb{R}$
+jeder irreduzible Faktor aus dem charakteristischen Polynom auch in dem
+Minimalpolynom vor.
+Somit ist $m_{\varphi} = \qty\big(X^2 - X + 1)^2\qty\big(X - 2)$ oder
+$m_{\varphi} = \qty\big(X^2 - X + 1)\qty\big(X - 2)$.
+\begin{itemize}
+\item ``$\qty\big(X^2 - X + 1)^2\qty\big(X - 2)$'' Nach Bemerkung 13.18 der
+  Vorlesung gibt es in einer Normalform immer ein Kästchen der Größe 4 und der
+  Form $A\qty\big((X^2 - X + 1)^2)$ und ein Kästchen der Größe 1 und Form
+  $A\qty\big(X - 2)$.
+
+  Ein Normalform sieht sieht somit bis auf die Vertauschung der Kästchen wie
+  folgt aus:
+  \[
+    N \coloneqq \begin{pmatrix}
+      0 & 0 & 0 & -1 & 0 \\
+      1 & 0 & 0 &  2 & 0 \\
+      0 & 1 & 0 & -3 & 0 \\
+      0 & 0 & 1 &  2 & 0 \\
+      0 & 0 & 0 &  0 & 2 \\
+    \end{pmatrix}
+  \]
+
+\item ``$\qty\big(X^2 - X + 1)\qty\big(X - 2)$'' In einer Normalform kommt
+  immer (mindestens) ein Block der Größe 2 und der Form
+  \[
+    A\qty\big(X^2 - X + 1) = \begin{pmatrix}
+      0 & -1 \\
+      1 &  1 \\
+    \end{pmatrix}
+  \]
+  und (mindestens) ein Block der Größe 1 und der Form
+  \[
+    A\qty\big(X - 2) = \begin{pmatrix}2\end{pmatrix}
+  \]
+
+  Mögliche bis auf die Vertauschung der Blöcke eindeutige Normalformen sind somit
+  \[
+    N_1 \coloneqq \begin{pmatrix}
+      0 & -1 &  0 &  0 & 0 \\
+      1 & 1  &  0 &  0 & 0 \\
+      0 & 0  &  0 & -1 & 0 \\
+      0 & 0  &  1 &  1 & 0 \\
+      0 & 0  &  0 &  0 & 2 \\
+    \end{pmatrix}, N_2 \coloneqq \begin{pmatrix}
+      0 & -1 & 0 & 0 & 0 \\
+      1 &  1 & 0 & 0 & 0 \\
+      0 &  0 & 2 & 0 & 0 \\
+      0 &  0 & 0 & 2 & 0 \\
+      0 &  0 & 0 & 0 & 2 \\
+    \end{pmatrix}
+  \]
+  Wobei das charakteristische Polynom
+  $f_{N_2} = \qty\big(X^2 - X + 1)\qty\big(X - 2)^3 \ne f_{\varphi}$.
+
+  Somit folgt $N_1$ ist die bis auf die Vertauschung der Blöcke eindeutige
+  Normalform von $\varphi$
+  (für $m_{\varphi} = \qty\big(X^2 - X + 1)\qty\big(X - 2)$)
+\end{itemize}
+\end{document}
