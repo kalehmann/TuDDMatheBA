@@ -38,6 +38,7 @@
 
 \newcommand\Bild{\text{Bild}}
 \newcommand\End{\text{End}}
+\newcommand\Grad{\text{Grad}}
 \newcommand\id{\text{id}}
 \newcommand\Kern{\text{Kern}}
 \newcommand\Mat{\text{Mat}}
@@ -195,4 +196,60 @@ $\varphi$.
     \end{pmatrix}
   \]
 \end{enumerate}
+
+\paragraph{Aufgabe 4} Seien $K$ ein Körper, $V$ ein $3$-dimensionaler Vektorraum
+über $K$ und $\varphi \in \End\qty\big(V)$.
+Angenommen $\varphi$ hat genau einen Eigenwert $\lambda$ und dieser hat die
+geometrische Vielfachheit 2.
+Bestimmen Sie alle möglichen Jordanschen Normalformen von $\varphi$.
+
+\subparagraph{Lsg.} Da $V$ ein $3$-dimensionaler Körper ist, ist auch die
+Jordansche Normalform von $\varphi$ eine $3 \times 3$ Matrix.
+Per Definition ist $m_{\text{geom}}\qty\big(\varphi, \lambda) =
+\dim\qty\big(V_{\lambda}^{\varphi})$.
+Per Lemma 13.48 der Vorlesung besitzt die Jordansche Normalform von $\varphi$
+somit genau zwei Jordanblöcke für den Eigenwert $\lambda$.
+
+Es ist $\Grad\qty\big(f_{\varphi}) = 3$.
+Da $m_{\text{geom}}\qty\big(\varphi, \lambda) \leq
+m_{\text{alg}}\qty\big(\varphi, \lambda)$, folgt
+$f_{\varphi} = \qty\big(X - \lambda)^3$ oder
+$f_{\varphi} = P \cdot \qty\big(X - 2)$ mit $P \in K\qty[X]$ und
+$\Grad\qty\big(P) = 1$.
+Der zweite Fall entfällt, da $P$ somit ein Linearfaktor wäre und
+da $\lambda$ der einzige Eigenwert von $\varphi$ ist, folgt
+$P = \qty\big(X - \lambda)$.
+
+\noindent
+$\Rightarrow f_{\varphi} = \qty\big(X - \lambda)^3$.
+
+\noindent
+Angenommen es wäre $m_{\varphi} = \qty\big(X - \lambda)$, dann zerfällt
+das Minimalpolynom von $\varphi$ vollständig in Linearfaktoren und
+$\varphi$ ist diagonalisierbar.
+Nach Satz 10.48 (b) der Vorlesung ist dann
+$m_{\text{geom}}\qty\big(\varphi, \lambda) =
+m_{\text{alg}}\qty\big(\varphi, \lambda)$, aber $2 \ne 3$, ein Widerspruch.
+
+\noindent
+$\varphi \ne \qty\big(X - \lambda)$.
+
+Angenommen es wäre $m_{\varphi} = \qty\big(X - \lambda)^3$, dann bestünde die
+Jordansche Normalform von $\varphi$ nach Bermerkung 13.42 der Vorlesung
+aus einem einzigen Block $J\qty\big(\lambda, 3)$.
+Ein Widerspruch zu ``die Jordansche Normalform von $\varphi$ enthält 2 Blöcke
+zu dem Eigenwert $\lambda$''.
+
+\noindent
+$\Rightarrow \varphi = \qty\big(X - \lambda)^2$.
+Aus Bemerkung 13.42 der Vorlesung und ``die Jordansche Normalform von $\varphi$
+enthält 2 Blöcke zu dem Eigenwert $\lambda$'' folgt die (bis auf Vertauschung
+der Blöcke) eindeutige Normalform
+\[
+  \begin{pmatrix}
+    \lambda & 0 & 0 \\
+    0 & \lambda & 0 \\
+    0 & 1 & \lambda \\
+  \end{pmatrix}
+\]
 \end{document}
