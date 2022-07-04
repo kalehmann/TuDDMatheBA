@@ -41,6 +41,7 @@
 \newcommand\id{\text{id}}
 \newcommand\Kern{\text{Kern}}
 \newcommand\Mat{\text{Mat}}
+\newcommand\Rang{\text{Rang}}
 \newcommand\Sym{\text{Sym}}
 \renewcommand\proofname{\textup{\textbf{Beweis:}}}
 
@@ -110,4 +111,88 @@ $m_{\varphi} = \qty\big(X^2 - X + 1)\qty\big(X - 2)$.
   Normalform von $\varphi$
   (für $m_{\varphi} = \qty\big(X^2 - X + 1)\qty\big(X - 2)$)
 \end{itemize}
+
+\newpage
+\paragraph{Aufgabe 3} Sei $\qty\big{0_V} \ne V$ ein endlich-dimensionaler
+Vektorraum über $\mathbb{R}$, sei $\mathcal{B}'$ eine Basis von $V$ und
+$\varphi \in \End\qty\big(V)$.
+Bestimmen Sie für die folgenden Fälle jeweils eine Jordansche Normalform von
+$\varphi$.
+\begin{enumerate}[(i)]
+\item $\Mat\qty\big(\varphi, \mathcal{B}') = \begin{pmatrix}
+    3 & 2 & -2 \\
+    0 & 3 & -5 \\
+    0 & 5 & -7 \\
+  \end{pmatrix}$
+
+  \subparagraph{Lsg.} Nach Aufgabe 2 auf Blatt 8 sind $\lambda_1 = 3$ und
+  $\lambda_2 = -2$ die Eigenwerte von $\varphi$, außerdem ist
+  $f_{\varphi} = m_{\varphi} = \qty\big(X - 3)\qty\big(X + 2)^2$ und
+  $V_{-2}^A = \left\langle \begin{pmatrix}0\\1\\1\end{pmatrix} \right\rangle$.
+  Es folgt $\dim\qty\big(V_{-2}^A) = 1$.
+  Nach Satz 13.48 der Vorlesung ist die Zahl der Jordanblöcke für jeden
+  Eigenwert von $\varphi$ gleich der Dimension des zugehörigen Eigenraums.
+  Dementsprechend kommt in einer Jordannormalform ein Block $J\qty\big(3, 1)$
+  und ein Block $J\qty\big(-2, 2)$ vor.
+  Somit ist die Jordannormalform (bis auf Vertauschung der Blöcke)
+  \[
+    \begin{pmatrix}
+      3 &  0 &  0 \\
+      0 & -2 &  0 \\
+      0 &  1 & -2 \\
+    \end{pmatrix}
+  \]
+
+\item $\Mat\qty\big(\varphi, \mathcal{B}') = \begin{pmatrix}
+     0 & 1 & 0 & 1 \\
+     0 & 1 & 0 & 0 \\
+    -1 & 1 & 1 & 1 \\
+    -1 & 1 & 0 & 2 \\
+  \end{pmatrix}$
+
+  \subparagraph{Lsg.} Es ist $f_{\varphi} = \qty\big(X - 1)^4$.
+  Durch Caley-Hamilton und ausprobieren erhält man
+  $m_{\varphi} = \qty\big(X - 1)^2$.
+  Nach Lemma 13.48 der Vorlesung entspricht die Zahl der Jordanblöcke für jeden
+  Eigenwert von $\varphi$ der Dimension des zugehörigen Eigenraums.
+  Außerdem ist für einen Eigenwert $\lambda$ von $\varphi$ die Dimension
+  $\dim\qty\big(V_{\lambda}^{\varphi}) =
+  n - \Rang\qty\big(\Mat(\varphi, \mathcal{B}') - \lambda \cdot I_n)$.
+  Somit existieren für den Eigenwert $1$ genau
+  \[
+    4 - \Rang\begin{pmatrix}
+      -1 & 1 & 0 & 1 \\
+       0 & 0 & 0 & 0 \\
+      -1 & 1 & 0 & 1 \\
+      -1 & 1 & 0 & 1 \\
+    \end{pmatrix} = 3
+  \]
+  Jordanblöcke.
+  Somit ist die Jordannormalform (bis auf Vertauschung der Blöcke)
+  \[
+    \begin{pmatrix}
+      1 & 0 & 0 & 0 \\
+      1 & 1 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+  \]
+
+\newpage
+\item $f_{\varphi} = m_{\varphi} = \qty\big(X - 4)^2\qty\big(X - 5)^3$
+
+  \subparagraph{Lsg.} Nach Bemerkung 13.42 der Vorlesung besitzt eine
+  Jordan-Normalform ein Kästchen $J\qty\big(4, 2)$ und ein Kästchen
+  $J\qty\big(5, 3)$.
+  Somit ist die Jordannormalform (bis auf Vertauschung der Blöcke)
+  \[
+    \begin{pmatrix}
+      4 & 0 & 0 & 0 & 0 \\
+      1 & 4 & 0 & 0 & 0 \\
+      0 & 0 & 5 & 0 & 0 \\
+      0 & 0 & 1 & 5 & 0 \\
+      0 & 0 & 0 & 1 & 5 \\
+    \end{pmatrix}
+  \]
+\end{enumerate}
 \end{document}
