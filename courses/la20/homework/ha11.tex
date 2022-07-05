@@ -1,0 +1,148 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xfrac}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+
+\newcommand{\Bild}{\text{Bild}}
+\newcommand{\Dim}{\text{Dim}}
+\newcommand{\End}{\text{End}}
+\newcommand{\id}{\text{id}}
+\newcommand{\Grad}{\text{Grad}}
+\newcommand{\Mat}{\text{Mat}}
+\newcommand{\Rank}{\text{Rank}}
+\newcommand{\Spur}{\text{Spur}}
+
+\author{Karsten Lehmann\\Mat. Nr 4935758}
+\date{SoSe 2022}
+\title{Hausaufgaben Blatt 11\\Lineare Algebra - Weiterführende Konzepte}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 5} Sei $\qty\big{0_V} \ne V$ ein endlich-dimensionaler
+Vektorraum über $\mathbb{R}$, sei $\mathcal{B}'$ eine Basis von $V$ und
+$\varphi \in \End\qty\big(V)$.
+Bestimmen Sie für die folgenden Fälle jeweilseine Jordansche Normalform von
+$\varphi$.
+\begin{enumerate}[(i)]
+\item $\Mat\qty\big(\varphi, \mathcal{B}') = \begin{pmatrix}
+    1 & 1 \\
+    0 & 1 \\
+  \end{pmatrix}$
+
+  \subparagraph{Lsg.} Es ist $f_{\varphi} = \det\qty\big(
+    X \cdot I_2 - \Mat\qty\big(\varphi, \mathcal{B}')
+  ) = \qty\big(X - 1)^2$.
+  Durch Caley-Hamilton und Probieren folgt $m_{\varphi} = f_{\varphi}$.
+  Per Bemerkung 13.42 der Vorlesung besitzt eine Jordansche Normalform einen
+  Block der Form $J\qty\big(1, 2)$.
+  Somit ist die Jordansche Normalform von $\varphi$
+  \[
+    \begin{pmatrix}
+      1 & 0 \\
+      1 & 1 \\
+    \end{pmatrix}
+  \]
+
+\item $m_{\varphi} = \qty\big(X - 1)^2 \qty\big(X - 2)^2\qty\big(X - 3)^2$ und
+  $f_{\varphi} = \qty\big(X - 1)^2 \qty\big(X - 2)^2\qty\big(X - 3)^3$.
+
+  \subparagraph{Lsg.} Da $\Grad\qty\big(f_{\varphi}) = 7$, ist die Jordansche
+  Normalform von $\varphi$ ein $7 \times 7$ Matrix.
+  Nach Bemerkung 13.42 der Vorlesung besitzt eine Jordansche Normalform
+  mindestens einen Block der Form $J\qty\big(1, 2)$, mindestens einen Block der
+  Form $J\qty\big(2, 2)$ und mindestens einen Block der Form $J\qty\big(3, 2)$.
+  Der verbleibende Block ist entweder $J\qty\big(1, 1)$, $J\qty\big(2, 1)$ oder
+  $J\qty\big(3, 1)$.
+  Mögliche Normalformen sind somit (bis auf Vertauschung der Blöcke)
+  \[
+    N_a \coloneqq \begin{pmatrix}
+      1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+      1 & 1 & 0 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 2 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 2 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 3 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 1 & 3 & 0 \\
+      0 & 0 & 0 & 0 & 0 & 0 & a \\
+    \end{pmatrix}, a \in \qty\big{1, 2, 3}
+  \]
+  Per Definition 13.40 der Vorlesung ist die Jordansche Normalform von $\varphi$
+  ähnlich zu $\Mat\qty\big(\varphi, \mathcal{B}')$ und nach Lemma 10.15
+  der Vorlesung haben ähnliche Matrizen das gleiche charakteristische Polynom.
+  Somit ist die Jordansche Normalform von $\varphi$
+  \[
+    N_3 \coloneqq \begin{pmatrix}
+      1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+      1 & 1 & 0 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 2 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 2 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 3 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 1 & 3 & 0 \\
+      0 & 0 & 0 & 0 & 0 & 0 & 3 \\
+    \end{pmatrix}
+  \]
+
+\newpage
+\item $\Mat\qty\big(\varphi, \mathcal{B}') = \begin{pmatrix}
+    3 & 0 & 0 & -1 \\
+    1 & 2 & 0 & -1 \\
+    0 & 0 & 2 &  0 \\
+    1 & 0 & 0 &  1 \\
+  \end{pmatrix}$
+
+  \subparagraph{Lsg.} Wie in Aufgabe 7 (iii) von Übungsblatt 10 bereits
+  gezeigt ist $f_{\varphi} = \qty\big(X - 2)^4$.
+  Durch Caley-Hamilton und Probieren folgt $m_{\varphi} = \qty\big(X - 2)^2$.
+  Nach Bemerkung 13.42 der Vorlesung besitzt eine Jordansche Normalform
+  mindestens einen Block der Form $J\qty\big(2, 2)$.
+  Nach dem Beweis von Lemma 13.48 der Vorlesung ist
+  \[
+    \dim\qty\big(V_2^{\varphi}) =
+    4 - \Rank\qty\big(\Mat\qty\big(\varphi, \mathcal{B}') - 2 \cdot I_4)
+    = 4 - \Rank\begin{pmatrix}
+      1 & 0 & 0 & -1 \\
+      1 & 0 & 0 & -1 \\
+      0 & 0 & 0 &  0 \\
+      1 & 0 & 0 & -1 \\
+    \end{pmatrix} = 3
+  \]
+  Aus Lemma 13.48 der Vorlesung folgt, dass eine Jordansche Normalform
+  von $\varphi$ 3 Blöcke für den Eigenwert 2 enthält, somit ist die
+  (bis auf Vertauschung der Blöcke) eindeutige Jordansche Normalform von
+  $\varphi$
+  \[
+    \begin{pmatrix}
+      2 & 0 & 0 & 0 \\
+      1 & 2 & 0 & 0 \\
+      0 & 0 & 2 & 0 \\
+      0 & 0 & 0 & 2 \\
+    \end{pmatrix}
+  \]
+\end{enumerate}
+
+\end{document}
