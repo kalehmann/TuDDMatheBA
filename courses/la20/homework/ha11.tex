@@ -145,4 +145,132 @@ $\varphi$.
   \]
 \end{enumerate}
 
+\paragraph{Aufgabe 6} Seien $K$ ein Körper, $V$ ein $7$-dimensionaler Vektorraum
+über $K$ und $\varphi \in \End\qty\big(V)$.
+Angenommen $\varphi$ hat genau zwei Eigenwerte $\lambda_1$ und $\lambda_2$, wobei
+$\lambda_1$ algebraische Vielfachheit 3 und geometrische Vielfachheit 2 hat,
+während $\lambda_2$ algebraische Vielfachheit 4 und geometrische Vielfachheit 2
+hat.
+Bestimmen Sie alle möglichen Jordanschen Normalformen von $\varphi$.
+
+\subparagraph{Lsg.} Per Definition ist $m_{\text{geom}}\qty\big(\varphi, \lambda)
+= \dim\qty\big(v_{\lambda}^{\varphi})$.
+Nach Lemma 13.48 der Vorlesung ist die Zahl der Jordanblöcke mit Eigenwert
+$\lambda$ in einer Jordanschen Normalform von $\varphi$ gleich
+$\dim\qty\big(v_{\lambda}^{\varphi})$.
+Somit hat eine Jordansche Normalform von $\varphi$ jeweils zwei Jordanblöcke für
+$\lambda_1$ und $\lambda_2$.
+Somit hat eine Jordansche Normalform von $\varphi$ (bis auf Vertauschung der
+Blöcke) die Form
+\[
+  \begin{pmatrix}
+    J\qty\big(\lambda_1, a) & & & \\
+    & J\qty\big(\lambda_1, b) & & \\
+    & & J\qty\big(\lambda_2, c) & \\
+    & & & J\qty\big(\lambda_2, d) \\
+  \end{pmatrix}, a, b, c, d \in \mathbb{N}, a + b + c + d = 7
+\]
+
+Konkrete Jordansche Normalformen von $\varphi$ sind somit
+\[
+  \qty(\begin{array}{c|c|c|cccc}
+    \lambda_1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & \lambda_1 & 0 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & 0 & \lambda_2 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & \lambda_2 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 & \lambda_2 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 1 & \lambda_2 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 1 & \lambda_2 \\
+  \end{array}), \qty(\begin{array}{c|c|cc|ccc}
+    \lambda_1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & \lambda_1 & 0 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & 0 & \lambda_2 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & \lambda_2 & 0 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & 0 & \lambda_2 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 1 & \lambda_2 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 1 & \lambda_2 \\
+  \end{array}),
+\]
+\[
+  \qty(\begin{array}{c|cc|c|ccc}
+    \lambda_1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & \lambda_1 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 1 & \lambda_1 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & \lambda_2 & 0 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & 0 & \lambda_2 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 1 & \lambda_2 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 1 & \lambda_2 \\
+  \end{array}), \qty(\begin{array}{c|cc|cc|cc}
+    \lambda_1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & \lambda_1 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 1 & \lambda_1 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & \lambda_2 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 & \lambda_2 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & 0 & 0 & \lambda_2 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 1 & \lambda_2 \\
+  \end{array}),
+\]
+\[
+  \qty(\begin{array}{cc|cc|c|cc}
+    \lambda_1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    1 & \lambda_1 & 0 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & 0 & \lambda_1 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & \lambda_1 & 0 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & 0 & \lambda_2 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & 0 & 0 & \lambda_2 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 1 & \lambda_2 \\
+  \end{array}), \qty(\begin{array}{c|ccc|c|cc}
+    \lambda_1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & \lambda_1 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 1 & \lambda_1 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & \lambda_1 & 0 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & 0 & \lambda_2 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & 0 & 0 & \lambda_2 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 1 & \lambda_2 \\
+  \end{array}),
+\]
+\[
+  \qty(\begin{array}{cc|ccc|c|c}
+    \lambda_1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    1 & \lambda_1 & 0 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & 0 & \lambda_1 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & \lambda_1 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 & \lambda_1 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & 0 & 0 & \lambda_2 & 0 \\
+    \hline
+    0 & 0 & 0 & 0 & 0 & 0 & \lambda_2 \\
+  \end{array}), \qty(\begin{array}{c|cccc|c|c}
+    \lambda_1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    \hline
+    0 & \lambda_1 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 1 & \lambda_1 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & \lambda_1 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 & \lambda_1 & 0 & 0 \\
+    \hline
+    0 & 0 & 0 & 0 & 0 & \lambda_2 & 0 \\
+    \hline
+    0 & 0 & 0 & 0 & 0 & 0 & \lambda_2 \\
+  \end{array})
+\]
+
 \end{document}
