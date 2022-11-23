@@ -1,0 +1,87 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage{physics}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 11\\Programmierung}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 1}
+\begin{enumerate}[(a)]
+\item Gegeben sei folgender $\text{AM}_1$-Code:
+  \begin{footnotesize}
+  \begin{lstlisting}[numbers=left, multicols=3]
+INIT  1;
+CALL  12;
+JMP   0;
+INIT  2;
+LOADI (-2);
+STORE (global, 1);
+LIT   3;
+STORE (lokal, 1);
+LOAD  (global, 1);
+STORE (lokal, 2);
+RET   1;
+INIT  1;
+READ  (lokal, 1);
+LOADA (lokal, 1);
+PUSH;
+CALL  4;
+WRITE (global, 1);
+RET   0;
+  \end{lstlisting}
+  \end{footnotesize}
+  Dokumentieren Sie 12 Schritte der $\text{AM}_1$ mit der Startkonfiguration
+  \[
+    \sigma = \qty\big(
+      13, \epsilon, 0 \colon 3 \colon 0 \colon 0 \colon 0, 3, 8, \epsilon
+    )
+  \]
+
+  \subparagraph{Lsg.} In der folgenden Tabelle steht \textbf{BZ} für
+  Befehlszähler, \textbf{DK} für Datenkeller, \textbf{LK} für Laufzeitkeller,
+  \textbf{REF} für Referenzzeiger, \textbf{In} für Eingabeband und \textbf{Out}
+  für das Ausgabeband. \\
+
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    BZ & DK & LK & REF & In & Out \\
+    \hline
+    12 & $\epsilon$ & $(0 \colon 0) \colon (3 \colon 0 \colon 0 \colon 8)$ & 4 & 6 & $\epsilon$ \\
+    \hline
+    13 & $\epsilon$ & $(0 \colon 0) \colon (3 \colon 0 \colon 6 \colon 8)$ & 4 & $\epsilon$ & $\epsilon$ \\
+    \hline
+    14 & $8$ & $(0 \colon 0) \colon (3 \colon 0 \colon 6 \colon 8)$ & 4 & $\epsilon$ & $\epsilon$ \\
+    \hline
+    15 & $\epsilon$ & $(0 \colon 0) \colon (3 \colon 0 \colon 6 \colon 8) \colon (8$ & 4 & $\epsilon$ & $\epsilon$ \\
+    \hline
+    16 & $5$ & $(0 \colon 0) \colon (3 \colon 0 \colon 6 \colon 8) \colon (8$ & 4 & $\epsilon$ & $\epsilon$ \\
+    \hline
+    16 & $\epsilon$ & $(0 \colon 0) \colon (3 \colon 0 \colon 6 \colon 8) \colon (8 \colon 5$ & 4 & $\epsilon$ & $\epsilon$ \\
+    \hline
+  \end{tabular}
+
+\end{enumerate}
+\end{document}

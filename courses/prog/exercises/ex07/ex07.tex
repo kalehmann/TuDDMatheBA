@@ -1,0 +1,70 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{physics}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 7\\Programmierung}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 1}
+\begin{enumerate}[(a)]
+\item Berechnen Sie die Normalform des $\lambda$-Terms
+  $(\lambda f \: x.f \: f \: x) (\lambda y.x) z$, indem Sie ihn schrittweise
+  Reduzieren.
+  Geben Sie bei jedem Schritt für relevante Teilmengen jeweils die freien und
+  gebundenen Variablen an.
+
+  \subparagraph{Lsg.}
+  \begin{flalign*}
+    &(\lambda f \: x.
+    \underset{GV=\emptyset, FV=\qty{f, x}}{
+      \underbrace{
+        f \: f \: x
+      }
+    }) \underset{GV=\qty{y}, FV=\qty{x}}{
+      \underbrace{
+        (\lambda y.x)
+      }
+    } \underset{FV=\qty{z}}{\underbrace{z}} \\
+    &\Rightarrow^{\alpha} (\lambda f \: x.
+    \underset{GV=\emptyset, FV=\qty{f, x}}{
+      \underbrace{
+        f \: f \: x
+      }
+    }) \underset{GV=\qty{y}, FV=\qty{x'}}{
+      \underbrace{
+        (\lambda y.x')
+      }
+    }  \underset{FV=\qty{z}}{\underbrace{z}} \\
+    &\Rightarrow_{\beta}
+    (
+      (\lambda y.\underset{FV=\qty{x'}}{\underbrace{x'}})
+      \underset{GV=\qty{y}, FV=\qty{x'}}{\underbrace{(\lambda y.x')}}
+      z
+    ) \\
+    &\Rightarrow_{\beta} x'z
+  \end{flalign*}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,336 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 5\\Programmierung}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 1} Gegeben seien folgende Terme über dem Rangalphabet
+$\Sigma = \qty\big{\sigma^{(2)}, \gamma^{(1)}, \alpha^{(0)}}$:
+\[
+  t_1 = \sigma\qty\big(\sigma(x_1, \alpha), \sigma(\gamma(x_3), x_3))
+  \text{ und }
+  t_2 = \sigma\qty\big(\sigma(\gamma(x_2), \alpha), \sigma(x_2, x_3))
+\]
+\begin{enumerate}[(a)]
+\item Wenden Sie den Unifikationsalgorithmus auf die Terme $t_1$ und $t_2$ an
+  und geben Sie anschließend den von Ihnen bestimmten allgemeinsten Unifikator
+  an.
+
+  \subparagraph{Lsg.} \textbf{Der Unifikationsalgorithmus}
+
+  Setze $M \coloneqq \qty{\begin{pmatrix}t_1 \\ t_2\end{pmatrix}}$.
+  Wende nun solange wie möglich die folgenden Regeln an:
+  \begin{enumerate}[(I)]
+  \label{uni:1}
+  \item \textbf{Dekomposition} ersetze ein Paar $\begin{pmatrix}
+      \delta \qty\big(a_1, \ldots, a_n) \\
+      \delta \qty\big(b_1, \ldots, b_n)
+    \end{pmatrix}$, wobei $a_1, \ldots, a_n, b_1, \ldots, b_n$ Terme über
+    Konstruktoren und Variablen sind durch Paare
+    $\begin{pmatrix}a_1\\b_1\end{pmatrix},
+    \ldots,
+    \begin{pmatrix}a_n\\b_n\end{pmatrix}$.
+
+  \label{uni:2}
+  \item \textbf{Elimination trivialer Gleichungen} Entferne alle Paare
+    $\begin{pmatrix}x\\x\end{pmatrix}$ aus $M$, wobei $x$ eine Variable ist.
+
+  \label{uni:3}
+  \item \textbf{Vertauschung} Ersetze ein Paar $\begin{pmatrix}t\\x\end{pmatrix}$
+    - wobei $t$ keine Variable ist - durch das Paar
+    $\begin{pmatrix}x\\t\end{pmatrix}$.
+
+  \label{uni:4}
+  \item \textbf{Substitution von Variablen} Wenn in $M$ ein Paar
+    $\begin{pmatrix}x\\t\end{pmatrix}$ vorkommt (occur check), wobei $x$ eine Variable ist und
+    $x$ nicht in $t$ vorkommt, dann ersetze alle Vorkommen von $x$ durch $t$
+  \end{enumerate}
+
+  Wenn danach $M$ die Form $\qty{
+    \begin{pmatrix}x_1\\t_1\end{pmatrix},
+    \ldots,
+    \begin{pmatrix}x_n\\t_n\end{pmatrix}
+  }$ hat, $x_1, \ldots, x_n$ paarweise verschiedene Variablen sind und
+  $t_1, \ldots, t_n$ Terme über Variablen und Konstruktoren sind in denen
+  die $x_i$'s nicht mehr vorkommen ist der allgemeinste Unifikator gefunden.
+  
+  \begin{flalign*}
+    M &= \qty{\begin{pmatrix}
+        \sigma\qty\big(\sigma(x_1, \alpha), \sigma(\gamma(x_3), x_3)) \\
+        \sigma\qty\big(\sigma(\gamma(x_2), \alpha), \sigma(x_2, x_3))
+      \end{pmatrix}} & \hyperref[uni:1](I) \\
+    &= \qty{
+      \begin{pmatrix}
+        \sigma(x_1, \alpha) \\
+        \sigma(\gamma(x_2), \alpha)
+      \end{pmatrix}, \begin{pmatrix}
+        \sigma(\gamma(x_3), x_3) \\
+        \sigma(x_2, x_3)
+      \end{pmatrix}} & \hyperref[uni:1](I) \\
+    &= \qty{
+      \begin{pmatrix}
+        x_1 \\
+        \gamma(x_2)
+      \end{pmatrix}, \begin{pmatrix}
+        \alpha \\
+        \alpha
+      \end{pmatrix}, \begin{pmatrix}
+        \gamma(x_3) \\
+        x_2
+      \end{pmatrix}, \begin{pmatrix}
+        x_3 \\
+        x_3 \\
+      \end{pmatrix}} & \hyperref[uni:1](I) \\
+    &= \qty{
+      \begin{pmatrix}
+        x_1 \\
+        \gamma(x_2)
+      \end{pmatrix}, \begin{pmatrix}
+        \gamma(x_3) \\
+        x_2
+      \end{pmatrix}, \begin{pmatrix}
+        x_3 \\
+        x_3 \\
+      \end{pmatrix}} & \hyperref[uni:2](II) \\
+    &= \qty{
+      \begin{pmatrix}
+        x_1 \\
+        \gamma(x_2)
+      \end{pmatrix}, \begin{pmatrix}
+        \gamma(x_3) \\
+        x_2
+      \end{pmatrix}} & \hyperref[uni:3](III) \\
+    &= \qty{
+      \begin{pmatrix}
+        x_1 \\
+        \gamma(x_2)
+      \end{pmatrix}, \begin{pmatrix}
+        x_2 \\
+        \gamma(x_3)
+      \end{pmatrix}} & \hyperref[uni:4](IV) \\
+     &= \qty{
+      \begin{pmatrix}
+        x_1 \\
+        \gamma\qty\big(\gamma(x_3))
+      \end{pmatrix}, \begin{pmatrix}
+        x_2 \\
+        \gamma(x_3)
+      \end{pmatrix}}
+  \end{flalign*}
+  Nun ist $\varphi\qty\big(x_1) =  \gamma\qty\big(\gamma(x_3)),
+  \varphi\qty\big(x_2) =  \gamma\qty\big(x_3),
+  \varphi\qty\big(x_3) =  x_3$
+  der allgemeinste Unifikator.
+
+\item Geben Sie zwei weitere Unifikatoren an.
+
+  \subparagraph{Lsg.}
+  \[
+    \varphi\qty\big(x_1) =  \gamma\qty\big(\gamma(\alpha)),
+    \varphi\qty\big(x_2) =  \gamma\qty\big(\alpha),
+    \varphi\qty\big(x_3) =  \alpha
+  \]
+  und
+  \[
+    \varphi\qty\big(x_1) =  \gamma\qty\big(\gamma(\gamma(\alpha))),
+    \varphi\qty\big(x_2) =  \gamma\qty\big(\gamma(\gamma(\alpha))),
+    \varphi\qty\big(x_3) =  \gamma\qty\big(\alpha)
+  \]
+
+\item Geben Sie zwei Terme $t_1$ und $t_2$ über dem Alphabet $\Sigma$ an, so
+  dass in der Anwendung des Unifikationsalgorithmus der Occur Check fehlschlägt.
+
+  \subparagraph{Lsg.}
+  \[
+  t_1 = x_1
+  \text{ und }
+  t_2 = \gamma\qty\big(x_1)
+\]
+
+\newpage
+\item Gegeben seien die Haskell-Typterme
+  \[
+    t_1 = \qty\big(\texttt{a}, \qty[\texttt{a}]),
+    t_2 = \qty\big(\texttt{Int}, \qty[\texttt{Double}])
+    \text{ und }
+    t_3 = \qty\big(\texttt{b}, \texttt{c})
+  \]
+  Welche Paare dieser Terme sind unifizierbar?
+  Geben Sie für die unifizierbaren Paare den allgemeinsten
+  Unifikator an.
+
+  \subparagraph{Lsg.} Die Paare $t_3, t_1$ und $t_3, t_2$ sind unifizierbar.
+  \begin{flalign*}
+    M &= \qty{\begin{pmatrix}t_3\\t_1\end{pmatrix}}
+    = \qty{\begin{pmatrix}
+        \qty\big(\texttt{b}, \texttt{c}) \\
+        \qty\big(\texttt{a}, \qty[\texttt{a}])
+      \end{pmatrix}} & \hyperref[uni:1]{(I)} \\
+    &= \qty{\begin{pmatrix}
+        \texttt{b} \\
+        \texttt{a}
+      \end{pmatrix}, \begin{pmatrix}
+        \texttt{c} \\
+        \qty[\texttt{a}]
+      \end{pmatrix}} \\
+    &\Rightarrow \varphi\qty\big(\texttt{a}) = \texttt{a},
+    \varphi\qty\big(\texttt{b}) = \texttt{a},
+    \varphi\qty\big(\texttt{c}) = \qty[\texttt{a}]
+  \end{flalign*}
+  \begin{flalign*}
+    M &= \qty{\begin{pmatrix}t_3\\t_2\end{pmatrix}}
+    = \qty{\begin{pmatrix}
+        \qty\big(\texttt{b}, \texttt{c}) \\
+        \qty\big(\texttt{Int}, \qty[\texttt{Double}])
+      \end{pmatrix}} & \hyperref[uni:1]{(I)} \\
+    &= \qty{\begin{pmatrix}
+        \texttt{b} \\
+        \texttt{Int}
+      \end{pmatrix}, \begin{pmatrix}
+        \texttt{c} \\
+        \qty[\texttt{Double}]
+      \end{pmatrix}} \\
+    &\Rightarrow \varphi\qty\big(\texttt{Int}) = \texttt{Int},
+    \varphi\qty\big(\texttt{Double}) = \texttt{Double},
+    \varphi\qty\big(\texttt{b}) = \texttt{Int},
+    \varphi\qty\big(\texttt{c}) = \qty[\texttt{Double}]
+  \end{flalign*}
+  Für das Paar $t_1, t_2$ hingegen
+  \begin{flalign*}
+    M &= \qty{\begin{pmatrix}t_1\\t_2\end{pmatrix}}
+    = \qty{\begin{pmatrix}
+        \qty\big(\texttt{a}, \qty[\texttt{a}]) \\
+        \qty\big(\texttt{Int}, \qty[\texttt{Double}])
+      \end{pmatrix}} & \hyperref[uni:1]{(I)} \\
+    &= \qty{\begin{pmatrix}
+        \texttt{a} \\
+        \texttt{Int}
+      \end{pmatrix}, \begin{pmatrix}
+        \qty[\texttt{a}] \\
+        \qty[\texttt{Double}]
+      \end{pmatrix}} \\
+    &\Rightarrow \text{nicht unifizierbar!}
+  \end{flalign*}
+\end{enumerate}
+
+\newpage
+\paragraph{Aufgabe 2} Zeigen Sie unter Verwendung der folgenden Definitionen
+durch strukturelle Induktion die Gültigkeit der Gleichung \\
+\noindent
+\lstinline[language=Haskell]{sum (foo xs) = 2 * sum xs - length xs} für jedes
+\lstinline[language=Haskell]{xs :: [Int]}
+
+\begin{lstlisting}[language=Haskell, numbers=left]
+foo :: [Int] -> [Int]
+foo [] = []
+foo (x:xs) = x : x : (-1) : foo xs
+
+sum :: [Int] -> Int
+sum [] = 0
+sum (x:xs) = x + sum xs
+
+length :: [Int] -> Int
+length [] = 0
+length (x:xs) = 1 + length xs
+\end{lstlisting}
+
+Zeigen Sie dazu den Induktionsanfang und den Induktionsschritt.
+Geben Sie bei dem Induktionsschritt die Induktionsvoraussetzung an.
+Geben Sie bei allen Umformungen die benutzten Definitionen, Eigenschaften
+bzw. Induktionsvoraussetzung an.
+Quantifizieren Sie alle Variablen.
+
+\subparagraph{Lsg.} \textbf{Induktionsanfang:} Sei \lstinline[language=Haskell]{xs = []}.
+Es gilt \\
+\lstinline[language=Haskell]{sum (foo xs) = 2 * sum xs - length xs} \\
+$\overset{\text{Def. }\lstinline[language=Haskell]{xs}}=$
+\lstinline[language=Haskell]{sum (foo []) = 2 * sum [] - length []} \\
+$\overset{(10)}=$
+\lstinline[language=Haskell]{sum (foo []) = 2 * sum [] - 0} \\
+$\overset{(6)}=$
+\lstinline[language=Haskell]{sum (foo []) = 2 * 0 - 0 = 0} \\
+$\overset{(2)}=$
+\lstinline[language=Haskell]{sum [] =  0} \\
+$\overset{(6)}=$
+\lstinline[language=Haskell]{sum [] =  0} \\
+\noindent
+\textbf{Induktionsschritt:} Sei nun \lstinline[language=Haskell]{xs :: [Int]},
+sodass
+\begin{lstlisting}[language=Haskell]
+  sum (foo xs) = 2 * sum xs - length xs
+\end{lstlisting}
+gilt.
+Dann folgt für jedes \lstinline[language=Haskell]{x :: Int} \\
+\lstinline[language=Haskell]{sum (foo (x:xs)) = 2 * sum (x:xs) - length (x:xs)} \\
+$\overset{(11)}=$
+\lstinline[language=Haskell]{sum (foo (x:xs)) = 2 * sum (x:xs) - (1 + length xs)} \\
+$\overset{(7)}=$
+\lstinline[language=Haskell]{sum (foo (x:xs)) = 2 * (x + sum xs) - (1 + length xs)} \\
+$\overset{\text{Distributivgesetz}}=$
+\lstinline[language=Haskell]{sum (foo (x:xs)) = 2 * x + 2 * sum xs - 1 - length xs} \\
+$\overset{\text{Kommutativgesetz}}=$
+\lstinline[language=Haskell]{sum (foo (x:xs)) = 2 * x - 1 + 2 * sum xs - length xs} \\
+$\overset{(3)}=$
+\lstinline[language=Haskell]{sum (x:x:(-1):foo xs) = 2 * x - 1 + 2 * sum xs - length xs} \\
+$\overset{(7)}=$
+\lstinline[language=Haskell]{x + sum (x:(-1):foo xs) = 2 * x - 1 + 2 * sum xs - length xs} \\
+$\overset{(7)}=$
+\lstinline[language=Haskell]{x + x + sum ((-1):foo xs) = 2 * x - 1 + 2 * sum xs - length xs} \\
+$\overset{(7)}=$
+\lstinline[language=Haskell]{x + x - 1 +  sum (foo xs) = 2 * x - 1 + 2 * sum xs - length xs} \\
+$\overset{\text{Ind. Vor.}}=$
+\lstinline[language=Haskell]{x + x - 1 = 2 * x - 1} \\
+$\overset{x + x = 2 * x}=$
+\lstinline[language=Haskell]{2 * x - 1 = 2 * x - 1} \\
+
+Oder alternativ \textbf{Induktionsschritt:} Sei nun \lstinline[language=Haskell]{xs :: [Int]},
+sodass
+\begin{lstlisting}[language=Haskell]
+  sum (foo xs) = 2 * sum xs - length xs
+\end{lstlisting}
+gilt.
+Dann folgt für jedes \lstinline[language=Haskell]{x :: Int} \\
+\lstinline[language=Haskell]{sum (foo (x:xs))} \\
+$\overset{(3)}=$ \lstinline[language=Haskell]{sum (x:x:(-1):foo xs)} \\
+$\overset{(7)}=$ \lstinline[language=Haskell]{x + sum (x:(-1):foo xs)} \\
+$\overset{(7)}=$ \lstinline[language=Haskell]{x + x + sum ((-1):foo xs)} \\
+$\overset{(7)}=$ \lstinline[language=Haskell]{x + x -1 +  sum (foo xs)} \\
+$\overset{\text{Ind. Vor.}}=$
+\lstinline[language=Haskell]{x + x -1 +  2 * sum xs - length xs} \\
+$\overset{\text{Kommutativgesetz}}=$
+\lstinline[language=Haskell]{x + x +  2 * sum xs - 1 - length xs} \\
+$\overset{x + x = 2 * x}=$
+\lstinline[language=Haskell]{2 * x +  2 * sum xs - 1 - length xs} \\
+$\overset{\text{Distributivgesetz}}=$
+\lstinline[language=Haskell]{2 * (x + sum xs) - (1 + length xs)} \\
+$\overset{(11)}=$
+\lstinline[language=Haskell]{2 * (x + sum xs) - length (x:xs)} \\
+$\overset{(7)}=$
+\lstinline[language=Haskell]{2 * sum (x:xs) - length (x:xs)} \\
+
+Somit gilt die Behauptung für alle \lstinline[language=Haskell]{xs :: Int}
+
+\end{document}

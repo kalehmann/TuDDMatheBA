@@ -1,0 +1,305 @@
+\documentclass{scrreprt}
+
+\usepackage{aligned-overset}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{physics}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\author{Karsten Lehmann}
+\date{SoSe 2022}
+\title{Übungsblatt 6\\Programmierung}
+
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\lfoot{\thedate}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\paragraph{Aufgabe 1} Folgende Definitionen seien gegeben:
+\begin{lstlisting}[language=Haskell, numbers=left]
+data Tree a = Node a (Tree a) (Tree a) | Leaf a
+
+mirror :: Tree a -> Tree a
+mirror (Node x t1 t2) = Node x (mirror t2) (mirror t1)
+mirror (Leaf x) = Leaf x
+
+yield :: Tree a -> [a]
+yield (Node _ t1 t2) = yield t1 ++ yield t2
+yield (Leaf x) = [x]
+\end{lstlisting}
+Dabei gelten folgende Eigenschaften für alle Typen
+\lstinline[language=Haskell]{a}, Werte
+\lstinline[language=Haskell]{x :: a} und List
+\lstinline[language=Haskell]{xs, ys :: [a]}.
+
+\begin{enumerate}[label={(E\arabic*)}]
+\item \lstinline[language=Haskell]{reverse [x] = [x]}
+\item \lstinline[language=Haskell]{reverse (xs ++ ys) = reverse ys ++ reverse xs}
+\end{enumerate}
+
+Beweisen Sie mittels struktureller Induktion, dass für jeden Typ
+\lstinline[language=Haskell]{a} und jeden Baum
+\lstinline[language=Haskell]{t :: Tree a} gilt
+\begin{lstlisting}[language=Haskell]
+  reverse (yield t) = yield (mirror t)
+\end{lstlisting}
+Zeigen Sie den Induktionsanfang und den Induktionsschritt.
+Geben Sie bei jeder Umformung die benutzten Definitionen, Eigenschaft oder
+Induktionsvoraussetzung an.
+Quantifizieren Sie alle Variablen.
+
+\subparagraph{Lsg.} \textbf{Induktionsanfang}: Sei ein Typ
+\lstinline[language=Haskell]{a} beliebig und
+\lstinline[language=Haskell]{t = Leaf a}.
+Dann ist\\
+\lstinline[language=Haskell]{reverse (yield t)} \\
+$\overset{\text{Def. t}}=$
+\lstinline[language=Haskell]{reverse (yield (Leaf a))} \\
+$\overset{(9)}=$
+\lstinline[language=Haskell]{reverse [x]} \\
+$\overset{(E1)}=$
+\lstinline[language=Haskell]{[x]} \\
+$\overset{(9}=$
+\lstinline[language=Haskell]{yield (Leaf x)} \\
+$\overset{(5}=$
+\lstinline[language=Haskell]{yield (mirror (Leaf x))} \\
+
+\noindent
+\textbf{Induktionsschritt}: Sei ein Typ
+\lstinline[language=Haskell]{a} beliebig und
+\lstinline[language=Haskell]{t1, t2 :: Tree a}, so dass
+\begin{lstlisting}[firstnumber=10, language=Haskell, numbers=left]
+  reverse (yield t1) = yield (mirror t1)
+  reverse (yield t2) = yield (mirror t2)
+\end{lstlisting}
+gilt.
+Es folgt für ein beliebiges
+\lstinline[language=Haskell]{x :: a} und
+\lstinline[language=Haskell]{t = (Node x t1 t2)}, dass \\
+\lstinline[language=Haskell]{reverse (yield t)} \\
+$\overset{\text{Def. t}}=$
+\lstinline[language=Haskell]{reverse (yield (Node x t1 t2))} \\
+$\overset{(8)}=$
+\lstinline[language=Haskell]{reverse (yield t1 ++ yield t2)} \\
+$\overset{(E2)}=$
+\lstinline[language=Haskell]{reverse (yield t2) ++ reverse (yield t1)} \\
+
+und außerdem ist \\
+\lstinline[language=Haskell]{yield (mirror t)} \\
+$\overset{\text{Def. t}}=$
+\lstinline[language=Haskell]{yield (mirror (Node x t1 t2))} \\
+$\overset{(4)}=$
+\lstinline[language=Haskell]{yield (Node x (mirror t2) (mirror t1))} \\
+$\overset{(8)}=$
+\lstinline[language=Haskell]{yield (mirror t2) ++ yield (mirror t1)} \\
+$\overset{\text{Ind. Vor.}}=$
+\lstinline[language=Haskell]{reverse (yield t2) ++ reverse (yield t1)} \\
+
+Somit gilt die Behauptung für alle \lstinline[language=Haskell]{t :: Tree}
+
+\paragraph{Aufgabe 2}
+\begin{enumerate}[(a)]
+\item Bestimmen Sie für jeden der folgenden $\lambda$-Terme $t$ die Mengen
+  $FV(t)$ und $GV(t)$:
+  \begin{itemize}
+  \item $\qty\big(\lambda x.x \: y)\qty\big(\lambda y.y)$
+
+    \subparagraph{Lsg.} $FV(t) = \qty\big{y}$, da $y$ im rechten Ausdruck zwar
+    gebunden, jedoch im linken Ausdruck frei ist.
+    Außerdem ist $GV(t) = \qty\big{x, y}$
+
+  \item $\qty\big(\lambda x.\qty\big(\lambda y.z \qty\big(\lambda z.z \qty\big(\lambda x.y))))$
+
+    \subparagraph{Lsg.} $FV(t) = \qty\big{z}$ und $GV(t) = \qty\big{x, y, z}$
+
+  \item $\qty\big(\lambda x.\qty\big(\lambda y.x \: z \qty\big(y \: z))) \qty\big(\lambda x.y \qty\big(\lambda y.y))$
+
+    \subparagraph{Lsg.} $FV(t) = \qty\big{y, z}$ und $GV(t) = \qty\big{x, y}$
+  \end{itemize}
+
+\newpage
+\item Reduzieren Sie die folgenden $\lambda$-Terme zu Normalformen.
+  Schreiben Sie vor jedem Ableitungsschritt die Menge der freien und
+  gebundenen Variablen auf.
+
+  \begin{itemize}
+  \item $\qty\big(\lambda x.\qty\big(\lambda y.x \: z \qty\big(y \: z))) \qty\big(\lambda x.y \qty\big(\lambda y.y))$
+
+    \subparagraph{Lsg.} \:\\
+
+    \begin{tabular}{cc}
+      $\underset{t1}{\underbrace{\qty\big(\lambda x.\qty\big(\lambda y.x \: z \qty\big(y \: z)))}}$ & $\underset{t_2}{\underbrace{\qty\big(\lambda x.y \qty\big(\lambda y.y))}}$ \\
+      $GV(t_1) = \qty\big{x, y}$ und $FV(t_1) = \qty\big(z)$ & $GV(t_2) = \qty\big{x, y}$ und $FV(t_2) = \qty\big(y)$ \\
+      \multicolumn{2}{c}{Die Mengen $GV\qty\big(t_1)$ und $FV\qty\big(t_2)$ überschneiden sich. $\Rightarrow \alpha$-Konversation} \\
+      \hline
+      $\underset{t1}{\underbrace{\qty\big(\lambda x.\qty\big(\lambda y'.x \: z \qty\big(y' \: z)))}}$ & $\underset{t_2}{\underbrace{\qty\big(\lambda x.y \qty\big(\lambda y.y))}}$ \\
+      $GV(t_1) = \qty\big{x, y'}$ und $FV(t_1) = \qty\big(z)$ & $GV(t_2) = \qty\big{x, y}$ und $FV(t_2) = \qty\big(y)$ \\
+      \hline
+      $\underset{t_3}{\underbrace{\qty\big(\lambda y'.\qty\big(\lambda x.y \qty\big(\lambda y.y)) z \qty\big(y' \: z))}}$ \\
+      $GV(t_3) = \qty\big{y', x, y}$ und $FV(t_3) = \qty\big(z)$  \\
+      \hline
+      $\underline{\underline{\qty\big(\lambda y'.y \qty\big(\lambda y.y) \qty\big(y' \: z))}}$ \\
+    \end{tabular}
+
+  \item $\qty\big(\lambda x.\qty\big(\lambda y.\qty\big(\lambda z.z))) x \qty\big(+ \: y \: 1)$
+
+    \subparagraph{Lsg.} \:\\
+
+    \begin{tabular}{ccc}
+      $\qty\big(\lambda x.\qty\big(\lambda y.\qty\big(\lambda z.z)))$ & $x$ & $\qty\big(+ \: y \: 1)$ \\
+      $GV = \qty\big(x, y, z), FV = \emptyset$ & $GV = \emptyset, FV = \qty\big{x}$ & $GV = \emptyset, FV = \qty\big{y}$ \\
+      \hline
+      \multicolumn{3}{c}{Ohne Überschneidungen kann der 2. Term direkt in den ersten Term eingesetzt werden} \\
+      \hline
+      $\qty\big(\lambda y.\qty\big(\lambda z.z))$ & & $\qty\big(+ \: y \: 1)$ \\
+      $GV = \qty\big(y, z), FV = \emptyset$ & & $GV = \emptyset, FV = \qty\big{y}$ \\
+      \hline
+      $\underline{\underline{\qty\big(\lambda z.z)}}$
+    \end{tabular}
+
+  \newpage
+  \item $\qty\big(\lambda x.\qty\big(\lambda y.x \qty\big(\lambda z.y \: z)))
+    \qty\big(
+      \qty\big(\qty\big(\lambda x. \qty\big(\lambda y.y)) 8)
+      \qty\big(\lambda x.\qty\big(\lambda y.y) x)
+    )$
+    
+    \subparagraph{Lsg.}
+    $\underset{GV = \qty\big{x, y, z}, FV = \emptyset}{\underbrace{
+      \qty\big(\lambda x.\qty\big(\lambda y.x \qty\big(\lambda z.y \: z)))
+    }}
+    \underset{GV = \qty\big{x, y}, FV = \emptyset}{\underbrace{
+      \qty\big(
+        \qty\big(\qty\big(\lambda x. \qty\big(\lambda y.y)) 8)
+        \qty\big(\lambda x.\qty\big(\lambda y.y) x)
+      )
+    }} \underset{\beta}\Rightarrow$ \\
+    $\qty\big(\lambda y.\qty\big(
+        \underset{GV = \qty\big{x, y}, FV = \emptyset}{\underbrace{
+          \qty\big(\qty\big(\lambda x. \qty\big(\lambda y.y)) 8)
+        }}
+        \qty\big(\lambda x.\qty\big(\lambda y.y) x)
+    ) \qty\big(\lambda z.y \: z))  \underset{\beta}\Rightarrow$ \\
+    $\qty\big(\lambda y.\qty\big(
+      \underset{GV = \qty\big{y}, FV = \emptyset}{
+        \underbrace{\qty\big(\lambda y.y)
+      }}
+      \underset{GV = \qty\big{x, y}, FV = \emptyset}{\underbrace{
+        \qty\big(\lambda x.\qty\big(\lambda y.y) x)
+      }}
+    ) \qty\big(\lambda z.y \: z))  \underset{\beta}\Rightarrow$ \\
+    $\qty\big(\lambda y.\qty\big(
+      \lambda x.\underset{GV = \qty\big{y}}{\underbrace{\qty\big(\lambda y.y)}}
+      \underset{FV=\qty\big{x}}{\underbrace{x}}
+    ) \qty\big(\lambda z.y \: z))  \underset{\beta}\Rightarrow$ \\
+    $\qty\big(\lambda y.\underset{GV = \qty\big{x}}{\underbrace{\qty\big(
+      \lambda x.x
+    )}} \underset{GV={z},FV={y}}{\underbrace{\qty\big(\lambda z.y \: z)}})  \underset{\beta}\Rightarrow$ \\
+    $\qty\big(\lambda y.\qty\big(\lambda z.y \: z))$
+
+  \item $(\lambda h.(\lambda x.h (x \: x)) (\lambda x.h (x \: x)))
+    ((\lambda x.x) (+ \: 1 \: 5))$
+
+    \subparagraph{Lsg.}
+    \begin{flalign*}
+      & (\lambda h.(\lambda x.h (x \: x)) (\lambda x.h (x \: x)))
+      (\underset{GV=\qty{x}, FV=\emptyset}{
+        \underbrace{
+          (\lambda x.x)
+        }
+      } \underset{GV=\emptyset, FV=\emptyset}{
+        \underbrace{
+          (+ \: 1 \: 5)
+        }
+      })\\
+      \overset{\beta}&\Rightarrow
+      (\lambda h.
+        (\lambda x.\underset{GV=\emptyset, FV=\qty{h,x}}{
+          \underbrace{
+            h (x \: x)
+          }
+        })
+        \underset{GV=\qty{x}, FV=\qty{h}}{
+          \underbrace{
+            (\lambda x.h (x \: x))
+          }
+        }
+      )
+      (+ \: 1 \: 5) \\
+      \overset{\beta}&\Rightarrow
+      (\lambda h.h((\lambda x.h (x \: x))(\lambda x.h (x \: x)))
+      )
+      (+ \: 1 \: 5) \\
+      &\Rightarrow \text{ Endlose Rekursion!}
+    \end{flalign*}
+
+  \item $(\lambda f.(\lambda a.(\lambda b.f \: a \: b)))
+    (\lambda x.(\lambda y.x))$
+
+    \subparagraph{Lsg.}
+    \begin{flalign*}
+      &(\lambda f.
+        \underset{GV=\qty{ab}, FV=\qty{f}}{
+          \underbrace{
+            (\lambda a.(\lambda b.f \: a \: b))
+          }
+        }
+      )
+      \underset{GV=\qty{x,y}, FV=\emptyset}{
+        \underbrace{
+          (\lambda x.(\lambda y.x))
+        }
+      } \\
+      \overset{\beta}&\Rightarrow
+      (\lambda a.(\lambda b.
+        (\lambda x.\underset{GV=\qty{x, y}, FV=\emptyset}{
+          \underbrace{
+            (\lambda y.x)
+          }
+        })
+        \: \underset{FV=\qty{a}}{\underbrace{{a}}} \: b)
+      ) \\
+      \overset{\beta}&\Rightarrow
+      (\lambda a.(\lambda b.
+        (\lambda y.\underset{FV=\qty{a}}{\underbrace{a}})
+        \underset{FV=\qty{b}}{\underbrace{b}})
+      ) \\
+      \overset{\beta}&\Rightarrow (\lambda a.(\lambda b.a))  
+    \end{flalign*}
+  \end{itemize}
+\end{enumerate}
+
+\paragraph{Aufgabe 3}
+\begin{enumerate}[(a)]
+\item Geben Sie einen Kombinator $A$ an, so dass
+  $A t s u \Rightarrow^* s$ für alle $\lambda$-Terme $t, s$ und $u$
+
+  \subparagraph{Lsg.} $A = (\lambda x.(\lambda y.(\lambda z.y)))$
+
+\item Geben Sie einen Kombinator $B$ an, so dass
+  $B t s \Rightarrow^* s t$ für alle $\lambda$-Terme $t$ und $s$
+
+  \subparagraph{Lsg.} $B = (\lambda x.(\lambda y.y \: x))$
+
+\item Geben Sie einen Kombinator $C$ an, so dass $C C \Rightarrow_{\beta} C C$
+
+  \subparagraph{Lsg.} $C = (\lambda x.x \: x)$
+
+\item Geben Sie einen Kombinator $D$ an, so dass $D \Rightarrow_{\beta} D$
+
+  \subparagraph{Lsg.} $D = (CC)$
+\end{enumerate}
+\end{document}
