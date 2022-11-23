@@ -1,0 +1,12 @@
+#+title: Erzeugnis
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Sei \( G \) eine [[file:gruppe.org][Gruppe]] und \( X \subseteq G \) eine Teilmenge von \( G \).
+Dann ist
+\( \langle X \rangle = \bigcap \left\{ H \leq G \:\middle|\: X \subseteq H \right\} \)
+als Durchschnitt aller [[file:untergruppe.org][Untergruppen]] \( H \subseteq G \), die \( X \) enthalten,
+die kleinste [[file:untergruppe.org][Untergruppe]] von \( G \) welche \( X \) enthält.
+Man nennt \( \langle X \rangle \) dann das Erzeugnis von \( X \).
+
+

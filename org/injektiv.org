@@ -1,0 +1,6 @@
+#+title: Injektivität
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Eine Abbildung \( f \colon G \to H \) heißt injektiv, wenn für alle
+\( x_1, x_2 \in G \) gilt, dass \( x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2) \). 

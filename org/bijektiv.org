@@ -1,0 +1,6 @@
+#+title: Bijektivität
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Eine Abbildung \( f \colon G \to H \) heißt bijektiv, falls sie [[file:injektiv.org][injektiv]] und
+[[file:surjektiv.org][surjektiv]] ist.

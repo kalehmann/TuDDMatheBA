@@ -1,0 +1,7 @@
+#+title: Charakteristische Untergruppe
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Sei \( G \) eine [[file:gruppe.org][Gruppe]] und \( H \) eine [[file:untergruppe.org][Untergruppe]] von \( G \).
+Dann heißt \( H \) charakteristisch, falls für jeden [[file:automorphismus.org][Automorphismus]] \( a \) von
+\( H \) gilt, dass \( a(H) = H \).

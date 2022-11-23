@@ -1,0 +1,12 @@
+#+title: Additiv geschriebene Gruppe
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Sei \( G \) eine [[file:gruppe.org][Gruppe]]. Ist die Verknüpfung in \( G \) additiv,
+so schreibt man \( i \cdot x \) anstatt \( x^i \).
+
+Dabei ist \(
+ix = \begin{cases}
+  i > 0 & x + x + \ldots + x \\
+  i < 0 & (-x) + (-x) + \ldots + (-x)
+\end{cases} \).

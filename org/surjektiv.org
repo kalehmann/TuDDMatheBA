@@ -1,0 +1,6 @@
+#+title: Surjektivität
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Eine Abbildung \( f \colon G \to H \) heißt surjektiv, wenn für jedes
+\( y \in H \) ein \( x \in G \) mit \( f(x) = y \) existiert.

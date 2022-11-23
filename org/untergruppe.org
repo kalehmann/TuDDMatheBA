@@ -1,0 +1,11 @@
+#+title: Untergruppe
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Es sei \( (G, \cdot) \) eine [[file:gruppe.org][Gruppe]]. Dann wird \( H \subseteq G \) eine
+Untergruppe von \( G \) genannt, falls
+
+- \( 1_G \in H \)
+- für alle \( g, h \in H \) ist \( g \cdot h |in H \)
+- für alle \( g \in H \) ist auch \( g^{-1} \in H \)
+ 

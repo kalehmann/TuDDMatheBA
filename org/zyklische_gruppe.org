@@ -1,0 +1,11 @@
+#+title: Zyklische Gruppe
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Ist \( G \) eine [[file:gruppe.org][Gruppe]] und \( x \in G \), so schreibt man
+\( \langle x \rangle \) für das [[file:erzeugnis.org][Erzeugnis]] \( \langle \{ x \} \rangle \).
+
+Dabei ist \( \langle x \rangle = \{ x^i \:|\: i \in \mathbb{Z} \} \).
+
+Die [[file:gruppe.org][Gruppe]] \( G \) heißt dann zyklisch, falls ein \( x \in G \) mit
+\( G = \langle x \rangle \) existiert.

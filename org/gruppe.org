@@ -1,0 +1,11 @@
+#+title: Gruppe
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Eine Gruppe ist ein Paar aus einer Menge und einer Verknüpfung \((G, *)\), sodass
+für alle beliebigen Elemente \( a, b, c \in G \) folgende Bedingungen erfüllt
+sind:
+
+- \((a * b) * c = a * (b * c)\)
+- \(a * e = e * a = a\) (\(e\) ist neutrales Element)
+- \( a^{-1} \in G \land a * a^{-1} = e\) (\(e\) ist neutrales Element)
