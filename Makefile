@@ -6,9 +6,13 @@ LATEXMK_OPTS=-pdf -quiet
 CSS_FILES = \
 	$(OUTPUT_DIRECTORY)/dir_index.css
 
+ORG_FILES = \
+	$(shell find org -type f -name '*.org')
+
 HTML_FILES = \
 	$(OUTPUT_DIRECTORY)/index.html \
-	$(OUTPUT_DIRECTORY)/dir_footer.html
+	$(OUTPUT_DIRECTORY)/dir_footer.html \
+	$(patsubst %.org,_site/%.html,$(ORG_FILES))
 
 TEX_FILES = \
 	$(shell find . -type f -name '*.tex' -printf '_site/%P\n')
@@ -28,9 +32,14 @@ all: $(OUTPUT_FILES)
 
 $(OUTPUT_DIRECTORY):
 	mkdir -p $(OUTPUT_DIRECTORY)
+	mkdir -p $(OUTPUT_DIRECTORY)/org
 
 $(OUTPUT_DIRECTORY)/%htaccess: html/%htaccess
 	cp $< $@
+
+$(OUTPUT_DIRECTORY)/org/%.html: org/%.org
+	emacs --batch $< -f org-html-export-to-html
+	cp $(subst .org,.html,$<) $@
 
 $(OUTPUT_DIRECTORY)/%.html: html/%.html
 	cp $< $@
