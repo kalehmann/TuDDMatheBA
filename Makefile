@@ -27,17 +27,18 @@ OUTPUT_FILES = \
 	$(PDF_FILES) \
 	$(OUTPUT_DIRECTORY)/.htaccess \
 	$(OUTPUT_DIRECTORY)/courses/.htaccess \
+	$(OUTPUT_DIRECTORY)/org/.htaccess \
 
 all: $(OUTPUT_FILES)
 
 $(OUTPUT_DIRECTORY):
 	mkdir -p $(OUTPUT_DIRECTORY)
-	mkdir -p $(OUTPUT_DIRECTORY)/org
 
 $(OUTPUT_DIRECTORY)/%htaccess: html/%htaccess
 	cp $< $@
 
 $(OUTPUT_DIRECTORY)/org/%.html: org/%.org
+	mkdir -p $(@D)
 	emacs --batch $< -f org-html-export-to-html
 	cp $(subst .org,.html,$<) $@
 
