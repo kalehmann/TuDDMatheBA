@@ -4,7 +4,7 @@
 
 Sei \( G \) eine [[file:gruppe.org][Gruppe]], \( x \in G \) beliebig und
 \( M = \left\{ n \in \mathbb{N}_{\geq 1} \:\middle|\: x^n = 1_G \right\} \).
-Dann ist die Ordung \( o(x) \) des Elementes \( x \0 definiert als
+Dann ist die Ordung \( o(x) \) des Elementes \( x \) definiert als
 
 \begin{equation*}
   o(x) = \begin{cases}
