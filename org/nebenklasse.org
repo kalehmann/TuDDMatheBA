@@ -1,0 +1,17 @@
+#+title: Nebenklasse
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Sei \( G \) eine [[file:gruppe.org][Gruppe]] und \( H \subseteq G \) eine [[file:untergruppe.org][Untergruppe]] von \( G \).
+Eine Linksnebenklasse von \( H \) in \( G \) ist eine Teilmenge von \( G \) in der Form
+
+\begin{equation*}
+  aH = \left\{ ah \:{\big |}\: h \in H \right\}, a \in G
+\end{equation*}
+
+Analog dazu ist eine Rechtsnebenklasse von \( H \) in \( G \) eine Teilmenge
+von \( G \) in der Form
+
+\begin{equation*}
+  Ha = \left\{ ha \:{\big |}\: h \in H \right\}, a \in G
+\end{equation*}

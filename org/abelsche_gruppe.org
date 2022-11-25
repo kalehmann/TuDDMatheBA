@@ -1,0 +1,7 @@
+#+title: Abelsche Gruppe
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Es sei \( (G, \cdot) \) eine [[file:gruppe.org][Gruppe]].
+Dann wird \( G \) eine abelsche oder kommutative Gruppe genannt, falls für alle
+\( a, b \in G \) gilt, dass \( a \cdot b = b \cdot a \)

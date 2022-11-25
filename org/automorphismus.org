@@ -2,6 +2,7 @@
 #+author: Karsten Lehmann <mail@kalehmann.de>
 #+STARTUP: latexpreview
 
-Sei \( G \) eine [[file:gruppe.org][Gruppe]] und \( f \colon G \to G \).
-Dann heißt \( f \) ein Automorphismus, falls \( f \) [[file:bijektiv.org][bijektiv]] ist.
+Sei \( (G, \cdot) \) eine [[file:gruppe.org][Gruppe]] und \( f \colon G \to G \).
+Dann heißt \( f \) ein Automorphismus, falls \( f \) [[file:bijektiv.org][bijektiv]] ist, sowie
+\( f(a \cdot b) = f(a) \cdot f(b) \) für alle \( a, b \in G \).
 

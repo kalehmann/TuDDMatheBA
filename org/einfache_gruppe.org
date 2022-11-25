@@ -1,0 +1,6 @@
+#+title: Einfache Gruppe
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Eine [[file:gruppe.org][Gruppe]] \( G \) heißt einfach, falls sie genau zwei Normalteiler - nämlich
+\( \{ 1_G \} \) und \( G \) - hat.

@@ -1,0 +1,13 @@
+#+title: Normalteiler
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Sei \( G \) eine [[file:gruppe.org][Gruppe]] und \( H \subseteq G \) eine [[file:untergruppe.org][Untergruppe]] von \( G \).
+Dann wird \( H \) ein Normalteiler von \( G \) genannt, falls für alle
+\( a \in G \) die zugehörigen [[file:nebenklasse.org][Links- und Rechtsnebenklassen]] von \( H \) in
+\( G \) übereinstimmen, also
+
+\begin{equation*}
+  aH = Ha \:\forall\: a \in G
+\end{equation*}
+

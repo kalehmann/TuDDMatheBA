@@ -1,0 +1,15 @@
+#+title: Homomorphismus
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Ein Homomorphisums ist eine strukturerhaltende Abbildung zwischen zwei
+algebraischen Objekten.
+
+Sei \( f \colon A \to B \) eine Abbildung zwischen den algebraischen Objekten
+\( A \) und \( B \).
+Sei weiter \( * \) eine binäre Operation auf \( A \) und \( \oplus \) eine binäre
+Operation auf
+\( B \).
+
+Dann wird \( f \) ein Homomorphismus genannt, falls
+\( f(m * n) = f(m) \oplus f(n) \) für alle \( m, n \in A \) gilt.

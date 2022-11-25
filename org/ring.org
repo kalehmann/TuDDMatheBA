@@ -1,0 +1,14 @@
+#+title: Ring
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Eine Menge \( R \) mit einer additiven und multiplikativen binären Operation -
+ geschrieben \( (R, +, \cdot) \) - heißt Ring, falls
+
+- \( (R, +) \) eine [[file:abelsche_gruppe.org][abelsche Gruppe]] ist
+- \( (a \cdot b) \cdot c = a \cdot (b \cdot c) \) für alle \( a, b, c \in R \)
+  gilt, dass heißt die Multiplikation assoziativ ist.
+- Es existiert ein neutrales Element der Multiplikation \( 1_R \in R \) mit
+  \( 1_R \cdot a = a = a \cdot 1_R \) für alle \( a \in R \)
+- \( a \cdot (b + c) = a \cdot b + a \cdot c \) und
+  \( (b + c) \cdot a = b \cdot a + c \cdot a \) gilt für alle \( a, b, c \in R \) 

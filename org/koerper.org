@@ -1,0 +1,8 @@
+#+title: Körper
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Es sei \( (R, +, \cdot) \) ein [[file:kommutativer_ring.org][kommutativer Ring]].
+Dann wird \( (R, +, \cdot) \) ein Körper genannt, falls jedes Element \( 0_R \ne a \in R \)
+ein multiplikatives inverses Element \( a^{-1} \in R \) mit
+\( a \cdot a^{-1} = 1_R \) besitzt.

@@ -1,0 +1,15 @@
+#+title: Ordnung eines Elementes
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Sei \( G \) eine [[file:gruppe.org][Gruppe]], \( x \in G \) beliebig und
+\( M = \left\{ n \in \mathbb{N}_{\geq 1} \:\middle|\: x^n = 1_G \right\} \).
+Dann ist die Ordung \( o(x) \) des Elementes \( x \0 definiert als
+
+\begin{equation*}
+  o(x) = \begin{cases}
+    \min(M) & \text{wenn } M \ne \emptyset \\
+    \infty & \text{wenn } M = \emptyset \\
+  \end{cases}
+\end{equation*}
+

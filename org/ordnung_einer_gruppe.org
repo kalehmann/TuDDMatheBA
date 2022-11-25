@@ -1,0 +1,7 @@
+#+title: Ordnung einer Gruppe
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Sei \( (G, \cdot) \) eine [[file:gruppe.org][Gruppe]].
+Dann ist die Ordnung von \( (G, \cdot) \) als die Anzahl der Elemente in
+\( G \) definiert.

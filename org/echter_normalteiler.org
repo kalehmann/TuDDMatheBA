@@ -1,0 +1,7 @@
+#+title: Echter Normalteiler
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Sei \( G \) eine [[file:gruppe.org][Gruppe]] und  \( H \subseteq G \) eine [[file:untergruppe.org][Untergruppe]] sowie
+[[file:normalteiler.org][Normalteiler]] von \( G \).
+Dann heißt \( H \) ein echter Normalteiler von \( G \), falls \( H \ne G \).

@@ -1,0 +1,7 @@
+#+title: Kommutativer Ring
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Es sei \( (R, +, \cdot) \) ein [[file:ring.org][Ring]].
+Dann wird \( (R, +, \cdot) \) ein kommutativer Ring genannt, falls für alle
+\( a, b \in R \) gilt, dass \( a \cdot b = b \cdot a \)
