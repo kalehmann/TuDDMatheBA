@@ -1,5 +1,7 @@
 OUTPUT_DIRECTORY=_site
 
+EMACS=emacs
+EMACS_ORG_EXPORT_FLAGS=--eval '(setq org-html-postamble nil)' -f org-html-export-to-html
 LATEXMK=latexmk
 LATEXMK_OPTS=-pdf -quiet
 
@@ -39,7 +41,7 @@ $(OUTPUT_DIRECTORY)/%htaccess: html/%htaccess
 
 $(OUTPUT_DIRECTORY)/org/%.html: org/%.org
 	mkdir -p $(@D)
-	emacs --batch $< -f org-html-export-to-html
+	$(EMACS) --batch $< $(EMACS_ORG_EXPORT_FLAGS)
 	cp $(subst .org,.html,$<) $@
 
 $(OUTPUT_DIRECTORY)/%.html: html/%.html
