@@ -1,0 +1,14 @@
+#+title: Maximale Untergruppe
+#+author: Karsten Lehmann <mail@kalehmann.de>
+#+STARTUP: latexpreview
+
+Es sei \( (G, \cdot) \) eine [[file:gruppe.org][Gruppe]] und \( H \) eine [[file:untergruppe.org][echte Untergruppe]] von
+\( G \).
+Dann heißt \( H \) eine maximale Untergruppe von \( G \), falls es keine
+[[file:untergruppe.org][echte Untergruppe]] \( I \) von \( G \) gibt, die \( H \) enthält.
+
+Alternativ geschrieben:
+
+\begin{equation*}
+  H \leq I \leq G \Longrightarrow H = I \lor I = G
+\end{equation*}

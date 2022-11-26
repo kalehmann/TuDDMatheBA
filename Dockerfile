@@ -13,5 +13,8 @@ RUN apt-get update \
 	texlive-lang-german \
 	texlive-latex-extra \
 	texlive-pictures \
-	texlive-science  \
+        texlive-science  \
+        wget \
 	&& rm -rf /var/lib/apt/lists/*
+
+RUN wget -qO- https://github.com/CloudCannon/pagefind/releases/download/v0.10.2/pagefind-v0.10.2-x86_64-unknown-linux-musl.tar.gz | tar xvz -C /usr/local/bin/

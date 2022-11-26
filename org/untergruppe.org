@@ -9,3 +9,5 @@ Untergruppe von \( G \) genannt, falls
 - für alle \( g, h \in H \) ist \( g \cdot h |in H \)
 - für alle \( g \in H \) ist auch \( g^{-1} \in H \)
  
+Ist \( H \ne G \), so bezeichnet man \( H \) auch als echte Untergruppe von
+\( G \).
