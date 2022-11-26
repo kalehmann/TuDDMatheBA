@@ -7,7 +7,7 @@ EMACS_ORG_EXPORT_FLAGS= \
 LATEXMK=latexmk
 LATEXMK_OPTS=-pdf -quiet
 PAGEFIND=pagefind
-PAGEFIND_FLAGS=--source $(OUTPUT_DIRECTORY)/org --bundle-dir _bundle
+PAGEFIND_FLAGS=--source $(OUTPUT_DIRECTORY)/  --glob 'org/*.html' --bundle-dir org/_bundle
 
 CSS_FILES = \
 	$(OUTPUT_DIRECTORY)/dir_index.css

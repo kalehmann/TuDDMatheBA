@@ -3,5 +3,10 @@
     <script src=\"_bundle/pagefind-ui.js\" type=\"text/javascript\"></script>\
     <div id=\"search\"></div>\
     <script>\
-        window.addEventListener(\"DOMContentLoaded\", (event) => {new PagefindUI({ element: \"#search\" });});\
+        window.addEventListener(\
+            \"DOMContentLoaded\",\
+            (event) => {new PagefindUI({\
+                element: \"#search\", \
+                baseUrl: \"/tuddmatheba/\", \
+            });});\
     </script>")
