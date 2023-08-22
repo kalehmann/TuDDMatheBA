@@ -5,7 +5,7 @@ type: 'docker'
 
 steps:
     - name: 'Pull existing documents'
-      image: 'registry.kalehmann.de/lftp:latest'
+      image: 'git.kalehmann.de/infrastructure/dockerimages/lftp:latest'
       commands:
           - 'lftp -e "
                set ftp:ssl-force true;
@@ -24,7 +24,7 @@ steps:
           SERVER:
               from_secret: 'ftp_server'
     - name: 'Build the website'
-      image: 'registry.kalehmann.de/tuddmatheba:latest'
+      image: 'git.kalehmann.de/karsten/tuddmatheba:latest'
       commands:
           - 'git restore-mtime'
           - 'make'
@@ -34,7 +34,7 @@ steps:
       depends_on:
           - 'Pull existing documents'
     - name: 'Deploy the website'
-      image: 'registry.kalehmann.de/lftp:latest'
+      image: 'git.kalehmann.de/infrastructure/dockerimages/lftp:latest'
       commands:
           - 'lftp -e "
                set ftp:ssl-force true;
